@@ -19,6 +19,7 @@ import {
   DropdownToggle,
   Input,
 } from "reactstrap";
+import PropTypes from "prop-types";
 
 const GET = () => {
   return (
@@ -68,13 +69,47 @@ const PUT = () => {
   );
 };
 
-const FauxPostman = () => {
+const ERROR_MESSAGE = `
+{
+  "error": {
+    "code": 400,
+    "message": "Required parameters are missing.",
+    "details": [
+      "Parameter 'query' is required.",
+      "Parameter 'location' is required."
+    ],
+  }
+}`;
+
+const SUCCESS_MESSAGE = `
+{
+  "data": [
+    {
+      "id": "12345",
+      "name": "Midnight Oil",
+      "location": "Rochester, NY",
+    },
+    {
+      "id": "67890",
+      "name": "Javas Coffee",
+      "location": "Rochester, NY",
+    }
+  ],
+  "query": "coffee",
+  "location": "rochester",
+  "totalResults": 2
+}`;
+
+const FauxPostman = (props) => {
+  const { setIncorrectRequestComplete, setCorrectRequestComplete } = props;
+
   const [APICall, setAPIcall] = useState("");
-  const [key, setKey] = useState("");
-  const [value, setValue] = useState("");
+  const [keyOne, setKeyOne] = useState("");
+  const [keyTwo, setKeyTwo] = useState("");
+  const [valueOne, setValueOne] = useState("");
+  const [valueTwo, setValueTwo] = useState("");
 
   const [response, setResponse] = useState("");
-  const [correctSubmission, setCorrectSubmission] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [label, setLabel] = useState(<GET />);
 
@@ -84,18 +119,27 @@ const FauxPostman = () => {
 
   const submitCall = (e) => {
     e.preventDefault();
-    try {
-      setCorrectSubmission(true);
-      setResponse(`API URL: ${APICall}, Key: ${key}, Value: ${value}`);
-    } catch (error) {
-      console.error("Something went wrong.");
+    if (APICall) {
+      if (!keyOne || !keyTwo || !valueOne || !valueTwo) {
+        try {
+          setIncorrectRequestComplete(true);
+          setResponse(ERROR_MESSAGE);
+        } catch (error) {
+          console.error("Something went wrong.");
+        }
+      } else {
+        setCorrectRequestComplete(true);
+        setResponse(SUCCESS_MESSAGE);
+      }
+    } else {
+      alert("Please enter API URL");
     }
   };
 
   return (
     <div
       className={
-        "tw-bg-[#1e1e1e] tw-text-white tw-rounded-xl tw-border-solid tw-border-[rgb(42,42,42)] tw-border-[2px] tw-min-h-[30rem]"
+        "tw-bg-[#1e1e1e] tw-text-white tw-rounded-xl tw-border-solid tw-border-[rgb(42,42,42)] tw-border-[2px] tw-h-full"
       }
     >
       {/* Header */}
@@ -137,7 +181,7 @@ const FauxPostman = () => {
           <Settings style={{ fill: "rgb(156,156,156)" }} fontSize={"20px"} />
         </div>
       </div>
-      <div className={"tw-flex tw-flex-row tw-h-[29rem]"}>
+      <div className={"tw-flex tw-flex-row tw-h-[39rem] tw-rounded-bl-lg"}>
         {/* Side Bar */}
         <div
           className={
@@ -378,8 +422,8 @@ const FauxPostman = () => {
                       }
                       placeholder={"Enter Key Input Here"}
                       style={{ color: "#fff" }}
-                      onChange={(e) => setKey(e.target.value)}
-                      value={key}
+                      onChange={(e) => setKeyOne(e.target.value)}
+                      value={keyOne}
                     />
                   </td>
                   <td className={"tw-border-[#2c2c2c] tw-border-solid"}>
@@ -388,8 +432,32 @@ const FauxPostman = () => {
                         "tw-w-full tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] placeholder:tw-text-[#3c3c3c]"
                       }
                       placeholder={"Enter Value Input Here"}
-                      onChange={(e) => setValue(e.target.value)}
-                      value={value}
+                      onChange={(e) => setValueOne(e.target.value)}
+                      value={valueOne}
+                    />
+                  </td>
+                  <td className={"tw-border-[#2c2c2c] tw-border-solid"}></td>
+                </tr>
+                <tr>
+                  <td className={"tw-border-[#2c2c2c] tw-border-solid"}>
+                    <Input
+                      className={
+                        "tw-w-full tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] placeholder:tw-text-[#3c3c3c]"
+                      }
+                      placeholder={"Enter Key Input Here"}
+                      style={{ color: "#fff" }}
+                      onChange={(e) => setKeyTwo(e.target.value)}
+                      value={keyTwo}
+                    />
+                  </td>
+                  <td className={"tw-border-[#2c2c2c] tw-border-solid"}>
+                    <Input
+                      className={
+                        "tw-w-full tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] placeholder:tw-text-[#3c3c3c]"
+                      }
+                      placeholder={"Enter Value Input Here"}
+                      onChange={(e) => setValueTwo(e.target.value)}
+                      value={valueTwo}
                     />
                   </td>
                   <td className={"tw-border-[#2c2c2c] tw-border-solid"}></td>
@@ -397,9 +465,10 @@ const FauxPostman = () => {
               </tbody>
             </table>
           </div>
+          {/* Response */}
           <div
             className={
-              "tw-relative tw-h-full tw-w-full tw-border-solid tw-border-[1px] tw-mt-3 tw-border-[#2a2a2a] tw-border-x-0 tw-border-b-0 tw-flex tw-flex-col"
+              "tw-relative tw-h-full tw-w-full tw-border-solid tw-border-[1px] tw-mt-3 tw-border-[#2a2a2a] tw-border-x-0 tw-border-b-0 tw-flex tw-flex-col tw-overflow-y-scroll fauxPostmanScrollbar"
             }
           >
             <p
@@ -410,22 +479,23 @@ const FauxPostman = () => {
               Response
             </p>
             <div className={"tw-text-left tw-py-6 tw-px-2"}>
-              <p className={"tw-font-courier"}> {response}</p>
+              <pre className={"code_editor__code tw-bg-transparent tw-text-xs"}>
+                {" "}
+                {response}
+              </pre>
             </div>
-            <button
-              className={
-                "tw-absolute tw-bottom-1 tw-right-1 tw-rounded-md tw-border-0 tw-px-5 tw-py-1 tw-text-white tw-bg-success disabled:tw-bg-[#2c2c2c] disabled:tw-text-[#9c9c9c]"
-              }
-              disabled={!correctSubmission}
-            >
-              {" "}
-              NEXT{" "}
-            </button>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+FauxPostman.propTypes = {
+  correctRequestComplete: PropTypes.bool,
+  incorrectRequestComplete: PropTypes.bool,
+  setIncorrectRequestComplete: PropTypes.func,
+  setCorrectRequestComplete: PropTypes.func,
 };
 
 export default FauxPostman;

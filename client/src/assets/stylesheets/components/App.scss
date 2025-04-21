@@ -2645,3 +2645,18 @@ body {
 .yellow-drop-shadow:hover {
   box-shadow: rgba(0, 0, 0, 0.15) -5px 5px 5px 0px;
 }
+
+.fauxPostmanScrollbar {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #222222;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255, 97, 48);
+  }
+}
