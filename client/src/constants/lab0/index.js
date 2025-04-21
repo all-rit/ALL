@@ -5,6 +5,9 @@ const SECTION_CATEGORY_FRONTEND = "FRONTEND";
 
 const SELECTION_ROUTE = "/";
 
+// Intro
+const SECTION_LAB_INTRODUCTION = "LabIntroduction";
+
 // Design Lab
 const SECTION_LAB_IDEATION = "LabIdeation";
 const SECTION_DESIGN_NEW_CATEGORY = "DesignNewCategory";
@@ -46,6 +49,10 @@ const SECTION_FRONTEND_TIPS_TRICKS = "FrontendTipsTricks";
 // All routes
 const ROUTES = {
   SELECTION_ROUTE,
+  // Intro
+  SECTION_LAB_INTRODUCTION,
+
+  // Design Lab
   SECTION_LAB_IDEATION,
   SECTION_DESIGN_NEW_CATEGORY,
   SECTION_DESIGN_SORT_NEW_CATEGORY,

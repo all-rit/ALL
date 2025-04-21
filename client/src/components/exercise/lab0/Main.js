@@ -23,6 +23,7 @@ import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
 import TestRepair from "./TestRepair";
+import { LabIntroduction } from "./pages/intro";
 import {
   LabDataRepair,
   SchemaDesignRepair,
@@ -119,6 +120,9 @@ const Main = (props) => {
           />
           <WireframeExercise path={ROUTES.SECTION_WIREFRAME_EXERCISE} />
           <WireframeComponents path={ROUTES.SECTION_WIREFRAME_COMPONENTS} />
+
+          {/* Intro Pages */}
+          <LabIntroduction path={ROUTES.SECTION_LAB_INTRODUCTION} />
 
           {/* Backend Pages */}
           <BackendIntroduction path={ROUTES.SECTION_BACKEND_INTRODUCTION} />

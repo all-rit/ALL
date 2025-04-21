@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const db = require('../database');
 const shortNameNotFound = 'Error: Short Name Not Found';
-const shortNameNotRetrieved= 'Error: Short Name Not Retrieved';
+const shortNameNotRetrieved = 'Error: Short Name Not Retrieved';
 const aboutNotFound = 'Error: About Not Found';
 const aboutNotRetrieved = 'Error: About Not Retrieved';
 const readingNotFound = 'Error: Reading Not Found';
@@ -75,6 +75,7 @@ async function getLabReading(labID) {
       attributes: ['reading'],
       raw: true,
     });
+    console.log('reading', reading);
     if (!reading) {
       return readingNotFound;
     }
