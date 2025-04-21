@@ -101,6 +101,9 @@ const Main = (props) => {
             path={"/TestMockBrowser"}
             correctURL="https://all.rit.edu"
             responseImgURL="/img/lab_images/test_mock_browser.png"
+            onViewed={() =>
+              setTimeout(() => alert("You viewed the correct page!"), 1000)
+            }
           />
         </Router>
       </Lab0Context.Provider>
