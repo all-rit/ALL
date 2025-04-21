@@ -75,7 +75,7 @@ const TeammateVideo = (props) => {
         <br />
         (Keyboard)
       </p>
-      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-4">
+      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
         <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
         <img
           className={
