@@ -52,7 +52,7 @@ const TeammateVideo = (props) => {
   const buttonSize = "tw-w-16 tw-mx-auto";
 
   return (
-    <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[600px]">
+    <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[575px]">
       {!videoEnded ? (
         <video
           src={videoSrc}
@@ -75,7 +75,7 @@ const TeammateVideo = (props) => {
         <br />
         (Keyboard)
       </p>
-      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-4">
+      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
         <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
         <img
           className={

@@ -26,8 +26,8 @@ const Done = (props) => {
     >
       <h2 className={"tw-title"}> Thank you for participating! </h2>
       <h2 className={"tw-sub-title"}>
-        {" "}
-        Click the <strong> Return Home </strong> below to end the exercise!{" "}
+        Click the <strong> Return Home </strong> below to end the exercise and
+        get your cotton candy!
       </h2>
       <ALLButton label={"Return Home"} large={true} onClick={handleUpdateID} />
     </div>

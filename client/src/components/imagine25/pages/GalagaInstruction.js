@@ -18,7 +18,7 @@ const GalagaInstructions = () => {
           <br />
           {/*&apos; is just a apostrophe --> " ' "*/}
           <p className="tw-body-text">
-            You will be playing galaga! Use arrow keys to move and space to
+            You will be playing Galaga! Use arrow keys to move and space to
             shoot! Avoid enemy ships or lose points!
           </p>
         </div>,
