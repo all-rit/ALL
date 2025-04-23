@@ -31,7 +31,7 @@ const ThirdInstructions = ({
     toWhiteBackground();
   }
   if (isImagine) {
-    navigate("/Imagine/Reading");
+    navigate("/Imagine2023/Reading");
   }
 
   return (

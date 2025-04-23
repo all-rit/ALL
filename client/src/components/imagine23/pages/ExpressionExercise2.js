@@ -5,7 +5,7 @@ import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
 const ExpressionExercise2 = (props) => {
-  const { setCount, count, userID } = props;
+  const { setCount, count, userID, year } = props;
 
   const [showContine, setShowContinue] = useState(null);
   const [timeStamps, setTimeStamps] = useState([]);
@@ -25,10 +25,10 @@ const ExpressionExercise2 = (props) => {
     setCount(count + 1);
   };
 
-  const handleNext = () => {
-    const body = { userID: userID, study: timeStamps };
-    ImagineService.postStudy(body);
-    navigate("/Imagine/ExpressionScore");
+  const handleNext = async () => {
+    const body = { userID: userID, study: timeStamps, year: year };
+    await ImagineService.postStudy(body);
+    navigate("/Imagine2023/ExpressionScore");
   };
 
   return (
@@ -93,6 +93,7 @@ ExpressionExercise2.propTypes = {
   setCount: PropTypes.func,
   count: PropTypes.number,
   userID: PropTypes.string,
+  year: PropTypes.number,
 };
 
 export default ExpressionExercise2;

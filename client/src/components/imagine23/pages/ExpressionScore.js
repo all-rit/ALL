@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const ExpressionScore = (props) => {
   const handleNext = () => {
-    navigate("/Imagine/Reading");
+    navigate("/Imagine2023/Reading");
   };
 
   return (

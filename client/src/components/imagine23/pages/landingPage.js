@@ -4,7 +4,7 @@ import useScroll from "../../../use-hooks/useScroll";
 
 const LandingPage = () => {
   const handleNext = () => {
-    navigate("/Imagine/ExperientialInstructions");
+    navigate("/Imagine2023/ExperientialInstructions");
   };
   useScroll();
   return (

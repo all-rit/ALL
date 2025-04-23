@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 const Navigation = (props) => {
   const handleExpression = () => {
     props.setIsExperiential(false);
-    navigate("/Imagine/ExpressionStart");
+    navigate("/Imagine2023/ExpressionStart");
   };
   const handleExperiential = () => {
     props.setIsExperiential(true);
-    navigate("/Imagine/ExperientialStart");
+    navigate("/Imagine2023/ExperientialStart");
   };
 
   return (
