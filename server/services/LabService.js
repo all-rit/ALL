@@ -75,7 +75,6 @@ async function getLabReading(labID) {
       attributes: ['reading'],
       raw: true,
     });
-    console.log('reading', reading);
     if (!reading) {
       return readingNotFound;
     }

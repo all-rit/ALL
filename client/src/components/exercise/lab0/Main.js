@@ -47,6 +47,11 @@ import {
   ComponentLibrary,
   FrontendTipsTricks,
 } from "./pages/frontend";
+import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
+import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
+import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
+import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
+import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
 
 const Main = (props) => {
   const { user } = props;
@@ -120,6 +125,13 @@ const Main = (props) => {
           />
           <WireframeExercise path={ROUTES.SECTION_WIREFRAME_EXERCISE} />
           <WireframeComponents path={ROUTES.SECTION_WIREFRAME_COMPONENTS} />
+          <ScrumIntroduction path={ROUTES.SECTION_SPRINT_PLANNING} />
+          <ScrumBoardActivity path={ROUTES.SECTION_SCRUM_BOARD_ACTIVITY} />
+          <ScrumVelocityReading path={ROUTES.SECTION_SCRUM_VELOCITY_READING} />
+          <ScrumVelocityActivity
+            path={ROUTES.SECTION_SCRUM_VELOCITY_ACTIVITY}
+          />
+          <DesignLabEnd path={ROUTES.SECTION_DESIGN_LAB_END} />
 
           {/* Intro Pages */}
           <LabIntroduction path={ROUTES.SECTION_LAB_INTRODUCTION} />

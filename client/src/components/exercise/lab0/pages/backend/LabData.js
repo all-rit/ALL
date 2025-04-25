@@ -67,11 +67,26 @@ export const LabData = () => {
             <li>
               <b>reinforcement</b> – This is our video playlist, stored as a
               JSON list. Each entry has a <code>title</code> and a{" "}
-              <code>link</code> to a YouTube video. These videos show up on the
-              reinforcement page and help drive home important concepts in
-              different ways. They&apos;re especially helpful for younger
-              learners who might benefit from seeing the same idea explained
-              from different angles.
+              <code>link</code> to the <b>embedded</b> YouTube video. These
+              videos show up on the reinforcement page and help drive home
+              important concepts in different ways. They&apos;re especially
+              helpful for younger learners who might benefit from seeing the
+              same idea explained from different angles.
+              <br />
+              <br />
+              <b>Note:</b> The link should look like this:{" "}
+              <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank"
+                rel="noreferrer"
+                className="tw-text-primary-blue"
+              >
+                https://www.youtube.com/embed/dQw4w9WgXcQ
+              </a>
+              <br />
+              <br />
+              If the link is not an embedded video, it will show up as a link to
+              the video on YouTube.
             </li>
             <li>
               <b>quiz</b> – Our question bank, stored as a JSON list of question
