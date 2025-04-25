@@ -2647,16 +2647,5 @@ body {
 }
 
 .fauxPostmanScrollbar {
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #222222;
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgb(255, 97, 48);
-  }
+  scrollbar-color: rgb(255, 97, 48) #1e1e1e;
 }

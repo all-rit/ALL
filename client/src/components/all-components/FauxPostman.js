@@ -10,7 +10,6 @@ import {
   Settings,
   Add,
   MoreHoriz,
-  SaveOutlined,
 } from "@mui/icons-material";
 import {
   Dropdown,
@@ -284,17 +283,11 @@ const FauxPostman = (props) => {
           </div>
           <div className={"tw-p-3"}>
             <div
-              className={
-                "tw-flex tw-flex-row tw-items-center tw-justify-between"
-              }
+              className={"tw-flex tw-flex-row tw-items-center tw-justify-start"}
             >
               <p className={"tw-font-bold tw-text-xs"}>
                 localhost:5005/mockPostCall
               </p>
-              <div className={"tw-flex tw-items-center tw-gap-x-3"}>
-                <SaveOutlined style={{ fill: "#9c9c9c" }} />
-                <p className={"tw-text-[#9c9c9c] tw-text-xs"}>Save</p>
-              </div>
             </div>
           </div>
           <div className={"tw-flex tw-flex-row tw-gap-x-3 tw-px-3"}>
@@ -345,38 +338,10 @@ const FauxPostman = (props) => {
           <div className={"tw-flex tw-gap-x-6 tw-p-3"}>
             <button
               className={
-                "tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] tw-text-xs focus:tw-border-solid focus:tw-border-2 focus:tw-border-b-[rgb(255,97,48)] focus:tw-border-t-0 focus:tw-border-x-0"
+                "tw-bg-[#1e1e1e] tw-text-[#9c9c9c] tw-text-xs tw-border-solid tw-border-2 tw-border-b-[rgb(255,97,48)] tw-border-t-0 tw-border-x-0"
               }
             >
               Params
-            </button>
-            <button
-              className={
-                "tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] tw-text-xs focus:tw-border-solid focus:tw-border-2 focus:tw-border-b-[rgb(255,97,48)] focus:tw-border-t-0 focus:tw-border-x-0"
-              }
-            >
-              Authorization
-            </button>
-            <button
-              className={
-                "tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] tw-text-xs focus:tw-border-solid focus:tw-border-2 focus:tw-border-b-[rgb(255,97,48)] focus:tw-border-t-0 focus:tw-border-x-0"
-              }
-            >
-              Headers
-            </button>
-            <button
-              className={
-                "tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] tw-text-xs focus:tw-border-solid focus:tw-border-2 focus:tw-border-b-[rgb(255,97,48)] focus:tw-border-t-0 focus:tw-border-x-0"
-              }
-            >
-              Body
-            </button>
-            <button
-              className={
-                "tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] tw-text-xs focus:tw-border-solid focus:tw-border-2 focus:tw-border-b-[rgb(255,97,48)] focus:tw-border-t-0 focus:tw-border-x-0"
-              }
-            >
-              Settings
             </button>
           </div>
           <div className={"tw-px-3"}>
@@ -479,8 +444,11 @@ const FauxPostman = (props) => {
               Response
             </p>
             <div className={"tw-text-left tw-py-6 tw-px-2"}>
-              <pre className={"code_editor__code tw-bg-transparent tw-text-xs"}>
-                {" "}
+              <pre
+                className={
+                  "code_editor__code tw-bg-transparent tw-text-[0.65rem]"
+                }
+              >
                 {response}
               </pre>
             </div>
