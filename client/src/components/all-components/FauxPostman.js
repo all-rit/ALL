@@ -166,7 +166,7 @@ const FauxPostman = (props) => {
         </div>
         <div
           className={
-            "tw-bg-[rgb(40,40,40)] tw-flex tw-flex-row tw-p-1 tw-rounded-md tw-px-6 tw-justify-center"
+            "tw-bg-[rgb(40,40,40)] xs:tw-hidden md:tw-flex tw-flex-row tw-p-1 tw-rounded-md tw-px-6 tw-justify-center"
           }
         >
           <Search style={{ fill: "rgb(156,156,156)" }} />
@@ -184,7 +184,7 @@ const FauxPostman = (props) => {
         {/* Side Bar */}
         <div
           className={
-            "tw-flex tw-flex-col tw-w-1/4 tw-bg-[#222222] tw-border-r-solid tw-border-r-[5px] tw-border-r-[#9c9c9c] tw-p-1 tw-overflow-x-hidden"
+            "xs:tw-hidden md:tw-flex tw-flex-col tw-w-1/4 tw-bg-[#222222] tw-border-r-solid tw-border-r-[5px] tw-border-r-[#9c9c9c] tw-p-1 tw-overflow-x-hidden"
           }
         >
           <div className={"tw-flex tw-flex-row tw-justify-between"}>
@@ -262,7 +262,7 @@ const FauxPostman = (props) => {
           </div>
         </div>
         {/* Request Section */}
-        <div className={"tw-flex tw-flex-col tw-w-3/4"}>
+        <div className={"tw-flex tw-flex-col xs:tw-w-full md:tw-w-3/4"}>
           <div
             className={
               "tw-flex tw-flex-row tw-justify-start tw-border-solid tw-border-[1px] tw-border-[#2a2a2a] tw-border-t-0 tw-border-r-0 tw-w-full tw-items-center tw-gap-x-3"
@@ -329,7 +329,7 @@ const FauxPostman = (props) => {
             <button
               onClick={submitCall}
               className={
-                "tw-bg-[#0d70ea] tw-gap-x-8 tw-px-3 tw-py-1 tw-border-0 tw-rounded-md tw-text-white tw-font-bold tw-flex tw-items-center tw-justify-between tw-w-1/6"
+                "tw-bg-[#0d70ea] md:tw-gap-x-8 tw-px-3 tw-py-1 tw-border-0 tw-rounded-md tw-text-white tw-font-bold tw-flex tw-items-center tw-justify-between"
               }
             >
               Send <KeyboardArrowDown />
