@@ -14,35 +14,36 @@ const StartExercise = (props) => {
   const [nextSection, setNextSection] = useState(null);
   const verb = props.verb || "Start";
 
-  useEffect(() => {
-    async function getProgress() {
-      if (!state.main.user || categories !== null) return;
-      const result = await ProgressService.getProgress(state.main.user.userid);
-      const progress = result.progress === null ? {} : result.progress;
+  async function getProgress() {
+    if (!state.main.user || categories !== null) return;
+    const result = await ProgressService.getProgress(state.main.user.userid);
+    const progress = result.progress === null ? {} : result.progress;
 
-      let map = {};
-      let next = null;
-      Object.values(SECTIONS).forEach((section) => {
-        if (!(section.category in map)) {
-          map[section.category] = [];
-        }
+    let map = {};
+    let next = null;
+    Object.values(SECTIONS).forEach((section) => {
+      if (!(section.category in map)) {
+        map[section.category] = [];
+      }
 
-        if (
-          progress[section.name] !== SECTION_STATUSES.SECTION_COMPLETED &&
-          next === null
-        ) {
-          next = section.name;
-        }
+      if (
+        progress[section.name] !== SECTION_STATUSES.SECTION_COMPLETED &&
+        next === null
+      ) {
+        next = section.name;
+      }
 
-        map[section.category].push({
-          ...section,
-          sectionStatus: progress[section.name],
-        });
+      map[section.category].push({
+        ...section,
+        sectionStatus: progress[section.name],
       });
+    });
 
-      setCategories(map);
-      setNextSection(next);
-    }
+    setCategories(map);
+    setNextSection(next);
+  }
+
+  useEffect(() => {
     getProgress();
   }, [state.main.user]);
 

@@ -60,11 +60,13 @@ const WireframeFirstGlance = () => {
           />
         </div>
       </FauxFigma>
-      <p className="tw-body-text tw-justify-self-center">
-        Click the <strong> Next</strong> button to continue.
-      </p>
-      <div className={"tw-flex tw-justify-center tw-py-6"}>
-        <LabButton label={"Next"} onClick={navigateNext} />
+      <div>
+        <p className="tw-body-text tw-justify-self-center">
+          Click the <strong> Next</strong> button to continue.
+        </p>
+        <div className={"tw-flex tw-justify-center tw-py-6"}>
+          <LabButton label={"Next"} onClick={navigateNext} />
+        </div>
       </div>
     </div>
   );

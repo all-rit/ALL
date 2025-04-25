@@ -510,8 +510,8 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "History of Accessible Learning Labs",
                 "type": "",
                 "content": [
-                    "Accessible Learning Labs, in conjunction with Rochester Institute of Technology and the National Science Foundation, was created in 2018 by principal investigators Daniel Krutz and Samuel Malachowsky with the purpose of spreading awareness of the importance of accessible software on the web, as well as the crucial role that software developers play in designing and creating a more accessible, usable internet that anyone can use. Comprised of a fully undergraduate development team, Accessible Learning Labs plays a crucial part in not only creating a better future for the web, but creating more conscientious software engineers that know the importance of accessibility. Since Lab 1 - Accessibility to Sound and Speech released in 2018, Accessible Learning Labs has released 11 more labs, with topics ranging from Accessibility to Cognitive Disabilities to AI in Cybersecurity, with more in the works with each passing semester."
-                ]
+"Accessible Learning Labs (ALL) was founded in 2018 at Rochester Institute of Technology through support from the National Science Foundation. Spearheaded by principal investigators Daniel Krutz and Samuel Malachowsky, the project was built to promote awareness of digital accessibility and the vital role that developers play in creating inclusive, usable software for all. From the beginning, ALL has been powered by a fully undergraduate development team—an intentional decision to educate the next generation of engineers on accessible development practices from the ground up. Since launching its first lab, Accessibility to Sound and Speech, in 2018, ALL has expanded to over a dozen interactive labs. These span a broad range of topics including accessibility for cognitive disabilities, ethics in artificial intelligence, machine learning fundamentals, and cybersecurity. Each lab combines experiential learning with real-world accessibility insights, continually evolving with new releases every semester."
+]
             },
             {
                 "header": "",
@@ -522,8 +522,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "What Goes into Building a Lab?",
                 "type": "",
                 "content": [
-                    "Our labs follow a standardized 5 step process: About, Reading, Experiential Exercise, Reinforcement, and Quiz sections. By standardizing our process, we guarantee that each of our labs touches on the most important talking points of the lab topic, as well as providing a lasting experience that enforces the importance of accessible software or any other subject they may be learning about in the Accessible Learning Labs plethora of learning content."
-                ]
+"Every ALL lab follows a standardized structure that ensures consistency, engagement, and educational value. The flow consists of five core sections: Reading, Exercise (including Game Exercise and Game Repair), Reinforcement, and Quiz. This progression introduces core concepts, provides hands-on activities, reinforces knowledge through multimedia content, and concludes with an assessment to solidify understanding. Labs are built not just to educate but to immerse students in real accessibility challenges. Whether a student is simulating screen reader experiences or identifying design flaws in inaccessible applications, the lab experience is designed to encourage critical thinking and foster empathy. Every lab is backed by data models stored in a PostgreSQL database, and each exercise is powered by a Redux-based state engine, ensuring a dynamic and reactive experience."              ]
             },
             {
                 "header": "",
@@ -534,8 +533,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "Our Tech Stack",
                 "type": "",
                 "content": [
-                    "Accessible Learning Labs is a Express and Node.js focused application. As a result, the frontend of the project is developed using ReactJS, an industry-standard technology for developing dynamic and highly functional user interfaces. The backend of the project is developed using ExpressJS, an easy-to-understand JavaScript library that provides server functionality using the JavaScript language. Finally, to store data, Accessible Learning Labs employs a PostgreSQL-based database structure."
-                ]
+"The frontend is built with React, a declarative JavaScript framework known for building interactive and modular user interfaces. Components are styled using Tailwind CSS and follow an accessibility-first design philosophy. The backend is powered by Express.js running on Node.js. It follows a clean separation-of-concerns pattern using folders like routes, controllers, services, and database. All backend routes are exposed via RESTful API endpoints on port 5005, consumed by the frontend service layer to maintain modularity. Persistent data is managed with PostgreSQL, a relational database used to store lab content, quiz data, user progress, and session repair attempts. Schemas and models are defined using Sequelize and organized by domain. The entire system is containerized and can be spun up locally using docker-compose, with environment variables configured through .env files and ecosystem.config.js."             ]
             },
             {
                 "header": "",

@@ -6,11 +6,7 @@ import Lab0Context from "./Lab0Context";
 import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/ExperientialIntroduction";
 import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
 import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
-import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
 import DesignLabIntroduction from "./DesignLabSection/LabIdeaActivity/DesignLabIntroduction";
-import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
-import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
-import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignNewCategory from "./DesignLabSection/LabIdeaActivity/DesignNewCategory";
 import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSortNewCategory";
 import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
@@ -18,11 +14,43 @@ import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/Wirefra
 import WireframeReinforceQuiz from "./DesignLabSection/WireframingActivity/WireframeReinforceQuiz";
 import WireframeExercise from "./DesignLabSection/WireframingActivity/WireframeExercise";
 import WireframeComponents from "./DesignLabSection/WireframingActivity/WireframeComponents";
-import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
+import {
+  SECTION_STATUSES,
+  SECTIONS,
+  ROUTES,
+} from "../../../constants/lab0/index";
 import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
 import TestRepair from "./TestRepair";
+import { LabIntroduction } from "./pages/intro";
+import {
+  LabDataRepair,
+  SchemaDesignRepair,
+  ServiceControllerRepair,
+  RoutingRepair,
+  BackendTipsTricks,
+  BackendIntroduction,
+  LabData,
+  SchemaDesign,
+  ServiceController,
+  Routing,
+} from "./pages/backend";
+import {
+  FrontendIntroduction,
+  Boilerplate,
+  BoilerplateRepair,
+  Integration,
+  IntegrationRepair,
+  CoreLabPages,
+  CoreLabPagesRepair,
+  ComponentLibrary,
+  FrontendTipsTricks,
+} from "./pages/frontend";
+import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
+import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
+import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
+import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
 
 const Main = (props) => {
@@ -30,8 +58,8 @@ const Main = (props) => {
   const { actions } = useMainStateContext();
   const [section, setSectionState] = useState({});
 
-  const updateSectionStatus = (section, sectionStatus) => {
-    ProgressService.submitProgress(
+  const updateSectionStatus = async (section, sectionStatus) => {
+    return ProgressService.submitProgress(
       user.userid,
       section.category,
       section.name,
@@ -49,7 +77,11 @@ const Main = (props) => {
       );
     }
 
-    navigate(`/Lab0/Exercise/${route}`);
+    if (route === "/") {
+      navigate(`/Lab0/Exercise`);
+    } else {
+      navigate(`/Lab0/Exercise/${route}`);
+    }
   };
 
   const [newCategoryName, setNewCategoryName] = useState("");
@@ -73,30 +105,61 @@ const Main = (props) => {
           <StartExercise path={"/Continue"} verb="Continue" />
           <TestRepair path={"/TestRepair"} />
 
-          {/*// Lab Ideation*/}
-          <DesignLabIntroduction path={"/LabIdeation"} />
-          <DesignNewCategory path={"/DesignNewCategory"} />
-          <DesignSortNewCategory path={"/DesignSortNewCategory"} />
+          {/* Design Lab Pages */}
+          <DesignLabIntroduction path={ROUTES.SECTION_LAB_IDEATION} />
+          <DesignNewCategory path={ROUTES.SECTION_DESIGN_NEW_CATEGORY} />
+          <DesignSortNewCategory
+            path={ROUTES.SECTION_DESIGN_SORT_NEW_CATEGORY}
+          />
+          <DesignLabDecision path={ROUTES.SECTION_EXPERIENTIAL_EXERCISE} />
+          <ExperientialIntroduction
+            path={ROUTES.SECTION_EXPERIENTIAL_INTRODUCTION}
+          />
+          <CreateExperientialExercise
+            path={ROUTES.SECTION_CREATE_EXPERIENTIAL_EXERCISE}
+          />
+          <WireframeIntro path={ROUTES.SECTION_WIREFRAMING_OVERVIEW} />
+          <WireframeFirstGlance path={ROUTES.SECTION_WIREFRAME_FIRST_GLANCE} />
+          <WireframeReinforceQuiz
+            path={ROUTES.SECTION_WIREFRAME_REINFORCE_QUIZ}
+          />
+          <WireframeExercise path={ROUTES.SECTION_WIREFRAME_EXERCISE} />
+          <WireframeComponents path={ROUTES.SECTION_WIREFRAME_COMPONENTS} />
+          <ScrumIntroduction path={ROUTES.SECTION_SPRINT_PLANNING} />
+          <ScrumBoardActivity path={ROUTES.SECTION_SCRUM_BOARD_ACTIVITY} />
+          <ScrumVelocityReading path={ROUTES.SECTION_SCRUM_VELOCITY_READING} />
+          <ScrumVelocityActivity
+            path={ROUTES.SECTION_SCRUM_VELOCITY_ACTIVITY}
+          />
+          <DesignLabEnd path={ROUTES.SECTION_DESIGN_LAB_END} />
 
-          {/*// Experiential Exercise*/}
-          <DesignLabDecision path={"/LabDecision"} />
-          <ExperientialIntroduction path={"/ExperientialIntro"} />
-          <CreateExperientialExercise path={"/ExperientialExercise"} />
+          {/* Intro Pages */}
+          <LabIntroduction path={ROUTES.SECTION_LAB_INTRODUCTION} />
 
-          {/*// Wireframing Overview*/}
-          <WireframeIntro path={"/WireframeIntro"} />
-          <WireframeFirstGlance path={"/WireframeFirstGlance"} />
-          <WireframeReinforceQuiz path={"/WireframeReinforceQuiz"} />
-          <WireframeExercise path={"/WireframeExercise"} />
-          <WireframeComponents path={"/WireframeComponents"} />
+          {/* Backend Pages */}
+          <BackendIntroduction path={ROUTES.SECTION_BACKEND_INTRODUCTION} />
+          <LabData path={ROUTES.SECTION_LAB_DATA} />
+          <LabDataRepair path={ROUTES.SECTION_LAB_DATA_REPAIR} />
+          <SchemaDesign path={ROUTES.SECTION_SCHEMA_DESIGN} />
+          <SchemaDesignRepair path={ROUTES.SECTION_SCHEMA_DESIGN_REPAIR} />
+          <ServiceController path={ROUTES.SECTION_SERVICE_CONTROLLER} />
+          <ServiceControllerRepair
+            path={ROUTES.SECTION_SERVICE_CONTROLLER_REPAIR}
+          />
+          <Routing path={ROUTES.SECTION_ROUTING} />
+          <RoutingRepair path={ROUTES.SECTION_ROUTING_REPAIR} />
+          <BackendTipsTricks path={ROUTES.SECTION_BACKEND_TIPS_TRICKS} />
 
-          {/*// Scrum Activity*/}
-          <ScrumIntroduction path={"/ScrumIntro"} />
-          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
-          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
-          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
-
-          <DesignLabEnd path={"/DesignLabEnd"} />
+          {/* Frontend Pages */}
+          <FrontendIntroduction path={ROUTES.SECTION_FRONTEND_INTRODUCTION} />
+          <Boilerplate path={ROUTES.SECTION_BOILERPLATE} />
+          <BoilerplateRepair path={ROUTES.SECTION_BOILERPLATE_REPAIR} />
+          <CoreLabPages path={ROUTES.SECTION_CORE_LAB_PAGES} />
+          <CoreLabPagesRepair path={ROUTES.SECTION_CORE_LAB_PAGES_REPAIR} />
+          <Integration path={ROUTES.SECTION_INTEGRATION} />
+          <IntegrationRepair path={ROUTES.SECTION_INTEGRATION_REPAIR} />
+          <ComponentLibrary path={ROUTES.SECTION_COMPONENT_LIBRARY} />
+          <FrontendTipsTricks path={ROUTES.SECTION_FRONTEND_TIPS_TRICKS} />
         </Router>
       </Lab0Context.Provider>
     </div>
