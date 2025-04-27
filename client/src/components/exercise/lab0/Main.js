@@ -52,6 +52,7 @@ import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
 import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
+import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
   const { user } = props;
@@ -103,7 +104,6 @@ const Main = (props) => {
         <Router className={"tw-p-3 tw-h-[40rem]"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
-          <TestRepair path={"/TestRepair"} />
 
           {/* Design Lab Pages */}
           <DesignLabIntroduction path={ROUTES.SECTION_LAB_IDEATION} />
