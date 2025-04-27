@@ -4,46 +4,97 @@ const SECTION_CATEGORY_BACKEND = "BACKEND";
 const SECTION_CATEGORY_FRONTEND = "FRONTEND";
 
 const SELECTION_ROUTE = "/";
-const DESIGN_LAB_INTRO = "LabIdeation";
-const SCRUM_INTRO = "ScrumIntroduction";
-const DEVELOP_LAB_INTRO = "DevelopLabIntro";
-const SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
-// All sections, which double as routes too
+
+// Intro
+const SECTION_LAB_INTRODUCTION = "LabIntroduction";
+
+// Design Lab
 const SECTION_LAB_IDEATION = "LabIdeation";
+const SECTION_DESIGN_NEW_CATEGORY = "DesignNewCategory";
+const SECTION_DESIGN_SORT_NEW_CATEGORY = "DesignSortNewCategory";
 const SECTION_EXPERIENTIAL_EXERCISE = "LabDecision";
+const SECTION_EXPERIENTIAL_INTRODUCTION = "ExperientialIntro";
+const SECTION_CREATE_EXPERIENTIAL_EXERCISE = "ExperientialExercise";
 const SECTION_WIREFRAMING_OVERVIEW = "WireframeIntro";
+const SECTION_WIREFRAME_FIRST_GLANCE = "WireframeFirstGlance";
+const SECTION_WIREFRAME_REINFORCE_QUIZ = "WireframeReinforceQuiz";
+const SECTION_WIREFRAME_EXERCISE = "WireframeExercise";
+const SECTION_WIREFRAME_COMPONENTS = "WireframeComponents";
 const SECTION_SPRINT_PLANNING = "ScrumIntro";
+const SECTION_SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
+const SECTION_SCRUM_VELOCITY_READING = "ScrumVelocityReading";
+const SECTION_SCRUM_VELOCITY_ACTIVITY = "ScrumVelocityActivity";
+const SECTION_DESIGN_LAB_END = "DesignLabEnd";
+// Backend
+const SECTION_BACKEND_INTRODUCTION = "BackendIntroduction";
+const SECTION_LAB_DATA = "LabData";
 const SECTION_LAB_DATA_REPAIR = "LabDataRepair";
-const SECTION_SCHEMA_REPAIR = "SchemaRepair";
+const SECTION_SCHEMA_DESIGN = "SchemaDesign";
+const SECTION_SCHEMA_DESIGN_REPAIR = "SchemaDesignRepair";
+const SECTION_SERVICE_CONTROLLER = "ServiceController";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
+const SECTION_ROUTING = "Routing";
 const SECTION_ROUTING_REPAIR = "RoutingRepair";
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
+
+// Frontend
+const SECTION_FRONTEND_INTRODUCTION = "FrontendIntroduction";
+const SECTION_BOILERPLATE = "Boilerplate";
 const SECTION_BOILERPLATE_REPAIR = "BoilerplateRepair";
-const SECTION_INTEGRATION_REPAIR = "IntegrationRepair";
+const SECTION_CORE_LAB_PAGES = "CoreLabPages";
 const SECTION_CORE_LAB_PAGES_REPAIR = "CoreLabPagesRepair";
+const SECTION_INTEGRATION = "Integration";
+const SECTION_INTEGRATION_REPAIR = "IntegrationRepair";
 const SECTION_COMPONENT_LIBRARY = "ComponentLibrary";
+const SECTION_COMPONENT_LIBRARY_REPAIR = "ComponentLibraryRepair";
 const SECTION_FRONTEND_TIPS_TRICKS = "FrontendTipsTricks";
 
 // All routes
 const ROUTES = {
   SELECTION_ROUTE,
-  DESIGN_LAB_INTRO,
-  DEVELOP_LAB_INTRO,
-  SCRUM_INTRO,
-  SCRUM_BOARD_ACTIVITY,
+  // Intro
+  SECTION_LAB_INTRODUCTION,
+
+  // Design Lab
   SECTION_LAB_IDEATION,
+  SECTION_DESIGN_NEW_CATEGORY,
+  SECTION_DESIGN_SORT_NEW_CATEGORY,
   SECTION_EXPERIENTIAL_EXERCISE,
+  SECTION_EXPERIENTIAL_INTRODUCTION,
+  SECTION_CREATE_EXPERIENTIAL_EXERCISE,
   SECTION_WIREFRAMING_OVERVIEW,
+  SECTION_WIREFRAME_FIRST_GLANCE,
+  SECTION_WIREFRAME_REINFORCE_QUIZ,
+  SECTION_WIREFRAME_EXERCISE,
+  SECTION_WIREFRAME_COMPONENTS,
   SECTION_SPRINT_PLANNING,
+  SECTION_SCRUM_BOARD_ACTIVITY,
+  SECTION_SCRUM_VELOCITY_READING,
+  SECTION_SCRUM_VELOCITY_ACTIVITY,
+  SECTION_DESIGN_LAB_END,
+
+  // Backend
+  SECTION_BACKEND_INTRODUCTION,
+  SECTION_LAB_DATA,
   SECTION_LAB_DATA_REPAIR,
-  SECTION_SCHEMA_REPAIR,
+  SECTION_SCHEMA_DESIGN,
+  SECTION_SCHEMA_DESIGN_REPAIR,
+  SECTION_SERVICE_CONTROLLER,
   SECTION_SERVICE_CONTROLLER_REPAIR,
+  SECTION_ROUTING,
   SECTION_ROUTING_REPAIR,
   SECTION_BACKEND_TIPS_TRICKS,
+
+  // Frontend
+  SECTION_FRONTEND_INTRODUCTION,
+  SECTION_BOILERPLATE,
   SECTION_BOILERPLATE_REPAIR,
+  SECTION_INTEGRATION,
   SECTION_INTEGRATION_REPAIR,
+  SECTION_CORE_LAB_PAGES,
   SECTION_CORE_LAB_PAGES_REPAIR,
   SECTION_COMPONENT_LIBRARY,
+  SECTION_COMPONENT_LIBRARY_REPAIR,
   SECTION_FRONTEND_TIPS_TRICKS,
 };
 
@@ -73,27 +124,33 @@ const SECTIONS = {
     displayName: "Sprint Planning",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_LAB_DATA_REPAIR]: {
+  [SECTION_BACKEND_INTRODUCTION]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_LAB_DATA_REPAIR,
+    name: SECTION_BACKEND_INTRODUCTION,
+    displayName: "Backend Development",
+    imageURL: "/img/lab_thumbnails/wrench.jpg",
+  },
+  [SECTION_LAB_DATA]: {
+    category: SECTION_CATEGORY_BACKEND,
+    name: SECTION_LAB_DATA,
     displayName: "Basic Lab Data",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_SCHEMA_REPAIR]: {
+  [SECTION_SCHEMA_DESIGN]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_SCHEMA_REPAIR,
+    name: SECTION_SCHEMA_DESIGN,
     displayName: "Database Design & Schema Models",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_SERVICE_CONTROLLER_REPAIR]: {
+  [SECTION_SERVICE_CONTROLLER]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_SERVICE_CONTROLLER_REPAIR,
+    name: SECTION_SERVICE_CONTROLLER,
     displayName: "Service Layer & Controllers",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_ROUTING_REPAIR]: {
+  [SECTION_ROUTING]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_ROUTING_REPAIR,
+    name: SECTION_ROUTING,
     displayName: "API Endpoints & Routing",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
@@ -103,22 +160,28 @@ const SECTIONS = {
     displayName: "Backend Tips & Tricks",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_BOILERPLATE_REPAIR]: {
+  [SECTION_FRONTEND_INTRODUCTION]: {
     category: SECTION_CATEGORY_FRONTEND,
-    name: SECTION_BOILERPLATE_REPAIR,
+    name: SECTION_FRONTEND_INTRODUCTION,
+    displayName: "Frontend Development",
+    imageURL: "/img/lab_thumbnails/wrench.jpg",
+  },
+  [SECTION_BOILERPLATE]: {
+    category: SECTION_CATEGORY_FRONTEND,
+    name: SECTION_BOILERPLATE,
     displayName: "Lab Boilerplate Setup",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_INTEGRATION_REPAIR]: {
+  [SECTION_CORE_LAB_PAGES]: {
     category: SECTION_CATEGORY_FRONTEND,
-    name: SECTION_INTEGRATION_REPAIR,
-    displayName: "Backend Integration",
+    name: SECTION_CORE_LAB_PAGES,
+    displayName: "Core Lab Pages",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_CORE_LAB_PAGES_REPAIR]: {
+  [SECTION_INTEGRATION]: {
     category: SECTION_CATEGORY_FRONTEND,
-    name: SECTION_CORE_LAB_PAGES_REPAIR,
-    displayName: "Core Lab Pages",
+    name: SECTION_INTEGRATION,
+    displayName: "Backend Integration",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
   [SECTION_COMPONENT_LIBRARY]: {
