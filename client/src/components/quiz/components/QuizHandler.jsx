@@ -175,8 +175,6 @@ const QuizHandler = (props) => {
       element.IsCorrect ? (countCorrect += 1) : countCorrect;
     });
 
-    console.log("user score is: " + countCorrect / questionsTotal);
-    console.log(output);
     setResult(countCorrect / questionsTotal);
     if (props.isFinalQuiz) {
       UserLabService.complete_quiz(
@@ -217,7 +215,6 @@ const QuizHandler = (props) => {
       val: 1,
       type: answerValue,
     };
-    console.log("Recorded answers: " + tempSelectedAnswers);
     props.setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
