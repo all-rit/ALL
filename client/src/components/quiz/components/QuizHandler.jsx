@@ -31,7 +31,6 @@ const QuizHandler = (props) => {
   ]);
   const [answerOption, setAnswerOption] = useState([]);
   // initialized to a empty array to house recorded answers
-  let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
   let [result, setResult] = useState({});
 
@@ -146,7 +145,7 @@ const QuizHandler = (props) => {
       tempQuestion.number = i + 1;
       if (questions[i].multiChoice) {
         // logic for multi select
-        let userAnswers = [...selectedAnswers[i]];
+        let userAnswers = [...props.selectedAnswers[i]];
         tempQuestion.selectAnswers = userAnswers;
         let isCorrect = userAnswers.map((element) => {
           return checkIfCorrect(element, i);
@@ -161,7 +160,7 @@ const QuizHandler = (props) => {
         output.push(tempQuestion);
       } else {
         // logic for non multi select
-        let userAnswers = { ...selectedAnswers[i] };
+        let userAnswers = { ...props.selectedAnswers[i] };
         tempQuestion.selectAnswers = userAnswers;
         checkIfCorrect(userAnswers.type, i)
           ? (tempQuestion.IsCorrect = true)
@@ -212,14 +211,14 @@ const QuizHandler = (props) => {
   function selectAnswer(e) {
     const answerValue = e.target.value;
     let tempSelectedAnswers;
-    tempSelectedAnswers = [...selectedAnswers];
+    tempSelectedAnswers = [...props.selectedAnswers];
     tempSelectedAnswers[currentQuestionCursor] = {
       content: questions[currentQuestionCursor].answers[answerValue].content,
       val: 1,
       type: answerValue,
     };
     console.log("Recorded answers: " + tempSelectedAnswers);
-    setSelectedAnswers(tempSelectedAnswers);
+    props.setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
   /**
@@ -231,7 +230,7 @@ const QuizHandler = (props) => {
    */
   function selectMulti(e) {
     const answerValue = e.target.value;
-    let tempAnswers = selectedAnswers;
+    let tempAnswers = props.selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
     if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
@@ -254,7 +253,7 @@ const QuizHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
-    setSelectedAnswers(tempAnswers);
+    props.setSelectedAnswers(tempAnswers);
   }
 
   return (
@@ -279,7 +278,7 @@ const QuizHandler = (props) => {
         <Result
           quizResult={Math.round(result * 100) + "%"}
           quizScore={100}
-          selectedAnswers={selectedAnswers}
+          selectedAnswers={props.selectedAnswers}
           quizQuestions={questions}
           labId={currentLabId}
           state={state}
@@ -301,5 +300,7 @@ QuizHandler.propTypes = {
   }),
   quizCompleted: PropTypes.bool,
   setQuizCompleted: PropTypes.func,
+  selectedAnswers: PropTypes.array.isRequired,
+  setSelectedAnswers: PropTypes.func.isRequired,
 };
 export default QuizHandler;

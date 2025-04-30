@@ -89,6 +89,7 @@ const App = () => {
   const isImagine = state.main.isImagine;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
 
   const renderLabs = () => {
     return (
@@ -133,6 +134,8 @@ const App = () => {
           hideCertificate={false}
           quizCompleted={quizCompleted}
           setQuizCompleted={setQuizCompleted}
+          selectedAnswers={selectedAnswers}
+          setSelectedAnswers={setSelectedAnswers}
         />
       </Router>
     );

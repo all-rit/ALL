@@ -17,6 +17,8 @@ function Result(props) {
   };
 
   function checkIfCorrect(answerIndex, questionIndex) {
+    console.log(answerIndex);
+    console.log(questionIndex);
     let isCorrect;
     props.quizQuestions[questionIndex].answers[answerIndex].val === 1
       ? (isCorrect = true)
