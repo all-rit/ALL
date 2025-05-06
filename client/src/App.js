@@ -90,6 +90,20 @@ const App = () => {
 
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "Default",
+      answers: [
+        {
+          val: 0,
+          type: "0",
+          content: "Default",
+        },
+      ],
+      multiChoice: false,
+    },
+  ]);
+  const [result, setResult] = useState(0);
 
   const renderLabs = () => {
     return (
@@ -136,6 +150,10 @@ const App = () => {
           setQuizCompleted={setQuizCompleted}
           selectedAnswers={selectedAnswers}
           setSelectedAnswers={setSelectedAnswers}
+          questions={questions}
+          setQuestions={setQuestions}
+          result={result}
+          setResult={setResult}
         />
       </Router>
     );

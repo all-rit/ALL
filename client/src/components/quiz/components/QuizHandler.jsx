@@ -16,32 +16,18 @@ const QuizHandler = (props) => {
   const { state } = useMainStateContext();
   const [currentLabId, setCurrentLab] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState([
-    {
-      question: "Default",
-      answers: [
-        {
-          val: 0,
-          type: "0",
-          content: "Default",
-        },
-      ],
-      multiChoice: false,
-    },
-  ]);
   const [answerOption, setAnswerOption] = useState([]);
   // initialized to a empty array to house recorded answers
   let [disableNext, setDisableNext] = useState(true);
-  let [result, setResult] = useState({});
 
   useEffect(() => {
     setCurrentLab(props.labId);
     if (!props.isFinalQuiz) {
       const quiz = props.quizQuestions;
       const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
-      setQuestions(quiz);
+      props.setQuestions(quiz);
       setAnswerOption(quizAnswers);
-      console.log(questions);
+      console.log(props.questions);
     } else {
       getQuiz();
     }
@@ -52,8 +38,7 @@ const QuizHandler = (props) => {
       const response = await labService.getLabQuiz(props.labId);
       const { quiz } = response[0];
       const quizAnswers = quiz[currentQuestionCursor].answers;
-      setQuestions(quiz);
-      console.log(questions);
+      props.setQuestions(quiz);
       setAnswerOption(quizAnswers);
     } catch (error) {
       console.error(error);
@@ -66,10 +51,10 @@ const QuizHandler = (props) => {
    * selection on the next question as it iterates to the next option
    */
   function handleNext() {
-    if (currentQuestionCursor < questions.length) {
+    if (currentQuestionCursor < props.questions.length) {
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
-      setAnswerOption(questions[updateCursor].answers);
+      setAnswerOption(props.questions[updateCursor].answers);
       setDisableNext(true);
     }
   }
@@ -79,10 +64,10 @@ const QuizHandler = (props) => {
    * return to the previous question
    */
   const handleBack = () => {
-    if (currentQuestionCursor < questions.length) {
+    if (currentQuestionCursor < props.questions.length) {
       let updateCursor = currentQuestionCursor - 1;
       setCurrentQuestionCursor(updateCursor);
-      setAnswerOption(questions[updateCursor].answers);
+      setAnswerOption(props.questions[updateCursor].answers);
       setDisableNext(true);
     }
   };
@@ -106,7 +91,7 @@ const QuizHandler = (props) => {
    */
   function checkIfCorrect(answerIndex, questionIndex) {
     let isCorrect;
-    questions[questionIndex].answers[answerIndex].val === 1
+    props.questions[questionIndex].answers[answerIndex].val === 1
       ? (isCorrect = true)
       : (isCorrect = false);
     return isCorrect;
@@ -120,7 +105,7 @@ const QuizHandler = (props) => {
    */
   function getMultiCorrectNumCount(questionIndex) {
     let multiCount = 0;
-    questions[questionIndex].answers.map((answer) => {
+    props.questions[questionIndex].answers.map((answer) => {
       if (answer.val === 1) {
         multiCount++;
       }
@@ -134,7 +119,7 @@ const QuizHandler = (props) => {
    * scoreResults also PUSHes the answers to the database aswell as the quiz score
    */
   function scoreResults() {
-    let questionsTotal = questions.length;
+    let questionsTotal = props.questions.length;
     let output = [];
     const QuizQuestions = {
       question: "",
@@ -143,9 +128,9 @@ const QuizHandler = (props) => {
     };
     for (let i = 0; i < questionsTotal; i++) {
       let tempQuestion = { ...QuizQuestions };
-      tempQuestion.question = questions[i].question;
+      tempQuestion.question = props.questions[i].question;
       tempQuestion.number = i + 1;
-      if (questions[i].multiChoice) {
+      if (props.questions[i].multiChoice) {
         // logic for multi select
         let userAnswers = [...props.selectedAnswers[i]];
         tempQuestion.selectAnswers = userAnswers;
@@ -177,7 +162,7 @@ const QuizHandler = (props) => {
       element.IsCorrect ? (countCorrect += 1) : countCorrect;
     });
 
-    setResult(countCorrect / questionsTotal);
+    props.setResult(countCorrect / questionsTotal);
     if (props.isFinalQuiz) {
       UserLabService.complete_quiz(
         props.labId,
@@ -213,7 +198,8 @@ const QuizHandler = (props) => {
     let tempSelectedAnswers;
     tempSelectedAnswers = [...props.selectedAnswers];
     tempSelectedAnswers[currentQuestionCursor] = {
-      content: questions[currentQuestionCursor].answers[answerValue].content,
+      content:
+        props.questions[currentQuestionCursor].answers[answerValue].content,
       val: 1,
       type: answerValue,
     };
@@ -262,23 +248,23 @@ const QuizHandler = (props) => {
           answer={""}
           answerOptions={answerOption}
           disable={disableNext}
-          multiChoice={questions[currentQuestionCursor].multiChoice}
+          multiChoice={props.questions[currentQuestionCursor].multiChoice}
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
           lastQuestion={handleBack}
           onAnswerSelected={selectAnswer}
           onComplete={onComplete}
           questionId={currentQuestionCursor + 1}
-          question={questions[currentQuestionCursor].question}
-          questionTotal={questions.length}
+          question={props.questions[currentQuestionCursor].question}
+          questionTotal={props.questions.length}
           isFinalQuiz={props.isFinalQuiz}
         />
       ) : (
         <Result
-          quizResult={Math.round(result * 100) + "%"}
+          quizResult={Math.round(props.result * 100) + "%"}
           quizScore={100}
           selectedAnswers={props.selectedAnswers}
-          quizQuestions={questions}
+          quizQuestions={props.questions}
           labId={currentLabId}
           state={state}
           lab={state.main.lab}
@@ -301,5 +287,9 @@ QuizHandler.propTypes = {
   setQuizCompleted: PropTypes.func,
   selectedAnswers: PropTypes.array.isRequired,
   setSelectedAnswers: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired,
+  setQuestions: PropTypes.func.isRequired,
+  result: PropTypes.number.isRequired,
+  setResult: PropTypes.func.isRequired,
 };
 export default QuizHandler;

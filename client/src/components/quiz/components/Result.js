@@ -35,7 +35,6 @@ function Result(props) {
   }
 
   function renderTableData() {
-    console.log(props.quizQuestions);
     let counter = 0;
     let isCorrect = false;
     return props.quizQuestions.map((quizQuestion, index) => {
@@ -234,7 +233,7 @@ Result.propTypes = {
   quizQuestions: PropTypes.array,
   state: PropTypes.shape({
     main: PropTypes.shape({
-      user: PropTypes.number,
+      user: PropTypes.object,
     }),
   }),
 };
