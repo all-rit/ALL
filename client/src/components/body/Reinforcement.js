@@ -37,9 +37,9 @@ const Reinforcement = (props) => {
         </h4>
       </div>
       <div className={"tw-overflow-y-scroll tw-overflow-x-hidden"}>
-        {reinforcement.map((data) => {
+        {reinforcement.map((data, index) => {
           return (
-            <div key={data.key}>
+            <div key={index}>
               <div className="row tw-w-full">
                 <h5 className="tw-font-bold poppins">{data.title}</h5>
               </div>
