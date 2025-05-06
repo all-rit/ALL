@@ -238,7 +238,7 @@ const App = () => {
                   </div>
                   <div
                     className={
-                      "tw-flex-row tw-z-10 xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-4 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
+                      "tw-flex-row tw-z-10 xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-4 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-auto"
                     }
                   >
                     {renderLabs()}
