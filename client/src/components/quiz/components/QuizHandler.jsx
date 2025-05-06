@@ -41,6 +41,7 @@ const QuizHandler = (props) => {
       const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
       setQuestions(quiz);
       setAnswerOption(quizAnswers);
+      console.log(questions);
     } else {
       getQuiz();
     }
@@ -52,6 +53,7 @@ const QuizHandler = (props) => {
       const { quiz } = response[0];
       const quizAnswers = quiz[currentQuestionCursor].answers;
       setQuestions(quiz);
+      console.log(questions);
       setAnswerOption(quizAnswers);
     } catch (error) {
       console.error(error);

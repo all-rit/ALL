@@ -35,6 +35,7 @@ function Result(props) {
   }
 
   function renderTableData() {
+    console.log(props.quizQuestions);
     let counter = 0;
     let isCorrect = false;
     return props.quizQuestions.map((quizQuestion, index) => {
@@ -162,7 +163,7 @@ function Result(props) {
         const questionNumber = parseInt(answer) + 1;
         return (
           <ul>
-            <a key={questionNumber}>{answers[answer]["content"]}</a>
+            <div key={questionNumber}>{answers[answer]["content"]}</div>
           </ul>
         );
       });
@@ -170,7 +171,9 @@ function Result(props) {
       const questionNumber = parseInt(selectedAnswers.type) + 1;
       return (
         <ul>
-          <a key={questionNumber}>{answers[selectedAnswers.type]["content"]}</a>
+          <div key={questionNumber}>
+            {answers[selectedAnswers.type]["content"]}
+          </div>
         </ul>
       );
     }
