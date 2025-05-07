@@ -3,7 +3,6 @@ import API from "./API";
 
 const userService = {
   getUser: async (userID) => {
-    document.cookie = `userId=${userID}`;
     return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}`).then(
       (response) => response.json(),
     );

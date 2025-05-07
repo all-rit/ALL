@@ -12,6 +12,7 @@ const main = (req, res) => {
 const getUser = (req, res) => {
   const userId = req.params.userID;
   if (userId == req.session.token) {
+    console.log(userId);
     UserService.getUser(req.params.userID).then((records) => {
       res.json(records);
     });

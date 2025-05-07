@@ -47,9 +47,8 @@ const LoginBody = (props) => {
             "sm:tw-w-1/2 xs:tw-w-full xs:tw-text-xs md:tw-body-text md:tw-text-[1.125rem] tw-leading-snug tw-text-center tw-m-5"
           }
         >
-          {" "}
           Continue with Google to complete labs, assign labs as an educator, and
-          keep track of scores.{" "}
+          keep track of scores.
         </p>
       </div>
 
@@ -63,8 +62,7 @@ const LoginBody = (props) => {
             "tw-w-1/2 tw-mt-5 tw-text-xs tw-flex tw-flex-row tw-justify-center xs:tw-text-[0.75rem]"
           }
         >
-          {" "}
-          Sign Up or Log In{" "}
+          Sign Up or Log In
         </p>
       </div>
       <div className="tw-flex tw-flex-row tw-justify-center tw-align-middle xs:tw-w-full">
