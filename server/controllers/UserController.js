@@ -10,9 +10,12 @@ const main = (req, res) => {
 };
 
 const getUser = (req, res) => {
-  UserService.getUser(req.params.userID).then((records) => {
-    res.json(records);
-  });
+  const userId = req.params.userID;
+  if (userId == req.session.token) {
+    UserService.getUser(req.params.userID).then((records) => {
+      res.json(records);
+    });
+  } res.json({});
 };
 
 const getUserToDoLabs = (req, res) => {
