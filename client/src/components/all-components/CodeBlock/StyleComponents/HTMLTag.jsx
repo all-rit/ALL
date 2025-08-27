@@ -47,7 +47,7 @@ const HTMLTag = ({ children }) => {
 };
 
 HTMLTag.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default HTMLTag;

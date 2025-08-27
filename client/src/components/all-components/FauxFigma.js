@@ -17,7 +17,7 @@ const FauxFigma = (props) => {
 
   return (
     <div className={"tw-w-full tw-text-white tw-py-6"}>
-      <div className={"tw-grid tw-grid-cols-10 tw-h-full"}>
+      <div className={"tw-grid tw-grid-cols-10 tw-h-full tw-overflow-hidden"}>
         <div
           className={
             "tw-flex tw-col-span-2 tw-bg-[rgb(44,44,44)] tw-rounded-l-lg tw-border-[rgb(68,68,68)] tw-border-solid tw-border-[0.5px] tw-h-[30rem] tw-flex-col tw-justify-center"

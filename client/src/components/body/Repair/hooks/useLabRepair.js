@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
  */
 const useLabRepair = () => {
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
-  const [isInputValid, setIsInputValid] = useState([]);
+  const [validInputs, setValidInputs] = useState([]);
   const [repairComplete, setIsComplete] = useState(false);
 
   /**
@@ -45,7 +45,7 @@ const useLabRepair = () => {
         value.userInput === value.correct_expression
       );
     });
-    setIsInputValid(localValidArray);
+    setValidInputs(localValidArray);
     const complete = localValidArray.every((v) => v);
     setIsComplete(complete);
     return complete;
@@ -59,7 +59,7 @@ const useLabRepair = () => {
     data: {
       repairComplete,
       exercisePromptsState,
-      isInputValid,
+      validInputs,
     },
     functions: {
       checkInputValid,

@@ -23,6 +23,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^6.4.2",
     "@uiw/react-codemirror": "^4.21.25",
+    "@xyflow/react": "^12.5.1",
     "avataaars": "^2.0.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^2.9.4",
