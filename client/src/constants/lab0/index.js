@@ -34,6 +34,7 @@ const SECTION_SCHEMA_DESIGN_REPAIR = "SchemaDesignRepair";
 const SECTION_SERVICE_CONTROLLER = "ServiceController";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
 const SECTION_ROUTING = "Routing";
+const SECTION_ROUTING_INTRO = "APIRequestReading";
 const SECTION_ROUTING_REPAIR = "RoutingRepair";
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
 
@@ -150,7 +151,7 @@ const SECTIONS = {
   },
   [SECTION_ROUTING]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_ROUTING,
+    name: SECTION_ROUTING_INTRO,
     displayName: "API Endpoints & Routing",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },

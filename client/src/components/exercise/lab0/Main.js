@@ -22,7 +22,6 @@ import {
 import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
-import TestRepair from "./TestRepair";
 import { LabIntroduction } from "./pages/intro";
 import {
   LabDataRepair,
@@ -52,7 +51,9 @@ import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
 import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
-import MockBrowser from "src/components/all-components/MockBrowser";
+import APIRequestReading from "./DevelopLabSection/API-Endpoints/APIRequestReading";
+import APIRequestExercise from "./DevelopLabSection/API-Endpoints/APIRequestExercise";
+// import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
   const { user } = props;
@@ -149,6 +150,17 @@ const Main = (props) => {
           <Routing path={ROUTES.SECTION_ROUTING} />
           <RoutingRepair path={ROUTES.SECTION_ROUTING_REPAIR} />
           <BackendTipsTricks path={ROUTES.SECTION_BACKEND_TIPS_TRICKS} />
+
+          {/*// Scrum Activity*/}
+          <ScrumIntroduction path={"/ScrumIntro"} />
+          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
+          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
+
+          <DesignLabEnd path={"/DesignLabEnd"} />
+
+          <APIRequestReading path={"/APIRequestReading"} />
+          <APIRequestExercise path={"/APIRequestExercise"} />
 
           {/* Frontend Pages */}
           <FrontendIntroduction path={ROUTES.SECTION_FRONTEND_INTRODUCTION} />
