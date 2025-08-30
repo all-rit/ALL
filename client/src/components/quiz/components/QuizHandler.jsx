@@ -1,6 +1,5 @@
 import UserLabService from "../../../services/UserLabService";
 import labService from "src/services/LabService";
-import Certificate from "./Certificate";
 import useMainStateContext from "../../../reducers/MainContext";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -16,7 +15,6 @@ import Result from "./Result";
 const QuizHandler = (props) => {
   const { state } = useMainStateContext();
   const [currentLabId, setCurrentLab] = useState(props.labId);
-  const [viewCertificate, setViewCertificate] = useState(false);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState([
     {
@@ -260,7 +258,7 @@ const QuizHandler = (props) => {
   }
 
   return (
-    <div className={"tw-h-[43rem] tw-pt-10 tw-rounded-lg"}>
+    <div className={"tw-h-[35rem] tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
           answer={""}
@@ -277,21 +275,15 @@ const QuizHandler = (props) => {
           questionTotal={questions.length}
           isFinalQuiz={props.isFinalQuiz}
         />
-      ) : !viewCertificate ? (
+      ) : (
         <Result
           quizResult={Math.round(result * 100) + "%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
-          lab={currentLabId}
-          setViewCertificate={setViewCertificate}
-        />
-      ) : (
-        <Certificate
+          labId={currentLabId}
           state={state}
-          quizResult={Math.round(result * 100) + "%"}
           lab={state.main.lab}
-          setViewCertificate={setViewCertificate}
         />
       )}
     </div>

@@ -17,7 +17,7 @@ class ProgressBar extends Component {
     } else {
       return (
         <ul
-          className={`progressBarContainer ${inTable ? "tw-flex-row tw-justify-center tw-ml-[7%]" : "tw-absolute tw-top-9"}`}
+          className={`progressBarContainer ${inTable ? "tw-flex-row tw-justify-center tw-ml-[7%]" : "tw-absolute tw-top-10 tw-right-2"}`}
         >
           <div className={`progressBar ${inTable ? "tw-w-full" : ""}`}>
             {barData.map((data, index) => {

@@ -97,7 +97,7 @@ class Main extends Component {
     } = this.props;
 
     return (
-      <div className={"tw-h-full"}>
+      <div className={"tw-h-[35rem] tw-overflow-y-scroll"}>
         <SoundHeader
           state={state}
           plays={plays}

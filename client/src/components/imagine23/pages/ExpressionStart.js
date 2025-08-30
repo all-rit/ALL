@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const ExpressionStart = ({ setCount }) => {
   const handleNext = () => {
-    navigate("/Imagine/ExpressionExercise");
+    navigate("/Imagine2023/ExpressionExercise");
     setCount(0);
   };
 

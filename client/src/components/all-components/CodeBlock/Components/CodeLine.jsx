@@ -22,7 +22,7 @@ const CodeLine = ({ children }) => {
 };
 
 CodeLine.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 };
 
 export default CodeLine;

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const db = require('../database');
 const shortNameNotFound = 'Error: Short Name Not Found';
-const shortNameNotRetrieved= 'Error: Short Name Not Retrieved';
+const shortNameNotRetrieved = 'Error: Short Name Not Retrieved';
 const aboutNotFound = 'Error: About Not Found';
 const aboutNotRetrieved = 'Error: About Not Retrieved';
 const readingNotFound = 'Error: Reading Not Found';

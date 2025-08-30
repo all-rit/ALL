@@ -2,8 +2,12 @@ const ImagineService = require('../services/ImagineService');
 
 const submitStudy = async (req, res) => {
   try {
-    const {userID, study} = req.body;
-    const result = await ImagineService.submitStudy({userID, study});
+    const {userID, study, year} = req.body;
+    const result = await ImagineService.submitStudy({
+      userID,
+      study,
+      year,
+    });
     if (!result) {
       throw new Error('Instance of study was not recorded');
     }
@@ -12,12 +16,29 @@ const submitStudy = async (req, res) => {
   }
 };
 
+const newID = async (req, res) => {
+  try {
+    const {userID, year} = req.body;
+    const result = await ImagineService.newID({
+      userID,
+      year,
+    });
+    if (!result) {
+      throw new Error('ID was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (req, res) => {
-  const {userID, preSurvey} = req.body;
+  const {userID, preSurvey, year} = req.body;
+
   try {
     const resPreSurvey = await ImagineService.preSurvey({
       userID,
       preSurvey,
+      year,
     });
     if (!resPreSurvey) {
       throw new Error('Pre survey was not recorded');
@@ -29,11 +50,12 @@ const preSurvey = async (req, res) => {
 };
 
 const postSurvey = async (req, res) => {
-  const {userID, postSurvey} = req.body;
+  const {userID, postSurvey, year} = req.body;
   try {
     const respostSurvey = await ImagineService.postSurvey({
       userID,
       postSurvey,
+      year,
     });
     if (!respostSurvey) {
       throw new Error('Post survey was not recorded');
@@ -52,23 +74,48 @@ const getUsers = async (req, res) => {
   }
 };
 
-const getUserByID = async (req, res) => {
+const getGroup = async (req, res) => {
   try {
-    const {userID} = req.params;
-    const user = await ImagineService.getUserByID(userID);
-    return user;
+    const {year, userID} = req.params;
+    const group = await ImagineService.getGroup(userID, year);
+    return group;
   } catch (error) {
     console.log(error);
   }
 };
 
+const getTeammate = async (req, res) => {
+  try {
+    const {year, userID} = req.params;
+    const teammate = await ImagineService.getTeammate(userID, year);
+    return teammate;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const readMoreCount = async (req, res) =>{
-  const {userID, readMoreCount} = req.body;
+const getUserByID = async (req, res) => {
+  // const { userID, avatar, year } = req.body;
+  try {
+    const {userID, year} = req.params;
+    const user = await ImagineService.getUserByID({
+      userID,
+      year,
+    });
+    return user;
+  } catch (error) {
+    console.log('Error retrieving user by ID: ', error);
+  }
+};
+
+
+const readMoreCount = async (req, res) => {
+  const {userID, readMoreCount, year} = req.body;
   try {
     const result = await ImagineService.readMoreCount({
       userID,
       readMoreCount,
+      year,
     });
     return result;
   } catch (error) {
@@ -77,12 +124,13 @@ const readMoreCount = async (req, res) =>{
 };
 
 
-const readMoreTimeElapsed = async (req, res) =>{
-  const {userID, readMoreTimeElapsed} = req.body;
+const readMoreTimeElapsed = async (req, res) => {
+  const {userID, readMoreTimeElapsed, year} = req.body;
   try {
     const result = await ImagineService.readMoreTimeElapsed({
       userID,
       readMoreTimeElapsed,
+      year,
     });
     return result;
   } catch (error) {
@@ -90,15 +138,64 @@ const readMoreTimeElapsed = async (req, res) =>{
   };
 };
 
-const readingSectionPagePosition = async (req, res) =>{
-  const {userID, readingSectionPagePosition} = req.body;
+const readingSectionPagePosition = async (req, res) => {
+  const {userID, readingSectionPagePosition, year} = req.body;
   try {
     const result = await
     ImagineService.readingSectionPagePosition({
       userID,
       readingSectionPagePosition,
+      year,
     });
     return result;
+  } catch (error) {
+    console.error(error);
+  };
+};
+
+const postTeammateAvatar = async (req, res) => {
+  const {userID, teammateAvatar, year} = req.body;
+  try {
+    const avatarCreated = await ImagineService.postTeammateAvatar({
+      userID,
+      teammateAvatar,
+      year,
+    });
+    if (!avatarCreated) {
+      throw new Error('Post teammateAvatar was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  };
+};
+
+const postOpponentAvatar = async (req, res) => {
+  const {userID, opponentAvatar, year} = req.body;
+  try {
+    const avatarCreated = await ImagineService.postOpponentAvatar({
+      userID,
+      opponentAvatar,
+      year,
+    });
+    if (!avatarCreated) {
+      throw new Error('Post opponentAvatar was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  };
+};
+
+const postUserAvatar = async (req, res) => {
+  const {userID, avatar, year} = req.body;
+  try {
+    const avatarCreated = await ImagineService.postUserAvatar({
+      userID,
+      avatar,
+      year,
+    });
+    if (!avatarCreated) {
+      throw new Error('Post avatar was not recorded');
+    }
   } catch (error) {
     console.error(error);
   };
@@ -113,4 +210,11 @@ module.exports = {
   postSurvey,
   preSurvey,
   submitStudy,
+  postUserAvatar,
+  newID,
+  submitStudy,
+  postTeammateAvatar,
+  postOpponentAvatar,
+  getGroup,
+  getTeammate,
 };

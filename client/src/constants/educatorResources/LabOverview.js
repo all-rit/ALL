@@ -31,7 +31,7 @@ export const LAB_OVERVIEW = [
     id: 2,
     title: "Lab Reading Section",
     description:
-      "In the Reading section, participants gain a deeper understanding of the lab topic through key definitions, data visualizations, and real-world examples. This section also explores the impact of the topic on diverse internet users, with additional resources available for those who wish to further expand their knowledge.",
+      "In the Reading section, participants gain a deeper understanding of the lab topic through key definitions, data visualizations, and real-world examples. This section also explores the impact of the topic on various internet users, with additional resources available for those who wish to further expand their knowledge.",
     image: Reading,
   },
   {

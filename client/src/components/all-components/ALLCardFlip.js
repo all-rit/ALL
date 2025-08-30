@@ -22,6 +22,7 @@ import FlipIcon from "@mui/icons-material/Flip";
  * @param {string} props.cards[i].imageURL Optional image to be shown between the top and bottom text on the backface of a card.
  * @param {string} props.cards[i].text Optional text to be shown between top text and bottom text but below the image, if present.
  * @param {string} props.cards[i].bottomText Optional text to be shown at the bottom of the backface of a card.
+ * @param {string} props.cards[i].content Optional component that completely overrides the backface of the card for extra control.
  */
 const ALLCardFlip = (props) => {
   const {
@@ -62,7 +63,7 @@ const ALLCardFlip = (props) => {
 
   return (
     <div
-      className={`tw-w-full tw-grid tw-grid-cols-${width} tw-grid-rows-${height} tw-gap-4 ${gridStyle}`}
+      className={`tw-w-full tw-grid tw-grid-cols-${width} tw-grid-rows-${height} tw-gap-8 ${gridStyle}`}
     >
       {cards.map((card) => {
         return (
@@ -72,10 +73,22 @@ const ALLCardFlip = (props) => {
             onClick={() => flipCard(card.id)}
           >
             <div
-              className={`tw-relative tw-w-full tw-h-[15rem] tw-p-[0.2rem] tw-rounded-[1.2rem] tw-bg-gradient-to-r tw-from-labYellow tw-from-0% tw-to-labBlue tw-to-100% tw-duration-[0.5s] tw-transform-3d ${flipped[card.id] ? "tw-rotate-y-180" : ""} ${cardStyle}`}
+              className={`tw-relative tw-w-full tw-h-[15rem] tw-p-[0.2rem] tw-duration-[0.5s] tw-transform-3d ${flipped[card.id] ? "tw-rotate-y-180" : ""} ${cardStyle}`}
             >
+              {/* Blue Border */}
+              <div
+                className={`tw-absolute tw-border-solid tw-border-primary-blue
+                  tw-border-[0.4rem] tw-right-[-0.5rem] tw-top-[-0.5rem] tw-h-full tw-w-full tw-z-1
+                  tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg`}
+              />
+              {/* Yellow Border */}
+              <div
+                className={`tw-absolute tw-border-solid tw-border-primary-yellow
+                  tw-border-[0.4rem] tw-left-[-0.5rem] tw-bottom-[-0.5rem]
+                  tw-w-full tw-h-full tw-z-1 tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg`}
+              />
               {/* Front */}
-              <div className="tw-absolute tw-w-[calc(100%-0.4rem)] tw-h-[calc(100%-0.4rem)] tw-rounded-[1rem] tw-bg-white tw-backface-hidden tw-flex tw-justify-center tw-items-center">
+              <div className="tw-absolute tw-w-[calc(100%-0.4rem)] tw-h-[calc(100%-0.4rem)] tw-bg-white tw-backface-hidden tw-flex tw-justify-center tw-items-center">
                 <div className="tw-flex tw-flex-col lg:tw-flex-row tw-items-center">
                   {frontImgURL ? (
                     <img
@@ -95,22 +108,25 @@ const ALLCardFlip = (props) => {
               {/* Back */}
               <div className="tw-absolute tw-w-[calc(100%-0.4rem)] tw-h-[calc(100%-0.4rem)] tw-rounded-[1rem] tw-bg-white tw-backface-hidden tw-rotate-y-180 tw-flex tw-flex-col tw-justify-center tw-gap-3">
                 {card.topText && (
-                  <p className="tw-text-xl tw-font-bold tw-italic">
+                  <p className="tw-grow tw-text-xs xl:tw-text-lg tw-font-bold tw-italic">
                     {card.topText}
                   </p>
                 )}
                 {card.imageURL && (
                   <img
                     src={card.imageURL}
-                    className="tw-object-contain tw-aspect-square tw-h-[6rem]"
+                    className="tw-shrink tw-object-contain tw-max-h-[5rem] md:tw-max-h-[10rem]"
                   />
                 )}
-                {card.text && <p>{card.text}</p>}
+                {card.text && (
+                  <p className="tw-text-xs lg:tw-text-sm">{card.text}</p>
+                )}
                 {card.bottomText && (
-                  <p className="tw-text-xl tw-font-bold tw-italic tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-labYellow tw-from-40% tw-to-60% tw-to-labBlue">
+                  <p className="tw-grow tw-text-xs xl:tw-text-lg tw-font-bold tw-italic tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-labYellow tw-from-40% tw-to-60% tw-to-labBlue">
                     {card.bottomText}
                   </p>
                 )}
+                {card.content && <>{card.content}</>}
               </div>
             </div>
           </div>

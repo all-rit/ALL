@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../../body/Repair/Repair";
-import {
-  EXERCISE_STATES,
-  HEADINGS,
-  REPAIR,
-} from "../../../../../../constants/lab9";
+import { EXERCISE_STATES, HEADINGS } from "../../../../../../constants/lab9";
 import useDataService from "../../../hooks/useDataService";
 import { navigate } from "@reach/router";
 import { AddressRepairData } from "../../../../../../constants/lab9/AddressRepairData";
@@ -22,15 +18,11 @@ import { EXERCISE_PLAYING } from "src/constants/index";
  */
 const AddressRepair = ({ user }) => {
   const { actions } = useMainStateContext();
-
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_ADDRESS_FORM,
     AddressRepairData.countries,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
@@ -38,23 +30,19 @@ const AddressRepair = ({ user }) => {
 
   return (
     <Repair
-      fileName={"AddressFormat.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
+      data={data}
+      functions={functions}
       headingText={HEADINGS.REPAIR_ADDRESS_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         "Let's localize the address for our newsletter subscription form. Click 'Repair' to make the appropriate changes.",
       ]}
-      CodeImplementation={
-        <AddressRepairCodeBlock
-          addressForms={exercisePromptsState}
-          userInput={handleUserInputChange}
-          isInputValid={isInputValid}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "AddressFormat.js",
+          implementation: AddressRepairCodeBlock,
+        },
+      ]}
       navigateNext={() => {
         navigate("/Lab9/Exercise/page");
       }}

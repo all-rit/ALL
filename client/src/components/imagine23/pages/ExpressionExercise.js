@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 const section = "discomfortCountNonPOC";
 
 const ExpressionExercise = (props) => {
-  const { setCount, count, userID } = props;
+  const { setCount, count, userID, year } = props;
 
-  const [showContine, setShowContinue] = useState(null);
+  const [showContinue, setShowContinue] = useState(null);
   const [timeStamps, setTimeStamps] = useState([]);
 
   const reactPlayer = React.createRef();
@@ -27,10 +27,10 @@ const ExpressionExercise = (props) => {
     setCount(count + 1);
   };
 
-  const handleNext = () => {
-    const body = { userID: userID, section, study: timeStamps };
-    ImagineService.postStudy(body);
-    navigate("/Imagine/ExpressionScore");
+  const handleNext = async () => {
+    const body = { userID: userID, section, study: timeStamps, year: year };
+    await ImagineService.postStudy(body);
+    navigate("/Imagine2023/ExpressionScore");
   };
 
   return (
@@ -38,12 +38,12 @@ const ExpressionExercise = (props) => {
       <h2 className="playthrough__title">
         Expression Empathy Building: Exercise
       </h2>
-      {showContine == null && (
+      {!showContinue && (
         <div className="playthrough__sentence__imagine">
           Remember, if you believe you see discomfort, hit the button!
         </div>
       )}
-      {showContine == false && (
+      {!showContinue && (
         <>
           <div className="playthrough__sentence__imagine">
             {count} discomfort detected.
@@ -51,7 +51,7 @@ const ExpressionExercise = (props) => {
         </>
       )}
       <div className="tw-p-1 tw-flex tw-justify-center">
-        {!showContine && (
+        {!showContinue && (
           <ReactPlayer
             ref={reactPlayer}
             width="960px"
@@ -67,7 +67,7 @@ const ExpressionExercise = (props) => {
           />
         )}
       </div>
-      {showContine == false && (
+      {!showContinue && (
         <>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
@@ -78,7 +78,7 @@ const ExpressionExercise = (props) => {
         </>
       )}
 
-      {showContine && (
+      {showContinue && (
         <button
           className="btn btn-primary text-black btn-xl text-uppercase tw-m-4"
           onClick={handleNext}
@@ -95,6 +95,7 @@ ExpressionExercise.propTypes = {
   setCount: PropTypes.func,
   count: PropTypes.number,
   userID: PropTypes.string,
+  year: PropTypes.number,
 };
 
 export default ExpressionExercise;

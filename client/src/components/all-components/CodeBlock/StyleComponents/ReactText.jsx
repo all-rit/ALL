@@ -72,7 +72,7 @@ const ReactText = ({ children }) => {
 };
 
 ReactText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default ReactText;

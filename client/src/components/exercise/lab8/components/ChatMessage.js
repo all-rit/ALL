@@ -49,7 +49,7 @@ const ChatMessage = ({
   }, []);
 
   return enableMessageDisplay ? (
-    <div className="tw-p-3 tw-grid tw-grid-cols-[auto,1fr] tw-bg-[#ffffff] tw-items-start tw-w-full tw-rounded-lg">
+    <div className="tw-p-3 tw-flex tw-flex-col tw-bg-white tw-items-start tw-w-full tw-rounded-lg tw-min-w-[15rem]">
       <div className="tw-flex tw-flex-col">
         <div className="tw-flex tw-items-center tw-p-2">
           {userAvatar && (
@@ -71,21 +71,18 @@ const ChatMessage = ({
           )}
           <p className="tw-ml-3 tw-font-semibold">{username}</p>
         </div>
-        <p className="tw-body-text tw-leading-snug tw-px-2 tw-py-2 tw-text-left tw-max-w-[75%]">
+        <p className="tw-body-text tw-leading-snug tw-px-2 tw-py-2 tw-text-left">
           {message}
         </p>
       </div>
       {displayModerationSection && (
-        <div className="tw-ml-auto tw-p-2 tw-pt-0 tw-rounded-2xl tw-flex tw-flex-col tw-h-full tw-justify-between">
-          <p className="tw-text-[#000000] tw-font-bold tw-text-lg tw-underline tw-text-sm">
-            AI Decision:
+        <div className="tw-flex tw-flex-col tw-w-full tw-items-center">
+          <p className=" tw-font-bold tw-text-sm">
+            AI Decision: {ai_polarity > 0 ? "Keep" : "Remove"}
           </p>
-          <p className="tw-text-[#000000] tw-font-bold tw-text-lg tw-underline tw-text-sm">
-            {ai_polarity > 0 ? "Keep" : "Remove"}
-          </p>
-          <div className="tw-flex tw-mt-2 tw-flex-col">
+          <div className="tw-flex tw-my-2 tw-flex-row tw-gap-x-2">
             <button
-              className={`${keepButtonColor} tw-text-white tw-border-0 tw-px-4 tw-py-2 tw-w-[100%] tw-rounded-lg tw-mb-1`}
+              className={`${keepButtonColor} tw-text-white tw-w-[6rem] tw-border-0 tw-px-4 tw-py-2 tw-rounded-lg`}
               onClick={handleKeep}
               key="keep"
               disabled={disabled}
@@ -93,7 +90,7 @@ const ChatMessage = ({
               Keep
             </button>
             <button
-              className={`${removeButtonColor} tw-text-white tw-w-[100%] tw-border-0 tw-px-4 tw-py-2 tw-rounded-lg`}
+              className={`${removeButtonColor} tw-text-white tw-w-[6rem] tw-border-0 tw-px-4 tw-py-2 tw-rounded-lg`}
               onClick={handleRemove}
               key="remove"
               disabled={disabled}

@@ -19,6 +19,7 @@ function Quiz(props) {
       <AnswerOption
         key={key.type}
         answerContent={key.content}
+        selectedAnswer={props.selectedAnswer}
         answerType={key.type}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
@@ -42,9 +43,9 @@ function Quiz(props) {
         )}
       </div>
       <div className="quiz bg-white tw-mt-6" key={props.questionId}>
-        <ul className="answerOptions">
+        <ol className="tw-grid tw-grid-cols-2">
           {props.answerOptions.map(renderAnswerOptions)}
-        </ul>
+        </ol>
         <div
           className={"tw-w-full tw-flex tw-flex-row tw-justify-between tw-p-6"}
         >
@@ -90,7 +91,10 @@ function Quiz(props) {
 }
 
 Quiz.propTypes = {
-  answer: PropTypes.string.isRequired,
+  selectedAnswer: PropTypes.oneOfType([
+    PropTypes.instanceOf(Set),
+    PropTypes.object,
+  ]).isRequired,
   answerOptions: PropTypes.array.isRequired,
   question: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
