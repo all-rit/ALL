@@ -1,6 +1,6 @@
 /* javascriptRegex searches for javascript keywords such as const, var, etc */
 const javascriptRegex =
-  /\b(const|var|let|function|default|return|import|export|from|console|module)\b/g;
+  /\b(const|var|let|function|default|return|import|export|from|console|module|async|await)\b/g;
 
 /* operatorRegex only colors operator symbols in a passed in child, such as /?+, etc */
 const operatorRegex =

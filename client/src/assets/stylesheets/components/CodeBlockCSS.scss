@@ -30,6 +30,16 @@
   height: 100%;
 }
 
+.code_editor__dropdown {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.code_editor__dropdown:hover,
+.code_editor__dropdown:focus {
+  background-color: #7300ff;
+}
+
 .code_editor__input {
   display: inline-block;
   position: relative;
