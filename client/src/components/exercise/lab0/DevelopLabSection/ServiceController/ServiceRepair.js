@@ -15,17 +15,15 @@ import {
   DropdownToggle,
 } from "reactstrap";
 
-const CREATE = "create";
-const DESTROY = "destroy";
-
-const SELECT_OPERATION_LABEL = "Select a Sequelize Operation";
-const SELECT_ORDER_LABEL = "Select an Order";
-
-const OPERATION_OPTIONS = [CREATE, FIND_ONE, DESTROY];
-const ORDER_OPTIONS = [ATTEMPT_TIME, USER_ID];
-
 const ServiceRepair = (props) => {
   const { setServiceFix } = props;
+
+  const CREATE = "create";
+  const DESTROY = "destroy";
+  const SELECT_OPERATION_LABEL = "Select a Sequelize Operation";
+  const SELECT_ORDER_LABEL = "Select an Order";
+  const OPERATION_OPTIONS = [CREATE, FIND_ONE, DESTROY];
+  const ORDER_OPTIONS = [ATTEMPT_TIME, USER_ID];
 
   const [operationDropdownOpen, setOperationDropdownOpen] = useState(false);
   const [orderDropdownOpen, setOrderDropdownOpen] = useState(false);

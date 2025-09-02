@@ -11,18 +11,18 @@ import {
 } from "reactstrap";
 import { PARAMS, USER_ID } from "../../pages/backend/ServiceControllerRepair";
 
-const BODY = "body";
-const QUERY = "query";
-const REQ = "req";
-const USER_ID_INCORRECT = "user_id";
-const SELECT_ARGS_LABEL = "Select Argument";
-const SELECT_REQUEST_LABEL = "Select Request Type";
-
-const REQ_OPTIONS = [BODY, PARAMS, QUERY];
-const ARGS_OPTIONS = [REQ, USER_ID_INCORRECT, USER_ID];
-
 const ControllerRepair = (props) => {
   const { setControllerFix } = props;
+
+  const BODY = "body";
+  const QUERY = "query";
+  const REQ = "req";
+  const USER_ID_INCORRECT = "user_id";
+  const SELECT_ARGS_LABEL = "Select Argument";
+  const SELECT_REQUEST_LABEL = "Select Request Type";
+
+  const REQ_OPTIONS = [BODY, PARAMS, QUERY];
+  const ARGS_OPTIONS = [REQ, USER_ID_INCORRECT, USER_ID];
 
   const [argsDropdownOpen, setArgsDropdownOpen] = useState(false);
   const [requestDropdownOpen, setRequestDropdownOpen] = useState(false);

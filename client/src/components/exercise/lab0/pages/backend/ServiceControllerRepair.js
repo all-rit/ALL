@@ -3,7 +3,6 @@ import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
 import ControllerRepair from "../../DevelopLabSection/ServiceController/ControllerRepair";
 import ServiceRepair from "../../DevelopLabSection/ServiceController/ServiceRepair";
-import ALLButton from "../../../../all-components/ALLButton";
 
 export const FIND_ONE = "findOne";
 export const ATTEMPT_TIME = "attemptTime";
@@ -43,9 +42,15 @@ export const ServiceControllerRepair = () => {
         />
         <ServiceRepair serviceFix={serviceFix} setServiceFix={setServiceFix} />
       </Page.Body>
-      <Page.Footer>
-        <ALLButton label={"Next"} disabled={!repairsComplete} />
-      </Page.Footer>
+      {repairsComplete && (
+        <div
+          className={
+            "tw-absolute tw-flex tw-top-5 tw-right-5 tw-h-28 tw-w-28 tw-bg-success tw-text-white tw-p-10 tw-rounded-full tw-text-5xl tw-text-center tw-items-center tw-justify-center"
+          }
+        >
+          &#10003;
+        </div>
+      )}
     </Page>
   );
 };
