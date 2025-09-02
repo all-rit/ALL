@@ -80,7 +80,9 @@ const SQLQueryMock = (props) => {
 
           switch (operator) {
             case "equals":
-              return value === filter.value;
+              return typeof value === "string"
+                ? String(value) === String(filter.value)
+                : Number(value) === Number(filter.value);
             case "in":
               return filter.value.includes(value);
             case "notIn":
@@ -175,7 +177,7 @@ const SQLQueryMock = (props) => {
    * These are records that are being created
    */
   const handleAddRecord = () => {
-    const lastId = getLastId(tempRecords);
+    const lastId = Number(getLastId(tempRecords)) || 0;
     setActiveRecords([
       {
         ...Object.fromEntries(columns.map((column) => [column, ""])),
@@ -277,7 +279,7 @@ const SQLQueryMock = (props) => {
   const showDeleteButton = selectedRecordsCount > 0;
 
   return (
-    <div className="tw-border tw-rounded-lg tw-overflow-hidden tw-shadow-xl tw-drop-shadow-xl tw-min-w-[56rem] tw-max-w-[56rem]">
+    <div className="tw-border tw-rounded-lg tw-overflow-hidden tw-shadow-xl tw-drop-shadow-xl tw-min-w-[56rem] tw-w-full">
       {/* SQL Query Header */}
       <div className="tw-flex tw-bg-primary-yellow tw-rounded-lg tw-rounded-b-none tw-p-2 tw-gap-x-2">
         <div className="tw-flex tw-w-full">
@@ -328,7 +330,7 @@ const SQLQueryMock = (props) => {
                   <div key={filter.id} className="tw-flex tw-gap-x-3">
                     <div className="tw-flex tw-items-center tw-bg-[#cbd5e0] tw-rounded-md tw-px-2 tw-py-1">
                       <span className="tw-font-bold tw-text-xs tw-text-[#718096]">
-                        where
+                        WHERE
                       </span>
                     </div>
                     <div className="tw-flex tw-items-center tw-bg-[#cbd5e0] tw-rounded-md tw-px-2 tw-py-1">
@@ -471,7 +473,7 @@ const SQLQueryMock = (props) => {
                         <div className="tw-flex tw-items-center tw-justify-center tw-w-full tw-h-full">
                           <input
                             type="checkbox"
-                            className="tw-w-4 tw-h-4 tw-accent-primary-blue"
+                            className="tw-w-4 tw-h-4 tw-accent-primary-blue tw-cursor-pointer"
                             checked={record.selected || false}
                             onChange={(e) =>
                               handleCheckboxChange(record.id, e.target.checked)
