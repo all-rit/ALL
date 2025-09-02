@@ -1,9 +1,10 @@
 /* javascriptRegex searches for javascript keywords such as const, var, etc */
 const javascriptRegex =
-  /\b(const|var|let|function|default|return|import|export|from|console)\b/g;
+  /\b(const|var|let|function|default|return|import|export|from|console|module)\b/g;
 
 /* operatorRegex only colors operator symbols in a passed in child, such as /?+, etc */
-const operatorRegex = /(\+|-|\*|\/|\]|\[|,|;|:|=|==|>|\.|\(|\)|{|})/g;
+const operatorRegex =
+  /(\+|-|\*|\/|\]|\[|,|;|:|=|==|>|\.|\(|\)|{|}|"|'|&apos;)/g;
 
 /* reactRegex searches in the children for ReactJS keywords like props or useState */
 const reactRegex =
@@ -11,7 +12,7 @@ const reactRegex =
 
 /* funcRegex searches in the children for a function call keywords like .() */
 const funcRegex =
-  /\b(map|filter|split|toFixed|includes|endsWith|startsWith|log|stringify|fetch|then|catch|e)\b/g;
+  /\b(map|filter|split|toFixed|includes|endsWith|startsWith|log|stringify|fetch|require|then|try|catch|e)\b/g;
 
 /* numberRegex searches for numbers */
 const numberRegex = /-?\d+(\.\d+)?/g;

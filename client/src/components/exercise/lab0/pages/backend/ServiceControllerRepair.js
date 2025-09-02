@@ -1,6 +1,8 @@
 import React from "react";
 import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
+import ControllerRepair from "../../DevelopLabSection/ServiceController/ControllerRepair";
+import ServiceRepair from "../../DevelopLabSection/ServiceController/ServiceRepair";
 
 export const ServiceControllerRepair = () => {
   return (
@@ -10,6 +12,10 @@ export const ServiceControllerRepair = () => {
           Service Layer &amp; Controllers Repair
         </Page.Header.Title>
       </Page.Header>
+      <Page.Body>
+        <ControllerRepair />
+        <ServiceRepair />
+      </Page.Body>
     </Page>
   );
 };
