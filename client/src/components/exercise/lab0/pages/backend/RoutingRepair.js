@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
-import APIRequestExercise from "../../DevelopLabSection/API-Endpoints/APIRequestExercise";
+import RESTQueryMock from "../../Mocks/RESTQueryMock";
 
 export const RoutingRepair = () => {
   const [incorrectRequestComplete, setIncorrectRequestComplete] =
@@ -19,7 +19,7 @@ export const RoutingRepair = () => {
           API Endpoints &amp; Routing Repair
         </Page.Header.Title>
       </Page.Header>
-      <APIRequestExercise
+      <RESTQueryMock
         correctRequestComplete={correctRequestComplete}
         setCorrectRequestComplete={setCorrectRequestComplete}
         incorrectRequestComplete={incorrectRequestComplete}
