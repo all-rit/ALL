@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import FauxPostman from "../../../../all-components/FauxPostman";
-import LabButton from "../../../../all-components/LabButton";
+import PropTypes from "prop-types";
 
-const APIRequestExercise = () => {
-  const [incorrectRequestComplete, setIncorrectRequestComplete] =
-    useState(false);
-
-  const [correctRequestComplete, setCorrectRequestComplete] = useState(false);
+const APIRequestExercise = (props) => {
+  const {
+    incorrectRequestComplete,
+    setIncorrectRequestComplete,
+    correctRequestComplete,
+    setCorrectRequestComplete,
+  } = props;
 
   return (
     <div className={"tw-p-6"}>
       <div>
         <p className={"tw-text-left tw-body-text"}>
           Below we will now have the opportunity to test an newly minted API
-          method. In API request testers such as this, you can select you
+          endpoint. In API request testers such as this, you can select you
           request type, enter a requestURL, as well as query params.
           Additionally, once the request is submitted, you will see the
           resulting response in the window beneath it that allow you to ensure
@@ -60,13 +62,15 @@ const APIRequestExercise = () => {
           the <strong>NEXT</strong> button below to move on to the next section!
         </p>
       </div>
-      <LabButton
-        onClick={undefined}
-        label={"Next"}
-        disabled={!correctRequestComplete}
-      />
     </div>
   );
+};
+
+APIRequestExercise.propTypes = {
+  correctRequestComplete: PropTypes.bool,
+  setCorrectRequestComplete: PropTypes.func,
+  incorrectRequestComplete: PropTypes.bool,
+  setIncorrectRequestComplete: PropTypes.func,
 };
 
 export default APIRequestExercise;

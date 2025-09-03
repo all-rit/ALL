@@ -90,7 +90,7 @@ const Main = (props) => {
   const [newLabTopics, setNewLabTopics] = useState([]);
 
   return (
-    <div className={"tw-h-[35rem] tw-overflow-y-scroll"}>
+    <div className={"tw-h-[40rem] tw-overflow-y-scroll"}>
       <Lab0Context.Provider
         value={{
           handleNav,

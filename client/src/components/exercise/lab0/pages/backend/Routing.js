@@ -135,7 +135,7 @@ export const Routing = () => {
   const [edges2] = useState(initialEdges2);
 
   return (
-    <Page nextPage={ROUTES.SECTION_ROUTING_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_ROUTING_REPAIR} completed>
       <Page.Header>
         <Page.Header.Title>API Endpoints &amp; Routing</Page.Header.Title>
         <Page.Header.Description>

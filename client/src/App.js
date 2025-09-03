@@ -180,12 +180,12 @@ const App = () => {
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
           }
         >
-          <div className="appBody tw-min-h-[40rem] tw-relative xs:tw-mt-[6rem] md:tw-mt-[8rem]">
+          <div className="appBody tw-min-h-[50rem] tw-relative xs:tw-mt-[6rem] md:tw-mt-[8rem] tw-overflow-y-scroll tw-overflow-x-hidden">
             <div className={"tw-relative"}>
               {lab !== 99 && (
                 <div
                   className={
-                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw xs:tw-h-[30rem] md:tw-h-[40rem] tw-gap-y-4"
+                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw xs:tw-h-[30rem] md:tw-h-[45rem] tw-gap-y-4"
                   }
                 >
                   <div
@@ -204,12 +204,12 @@ const App = () => {
               {lab !== 99 ? (
                 <div
                   className={
-                    "tw-grid tw-justify-center tw-grid-cols-12 tw-py-6 tw-h-[40rem] tw-gap-x-3 tw-p-6"
+                    "tw-grid tw-justify-center tw-grid-cols-12 tw-py-6 tw-h-[45rem] tw-gap-x-3 tw-p-6"
                   }
                 >
                   <div
                     className={
-                      "tw-flex tw-col-start-1 tw-col-span-2 tw-max-h-[40rem]"
+                      "tw-flex tw-col-start-1 tw-col-span-2 tw-max-h-[45rem]"
                     }
                   >
                     <NavigationPane
