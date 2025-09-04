@@ -25,7 +25,7 @@ const htmlElementRegex = /\b(className|onClick|disabled|next|fileName)\b/g;
 
 /* sqlKeywordRegex uses regex searches for SQL keywords such as CREATE, TABLE, COUNT, etc */
 const sqlKeywordRegex =
-  /\b(CREATE|TABLE|COUNT|\*|ALTER|DEFAULT|DELETE|DROP|COLUMN|ROW|FOREIGN KEY|IN|INDEX|INNER JOIN|OUTER JOIN|INSERT INTO|IS NOT NULL|IS NULL| LIMIT|PRIMARY KEY|SELECT|SELECT ALL|default|false|primary|key)\b/g;
+  /\b(CREATE|TABLE|COUNT|\*|ALTER|DEFAULT|DELETE|DROP|COLUMN|ROW|FOREIGN KEY|IN|INDEX|INNER JOIN|OUTER JOIN|INSERT INTO|IS NOT NULL|IS NULL| LIMIT|PRIMARY KEY|SELECT|SELECT ALL|INTO|INSERT|VALUES|default|false|primary|key)\b/g;
 
 /* sqlVariableRegex uses regex to search for SQL variables such as varchar, serial, timestamp, etc */
 const sqlVariableRegex =
