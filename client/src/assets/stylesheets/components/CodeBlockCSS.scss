@@ -1,5 +1,5 @@
 .keyword {
-  color: mediumpurple;
+  color: #af90ed;
 }
 
 .operator {
@@ -7,7 +7,7 @@
 }
 
 .otherText {
-  color: cornflowerblue;
+  color: #5eb6ff;
 }
 
 .react {
@@ -28,6 +28,16 @@
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   height: 100%;
+}
+
+.code_editor__dropdown {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.code_editor__dropdown:hover,
+.code_editor__dropdown:focus {
+  background-color: #7300ff;
 }
 
 .code_editor__input {

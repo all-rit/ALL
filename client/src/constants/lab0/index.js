@@ -34,7 +34,7 @@ const SECTION_SCHEMA_DESIGN_REPAIR = "SchemaDesignRepair";
 const SECTION_SERVICE_CONTROLLER = "ServiceController";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
 const SECTION_ROUTING = "Routing";
-const SECTION_ROUTING_INTRO = "APIRequestReading";
+const SECTION_ROUTING_INTRO = "Routing";
 const SECTION_ROUTING_REPAIR = "RoutingRepair";
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
 

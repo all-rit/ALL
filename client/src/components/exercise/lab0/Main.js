@@ -54,8 +54,7 @@ import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
 import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
-import APIRequestReading from "./DevelopLabSection/API-Endpoints/APIRequestReading";
-import APIRequestExercise from "./DevelopLabSection/API-Endpoints/APIRequestExercise";
+import RESTQueryMock from "./Mocks/RESTQueryMock";
 // import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
@@ -93,7 +92,7 @@ const Main = (props) => {
   const [newLabTopics, setNewLabTopics] = useState([]);
 
   return (
-    <div className={"tw-h-[35rem] tw-overflow-y-scroll"}>
+    <div className={"tw-h-[40rem] tw-overflow-y-scroll"}>
       <Lab0Context.Provider
         value={{
           handleNav,
@@ -161,10 +160,6 @@ const Main = (props) => {
           <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
 
           <DesignLabEnd path={"/DesignLabEnd"} />
-
-          <APIRequestReading path={"/APIRequestReading"} />
-          <APIRequestExercise path={"/APIRequestExercise"} />
-
           {/* Frontend Pages */}
           <FrontendIntroduction path={ROUTES.SECTION_FRONTEND_INTRODUCTION} />
           <Boilerplate path={ROUTES.SECTION_BOILERPLATE} />
