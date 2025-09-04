@@ -54,7 +54,6 @@ import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
 import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
-import RESTQueryMock from "./Mocks/RESTQueryMock";
 // import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
@@ -63,7 +62,7 @@ const Main = (props) => {
   const [section, setSectionState] = useState({});
 
   const updateSectionStatus = async (section, sectionStatus) => {
-    return ProgressService.submitProgress(
+    return await ProgressService.submitProgress(
       user.userid,
       section.category,
       section.name,
@@ -71,11 +70,11 @@ const Main = (props) => {
     );
   };
 
-  const handleNav = (route) => {
+  const handleNav = async (route) => {
     if (route in SECTIONS) {
       actions.updateUserState(EXERCISE_PLAYING);
       setSectionState(SECTIONS[route]);
-      updateSectionStatus(
+      await updateSectionStatus(
         SECTIONS[route],
         SECTION_STATUSES.SECTION_IN_PROGRESS,
       );
