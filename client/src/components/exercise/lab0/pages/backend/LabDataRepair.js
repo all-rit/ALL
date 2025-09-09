@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
 import DataRepair from "../../DevelopLabSection/LabData/LabDataRepair";
 import LabsTable from "../../DevelopLabSection/LabData/LabsTable";
+import SuccessBanner from "../../../../all-components/SuccessBanner";
 
 export const LabDataRepair = () => {
+  const [repairComplete, setRepairComplete] = useState(false);
+
   return (
     <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN} completed>
       <Page.Header>
@@ -26,7 +29,8 @@ export const LabDataRepair = () => {
           whenever development is underway. Use the dropdowns to select the
           proper data for each empty column.
         </p>
-        <DataRepair />
+        <DataRepair setRepairComplete={setRepairComplete} />
+        {repairComplete && <SuccessBanner message={"Repair Complete!"} />}
       </Page.Body>
     </Page>
   );

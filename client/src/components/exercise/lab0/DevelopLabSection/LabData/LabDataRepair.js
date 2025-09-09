@@ -1,40 +1,91 @@
-import React, { useState } from "react";
-import SQLText from "../../../../all-components/CodeBlock/StyleComponents/SQLText";
+import React, { useEffect, useState } from "react";
 import { labData } from "../../../../../constants/lab0/DevelopALab/LabTableData";
+import Dropdown from "../../../../all-components/Dropdown";
+import { DARK } from "../../../../../constants/themes";
+import { LABELS, ANSWERS } from "../../../../../constants/lab0";
 import {
-  ButtonDropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "reactstrap";
-import JSONText from "../../../../all-components/CodeBlock/StyleComponents/JSONText";
-// import { SQLText, JSONText } from "../../../../all-components/CodeBlock/StyleComponents"
+  SQLText,
+  JSONText,
+  CommentText,
+} from "../../../../all-components/CodeBlock/StyleComponents";
+import PropTypes from "prop-types";
+import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
 
-const DataRepair = () => {
+const DataRepair = (props) => {
+  const { setRepairComplete } = props;
+
+  const {
+    INITIAL_SHORT_NAME_LABEL,
+    INITIAL_WALKTHROUGH_VIDEO_LABEL,
+    INITIAL_CATEGORY_LABEL,
+    INITIAL_SHORT_DESCRIPTION_LABEL,
+  } = LABELS;
+
+  const {
+    CORRECT_SHORT_NAME,
+    CORRECT_CATEGORY,
+    CORRECT_WALKTHROUGH_VIDEO,
+    CORRECT_SHORT_DESCRIPTION,
+  } = ANSWERS;
+
   const CORRECT_REPAIR = {
-    shortName: "How to Build a Lab",
-    category: "",
-    shortDescription: "",
-    walkthroughVideo: "",
+    shortName: CORRECT_SHORT_NAME,
+    category: CORRECT_CATEGORY,
+    walkthroughVideo: CORRECT_WALKTHROUGH_VIDEO,
+    shortDescription: CORRECT_SHORT_DESCRIPTION,
   };
 
-  const INITIAL_SHORT_NAME_LABEL = "Select a proper short lab name";
-
-  const [shortNameDropdownOpen, setShortNameDropdownOpen] = useState(false);
-  const [shortNameDropdownLabel, setShortNameDropdownLabel] = useState(
-    INITIAL_SHORT_NAME_LABEL,
-  );
   const [dataRepair, setDataRepair] = useState({
     shortName: "",
     category: "",
-    shortDescription: "",
     walkthroughVideo: "",
+    shortDescription: "",
   });
 
-  const repairComplete = dataRepair === CORRECT_REPAIR;
+  const SHORT_NAME_OPTIONS = [
+    "Working with Really Awesome Focus Orders",
+    CORRECT_SHORT_NAME,
+    "Focus",
+  ];
+
+  const CATEGORY_OPTIONS = [CORRECT_CATEGORY, "AI/ML", "Tutorial"];
+
+  const DESCRIPTION_OPTIONS = [
+    CORRECT_SHORT_DESCRIPTION,
+    "Focus order is important.",
+    "Have you ever heard of Focus Order?",
+  ];
+
+  const WALKTHROUGH_OPTIONS = [
+    CORRECT_WALKTHROUGH_VIDEO,
+    "../../assets/videos/lab-14-walkthrough.mp4",
+  ];
+
+  const [shortNameDropdownOpen, setShortNameDropdownOpen] = useState(false);
+  const [walkthroughDropdownOpen, setWalkthroughDropdownOpen] = useState(false);
+  const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
+  const [descriptionDropdownOpen, setDescriptionDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const complete =
+      JSON.stringify(dataRepair) === JSON.stringify(CORRECT_REPAIR);
+    setRepairComplete(complete);
+  }, [dataRepair]);
 
   const toggleShortNameDropdown = () => {
     setShortNameDropdownOpen(!shortNameDropdownOpen);
+  };
+
+  const toggleCategoryDropdown = () => {
+    setCategoryDropdownOpen(!categoryDropdownOpen);
+  };
+
+  const toggleDescriptionDropdown = () => {
+    setDescriptionDropdownOpen(!descriptionDropdownOpen);
+  };
+
+  const toggleWalkthroughDropdown = () => {
+    setWalkthroughDropdownOpen(!walkthroughDropdownOpen);
   };
 
   const updateShortName = (option) => {
@@ -42,18 +93,34 @@ const DataRepair = () => {
       ...prev,
       shortName: option,
     }));
-    setShortNameDropdownLabel(option);
   };
 
-  const SHORT_NAME_OPTIONS = [
-    "Building Really Cool Labs with ALL",
-    "How to Build a Lab",
-    "Labs",
-  ];
+  const updateWalkthrough = (option) => {
+    setDataRepair((prev) => ({
+      ...prev,
+      walkthroughVideo: option,
+    }));
+  };
+
+  const updateCategory = (option) => {
+    setDataRepair((prev) => ({
+      ...prev,
+      category: option,
+    }));
+  };
+
+  const updateDescription = (option) => {
+    setDataRepair((prev) => ({
+      ...prev,
+      shortDescription: option,
+    }));
+  };
 
   return (
     <div
-      className={"code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg"}
+      className={
+        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[16px]"
+      }
     >
       <div className={"tw-flex tw-w-full tw-flex-wrap"}>
         <SQLText> INSERT INTO public.labs (</SQLText>
@@ -69,52 +136,86 @@ const DataRepair = () => {
         })}
         <SQLText>)</SQLText>
       </div>
-      <div>
+      <div className={"tw-w-full"}>
         <SQLText> VALUES (</SQLText>
         <div className={"tw-flex tw-flex-col"}>
-          <JSONText>0</JSONText>
-          <JSONText>
-            &apos;How to Build a Lab with Accessible Learning Labs&apos;,
-          </JSONText>
-          <div className={"tw-flex tw-w-1/2 tw-items-center"}>
-            <ButtonDropdown
+          <JSONText>14,</JSONText>
+          <CodeLine>
+            <JSONText>&apos;Accessibility to Focus Order&apos;,</JSONText>
+          </CodeLine>
+          <CodeLine>
+            <Dropdown
               toggle={toggleShortNameDropdown}
               isOpen={shortNameDropdownOpen}
-            >
-              <DropdownToggle
-                style={{ fontFamily: "monospace", backgroundColor: "#333" }}
-                caret
-              >
-                {shortNameDropdownLabel}
-              </DropdownToggle>
-              <DropdownMenu>
-                {SHORT_NAME_OPTIONS.map((option) => {
-                  return (
-                    <DropdownItem
-                      key={option}
-                      onClick={() => updateShortName(option)}
-                    >
-                      {option}
-                    </DropdownItem>
-                  );
-                })}
-              </DropdownMenu>
-            </ButtonDropdown>
+              initialLabel={INITIAL_SHORT_NAME_LABEL}
+              options={SHORT_NAME_OPTIONS}
+              setSelection={updateShortName}
+              theme={DARK}
+            />
             <JSONText>,</JSONText>
+            <CommentText>
+              &#47;&#47; Enter the correct short name for this lab
+            </CommentText>
+          </CodeLine>
+          <CodeLine>
+            <Dropdown
+              toggle={toggleCategoryDropdown}
+              isOpen={categoryDropdownOpen}
+              initialLabel={INITIAL_CATEGORY_LABEL}
+              options={CATEGORY_OPTIONS}
+              setSelection={updateCategory}
+              theme={DARK}
+            />
+            <JSONText>,</JSONText>
+            <CommentText>
+              &#47;&#47; Enter the correct category for this lab
+            </CommentText>
+          </CodeLine>
+          <JSONText>&apos;/focusOrderThumbnail.jpeg&apos;</JSONText>
+          <div className={"tw-flex tw-w-full tw-items-center tw-py-1"}>
+            <Dropdown
+              toggle={toggleDescriptionDropdown}
+              isOpen={descriptionDropdownOpen}
+              initialLabel={INITIAL_SHORT_DESCRIPTION_LABEL}
+              options={DESCRIPTION_OPTIONS}
+              setSelection={updateDescription}
+              theme={DARK}
+            />
+            <JSONText>,</JSONText>
+            <CommentText>
+              &#47;&#47; Enter the correct short description for this lab
+            </CommentText>
           </div>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
-          <SQLText>0</SQLText>
+          <CodeLine>
+            <JSONText>...</JSONText>
+          </CodeLine>
+          <JSONText>1,</JSONText>
+          <JSONText>&apos;ALL_Lab_1_Lecture_Slides.pptx&apos;,</JSONText>
+          <div className={"tw-flex tw-w-full tw-items-center"}>
+            <Dropdown
+              toggle={toggleWalkthroughDropdown}
+              isOpen={walkthroughDropdownOpen}
+              initialLabel={INITIAL_WALKTHROUGH_VIDEO_LABEL}
+              options={WALKTHROUGH_OPTIONS}
+              setSelection={updateWalkthrough}
+              theme={DARK}
+            />
+            <JSONText>,</JSONText>
+            <CommentText>
+              &#47;&#47; Enter the correct URL for the walkthrough video
+            </CommentText>
+          </div>
+          <SQLText>true</SQLText>
+          <SQLText>);</SQLText>
         </div>
       </div>
-      {repairComplete && <div>Repair is complete!</div>}
     </div>
   );
+};
+
+DataRepair.propTypes = {
+  repairComplete: PropTypes.bool,
+  setRepairComplete: PropTypes.func,
 };
 
 export default DataRepair;

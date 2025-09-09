@@ -54,7 +54,7 @@ const LabFooter = (props) => {
       {display && (
         <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div
-            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-ml-6 tw-mr-[10%]`}
+            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-mx-6`}
             style={{ display: display ? "flex" : "none" }}
           >
             {body > 0 && (

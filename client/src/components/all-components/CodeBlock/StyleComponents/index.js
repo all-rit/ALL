@@ -1,13 +1,13 @@
-const JSONText = require("./JSONText");
-const HTMLTag = require("./HTMLTag");
-const HTMLText = require("./HTMLText");
-const ErrorText = require("./ErrorText");
-const ImportText = require("./ImportText");
-const ReactText = require("./ReactText");
-const CommentText = require("./CommentText");
-const SQLText = require("./SQLText");
+import JSONText from "./JSONText";
+import HTMLTag from "./HTMLTag";
+import HTMLText from "./HTMLText";
+import ErrorText from "./ErrorText";
+import ImportText from "./ImportText";
+import ReactText from "./ReactText";
+import CommentText from "./CommentText";
+import SQLText from "./SQLText";
 
-module.exports = {
+export {
   JSONText,
   HTMLText,
   HTMLTag,

@@ -50,6 +50,34 @@ const SECTION_COMPONENT_LIBRARY = "ComponentLibrary";
 const SECTION_COMPONENT_LIBRARY_REPAIR = "ComponentLibraryRepair";
 const SECTION_FRONTEND_TIPS_TRICKS = "FrontendTipsTricks";
 
+// Labels
+const INITIAL_SHORT_NAME_LABEL = "Select the Correct Lab Short Name";
+const INITIAL_WALKTHROUGH_VIDEO_LABEL = "Select the Correct Walkthrough URL";
+const INITIAL_CATEGORY_LABEL = "Select Correct Category";
+const INITIAL_SHORT_DESCRIPTION_LABEL = "Select Correct Short Description";
+
+// Correct Answers
+const CORRECT_SHORT_NAME = "Focus Order";
+const CORRECT_CATEGORY = "Accessibility";
+const CORRECT_WALKTHROUGH_VIDEO =
+  "https://www.youtube.com/accessible-learning-labs/lab-14-walkthrough";
+const CORRECT_SHORT_DESCRIPTION =
+  "Explore how keyboard navigation flows through web interfaces.";
+
+const LABELS = {
+  INITIAL_SHORT_NAME_LABEL,
+  INITIAL_WALKTHROUGH_VIDEO_LABEL,
+  INITIAL_CATEGORY_LABEL,
+  INITIAL_SHORT_DESCRIPTION_LABEL,
+};
+
+const ANSWERS = {
+  CORRECT_SHORT_NAME,
+  CORRECT_CATEGORY,
+  CORRECT_WALKTHROUGH_VIDEO,
+  CORRECT_SHORT_DESCRIPTION,
+};
+
 // All routes
 const ROUTES = {
   SELECTION_ROUTE,
@@ -209,4 +237,4 @@ const SECTION_STATUSES = {
   SECTION_COMPLETED,
 };
 
-export { ROUTES, SECTIONS, SECTION_STATUSES };
+export { ROUTES, SECTIONS, SECTION_STATUSES, LABELS, ANSWERS };

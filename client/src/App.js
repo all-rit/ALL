@@ -180,7 +180,7 @@ const App = () => {
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
           }
         >
-          <div className="appBody tw-min-h-[50rem] tw-relative xs:tw-mt-[6rem] md:tw-mt-[8rem] tw-overflow-y-scroll tw-overflow-x-hidden">
+          <div className="appBody tw-min-h-fit tw-relative xs:tw-mt-[6rem] md:tw-mt-[8rem] tw-overflow-y-scroll tw-overflow-x-hidden">
             <div className={"tw-relative"}>
               {lab !== 99 && (
                 <div
