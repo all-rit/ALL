@@ -14,36 +14,37 @@ Clone the repository and open the command line for the upcoming instructions.
 
 ### ESlint and Pre-commit setup
 
-After cloning the repository in the top level directory, run `npm install` this will install all of the tools needed to
+After cloning the repository in the top level directory, run `npm install`. this will install all of the tools needed to
 commit and correctly format all code within the project.
 
 ### PM2 Instructions
 
-After installing the dependencies for the super directory, first run `pm2 -v` to ensure that pm2 is installed correctly
-if it gives you any issues install it to your global npm registry with this command: `npm i -g pm2`.
+**Windows Users**: pm2 currently does not work on Windows Machines. You may skip this step.
 
-Next add the ecosystem.config.js file to your top level directory and this will allow you to have
-the correct env for client and server. after thats complete then you can follow the install st`eps below.
+After installing the dependencies for the super directory, first run `pm2 -v` to ensure that pm2 is installed correctly.
+If it gives you any issues, install it to your global npm registry with this command: `npm i -g pm2`.
+
+Next add the `ecosystem.config.js` file to your top level directory and this will allow you to have
+the correct env for client and server. After that is complete, then you can follow the install steps below.
 
 ### Developing Locally
 
 To develop on the full architecture developers can now utilize the ability to run the full system without
 needing to ssh into another server. To do this users are required to install the **latest version** of [Docker](https://www.docker.com/) to perform this task.
-in doing so they are able to run.
 
-To start the database container
+To start the database container:
 
 ```bash
 docker compose up
 ```
 
-To run in detached mode
+To run in detached mode:
 
 ```bash
 docker compose up -d
 ```
 
-To shut down database container
+To shut down database container:
 
 ```bash
 docker compose down
@@ -57,16 +58,24 @@ docker compose down
    1. For local dev
       1. `cd server/database`
       2. `docker compose up -d`
-         1. if you want reuse this volume to **keep your changes use** `docker compose start`
-         2. in the event you want to stop it **without losing the volume** `docker compose stop`
+         1. If you want reuse this volume to **keep your changes use** `docker compose start`
+         2. In the event you want to stop it **without losing the volume** `docker compose stop`
    2. For dev connecting to staging or production
-      1. run the documented developer instructions to connect.
-4. `pm2 start`
-5. to check the logs and see if things built correctly use `pm2 log`
-   1. if there are any errors run:
-   2. `pm2 delete all`
-   3. `pm2 start`
-6. to stop the application run `pm2 stop all` and also run if run local dev configuration `docker compose down`
+      1. Run the documented developer instructions to connect.
+4. Start the server & client
+   1. Mac/Linux users: In the root directory, run `pm2 start`
+   2. Windows users: Do the following
+      a. Run `cd server/database`, and then `node app.js`. This will start the backend server.
+      b. In a new terminal, run `cd client`, and then `npm run start`. This will start the React server locally.
+5. To check the logs and see if things built correctly
+   1. Mac/Linux users: Run `pm2 log`
+      a. If there are any errors run:
+      b. `pm2 delete all`
+      c. `pm2 start`
+   2. Windows users: monitor error messages in your terminals.
+7. To stop the application
+   1.  Max/Linux users: Run `pm2 stop all`, and if running local dev configuration, `docker compose down`
+   2.  Windows users: Kill the `client` and `server` terminals, and run `docker compose down`
 
 ### Server
 
@@ -82,7 +91,7 @@ docker compose down
 1. Navigate to the client folder.
 2. `npm install`
 3. `npm start`
-4. The client should be open by itself.
+4. The client should be open by itself, accessible via `http://localhost:3000`
 
 #### Publishing
 
