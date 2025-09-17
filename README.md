@@ -19,8 +19,6 @@ commit and correctly format all code within the project.
 
 ### PM2 Instructions
 
-**Windows Users**: pm2 currently does not work on Windows Machines. You may skip this step.
-
 After installing the dependencies for the super directory, first run `pm2 -v` to ensure that pm2 is installed correctly.
 If it gives you any issues, install it to your global npm registry with this command: `npm i -g pm2`.
 
@@ -63,19 +61,14 @@ docker compose down
    2. For dev connecting to staging or production
       1. Run the documented developer instructions to connect.
 4. Start the server & client
-   1. Mac/Linux users: In the root directory, run `pm2 start`
-   2. Windows users: Do the following
-      a. Run `cd server/database`, and then `node app.js`. This will start the backend server.
-      b. In a new terminal, run `cd client`, and then `npm run start`. This will start the React server locally.
+   1. In the root directory, run `pm2 start`
 5. To check the logs and see if things built correctly
-   1. Mac/Linux users: Run `pm2 log`
+   1. Run `pm2 log`
       a. If there are any errors run:
       b. `pm2 delete all`
       c. `pm2 start`
-   2. Windows users: monitor error messages in your terminals.
-7. To stop the application
-   1.  Max/Linux users: Run `pm2 stop all`, and if running local dev configuration, `docker compose down`
-   2.  Windows users: Kill the `client` and `server` terminals, and run `docker compose down`
+6. To stop the application
+   1. Run `pm2 stop all`, and if running local dev configuration, `docker compose down`
 
 ### Server
 
