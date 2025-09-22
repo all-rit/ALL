@@ -34,8 +34,8 @@ const ALLSnackbar = () => {
           backgroundColor: snackbarColor(),
           color: "white",
           fontFamily: "Poppins, sans-serif",
-          height: 75,
-          minWidth: 200,
+          minHeight: 80,
+          minWidth: 250,
           fontSize: 20,
         }}
         message={state.main.snackbar.message}
