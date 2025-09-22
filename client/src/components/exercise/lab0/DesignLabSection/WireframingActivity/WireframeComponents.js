@@ -5,7 +5,7 @@ import CodeBlock from "../../../../../assets/images/lab0/Lab0-CodeBlockComponent
 import HTTPRequest from "../../../../../assets/images/lab0/Lab0-HTTPRequestComponent.PNG";
 import DragAndDrop from "../../../../../assets/images/lab0/Lab0-DragAndDropComponent.PNG";
 import labButton from "../../../../../assets/images/lab0/Lab0-LabButtonComponent.PNG";
-import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
+// import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
 import { SECTION_STATUSES } from "../../../../../constants/lab0";
 
 const WireframeComponents = () => {
@@ -94,10 +94,10 @@ const WireframeComponents = () => {
     },
     {
       id: 3,
-      componentName: "Faux Figma",
-      altText: "Faux Figma Component Figma Design",
-      src: fauxFigma,
-      errorText: "The Faux Figma component does not support dynamic elements.",
+      componentName: "Lab Button",
+      altText: "Lab Button Component Figma Design",
+      src: labButton,
+      errorText: "The Lab Button component does not support dynamic elements.",
     },
   ];
 
