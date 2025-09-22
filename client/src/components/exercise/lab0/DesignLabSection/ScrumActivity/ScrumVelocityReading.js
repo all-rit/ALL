@@ -27,9 +27,14 @@ const ScrumVelocityReading = () => {
     <div className={"tw-p-3 tw-text-left"}>
       <h2 className={"tw-title"}> Sprint Velocity </h2>
       <p className={"tw-py-3 tw-body-text"}>
-        Great job getting your development schedule set up. But one sprint
-        looked a little different than the others. Take a look at the sprint
-        cards below. What do you see that’s different?
+        Great job getting your development schedule set up! Each sprint card
+        displays its <strong>VELOCITY</strong>, which represents the average
+        amount of work that a <strong>SCRUM</strong> team can handle in a
+        sprint. Velocity is determined by summing the story points from fully
+        completed user stories across recent sprints, then dividing by the
+        number of sprints. Take a look at the sprint cards below, one sprint
+        looks a little different than the others. What do you see that’s
+        different?
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
         <Card color={"#6D67E6"} velocity={"6"}>
