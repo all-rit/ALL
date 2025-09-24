@@ -27,7 +27,7 @@ const ALLSnackbar = () => {
         vertical: state.main.snackbar.yPosition || "bottom",
         horizontal: state.main.snackbar.xPosition || "left",
       }}
-      style={{ height: 100, width: 200 }}
+      style={{ height: 100, width: 700 }}
     >
       <SnackbarContent
         sx={{
