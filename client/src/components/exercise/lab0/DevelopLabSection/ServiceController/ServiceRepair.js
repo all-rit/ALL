@@ -60,7 +60,9 @@ const ServiceRepair = (props) => {
 
   return (
     <div
-      className={"code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg"}
+      className={
+        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[14px]"
+      }
     >
       <ReactText>const db = require(&apos;../../database&apos;);</ReactText>
       <br />

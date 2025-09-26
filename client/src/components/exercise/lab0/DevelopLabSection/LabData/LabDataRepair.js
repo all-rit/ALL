@@ -119,7 +119,7 @@ const DataRepair = (props) => {
   return (
     <div
       className={
-        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[16px]"
+        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[14px]"
       }
     >
       <div className={"tw-flex tw-w-full tw-flex-wrap"}>
@@ -171,8 +171,8 @@ const DataRepair = (props) => {
               &#47;&#47; Enter the correct category for this lab
             </CommentText>
           </CodeLine>
-          <JSONText>&apos;/focusOrderThumbnail.jpeg&apos;</JSONText>
-          <div className={"tw-flex tw-w-full tw-items-center tw-py-1"}>
+          <JSONText>&apos;/focusOrderThumbnail.jpeg&apos;,</JSONText>
+          <div className={"tw-flex tw-w-full tw-items-center"}>
             <Dropdown
               toggle={toggleDescriptionDropdown}
               isOpen={descriptionDropdownOpen}

@@ -25,6 +25,9 @@ const Dropdown = (props) => {
           fontFamily: "monospace",
           backgroundColor: theme === DARK ? "#333" : "#fff",
           color: theme === DARK ? "#fff" : "#333",
+          fontSize: 14,
+          marginTop: 1,
+          marginBottom: 1,
         }}
         caret
       >
