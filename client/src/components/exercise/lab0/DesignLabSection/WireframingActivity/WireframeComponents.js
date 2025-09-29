@@ -133,9 +133,11 @@ const WireframeComponents = () => {
           "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl tw-p-4 " +
           (selectedComponent &&
           selectedComponent.componentName === component.componentName
-            ? "tw-shadow-md tw-translate-y-1"
+            ? "tw-shadow-md tw-translate-y-1 tw-border-4 tw-border-solid tw-border-labBlue"
             : "tw-shadow-2xl hover:tw-shadow-[0_20px_40px_rgba(0,0,0,0.45)]") +
-          " tw-transition tw-duration-200 tw-ease-in-out focus:tw-outline-none focus-visible:tw-ring-4 focus-visible:tw-ring-gray-300 focus-visible:tw-ring-offset-2"
+          " tw-transition tw-duration-200 tw-ease-in-out " +
+          "focus:tw-outline-none focus-visible:tw-outline-none " +
+          "focus-visible:tw-ring-4 focus-visible:tw-ring-gray-300 focus-visible:tw-ring-offset-2"
         }
         aria-pressed={
           selectedComponent &&
