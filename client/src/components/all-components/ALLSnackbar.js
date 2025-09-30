@@ -27,15 +27,15 @@ const ALLSnackbar = () => {
         vertical: state.main.snackbar.yPosition || "bottom",
         horizontal: state.main.snackbar.xPosition || "left",
       }}
-      style={{ height: 100, width: 200 }}
+      style={{ height: 100, width: 700 }}
     >
       <SnackbarContent
         sx={{
           backgroundColor: snackbarColor(),
           color: "white",
           fontFamily: "Poppins, sans-serif",
-          height: 75,
-          minWidth: 200,
+          minHeight: 80,
+          minWidth: 250,
           fontSize: 20,
         }}
         message={state.main.snackbar.message}

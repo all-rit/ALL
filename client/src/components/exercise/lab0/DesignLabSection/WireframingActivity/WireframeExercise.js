@@ -145,7 +145,7 @@ const WireframeExercise = () => {
               content: (
                 <div
                   className={
-                    "tw-p-1 tw-flex xl:lg:md:tw-flex-row sm:xs:tw-flex-col tw-items-center"
+                    "tw-w-full tw-h-full tw-p-1 tw-flex xl:lg:md:tw-flex-row sm:xs:tw-flex-col tw-items-center"
                   }
                 >
                   <div
@@ -176,9 +176,9 @@ const WireframeExercise = () => {
                     }
                   >
                     <img
-                      className={"tw-object-contain"}
+                      className="tw-object-contain tw-max-h-60 tw-w-auto"
                       src={HTTPRequest}
-                      alt={"HTTP Request Component"}
+                      alt="HTTP Request Component"
                     />
                   </div>
                 </div>

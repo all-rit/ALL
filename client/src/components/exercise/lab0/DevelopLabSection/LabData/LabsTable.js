@@ -6,7 +6,9 @@ import { labData } from "../../../../../constants/lab0/DevelopALab/LabTableData"
 const LabsTable = () => {
   return (
     <div
-      className={"code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg"}
+      className={
+        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[14px]"
+      }
     >
       <SQLText> CREATE TABLE labs (</SQLText>
       {labData.map((data, index) => {
