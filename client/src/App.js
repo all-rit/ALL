@@ -178,22 +178,22 @@ const App = () => {
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
           }
         >
-          <div className="appBody tw-min-h-[40rem] tw-relative xs:tw-mt-[6rem] md:tw-mt-[8rem]">
-            <div className={"tw-relative"}>
+          <div className="tw-relative xs:tw-mt-[6rem] md:tw-my-[8rem]">
+            <div className={"tw-relative tw-grid tw-h-fit"}>
               {lab !== 0 && (
                 <div
                   className={
-                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw xs:tw-h-[30rem] md:tw-h-[40rem] tw-gap-y-4"
+                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw tw-grid-rows-6 tw-gap-y-4 tw-inset-0"
                   }
                 >
                   <div
                     className={
-                      "tw-row-start-2 tw-col-start-1 tw-row-span-3 tw-col-span-12 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
+                      "tw-row-start-2 tw-col-start-1 tw-row-span-2 tw-col-span-12 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
                     }
                   />
                   <div
                     className={
-                      "tw-row-span-6 tw-col-span-12 tw-col-start-1 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
+                      "tw-row-span-12 tw-col-span-12 tw-col-start-1 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
                     }
                   />
                 </div>
@@ -202,7 +202,7 @@ const App = () => {
               {lab !== 0 ? (
                 <div
                   className={
-                    "tw-grid tw-justify-center tw-grid-cols-12 tw-py-6 tw-h-[40rem] tw-gap-x-3 tw-p-6"
+                    "tw-grid tw-justify-center tw-grid-cols-12 tw-py-6 tw-row-span-2 tw-gap-x-3 tw-p-6"
                   }
                 >
                   <div
@@ -217,10 +217,19 @@ const App = () => {
                   </div>
                   <div
                     className={
-                      "tw-flex-row tw-z-10 xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-4 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
+                      "tw-flex-row tw-z-10 xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-4 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-auto"
                     }
                   >
                     {renderLabs()}
+                    {lab !== 0 && (
+                      <LabFooter
+                        context={context}
+                        quizCompleted={quizCompleted}
+                        setQuizCompleted={setQuizCompleted}
+                        isImagine={isImagine}
+                      />
+                    )}
+                    {body !== 2 && <SiteAccessibilityButton />}
                   </div>
                 </div>
               ) : (
@@ -232,15 +241,6 @@ const App = () => {
           </div>
           {lab === 0 && !isImagine && <MainFooter />}
           <ALLSnackbar />
-          {lab !== 0 && (
-            <LabFooter
-              context={context}
-              quizCompleted={quizCompleted}
-              setQuizCompleted={setQuizCompleted}
-              isImagine={isImagine}
-            />
-          )}
-          {body !== 2 && <SiteAccessibilityButton />}
         </Suspense>
       </div>
     </>

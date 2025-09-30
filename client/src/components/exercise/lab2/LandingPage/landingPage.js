@@ -21,7 +21,7 @@ const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
       <div id="Header" className={"tw-px-6"}>
         <p className="tw-title tw-text-left">Exercise Start</p>
       </div>
-      <div id="Body">
+      <div id="Body" className={"tw-overflow-y-scroll tw-h-[30rem]"}>
         <MainInstructions />
         <div className="mainInstructionsContainer tw-py-4 tw-text-left">
           <p className="tw-body-text tw-font-medium">

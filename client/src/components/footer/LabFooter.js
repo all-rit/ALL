@@ -9,6 +9,7 @@ import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../reducers/MainContext";
 import { EXERCISE_IN_PROGRESS } from "../../constants/notifications";
+import { ArrowBack, ArrowForward, Home } from "@mui/icons-material";
 
 const mapStateToProps = (state) => {
   return {
@@ -50,21 +51,22 @@ const LabFooter = (props) => {
   }, []);
 
   return (
-    <div className={"xs:tw-mt-0 md:tw-mt-24 tw-mb-6 tw-z-10"}>
+    <div className={"tw-z-10"}>
       {display && (
         <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div
-            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-ml-6 tw-mr-[10%]`}
+            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-mx-6`}
             style={{ display: display ? "flex" : "none" }}
           >
             {body > 0 && (
               <button
-                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
+                className="tw-flex tw-items-center tw-justify-between tw-py-2 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-w-32 tw-px-6 hover:tw-bg-labYellow"
                 onClick={() => handleOnClick(body - 1)}
                 style={{
                   opacity: display ? "1" : "0",
                 }}
               >
+                <ArrowBack />
                 BACK
               </button>
             )}
@@ -72,17 +74,17 @@ const LabFooter = (props) => {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-items-center tw-justify-center"
+                className="tw-flex tw-items-center tw-justify-between tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-w-32 tw-px-6 hover:tw-bg-labYellow"
                 onClick={navigateHome}
                 style={{
                   display: display ? "1" : "0",
                 }}
               >
-                Home
+                <Home /> Home
               </button>
             ) : (
               <button
-                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue`}
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-between tw-cursor-pointer tw-font-medium tw-rounded-full tw-text-white tw-bg-primary-blue tw-border-0 tw-shadow tw-w-32 tw-px-6 hover:tw-bg-labBlue`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -90,13 +92,14 @@ const LabFooter = (props) => {
                 disabled={body === 4}
               >
                 NEXT
+                <ArrowForward />
               </button>
             )}
           </div>
         </div>
       )}
       {!display && (
-        <p className="tw-mb-[2rem] tw-mt-5 tw-body-text tw-font-bold tw-text-center">
+        <p className="tw-mb-[2rem] tw-body-text tw-font-bold tw-text-center">
           The previously available navigation is disabled until the exercise is
           complete.
         </p>

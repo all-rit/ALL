@@ -279,7 +279,7 @@ class Main extends Component {
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
           <div
-            className={"tw-rounded-lg main "}
+            className={"tw-rounded-lg"}
             style={{ background: exerciseBackground }}
           >
             {changed ? (
