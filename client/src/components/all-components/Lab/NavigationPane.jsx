@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import { EXERCISE_IN_PROGRESS } from "../../../constants/notifications";
+import LabFooter from "../../footer/LabFooter";
 
 const sections = [
   {
@@ -79,14 +80,14 @@ const NavigationPane = (props) => {
     >
       <div
         className={
-          "tw-py-3 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[9rem]"
+          "tw-py-3 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[9rem] tw-shadow-md"
         }
       >
         <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
       </div>
       <div
         className={
-          "tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg"
+          "tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-shadow-md"
         }
       >
         <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
@@ -119,6 +120,14 @@ const NavigationPane = (props) => {
           </div>
         </div>
       </div>
+      {props.labID !== 0 && (
+        <LabFooter
+          context={props.context}
+          quizCompleted={props.quizCompleted}
+          setQuizCompleted={props.setQuizCompleted}
+          isImagine={props.isImagine}
+        />
+      )}
     </div>
   );
 };
@@ -126,6 +135,11 @@ const NavigationPane = (props) => {
 NavigationPane.propTypes = {
   title: PropTypes.string.isRequired,
   state: PropTypes.object,
+  context: PropTypes.shape({}),
+  quizCompleted: PropTypes.bool,
+  setQuizCompleted: PropTypes.func,
+  isImagine: PropTypes.bool,
+  labID: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavigationPane);

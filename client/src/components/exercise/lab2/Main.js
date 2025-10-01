@@ -242,7 +242,7 @@ class Main extends Component {
       onOpenColorChange,
       onCloseColorChange,
       colorChange,
-      onToGreyBackground,
+      // onToGreyBackground,
       onResetSystem,
       onGoBackFromExercise,
       isImagine,
@@ -279,7 +279,7 @@ class Main extends Component {
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
           <div
-            className={"tw-rounded-lg"}
+            className={"tw-rounded-lg tw-min-h-[60vh] tw-overflow-x-hidden"}
             style={{ background: exerciseBackground }}
           >
             {changed ? (
@@ -400,9 +400,6 @@ class Main extends Component {
                                               onCloseColorChange
                                             }
                                             colors={colors}
-                                            toGreyBackground={
-                                              onToGreyBackground
-                                            }
                                             background={baseBackground}
                                           />
                                         ) : (

@@ -181,7 +181,7 @@ function Result(props) {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem] tw-py-6">
+    <div className="tw-flex tw-flex-col tw-align-middle tw-py-6">
       <div className={"tw-flex tw-justify-center tw-flex-col tw-items-center"}>
         <div className="tw-justify-between tw-items-center tw-flex tw-py-6 tw-w-3/4">
           <p className={"tw-rounded-lg tw-text-center tw-title"}>
@@ -192,7 +192,7 @@ function Result(props) {
           />
         </div>
         <div
-          className={`tw-w-full tw-flex tw-flex-col tw-items-center  tw-bg-white tw-rounded-xl tw-py-5 tw-my-5 tw-overflow-y-scroll tw-h-[25rem]`}
+          className={`tw-w-full tw-flex tw-flex-col tw-items-center  tw-bg-white tw-rounded-xl tw-py-5 tw-my-5 tw-overflow-y-scroll `}
         >
           {renderTableData()}
         </div>
