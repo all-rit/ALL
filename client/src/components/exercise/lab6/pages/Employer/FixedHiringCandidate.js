@@ -115,10 +115,10 @@ const FixedHiringCandidate = () => {
       >
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
-            <h3>
+            <p className={"tw-body-text"}>
               Are you sure you wish to select these candidates? The AI advises
               against one or more of them.
-            </h3>
+            </p>
           </div>
         </ModalBody>
         <ModalFooter>

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
 /** Body Components **/
@@ -26,8 +26,6 @@ import { Sections } from "./constants/index";
 import Header from "./components/header/header";
 // import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
-import NavigationPane from "./components/all-components/Lab/NavigationPane";
-import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -50,6 +48,9 @@ import "./assets/stylesheets/main.scss";
 import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
+const LabWindow = lazy(
+  () => import("./components/all-components/Lab/LabWindow"),
+);
 const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
@@ -184,56 +185,17 @@ const App = () => {
           <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
             <div className={`tw-relative tw-grid tw-h-[95%]`}>
               {labInProgress ? (
-                <div className={"tw-absolute tw-top-[4rem]"}>
-                  <div className={""}>
-                    {/* Blue and Yellow stripes*/}
-                    <div
-                      className={
-                        "tw-absolute tw-grid tw-grid-cols-12 tw-w-lvw tw-gap-y-4 tw-inset-3"
-                      }
-                    >
-                      <div
-                        className={
-                          "tw-mt-16 tw-row-start-1 tw-col-start-1 tw-row-span-6 tw-col-span-12 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
-                        }
-                      />
-                      <div
-                        className={
-                          "tw-row-span-8 tw-col-span-12 tw-col-start-1 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
-                        }
-                      />
-                    </div>
-                    {/* Nav Pane and Lab Window */}
-                    <div
-                      className={
-                        "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-w-full tw-gap-x-[5rem]"
-                      }
-                    >
-                      <div
-                        className={
-                          "tw-flex tw-col-start-1 tw-mx-2 tw-col-span-2 tw-max-h-[40rem]"
-                        }
-                      >
-                        <NavigationPane
-                          labID={lab}
-                          title={Sections[lab].fullname}
-                          context={context}
-                          quizCompleted={quizCompleted}
-                          setQuizCompleted={setQuizCompleted}
-                          isImagine={isImagine}
-                        />
-                        {body !== 2 && <SiteAccessibilityButton />}
-                      </div>
-                      <div
-                        className={
-                          "tw-flex tw-z-10 tw-max-h-[75vh] tw-relative xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-3 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
-                        }
-                      >
-                        {renderLabs()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <LabWindow
+                  lab={lab}
+                  title={Sections[lab].fullname}
+                  context={context}
+                  quizCompleted={quizCompleted}
+                  setQuizCompleted={setQuizCompleted}
+                  isImagine={isImagine}
+                  body={body}
+                >
+                  {renderLabs()}
+                </LabWindow>
               ) : (
                 <div className={"tw-flex tw-row-span-10 tw-text-center"}>
                   {renderPages()}

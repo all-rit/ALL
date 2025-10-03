@@ -48,7 +48,7 @@ class Main extends Component {
   render() {
     const { actions, state, user } = this.props;
     return (
-      <div className="bottomSpace tw-h-[35rem] tw-overflow-y-scroll tw-p-6">
+      <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
         <Router className="app">
           <ExerciseStart default path="/" actions={actions} />
           <DyslexiaAccessible

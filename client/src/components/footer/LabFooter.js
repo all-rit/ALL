@@ -51,16 +51,16 @@ const LabFooter = (props) => {
   }, []);
 
   return (
-    <div className={"tw-z-10"}>
+    <div className={"tw-z-10 tw-w-full"}>
       {display && (
         <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div
-            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-mx-3`}
+            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-gap-x-1`}
             style={{ display: display ? "flex" : "none" }}
           >
             {body > 0 && (
               <button
-                className="tw-flex tw-items-center tw-justify-between tw-py-3 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-w-28 tw-px-6 hover:tw-bg-labYellow"
+                className="tw-flex tw-items-center tw-justify-center tw-p-3 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow hover:tw-bg-labYellow tw-w-full"
                 onClick={() => handleOnClick(body - 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -74,7 +74,7 @@ const LabFooter = (props) => {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="tw-flex tw-items-center tw-justify-between tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-w-28 tw-px-6 hover:tw-bg-labYellow"
+                className="tw-flex tw-items-center tw-justify-center tw-gap-x-2 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full"
                 onClick={navigateHome}
                 style={{
                   display: display ? "1" : "0",
@@ -84,7 +84,7 @@ const LabFooter = (props) => {
               </button>
             ) : (
               <button
-                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-between tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-w-28 tw-px-6 tw-py-3 hover:tw-bg-labYellow hover:tw-shadow-lg`}
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
