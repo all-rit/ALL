@@ -48,6 +48,7 @@ import "./assets/stylesheets/main.scss";
 import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
+import { Spinner } from "reactstrap";
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
 );
@@ -177,13 +178,10 @@ const App = () => {
         className={`overflow-x-hidden tw-h-lvh ${labInProgress || isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
       >
         <Header isImagine={isImagine} />
-        <Suspense
-          fallback={
-            <div className={"tw-body-text tw-max-h-[50rem]"}> Loading... </div>
-          }
-        >
-          <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-            <div className={`tw-relative tw-grid tw-h-[95%]`}>
+
+        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
+          <div className={`tw-relative tw-grid tw-h-[95%]`}>
+            <Suspense fallback={<Spinner />}>
               {labInProgress ? (
                 <LabWindow
                   lab={lab}
@@ -201,11 +199,11 @@ const App = () => {
                   {renderPages()}
                 </div>
               )}
-            </div>
+            </Suspense>
           </div>
-          {lab === 0 && !isImagine && <MainFooter />}
-          <ALLSnackbar />
-        </Suspense>
+        </div>
+        {lab === 0 && !isImagine && <MainFooter />}
+        <ALLSnackbar />
       </div>
     </>
   );
