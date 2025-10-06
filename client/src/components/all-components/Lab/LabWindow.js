@@ -17,7 +17,7 @@ const LabWindow = (props) => {
   } = props;
 
   return (
-    <div className={"tw-absolute tw-top-[3rem] tw-h-3/4"}>
+    <div className={"tw-absolute tw-top-[2rem] tw-h-3/4"}>
       <div
         className={
           "xs:tw-flex md:tw-hidden tw-col-span-12 tw-justify-center tw-w-full"
@@ -53,7 +53,7 @@ const LabWindow = (props) => {
         >
           <div
             className={
-              "tw-flex tw-col-start-1 tw-mx-2 tw-col-span-2 tw-max-h-[40rem]"
+              "tw-flex tw-col-start-1 tw-mx-2 tw-col-span-2 tw-max-h-[77vh]"
             }
           >
             <NavigationPane

@@ -175,7 +175,11 @@ const App = () => {
   return (
     <>
       <div
-        className={`overflow-x-hidden tw-h-lvh ${labInProgress || isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
+        className={`overflow-x-hidden ${
+          labInProgress || isImagine
+            ? "overflow-y-hidden tw-h-lvh"
+            : "overflow-y-auto min-h-screen"
+        }`}
       >
         <Header isImagine={isImagine} />
         <div className={`tw-relative ${labInProgress && "tw-h-[90%]"}`}>
