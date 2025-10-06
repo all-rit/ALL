@@ -118,7 +118,7 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className={`tw-body-text tw-font-bold tw-my-0 ${props.isImagine ? "tw-mb-[0.5rem]" : "tw-h-[8rem]"}`}
+      className={`tw-h-[8rem] tw-body-text tw-font-bold tw-my-0 ${props.isImagine && "tw-mb-[0.5rem]"}`}
     >
       <div
         className={`tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}

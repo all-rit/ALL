@@ -17,7 +17,7 @@ const LabWindow = (props) => {
   } = props;
 
   return (
-    <div className={"tw-absolute tw-top-[3rem] tw-h-4/5"}>
+    <div className={"tw-absolute tw-top-[3rem] tw-h-3/4"}>
       <div
         className={
           "xs:tw-flex md:tw-hidden tw-col-span-12 tw-justify-center tw-w-full"
@@ -68,7 +68,7 @@ const LabWindow = (props) => {
           </div>
           <div
             className={
-              "tw-flex tw-z-10 tw-max-h-[75vh] tw-relative xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-3 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
+              "tw-flex tw-z-10 tw-relative xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 tw-p-3 md:tw-col-span-9 lg:tw-col-start-3 lg:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
             }
           >
             {children}

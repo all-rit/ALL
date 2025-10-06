@@ -178,9 +178,8 @@ const App = () => {
         className={`overflow-x-hidden tw-h-lvh ${labInProgress || isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
       >
         <Header isImagine={isImagine} />
-
-        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-          <div className={`tw-relative tw-grid tw-h-[95%]`}>
+        <div className={`tw-relative ${labInProgress && "tw-h-[90%]"}`}>
+          <div className={`tw-relative tw-grid tw-h-full`}>
             <Suspense fallback={<Spinner />}>
               {labInProgress ? (
                 <LabWindow
