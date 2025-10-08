@@ -44,6 +44,10 @@ const ScrumIntroduction = () => {
         they are working on today, and if they have any blockers.
       </p>
       <p className={"tw-body-text tw-py-6"}>
+        For the Accessible Learning Labs (ALL), all teams will be using SCRUM to
+        manage their workflows to ensure efficency and adaptability.
+      </p>
+      <p className={"tw-body-text tw-py-6"}>
         Click the <strong> Next</strong> button below to move on to the Sprint
         Planning exercise.
       </p>

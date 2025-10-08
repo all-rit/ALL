@@ -8,7 +8,8 @@ const Card = (props) => {
 
   return (
     <div
-      className={`tw-rounded-xl tw-bg-[${color}] tw-p-3 tw-w-[12rem] tw-h-[15rem] tw-flex tw-flex-col tw-text-white`}
+      className="tw-rounded-xl tw-p-3 tw-w-[12rem] tw-h-[15rem] tw-flex tw-flex-col tw-text-white"
+      style={{ backgroundColor: color }}
     >
       <strong>Velocity: {velocity}</strong>
       {children}
@@ -27,9 +28,20 @@ const ScrumVelocityReading = () => {
     <div className={"tw-p-3 tw-text-left"}>
       <h2 className={"tw-title"}> Sprint Velocity </h2>
       <p className={"tw-py-3 tw-body-text"}>
-        Great job getting your development schedule set up. But one sprint
-        looked a little different than the others. Take a look at the sprint
-        cards below. What do you see that’s different?
+        Great job getting your development schedule set up! A{" "}
+        <strong>STORY POINT</strong> is a unit of measure used in a project to
+        estimate the effort required to implement a single user story. These are
+        assigned based on complexity, amount of work, and potential challenges,
+        not necessarily time.
+      </p>
+      <p className={"tw-py-3 tw-body-text"}>
+        Each sprint card displays its <strong>VELOCITY</strong>, which
+        represents the average amount of work that a Scrum team can handle in a
+        sprint. Velocity is determined by summing the story points from fully
+        completed user stories across recent sprints, then dividing by the
+        number of sprints. Take a look at the sprint cards below, one sprint
+        looks a little different than the others. What do you see that’s
+        different?
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
         <Card color={"#6D67E6"} velocity={"6"}>
@@ -60,7 +72,8 @@ const ScrumVelocityReading = () => {
         The story velocity in the purple story card on the left has double the
         number of stories (or velocity) of the green sprint card. When
         scheduling a sprint, its imperative to not overload developers or make
-        unrealistic expectations. Below, you’ll see a much more attainable goal.
+        unrealistic expectations. Below, you&apos;ll see a much more attainable
+        goal.
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
         <Card color={"#6D67E6"} velocity={"3"}>
@@ -75,7 +88,7 @@ const ScrumVelocityReading = () => {
         <Card color={"#FC7AAC"} velocity={"3"}>
           <ul className={"tw-px-4 tw-text-sm"}>
             <li className={"tw-list-decimal"}>Create Screen Reader</li>
-            <li className={"tw-list-decimal"}> Create Tab through Nav</li>
+            <li className={"tw-list-decimal"}>Create Tab through Nav</li>
             <li className={"tw-list-decimal"}>Create Out of Order Tab Nav</li>
           </ul>
         </Card>

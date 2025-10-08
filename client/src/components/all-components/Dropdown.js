@@ -25,6 +25,9 @@ const Dropdown = (props) => {
           fontFamily: "monospace",
           backgroundColor: theme === DARK ? "#333" : "#fff",
           color: theme === DARK ? "#fff" : "#333",
+          fontSize: 14,
+          marginTop: 1,
+          marginBottom: 1,
         }}
         caret
       >
@@ -33,7 +36,11 @@ const Dropdown = (props) => {
       <DropdownMenu>
         {options.map((option) => {
           return (
-            <DropdownItem key={option} onClick={() => pickOption(option)}>
+            <DropdownItem
+              style={{ fontSize: 14 }}
+              key={option}
+              onClick={() => pickOption(option)}
+            >
               {option}
             </DropdownItem>
           );
