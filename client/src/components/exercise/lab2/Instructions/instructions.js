@@ -14,7 +14,7 @@ const Instructions = ({
 }) => {
   return (
     <div>
-      <div className="instruction tw-flex tw-flex-row tw-w-100 tw-mx-3 tw-justify-between">
+      <div className="instruction tw-flex tw-flex-row tw-mx-3 tw-justify-between">
         <div
           className={
             "tw-flex tw-flex-row tw-gap-x-6 tw-align-middle tw-justify-start tw-items-center"
