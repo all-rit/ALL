@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function QuestionCount(props) {
   return (
-    <div className="tw-body-text tw-text-center">
+    <div className="tw-text-center tw-sub-title tw-font-bold">
       Question <span>{props.counter}</span>
     </div>
   );

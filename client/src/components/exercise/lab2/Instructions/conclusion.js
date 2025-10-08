@@ -8,7 +8,7 @@ const Conclusion = ({ resetSystem }) => {
   };
 
   return (
-    <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-center">
+    <div className=" tw-flex tw-flex-col tw-p-6 tw-text-justify tw-justify-center">
       <p className="tw-title">Conclusion</p>
       <p className="tw-body-text tw-font-medium tw-pt-6">
         Thank you for using our system to advance your understanding of software

@@ -35,7 +35,7 @@ const FourthInstructions = ({
   };
 
   return (
-    <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
+    <div className=" tw-flex tw-flex-col tw-p-6 tw-text-justify tw-justify-between">
       <p className="tw-title">Exercise Complete</p>
       <div>
         <p className="tw-body-text">

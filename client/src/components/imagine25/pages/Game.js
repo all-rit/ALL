@@ -44,7 +44,7 @@ const Analysis = () => {
           colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
           "\" shirt. Your teammate's points cannot be added due to error. Your team has been disqualified.",
         control:
-          "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
+          "Congrats on winning! You may collect a prize after completing  the post survery for being so awesome sauce.",
       };
 
       setContent(

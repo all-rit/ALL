@@ -91,7 +91,7 @@ const Main = (props) => {
   const [newLabTopics, setNewLabTopics] = useState([]);
 
   return (
-    <div className={"tw-h-[40rem] tw-overflow-y-scroll"}>
+    <div className={"tw-overflow-y-scroll"}>
       <Lab0Context.Provider
         value={{
           handleNav,
@@ -103,7 +103,7 @@ const Main = (props) => {
           setNewLabTopics,
         }}
       >
-        <Router className={"tw-p-3 tw-h-[40rem]"}>
+        <Router className={"tw-p-3"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
 

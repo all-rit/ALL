@@ -66,7 +66,7 @@ class Header extends Component {
     }
 
     return (
-      <div className="tw-rounded-t-lg tw-items-center tw-h-[5rem]">
+      <div className="tw-rounded-t-lg tw-items-center">
         <div className={"tw-w-full"}>
           {aboutState ? (
             <LabButton onClick={closeAboutPage} label={"Back"} />
