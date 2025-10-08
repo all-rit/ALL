@@ -4,6 +4,7 @@ import DroppableColumn from "./DroppableColumn";
 import DroppableBank from "./DroppableBank";
 import PropTypes from "prop-types";
 import LabButton from "../LabButton";
+import StatusBanner from "../StatusBanner";
 
 /**
  * Use this format to pass in columns, bank and correct assignments
@@ -200,7 +201,7 @@ const DragDropGame = ({
           "tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center tw-p-6"
         }
       >
-        {message && <p className={msgStyle}>{message}</p>}
+        {message && <StatusBanner style={msgStyle}>{message}</StatusBanner>}
         <LabButton
           onClick={correct ? handleNav : verifyPlacement}
           label={correct ? "Next" : "Submit"}

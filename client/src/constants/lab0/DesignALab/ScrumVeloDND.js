@@ -14,7 +14,7 @@ const initialBank = [
 2. Hearing Mismatched Labels
 3. Explanation of the Inaccessibility
     `,
-    color: "tw-bg-[#F83F3F]",
+    color: "tw-bg-[#FF8DA1]",
     isCorrect: true,
   },
   {

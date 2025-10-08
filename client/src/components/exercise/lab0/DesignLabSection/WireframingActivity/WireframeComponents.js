@@ -7,6 +7,7 @@ import DragAndDrop from "../../../../../assets/images/lab0/Lab0-DragAndDropCompo
 import labButton from "../../../../../assets/images/lab0/Lab0-LabButtonComponent.PNG";
 // import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
 import { SECTION_STATUSES } from "../../../../../constants/lab0";
+import StatusBanner from "../../../../all-components/StatusBanner";
 
 const WireframeComponents = () => {
   const { handleNav } = useContext(lab0Context);
@@ -243,12 +244,9 @@ const WireframeComponents = () => {
         </div>
       </div>
       {message && (
-        <p
-          className={`${!isCorrect ? "tw-bg-error" : "tw-bg-success"} tw-text-center tw-w-1/2 tw-justify-self-center tw-p-4 tw-my-1 
-            tw-text-white tw-rounded-md tw-mb-3`}
-        >
+        <StatusBanner style={`${!isCorrect ? "tw-bg-error" : "tw-bg-success"}`}>
           {message}
-        </p>
+        </StatusBanner>
       )}
       <div className={"tw-flex tw-justify-center tw-py-6"}>
         <LabButton

@@ -152,13 +152,6 @@ const Main = (props) => {
           <RoutingRepair path={ROUTES.SECTION_ROUTING_REPAIR} />
           <BackendTipsTricks path={ROUTES.SECTION_BACKEND_TIPS_TRICKS} />
 
-          {/*// Scrum Activity*/}
-          <ScrumIntroduction path={"/ScrumIntro"} />
-          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
-          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
-          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
-
-          <DesignLabEnd path={"/DesignLabEnd"} />
           {/* Frontend Pages */}
           <FrontendIntroduction path={ROUTES.SECTION_FRONTEND_INTRODUCTION} />
           <Boilerplate path={ROUTES.SECTION_BOILERPLATE} />

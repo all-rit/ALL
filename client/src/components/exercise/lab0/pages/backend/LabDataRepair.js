@@ -3,7 +3,7 @@ import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
 import DataRepair from "../../DevelopLabSection/LabData/LabDataRepair";
 import LabsTable from "../../DevelopLabSection/LabData/LabsTable";
-import SuccessBanner from "../../../../all-components/SuccessBanner";
+import StatusBanner from "../../../../all-components/StatusBanner";
 
 export const LabDataRepair = () => {
   const [repairComplete, setRepairComplete] = useState(false);
@@ -30,7 +30,7 @@ export const LabDataRepair = () => {
           proper data for each empty column.
         </p>
         <DataRepair setRepairComplete={setRepairComplete} />
-        {repairComplete && <SuccessBanner message={"Repair Complete!"} />}
+        {repairComplete && <StatusBanner>Repair Complete!</StatusBanner>}
       </Page.Body>
     </Page>
   );

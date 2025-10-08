@@ -3,6 +3,7 @@ import LabButton from "../../../../all-components/LabButton";
 import Lab0Context from "../../Lab0Context";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import StatusBanner from "../../../../all-components/StatusBanner";
 
 const DesignNewCategory = () => {
   const { handleNav } = useContext(Lab0Context);
@@ -145,11 +146,11 @@ const DesignNewCategory = () => {
         </div>
         <div className={"tw-w-full tw-justify-center tw-items-center tw-pt-10"}>
           {message && (
-            <p
-              className={`tw-text-2xl ${submitted ? "tw-bg-success" : "tw-bg-error"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md tw-whitespace-pre-line tw-mb-8`}
+            <StatusBanner
+              style={`${submitted ? "tw-bg-success" : "tw-bg-error"}`}
             >
               {message}
-            </p>
+            </StatusBanner>
           )}
           <LabButton
             onClick={submitted ? navigateNext : handleSubmit}

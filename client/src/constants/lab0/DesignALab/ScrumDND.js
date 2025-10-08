@@ -14,7 +14,7 @@ const initialBank = [
 3. Create Newly Accessible Webpage
 4. Create Key Takeaways
     `,
-    color: "tw-bg-[#F83F3F]",
+    color: "tw-bg-[#FF8DA1]",
     isCorrect: true,
   },
   {
