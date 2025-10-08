@@ -24,7 +24,7 @@ const ExperientialIntroduction = () => {
       <p>
         For example, in the Accessibility to Colorblindness exercise, users are
         given the opportunity to play a game designed with poor color
-        contrasting. They first experience the poor design in standard color
+        contrasting. Their first experience the poor design in standard color
         view, but are then asked to play the same game as someone who suffers
         from a color vision defect, rendering the activity unplayable as the
         colors appear identical.
