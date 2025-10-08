@@ -80,7 +80,7 @@ const NavigationPane = (props) => {
     >
       <div
         className={
-          "tw-py-3 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[9rem] tw-shadow-md"
+          "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
         }
       >
         <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
@@ -113,7 +113,13 @@ const NavigationPane = (props) => {
                   >
                     {title}
                   </p>
-                  <p className={"tw-pl-4 tw-body-text"}>{subTitle}</p>
+                  <p
+                    className={
+                      "tw-pl-4 tw-body-text md:tw-text-sm lg:tw-text-[16px]"
+                    }
+                  >
+                    {subTitle}
+                  </p>
                 </a>
               );
             })}
