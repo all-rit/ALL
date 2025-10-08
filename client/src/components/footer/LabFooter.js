@@ -60,7 +60,7 @@ const LabFooter = (props) => {
           >
             {body > 0 && (
               <button
-                className="tw-flex tw-items-center tw-justify-center tw-p-3 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow hover:tw-bg-labYellow tw-w-full"
+                className="tw-flex tw-items-center tw-justify-center tw-p-3 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-text-[14px] tw-gap-x-1 tw-border-0 tw-shadow hover:tw-bg-labYellow tw-w-full"
                 onClick={() => handleOnClick(body - 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -74,7 +74,7 @@ const LabFooter = (props) => {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="tw-flex tw-items-center tw-justify-center tw-gap-x-2 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full"
+                className="tw-flex tw-items-center tw-justify-center tw-gap-x-2 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-text-[14px] tw-gap-x-1 tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full"
                 onClick={navigateHome}
                 style={{
                   display: display ? "1" : "0",
@@ -84,7 +84,7 @@ const LabFooter = (props) => {
               </button>
             ) : (
               <button
-                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full`}
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-text-[14px] tw-gap-x-1 tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
