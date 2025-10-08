@@ -80,7 +80,7 @@ const NavigationPane = (props) => {
     >
       <div
         className={
-          "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
+          "tw-py-4 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
         }
       >
         <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
@@ -91,9 +91,13 @@ const NavigationPane = (props) => {
         }
       >
         <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
-          <h4 className={"tw-font-poppins tw-font-bold tw-m-0 tw-pl-4"}>
+          <p
+            className={
+              "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-text-xl tw-leading-tight"
+            }
+          >
             Table of Contents
-          </h4>
+          </p>
           <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
             {sections.map(({ title, subTitle, section }) => {
               return (
@@ -102,7 +106,7 @@ const NavigationPane = (props) => {
                   href={"#"}
                   onClick={() => handleOnClick(section)}
                   className={
-                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
+                    "tw-flex tw-flex-col tw-items-start tw-leading-snug tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
                   }
                 >
                   <p
@@ -115,7 +119,7 @@ const NavigationPane = (props) => {
                   </p>
                   <p
                     className={
-                      "tw-pl-4 tw-body-text md:tw-text-sm lg:tw-text-[16px]"
+                      "tw-pl-4 tw-body-text sm:tw-text-sm xl:tw-text-[16px] tw-leading-tight"
                     }
                   >
                     {subTitle}

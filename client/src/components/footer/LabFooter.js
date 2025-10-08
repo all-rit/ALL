@@ -100,7 +100,7 @@ const LabFooter = (props) => {
       )}
       {!display && (
         <div className={"tw-w-full tw-bg-primary-yellow tw-rounded-lg tw-p-2"}>
-          <p className="tw-w-full tw-body-text tw-font-bold tw-text-center">
+          <p className="tw-w-full tw-body-text tw-font-bold tw-text-center sm:tw-text-sm md:tw-leading-tight xl:tw-text-[16px]">
             The previously available navigation is disabled until the exercise
             is complete.
           </p>
