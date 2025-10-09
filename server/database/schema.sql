@@ -3498,7 +3498,7 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (34, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
 (35, 'William', 'Herrick', null, null, null, null, null, true, null, null, null),
 (36, 'Vivian', 'Hernandez', null, null, null, null, null, true, null, null, null),
-(37, 'Kristen', 'Fang', null, null, null, null, null, true, null, null, null),
+(37, 'Kristen', 'Fang', 'Engineer', '/Kristen_Fang.jpg', '[{"link":"https://www.linkedin.com/in/kristenfang/","network":"linkedin"}]', null, '2024-Present', true, null, 3, '{0}'),
 (38, 'Darlyn', 'Gomez', null, null, null, null, null, true, null, null, null);
 
 INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
