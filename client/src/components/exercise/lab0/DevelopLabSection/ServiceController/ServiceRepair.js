@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import ReactText from "../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import MultiTab from "../../../../all-components/CodeBlock/Components/MultiTab";
-import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import PropTypes from "prop-types";
 import {
   USER_ID,
   ATTEMPT_TIME,
   FIND_ONE,
 } from "../../pages/backend/ServiceControllerRepair";
-import { CommentText } from "../../../../all-components/CodeBlock/StyleComponents";
-import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
+import {
+  ReactText,
+  CommentText,
+} from "../../../../all-components/CodeBlock/StyleComponents";
 import { DARK } from "../../../../../constants/themes";
-import Dropdown from "../../../../all-components/CodeDropdown";
+import {
+  MultiTab,
+  Tab,
+  CodeLine,
+  CodeDropdown,
+} from "../../../../all-components/CodeBlock/Components";
 
 const ServiceRepair = (props) => {
   const { serviceFix, setServiceFix } = props;
@@ -72,14 +76,20 @@ const ServiceRepair = (props) => {
       <CodeLine>
         <MultiTab numberOfTabs={2} />
         <CommentText>
-          &#x2f;&#x2f; In this function, we want to FIND or GET the exercise
-          data
+          &#x2f;&#x2f; In this function, we want to FIND or GET the exact
+          exercise data.
+        </CommentText>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={2} />
+        <CommentText>
+          &#x2f;&#x2f; Which option would be the best function for that?
         </CommentText>
       </CodeLine>
       <div className={"tw-flex tw-items-center"}>
         <MultiTab numberOfTabs={2} />
         <ReactText>const exerciseResponse = await db.ExerciseLab0.</ReactText>
-        <Dropdown
+        <CodeDropdown
           toggle={toggleOperationDropdown}
           isOpen={operationDropdownOpen}
           initialLabel={operationDropdownLabel}
@@ -104,7 +114,7 @@ const ServiceRepair = (props) => {
       <CodeLine>
         <MultiTab numberOfTabs={4} />
         <ReactText>order: [(&apos;</ReactText>
-        <Dropdown
+        <CodeDropdown
           toggle={toggleOrderDropdown}
           isOpen={orderDropdownOpen}
           initialLabel={orderDropdownLabel}

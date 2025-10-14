@@ -1,12 +1,17 @@
-import ReactText from "../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import Tab from "../../../../all-components/CodeBlock/Components/Tab";
-import MultiTab from "../../../../all-components/CodeBlock/Components/MultiTab";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { PARAMS, USER_ID } from "../../pages/backend/ServiceControllerRepair";
 import { DARK } from "../../../../../constants/themes";
-import Dropdown from "../../../../all-components/CodeDropdown";
-import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
+import {
+  MultiTab,
+  Tab,
+  CodeLine,
+  CodeDropdown,
+} from "../../../../all-components/CodeBlock/Components";
+import {
+  ReactText,
+  CommentText,
+} from "../../../../all-components/CodeBlock/StyleComponents";
 
 const ControllerRepair = (props) => {
   const { controllerFix, setControllerFix } = props;
@@ -69,8 +74,21 @@ const ControllerRepair = (props) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={2} />
+        <CommentText>
+          &#x2f;&#x2f; We see that the above API endpoint has the user&apos;s ID
+          in the URL.
+        </CommentText>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={2} />
+        <CommentText>
+          &#x2f;&#x2f; Where would we want to pull the ID from?
+        </CommentText>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={2} />
         <ReactText>const &#123; userID &#125; = req.</ReactText>
-        <Dropdown
+        <CodeDropdown
           toggle={toggleRequestDropdown}
           isOpen={requestDropdownOpen}
           initialLabel={requestDropdownLabel}
@@ -83,8 +101,15 @@ const ControllerRepair = (props) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={2} />
+        <CommentText>
+          &#x2f;&#x2f; Make sure you use the exact value that was destructured
+          from the URL.
+        </CommentText>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={2} />
         <ReactText>return await ExerciseService.getExercise(</ReactText>
-        <Dropdown
+        <CodeDropdown
           toggle={toggleArgsDropdown}
           isOpen={argsDropdownOpen}
           initialLabel={argsDropdownLabel}

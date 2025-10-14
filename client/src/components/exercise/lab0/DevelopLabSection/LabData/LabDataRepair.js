@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { labData } from "../../../../../constants/lab0/DevelopALab/LabTableData";
-import Dropdown from "../../../../all-components/CodeDropdown";
 import { DARK } from "../../../../../constants/themes";
 import { LABELS, ANSWERS } from "../../../../../constants/lab0";
 import {
@@ -9,7 +8,10 @@ import {
   CommentText,
 } from "../../../../all-components/CodeBlock/StyleComponents";
 import PropTypes from "prop-types";
-import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
+import {
+  CodeDropdown,
+  CodeLine,
+} from "../../../../all-components/CodeBlock/Components";
 
 const DataRepair = (props) => {
   const { setRepairComplete } = props;
@@ -144,7 +146,7 @@ const DataRepair = (props) => {
             <JSONText>&apos;Accessibility to Focus Order&apos;,</JSONText>
           </CodeLine>
           <CodeLine>
-            <Dropdown
+            <CodeDropdown
               toggle={toggleShortNameDropdown}
               isOpen={shortNameDropdownOpen}
               initialLabel={INITIAL_SHORT_NAME_LABEL}
@@ -159,7 +161,7 @@ const DataRepair = (props) => {
             </CommentText>
           </CodeLine>
           <CodeLine>
-            <Dropdown
+            <CodeDropdown
               toggle={toggleCategoryDropdown}
               isOpen={categoryDropdownOpen}
               initialLabel={INITIAL_CATEGORY_LABEL}
@@ -175,7 +177,7 @@ const DataRepair = (props) => {
           </CodeLine>
           <JSONText>&apos;/focusOrderThumbnail.jpeg&apos;,</JSONText>
           <div className={"tw-flex tw-w-full tw-items-center"}>
-            <Dropdown
+            <CodeDropdown
               toggle={toggleDescriptionDropdown}
               isOpen={descriptionDropdownOpen}
               initialLabel={INITIAL_SHORT_DESCRIPTION_LABEL}
@@ -197,7 +199,7 @@ const DataRepair = (props) => {
           <JSONText>1,</JSONText>
           <JSONText>&apos;ALL_Lab_1_Lecture_Slides.pptx&apos;,</JSONText>
           <div className={"tw-flex tw-w-full tw-items-center"}>
-            <Dropdown
+            <CodeDropdown
               toggle={toggleWalkthroughDropdown}
               isOpen={walkthroughDropdownOpen}
               initialLabel={INITIAL_WALKTHROUGH_VIDEO_LABEL}
