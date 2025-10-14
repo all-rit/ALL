@@ -44,13 +44,13 @@ const ALLCardRow = (props) => {
         />
         {/* Middle */}
         <div className="tw-p-5">
-          <div className="tw-flex tw-flex-row tw-items-center">
-            <p className="tw-font-calibri">{circlesLabel}: </p>
+          <div className="tw-flex tw-flex-row tw-items-baseline tw-justify-start">
+            <p className="tw-body-text">{circlesLabel}: </p>
             {new Array({ length: circles }).map((_, i) => {
               return (
                 <div
                   key={i}
-                  className={`tw-m-0.5 ${i < circlesFilled ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
+                  className={`tw-m-0.5 ${i < circlesFilled ? "tw-bg-success tw-p-2 tw-mx-2" : "tw-bg-primary-yellow"}`}
                 />
               );
             })}

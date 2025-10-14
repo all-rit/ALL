@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { labData } from "../../../../../constants/lab0/DevelopALab/LabTableData";
-import Dropdown from "../../../../all-components/Dropdown";
+import Dropdown from "../../../../all-components/CodeDropdown";
 import { DARK } from "../../../../../constants/themes";
 import { LABELS, ANSWERS } from "../../../../../constants/lab0";
 import {
@@ -150,6 +150,7 @@ const DataRepair = (props) => {
               initialLabel={INITIAL_SHORT_NAME_LABEL}
               options={SHORT_NAME_OPTIONS}
               setSelection={updateShortName}
+              selectionCorrect={dataRepair.shortName === CORRECT_SHORT_NAME}
               theme={DARK}
             />
             <JSONText>,</JSONText>
@@ -164,6 +165,7 @@ const DataRepair = (props) => {
               initialLabel={INITIAL_CATEGORY_LABEL}
               options={CATEGORY_OPTIONS}
               setSelection={updateCategory}
+              selectionCorrect={dataRepair.category === CORRECT_CATEGORY}
               theme={DARK}
             />
             <JSONText>,</JSONText>
@@ -179,6 +181,9 @@ const DataRepair = (props) => {
               initialLabel={INITIAL_SHORT_DESCRIPTION_LABEL}
               options={DESCRIPTION_OPTIONS}
               setSelection={updateDescription}
+              selectionCorrect={
+                dataRepair.shortDescription === CORRECT_SHORT_DESCRIPTION
+              }
               theme={DARK}
             />
             <JSONText>,</JSONText>
@@ -198,6 +203,9 @@ const DataRepair = (props) => {
               initialLabel={INITIAL_WALKTHROUGH_VIDEO_LABEL}
               options={WALKTHROUGH_OPTIONS}
               setSelection={updateWalkthrough}
+              selectionCorrect={
+                dataRepair.walkthroughVideo === CORRECT_WALKTHROUGH_VIDEO
+              }
               theme={DARK}
             />
             <JSONText>,</JSONText>

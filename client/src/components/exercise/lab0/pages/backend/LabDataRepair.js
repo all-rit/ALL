@@ -30,7 +30,9 @@ export const LabDataRepair = () => {
           proper data for each empty column.
         </p>
         <DataRepair setRepairComplete={setRepairComplete} />
-        {repairComplete && <StatusBanner>Repair Complete!</StatusBanner>}
+        {repairComplete && (
+          <StatusBanner style={"tw-bg-success"}>Repair Complete!</StatusBanner>
+        )}
       </Page.Body>
     </Page>
   );

@@ -86,7 +86,7 @@ export const CoreLabPages = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_CORE_LAB_PAGES_REPAIR} completed={true}>
+    <Page nextPage={ROUTES.SECTION_INTEGRATION} completed={true}>
       <Page.Header>
         <Page.Header.Title>Core Lab Pages</Page.Header.Title>
         <Page.Header.Description>

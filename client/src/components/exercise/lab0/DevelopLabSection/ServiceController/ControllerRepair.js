@@ -3,16 +3,13 @@ import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import MultiTab from "../../../../all-components/CodeBlock/Components/MultiTab";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  ButtonDropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "reactstrap";
 import { PARAMS, USER_ID } from "../../pages/backend/ServiceControllerRepair";
+import { DARK } from "../../../../../constants/themes";
+import Dropdown from "../../../../all-components/CodeDropdown";
+import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
 
 const ControllerRepair = (props) => {
-  const { setControllerFix } = props;
+  const { controllerFix, setControllerFix } = props;
 
   const BODY = "body";
   const QUERY = "query";
@@ -62,93 +59,75 @@ const ControllerRepair = (props) => {
     >
       <ReactText>
         const ExerciseService =
-        require(&apos;../../services/lab0/ExerciseService);
+        require(&apos;../../services/lab0/ExerciseService&apos;);
       </ReactText>
       <br />
       <ReactText>async function getExercise(req) &#123;</ReactText>
-      <div className={"tw-flex"}>
+      <CodeLine>
         <Tab />
         <ReactText>try &#123;</ReactText>
-      </div>
-      <div className={"tw-flex tw-items-center tw-mb-3"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={2} />
         <ReactText>const &#123; userID &#125; = req.</ReactText>
-        <ButtonDropdown
+        <Dropdown
           toggle={toggleRequestDropdown}
           isOpen={requestDropdownOpen}
-        >
-          <DropdownToggle
-            style={{ fontFamily: "monospace", backgroundColor: "#333" }}
-            caret
-          >
-            {requestDropdownLabel}
-          </DropdownToggle>
-          <DropdownMenu>
-            {REQ_OPTIONS.map((option) => {
-              return (
-                <DropdownItem
-                  key={option}
-                  onClick={() => updateRequest(option)}
-                >
-                  {option}
-                </DropdownItem>
-              );
-            })}
-          </DropdownMenu>
-        </ButtonDropdown>
+          initialLabel={requestDropdownLabel}
+          options={REQ_OPTIONS}
+          setSelection={updateRequest}
+          selectionCorrect={controllerFix.request === PARAMS}
+          theme={DARK}
+        />
         <ReactText>;</ReactText>
-      </div>
-      <div className={"tw-flex tw-items-center"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={2} />
         <ReactText>return await ExerciseService.getExercise(</ReactText>
-        <ButtonDropdown toggle={toggleArgsDropdown} isOpen={argsDropdownOpen}>
-          <DropdownToggle
-            style={{ fontFamily: "monospace", backgroundColor: "#333" }}
-            caret
-          >
-            {argsDropdownLabel}
-          </DropdownToggle>
-          <DropdownMenu>
-            {ARGS_OPTIONS.map((option) => {
-              return (
-                <DropdownItem key={option} onClick={() => updateArgs(option)}>
-                  {option}
-                </DropdownItem>
-              );
-            })}
-          </DropdownMenu>
-        </ButtonDropdown>
+        <Dropdown
+          toggle={toggleArgsDropdown}
+          isOpen={argsDropdownOpen}
+          initialLabel={argsDropdownLabel}
+          options={ARGS_OPTIONS}
+          setSelection={updateArgs}
+          selectionCorrect={controllerFix.argument === USER_ID}
+          theme={DARK}
+        />
         <ReactText>);</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <Tab />
         <ReactText>&#125; catch (error) &#123;</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={2} />
         <ReactText>
           console.error(&apos;Error: Could not Find Exercise&apos;, error);
         </ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <Tab />
         <ReactText>&#125;</ReactText>
-      </div>
+      </CodeLine>
       <ReactText>&#125;</ReactText>
       <br />
-      <div className={"tw-flex"}>
+      <CodeLine>
         <ReactText>module.exports = &#123;</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <Tab />
         <ReactText>getExercise</ReactText>
-      </div>
+      </CodeLine>
       <ReactText>&#125;;</ReactText>
     </div>
   );
 };
 
 ControllerRepair.propTypes = {
+  controllerFix: PropTypes.shape({
+    request: PropTypes.string,
+    argument: PropTypes.string,
+  }),
   setControllerFix: PropTypes.func,
 };
 export default ControllerRepair;

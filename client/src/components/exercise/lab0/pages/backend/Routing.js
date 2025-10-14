@@ -228,11 +228,11 @@ export const Routing = () => {
             </li>
             <li>
               <strong>Controller</strong> – The controller unpacks the request,
-              pulling out any important data from
-              <code>req.body</code>, <code>req.params</code>, or{" "}
-              <code>req.session</code>. Then it calls the right service method
-              to do the actual work. Controllers are like the hosts of our API -
-              they welcome guests but don&apos;t cook the meal themselves.
+              pulling out any important data from <code>req.body</code>,{" "}
+              <code>req.params</code>, or <code>req.session</code>. Then it
+              calls the right service method to do the actual work. Controllers
+              are like the hosts of our API - they welcome guests but don&apos;t
+              cook the meal themselves.
             </li>
             <li>
               <strong>Service</strong> – This is where the real work happens.
