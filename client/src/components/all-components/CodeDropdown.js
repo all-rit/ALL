@@ -8,6 +8,25 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { DARK } from "../../constants/themes";
 
+/**
+ * React component for rendering a dropdown for a code block.
+ *
+ * The 'CodeDropdown' component is to be used in conjunction with Repair codeblock components. It gives the developer
+ * the ability to create a code-styled dropdown that simplifies selections and keeps guardrails for answers.
+ *
+ * @param {Object} props - The props for the `CodeLine` component.
+ * @param {Function} props.toggle - The function in the parent component used to open and close the dropdown
+ * @param {boolean} props.isOpen - The boolean value flipped by props.toggle to open/close the dropdown
+ * @param {array} props.options - An array of options that can be selections
+ * @param {string} props.initialLabel - The initial label of the dropdown before an option has been selected
+ * @param {Function} props.setSelection - Function passed in from the parent component that sets the selection
+ * @param {string} props.theme - Value that sets the color theme of the dropdown. Default is DARK.
+ * @param {boolean} props.selectionCorrect - Boolean value that determines the color of the dropdown border
+ * based on selection correctness
+ *
+ * @return {JSX.Element} The rendered component that displays the code line as a row.
+ */
+
 const CodeDropdown = (props) => {
   const {
     toggle,
