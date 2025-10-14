@@ -43,6 +43,7 @@ const LabFooter = (props) => {
       handleRedirect(actions, state.main.lab, section);
     }
   };
+
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
 

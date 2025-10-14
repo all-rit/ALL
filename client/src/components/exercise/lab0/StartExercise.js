@@ -6,9 +6,11 @@ import Lab0Context from "./Lab0Context";
 import { SECTIONS, SECTION_STATUSES } from "../../../constants/lab0/index";
 import ProgressService from "../../../services/lab0/ProgressService";
 import useMainStateContext from "../../../reducers/MainContext";
+import StatusBanner from "../../all-components/StatusBanner";
+import { EXERCISE_IDLE } from "../../../constants";
 
 const StartExercise = (props) => {
-  const { state } = useMainStateContext();
+  const { state, actions } = useMainStateContext();
   const { handleNav } = useContext(Lab0Context);
   const [categories, setCategories] = useState(null);
   const [nextSection, setNextSection] = useState(null);
@@ -45,6 +47,9 @@ const StartExercise = (props) => {
 
   useEffect(() => {
     getProgress();
+    if (nextSection === null) {
+      actions.updateUserState(EXERCISE_IDLE);
+    }
   }, [state.main.user]);
 
   const getCardRowButtonLabel = (section) => {
@@ -102,12 +107,18 @@ const StartExercise = (props) => {
             </div>
           );
         })}
-
-      <LabButton
-        label={verb.toUpperCase()}
-        onClick={() => handleNav(nextSection)}
-        disabled={nextSection === null}
-      />
+      {nextSection ? (
+        <LabButton
+          label={verb.toUpperCase()}
+          onClick={() => handleNav(nextSection)}
+          disabled={nextSection === null}
+        />
+      ) : (
+        <StatusBanner style={"tw-bg-success"}>
+          All exercises complete! You may now move on to the reinforcement
+          section!
+        </StatusBanner>
+      )}
     </div>
   );
 };

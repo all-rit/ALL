@@ -568,128 +568,132 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
     }', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
 ', e'[
   {
-    "question": "What is an audio cue?",
+    "question": "What are the two main categories that a new lab will fall into? (Select all that apply)",
     "answers": [
       {
-        "val": 0,
+        "val": 1,
         "type": "0",
-        "content": "A vibration that conveys key information"
+        "content": "AI/ML",
+        "explanation": "We have multiple labs in the AI/ML sector."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "A playing sound that conveys key information",
-        "explanation": "An audio cue is strictly a sound that doesn’t involve a physical or visual component."
+        "content": "Accessibility",
+        "explanation": "True to our name, we focus heavily on web accessibility."
       },
       {
         "val": 0,
         "type": "2",
-        "content": "A visual indicator that conveys key information"
+        "content": "Cybersecurity"
       },
       {
         "val": 0,
         "type": "3",
-        "content": "None of the above"
+        "content": "Data Structures and Algorithms"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What is the name of the collection of reusable UI/UX elements that ALL developers can pull from to make more interactive exercises?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "UI Utopia"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Component Library",
+        "explanation": "We have a fully-fledged set of reusable components in our component component library."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Extra UX Stuff"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above."
       }
     ],
     "multiChoice": false
   },
   {
-    "question": "How many people (aged 18 and over) with hearing loss are there in the United States?",
+    "question": "How do experiential exercises impact a lab users connection to a subject they are studying? (Select all that apply)",
     "answers": [
       {
-        "val": 0,
+        "val": 1,
         "type": "0",
-        "content": "20-30 million people"
+        "content": "Putting a user in the shoes of someone with a physical limitation gives them an empathic view of another user\'s situation."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "30-40 million people",
-        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing.",
-        "source": "https://www.nidcd.nih.gov/health/age-related-hearing-loss"
-      },
-      {
-        "val": 0,
-        "type": "2",
-        "content": "40-50 million people"
-      },
-      {
-        "val": 0,
-        "type": "3",
-        "content": "50-60 million people"
-      }
-    ],
-    "multiChoice": false
-  },
-  {
-    "question": "When should accessibility be considered in the development process?",
-    "answers": [
-      {
-        "val": 0,
-        "type": "0",
-        "content": "At the end"
-      },
-      {
-        "val": 1,
-        "type": "1",
-        "content": "From the beginning",
+        "content": "A user that experiences someone else\'s physical limitation may be more likely to push for an equitable outcome for that other user.",
         "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
       },
       {
         "val": 0,
         "type": "2",
-        "content": "Whenever the developer feels it\'s necessary"
+        "content": "They don\'t make a big impact on the user."
       },
       {
         "val": 0,
         "type": "3",
-        "content": "Only if it\'s needed for the project"
+        "content": "It decreases the amount of interest the user has in the subject."
       }
     ],
-    "multiChoice": false
+    "multiChoice": true
   },
   {
-    "question": "What does the \'Perceivable\' accessibility principle mean?",
+    "question": "How do we use AGILE and SCRUM to improve our development process?",
     "answers": [
       {
         "val": 0,
         "type": "0",
-        "content": "User interface components and navigation must be operable."
+        "content": "By doing work in time-boxed increments (sprints)."
       },
       {
-        "val": 1,
+        "val": 0,
         "type": "1",
-        "content": "Information and user interface components must be presentable to users in ways they can perceive.",
+        "content": "By holding a retrospective after every sprint to recap our work and improve for future sprints.",
         "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
         "source": "https://www.w3.org/TR/WCAG21/#perceivable"
       },
       {
         "val": 0,
         "type": "2",
-        "content": "Information and the operation of user interface must be understandable."
+        "content": "By holding daily standups to have a quick meeting, give updates, and check for blockers."
       },
       {
-        "val": 0,
+        "val": 1,
         "type": "3",
-        "content": "None of the above"
+        "content": "All of the above"
       }
     ],
     "multiChoice": false
   },
   {
-    "question": "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
+    "question": "What is the order of data flow from when the request hits the API?",
     "answers": [
       {
-        "val": 1,
+        "val": 0,
         "type": "0",
-        "content": "Yes",
-        "explanation": "Users with hearing loss may not perceive audio cues which results in a disadvantage."
+        "content": "Database -> Service -> Endpoint -> Controller",
       },
       {
         "val": 0,
         "type": "1",
-        "content": "No"
+        "content": "Service -> Database -> Controller -> Endpoint"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Endpoint -> Controller -> Service -> Database"
       }
     ],
     "multiChoice": false
