@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
 import ControllerRepair from "../../DevelopLabSection/ServiceController/ControllerRepair";
 import ServiceRepair from "../../DevelopLabSection/ServiceController/ServiceRepair";
-import useMainStateContext from "../../../../../reducers/MainContext";
-import {
-  EXERCISE_COMPLETE,
-  SUCCESS,
-} from "../../../../../constants/notifications";
+import StatusBanner from "../../../../all-components/StatusBanner";
 
 export const FIND_ONE = "findOne";
 export const ATTEMPT_TIME = "attemptTime";
@@ -15,8 +11,6 @@ export const PARAMS = "params";
 export const USER_ID = "userID";
 
 export const ServiceControllerRepair = () => {
-  const { actions } = useMainStateContext();
-
   const [controllerFix, setControllerFix] = useState({
     request: "",
     argument: "",
@@ -35,14 +29,8 @@ export const ServiceControllerRepair = () => {
 
   const repairsComplete = controllerRepairComplete && serviceRepairComplete;
 
-  useEffect(() => {
-    if (repairsComplete) {
-      actions.showSnackbar(EXERCISE_COMPLETE, SUCCESS);
-    }
-  }, [repairsComplete]);
-
   return (
-    <Page nextPage={ROUTES.SECTION_ROUTING} completed>
+    <Page nextPage={ROUTES.SECTION_ROUTING} completed={repairsComplete}>
       <Page.Header>
         <Page.Header.Title>
           Service Layer &amp; Controllers Repair
@@ -85,12 +73,10 @@ export const ServiceControllerRepair = () => {
         <ServiceRepair serviceFix={serviceFix} setServiceFix={setServiceFix} />
       </Page.Body>
       {repairsComplete && (
-        <Page.Footer>
-          <p className={"tw-text-center tw-font-bold tw-mb-6"}>
-            You have successfully completed this repair. Click the next button
-            to move on to the next section.
-          </p>
-        </Page.Footer>
+        <StatusBanner style={"tw-bg-success"}>
+          You have successfully completed this repair. Click the next button to
+          move on to the next section.
+        </StatusBanner>
       )}
     </Page>
   );

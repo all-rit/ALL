@@ -41,7 +41,6 @@ import {
 import {
   FrontendIntroduction,
   Boilerplate,
-  BoilerplateRepair,
   Integration,
   IntegrationRepair,
   CoreLabPages,
@@ -155,7 +154,6 @@ const Main = (props) => {
           {/* Frontend Pages */}
           <FrontendIntroduction path={ROUTES.SECTION_FRONTEND_INTRODUCTION} />
           <Boilerplate path={ROUTES.SECTION_BOILERPLATE} />
-          <BoilerplateRepair path={ROUTES.SECTION_BOILERPLATE_REPAIR} />
           <CoreLabPages path={ROUTES.SECTION_CORE_LAB_PAGES} />
           <CoreLabPagesRepair path={ROUTES.SECTION_CORE_LAB_PAGES_REPAIR} />
           <Integration path={ROUTES.SECTION_INTEGRATION} />

@@ -23,7 +23,7 @@ const filterOptions = [
 ];
 
 const SQLQueryMock = (props) => {
-  const { columns, records } = props;
+  const { columns, records, setComplete } = props;
 
   const [columnWidths, setColumnWidths] = useState({});
   const [initialLoad, setInitialLoad] = useState(false);
@@ -161,6 +161,8 @@ const SQLQueryMock = (props) => {
       setIsExecuting(false);
       setShowResults(true);
     }, 3000);
+
+    setComplete(true);
   };
 
   /**

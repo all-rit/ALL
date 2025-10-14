@@ -93,7 +93,7 @@ export const SchemaDesign = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN_REPAIR} completed>
       <Page.Header>
         <Page.Header.Title>
           Database Design &amp; Schema Models

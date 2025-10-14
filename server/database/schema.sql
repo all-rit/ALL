@@ -95,7 +95,6 @@ create type enum_lab0_progress_section as enum (
     'ServiceControllerRepair', 
     'RoutingRepair', 
     'BackendTipsTricks', 
-    'BoilerplateRepair', 
     'IntegrationRepair',
     'CoreLabPagesRepair',
     'ComponentLibrary',

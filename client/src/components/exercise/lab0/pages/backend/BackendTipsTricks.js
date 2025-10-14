@@ -83,29 +83,28 @@ export const BackendTipsTricks = () => {
                   >
                     Backend Development Order
                   </p>
-                  <div className="tw-flex tw-flex-col sm:tw-flex-row lg:tw-items-end xs:tw-items-center tw-gap-3 tw-w-full tw-flex-1 tw-min-w-0 tw-justify-center tw-pb-2 tw-mx-4">
-                    <div className="tw-flex tw-flex-col tw-items-center tw-h-auto tw-w-[80px] sm:tw-w-[100px]">
-                      <div className="tw-w-full">
+                  <div className="tw-flex tw-items-center tw-p-3">
+                    {/* Schema */}
+                    <div className="tw-flex tw-flex-col tw-h-full tw-items-center tw-justify-end">
+                      <div className="md:tw-w-1/2 lg:tw-w-3/4">
                         <svg
-                          className="tw-w-full tw-h-auto tw-hidden sm:tw-flex"
                           xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 448 512"
+                          viewBox="0 0 500 512"
                         >
                           <path d="M448 80l0 48c0 44.2-100.3 80-224 80S0 172.2 0 128L0 80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6L448 288c0 44.2-100.3 80-224 80S0 332.2 0 288L0 186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6l0 85.9c0 44.2-100.3 80-224 80S0 476.2 0 432l0-85.9z" />
                         </svg>
-                        <p className="tw-body-text tw-text-center tw-font-semibold tw-text-base sm:tw-text-2xl tw-italic tw-pt-4">
-                          Schema
-                        </p>
                       </div>
+                      <p className="tw-body-text tw-font-semibold tw-text-base sm:tw-text-2xl tw-italic tw-pt-4">
+                        Schema
+                      </p>
                     </div>
 
-                    <div className="tw-w-8 sm:tw-w-14 tw-mx-2 sm:tw-mx-4 tw-content-center tw-h-full tw-hidden sm:tw-flex">
-                      {arrow}
-                    </div>
+                    <div className="tw-w-1/6">{arrow}</div>
 
-                    <div className="tw-flex tw-flex-col tw-items-center tw-h-auto tw-w-[80px] sm:tw-w-[100px]">
+                    {/* Service */}
+                    <div className="tw-flex tw-flex-col tw-h-full tw-items-center tw-justify-end">
                       <svg
-                        className="tw-w-full tw-h-auto tw-hidden sm:tw-flex"
+                        className="tw-w-2/5"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512"
                       >
@@ -116,13 +115,12 @@ export const BackendTipsTricks = () => {
                       </p>
                     </div>
 
-                    <div className="tw-w-8 sm:tw-w-14 tw-mx-2 sm:tw-mx-4 tw-content-center tw-h-full tw-hidden sm:tw-flex">
-                      {arrow}
-                    </div>
+                    <div className="tw-w-1/6">{arrow}</div>
 
-                    <div className="tw-flex tw-flex-col tw-items-center tw-h-auto tw-w-[80px] sm:tw-w-[100px]">
+                    {/* Controller */}
+                    <div className="tw-flex tw-flex-col tw-items-center tw-h-full tw-justify-between">
                       <svg
-                        className="tw-w-full tw-h-auto tw-hidden sm:tw-flex"
+                        className="tw-w-1/3"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
                       >

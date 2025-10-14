@@ -50,7 +50,7 @@ const initialEdges = [
   createEdge(
     "1",
     "2",
-    true,
+    false,
     "default",
     { stroke: "#000000", strokeWidth: 2 },
     { type: "arrowclosed", color: "#000000" },
@@ -58,7 +58,7 @@ const initialEdges = [
   createEdge(
     "2",
     "3",
-    true,
+    false,
     "default",
     { stroke: "#000000", strokeWidth: 2 },
     { type: "arrowclosed", color: "#000000" },
@@ -66,7 +66,7 @@ const initialEdges = [
   createEdge(
     "3",
     "4",
-    true,
+    false,
     "default",
     { stroke: "#000000", strokeWidth: 2 },
     { type: "arrowclosed", color: "#000000" },
@@ -74,7 +74,7 @@ const initialEdges = [
   createEdge(
     "4",
     "5",
-    true,
+    false,
     "default",
     { stroke: "#000000", strokeWidth: 2 },
     { type: "arrowclosed", color: "#000000" },
@@ -86,7 +86,7 @@ export const CoreLabPages = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_CORE_LAB_PAGES_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_CORE_LAB_PAGES_REPAIR} completed={true}>
       <Page.Header>
         <Page.Header.Title>Core Lab Pages</Page.Header.Title>
         <Page.Header.Description>

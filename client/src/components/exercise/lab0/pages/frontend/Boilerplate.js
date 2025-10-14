@@ -121,7 +121,7 @@ export const Boilerplate = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_BOILERPLATE_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_CORE_LAB_PAGES} completed>
       <Page.Header>
         <Page.Header.Title>Lab Boilerplate Setup</Page.Header.Title>
         <Page.Header.Description>

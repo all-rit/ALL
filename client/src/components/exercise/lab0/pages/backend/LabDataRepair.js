@@ -9,7 +9,7 @@ export const LabDataRepair = () => {
   const [repairComplete, setRepairComplete] = useState(false);
 
   return (
-    <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN} completed>
+    <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN} completed={repairComplete}>
       <Page.Header>
         <Page.Header.Title>Basic Lab Data Repair</Page.Header.Title>
       </Page.Header>

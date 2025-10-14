@@ -96,7 +96,7 @@ const initialEdges2 = [
   createEdge(
     "1",
     "2",
-    true,
+    false,
     "default",
     {
       stroke: "#000000",
@@ -107,7 +107,7 @@ const initialEdges2 = [
   createEdge(
     "2",
     "3",
-    true,
+    false,
     "default",
     {
       stroke: "#000000",
@@ -118,7 +118,7 @@ const initialEdges2 = [
   createEdge(
     "3",
     "4",
-    true,
+    false,
     "default",
     {
       stroke: "#000000",

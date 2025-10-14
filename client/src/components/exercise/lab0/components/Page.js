@@ -117,7 +117,7 @@ export const Page = ({
       {children}
       {nextPage && (
         <Page.Footer className="tw-items-center">
-          <Button onClick={handleNext} label="Next" />
+          <Button disabled={!completed} onClick={handleNext} label="Next" />
         </Page.Footer>
       )}
     </div>
