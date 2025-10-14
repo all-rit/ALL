@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 import Button from "../../../all-components/LabButton";
 import Lab0Context from "../Lab0Context";
 import { SECTION_STATUSES } from "../../../../constants/lab0";
+import StatusBanner from "../../../all-components/StatusBanner";
 const PageHeader = ({ children, className }) => {
   return (
     <div
@@ -94,6 +95,7 @@ export const Page = ({
   className,
   completed = false,
   nextPage = null,
+  exercise = false,
 }) => {
   const { handleNav, updateSectionStatus, section } = useContext(Lab0Context);
 
@@ -117,6 +119,11 @@ export const Page = ({
       {children}
       {nextPage && (
         <Page.Footer className="tw-items-center">
+          {exercise && completed && (
+            <StatusBanner style={"tw-bg-success"}>
+              Exercise Complete!
+            </StatusBanner>
+          )}
           <Button disabled={!completed} onClick={handleNext} label="Next" />
         </Page.Footer>
       )}
@@ -129,6 +136,7 @@ Page.propTypes = {
   className: PropTypes.string,
   nextPage: PropTypes.string,
   completed: PropTypes.bool,
+  exercise: PropTypes.bool,
 };
 
 PageHeader.Title = PageHeaderTitle;

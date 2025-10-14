@@ -13,6 +13,7 @@ export const RoutingRepair = () => {
     <Page
       nextPage={ROUTES.SECTION_BACKEND_TIPS_TRICKS}
       completed={correctRequestComplete}
+      exercise
     >
       <Page.Header>
         <Page.Header.Title>

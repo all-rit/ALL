@@ -3,13 +3,16 @@ import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
 import DataRepair from "../../DevelopLabSection/LabData/LabDataRepair";
 import LabsTable from "../../DevelopLabSection/LabData/LabsTable";
-import StatusBanner from "../../../../all-components/StatusBanner";
 
 export const LabDataRepair = () => {
   const [repairComplete, setRepairComplete] = useState(false);
 
   return (
-    <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN} completed={repairComplete}>
+    <Page
+      nextPage={ROUTES.SECTION_SCHEMA_DESIGN}
+      completed={repairComplete}
+      exercise
+    >
       <Page.Header>
         <Page.Header.Title>Basic Lab Data Repair</Page.Header.Title>
       </Page.Header>
@@ -30,9 +33,6 @@ export const LabDataRepair = () => {
           proper data for each empty column.
         </p>
         <DataRepair setRepairComplete={setRepairComplete} />
-        {repairComplete && (
-          <StatusBanner style={"tw-bg-success"}>Repair Complete!</StatusBanner>
-        )}
       </Page.Body>
     </Page>
   );

@@ -3,7 +3,6 @@ import { Page } from "../../components/Page";
 import { ROUTES } from "../../../../../constants/lab0/index";
 import ControllerRepair from "../../DevelopLabSection/ServiceController/ControllerRepair";
 import ServiceRepair from "../../DevelopLabSection/ServiceController/ServiceRepair";
-import StatusBanner from "../../../../all-components/StatusBanner";
 
 export const FIND_ONE = "findOne";
 export const ATTEMPT_TIME = "attemptTime";
@@ -30,7 +29,11 @@ export const ServiceControllerRepair = () => {
   const repairsComplete = controllerRepairComplete && serviceRepairComplete;
 
   return (
-    <Page nextPage={ROUTES.SECTION_ROUTING} completed={repairsComplete}>
+    <Page
+      nextPage={ROUTES.SECTION_ROUTING}
+      completed={repairsComplete}
+      exercise
+    >
       <Page.Header>
         <Page.Header.Title>
           Service Layer &amp; Controllers Repair
@@ -72,12 +75,6 @@ export const ServiceControllerRepair = () => {
         </p>
         <ServiceRepair serviceFix={serviceFix} setServiceFix={setServiceFix} />
       </Page.Body>
-      {repairsComplete && (
-        <StatusBanner style={"tw-bg-success"}>
-          You have successfully completed this repair. Click the next button to
-          move on to the next section.
-        </StatusBanner>
-      )}
     </Page>
   );
 };

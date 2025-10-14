@@ -20,7 +20,7 @@ export const BackendTipsTricks = () => {
   );
 
   return (
-    <Page nextPage={ROUTES.SELECTION_ROUTE} completed={complete}>
+    <Page nextPage={ROUTES.SELECTION_ROUTE} completed={complete} exercise>
       <Page.Header>
         <Page.Header.Title>Backend Tips &amp; Tricks</Page.Header.Title>
       </Page.Header>
