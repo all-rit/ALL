@@ -628,18 +628,18 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
       {
         "val": 1,
         "type": "0",
-        "content": "Putting a user in the shoes of someone with a physical limitation gives them an empathic view of another user\'s situation."
+        "content": "Putting a user in the shoes of someone with a physical limitation gives them an empathic view of another users situation."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "A user that experiences someone else\'s physical limitation may be more likely to push for an equitable outcome for that other user.",
+        "content": "A user that experiences someone elses physical limitation may be more likely to push for an equitable outcome for that other user.",
         "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
       },
       {
         "val": 0,
         "type": "2",
-        "content": "They don\'t make a big impact on the user."
+        "content": "They dont make a big impact on the user."
       },
       {
         "val": 0,
@@ -683,7 +683,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
       {
         "val": 0,
         "type": "0",
-        "content": "Database -> Service -> Endpoint -> Controller",
+        "content": "Database -> Service -> Endpoint -> Controller"
       },
       {
         "val": 0,
