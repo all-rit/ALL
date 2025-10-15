@@ -118,16 +118,16 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className={`tw-body-text tw-font-bold tw-my-0 ${props.isImagine ? "tw-mb-[0.5rem]" : "tw-mb-[5rem]"}`}
+      className={`tw-h-[8rem] tw-body-text tw-font-bold tw-my-0 ${props.isImagine && "tw-mb-[0.5rem]"}`}
     >
       <div
-        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
+        className={`tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
           <a
-            className={"tw-mt-[1rem]"}
+            className={""}
             onClick={() => {
               !props.isImagine && reachNav("/#");
             }}
@@ -152,10 +152,10 @@ const Header = (props) => {
                 className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
               >
                 <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
                 >
                   <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                    className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer"
                     onClick={() => reachNav("/#")}
                   >
                     <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
@@ -164,7 +164,7 @@ const Header = (props) => {
                   </NavLink>
                 </NavItem>
                 <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
+                  className={`${"px-4"} ${!isSmallWindow && " tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
                 >
                   <NavLink
                     className="tw-flex tw-items-center tw-justify-center tw-p-0"

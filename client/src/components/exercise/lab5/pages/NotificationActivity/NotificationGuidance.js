@@ -45,7 +45,7 @@ class NotificationGuidance extends Component {
             <div className="lowercontent">
               Let’s continue on and make the changes. Click 'Next'
             </div>
-            <div className="flex">
+            <div className="tw-flex tw-justify-center tw-py-6">
               <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
                 onClick={this.handleNav}

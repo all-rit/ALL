@@ -211,10 +211,6 @@ class Repair extends Component {
 
   // Renderer for the system
   render() {
-    if (this.props.background !== "rgba(38,38,38,1)") {
-      this.props.toGreyBackground();
-    }
-
     // Opens the background color change popup
     const changeBackground = () => {
       this.onControlBackgroundPopup(true);
