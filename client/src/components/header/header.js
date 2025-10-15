@@ -152,10 +152,10 @@ const Header = (props) => {
                 className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
               >
                 <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
                 >
                   <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                    className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer"
                     onClick={() => reachNav("/#")}
                   >
                     <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
@@ -164,7 +164,7 @@ const Header = (props) => {
                   </NavLink>
                 </NavItem>
                 <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
+                  className={`${"px-4"} ${!isSmallWindow && " tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
                 >
                   <NavLink
                     className="tw-flex tw-items-center tw-justify-center tw-p-0"
