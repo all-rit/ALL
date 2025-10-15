@@ -122,7 +122,7 @@ export const ComponentLibrary = () => {
             zoomOnDoubleClick={false}
             zoomOnPinch={false}
             panOnDrag={false}
-            preventScrolling={true}
+            preventScrolling={false}
             selectNodesOnDrag={false}
           >
             <Background />
