@@ -258,7 +258,7 @@ const QuizHandler = (props) => {
   }
 
   return (
-    <div className={"tw-h-[35rem] tw-rounded-lg"}>
+    <div className={"tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
           answer={""}

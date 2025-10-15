@@ -41,7 +41,6 @@ import {
 import {
   FrontendIntroduction,
   Boilerplate,
-  BoilerplateRepair,
   Integration,
   IntegrationRepair,
   CoreLabPages,
@@ -54,7 +53,6 @@ import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
 import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
-import RESTQueryMock from "./Mocks/RESTQueryMock";
 // import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
@@ -63,7 +61,7 @@ const Main = (props) => {
   const [section, setSectionState] = useState({});
 
   const updateSectionStatus = async (section, sectionStatus) => {
-    return ProgressService.submitProgress(
+    return await ProgressService.submitProgress(
       user.userid,
       section.category,
       section.name,
@@ -71,11 +69,11 @@ const Main = (props) => {
     );
   };
 
-  const handleNav = (route) => {
+  const handleNav = async (route) => {
     if (route in SECTIONS) {
       actions.updateUserState(EXERCISE_PLAYING);
       setSectionState(SECTIONS[route]);
-      updateSectionStatus(
+      await updateSectionStatus(
         SECTIONS[route],
         SECTION_STATUSES.SECTION_IN_PROGRESS,
       );
@@ -92,7 +90,7 @@ const Main = (props) => {
   const [newLabTopics, setNewLabTopics] = useState([]);
 
   return (
-    <div className={"tw-h-[40rem] tw-overflow-y-scroll"}>
+    <div className={"tw-overflow-y-scroll"}>
       <Lab0Context.Provider
         value={{
           handleNav,
@@ -104,7 +102,7 @@ const Main = (props) => {
           setNewLabTopics,
         }}
       >
-        <Router className={"tw-p-3 tw-h-[40rem]"}>
+        <Router className={"tw-p-3"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
 
@@ -153,17 +151,9 @@ const Main = (props) => {
           <RoutingRepair path={ROUTES.SECTION_ROUTING_REPAIR} />
           <BackendTipsTricks path={ROUTES.SECTION_BACKEND_TIPS_TRICKS} />
 
-          {/*// Scrum Activity*/}
-          <ScrumIntroduction path={"/ScrumIntro"} />
-          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
-          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
-          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
-
-          <DesignLabEnd path={"/DesignLabEnd"} />
           {/* Frontend Pages */}
           <FrontendIntroduction path={ROUTES.SECTION_FRONTEND_INTRODUCTION} />
           <Boilerplate path={ROUTES.SECTION_BOILERPLATE} />
-          <BoilerplateRepair path={ROUTES.SECTION_BOILERPLATE_REPAIR} />
           <CoreLabPages path={ROUTES.SECTION_CORE_LAB_PAGES} />
           <CoreLabPagesRepair path={ROUTES.SECTION_CORE_LAB_PAGES_REPAIR} />
           <Integration path={ROUTES.SECTION_INTEGRATION} />

@@ -8,18 +8,18 @@ const initialColumns = [
 const initialBank = [
   {
     id: "card1",
-    content: "Card 1",
+    content: "A",
     body: `
 1. Explanation of Disordered Focus
 2. Hearing Mismatched Labels
 3. Explanation of the Inaccessibility
     `,
-    color: "tw-bg-[#F83F3F]",
+    color: "tw-bg-[#FF8DA1]",
     isCorrect: true,
   },
   {
     id: "card2",
-    content: "Card 2",
+    content: "B",
     body: `
 1. Create Skeleton for Exercise Structure
 2. Create Exercise Introduction
@@ -30,7 +30,7 @@ const initialBank = [
   },
   {
     id: "card3",
-    content: "Card 3",
+    content: "C",
     body: `
 1. Create Code block for Improving Focus Order
 2. Create Data Service for Exercise
@@ -42,7 +42,7 @@ const initialBank = [
   },
   {
     id: "card4",
-    content: "Card 4",
+    content: "D",
     body: `
 1. Create Screen Reader
 2. Create Tab through Nav

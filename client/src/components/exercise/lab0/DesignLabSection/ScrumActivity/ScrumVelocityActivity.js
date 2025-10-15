@@ -6,7 +6,11 @@ import {
 } from "../../../../../constants/lab0/DesignALab/ScrumVeloDND";
 import React, { useContext, useEffect, useState } from "react";
 import Lab0Context from "../../Lab0Context";
-import { SECTION_STATUSES } from "../../../../../constants/lab0";
+import {
+  ROUTES,
+  SECTION_CATEGORY_DESIGN,
+  SECTION_STATUSES,
+} from "../../../../../constants/lab0";
 
 const ScrumVelocityActivity = () => {
   const [success, setSuccess] = useState(false);
@@ -24,11 +28,18 @@ const ScrumVelocityActivity = () => {
   }, []);
 
   const { handleNav } = useContext(Lab0Context);
-  const { section, updateSectionStatus } = useContext(Lab0Context);
-  const navigateNext = () => {
-    updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
+  const { updateSectionStatus } = useContext(Lab0Context);
+
+  const section = {
+    category: SECTION_CATEGORY_DESIGN,
+    name: ROUTES.SECTION_SPRINT_PLANNING,
+  };
+
+  const navigateNext = async () => {
+    await updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
     handleNav("DesignLabEnd");
   };
+
   return (
     <div className="tw-flex tw-flex-col tw-text-left">
       <h2 className={"tw-title tw-text-left"}> Sprint Velocity Activity</h2>

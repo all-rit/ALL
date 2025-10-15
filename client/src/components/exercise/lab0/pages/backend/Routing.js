@@ -96,7 +96,7 @@ const initialEdges2 = [
   createEdge(
     "1",
     "2",
-    true,
+    false,
     "default",
     {
       stroke: "#000000",
@@ -107,7 +107,7 @@ const initialEdges2 = [
   createEdge(
     "2",
     "3",
-    true,
+    false,
     "default",
     {
       stroke: "#000000",
@@ -118,7 +118,7 @@ const initialEdges2 = [
   createEdge(
     "3",
     "4",
-    true,
+    false,
     "default",
     {
       stroke: "#000000",
@@ -164,7 +164,7 @@ export const Routing = () => {
             zoomOnDoubleClick={false}
             zoomOnPinch={false}
             panOnDrag={false}
-            preventScrolling={true}
+            preventScrolling={false}
             selectNodesOnDrag={false}
           >
             <Background />
@@ -200,7 +200,7 @@ export const Routing = () => {
               zoomOnDoubleClick={false}
               zoomOnPinch={false}
               panOnDrag={false}
-              preventScrolling={true}
+              preventScrolling={false}
               selectNodesOnDrag={false}
             >
               <Background />
@@ -228,11 +228,11 @@ export const Routing = () => {
             </li>
             <li>
               <strong>Controller</strong> – The controller unpacks the request,
-              pulling out any important data from
-              <code>req.body</code>, <code>req.params</code>, or{" "}
-              <code>req.session</code>. Then it calls the right service method
-              to do the actual work. Controllers are like the hosts of our API -
-              they welcome guests but don&apos;t cook the meal themselves.
+              pulling out any important data from <code>req.body</code>,{" "}
+              <code>req.params</code>, or <code>req.session</code>. Then it
+              calls the right service method to do the actual work. Controllers
+              are like the hosts of our API - they welcome guests but don&apos;t
+              cook the meal themselves.
             </li>
             <li>
               <strong>Service</strong> – This is where the real work happens.

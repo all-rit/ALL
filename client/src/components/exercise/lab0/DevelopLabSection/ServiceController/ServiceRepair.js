@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import ReactText from "../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import MultiTab from "../../../../all-components/CodeBlock/Components/MultiTab";
-import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import PropTypes from "prop-types";
 import {
   USER_ID,
@@ -9,14 +6,19 @@ import {
   FIND_ONE,
 } from "../../pages/backend/ServiceControllerRepair";
 import {
-  ButtonDropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "reactstrap";
+  ReactText,
+  CommentText,
+} from "../../../../all-components/CodeBlock/StyleComponents";
+import { DARK } from "../../../../../constants/themes";
+import {
+  MultiTab,
+  Tab,
+  CodeLine,
+  CodeDropdown,
+} from "../../../../all-components/CodeBlock/Components";
 
 const ServiceRepair = (props) => {
-  const { setServiceFix } = props;
+  const { serviceFix, setServiceFix } = props;
 
   const CREATE = "create";
   const DESTROY = "destroy";
@@ -60,126 +62,130 @@ const ServiceRepair = (props) => {
 
   return (
     <div
-      className={"code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg"}
+      className={
+        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[14px]"
+      }
     >
       <ReactText>const db = require(&apos;../../database&apos;);</ReactText>
       <br />
       <ReactText>async function getExercise(data) &#123;</ReactText>
-      <div className={"tw-flex"}>
+      <CodeLine>
         <Tab />
         <ReactText>try &#123;</ReactText>
-      </div>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={2} />
+        <CommentText>
+          &#x2f;&#x2f; In this function, we want to FIND or GET the exact
+          exercise data.
+        </CommentText>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={2} />
+        <CommentText>
+          &#x2f;&#x2f; Which option would be the best function for that?
+        </CommentText>
+      </CodeLine>
       <div className={"tw-flex tw-items-center"}>
         <MultiTab numberOfTabs={2} />
         <ReactText>const exerciseResponse = await db.ExerciseLab0.</ReactText>
-        <ButtonDropdown
+        <CodeDropdown
           toggle={toggleOperationDropdown}
           isOpen={operationDropdownOpen}
-        >
-          <DropdownToggle
-            style={{ fontFamily: "monospace", backgroundColor: "#333" }}
-            caret
-          >
-            {operationDropdownLabel}
-          </DropdownToggle>
-          <DropdownMenu>
-            {OPERATION_OPTIONS.map((option) => {
-              return (
-                <DropdownItem
-                  key={option}
-                  onClick={() => updateOperation(option)}
-                >
-                  {option}
-                </DropdownItem>
-              );
-            })}
-          </DropdownMenu>
-        </ButtonDropdown>
+          initialLabel={operationDropdownLabel}
+          options={OPERATION_OPTIONS}
+          setSelection={updateOperation}
+          selectionCorrect={serviceFix.operation === FIND_ONE}
+          theme={DARK}
+        />
         <ReactText>(</ReactText>
       </div>
-      <div className={"tw-flex"}>
+      <CodeLine className={"tw-flex"}>
         <MultiTab numberOfTabs={3} />
         <ReactText>&#123;</ReactText>
-      </div>
-      <div className={"tw-flex tw-items-center"}>
+      </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={4} />
+        <CommentText>
+          &#x2f;&#x2f; Since we want to find the most recent entry, how should
+          we order our results?
+        </CommentText>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={4} />
         <ReactText>order: [(&apos;</ReactText>
-        <ButtonDropdown toggle={toggleOrderDropdown} isOpen={orderDropdownOpen}>
-          <DropdownToggle
-            style={{ fontFamily: "monospace", backgroundColor: "#333" }}
-            caret
-          >
-            {orderDropdownLabel}
-          </DropdownToggle>
-          <DropdownMenu>
-            {ORDER_OPTIONS.map((option) => {
-              return (
-                <DropdownItem key={option} onClick={() => updateOrder(option)}>
-                  {option}
-                </DropdownItem>
-              );
-            })}
-          </DropdownMenu>
-        </ButtonDropdown>
+        <CodeDropdown
+          toggle={toggleOrderDropdown}
+          isOpen={orderDropdownOpen}
+          initialLabel={orderDropdownLabel}
+          options={ORDER_OPTIONS}
+          setSelection={updateOrder}
+          selectionCorrect={serviceFix.order === ATTEMPT_TIME}
+          theme={DARK}
+        />
         <ReactText>&apos;, &apos;DESC&apos;)],</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={4} />
         <ReactText>where: &#123;</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={5} />
         <ReactText>userid: data,</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={4} />
         <ReactText>&#125;,</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={4} />
         <ReactText>raw: true,</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine>
         <MultiTab numberOfTabs={3} />
         <ReactText>&#125;,</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine className={"tw-flex"}>
         <MultiTab numberOfTabs={2} />
         <ReactText>);</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine className={"tw-flex"}>
         <MultiTab numberOfTabs={2} />
         <ReactText>return exerciseResponse;</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine className={"tw-flex"}>
         <Tab />
         <ReactText>&#125; catch(error) &#123;</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine className={"tw-flex"}>
         <MultiTab numberOfTabs={2} />
         <ReactText>
           console.error(&apos;Error: Could not Find Exercise&apos;, error);
         </ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine className={"tw-flex"}>
         <Tab />
         <ReactText>&#125;</ReactText>
-      </div>
+      </CodeLine>
       <ReactText>&#125;</ReactText>
       <br />
-      <div className={"tw-flex"}>
+      <CodeLine className={"tw-flex"}>
         <ReactText>module.exports = &#123;</ReactText>
-      </div>
-      <div className={"tw-flex"}>
+      </CodeLine>
+      <CodeLine className={"tw-flex"}>
         <Tab />
         <ReactText>getExercise</ReactText>
-      </div>
+      </CodeLine>
       <ReactText>&#125;;</ReactText>
     </div>
   );
 };
 
 ServiceRepair.propTypes = {
+  serviceFix: PropTypes.shape({
+    operation: PropTypes.string,
+    order: PropTypes.string,
+  }),
   setServiceFix: PropTypes.func,
 };
 

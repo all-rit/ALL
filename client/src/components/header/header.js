@@ -118,22 +118,22 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className={`tw-body-text tw-font-bold tw-my-0 ${props.isImagine ? "tw-mb-[0.5rem]" : "tw-mb-[5rem]"}`}
+      className={`tw-h-[8rem] tw-body-text tw-font-bold tw-my-0 ${props.isImagine && "tw-mb-[0.5rem]"}`}
     >
       <div
-        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
+        className={`tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
           <a
-            className={"tw-mt-[1rem]"}
+            className={""}
             onClick={() => {
               !props.isImagine && reachNav("/#");
             }}
           >
             <img
-              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[7.5rem]" : "xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"}`}
+              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[4rem] tw-mt-[0.75rem]" : "xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"}`}
               src={Logo}
               alt="Computing Accessibility"
             />

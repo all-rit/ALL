@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Page } from "../../components/Page";
-import { COLORS } from "../../../../all-components/Diagrams";
+import { COLORS, createEdge } from "../../../../all-components/Diagrams";
 import { ReactFlow, Background } from "@xyflow/react";
 import { ROUTES } from "../../../../../constants/lab0/index";
 
@@ -10,17 +10,20 @@ const initialNodes = [
     position: { x: 370, y: 240 },
     data: { label: "all-components" },
     style: { ...COLORS.YELLOW, width: "8rem" },
+    sourcePosition: "left",
+    targetPosition: "bottom",
   },
   {
     id: "2",
-    position: { x: 380, y: 120 },
+    position: { x: 275, y: 120 },
     data: { label: "ALLModal" },
     style: { ...COLORS.BLUE, width: "6rem" },
+    sourcePosition: "bottom",
     targetPosition: "bottom",
   },
   {
     id: "3",
-    position: { x: 570, y: 120 },
+    position: { x: 500, y: 120 },
     data: { label: "Avatar" },
     style: { ...COLORS.BLUE, width: "6rem" },
     targetPosition: "bottom",
@@ -31,7 +34,7 @@ const initialNodes = [
     data: { label: "ProgressBar" },
     style: { ...COLORS.BLUE, width: "6rem" },
     sourcePosition: "right",
-    targetPosition: "left",
+    targetPosition: "right",
   },
   {
     id: "5",
@@ -39,27 +42,50 @@ const initialNodes = [
     data: { label: "LabButton" },
     style: { ...COLORS.BLUE, width: "6rem" },
     sourcePosition: "left",
-    targetPosition: "right",
+    targetPosition: "left",
   },
   {
     id: "6",
-    position: { x: 370, y: 360 },
+    position: { x: 275, y: 360 },
     data: { label: "ALLButton" },
     style: { ...COLORS.BLUE, width: "6rem" },
     sourcePosition: "top",
-    targetPosition: "bottom",
+    targetPosition: "top",
   },
   {
     id: "7",
-    position: { x: 570, y: 360 },
+    position: { x: 500, y: 360 },
     data: { label: "ALLSnackbar" },
     style: { ...COLORS.BLUE, width: "6rem" },
+    sourcePosition: "top",
+    targetPosition: "top",
+  },
+  {
+    id: "8",
+    position: { x: 370, y: 240 },
+    data: { label: "all-components" },
+    style: { ...COLORS.YELLOW, width: "8rem" },
+    sourcePosition: "bottom",
+    targetPosition: "bottom",
+  },
+  {
+    id: "9",
+    position: { x: 370, y: 240 },
+    data: { label: "all-components" },
+    style: { ...COLORS.YELLOW, width: "8rem" },
     sourcePosition: "top",
     targetPosition: "bottom",
   },
 ];
 
-const initialEdges = [];
+const initialEdges = [
+  createEdge("9", "2", false, "step"),
+  createEdge("9", "3", false, "step"),
+  createEdge("1", "4", false, "step"),
+  createEdge("1", "5", false, "step"),
+  createEdge("8", "6", false, "step"),
+  createEdge("8", "7", false, "step"),
+];
 
 export const ComponentLibrary = () => {
   const [nodes] = useState(initialNodes);
@@ -96,7 +122,7 @@ export const ComponentLibrary = () => {
             zoomOnDoubleClick={false}
             zoomOnPinch={false}
             panOnDrag={false}
-            preventScrolling={true}
+            preventScrolling={false}
             selectNodesOnDrag={false}
           >
             <Background />

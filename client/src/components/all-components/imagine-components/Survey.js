@@ -13,7 +13,7 @@ function Survey(props) {
     likert: <Likert onAnswerSelected={props.onAnswerSelected} />,
     ranking: (
       <RankingQuestion
-        options={props.answerOptions}
+        options={props.answerOptions || []}
         updatedSelectedAnswers={props.rankingUpdate}
       />
     ),
@@ -46,7 +46,9 @@ function Survey(props) {
             clotheType="ShirtCrewNeck"
             className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
           />
-          <div className="tw-pt-3">{props.avatar}</div>
+          <div className="tw-pt-3 tw-body-text tw-text-center tw-text-[2rem]">
+            {props.avatar}
+          </div>
         </>,
       );
     };

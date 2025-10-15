@@ -30,7 +30,7 @@ const WireframeIntro = () => {
         </a>
         , a highly advanced and easy to use UI/UX (User Interface/User
         Experience) wireframing tool, to develop and store our designs for labs,
-        branding, and other major projects under the Accessible Learning Labs
+        style guide, and other major projects under the Accessible Learning Labs
         umbrella.
       </p>
       <p className={"tw-body-text tw-py-6"}>

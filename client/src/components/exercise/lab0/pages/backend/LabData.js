@@ -5,7 +5,7 @@ import { ROUTES } from "../../../../../constants/lab0/index";
 
 export const LabData = () => {
   return (
-    <Page nextPage={ROUTES.SECTION_LAB_DATA_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_LAB_DATA_REPAIR} completed>
       <Page.Header>
         <Page.Header.Title>Basic Lab Data</Page.Header.Title>
         <Page.Header.Description>

@@ -1,7 +1,7 @@
 // Section Categories
-const SECTION_CATEGORY_DESIGN = "DESIGN";
-const SECTION_CATEGORY_BACKEND = "BACKEND";
-const SECTION_CATEGORY_FRONTEND = "FRONTEND";
+export const SECTION_CATEGORY_DESIGN = "DESIGN";
+export const SECTION_CATEGORY_BACKEND = "BACKEND";
+export const SECTION_CATEGORY_FRONTEND = "FRONTEND";
 
 const SELECTION_ROUTE = "/";
 
@@ -41,7 +41,6 @@ const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
 // Frontend
 const SECTION_FRONTEND_INTRODUCTION = "FrontendIntroduction";
 const SECTION_BOILERPLATE = "Boilerplate";
-const SECTION_BOILERPLATE_REPAIR = "BoilerplateRepair";
 const SECTION_CORE_LAB_PAGES = "CoreLabPages";
 const SECTION_CORE_LAB_PAGES_REPAIR = "CoreLabPagesRepair";
 const SECTION_INTEGRATION = "Integration";
@@ -49,6 +48,34 @@ const SECTION_INTEGRATION_REPAIR = "IntegrationRepair";
 const SECTION_COMPONENT_LIBRARY = "ComponentLibrary";
 const SECTION_COMPONENT_LIBRARY_REPAIR = "ComponentLibraryRepair";
 const SECTION_FRONTEND_TIPS_TRICKS = "FrontendTipsTricks";
+
+// Labels
+const INITIAL_SHORT_NAME_LABEL = "Select the Correct Lab Short Name";
+const INITIAL_WALKTHROUGH_VIDEO_LABEL = "Select the Correct Walkthrough URL";
+const INITIAL_CATEGORY_LABEL = "Select Correct Category";
+const INITIAL_SHORT_DESCRIPTION_LABEL = "Select Correct Short Description";
+
+// Correct Answers
+const CORRECT_SHORT_NAME = "Focus Order";
+const CORRECT_CATEGORY = "Accessibility";
+const CORRECT_WALKTHROUGH_VIDEO =
+  "https://www.youtube.com/accessible-learning-labs/lab-14-walkthrough";
+const CORRECT_SHORT_DESCRIPTION =
+  "Explore how keyboard navigation flows through web interfaces.";
+
+const LABELS = {
+  INITIAL_SHORT_NAME_LABEL,
+  INITIAL_WALKTHROUGH_VIDEO_LABEL,
+  INITIAL_CATEGORY_LABEL,
+  INITIAL_SHORT_DESCRIPTION_LABEL,
+};
+
+const ANSWERS = {
+  CORRECT_SHORT_NAME,
+  CORRECT_CATEGORY,
+  CORRECT_WALKTHROUGH_VIDEO,
+  CORRECT_SHORT_DESCRIPTION,
+};
 
 // All routes
 const ROUTES = {
@@ -89,7 +116,6 @@ const ROUTES = {
   // Frontend
   SECTION_FRONTEND_INTRODUCTION,
   SECTION_BOILERPLATE,
-  SECTION_BOILERPLATE_REPAIR,
   SECTION_INTEGRATION,
   SECTION_INTEGRATION_REPAIR,
   SECTION_CORE_LAB_PAGES,
@@ -209,4 +235,4 @@ const SECTION_STATUSES = {
   SECTION_COMPLETED,
 };
 
-export { ROUTES, SECTIONS, SECTION_STATUSES };
+export { ROUTES, SECTIONS, SECTION_STATUSES, LABELS, ANSWERS };

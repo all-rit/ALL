@@ -84,7 +84,7 @@ export const Integration = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_INTEGRATION_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_INTEGRATION_REPAIR} completed>
       <Page.Header>
         <Page.Header.Title>Backend Integration</Page.Header.Title>
         <Page.Header.Description>

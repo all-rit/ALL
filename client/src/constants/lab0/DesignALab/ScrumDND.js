@@ -7,19 +7,19 @@ const initialColumns = [
 const initialBank = [
   {
     id: "card1",
-    content: "Card 1",
+    content: "A",
     body: `
 1. Create Code block for Improving Focus Order
 2. Create Data Service for Exercise
 3. Create Newly Accessible Webpage
 4. Create Key Takeaways
     `,
-    color: "tw-bg-[#F83F3F]",
+    color: "tw-bg-[#FC8DC1]",
     isCorrect: true,
   },
   {
     id: "card2",
-    content: "Card 2",
+    content: "B",
     body: `
 1. Create Skeleton for Exercise Structure
 2. Create Exercise Introduction
@@ -33,7 +33,7 @@ const initialBank = [
   },
   {
     id: "card3",
-    content: "Card 3",
+    content: "C",
     body: `
 1. Explanation of Disordered Focus
 2. Hearing Mismatched Labels

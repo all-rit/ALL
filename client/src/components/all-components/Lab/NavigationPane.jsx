@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import { EXERCISE_IN_PROGRESS } from "../../../constants/notifications";
+import LabFooter from "../../footer/LabFooter";
 
 const sections = [
   {
@@ -56,6 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 const NavigationPane = (props) => {
   const { state, actions } = useMainStateContext();
   const currentSection = state.main.body;
+  const labInProgress = props.labID !== 99;
 
   const handleOnClick = (section) => {
     if (
@@ -74,25 +76,29 @@ const NavigationPane = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[17rem]"
+        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem]"
       }
     >
       <div
         className={
-          "tw-py-3 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[9rem]"
+          "tw-py-4 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
         }
       >
         <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
       </div>
       <div
         className={
-          "tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg"
+          "tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-shadow-md"
         }
       >
         <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
-          <h4 className={"tw-font-poppins tw-font-bold tw-m-0 tw-pl-4"}>
+          <p
+            className={
+              "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-text-xl tw-leading-tight"
+            }
+          >
             Table of Contents
-          </h4>
+          </p>
           <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
             {sections.map(({ title, subTitle, section }) => {
               return (
@@ -101,7 +107,7 @@ const NavigationPane = (props) => {
                   href={"#"}
                   onClick={() => handleOnClick(section)}
                   className={
-                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
+                    "tw-flex tw-flex-col tw-items-start tw-leading-snug tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
                   }
                 >
                   <p
@@ -112,13 +118,27 @@ const NavigationPane = (props) => {
                   >
                     {title}
                   </p>
-                  <p className={"tw-pl-4 tw-body-text"}>{subTitle}</p>
+                  <p
+                    className={
+                      "tw-pl-4 tw-body-text sm:tw-text-sm xl:tw-text-[16px] tw-leading-tight"
+                    }
+                  >
+                    {subTitle}
+                  </p>
                 </a>
               );
             })}
           </div>
         </div>
       </div>
+      {labInProgress && (
+        <LabFooter
+          context={props.context}
+          quizCompleted={props.quizCompleted}
+          setQuizCompleted={props.setQuizCompleted}
+          isImagine={props.isImagine}
+        />
+      )}
     </div>
   );
 };
@@ -126,6 +146,11 @@ const NavigationPane = (props) => {
 NavigationPane.propTypes = {
   title: PropTypes.string.isRequired,
   state: PropTypes.object,
+  context: PropTypes.shape({}),
+  quizCompleted: PropTypes.bool,
+  setQuizCompleted: PropTypes.func,
+  isImagine: PropTypes.bool,
+  labID: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavigationPane);

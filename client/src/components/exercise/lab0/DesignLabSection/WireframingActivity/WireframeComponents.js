@@ -5,8 +5,9 @@ import CodeBlock from "../../../../../assets/images/lab0/Lab0-CodeBlockComponent
 import HTTPRequest from "../../../../../assets/images/lab0/Lab0-HTTPRequestComponent.PNG";
 import DragAndDrop from "../../../../../assets/images/lab0/Lab0-DragAndDropComponent.PNG";
 import labButton from "../../../../../assets/images/lab0/Lab0-LabButtonComponent.PNG";
-import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
+// import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
 import { SECTION_STATUSES } from "../../../../../constants/lab0";
+import StatusBanner from "../../../../all-components/StatusBanner";
 
 const WireframeComponents = () => {
   const { handleNav } = useContext(lab0Context);
@@ -25,7 +26,7 @@ const WireframeComponents = () => {
   const handleSubmit = () => {
     switch (scenario) {
       case 1:
-        if (selectedComponent.componentName === "Code Block") {
+        if (selectedComponent.componentName === "Code Block Component") {
           setScenario(2);
           setMessage("");
         } else {
@@ -33,7 +34,7 @@ const WireframeComponents = () => {
         }
         break;
       case 2:
-        if (selectedComponent.componentName === "Lab Button") {
+        if (selectedComponent.componentName === "Lab Button Component") {
           setScenario(3);
           setMessage("");
         } else {
@@ -41,7 +42,7 @@ const WireframeComponents = () => {
         }
         break;
       case 3:
-        if (selectedComponent.componentName === "Drag and Drop") {
+        if (selectedComponent.componentName === "Drag and Drop Component") {
           setIsCorrect(true);
           setMessage("Good Job!");
         } else {
@@ -55,21 +56,21 @@ const WireframeComponents = () => {
   const answerOne = [
     {
       id: 1,
-      componentName: "HTTP Request",
+      componentName: "HTTP Request Component",
       altText: "HTTP Request Component Figma Design",
       src: HTTPRequest,
       errorText: "There is not an HTTP request being made in this scenario.",
     },
     {
       id: 2,
-      componentName: "Code Block",
+      componentName: "Code Block Component",
       altText: "Code Block Component Figma Design",
       src: CodeBlock,
       errorText: 'There is not any code being "edited" in this activity.',
     },
     {
       id: 3,
-      componentName: "Drag and Drop",
+      componentName: "Drag and Drop Component",
       altText: "Drag and Drop Component Figma Design",
       src: DragAndDrop,
       errorText: "", // answer for scenario 3
@@ -79,14 +80,14 @@ const WireframeComponents = () => {
   const answerTwo = [
     {
       id: 1,
-      componentName: "Code Block",
+      componentName: "Code Block Component",
       altText: "Code Block Component Figma Design",
       src: CodeBlock,
       errorText: "", // answer for scenario 1
     },
     {
       id: 2,
-      componentName: "Drag and Drop",
+      componentName: "Drag and Drop Component",
       altText: "Drag and Drop Component Figma Design",
       src: DragAndDrop,
       errorText:
@@ -94,17 +95,17 @@ const WireframeComponents = () => {
     },
     {
       id: 3,
-      componentName: "Faux Figma",
-      altText: "Faux Figma Component Figma Design",
-      src: fauxFigma,
-      errorText: "The Faux Figma component does not support dynamic elements.",
+      componentName: "Lab Button Component",
+      altText: "Lab Button Component Figma Design",
+      src: labButton,
+      errorText: "The Lab Button component does not support dynamic elements.",
     },
   ];
 
   const answerThree = [
     {
       id: 1,
-      componentName: "Drag and Drop",
+      componentName: "Drag and Drop Component",
       altText: "Drag and Drop Component Figma Design",
       src: DragAndDrop,
       errorText:
@@ -112,14 +113,14 @@ const WireframeComponents = () => {
     },
     {
       id: 2,
-      componentName: "Lab Button",
+      componentName: "Lab Button Component",
       altText: "Lab Button Component Figma Design",
       src: labButton,
       errorText: "", // answer for scenario 2
     },
     {
       id: 3,
-      componentName: "HTTP Request",
+      componentName: "HTTP Request Component",
       altText: "HTTP Request Component Figma Design",
       src: HTTPRequest,
       errorText: "There is no HTTP request being made in this scenario.",
@@ -130,8 +131,18 @@ const WireframeComponents = () => {
     return (
       <button
         className={
-          "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl " +
-          "focus:tw-border-4 focus:tw-border-solid focus:tw-border-labBlue"
+          "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl tw-p-4 " +
+          (selectedComponent &&
+          selectedComponent.componentName === component.componentName
+            ? "tw-shadow-md tw-translate-y-1 tw-border-4 tw-border-solid tw-border-labBlue"
+            : "tw-shadow-2xl hover:tw-shadow-[0_20px_40px_rgba(0,0,0,0.45)]") +
+          " tw-transition tw-duration-200 tw-ease-in-out " +
+          "focus:tw-outline-none focus-visible:tw-outline-none " +
+          "focus-visible:tw-ring-4 focus-visible:tw-ring-gray-300 focus-visible:tw-ring-offset-2"
+        }
+        aria-pressed={
+          selectedComponent &&
+          selectedComponent.componentName === component.componentName
         }
         onClick={() => {
           setSelectedComponent(component);
@@ -141,7 +152,7 @@ const WireframeComponents = () => {
           {component.componentName}
         </div>
         <img
-          className={"tw-flex tw-p-2 tw-object-contain"}
+          className={"tw-p-2 tw-object-contain tw-h-56 tw-w-full tw-mx-auto"}
           src={component.src}
           alt={component.altText}
         />
@@ -170,17 +181,20 @@ const WireframeComponents = () => {
       {scenario === 1 && (
         <div>
           <blockquote className="tw-p-4 tw-m-2 tw-font-semibold">
-            A website form has two columns: one for Person 1 and another for
-            Person 2. When navigating with the Tab key, the focus jumps between
-            fields in each column (e.g., &quot;First Name&quot; of Person 1 to
-            &quot;First Name&quot; of Person 2) instead of moving sequentially
-            down the fields for one person. This zigzag focus order is not
-            accessible and disrupts logical navigation.
+            A website requires the user to fill in a form that has two columns
+            for two people. When navigating with the &quot;Tab&quot; key, the
+            focus will typically jump between fields in each column. For
+            example, &quot;First Name&quot; will be followed by &quot;Last
+            Name&quot;, and so on. In this website, the focus jumps between
+            &quot;First Name&quot; of the first person to &quot;First Name&quot;
+            of the second person instead of moving sequentially down the fields
+            for one person. This zigzag focus order is not accessible and
+            disrupts logical navigation.
           </blockquote>
           <p className={"tw-body-text tw-pt-2"}>
-            Which component would be most suited for an activity where a user
-            must rectify the <code>tabindex</code> in the form to reorder the
-            focus order?
+            Which ALL website component would be most suited for an activity
+            where a user must rectify the <code>tabindex</code> in the form to
+            reorder the focus order to follow a logical sequence?
           </p>
         </div>
       )}
@@ -195,9 +209,9 @@ const WireframeComponents = () => {
             elements and screen reader hints.
           </blockquote>
           <p className={"tw-body-text tw-pt-2"}>
-            Which component would be most suited for an activity where a user
-            must search through the form, locate the &quot;Submit Feedback&quot;
-            button, and submit the form, using only the keyboard?
+            Which ALL component would be most suited for an activity where a
+            user must search through the form, locate the &quot;Submit
+            Feedback&quot; button, and submit the form, using only the keyboard?
           </p>
         </div>
       )}
@@ -212,8 +226,8 @@ const WireframeComponents = () => {
             to navigate efficiently.
           </blockquote>
           <p className={"tw-body-text tw-pt-2"}>
-            Which component would be most suited for an activity where a user
-            must reorder the header elements to follow logical navigation?
+            Which ALL component would be most suited for an activity where a
+            user must reorder the header elements to follow logical navigation?
           </p>
         </div>
       )}
@@ -230,12 +244,9 @@ const WireframeComponents = () => {
         </div>
       </div>
       {message && (
-        <p
-          className={`${!isCorrect ? "tw-bg-error" : "tw-bg-success"} tw-text-center tw-w-1/2 tw-justify-self-center tw-p-4 tw-my-1 
-            tw-text-white tw-rounded-md tw-mb-3`}
-        >
+        <StatusBanner style={`${!isCorrect ? "tw-bg-error" : "tw-bg-success"}`}>
           {message}
-        </p>
+        </StatusBanner>
       )}
       <div className={"tw-flex tw-justify-center tw-py-6"}>
         <LabButton

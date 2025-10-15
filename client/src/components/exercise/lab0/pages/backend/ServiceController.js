@@ -97,7 +97,7 @@ export const ServiceController = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_SERVICE_CONTROLLER_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_SERVICE_CONTROLLER_REPAIR} completed>
       <Page.Header>
         <Page.Header.Title>Service Layer &amp; Controllers</Page.Header.Title>
         <Page.Header.Description>
@@ -126,7 +126,7 @@ export const ServiceController = () => {
             zoomOnDoubleClick={false}
             zoomOnPinch={false}
             panOnDrag={false}
-            preventScrolling={true}
+            preventScrolling={false}
             selectNodesOnDrag={false}
           >
             <Background />

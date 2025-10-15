@@ -9,6 +9,7 @@ import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../reducers/MainContext";
 import { EXERCISE_IN_PROGRESS } from "../../constants/notifications";
+import { ArrowBack, ArrowForward, Home } from "@mui/icons-material";
 
 const mapStateToProps = (state) => {
   return {
@@ -42,6 +43,7 @@ const LabFooter = (props) => {
       handleRedirect(actions, state.main.lab, section);
     }
   };
+
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
 
@@ -50,21 +52,22 @@ const LabFooter = (props) => {
   }, []);
 
   return (
-    <div className={"xs:tw-mt-0 md:tw-mt-3 tw-mb-3 tw-z-10"}>
+    <div className={"tw-z-10 tw-w-full"}>
       {display && (
         <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div
-            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-ml-6 tw-mr-[10%]`}
+            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-gap-x-1`}
             style={{ display: display ? "flex" : "none" }}
           >
             {body > 0 && (
               <button
-                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
+                className="tw-flex tw-items-center tw-justify-center tw-p-3 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-text-[14px] tw-gap-x-1 tw-border-0 tw-shadow hover:tw-bg-labYellow tw-w-full"
                 onClick={() => handleOnClick(body - 1)}
                 style={{
                   opacity: display ? "1" : "0",
                 }}
               >
+                <ArrowBack />
                 BACK
               </button>
             )}
@@ -72,17 +75,17 @@ const LabFooter = (props) => {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-items-center tw-justify-center"
+                className="tw-flex tw-items-center tw-justify-center tw-gap-x-2 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-text-[14px] tw-gap-x-1 tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full"
                 onClick={navigateHome}
                 style={{
                   display: display ? "1" : "0",
                 }}
               >
-                Home
+                <Home /> Home
               </button>
             ) : (
               <button
-                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue`}
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-text-[14px] tw-gap-x-1 tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -90,16 +93,19 @@ const LabFooter = (props) => {
                 disabled={body === 4}
               >
                 NEXT
+                <ArrowForward />
               </button>
             )}
           </div>
         </div>
       )}
       {!display && (
-        <p className="tw-mb-[2rem] tw-mt-5 tw-body-text tw-font-bold tw-text-center">
-          The previously available navigation is disabled until the exercise is
-          complete.
-        </p>
+        <div className={"tw-w-full tw-bg-primary-yellow tw-rounded-lg tw-p-2"}>
+          <p className="tw-w-full tw-body-text tw-font-bold tw-text-center sm:tw-text-sm md:tw-leading-tight xl:tw-text-[16px]">
+            The previously available navigation is disabled until the exercise
+            is complete.
+          </p>
+        </div>
       )}
     </div>
   );

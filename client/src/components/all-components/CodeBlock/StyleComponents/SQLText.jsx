@@ -8,16 +8,16 @@ import {
 } from "../Constants";
 
 /**
- * React component for rendering code with syntax highlighting tailored for React code.
+ * React component for rendering code with syntax highlighting tailored for SQL code.
  *
- * The `ReactText` component takes a single prop, `children`, which should be a string containing
+ * The `SQLText` component takes a single prop, `children`, which should be a string containing
  * React code to be displayed with syntax highlighting. It applies syntax highlighting to the text,
  * distinguishing between keywords, operators, React-specific functions, and numbers to make the code more
  * readable and understandable for users.
  *
- * @param {Object} props - The props for the `ReactText` component.
+ * @param {Object} props - The props for the `SQLText` component.
  * @param {string} props.children - props.children - The React element representing the content of the code line, in this
- * case, the children will simply be passed in text, which will then be styled and syntactically highlighted similarly to React/Javascript style code.
+ * case, the children will simply be passed in text, which will then be styled and syntactically highlighted similarly to SQL style code.
  *
  * @return {JSX.Element} The rendered component that displays React code with syntax highlighting.
  */

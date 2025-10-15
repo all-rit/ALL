@@ -170,6 +170,7 @@ const CodeChangeBlocks = () => {
             <input
               type={"text"}
               id="first"
+              className={"tw-bg-[#333] tw-text-primary-yellow"}
               style={{ width: "600px" }}
               value={textValue}
               placeholder=""
