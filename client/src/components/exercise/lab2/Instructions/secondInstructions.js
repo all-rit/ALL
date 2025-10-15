@@ -29,12 +29,12 @@ const SecondInstructions = ({
     if (!isImagineExpression) {
       closePage();
     } else {
-      navigate("/Imagine/ExpressionExerciseStart");
+      navigate("/Imagine2023/ExpressionExerciseStart");
     }
   };
 
   return (
-    <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
+    <div className=" tw-flex tw-flex-col tw-p-6 tw-text-justify tw-justify-between">
       <p className="tw-title tw-p-0">Round 1 Complete</p>
       <ul className={"tw-font-calibri tw-font-normal tw-body-text"}>
         <li className={"tw-py-3"}>

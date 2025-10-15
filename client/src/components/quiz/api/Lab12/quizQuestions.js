@@ -37,7 +37,7 @@ const quizQuestionsLab12 = [
       {
         val: 0,
         type: "2",
-        content: "To foster an inclusive environment",
+        content: "To foster a bias-free environment",
       },
       {
         val: 1,
@@ -49,7 +49,7 @@ const quizQuestionsLab12 = [
   },
   {
     question:
-      "Which of the following could be used to add gender-inclusive features to software?",
+      "Which of the following could be used to add gender non-discrimination features to software?",
     answers: [
       {
         val: 0,
@@ -76,7 +76,7 @@ const quizQuestionsLab12 = [
   },
   {
     question:
-      "ADP, an HR and Payroll consulting company, has recently strived for inclusiveness in which of the following ways?",
+      "ADP, an HR and Payroll consulting company, has recently strived for gender sensitivity in which of the following ways?",
     answers: [
       {
         val: 1,

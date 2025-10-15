@@ -1,23 +1,38 @@
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
-import Survey from "../components/Survey";
+import Survey from "./Survey";
 import { navigate } from "@reach/router";
-import PreSurveyQuestions from "../data/preSurveyQuestions";
-import PostSurveyQuestions from "../data/postSurveyQuestions";
+import PreSurveyQuestions23 from "../../imagine23/data/preSurveyQuestions";
+import PostSurveyQuestions23 from "../../imagine23/data/postSurveyQuestions";
 import ImagineService from "../../../services/ImagineService";
 import Spinner from "../../../common/Spinner/Spinner";
+import PreSurveyQuestions25 from "../../../constants/imagine25/preSurveyQuestions";
+import PostSurveyQuestions25 from "../../../constants/imagine25/postSurveyQuestions";
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
  * @param {integer} labId is passed to the function to determine
  * what questions to grab
  */
-function assignQuizQuestions(surveyType) {
+function assignQuizQuestions(surveyType, year) {
   switch (surveyType) {
     case "pre":
-      return PreSurveyQuestions;
+      if (year == 23) {
+        return PreSurveyQuestions23;
+      } else if (year == 25) {
+        return PreSurveyQuestions25;
+      } else {
+        return;
+      }
+
     case "post":
-      return PostSurveyQuestions;
+      if (year == 23) {
+        return PostSurveyQuestions23;
+      } else if (year == 25) {
+        return PostSurveyQuestions25;
+      } else {
+        return;
+      }
     default:
       return [
         {
@@ -42,11 +57,14 @@ function assignQuizQuestions(surveyType) {
  * component with information.
  */
 const SurveyHandler = (props) => {
+  const { userID, type, year } = props;
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions] = useState(assignQuizQuestions(props.type));
+  const [questions] = useState(assignQuizQuestions(props.type, props.year));
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers,
   );
+  let [isUnderAge, setIsUnderAge] = useState(false);
+
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
@@ -71,15 +89,21 @@ const SurveyHandler = (props) => {
    * to display to the user for the result portion of the quiz.
    */
   async function onComplete(surveyType) {
-    setSurveyComplete(true);
-    if (surveyType === "pre") {
-      // will need to be changed with next logic story
-      const response = await activitySelector();
-      return response;
-      // This will handle navigation
-    } else if (surveyType === "post") {
-      ImagineService.postSurvey(props.userID, selectedAnswers);
-      navigate("/Imagine/ExerciseEnd");
+    try {
+      setSurveyComplete(true);
+      if (surveyType === "pre") {
+        // will need to be changed with next logic story
+        const response = await activitySelector();
+
+        return response;
+        // This will handle navigation
+      } else if (surveyType === "post") {
+        await ImagineService.postSurvey(userID, selectedAnswers, year);
+
+        navigate("/Imagine2025/Done");
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
   /**
@@ -88,24 +112,40 @@ const SurveyHandler = (props) => {
    * in the pre-survey.
    */
   async function activitySelector() {
-    const response = await ImagineService.preSurvey(
-      props.userID,
-      selectedAnswers,
-    );
-    const section = (await response.text()).replace(/['"]+/g, "");
+    if (year === 23) {
+      const response = await ImagineService.preSurvey(
+        props.userID,
+        selectedAnswers,
+        year,
+      );
+      const section = (await response.text()).replace(/['"]+/g, "");
 
-    if (section == "experiential" || section === "control") {
-      navigate("/Imagine/ExperientialStart");
-    } else if (
-      section === "discomfortCountNonPOC" ||
-      section === "discomfortCountPOC"
-    ) {
-      navigate("/Imagine/ExpressionStart");
+      if (section === "experiential" || section === "control") {
+        navigate("/Imagine2023/ExperientialStart");
+      } else if (
+        section === "discomfortCountNonPOC" ||
+        section === "discomfortCountPOC"
+      ) {
+        navigate("/Imagine2023/ExpressionStart");
+      } else {
+        console.log(section);
+        console.error("Navigating to None");
+      }
+    } else if (year == 25) {
+      sessionStorage.setItem("isUnderAge", isUnderAge);
+
+      if (isUnderAge) {
+        //will be changed to point to avatarCreation when merged
+        navigate("/Imagine2025/AvatarCreation");
+      } else {
+        await ImagineService.preSurvey(props.userID, selectedAnswers, year);
+        //will be changed to point to avatarCreation when merged
+        navigate("/Imagine2025/AvatarCreation");
+      }
     } else {
-      console.log("Navigating to None");
+      console.error("invalid year");
     }
   }
-
   /**
    * selectAnswer() is a function responsible for recording the
    * behavior in which a user enters in their answer. This function once
@@ -113,17 +153,34 @@ const SurveyHandler = (props) => {
    * component.
    * @param {*} e event containing the index of the selected answer response.
    */
+
   function selectAnswer(e) {
     const answerValue = e.target.value;
-    setSelectedAnswers([
-      ...selectedAnswers,
-      {
-        question: questions[currentQuestionCursor].question,
-        answer: questions[currentQuestionCursor].answers[answerValue].content,
-      },
-    ]);
+    //If answer is likert, then the answer will be from 1-10, and we do not care about the questions content
+    const answer =
+      questions[currentQuestionCursor].type == "likert"
+        ? answerValue
+        : questions[currentQuestionCursor].answers[answerValue].content;
+    setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
+
+    setSelectedAnswers((prevAnswers) => {
+      // Removes the "Under 18 years old" option from the selected answers
+      // if another option is chosen after selecting it first.
+
+      let updatedAnswers = prevAnswers.filter(
+        (a) => a.answer !== "Under 18 years old",
+      );
+      return [
+        ...updatedAnswers,
+        {
+          question: questions[currentQuestionCursor].question,
+          answer: answer,
+        },
+      ];
+    });
     setDisableNext(false);
   }
+
   /**
    * selectMulti is a function that is responsible for handling
    * behavior of a multi-answer question by recording the given input to
@@ -157,13 +214,28 @@ const SurveyHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
-
     tempAnswers[currentQuestionCursor] = {
       question: questions[currentQuestionCursor].question,
       answer: Array.from(storageSet),
     };
     setSelectedAnswers(tempAnswers);
   }
+
+  function rankingUpdate(updatedRankingAnswers) {
+    setSelectedAnswers((prevState) => {
+      const updatedState = [...prevState];
+      updatedState[currentQuestionCursor] = {
+        question: questions[currentQuestionCursor].question,
+        answer: updatedRankingAnswers,
+      };
+
+      //don't allow next if there is a unused ranking
+      setDisableNext(Object.values(updatedRankingAnswers).includes(0));
+
+      return updatedState;
+    });
+  }
+
   return (
     <>
       {!surveyComplete ? (
@@ -178,7 +250,10 @@ const SurveyHandler = (props) => {
           onAnswerSelected={selectAnswer}
           onMultiSelected={selectMulti}
           nextQuestion={handleNext}
-          onComplete={() => onComplete(props.type)}
+          onComplete={() => onComplete(type)}
+          isUnderAge={isUnderAge}
+          avatar={questions[currentQuestionCursor].avatar}
+          rankingUpdate={rankingUpdate}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">
@@ -193,5 +268,6 @@ SurveyHandler.propTypes = {
   userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleGroupAssignment: PropTypes.func, // optional
+  year: PropTypes.number.isRequired,
 };
 export default SurveyHandler;

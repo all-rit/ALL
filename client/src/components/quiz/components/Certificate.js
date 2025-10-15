@@ -6,7 +6,6 @@ import { bindActionCreators } from "redux";
 import logo from "../../../assets/images/logos/ALL_White.svg";
 import { Sections } from "../../../constants/index";
 import PropTypes from "prop-types";
-import ALLButton from "../../all-components/ALLButton";
 
 const mapStateToProps = (state) => {
   return {
@@ -33,30 +32,32 @@ class Certificate extends Component {
   };
 
   render() {
-    const { state, isImagine, lab, setViewCertificate } = this.props;
+    const { state, isImagine, lab } = this.props;
     const today = new Date();
     const date =
       today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     return (
       <div
         className={
-          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-max-h-[37rem]"
+          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-p-6"
         }
       >
         <div
           className={
-            "tw-w-3/5 tw-flex tw-flex-row tw-align-middle tw-justify-center tw-items-center tw-mt-[3rem]"
+            "tw-w-full tw-flex tw-flex-row tw-align-middle tw-justify-center tw-items-center"
           }
         >
-          <div className="tw-rounded-xl tw-w-full tw-border-solid tw-border-[0.75rem] tw-border-primary-blue">
+          <div className="tw-rounded-xl tw-w-full tw-border-solid tw-border-[0.75rem] tw-border-primary-blue tw-bg-white">
             <div className={"tw-py-6"}>
-              <span className={"tw-title"}>Certificate of Completion</span>
+              <p
+                className={
+                  "tw-title xs:tw-text-[1.125rem] md:tw-text-[2rem] tw-text-center"
+                }
+              >
+                Certificate of Completion
+              </p>
             </div>
-            <span
-              className={
-                "tw-text-[1.25rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
-              }
-            >
+            <div className={"tw-body-text tw-text-center tw-pb-[2rem]"}>
               {state.main.user !== null && state.main.user.firstname ? (
                 <p>
                   This is to certify that <b>{state.main.user.firstname}</b> has
@@ -65,53 +66,38 @@ class Certificate extends Component {
               ) : (
                 <p>This is to certify that you have completed the course:</p>
               )}
-            </span>
+            </div>
             <br />
-            <span className={"tw-title tw-text-[1.5rem]"}>
-              {isImagine ? (
-                <p style={{ fontSize: "50px", textAlign: "center" }}>
-                  Empathy Immersion
-                </p>
-              ) : (
-                Sections[lab].fullname
-              )}
-            </span>{" "}
-            <br />
-            <br />
-            <p
+            <div
               className={
-                "tw-text-[1.25rem] tw-text-center tw-pb-[1rem] tw-font-calibri tw-font-normal"
+                "tw-title xs:tw-text-[1.125rem] md:tw-text-[2rem] tw-text-center tw-w-full"
               }
             >
+              {isImagine ? <p>Empathy Immersion</p> : Sections[lab].fullname}
+            </div>{" "}
+            <br />
+            <br />
+            <p className={"tw-body-text tw-text-center tw-pb-[1rem]"}>
               with a score of{" "}
               <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>
             </p>{" "}
-            <span
-              className={
-                "tw-text-[1.25rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
-              }
+            <div
+              className={"tw-body-text tw-text-center tw-pb-[2rem] tw-w-full"}
             >
               <i>Completed on:</i>
-            </span>
-            <br />
-            <span
-              className={
-                "tw-text-[1.50rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
-              }
-            >
-              {date}
-            </span>
-            <br />
-            <br />
-            <div className=" tw-bg-primary-blue">
+              <p
+                className={
+                  "tw-text-[1.50rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
+                }
+              >
+                {date}
+              </p>
+            </div>
+            <div className=" tw-bg-primary-blue tw-flex tw-justify-center">
               <img src={logo} alt="logo" className={"tw-w-[40%]"} />
             </div>
           </div>
         </div>
-        <ALLButton
-          label={"View Results"}
-          onClick={() => setViewCertificate(false)}
-        />
       </div>
     );
   }

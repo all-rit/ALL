@@ -19,7 +19,7 @@ const Main = () => {
   );
 
   return (
-    <div className="bottomSpace tw-h-[40rem] tw-overflow-y-scroll">
+    <div className="tw-overflow-y-scroll">
       <ExerciseStateContext.Provider
         value={{
           repairState,
@@ -30,7 +30,7 @@ const Main = () => {
           setCurrentMessages,
         }}
       >
-        <Router className="app">
+        <Router>
           {/* Phase 1: experience biased sentiment analysis in action */}
           <ExerciseStart path="/*" />
           <BiasedSimulation path="/BiasedSimulation" />

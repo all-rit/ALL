@@ -111,7 +111,7 @@ class exercise extends Component {
         <div className={"tw-h-full"}>
           <Title exerciseState={true} replay={false} />
           <div className="startExerciseTimer tw-relative">{props.seconds}</div>
-          <div className="center prescreen tw-m-12 tw-p-5">
+          <div className="center prescreen tw-m-12 tw-p-5 tw-relative">
             <div className={"tw-absolute tw-m-12"}>
               <Circle color={correctColor} />
             </div>
@@ -123,7 +123,7 @@ class exercise extends Component {
               <div className="line tw-w-100" />
             </div>
             <div
-              className={"tw-absolute"}
+              className={"tw-absolute tw-right-[20%]"}
               style={{ transform: "translate(50%, -150%)" }}
             >
               <p className="prescreenText ">

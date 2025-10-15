@@ -141,14 +141,13 @@ const EnrolledGroupCard = (props) => {
           }
           onClick={toggleGroupDetailsModal}
         >
-          {groupName || group.groupName}
+          {groupName || group.groupName.slice(0, 20) + "..."}
         </a>
       </CardFooter>
       <BrandedALLModal
         isOpen={openGroupDetails}
         toggle={toggleGroupDetailsModal}
         direction={"column"}
-        width={"lg:tw-min-w-[60rem] lg:tw-min-h-[50rem]"}
       >
         <GroupDetails
           group={group}

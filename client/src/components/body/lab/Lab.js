@@ -49,8 +49,9 @@ const Lab = (props) => {
     for (let i = 1; i <= totalCircles; i++) {
       rating.push(
         <div
+          key={i}
           className={`tw-m-0.5 
-          ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
+            ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
         ></div>,
       );
     }
@@ -96,10 +97,10 @@ const Lab = (props) => {
                   >
                     View Certificate
                   </a>
-                  <Modal isOpen={openCertificate}>
+                  <Modal isOpen={openCertificate} className={"tw-mx-[10%]"}>
                     <ModalBody>
                       <Certificate
-                        quizResult={labProgress.quizscore}
+                        quizResult={labProgress?.quizscore}
                         lab={lab}
                       />
                     </ModalBody>

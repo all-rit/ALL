@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
 /** Body Components **/
@@ -24,10 +24,8 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import LabFooter from "./components/footer/LabFooter";
+// import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
-import NavigationPane from "./components/all-components/Lab/NavigationPane";
-import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -40,7 +38,8 @@ import Profile from "./components/body/profilepage/Profile";
 /** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Imagine } from "./components/imagine23/Main";
+import { default as Imagine2023 } from "./components/imagine23/Main";
+import { default as Imagine2025 } from "./components/imagine25/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -49,6 +48,10 @@ import "./assets/stylesheets/main.scss";
 import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
+import { Spinner } from "reactstrap";
+const LabWindow = lazy(
+  () => import("./components/all-components/Lab/LabWindow"),
+);
 const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
@@ -84,134 +87,126 @@ const App = () => {
     });
   }, []);
   const lab = state.main.lab;
-  // const body = state.main.body;
+  const body = state.main.body;
   const isImagine = state.main.isImagine;
+  const labInProgress = lab !== 0;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
+
+  const renderLabs = () => {
+    return (
+      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+        <Router basepath={process.env.PUBLIC_URL}>
+          <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
+          <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
+
+          <Reading
+            path={`/Lab${lab}/Reading`}
+            user={state.main.user}
+            labID={lab}
+            isImagine={isImagine}
+          />
+
+          <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+          <ExerciseLab2
+            path="/Lab2/Exercise"
+            user={state.main.user}
+            isImagine={isImagine}
+          />
+          <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+          <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+          <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+          <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+          <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+          <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
+          <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
+          <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
+          <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
+          <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+
+          <Reinforcement
+            path={`/Lab${lab}/Reinforcement`}
+            user={state.main.user}
+            labID={lab}
+          />
+          <Quiz
+            path={`/Lab${lab}/Quiz`}
+            labId={lab}
+            user={state.main.user}
+            isFinalQuiz={true}
+            hideCertificate={false}
+            quizCompleted={quizCompleted}
+            setQuizCompleted={setQuizCompleted}
+          />
+        </Router>
+      </div>
+    );
+  };
+
+  const renderPages = () => {
+    return (
+      <Router basepath={process.env.PUBLIC_URL}>
+        <AboutUsPage path={"/about-us"} />
+        <LandingPage path="/" />
+        <SiteMap path="/SiteMap" />
+        <Profile path="/Profile" user={state.main.user} />
+        <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
+        <EducatorResources path={"/EducatorResources"} user={state.main.user} />
+        <Error actions={actions} default />
+
+        <Imagine2023
+          path={"/Imagine2023/*"}
+          user={state.main.user}
+          isImagine={isImagine}
+          actions={actions}
+        />
+
+        <Imagine2025
+          path={"/Imagine2025/*"}
+          user={state.main.user}
+          isImagine={isImagine}
+        />
+      </Router>
+    );
+  };
 
   // look into index.js in constants
   initializeReactGA();
   return (
     <>
-      <div className="overflow-x-hidden tw-h-lvh">
-        <Header />
-        <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
-          <div
-            className={
-              "" +
-              (lab !== 0
-                ? "tw-grid tw-grid-cols-6 tw-flex-row tw-w-full tw-h-[40rem] tw-justify-between tw-mt-[10rem] tw-px-[4rem]"
-                : "")
-            }
-          >
-            {lab !== 0 && (
-              <div className={"tw-flex"}>
-                <div>
-                  <NavigationPane labID={lab} title={Sections[lab].fullname} />
+      <div
+        className={`overflow-x-hidden ${
+          labInProgress || isImagine
+            ? "overflow-y-hidden tw-h-lvh"
+            : "overflow-y-auto min-h-screen"
+        }`}
+      >
+        <Header isImagine={isImagine} />
+        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
+          <div className={`tw-relative tw-grid tw-h-full`}>
+            <Suspense fallback={<Spinner />}>
+              {labInProgress ? (
+                <LabWindow
+                  lab={lab}
+                  title={Sections[lab].fullname}
+                  context={context}
+                  quizCompleted={quizCompleted}
+                  setQuizCompleted={setQuizCompleted}
+                  isImagine={isImagine}
+                  body={body}
+                >
+                  {renderLabs()}
+                </LabWindow>
+              ) : (
+                <div className={"tw-flex tw-row-span-10 tw-text-center"}>
+                  {renderPages()}
                 </div>
-                <div
-                  className={
-                    "tw-h-[20%] tw-w-[98%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
-                  }
-                />
-                <div
-                  className={
-                    "tw-h-[75%] tw-w-[98%] tw-bg-primary-blue tw-absolute tw-top-[15rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
-                  }
-                />
-              </div>
-            )}
-            <Router
-              basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
-                ${
-                  lab !== 0
-                    ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
-                ${state.main.body === 0 && "tw-mt-[5rem] tw-h-[50%]"}`
-                    : "tw-w-full"
-                }`}
-            >
-              <AboutUsPage path={"/about-us"} />
-              <LandingPage path="/" />
-              <SiteMap path="/SiteMap" />
-              <Profile path="/Profile" user={state.main.user} />
-              <LabsPage
-                path={"/Labs"}
-                user={state.main.user}
-                actions={actions}
-              />
-              <EducatorResources
-                path={"/EducatorResources"}
-                user={state.main.user}
-              />
-              <Error actions={actions} default />
-
-              <Imagine
-                path={"/Imagine/*"}
-                user={state.main.user}
-                isImagine={isImagine}
-                actions={actions}
-              />
-
-              <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-              <About
-                path={`/Lab${lab}/About`}
-                user={state.main.user}
-                labID={lab}
-              />
-
-              <Reading
-                path={`/Lab${lab}/Reading`}
-                user={state.main.user}
-                labID={lab}
-                isImagine={isImagine}
-              />
-
-              <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-              <ExerciseLab2
-                path="/Lab2/Exercise"
-                user={state.main.user}
-                isImagine={isImagine}
-              />
-              <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-              <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-              <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-              <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
-              <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
-              <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
-              <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
-              <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
-              <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-              <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
-
-              <Reinforcement
-                path={`/Lab${lab}/Reinforcement`}
-                user={state.main.user}
-                labID={lab}
-              />
-              <Quiz
-                path={`/Lab${lab}/Quiz`}
-                labId={lab}
-                user={state.main.user}
-                isFinalQuiz={true}
-                hideCertificate={false}
-                quizCompleted={quizCompleted}
-                setQuizCompleted={setQuizCompleted}
-              />
-            </Router>
+              )}
+            </Suspense>
           </div>
         </div>
-        {lab === 0 && <MainFooter />}
+        {lab === 0 && !isImagine && <MainFooter />}
         <ALLSnackbar />
-        {lab !== 0 && (
-          <LabFooter
-            context={context}
-            quizCompleted={quizCompleted}
-            setQuizCompleted={setQuizCompleted}
-            isImagine={isImagine}
-          />
-        )}
-        <SiteAccessibilityButton />
       </div>
     </>
   );

@@ -45,7 +45,7 @@ class Main extends Component {
     const { actions, state, user } = this.props;
     return (
       <div className="tw-overflow-y-scroll tw-p-6">
-        <Router className="tw-h-[40rem]">
+        <Router>
           <ExerciseStart default path="/" />
           <FullExercise path="/BeginnerExercise" actions={actions} />
           <ExerciseInstructions

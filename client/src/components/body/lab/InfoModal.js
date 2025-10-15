@@ -2,16 +2,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import UserCertificate from "../profilepage/components/UserCertificate";
 
 const InfoModal = (props) => {
   const {
     buttonLabel,
     labName,
-    labNum,
     redirect,
     className,
-    labProgress,
     fullDescription,
     learningObjectives,
     authors,
@@ -68,40 +65,6 @@ const InfoModal = (props) => {
                 Launch Lab
               </Button>{" "}
               <Button className="btn-second" onClick={toggle}>
-                Close
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </ul>
-      );
-    case "View Certificate":
-      return (
-        <ul>
-          <button
-            className="btn-primary btn btn-md module__certificate"
-            onClick={toggle}
-          >
-            {buttonLabel}
-          </button>
-          <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalBody>
-              {labProgress === null || labProgress === undefined ? (
-                <ul>
-                  <UserCertificate quizScore="0" lab={labNum} />
-                </ul>
-              ) : (
-                <ul>
-                  <UserCertificate
-                    labName={labName}
-                    quizScore={labProgress.quizscore}
-                    labCompletionTime={labProgress.labcompletiontime}
-                    lab={labNum}
-                  />
-                </ul>
-              )}
-            </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" className="btn-second" onClick={toggle}>
                 Close
               </Button>
             </ModalFooter>

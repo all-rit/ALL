@@ -242,7 +242,7 @@ class Main extends Component {
       onOpenColorChange,
       onCloseColorChange,
       colorChange,
-      onToGreyBackground,
+      // onToGreyBackground,
       onResetSystem,
       onGoBackFromExercise,
       isImagine,
@@ -274,12 +274,12 @@ class Main extends Component {
     };
 
     return (
-      <div className="container tw-h-full tw-overflow-y-scroll tw-items-center">
+      <div className="tw-items-center">
         {infoPopup ? (
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
           <div
-            className={"tw-rounded-lg main"}
+            className={"tw-rounded-lg tw-min-h-[60vh] tw-overflow-x-hidden"}
             style={{ background: exerciseBackground }}
           >
             {changed ? (
@@ -400,9 +400,6 @@ class Main extends Component {
                                               onCloseColorChange
                                             }
                                             colors={colors}
-                                            toGreyBackground={
-                                              onToGreyBackground
-                                            }
                                             background={baseBackground}
                                           />
                                         ) : (

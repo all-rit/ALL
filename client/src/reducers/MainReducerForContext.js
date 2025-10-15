@@ -113,6 +113,8 @@ export const MainReducerForContext = (state = initialState, action) => {
             open: true,
             message: payload.message,
             notificationType: payload.notificationType,
+            xPosition: payload.xPosition,
+            yPosition: payload.yPosition,
           },
         },
       };

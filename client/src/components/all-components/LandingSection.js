@@ -1,8 +1,10 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import ALLButton from "./ALLButton";
 
 const LandingSection = (props) => {
-  const { title, body, img } = props;
+  const { title, body, img, hasButton, onClick, buttonLabel, shrinkImg } =
+    props;
   return (
     <section
       className={
@@ -12,9 +14,7 @@ const LandingSection = (props) => {
       {img && (
         <img
           src={img}
-          className={
-            "tw-absolute tw-bg-none xs:tw-hidden md:tw-flex md:tw-w-[25rem] tw-bottom-0 tw-right-0 tw-z-10"
-          }
+          className={`tw-absolute tw-bg-none xs:tw-hidden md:tw-flex ${shrinkImg ? "md:tw-w-[15rem]" : "md:tw-w-[25rem]"} tw-bottom-0 tw-right-[10%] tw-z-10`}
         />
       )}
       <div className={"tw-flex tw-flex-col tw-justify-center"}>
@@ -32,7 +32,14 @@ const LandingSection = (props) => {
               <h2 className={"tw-title xs:tw-text-xl md:tw-text-[2rem]"}>
                 {title}
               </h2>
-              <p className={"tw-body-text md:tw-w-1/2 lg:tw-w-3/5"}>{body}</p>
+              <p className={"tw-body-text md:tw-w-1/2"}>{body}</p>
+              <div
+                className={"xs:tw-w-full md:tw-w-1/2 tw-flex tw-justify-end"}
+              >
+                {hasButton && (
+                  <ALLButton label={buttonLabel} onClick={onClick} />
+                )}
+              </div>
             </div>
           </div>
           <div
@@ -50,6 +57,10 @@ LandingSection.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   img: PropTypes.string,
+  hasButton: PropTypes.bool,
+  onClick: PropTypes.func,
+  buttonLabel: PropTypes.string,
+  shrinkImg: PropTypes.bool,
 };
 
 export default LandingSection;

@@ -59,11 +59,7 @@ const LabGeneration = (props) => {
     if (progressState === "NOT_STARTED") {
       if (labids !== null && labids.length > 0) {
         return (
-          <div
-            className={
-              "tw-grid sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-5 tw-w-full"
-            }
-          >
+          <div className={"tw-grid tw-grid-cols-3 tw-gap-5 tw-w-full"}>
             {labids.map((lab, index) => {
               const idx = lab.labID - 1;
               return (
@@ -92,12 +88,13 @@ const LabGeneration = (props) => {
           </>
         );
       }
-    } else if (progressState === "FEATURED_LABS") {
+    } else if (
+      progressState === "FEATURED_LABS" ||
+      progressState === "MY_LABS"
+    ) {
       return (
         <div
-          className={
-            "tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-2 tw-grid-h-full tw-w-full tw-gap-8"
-          }
+          className={`tw-grid xs:tw-grid-cols-1 ${progressState === "MY_LABS" ? "md:tw-grid-cols-3" : "md:tw-grid-cols-2"} tw-w-full tw-gap-3`}
         >
           {labids.map((lab, index) => {
             const idx = lab.id - 1;
@@ -116,13 +113,10 @@ const LabGeneration = (props) => {
         </div>
       );
     } else {
+      // This is for displaying user labs with progress bars
       if (labRecords !== null && labRecords.length > 0) {
         return (
-          <div
-            className={
-              "tw-grid sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-5 tw-w-full tw-my-4"
-            }
-          >
+          <div className={"tw-grid tw-grid-cols-3 tw-gap-5 tw-w-full"}>
             {labRecords.map((rec, index) => {
               const idx = rec.labid - 1;
               if (labInformation[idx]) {
