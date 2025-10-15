@@ -12,7 +12,7 @@ const reactRegex =
 
 /* funcRegex searches in the children for a function call keywords like .() */
 const funcRegex =
-  /\b(map|filter|split|toFixed|includes|endsWith|startsWith|log|stringify|fetch|require|then|try|catch|e)\b/g;
+  /\b(map|filter|split|toFixed|includes|endsWith|startsWith|log|process|stringify|fetch|require|then|try|catch|e)\b/g;
 
 /* numberRegex searches for numbers */
 const numberRegex = /-?\d+(\.\d+)?/g;
