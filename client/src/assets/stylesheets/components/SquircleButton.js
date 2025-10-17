@@ -9,7 +9,7 @@ const SquircleButton = (props) => {
     <Button
       onClick={onClick}
       disabled={disabled}
-      className={"tw-relative tw-bg-transparent tw-border-none tw-p-0 tw-z-10"}
+      className={"tw-relative tw-bg-transparent tw-border-none tw-p-0 tw-z-40"}
     >
       <div
         className={
