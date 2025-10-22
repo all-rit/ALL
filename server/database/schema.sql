@@ -3458,7 +3458,7 @@ e'[
     "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
   ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null, 
   -- About Section
-  '', e'{
+  'temp', e'{
   "piechart": {
     "header":"Header Name",
     "caption":["59% of Gen Z believes forms should have options outside of male and female."],
