@@ -3450,9 +3450,238 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true);
-
-
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Computing', 'Quantum', 'AI', '/identity.jpg', 'Learn about quantum computing.', '',
+  e'[
+    "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
+    "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
+    "LO3: Use the simulation to factor a small number and decrypt an encrypted message (Application)",
+    "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
+  ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null, 
+  -- About Section
+  '', e'{
+  "piechart": {
+    "header":"Header Name",
+    "caption":["59% of Gen Z believes forms should have options outside of male and female."],
+    "data": {
+      "labels": [
+        "Gen Zers who believe forms should have options outside of male / female",
+        "Gen Zers who DO NOT believe forms should have options outside of male / female"
+      ],
+      "datasets": [
+        {
+          "label": "Unbiased Forms",
+          "borderColor": "black",
+          "backgroundColor": ["#FFC107","#004D40"],
+          "data": [59, 41],
+          "borderWidth": "2"
+        }
+      ]
+    }
+  },
+  "description":"",
+  "body":[
+    {
+      "header":"Gender Identity",
+      "type":"",
+      "content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+    },
+    {
+      "header": "",
+      "type": "links",
+      "content": [
+          {
+              "name": "2023 LGBTQ+ Youth Report Survey",
+              "link": "https://reports.hrc.org/2023-lgbtq-youth-report"
+          }
+      ]
+    },
+    {
+      "header":"",
+      "type":"",
+      "content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+    },
+    {
+      "header": "",
+      "type": "image",
+      "content" : {
+        "image":"/pronoun_guide.png",
+        "alt":"Pronouns- A How To Guide",
+        "sub_caption":"Figure 1",
+        "caption":"A Guide to Effective use of Pronouns"
+      }
+    },
+    {
+      "header": "Gender Non-Discrimination in the Workplace",
+      "type": "",
+      "content": ["One company that has strived for acceptance is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an accessible environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+    },
+    {
+      "header": "",
+      "type": "links",
+      "content": [
+        {
+          "name": "Fostering Accessible Environments in the Workplace",
+          "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+        },
+        {
+          "name": "Using Preferred Names at Work",
+          "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+        }
+      ]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["These practices should be reflected throughout any institutions, including gender non-discriminatory terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+    }
+  ],
+  "footer":{
+      "links":[
+        {
+          "name":"Accessible Design Best Practices",
+          "link":"https://vorecol.com/blogs/blog-best-practices-for-designing-inclusive-software-interfaces-for-gender-diversity-177983"
+        }
+      ]
+    }
+  }',
+  '[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use accessible language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Non-Discrimination","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
+  {
+    "question": "Question?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Incorrect Answer"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Correct Answer",
+        "explanation": "Explain why this answer is correct."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": ""
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Why is it important to respect someone’s chosen pronouns/name?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "To show respect to others"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "It can lead to a decrease in anxiety"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "To foster a bias-free environment"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above",
+        "explanation": "Using a person’s preferred name and pronouns creates a respectful environment and can decrease anxiety regarding gender expression."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following could be used to add gender non-discrimination features to software?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Making everything rainbow colored"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Adding an ‘other’ text field when asking for gender",
+        "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Mandating/requiring users to input their gender"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Adjust font size, font color, and text alignment"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "ADP, an HR and Payroll consulting company, has recently strived for accessibility in which of the following ways?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Advocates for the importance of using preferred names",
+        "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
+        "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Outline the best practices for using preferred names at work",
+        "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
+        "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Become familiar with and consistent with someone’s preferred pronouns",
+        "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
+        "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "76%",
+        "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
+        "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "31%"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "12%"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "This hasn’t been surveyed before."
+      }
+    ],
+    "multiChoice": false
+  } 
+ ]', 2, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
