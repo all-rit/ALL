@@ -3496,8 +3496,8 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (32, 'Ursula', 'Parker', 'Project Manager, Imagine Team Lead', '/Ursula_Parker.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2024-Present', true, null, null, null),
 (33, 'Emma', 'Schmitt', 'AI Lab Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
 (34, 'Warner', 'Harper', 'Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
-(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "https://www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
-(36, 'William', 'Herrick', null, null, null, null, null, true, null, null, null),
+(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
+(36, 'William', 'Herrick', 'Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, null),
 (37, 'Vivian', 'Hernandez', null, null, null, null, null, true, null, null, null),
 (38, 'Darlyn', 'Gomez', null, null, null, null, null, true, null, null, null);
 
