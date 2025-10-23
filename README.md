@@ -14,7 +14,7 @@ Clone the repository and open the command line for the upcoming instructions.
 
 ### ESlint and Pre-commit setup
 
-After cloning the repository in the top level directory, run `npm install`. this will install all of the tools needed to
+After cloning the repository in the top level directory, run `npm install`. This will install all of the tools needed to
 commit and correctly format all code within the project.
 
 ### PM2 Instructions
