@@ -151,7 +151,7 @@ const FauxFigma = (props) => {
         </div>
       </div>
       <p className={"tw-text-xs tw-text-black tw-text-center tw-italic"}>
-        Amgif&apos;s Interface with all of the sections of a typical ALL lab
+        A UI/UX editor interface with all of the sections of a typical ALL lab
         page. The examples shown is of Lab 14 the Accessibility to Focus Order.
       </p>
     </div>

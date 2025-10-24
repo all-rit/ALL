@@ -489,14 +489,13 @@ create table lab12_exercise
 );
 
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
-VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg',
+VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessible Learning Lab', 'Tutorials', '/wrench.jpg',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.',
-        '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)",
-          "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)",
-          "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
-          "LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]',
-        'Heather Moses, Domenic Mangano, Jonathan Cruz, Melissa Burisky, Jack Barter',
+        '["Lab Design: Learn how we categorize and structure our labs, ensure each one is experiential and engaging, design intuitive UI/UX through wireframing, and refine our development process using Scrum.",
+          "Backend Development: Gain hands-on experience with our database, service layers, controllers, and endpoints through guided exercises, and understand how each component integrates to form our complete backend architecture.",
+          "Frontend Development: Explore our component architecture, boilerplate, and core lab components, and learn how to bring them together into a cohesive framework."]',
+        'Heather Moses, Domenic Mangano, Jonathan Cruz, Melissa Burisky, Jack Barter, Ursula Parker',
         'https://all.rit.edu/Lab0/', NULL,
         'In this lab, you will learn how to develop a lab for ALL from beginning to end. Starting with writing a lab, you will explore concepts like ideation, gathering sources, and finally designing the lab’s structure. Afterward, you will be able to implement a lab on both the frontend and backend while upholding best practices and standards. Click “Next” to start!',
         e'{
@@ -521,7 +520,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "What Goes into Building a Lab?",
                 "type": "",
                 "content": [
-"Every ALL lab follows a standardized structure that ensures consistency, engagement, and educational value. The flow consists of five core sections: Reading, Exercise (including Game Exercise and Game Repair), Reinforcement, and Quiz. This progression introduces core concepts, provides hands-on activities, reinforces knowledge through multimedia content, and concludes with an assessment to solidify understanding. Labs are built not just to educate but to immerse students in real accessibility challenges. Whether a student is simulating screen reader experiences or identifying design flaws in inaccessible applications, the lab experience is designed to encourage critical thinking and foster empathy. Every lab is backed by data models stored in a PostgreSQL database, and each exercise is powered by a Redux-based state engine, ensuring a dynamic and reactive experience."              ]
+"Every ALL lab follows a standardized structure that ensures consistency, engagement, and educational value. The flow consists of five core sections: Reading, Exercise (including the Experiential Exercise and Experiential Repair), Reinforcement, and Quiz. This progression introduces core concepts, provides hands-on activities, reinforces knowledge through multimedia content, and concludes with an assessment to solidify understanding. Labs are built not just to educate but to immerse students in real challenges. Whether a student is simulating screen reader experiences or identifying design flaws in inaccessible applications, the lab experience is designed to encourage critical thinking and foster empathy. Every lab is backed by data models stored in a PostgreSQL database, and each exercise is powered by a Redux-based state engine, ensuring a dynamic and reactive experience."              ]
             },
             {
                 "header": "",
@@ -532,7 +531,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "Our Tech Stack",
                 "type": "",
                 "content": [
-"The frontend is built with React, a declarative JavaScript framework known for building interactive and modular user interfaces. Components are styled using Tailwind CSS and follow an accessibility-first design philosophy. The backend is powered by Express.js running on Node.js. It follows a clean separation-of-concerns pattern using folders like routes, controllers, services, and database. All backend routes are exposed via RESTful API endpoints on port 5005, consumed by the frontend service layer to maintain modularity. Persistent data is managed with PostgreSQL, a relational database used to store lab content, quiz data, user progress, and session repair attempts. Schemas and models are defined using Sequelize and organized by domain. The entire system is containerized and can be spun up locally using docker-compose, with environment variables configured through .env files and ecosystem.config.js."             ]
+"The frontend is built with React, a declarative JavaScript framework known for building interactive and modular user interfaces. Components are styled using Tailwind CSS and follow an accessibility-first design philosophy. The backend is powered by Express.js running on Node.js. It follows a clean separation-of-concerns pattern using folders like routes, controllers, services, and database. All backend routes are exposed as RESTful API endpoints on port 5005, which are consumed by the frontend’s service layer to maintain a clean, modular architecture. Persistent data is managed with PostgreSQL, a relational database used to store lab content, quiz data, user progress, and session data. Schemas and models are defined using Sequelize and organized by domain. The entire system is containerized and can be spun up locally using docker-compose, with environment variables configured through .env files and ecosystem.config.js."             ]
             },
             {
                 "header": "",

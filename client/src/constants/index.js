@@ -15,7 +15,7 @@ export const Sections = {
     },
   },
   0: {
-    fullname: "Lab 0: How to Build a Lab",
+    fullname: "Lab 0: How to Build an Accessible Learning Lab",
     name: "Lab0",
     0: {
       name: "About",

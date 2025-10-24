@@ -17,15 +17,15 @@ const ScrumIntroduction = () => {
       </h2>
       <p className={"tw-body-text tw-py-6"}>
         <strong>AGILE</strong> development is a development methodology that
-        emphasizes the importance of adaptability and ever- changing
+        emphasizes the importance of adaptability and ever-changing
         requirements, as well as collaborating with the product owner to ensure
         that the final product is as close to what they want as possible. Using
         AGILE allows teams to deliver and demonstrate value quickly, as well as
         gather feedback to improve the product during development.
       </p>
       <p className={"tw-body-text"}>
-        <strong>SCRUM</strong> is a framework that helps teams in any business
-        setting work together to complete projects in short, time-boxed
+        <strong>SCRUM</strong> is an agile framework that helps teams in any
+        business setting work together to complete projects in short, time-boxed
         increments called <strong>SPRINTS</strong>, which usually last
         approximately 2 weeks.
       </p>
@@ -38,14 +38,15 @@ const ScrumIntroduction = () => {
         could&apos;ve done better.
       </p>
       <p className={"tw-body-text"}>
-        Another major proponent of SCRUM is the <strong>DAILY STANDUP</strong>,
+        Another major component of scrum is the <strong>DAILY STANDUP</strong>,
         where developers meet with their project manager for approximately 15-20
         minutes and give an update on what they completed the day before, what
         they are working on today, and if they have any blockers.
       </p>
       <p className={"tw-body-text tw-py-6"}>
-        For the Accessible Learning Labs (ALL), all teams will be using SCRUM to
-        manage their workflows to ensure efficency and adaptability.
+        At Accessible Learning Labs (ALL), teams typically use a customized
+        implementation of SCRUM to manage their workflows to ensure efficency
+        and adaptability.
       </p>
       <p className={"tw-body-text tw-py-6"}>
         Click the <strong> Next</strong> button below to move on to the Sprint

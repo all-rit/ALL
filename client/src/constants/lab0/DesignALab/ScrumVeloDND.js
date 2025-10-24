@@ -10,9 +10,9 @@ const initialBank = [
     id: "card1",
     content: "A",
     body: `
-1. Explanation of Disordered Focus
-2. Hearing Mismatched Labels
-3. Explanation of the Inaccessibility
+1. Write an Explanation of Disordered Focus
+2. Explain the Issue of Hearing Mismatched Labels
+3. Write an Explanation of the Inaccessibility
     `,
     color: "tw-bg-[#FF8DA1]",
     isCorrect: true,

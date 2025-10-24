@@ -16,10 +16,10 @@ const WireframeFirstGlance = () => {
     <div className={"tw-text-left"}>
       <p className={"tw-title"}>Wireframing at a Glance</p>
       <p className={"tw-body-text tw-py-6"}>
-        Below you will see examples of simple wireframing in our own proprietary
-        UI/UX editor, <strong>Amgif</strong>. The point is to develop a high
-        fidelity, easy to reproduce example of the desired frontend design for
-        the software developers to use as a reference for the production build.
+        Below you will see examples of simple wireframing in a fictional UI/UX
+        editor, <strong>Amgif</strong>. The point is to develop a high fidelity,
+        easy to reproduce example of the desired frontend design for the
+        software developers to use as a reference for the production build.
       </p>
       <p className={"tw-body-text"}>
         When developing UI, accessibility and branding standards are paramount

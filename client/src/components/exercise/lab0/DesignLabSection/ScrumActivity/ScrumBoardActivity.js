@@ -33,8 +33,9 @@ const ScrumBoardActivity = () => {
       <h2 className={"tw-title tw-text-left"}> Sprint Planning Activity</h2>
       <p className={"tw-py-3 tw-body-text"}>
         In this exercise you will be given the opportunity to plan your
-        development schedule of the Accessibility to Focus Order exercise that
-        you just created in the previous activity.
+        development schedule of the{" "}
+        <strong>Accessibility to Focus Order </strong>exercise that you just
+        created in the previous activity.
       </p>
       <p className={"tw-body-text"}>
         Using the blocks below, drag and drop them into the correct sprint

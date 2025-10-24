@@ -192,7 +192,7 @@ const WireframeComponents = () => {
             disrupts logical navigation.
           </blockquote>
           <p className={"tw-body-text tw-pt-2"}>
-            Which ALL website component would be most suited for an activity
+            Which ALL Website Component would be most suited for an activity
             where a user must rectify the <code>tabindex</code> in the form to
             reorder the focus order to follow a logical sequence?
           </p>
@@ -203,10 +203,10 @@ const WireframeComponents = () => {
           <blockquote className="tw-p-4 tw-m-2 tw-font-semibold">
             On a form, there are several buttons with different functions.
             However, only one button is labeled correctly with an accessible
-            name and fulfills a specific task: &quot;Submit Feedback&quot; A
-            user with accessibility needs must locate this button using
-            keyboard-only navigation, ensuring they rely on proper focusable
-            elements and screen reader hints.
+            name and fulfills a specific task: &quot;Submit Feedback&quot;. A
+            user with accessibility needs should be able to locate this button
+            using keyboard-only navigation, relying on properly focusable
+            elements and descriptive screen reader labels.
           </blockquote>
           <p className={"tw-body-text tw-pt-2"}>
             Which ALL component would be most suited for an activity where a
