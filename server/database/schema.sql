@@ -3220,7 +3220,8 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', 2, 'coming soon', 'coming soon', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
+', 2, 'coming soon', 'coming soon', true), 
+(12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
 e'[
    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
@@ -3450,7 +3451,239 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true);
+]', 2, 'coming soon', 'coming soon', true),
+(13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artifical Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
+e'[
+   "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
+   "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
+   "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
+   "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
+]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 'In this lab, you will learn about how a persons own bias can play a part into Generative AI interactions. You will learn about what Cognitive Bias is, how it plays into Human Interactions with Generative AI, Three Specific Cognitive Biases that normally impact AI Interactions, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
+“Next” to start!', e'{
+ "piechart": {
+       "header":"Unbiased Forms",
+      "caption":["59% of Gen Z believes forms should have options outside of male and female."],
+      "data": {
+         "labels": [
+            "Gen Zers who believe forms should have options outside of male / female",
+            "Gen Zers who DO NOT believe forms should have options outside of male / female"
+           ],
+           "datasets": [
+            {
+              "label": "Unbiased Forms",
+              "borderColor": "black",
+              "backgroundColor": ["#FFC107","#004D40"],
+              "data": [59, 41],
+              "borderWidth": "2"
+            }
+           ]
+        }
+   },
+   "description":"",
+   "body":[
+      {
+         "header":"Gender Identity",
+         "type":"",
+         "content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+      },
+       {
+           "header": "",
+           "type": "links",
+           "content": [
+               {
+                   "name": "2023 LGBTQ+ Youth Report Survey",
+                   "link": "https://reports.hrc.org/2023-lgbtq-youth-report"
+               }
+           ]
+       },
+      {
+         "header":"",
+         "type":"",
+         "content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+      },
+       {
+           "header": "",
+           "type": "image",
+           "content" : {
+               "image":"/pronoun_guide.png",
+               "alt":"Pronouns- A How To Guide",
+               "sub_caption":"Figure 1",
+               "caption":"A Guide to Effective use of Pronouns"
+           }
+       },
+       {
+           "header": "Gender Non-Discrimination in the Workplace",
+           "type": "",
+           "content": ["One company that has strived for acceptance is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an accessible environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+       },
+       {
+           "header": "",
+           "type": "links",
+           "content": [
+               {
+                   "name": "Fostering Accessible Environments in the Workplace",
+                   "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+               },
+               {
+                   "name": "Using Preferred Names at Work",
+                   "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+               }
+           ]
+       },
+       {
+           "header": "",
+           "type": "",
+           "content": ["These practices should be reflected throughout any institutions, including gender non-discriminatory terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+       }
+   ],
+   "footer":{
+      "links":[
+         {
+            "name":"Accessible Design Best Practices",
+            "link":"https://vorecol.com/blogs/blog-best-practices-for-designing-inclusive-software-interfaces-for-gender-diversity-177983"
+         }
+      ]
+   }
+}',
+'[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
+ {
+   "question": "What does gender refer to?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "A person’s assigned sex at birth"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "A person’s unique perception of who they are",
+       "explanation": "While sex is a biological characteristic, gender is a self-identified concept."
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "The sex other people perceive a person as"
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "Why is it important to respect someone’s chosen pronouns/name?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "To show respect to others"
+     },
+     {
+       "val": 0,
+       "type": "1",
+       "content": "It can lead to a decrease in anxiety"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "To foster a bias-free environment"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "All of the above",
+       "explanation": "Using a person’s preferred name and pronouns creates a respectful environment and can decrease anxiety regarding gender expression."
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "Which of the following could be used to add gender non-discrimination features to software?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "Making everything rainbow colored"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "Adding an ‘other’ text field when asking for gender",
+       "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Mandating/requiring users to input their gender"
+     },
+     {
+       "val": 0,
+       "type": "3",
+       "content": "Adjust font size, font color, and text alignment"
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "ADP, an HR and Payroll consulting company, has recently strived for accessibility in which of the following ways?",
+   "answers": [
+     {
+       "val": 1,
+       "type": "0",
+       "content": "Advocates for the importance of using preferred names",
+       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
+       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "Outline the best practices for using preferred names at work",
+       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
+       "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "Become familiar with and consistent with someone’s preferred pronouns",
+       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
+       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+     }
+   ],
+   "multiChoice": true
+ },
+ {
+   "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
+   "answers": [
+     {
+       "val": 1,
+       "type": "0",
+       "content": "76%",
+       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
+       "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
+     },
+     {
+       "val": 0,
+       "type": "1",
+       "content": "31%"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "12%"
+     },
+     {
+       "val": 0,
+       "type": "3",
+       "content": "This hasn’t been surveyed before."
+     }
+   ],
+   "multiChoice": false
+ }
+]', 1, 'coming soon', 'coming soon', true);
+
 
 
 
