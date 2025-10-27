@@ -3454,10 +3454,10 @@ e'[
 ]', 2, 'coming soon', 'coming soon', true),
 (13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artifical Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
 e'[
-   "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
-   "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
-   "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
-   "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
+   "LO1: Recognize how cognitive biases such as the Halo Effect, Authority Bias, and Truth Bias influence trust in AI-generated content (Knowledge)",
+   "LO2: Create design strategies that promote critical thinking, such as certainty indicators and disclaimers about AI limitations (Synthesis)",
+   "LO3: Identify common hallucination patterns in generative AI, including false citations and misleading self-references (Application)",
+   "LO4: Experience how confident language, polished grammar, and proximity to credible sources can lead to overestimation of AI accuracy (Comprehension)"
 ]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 'In this lab, you will learn about how a persons own bias can play a part into Generative AI interactions. You will learn about what Cognitive Bias is, how it plays into Human Interactions with Generative AI, Three Specific Cognitive Biases that normally impact AI Interactions, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
 “Next” to start!', e'{
  "piechart": {
