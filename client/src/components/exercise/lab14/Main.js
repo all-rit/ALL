@@ -5,7 +5,12 @@ import { EXERCISE_STATES } from "../../../constants/lab14";
 import ExerciseStateContext from "./Lab14Context";
 
 // lab imported dependencies;
-// add here
+import Superposition from "./pages/Superposition";
+import Entanglement from "./pages/Entanglement";
+import CaesarCipher from "./pages/CaesarCipher";
+import RSA from "./pages/RSA";
+import ShorsAlgorithm from "./pages/ShorsAlgorithm";
+import Conclusion from "./pages/Conclusion";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -16,14 +21,6 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
-  // lab state variables here
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [preferredName, setPreferredName] = useState("");
-  // const [pronouns, setPronouns] = useState("");
-  // const [college, setCollege] = useState("");
-  // const [major, setMajor] = useState("");
-  // const [gradTerm, setGradTerm] = useState("");
 
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
@@ -34,19 +31,12 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          {/* elements here */}
-          {/* <FormRepair path="/FormRepair" />
-          <DatabaseRepair path={"/DatabaseRepair"} />
-          <ExerciseIntro default path="/" />
-          <GradApplication path="/GraduationApplication" />
-          <PreWrongDiploma path="/PreWrongDiploma" />
-          <Diploma path="/Diploma" />
-          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
-          <PostWrongNewsletter path="/PostWrongNewsletter" />
-          <PreDbRepair path={"/PreDbRepair"} />
-          <PreCorrectDiploma path="/PreCorrectDiploma" />
-          <PostCorrectNewsletter path="/PostCorrectNewsletter" />
-          <KeyTakeaways path="/KeyTakeaways" /> */}
+          <Superposition default path="/" />
+          <Entanglement path="/Entanglement" />
+          <CaesarCipher path="/CaesarCipher" />
+          <RSA path="/RSA" />
+          <ShorsAlgorithm path="/ShorsAlgorithm" />
+          <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
     </div>
