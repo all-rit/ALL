@@ -3499,7 +3499,7 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
 (36, 'William', 'Herrick', 'Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, null),
 (37, 'Vivian', 'Hernandez', null, null, null, null, null, true, null, null, null),
-(38, 'Darlyn', 'Gomez', null, null, null, null, null, true, null, null, null),
+(38, 'Darlyn', 'Gomez', 'Engineer', '/default_profile_image.jpg', null, null, '2025-Present', true, null, null, null),
 (39, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
 (40, 'Gabby', 'Addotey', 'Outreach', '/default_profile_image.jpg', '[{"link" : ""}]', null, '2025-Present', true, null, null, null);
 
