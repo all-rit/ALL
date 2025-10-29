@@ -3496,9 +3496,9 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (32, 'Ursula', 'Parker', 'Project Manager', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2024-Present', true, null, null, null),
 (33, 'Emma', 'Schmitt', 'Director of Outreach, Dev Team Lead ', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
 (34, 'Warner', 'Harper', 'Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
-(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
+(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, '', null, null),
 (36, 'William', 'Herrick', null, null, null, null, null, true, null, null, null),
-(37, 'Vivian', 'Hernandez', null, null, null, null, null, true, null, null, null),
+(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.png', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, null),
 (38, 'Darlyn', 'Gomez', null, null, null, null, null, true, null, null, null);
 
 INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
