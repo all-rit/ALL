@@ -3547,7 +3547,7 @@ e'[
 }',
 '[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
  {
-   "question": "Which cognitive bias best describes this scenario? Bob is a student who used ChatGPT to do his math homework. He puts in his equation and it gives back an incorrect answer. He thought that the equation would be too hard for him to solve on his own, which is why he turned to Generative AI. He submits his homework and gets a 0 on it.",
+   "question": "Which cognitive bias best describes this scenario? Bob is a student who used ChatGPT to do his math homework. He argues with his teacher about his homework that he got a 0 on. He believes that his math skills are strong enough to not check the answers of ChatGPT because they \"look right\". His teacher continued to give him a 0.",
    "answers": [
      {
        "val": 0,
@@ -3560,15 +3560,15 @@ e'[
        "content": "Halo Effect"
      },
      {
-       "val": 1,
+       "val": 0,
        "type": "2",
-       "content": "Authority Bias",
-       "explanation": "Authority Bias is the tendency to attribute greater accuracy to the opinion of an authority figure (or perceived authority) and be more influenced by that opinion."
+       "content": "Authority Bias"
      },
      {
-       "val": 0,
+       "val": 1,
        "type": "3",
-       "content": "Dunning-Kruger Effect"
+       "content": "Dunning-Kruger Effect",
+       "explanation": "The Dunning-Kruger Effect is a cognitive bias in which people overestimate their ability in a task. In this case, Bob overestimates his math skills and trusts the AI without verification."
      }
    ],
    "multiChoice": false
