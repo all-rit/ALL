@@ -29,6 +29,7 @@ const WireframeComponents = () => {
         if (selectedComponent.componentName === "Code Block Component") {
           setScenario(2);
           setMessage("");
+          setSelectedComponent(null);
         } else {
           setMessage("Try again! " + selectedComponent.errorText);
         }
@@ -37,6 +38,7 @@ const WireframeComponents = () => {
         if (selectedComponent.componentName === "Lab Button Component") {
           setScenario(3);
           setMessage("");
+          setSelectedComponent(null);
         } else {
           setMessage("Try again! " + selectedComponent.errorText);
         }
@@ -45,6 +47,7 @@ const WireframeComponents = () => {
         if (selectedComponent.componentName === "Drag and Drop Component") {
           setIsCorrect(true);
           setMessage("Good Job!");
+          setSelectedComponent(null);
         } else {
           setMessage("Try again! " + selectedComponent.errorText);
         }

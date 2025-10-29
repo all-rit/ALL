@@ -66,7 +66,7 @@ const DesignLabIntroduction = () => {
           gameStyle={"tw-flex tw-flex-col tw-w-full"}
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
-            "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-min-h-[20rem] tw-pb-4 tw-flex tw-flex-col tw-w-full"
+            "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-min-h-[10rem] tw-pb-4 tw-flex tw-flex-col tw-w-full"
           }
           bankStyle={
             "tw-grid tw-grid-cols-3 xs:tw-grid-cols-3 md:tw-grid-cols-4 xl:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-[0.5px] " +
@@ -84,8 +84,8 @@ const DesignLabIntroduction = () => {
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
           colHeaderStyle={
-            "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
-            "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
+            "tw-flex tw-items-center tw-justify-center tw-py-3 tw-text-center " +
+            "tw-mx-0 tw-my-2 tw-bg-primary-yellow tw-rounded-md tw-font-bold"
           }
           cols={cols}
           initialBank={bank}
