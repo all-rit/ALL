@@ -3618,7 +3618,7 @@ e'[
    "multiChoice": false
  },
  {
-   "question": "Select all the things that users should check when using Generative AI to check validity",
+   "question": "Select all of the following that users can use to check the validity of Generative AI responses.",
    "answers": [
      {
        "val": 1,
