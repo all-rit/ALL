@@ -3652,23 +3652,23 @@ e'[
      {
        "val": 0,
        "type": "0",
-       "content": "Perceptions"
+       "content": "Intuition"
      },
      {
-       "val": 0,
+       "val": 1,
        "type": "1",
-       "content": "Memories"
+       "content": "Facts",
+       "explanation": "Cognitive biases are systematic patterns of deviation from norm or rationality in judgment, often based on intuition rather than objective facts."
      },
      {
        "val": 0,
        "type": "2",
-       "content": "Societal Beliefs"
+       "content": "Familiarity"
      },
      {
-       "val": 1,
+       "val": 0,
        "type": "3",
-       "content": "Factual Evidence",
-       "explanation": "Cognitive biases are systematic patterns of deviation from norm or rationality in judgment, often influenced by perceptions, memories, and societal beliefs rather than factual evidence."
+       "content": "Quick Conclusions"
      }
    ],
    "multiChoice": false
