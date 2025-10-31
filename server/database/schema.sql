@@ -3546,141 +3546,184 @@ e'[
   }',
   '[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use accessible language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Non-Discrimination","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
   {
-    "question": "Question?",
+    "question": "What causes a qubit to collapse?",
     "answers": [
       {
         "val": 0,
         "type": "0",
-        "content": "Incorrect Answer"
-      },
-      {
-        "val": 1,
-        "type": "1",
-        "content": "Correct Answer",
-        "explanation": "Explain why this answer is correct."
+        "content": "When the temperature is too cold"
       },
       {
         "val": 0,
+        "type": "1",
+        "content": "When there is light on the qubit"
+      },
+      {
+        "val": 1,
         "type": "2",
-        "content": ""
+        "content": "When a qubit is measured",
+        "explanation": "Qubits are fragile, so when they are observed they collapse to a state of either 1 or 0."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "When a qubit is linked to another qubit"
       }
     ],
     "multiChoice": false
   },
   {
-    "question": "Why is it important to respect someone’s chosen pronouns/name?",
+    "question": "What is superposition?",
     "answers": [
       {
         "val": 0,
         "type": "0",
-        "content": "To show respect to others"
+        "content": "A term for the color of qubits after measured"
       },
       {
-        "val": 0,
+        "val": 1,
         "type": "1",
-        "content": "It can lead to a decrease in anxiety"
+        "content": "A term for the value of qubits before measured which is both 0 and 1",
+        "explanation": "Superposition is the state when qubits fluctuate between 0 and 1 values simultaneously before it collapses to a value on measurement."
       },
       {
         "val": 0,
         "type": "2",
-        "content": "To foster a bias-free environment"
+        "content": "A part of the quantum computer used to cool down qubits"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "A quantum based super hero"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is entanglement?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "When qubits break apart into string like pieces"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "A term for the pathing needed in a quantum computer"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "A term for qubits that are linked together and share a single state",
+        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and share a single quantum state."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "When a qubit changes in position rapidly"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these isn’t true regarding quantum computing?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Quantum computing is expensive to build and maintain research on"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Quantum computers face high error rates"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Quantum computers are kept at near absolute zero temperature"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Quantum computing is set to replace classic computers",
+        "explanation": "Quantum computing is very expensive and overkill for a lot of modern processes, instead it should be used complimentary to classic computers."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How are ciphers solved faster with quantum computers?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Quantum computers are able to tell which cipher it’s dealing with easily"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Qubits allow for more attempts decrypting the cipher at once",
+        "explanation": "Due to the phenomena of superposition, qubits are able to provide multiple valued attempts at the same time in comparison to classic computers which can only do one at a time."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Quantum code is stronger at cracking ciphers"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Ciphers are solved easier on bigger machines"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "True or False: Current quantum computers have the power to solve every cipher.",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "True"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "False",
+        "explanation": "While quantum computers can solve ciphers better than classic computers, they are still not able to solve some of the harder ones out there, such as 2048-bit RSA."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these scenarios is a quantum computer viable in?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Simulate nature at a fundamental level for medical and drug research"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Create new encryption methods that are more secure and only accessible to solve via another quantum computer"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Help detect and prevent fraudulent activity more effectively by analyzing at faster speeds"
       },
       {
         "val": 1,
         "type": "3",
         "content": "All of the above",
-        "explanation": "Using a person’s preferred name and pronouns creates a respectful environment and can decrease anxiety regarding gender expression."
+        "explanation": "All of these are scenarios where a quantum computer can allow for better and faster results."
       }
     ],
     "multiChoice": false
-  },
-  {
-    "question": "Which of the following could be used to add gender non-discrimination features to software?",
-    "answers": [
-      {
-        "val": 0,
-        "type": "0",
-        "content": "Making everything rainbow colored"
-      },
-      {
-        "val": 1,
-        "type": "1",
-        "content": "Adding an ‘other’ text field when asking for gender",
-        "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
-      },
-      {
-        "val": 0,
-        "type": "2",
-        "content": "Mandating/requiring users to input their gender"
-      },
-      {
-        "val": 0,
-        "type": "3",
-        "content": "Adjust font size, font color, and text alignment"
-      }
-    ],
-    "multiChoice": false
-  },
-  {
-    "question": "ADP, an HR and Payroll consulting company, has recently strived for accessibility in which of the following ways?",
-    "answers": [
-      {
-        "val": 1,
-        "type": "0",
-        "content": "Advocates for the importance of using preferred names",
-        "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
-        "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
-      },
-      {
-        "val": 1,
-        "type": "1",
-        "content": "Outline the best practices for using preferred names at work",
-        "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
-        "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
-      },
-      {
-        "val": 0,
-        "type": "2",
-        "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
-      },
-      {
-        "val": 1,
-        "type": "3",
-        "content": "Become familiar with and consistent with someone’s preferred pronouns",
-        "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
-        "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
-      }
-    ],
-    "multiChoice": true
-  },
-  {
-    "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
-    "answers": [
-      {
-        "val": 1,
-        "type": "0",
-        "content": "76%",
-        "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
-        "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
-      },
-      {
-        "val": 0,
-        "type": "1",
-        "content": "31%"
-      },
-      {
-        "val": 0,
-        "type": "2",
-        "content": "12%"
-      },
-      {
-        "val": 0,
-        "type": "3",
-        "content": "This hasn’t been surveyed before."
-      }
-    ],
-    "multiChoice": false
-  } 
+  }
  ]', 2, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
