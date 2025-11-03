@@ -2,7 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ALLButton = (props) => {
-  const { label, onClick, className, type, href, large = false } = props;
+  const {
+    label,
+    onClick,
+    className,
+    type,
+    href,
+    disabled,
+    large = false,
+  } = props;
 
   return (
     <div className={`${className} tw-h-100`}>
@@ -11,6 +19,7 @@ const ALLButton = (props) => {
         onClick={onClick}
         type={type}
         href={href}
+        disabled={disabled}
       >
         {label}
         <div
@@ -35,6 +44,7 @@ ALLButton.propTypes = {
   type: PropTypes.string,
   large: PropTypes.bool,
   href: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default ALLButton;

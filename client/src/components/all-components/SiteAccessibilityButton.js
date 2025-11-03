@@ -11,6 +11,7 @@ import {
   setTextColor,
   setBackgroundColor,
 } from "../footer/edit/editPage";
+import SquircleButton from "../../assets/stylesheets/components/SquircleButton";
 
 const mapStateToProps = (state) => {
   return {
@@ -61,18 +62,9 @@ const SiteAccessibilityButton = () => {
 
   return (
     <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
-      <button
-        className="
-        tw-bg-primary-yellow tw-border-none tw-rounded-full
-        tw-p-4 tw-shadow-md
-        hover:tw-bg-[#f6c832] hover:tw-shawdow-lg"
-        onClick={(e) => toggleCollapse(e)}
-      >
-        <img
-          className="tw-aspect-square tw-w-12 tw-h-12 tw-pointer-events-none"
-          src={AccessibilityImage}
-        />
-      </button>
+      <SquircleButton onClick={(e) => toggleCollapse(e)}>
+        <img className="" src={AccessibilityImage} />
+      </SquircleButton>
       <Collapse className="" isOpen={open}>
         <Card
           className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray tw-w-[20rem]"

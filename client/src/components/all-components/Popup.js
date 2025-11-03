@@ -16,7 +16,7 @@ class Popup extends Component {
     return (
       <div className="tw-w-full tw-flex tw-justify-center tw-py-3">
         <div
-          className={`tw-bg-success tw-w-1/2 tw-rounded-lg tw-shadow-lg ${error ? "tw-bg-error" : ""}`}
+          className={`${error ? "tw-bg-error" : "tw-bg-success"} tw-w-1/2 tw-rounded-lg tw-shadow-lg`}
         >
           <p className="tw-text-white tw-font-poppins tw-p-6">{message}</p>
         </div>
