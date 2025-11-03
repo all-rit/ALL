@@ -3459,87 +3459,81 @@ e'[
   ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null, 
   -- About Section
   'temp', e'{
-  "piechart": {
-    "header":"Header Name",
-    "caption":["59% of Gen Z believes forms should have options outside of male and female."],
-    "data": {
-      "labels": [
-        "Gen Zers who believe forms should have options outside of male / female",
-        "Gen Zers who DO NOT believe forms should have options outside of male / female"
-      ],
-      "datasets": [
-        {
-          "label": "Unbiased Forms",
-          "borderColor": "black",
-          "backgroundColor": ["#FFC107","#004D40"],
-          "data": [59, 41],
-          "borderWidth": "2"
-        }
-      ]
-    }
-  },
   "description":"",
   "body":[
     {
-      "header":"Gender Identity",
+      "header":"What is Quantum Computing? ",
       "type":"",
-      "content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+      "content":["What if computers could think beyond just 0s and 1s? That’s exactly what quantum computers do. Quantum computers use special rules of quantum physics—like superposition, entanglement, and interference—to process information in ways normal computers can’t. This lets them solve some problems much faster and introduces new ways to think about programming. Real-life applications of quantum computing are already being developed in several fields. In medicine, it’s being used to help solve problems related to genome assembly, which can improve how we understand and treat diseases. In artificial intelligence (AI), quantum computing can make machines learn and think faster. In finance, it’s being used to improve portfolio optimization, asset management, and risk analysis, helping businesses make smarter financial decisions."]
     },
     {
-      "header": "",
-      "type": "links",
-      "content": [
-          {
-              "name": "2023 LGBTQ+ Youth Report Survey",
-              "link": "https://reports.hrc.org/2023-lgbtq-youth-report"
-          }
-      ]
-    },
-    {
-      "header":"",
-      "type":"",
-      "content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+      "header": "Bit vs Quibit",
+      "type": "",
+      "content": ["The smallest unit of information in a classical computer is called a bit. A bit can only have one of two values — 0 or 1 — like a light switch that’s either off or on. A qubit, or quantum bit, is the basic unit of information in quantum computing. It’s kind of like a regular bit in a normal computer, which stores data as a 0 or 1. But a qubit is different—it can be both 0 and 1 at the same time, thanks to quantum physics. This special ability lets quantum computers process information much faster and in more complex ways than regular computers"]
     },
     {
       "header": "",
       "type": "image",
-      "content" : {
-        "image":"/pronoun_guide.png",
-        "alt":"Pronouns- A How To Guide",
-        "sub_caption":"Figure 1",
-        "caption":"A Guide to Effective use of Pronouns"
-      }
+        "content" : {
+            "image":"/Bit_vs_qubit.png",
+            "alt":"Bit vs Qubit",
+            "sub_caption":"Figure 1",
+            "caption":"Bit vs Quibit"
+           }
     },
     {
-      "header": "Gender Non-Discrimination in the Workplace",
+      "header": "SuperPosition",
       "type": "",
-      "content": ["One company that has strived for acceptance is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an accessible environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+      "content": ["Superposition lets a qubit be in multiple states at the same time. Instead of just being 0 or 1, it can be a mix of both—like a spinning coin that is both heads and tails while it’s in the air. But as soon as you observe it, the qubit “collapses” into a single, definite value: either 0 or 1. This collapse happens because measuring the qubit forces it to pick one state, which is an important concept in quantum computing."]
     },
     {
       "header": "",
-      "type": "links",
-      "content": [
-        {
-          "name": "Fostering Accessible Environments in the Workplace",
-          "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
-        },
-        {
-          "name": "Using Preferred Names at Work",
-          "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
-        }
-      ]
+      "type": "image",
+        "content" : {
+            "image":"/Quantum_Superposition.gif",
+            "alt":"Quantum Superposition",
+            "sub_caption":"Figure 2",
+            "caption":"Quantum Superposition"
+           }
+    },
+    {
+      "header": "Entanglement and Interference",
+      "type": "",
+      "content": ["Entanglement:  When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other might instantly become 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers. Interference: Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one."]
     },
     {
       "header": "",
+      "type": "image",
+        "content" : {
+            "image":"/Quantum_Entanglement.gif",
+            "alt":"Quantum Entanglement",
+            "sub_caption":"Figure 3",
+            "caption":"Quantum Entanglement"
+           }
+    },
+    {
+      "header": " ",
       "type": "",
-      "content": ["These practices should be reflected throughout any institutions, including gender non-discriminatory terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+      "content": ["Interference: Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one."]
     }
   ],
   "footer":{
       "links":[
         {
-          "name":"Accessible Design Best Practices",
-          "link":"https://vorecol.com/blogs/blog-best-practices-for-designing-inclusive-software-interfaces-for-gender-diversity-177983"
+          "name":"Quantum Computing",
+          "link":"https://www.ibm.com/think/topics/quantum-computing"
+        },
+        {
+          "name":"Quantum Computing Explained",
+          "link":"https://www.nist.gov/quantum-information-science/quantum-computing-explained"
+        },
+        {
+          "name":"What is Quantum Computing",
+          "link":"https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-quantum-computing"
+        },
+        {
+          "name":"Real World Applications",
+          "link":"https://www.spinquanta.com/news-detail/top-quantum-computer-applications-with-real-world-examples20250113034956"
         }
       ]
     }
