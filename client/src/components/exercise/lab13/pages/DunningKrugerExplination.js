@@ -1,0 +1,19 @@
+import { React } from "react";
+import { startExercise } from "src/reducers/lab2/actions";
+import { navigate } from "@reach/router";
+
+const DunningKrugerExplination = () => {
+  const handleContinue = () => {
+    startExercise();
+    navigate("/Lab13/Exercise/ConclusionPage");
+  };
+
+  return (
+    <div>
+      Dunning Kruger Explination Page
+      <button onClick={handleContinue}>Next</button>
+    </div>
+  );
+};
+
+export default DunningKrugerExplination;
