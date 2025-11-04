@@ -3460,90 +3460,129 @@ e'[
    "LO4: Experience how confident language, polished grammar, and proximity to credible sources can lead to overestimation of AI accuracy (Comprehension)"
 ]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 'In this lab, you will learn about how a persons own bias can play a part into Generative AI interactions. You will learn about what Cognitive Bias is, how it plays into Human Interactions with Generative AI, Three Specific Cognitive Biases that normally impact AI Interactions, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
 “Next” to start!', e'{
- "piechart": {
-       "header":"Unbiased Forms",
-      "caption":["59% of Gen Z believes forms should have options outside of male and female."],
-      "data": {
-         "labels": [
-            "Gen Zers who believe forms should have options outside of male / female",
-            "Gen Zers who DO NOT believe forms should have options outside of male / female"
-           ],
-           "datasets": [
-            {
-              "label": "Unbiased Forms",
-              "borderColor": "black",
-              "backgroundColor": ["#FFC107","#004D40"],
-              "data": [59, 41],
-              "borderWidth": "2"
-            }
-           ]
+  "description": {
+    "header":"",
+    "content":""
+  },
+  "body":[
+    {
+      "header":"Introduction",
+      "type":"",
+      "content":["AI systems are built on logic, data, and probability, yet the humans using them are not always logical. In psychology, this gap between logic and decision making is explained by cognitive bias."]
+    },
+    {
+      "header":"What is Cognitive Bias?",
+      "type":"",
+      "content":["Cognitive bias is a systematic pattern that causes people to deviate from fully rational thought, affecting how we process information, perceive others, and make decisions. Instead of carefully analyzing every fact, we rely on what feels familiar or intuitive to save time and effort, but this can lead to errors in reasoning."]
+    },
+    {
+        "header": "",
+        "type": "image",
+        "content" : {
+            "image":"/what-is-cognitive-bias-image.png",
+            "alt":"Split brain diagram showing two pathways of thinking: Rational Analysis (left, dark blue) with gears and magnifying glasses representing slow analytical thought, and Mental Shortcuts (right, orange) with lightning bolts and arrows representing fast intuitive thought",
+            "sub_caption":"",
+            "caption":"The brain uses two pathways: slow, analytical thinking (left) and fast, intuitive shortcuts (right). Cognitive biases arise when shortcuts lead to errors."
         }
-   },
-   "description":"",
-   "body":[
+    },
+    {
+      "header":"When Cognitive Bias Meets Technology",
+      "type":"",
+      "content":["As humans interact more with artificial intelligence (AI), cognitive biases are appearing in new forms. Generative AIs like ChatGPT, Gemini, or Claude are built to sound confident, fluent, and human-like, creating an impression of expertise. The polished tone can reduce usual skepticism, making users more likely to accept information without question, even when it may be inaccurate."]
+    },
+    {
+      "header": "How Often People Trust or Check AI Answers",
+      "type": "piechart",
+      "caption": [""],
+      "content": {
+        "data": {
+          "labels": ["Skeptical of AI Outputs", "Always verify AI answers", "Other"],
+          "datasets": [{
+            "label": "AI Trust Behavior",
+            "borderColor": "black",
+            "backgroundColor": ["#9587df", "#ffccab", "#b6e8ce"],
+            "data": [82, 8, 10],
+            "borderWidth": "1"
+          }]
+        }
+      }
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["Most people claim to be skeptical of AI, but only a small number actually fact check what it says. "]
+    },
+		{
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"The AI Trust Gap Research Study",
+					"link":"https://explodingtopics.com/blog/ai-trust-gap-research"
+				}
+			]
+		},
+    {
+      "header":"Mata V. Avianca",
+      "type":"",
+      "content": ["In the case of Mata V. Avianca (2023), experienced lawyers fell victim to cognitive bias when relying on generative AI output. Attorneys Steven A. Schwartz and Peter LoDuca used ChatGPT to help prepare a legal filing for a passenger, Roberto Mata, who claimed injury on an Avianca flight. The AI confidently produced realistic legal citations and reasoning, but every case it cited wasn\'t real. When questioned by Avianca\'s lawyers and the court on the location of the cited legal cases, Mata\'s lawyers continued to defend the fake citations because ChatGPT assured them the cases \'indeed exist\' and \'can be found in reputable legal databases such as LexisNexis and Westlaw.\' The court later sanctioned them making this one of the first high profile examples of cognitive bias in human-AI interactions! This case shows how polished tone, confident phrasing, and the perceived expertise of the AI can create a halo of trust, even making skilled professionals overrely on it and overlook errors."]
+    },
+    {
+      "header": "How AI Design Amplifies Bias",
+      "type": "",
+      "content": ["So why do even experienced lawyers fall for AI-generated content? The answer lies in how AI systems are built. AI systems are intentionally designed to feel smart. Developers craft their structure, tone and human-like phrasing to make interactions natural and engaging, unconsciously influencing perception. When an AI\'s content draws in our sense of trust, it becomes difficult to separate credibility from confidence."]
+    },
+    {
+      "header": "What Can We Do About It: AI Literacy",
+      "type": "",
+      "content": ["Developing AI literacy means resisting the urge to accept AI outputs at face value. Here are some small but powerful habits:"]
+    },
+    {
+      "header": "",
+      "type": "study__list",
+      "content": ["Ask for citations", 
+                  "Cross-check the answer against trusted sources", 
+                  "Remember that AI’s format doesn’t guarantee accuracy"]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["As AI becomes heavily integrated in our daily lives, practicing these habits will help you protect your own reasoning."]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": [""]
+    }
+  ],
+  "footer":{
+    "links":[
       {
-         "header":"Gender Identity",
-         "type":"",
-         "content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+        "name": "Mata v. Avianca Case",
+        "link": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/"
       },
-       {
-           "header": "",
-           "type": "links",
-           "content": [
-               {
-                   "name": "2023 LGBTQ+ Youth Report Survey",
-                   "link": "https://reports.hrc.org/2023-lgbtq-youth-report"
-               }
-           ]
-       },
       {
-         "header":"",
-         "type":"",
-         "content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+        "name": "Understanding Cognitive Bias",
+        "link": "https://www.simplypsychology.org/cognitive-bias.html"
       },
-       {
-           "header": "",
-           "type": "image",
-           "content" : {
-               "image":"/pronoun_guide.png",
-               "alt":"Pronouns- A How To Guide",
-               "sub_caption":"Figure 1",
-               "caption":"A Guide to Effective use of Pronouns"
-           }
-       },
-       {
-           "header": "Gender Non-Discrimination in the Workplace",
-           "type": "",
-           "content": ["One company that has strived for acceptance is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an accessible environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
-       },
-       {
-           "header": "",
-           "type": "links",
-           "content": [
-               {
-                   "name": "Fostering Accessible Environments in the Workplace",
-                   "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
-               },
-               {
-                   "name": "Using Preferred Names at Work",
-                   "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
-               }
-           ]
-       },
-       {
-           "header": "",
-           "type": "",
-           "content": ["These practices should be reflected throughout any institutions, including gender non-discriminatory terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
-       }
-   ],
-   "footer":{
-      "links":[
-         {
-            "name":"Accessible Design Best Practices",
-            "link":"https://vorecol.com/blogs/blog-best-practices-for-designing-inclusive-software-interfaces-for-gender-diversity-177983"
-         }
-      ]
-   }
+      {
+        "name": "Global Views on AI",
+        "link": "https://www.pewresearch.org/global/2025/10/15/how-people-around-the-world-view-ai/"
+      },
+      {
+        "name": "Exploding Topics: AI Trust Gap Report",
+        "link": "https://explodingtopics.com/blog/ai-trust-gap-research"
+      },
+      {
+        "name": "AI Makes You Smarter But None the Wiser",
+        "link": "https://www.sciencedirect.com/science/article/abs/pii/S0747563225002262?via%3Dihub"
+      },
+      {
+        "name": "AI Dependence and Literacy",
+        "link": "https://www.tandfonline.com/doi/full/10.1080/10447318.2025.2544006"
+      }
+    ]
+  }
 }',
 '[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
  {
