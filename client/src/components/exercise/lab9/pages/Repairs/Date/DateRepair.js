@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../../body/Repair/Repair";
 import DateFormData from "../../../../../../constants/lab9/DateFormData";
-import {
-  HEADINGS,
-  EXERCISE_STATES,
-  REPAIR,
-} from "../../../../../../constants/lab9";
+import { HEADINGS, EXERCISE_STATES } from "../../../../../../constants/lab9";
 import DateFormRepair from "./DateFormRepair";
 import useDataService from "../../../hooks/useDataService";
 import { navigate } from "@reach/router";
@@ -37,28 +33,22 @@ const DateRepair = (props) => {
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
-  const { exercisePromptsState, isInputValid, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
+
   return (
     <Repair
-      fileName={"DateFormat.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_DATE_REPAIR}`}
+      data={data}
+      functions={functions}
       headingText={HEADINGS.REPAIR_DATE_REPAIR_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         "In this section you will be making changes to the repair data file below",
       ]}
-      CodeImplementation={
-        <DateFormRepair
-          dateForms={exercisePromptsState}
-          userInput={handleUserInputChange}
-          isInputValid={isInputValid}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "DateFormat.js",
+          implementation: DateFormRepair,
+        },
+      ]}
       navigateNext={() => handleNav()}
     />
   );

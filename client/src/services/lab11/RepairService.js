@@ -49,7 +49,9 @@ const RepairService = {
   getRepair: async (data = {}, section) => {
     try {
       const getRoute = `${endpoints.REPAIR}/${data.userid}/${section}`;
-      const result = API.get(getRoute).then((response) => response.json());
+      const result = await API.get(getRoute).then((response) =>
+        response.json(),
+      );
       return result;
     } catch (error) {
       console.error(error);

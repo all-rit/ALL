@@ -30,7 +30,7 @@ const EnrolledStudentsTable = (props) => {
   };
 
   return (
-    <div className="enrolled_students_table">
+    <div className="enrolled_students_table tw-p-4">
       {enrolledStudents.length === 0 ? (
         <p>There are currently no students enrolled in this group.</p>
       ) : (

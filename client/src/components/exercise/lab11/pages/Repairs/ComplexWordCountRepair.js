@@ -1,11 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import {
-  EXERCISE_PATH,
-  EXERCISE_STATES,
-  REPAIR,
-} from "../../../../../constants/lab11";
+import { EXERCISE_PATH, EXERCISE_STATES } from "../../../../../constants/lab11";
 import { navigate } from "@reach/router";
 import { COMPLEX_WORD_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
 import useDataService from "../../hooks/useDataService";
@@ -25,28 +21,22 @@ const ComplexWordCountRepair = (props) => {
     EXERCISE_STATES.REPAIR_COMPLEX_WORDS,
     FogIndexCalculationData.complexWords,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
+
   return (
     <Repair
-      fileName={"FogIndexCalculation.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_COMPLEX_WORDS}`}
+      data={data}
+      functions={functions}
       headingText={COMPLEX_WORD_COUNT_REPAIR_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         "In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct complex word count is being calculated.",
       ]}
-      CodeImplementation={
-        <ComplexWordCountRepairImplementation
-          userInput={handleUserInputChange}
-          fogIndexCalculationData={exercisePromptsState}
-          isInputValid={isInputValid}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "FogIndexCalculation.js",
+          implementation: ComplexWordCountRepairImplementation,
+        },
+      ]}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterComplexWordCount`);
       }}
