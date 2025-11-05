@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 const DunningKrugerExplination = () => {
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab13/Exercise/ConclusionPage");
+    navigate("/Lab13/Exercise/Conclusion");
   };
 
   return (

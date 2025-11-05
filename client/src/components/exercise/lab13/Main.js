@@ -5,15 +5,13 @@ import { EXERCISE_STATES } from "../../../constants/lab13";
 import ExerciseStateContext from "./Lab13Context";
 
 // lab imported dependencies;
-// import GradApplication from "./components/GradApplication.js";
-// import Diploma from "./components/Diploma";
+
 import ExerciseIntroduction from "./pages/ExerciseIntroduction";
 import ConfidenceRanking from "./pages/ConfidenceRanking";
 import AIPanel from "./pages/AIPanel.js";
 import AIandSearchPanel from "./pages/AIandSearchPanel.js";
 import Conclusion from "./pages/Conclusion.js";
 import DunningKrugerExplination from "./pages/DunningKrugerExplination";
-// import ExerciseIntro from "./pages/ExerciseIntroduction";
 import HaloExplination from "./pages/HaloExplination";
 import IDEExercise from "./pages/IDEExercise";
 import IDEIntroduction from "./pages/IDEIntroduction";
