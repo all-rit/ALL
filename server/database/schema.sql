@@ -3784,7 +3784,7 @@ e'[
       ]
     }
   }',
-  '[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use accessible language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Non-Discrimination","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
+  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', '[
   {
     "question": "Question?",
     "answers": [
