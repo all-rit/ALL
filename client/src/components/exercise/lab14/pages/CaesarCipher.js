@@ -6,7 +6,9 @@ import Decryption from "../components/Decryption";
 
 const CaesarCipher = () => {
   const [classicAttempts, setClassicAttempts] = useState(0);
+  const [classicBoxElements, setClassicBoxElements] = useState([]);
   const [quantumAttempts, setQuantumAttempts] = useState(0);
+  const [quantumBoxElements, setQuantumBoxElements] = useState([]);
 
   const handleContinue = () => {
     startExercise();
@@ -19,6 +21,17 @@ const CaesarCipher = () => {
 
     setClassicAttempts(13);
     setQuantumAttempts(5);
+
+    setClassicBoxElements([
+      { text: "Element1", binary: "000" },
+      { text: "Element2", binary: "001" },
+      { text: "Element3", binary: "010" },
+      { text: "Element4", binary: "100" },
+    ]);
+    setQuantumBoxElements([
+      { text: "ElementA", binary: "111" },
+      { text: "ElementB", binary: "110" },
+    ]);
   };
 
   return (
@@ -29,7 +42,9 @@ const CaesarCipher = () => {
         baseMessage={"baseMessage"}
         decryptionFunction={decrypt}
         classicAttempts={classicAttempts}
+        classicBoxElements={classicBoxElements}
         quantumAttempts={quantumAttempts}
+        quantumBoxElements={quantumBoxElements}
       />
       <button onClick={handleContinue}>Next</button>
     </div>

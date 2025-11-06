@@ -1,5 +1,5 @@
 import { React } from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 import { Bar } from "react-chartjs-2";
 import OutputBox from "./OutputBox";
@@ -11,7 +11,9 @@ const Decryption = ({
   encryptedMessage,
   decryptionFunction,
   classicAttempts,
+  classicBoxElements,
   quantumAttempts,
+  quantumBoxElements,
 }) => {
   const graphData = {
     labels: ["Classical", "Quantum"],
@@ -71,8 +73,8 @@ const Decryption = ({
 
       {/* Output box section */}
       <div className="tw-flex tw-flex-row tw-justify-center tw-w-full tw-flex-wrap">
-        <OutputBox title="Classical" />
-        <OutputBox title="Quantum" />
+        <OutputBox title="Classical" boxElements={classicBoxElements} />
+        <OutputBox title="Quantum" boxElements={quantumBoxElements} />
       </div>
 
       {/* Spacer block */}
@@ -91,7 +93,9 @@ Decryption.propTypes = {
   encryptedMessage: PropTypes.string,
   decryptionFunction: PropTypes.func,
   classicAttempts: PropTypes.number,
+  classicBoxElements: PropTypes.array,
   quantumAttempts: PropTypes.number,
+  quantumBoxElements: PropTypes.array,
 };
 
 export default Decryption;
