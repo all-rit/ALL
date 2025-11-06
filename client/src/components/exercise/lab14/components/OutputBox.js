@@ -16,12 +16,16 @@ const OutputBox = ({ title, boxElements }) => {
         {boxElements.map((element, index) => (
           <li
             key={index}
-            className={`tw-p-2 tw-flex tw-flex-row ${index == boxElements.length - 1 ? "tw-bg-labYellow" : ""}`}
+            className={"tw-p-2 tw-flex tw-flex-row last:tw-bg-labYellow"}
           >
             <p className="tw-mr-2">{index + 1}.</p>
             <div className="tw-flex tw-w-full tw-flex-row tw-justify-between">
               <p>{element.text}</p>
-              <p>{element.binary}</p>
+              <div>
+                {element.binary.map((bin, binIndex) => (
+                  <p key={binIndex}>{bin}</p>
+                ))}
+              </div>
             </div>
           </li>
         ))}
@@ -30,9 +34,9 @@ const OutputBox = ({ title, boxElements }) => {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-mx-8 tw-max-w-1/2 tw-min-w-96">
-      <h5>{title}</h5>
-      <div className="tw-flex tw-border-[2px] tw-border-solid tw-border-black tw-rounded-md tw-overflow-hidden">
+    <div className="tw-flex tw-flex-col tw-items-start tw-mx-8 tw-max-w-1/2 tw-min-w-96 tw-gap-y-2">
+      <h5 className="tw-font-poppins tw-text-lg tw-font-semibold">{title}</h5>
+      <div className="tw-flex tw-w-full tw-border-[2px] tw-border-solid tw-border-black tw-rounded-md tw-overflow-hidden">
         {addboxElements()}
       </div>
     </div>
@@ -44,7 +48,7 @@ OutputBox.propTypes = {
   boxElements: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
-      binary: PropTypes.string,
+      binary: PropTypes.arrayOf(PropTypes.string),
     }),
   ),
 };

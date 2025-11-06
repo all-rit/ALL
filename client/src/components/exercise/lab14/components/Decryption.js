@@ -51,37 +51,45 @@ const Decryption = ({
       <div className="tw-mt-10" />
 
       {/* Decrypt section */}
-      <div className="tw-flex tw-flex-row tw-gap-x-16 tw-gap-4 tw-flex-wrap tw-items-center">
-        <div className="tw-flex tw-flex-col tw-gap-2">
-          <h5 className="tw-font-poppins tw-justify-start tw-text-lg tw-font-bold">
+      <div className="tw-flex tw-flex-row tw-gap-x-16 tw-gap-y-4 tw-flex-wrap tw-justify-center">
+        <div className="tw-flex tw-flex-col">
+          <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4">
             Encrypted Message
           </h5>
           <p className="tw-flex tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4">
             {encryptedMessage}
           </p>
         </div>
-        <button
-          className="tw-bg-white hover:tw-bg-labYellow tw-border-[2px] tw-border-solid tw-p-4 tw-h-full tw-rounded-lg tw-transition-colors tw-duration-300"
-          onClick={handleDecrypt}
-        >
-          Decrypt Message
-        </button>
+        <div className="tw-flex tw-flex-col">
+          <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4 tw-opacity-0">
+            spacer
+          </h5>
+          <button
+            className="tw-bg-white hover:tw-bg-labYellow tw-border-[2px] tw-border-solid tw-p-4 tw-h-full tw-rounded-lg tw-transition-colors tw-duration-300"
+            onClick={handleDecrypt}
+          >
+            Decrypt Message
+          </button>
+        </div>
       </div>
 
       {/* Spacer block */}
       <div className="tw-mt-10" />
 
       {/* Output box section */}
-      <div className="tw-flex tw-flex-row tw-justify-center tw-w-full tw-flex-wrap">
-        <OutputBox title="Classical" boxElements={classicBoxElements} />
-        <OutputBox title="Quantum" boxElements={quantumBoxElements} />
+      <div className="tw-flex tw-flex-row tw-justify-center tw-w-full tw-flex-wrap tw-gap-y-16">
+        <OutputBox
+          title="Classical Computer"
+          boxElements={classicBoxElements}
+        />
+        <OutputBox title="Quantum Computer" boxElements={quantumBoxElements} />
       </div>
 
       {/* Spacer block */}
       <div className="tw-mt-10" />
 
       {/* Graph section */}
-      <div>
+      <div className="tw-w-full tw-max-w-144">
         <Bar data={graphData} options={graphOptions} width={600} height={400} />
       </div>
     </div>

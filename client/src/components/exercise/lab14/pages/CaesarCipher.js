@@ -23,14 +23,15 @@ const CaesarCipher = () => {
     setQuantumAttempts(5);
 
     setClassicBoxElements([
-      { text: "Element1", binary: "000" },
-      { text: "Element2", binary: "001" },
-      { text: "Element3", binary: "010" },
-      { text: "Element4", binary: "100" },
+      { text: "Element1", binary: ["000"] },
+      { text: "Element2", binary: ["001"] },
+      { text: "Element3", binary: ["010"] },
+      { text: "Element4", binary: ["100"] },
     ]);
     setQuantumBoxElements([
-      { text: "ElementA", binary: "111" },
-      { text: "ElementB", binary: "110" },
+      { text: "ElementA", binary: ["000", "001", "010", "100"] },
+      { text: "ElementB", binary: ["100", "101", "110"] },
+      { text: "ElementC", binary: ["111"] },
     ]);
   };
 
