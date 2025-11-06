@@ -3458,8 +3458,13 @@ e'[
    "LO2: Create design strategies that promote critical thinking, such as certainty indicators and disclaimers about AI limitations (Synthesis)",
    "LO3: Identify common hallucination patterns in generative AI, including false citations and misleading self-references (Application)",
    "LO4: Experience how confident language, polished grammar, and proximity to credible sources can lead to overestimation of AI accuracy (Comprehension)"
-]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 'In this lab, you will learn about how a persons own bias can play a part into Generative AI interactions. You will learn about what Cognitive Bias is, how it plays into Human Interactions with Generative AI, Three Specific Cognitive Biases that normally impact AI Interactions, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
-“Next” to start!', e'{
+]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 
+'In this lab, you will explore what cognitive bias is and 
+how it influences trust in AI systems. You will evaluate AI 
+responses, compare them with search results, and reflect on 
+your own decision-making process. Afterwards, you will spot 
+bias mitigation features in real-world AI platforms and take 
+a quiz to test your knowledge. Click "Next" to start!', e'{
   "description": {
     "header":"",
     "content":""
@@ -3528,14 +3533,14 @@ e'[
       "content": ["In the case of Mata V. Avianca (2023), experienced lawyers fell victim to cognitive bias when relying on generative AI output. Attorneys Steven A. Schwartz and Peter LoDuca used ChatGPT to help prepare a legal filing for a passenger, Roberto Mata, who claimed injury on an Avianca flight. The AI confidently produced realistic legal citations and reasoning, but every case it cited wasn\'t real. When questioned by Avianca\'s lawyers and the court on the location of the cited legal cases, Mata\'s lawyers continued to defend the fake citations because ChatGPT assured them the cases \'indeed exist\' and \'can be found in reputable legal databases such as LexisNexis and Westlaw.\' The court later sanctioned them making this one of the first high profile examples of cognitive bias in human-AI interactions! This case shows how polished tone, confident phrasing, and the perceived expertise of the AI can create a halo of trust, even making skilled professionals overrely on it and overlook errors."]
     },
     {
-      "header": "How AI Design Amplifies Bias",
-      "type": "",
-      "content": ["So why do even experienced lawyers fall for AI-generated content? The answer lies in how AI systems are built. AI systems are intentionally designed to feel smart. Developers craft their structure, tone and human-like phrasing to make interactions natural and engaging, unconsciously influencing perception. When an AI\'s content draws in our sense of trust, it becomes difficult to separate credibility from confidence."]
-    },
-    {
       "header": "What Can We Do About It: AI Literacy",
       "type": "",
-      "content": ["Developing AI literacy means resisting the urge to accept AI outputs at face value. Here are some small but powerful habits:"]
+      "content": ["So why does AI seem so convincing, even when it\'s wrong? The reason lies in how AI systems are built: they’re designed to sound smart. Developers craft their tone, structure, and human-like phrasing to make interactions natural and engaging, which can unconsciously influence our  perception."]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["This is why AI literacy matters. AI literacy is the skill of using AI thoughtfully by understanding how it works, recognizing its limits, and knowing when you should question its responses instead of accepting output at face value. Here are a few small powerful habits:"]
     },
     {
       "header": "",
