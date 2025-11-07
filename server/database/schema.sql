@@ -388,6 +388,8 @@ create table users
     UNIQUE (email1),
     UNIQUE (email2)
 );
+insert into users (userid, firstname, lastinitial, email1, email2, userpfp)
+VALUES (1, 'Ally', 'A', 'allyaccessibility@all.edu', null, null), (2, 'Lily', 'L', 'lilylabs@all.edu', null, null), (3, 'Edna', 'E', 'ednaeducation@all.edu', null, null);
 
 create table lab8_exercise
 (
