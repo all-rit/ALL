@@ -10,7 +10,7 @@ export const types = {
 
 export const initialState = {
   user: null,
-  lab: 0,
+  lab: 99,
   body: 0,
   isImagine: false,
   snackbar: {

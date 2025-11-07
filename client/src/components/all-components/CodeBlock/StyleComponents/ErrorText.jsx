@@ -19,6 +19,6 @@ const ErrorText = ({ children }) => {
 };
 
 ErrorText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 export default ErrorText;

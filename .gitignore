@@ -146,6 +146,7 @@ typings/
 
 ### Local PM2 files
 ecosystem.config.js
+configPath.js
 
 ### deploy scripts
 server/deploy

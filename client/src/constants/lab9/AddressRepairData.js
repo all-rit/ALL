@@ -2,6 +2,7 @@ export const AddressRepairData = {
   countries: [
     {
       id: 0,
+      fileId: 0,
       countryVariable: "us",
       countryName: "united_states",
       comment:
@@ -12,6 +13,7 @@ export const AddressRepairData = {
     },
     {
       id: 1,
+      fileId: 0,
       countryVariable: "uk",
       countryName: "united_kingdom",
       comment:
@@ -22,6 +24,7 @@ export const AddressRepairData = {
     },
     {
       id: 2,
+      fileId: 0,
       countryVariable: "jp",
       countryName: "japan",
       comment:
@@ -33,6 +36,7 @@ export const AddressRepairData = {
     },
     {
       id: 3,
+      fileId: 0,
       countryVariable: "db",
       countryName: "dubai",
       comment:
@@ -43,6 +47,7 @@ export const AddressRepairData = {
     },
     {
       id: 4,
+      fileId: 0,
       countryVariable: "df",
       countryName: "default_format",
       comment:
