@@ -12,7 +12,7 @@ import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/E
 import ImportText from "src/components/all-components/CodeBlock/StyleComponents/ImportText";
 
 const NavBarRepair = (props = {}) => {
-  const { navItems, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
 
   return (
     <>
@@ -47,8 +47,8 @@ const NavBarRepair = (props = {}) => {
       <CodeLine>
         <MultiTab numberOfTabs={2} /> <HTMLTag> &#60;span&#62;</HTMLTag>
       </CodeLine>
-      {navItems.map((element, index) => (
-        <div key={index}>
+      {inputs.map((input) => (
+        <div key={input.id}>
           <CodeLine>
             <MultiTab numberOfTabs={3} />{" "}
             <HTMLTag> &#60;div className = &ldquo;nav-item&rdquo;&#62;</HTMLTag>
@@ -59,7 +59,7 @@ const NavBarRepair = (props = {}) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={5} />
-            <HTMLText> {element.navbar_item} </HTMLText>
+            <HTMLText> {input.navbar_item} </HTMLText>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={4} />
@@ -67,29 +67,30 @@ const NavBarRepair = (props = {}) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={4} />
-            <CommentText> {element.comment} </CommentText>
+            <CommentText> {input.comment} </CommentText>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={4} />{" "}
             <HTMLTag> &#60;img href = {"{"}</HTMLTag>
             <CodeBlockInput
+              value={input.userInput}
               attributes={{
                 onChange: (event) => {
-                  userInput(element.id, event.target.value);
+                  userInput(input.id, event.target.value);
                 },
-                name: element.name,
+                name: input.name,
                 type: "text",
                 placeholder: "Enter icon image file here",
               }}
             />
             <HTMLTag>{"}"}/&#62; </HTMLTag>
           </CodeLine>
-          {!isInputValid[index] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={4} />
               <ErrorText>
                 Error in form submission. Please enter &quot;
-                {element.correct_expression}&quot; and resubmit.
+                {input.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
@@ -113,9 +114,9 @@ const NavBarRepair = (props = {}) => {
 };
 
 NavBarRepair.propTypes = {
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
-  navItems: PropTypes.array,
-  isInputValid: PropTypes.array,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 

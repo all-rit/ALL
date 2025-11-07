@@ -4,6 +4,7 @@ const AI_MACHINE_LEARNING = "AI_MACHINE_LEARNING";
 const DIFFICULTY_1 = "DIFF_1";
 const DIFFICULTY_2 = "DIFF_2";
 const DIFFICULTY_3 = "DIFF_3";
+const TUTORIALS = "TUTORIALS";
 
 module.exports = {
   ACCESSIBILITY,
@@ -12,4 +13,5 @@ module.exports = {
   DIFFICULTY_1,
   DIFFICULTY_2,
   DIFFICULTY_3,
+  TUTORIALS,
 };
