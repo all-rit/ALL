@@ -2,6 +2,7 @@ const NavBarData = {
   navItems: [
     {
       id: 0,
+      fileId: 0,
       navbar_item: "Home",
       comment:
         "// Enter the following image file to implement the house icon: house",
@@ -11,6 +12,7 @@ const NavBarData = {
     },
     {
       id: 1,
+      fileId: 0,
       navbar_item: "Careers",
       comment:
         "// Enter the following image file to implement the briefcase icon: briefcase",
@@ -20,6 +22,7 @@ const NavBarData = {
     },
     {
       id: 2,
+      fileId: 0,
       navbar_item: "Education",
       comment:
         "// Enter the following image file to implement the graduation cap icon: grad_cap",
@@ -29,6 +32,7 @@ const NavBarData = {
     },
     {
       id: 3,
+      fileId: 0,
       navbar_item: "Contact",
       comment:
         "// Enter the following image file to implement the phone icon: phone",

@@ -33,7 +33,7 @@ const RepairService = {
         section: data.section,
         isComplete: data.isComplete,
       };
-      return API.postWithBody(endpoints.POST_REPAIR, body);
+      return await API.postWithBody(endpoints.POST_REPAIR, body);
     } catch (error) {
       console.error(error);
     }
@@ -48,7 +48,7 @@ const RepairService = {
   getRepair: async (data = {}, section) => {
     try {
       const getRoute = `${endpoints.REPAIR}/${data.userid}/${section}`;
-      return API.get(getRoute).then((response) => response.json());
+      return await API.get(getRoute).then((response) => response.json());
     } catch (error) {
       console.error(error);
     }

@@ -8,6 +8,7 @@ import { default as Reinforcement } from "./components/body/Reinforcement";
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
 /** Exercise Components **/
+import { default as ExerciseLab0 } from "./components/exercise/lab0/Main";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -91,7 +92,7 @@ const App = () => {
   const lab = state.main.lab;
   const body = state.main.body;
   const isImagine = state.main.isImagine;
-  const labInProgress = lab !== 0;
+  const labInProgress = lab !== 99;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
 
@@ -101,14 +102,13 @@ const App = () => {
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
-
           <Reading
             path={`/Lab${lab}/Reading`}
             user={state.main.user}
             labID={lab}
             isImagine={isImagine}
           />
-
+          <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
           <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
           <ExerciseLab2
             path="/Lab2/Exercise"
@@ -208,7 +208,7 @@ const App = () => {
             </Suspense>
           </div>
         </div>
-        {lab === 0 && !isImagine && <MainFooter />}
+        {!labInProgress && !isImagine && <MainFooter />}
         <ALLSnackbar />
       </div>
     </>

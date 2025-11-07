@@ -17,6 +17,7 @@ const REPAIR_ERROR = "Errors in Repair. Please fix.";
 const REPAIR_SUCCESS = "Repair complete!";
 const SUCCESS = "success";
 const ERROR = "error";
+const EXERCISE_COMPLETE = "Exercise complete!";
 
 module.exports = {
   ENROLL_SUCCESS,
@@ -34,4 +35,5 @@ module.exports = {
   ERROR,
   REPAIR_SUCCESS,
   REPAIR_ERROR,
+  EXERCISE_COMPLETE,
 };
