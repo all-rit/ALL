@@ -1,18 +1,15 @@
 import { React, useState } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
-
 import Decryption from "../components/Decryption";
 
-const CaesarCipher = () => {
+const RSADecryption = () => {
   const [classicAttempts, setClassicAttempts] = useState(0);
   const [classicBoxElements, setClassicBoxElements] = useState([]);
   const [quantumAttempts, setQuantumAttempts] = useState(0);
   const [quantumBoxElements, setQuantumBoxElements] = useState([]);
 
   const handleContinue = () => {
-    startExercise();
-    navigate("/Lab14/Exercise/RSA");
+    navigate("/Lab14/Exercise/Conclusion");
   };
 
   const decrypt = () => {
@@ -37,7 +34,7 @@ const CaesarCipher = () => {
 
   return (
     <div>
-      Caesar Cipher Page
+      RSA Decryption
       <Decryption
         encryptedMessage={"encryptedMessage"}
         baseMessage={"baseMessage"}
@@ -52,4 +49,4 @@ const CaesarCipher = () => {
   );
 };
 
-export default CaesarCipher;
+export default RSADecryption;
