@@ -6,19 +6,18 @@ import API from "../../../services/API";
 import GoogleLogin from "../../../assets/images/google_buttons/Google_Sign_In.svg";
 import Avatar from "avataaars";
 import { AvatarData } from "../../body/login/AvatarData";
-import UserService from "../../../services/UserService";
+import useMainStateContext from "../../../reducers/MainContext";
 
 const LoginButton = (props) => {
   const { enabled } = props;
+  const { actions } = useMainStateContext();
 
   const isDev = process.env.NODE_ENV === "development";
 
   console.warn(isDev);
 
-  const developmentLogin = async (id) => {
-    const user = await UserService.getUser(id);
-    console.warn(user);
-    return user;
+  const developmentLogin = (userId) => {
+    actions.devLogin(userId);
   };
 
   const devLogin = () => {
@@ -27,20 +26,22 @@ const LoginButton = (props) => {
         className={"tw-flex tw-flex-col tw-w-full tw-h-full tw-items-center"}
       >
         <p>Who would you like to log in as?</p>
-        <div className={"tw-flex tw-justify-between"}>
+        <div className={"tw-flex tw-justify-between tw-p-5 tw-gap-x-6"}>
           {AvatarData.map((data, index) => {
             return (
               <div
                 onClick={() => developmentLogin(data.id)}
                 key={index}
                 className={
-                  "tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-shadow tw-p-2"
+                  "tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-cursor-pointer hover:tw-font-bold"
                 }
               >
                 <Avatar
-                  className={"tw-rounded-full tw-border-8 tw-w-3/4 tw-h-3/4"}
+                  className={
+                    "tw-rounded-full tw-border-8 tw-w-[4rem] tw-h-[4rem]"
+                  }
                   alt={data.name}
-                  avatarStyle="Square"
+                  avatarStyle="Circle"
                   topType={data.avatarAttributes.topType}
                   accessoriesType={data.avatarAttributes.accessoriesType}
                   hairColor={data.avatarAttributes.hairColor}

@@ -1,6 +1,6 @@
 export const AvatarData = [
   {
-    id: 1,
+    id: 98,
     name: "Ally Accessibility",
     avatarAttributes: {
       topType: "LongHairStraight2",
@@ -16,7 +16,7 @@ export const AvatarData = [
     },
   },
   {
-    id: 2,
+    id: 99,
     name: "Lily Labs",
     avatarAttributes: {
       topType: "ShortHairShaggyMullet",
@@ -32,7 +32,7 @@ export const AvatarData = [
     },
   },
   {
-    id: 3,
+    id: 100,
     name: "Edna Education",
     avatarAttributes: {
       topType: "LongHairNotTooLong",

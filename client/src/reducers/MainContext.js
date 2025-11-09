@@ -6,6 +6,7 @@ import {
 } from "./MainReducerForContext";
 import { PropTypes } from "prop-types";
 import AuthService from "src/services/AuthService";
+import UserService from "../services/UserService";
 
 /**
  * MainStateContext is a context object created using createContext() function.
@@ -76,6 +77,18 @@ export const MainContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.error(error);
+      }
+    },
+    devLogin: async (userId) => {
+      try {
+        console.warn(userId);
+        const user = await UserService.getUser(userId);
+        console.warn(user);
+        if (user) {
+          dispatch({ type: types.UPDATE_USER, payload: { user: user } });
+        }
+      } catch (error) {
+        console.log(error);
       }
     },
     setLab: (newLab) =>

@@ -26,6 +26,7 @@ export const types = {
   SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine",
   SHOW_SNACKBAR: "@accessibility-lab/context/show_snackbar",
   HIDE_SNACKBAR: "@accessibility-lab/context/hide_snackbar",
+  DEV_LOGIN: "@accessibility-lab/context/dev_login",
 };
 
 /**
