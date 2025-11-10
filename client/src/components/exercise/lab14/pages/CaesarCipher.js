@@ -33,12 +33,15 @@ const CaesarCipher = () => {
 
   return (
     <div>
-      Caesar Cipher Page
       <Encryption
+        cipherName={"Ceaser Cipher Encryption"}
+        cipherDescription={"This is the cipher description"}
         encryptionFunction={Encrypt}
         encryptedMessage={encryptedMessage}
         baseMessage={baseMessage}
         setBaseMessage={setBaseMessage}
+        minSlider={0}
+        maxSlider={25}
       />
       <button onClick={handleContinue}>Next</button>
     </div>

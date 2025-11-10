@@ -4,16 +4,27 @@ import PropTypes from "prop-types";
 import { FormGroup, Input, Label } from "reactstrap";
 
 const Encryption = ({
+  cipherName,
+  cipherDescription,
   encryptionFunction,
   encryptedMessage,
   baseMessage,
   setBaseMessage,
+  minSlider,
+  maxSlider,
 }) => {
   const [shiftValue, setShiftValue] = useState(0);
   const fillPercent = (shiftValue / 21) * 100;
 
   return (
     <div className="tw-flex tw-flex-col tw-items-center tw-gap-8 tw-mt-20 tw-w-full">
+      <div className="tw-flex tw-items-center tw-font-semibold tw-relative">
+        <h1>{cipherName}</h1>
+      </div>
+      <div className="tw-flex tw-gap-8 tw-items-center tw-w-full tw-max-w-2xl">
+        {cipherDescription}
+      </div>
+
       <div className="tw-flex tw-gap-8 tw-items-center tw-w-full tw-max-w-2xl">
         {/* Base Message */}
         <FormGroup className="tw-flex-full">
@@ -34,14 +45,14 @@ const Encryption = ({
         <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
           <span className="tw-font-semibold">Shift</span>
           <div className="tw-flex tw-justify-between tw-w-full">
-            <span className="tw-font-semibold">0</span>
-            <span className="tw-font-semibold">21</span>
+            <span className="tw-font-semibold">{minSlider}</span>
+            <span className="tw-font-semibold">{maxSlider}</span>
           </div>
 
           <input
             type="range"
-            min="0"
-            max="21"
+            min={minSlider}
+            max={maxSlider}
             onChange={(e) => setShiftValue(Number(e.target.value))}
             value={shiftValue}
             className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
@@ -109,10 +120,14 @@ const Encryption = ({
 };
 
 Encryption.propTypes = {
+  cipherName: PropTypes.string,
+  cipherDescription: PropTypes.string,
   encryptionFunction: PropTypes.func.isRequired,
   baseMessage: PropTypes.string.isRequired,
   setBaseMessage: PropTypes.func.isRequired,
   encryptedMessage: PropTypes.string,
+  minSlider: PropTypes.Number,
+  maxSlider: PropTypes.Number,
 };
 
 export default Encryption;
