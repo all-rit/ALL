@@ -1,5 +1,5 @@
 import { React } from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Qubit = () => {
     const [isHovering, setIsHovering] = useState(false);
@@ -7,6 +7,7 @@ const Qubit = () => {
     const [fontColor, setFontColor] = useState("white");
     const [time, setTime] = useState(0);
     const [text, setText] = useState("");
+    const timeoutIdRef = useRef(null)
 
     const colorChange = () => {
         setIsHovering(true);
@@ -25,14 +26,20 @@ const Qubit = () => {
     }
 
     const handleMouseEnter = () => {
-        setTimeout(colorChange, 1500);
+        timeoutIdRef.current = setTimeout(() => {
+            colorChange();
+        }, 2000)
     };
   
     const handleMouseLeave = () => {
-      setIsHovering(false);
-      clearTimeout(time);
-      setTime(0);
-      setFontColor("white");
+        if (timeoutIdRef.current) {
+            clearTimeout(timeoutIdRef.current);
+            timeoutIdRef.current = null;
+            setIsHovering(false);
+            clearTimeout(time);
+            setTime(0);
+            setFontColor("white");
+        }
     };
   
     return (
