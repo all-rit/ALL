@@ -26,7 +26,7 @@ const Encryption = ({
             placeholder="Input Message Here"
             value={baseMessage}
             onChange={(e) => setBaseMessage(e.target.value)}
-            className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none"
+            className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb]  tw-text-center tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
         </FormGroup>
 
@@ -50,11 +50,32 @@ const Encryption = ({
             }}
           />
 
-          {/* Bubble */}
+          {/* Button Style */}
+          <style>
+            {`
+                input[type="range"]::-webkit-slider-thumb {
+                  appearance: none;
+                  height: 16px;
+                  width: 16px;
+                  border-radius: 50%;
+                  background: black;
+                  cursor: pointer;
+                }
+                input[type="range"]::-moz-range-thumb {
+                  height: 16px;
+                  width: 16px;
+                  border-radius: 50%;
+                  background: black;
+                  cursor: pointer;
+                }
+              `}
+          </style>
+
+          {/* Shift Bubble */}
           <div
             className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
             style={{
-              left: `calc(${(shiftValue / 21) * 100}% - 12px)`, // -12px to center bubble
+              left: `calc(${(shiftValue / 21) * 100}% - 12px)`,
             }}
           >
             {shiftValue}

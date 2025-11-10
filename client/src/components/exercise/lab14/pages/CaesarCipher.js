@@ -13,8 +13,6 @@ const CaesarCipher = () => {
   };
 
   const Encrypt = (baseMessage, shiftValue) => {
-    console.log("Encrypt got:", baseMessage, typeof baseMessage);
-
     if (shiftValue == 0) {
       setEncryptedMessage(baseMessage);
       return baseMessage;
