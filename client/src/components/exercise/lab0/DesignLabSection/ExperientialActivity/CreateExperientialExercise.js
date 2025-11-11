@@ -4,7 +4,7 @@ import {
   initialColumns,
   correctAssignments,
 } from "../../../../../constants/lab0/DesignALab/ExperientialDND";
-import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
+import DragDropGame from "../../../../all-components/DragAndDropNoCorrectAnswer/DragDropGame";
 import Lab0Context from "../../Lab0Context";
 import { SECTION_STATUSES } from "../../../../../constants/lab0";
 

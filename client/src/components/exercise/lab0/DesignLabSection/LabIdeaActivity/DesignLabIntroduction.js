@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
+import DragDropGame from "../../../../all-components/DragAndDropNoCorrectAnswer/DragDropGame";
 import Lab0Context from "../../Lab0Context";
 import {
   columns,
