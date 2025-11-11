@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Lab0Context from "../../Lab0Context";
-import DragDropGame from "../../../../all-components/DragAndDropNoCorrectAnswer/DragDropGame";
+import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
 import _ from "lodash";
 import {
   columns_new_category,

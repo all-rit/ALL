@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
-import DragDropGame from "src/components/all-components/DragAndDropNoCorrectAnswer/DragDropGame";
+import DragDropGame from "../components/DragAndDropNoCorrectAnswer/DragDropGame";
 import ExerciseStateContext from "../Lab13Context";
 import { initialColumns, initialBank } from "src/constants/lab13/RankingConfig";
 

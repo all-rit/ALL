@@ -3,8 +3,8 @@ import { DndContext } from "@dnd-kit/core";
 import DroppableColumn from "./DroppableColumn";
 import DroppableBank from "./DroppableBank";
 import PropTypes from "prop-types";
-import LabButton from "../LabButton";
-import StatusBanner from "../StatusBanner";
+import LabButton from "../../../../all-components/LabButton";
+import StatusBanner from "../../../../all-components/StatusBanner";
 
 /**
  * Use this format to pass in columns, bank and correct assignments

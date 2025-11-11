@@ -1,4 +1,4 @@
-import DragDropGame from "../../../../all-components/DragAndDropNoCorrectAnswer/DragDropGame";
+import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
 import {
   correctAssignments,
   initialBank,
