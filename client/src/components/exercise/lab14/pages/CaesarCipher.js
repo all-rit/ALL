@@ -18,15 +18,25 @@ const CaesarCipher = () => {
       return baseMessage;
     }
 
-    const messageArray = baseMessage.split("");
-    const encryptedArray = new Array(messageArray.length);
-    for (let i = 0; i < messageArray.length; i++) {
-      const letter = messageArray[i];
-      const newPlacement = (i + shiftValue) % messageArray.length;
-      encryptedArray[newPlacement] = letter;
+    let encryptedString = "";
+    for (let i = 0; i < baseMessage.length; i++) {
+      let char = baseMessage[i];
+      let charAscii = char.charCodeAt(0);
+
+      if (charAscii >= 65 && charAscii <= 90) {
+        // Uppercase
+        let shiftApplied = ((charAscii - 65 + shiftValue + 26) % 26) + 65;
+        encryptedString += String.fromCharCode(shiftApplied);
+      } else if (charAscii >= 97 && charAscii <= 122) {
+        // Lowercase
+        let shiftApplied = ((charAscii - 97 + shiftValue + 26) % 26) + 97;
+        encryptedString += String.fromCharCode(shiftApplied);
+      } else {
+        // Non alphabet char
+        encryptedString += char;
+      }
     }
 
-    const encryptedString = encryptedArray.join("");
     setEncryptedMessage(encryptedString);
     return encryptedString;
   };
