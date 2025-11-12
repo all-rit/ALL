@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 
-const DraggableCard = ({ card, cardStyle }) => {
+const DraggableCard = ({ card, cardStyle, cardIcon }) => {
   const [borderColor, setBorderColor] = useState("");
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -38,7 +38,14 @@ const DraggableCard = ({ card, cardStyle }) => {
       )}
     >
       {card.content}
-      <p className={"tw-font-bold"}>{card.title}</p>
+      <p
+        className={
+          "tw-font-bold tw-flex tw-items-center tw-justify-between tw-h-full"
+        }
+      >
+        {" "}
+        {cardIcon} {card.title}
+      </p>
       <pre className="tw-body-text tw-text-sm tw-leading-snug tw-p-0 tw-m-0 tw-whitespace-pre-wrap tw-tab-0">
         {card.body}
       </pre>
@@ -56,6 +63,7 @@ DraggableCard.propTypes = {
     isCorrect: PropTypes.bool,
   }).isRequired,
   cardStyle: PropTypes.string.isRequired,
+  cardIcon: PropTypes.any,
 };
 
 export default DraggableCard;

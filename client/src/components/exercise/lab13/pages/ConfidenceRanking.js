@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import DragDropGame from "../components/DragAndDropNoCorrectAnswer/DragDropGame";
 import ExerciseStateContext from "../Lab13Context";
 import { initialColumns, initialBank } from "src/constants/lab13/RankingConfig";
+import DragIndicatorRoundedIcon from "@mui/icons-material/DragIndicatorRounded";
 
 const ConfidenceRanking = () => {
   const {
@@ -89,6 +90,7 @@ const ConfidenceRanking = () => {
         correctAssignments={correctAssignments}
         setSuccess={setSuccess}
         success={success}
+        cardIcon={<DragIndicatorRoundedIcon />}
         handleNav={handleContinue}
       />
     </div>
