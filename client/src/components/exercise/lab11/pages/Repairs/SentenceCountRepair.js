@@ -1,11 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import {
-  EXERCISE_PATH,
-  EXERCISE_STATES,
-  REPAIR,
-} from "../../../../../constants/lab11";
+import { EXERCISE_PATH, EXERCISE_STATES } from "../../../../../constants/lab11";
 import { navigate } from "@reach/router";
 import { SENTENCE_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
 import useDataService from "../../hooks/useDataService";
@@ -25,28 +21,22 @@ const SentenceCountRepair = (props) => {
     EXERCISE_STATES.REPAIR_SENTENCE_COUNT,
     FogIndexCalculationData.sentences,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
+
   return (
     <Repair
-      fileName={"FogIndexCalculation.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`}
+      data={data}
+      functions={functions}
       headingText={SENTENCE_COUNT_REPAIR_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         "In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct sentence count is being calculated.",
       ]}
-      CodeImplementation={
-        <SentenceCountRepairImplementation
-          userInput={handleUserInputChange}
-          fogIndexCalculationData={exercisePromptsState}
-          isInputValid={isInputValid}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "FogIndexCalculation.js",
+          implementation: SentenceCountRepairImplementation,
+        },
+      ]}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterSentenceCount`);
       }}

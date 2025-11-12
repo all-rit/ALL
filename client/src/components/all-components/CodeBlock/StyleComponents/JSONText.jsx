@@ -41,7 +41,7 @@ const JSONText = ({ children }) => {
 };
 
 JSONText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default JSONText;

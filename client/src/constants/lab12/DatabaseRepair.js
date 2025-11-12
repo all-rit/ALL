@@ -46,6 +46,7 @@ const IdentityDatabaseData = {
   inputData: [
     {
       id: 0,
+      fileId: 0,
       variable: "pronouns",
       userInput: "",
       correct_expression: "'he/him', 'she/her', 'they/them'",
@@ -53,6 +54,7 @@ const IdentityDatabaseData = {
     },
     {
       id: 1,
+      fileId: 0,
       variable: "preferredName",
       userInput: "",
       correct_expression: "varchar(255)",
