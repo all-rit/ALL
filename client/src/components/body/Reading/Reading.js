@@ -151,8 +151,8 @@ const Reading = (props) => {
               </div>
             </>
           )}
-          {readingData?.piechart.caption !== "" ? (
-            readingData?.piechart.caption.map((data, index) => {
+          {readingData?.piechart?.caption !== "" ? (
+            readingData?.piechart?.caption.map((data, index) => {
               return (
                 <div
                   key={index}
@@ -170,7 +170,7 @@ const Reading = (props) => {
           )}
 
           {readingData?.body !== "" ? (
-            readingData?.body.map((data, index) => {
+            readingData?.body?.map((data, index) => {
               return (
                 <Fragment key={index}>
                   {data.header !== "" && (
