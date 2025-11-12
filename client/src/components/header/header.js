@@ -118,22 +118,22 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className={`tw-body-text tw-font-bold tw-my-0 ${props.isImagine ? "tw-mb-[0.5rem]" : "tw-mb-[5rem]"}`}
+      className={`tw-h-[8rem] tw-body-text tw-font-bold tw-my-0 ${props.isImagine && "tw-mb-[0.5rem]"}`}
     >
       <div
-        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
+        className={`tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0  tw-shadow-md tw-px-5 lg:tw-px-12`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
           <a
-            className={"tw-mt-[1rem]"}
+            className={""}
             onClick={() => {
               !props.isImagine && reachNav("/#");
             }}
           >
             <img
-              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[4rem] tw-mt-[0.75rem]" : "xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"}`}
+              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[4rem] tw-mt-[0.75rem]" : "xs:tw-max-h-[7rem] sm:tw-max-h-[7rem]"}`}
               src={Logo}
               alt="Computing Accessibility"
             />
@@ -144,18 +144,18 @@ const Header = (props) => {
             onClick={toggleNavbar}
           />
           <Collapse
-            className={`${isSmallWindow ? "tw-absolute tw-bg-white tw-right-0 tw-top-[100%] tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow" : "tw-flex tw-flex-grow tw-justify-end"}`}
+            className={`${isSmallWindow ? "tw-absolute tw-bg-white tw-right-0 tw-top-[100%] tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-[0.5rem] tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow" : "tw-flex tw-flex-grow tw-justify-end"}`}
             isOpen={navbarOpen}
           >
             {!props.isImagine && (
               <Nav
-                className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
+                className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-4 tw-rounded-bl-sm tw-border-l-labYellow tw-border-b-labYellow tw-h-[4rem]"}`}
               >
                 <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
                 >
                   <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                    className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer"
                     onClick={() => reachNav("/#")}
                   >
                     <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
@@ -164,7 +164,7 @@ const Header = (props) => {
                   </NavLink>
                 </NavItem>
                 <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
+                  className={`${"px-4"} ${!isSmallWindow && " tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
                 >
                   <NavLink
                     className="tw-flex tw-items-center tw-justify-center tw-p-0"
@@ -205,7 +205,7 @@ const Header = (props) => {
                     <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
                       <div
                         onClick={() =>
-                          navigate(state, props.state, actions, 2, 0)
+                          navigate(state, props.state, actions, 2, 99)
                         }
                         aria-label="Google Profile Photo"
                         className="tw-h-12 tw-object-cover"

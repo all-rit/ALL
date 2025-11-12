@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
 /** Body Components **/
@@ -8,6 +8,7 @@ import { default as Reinforcement } from "./components/body/Reinforcement";
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
 /** Exercise Components **/
+import { default as ExerciseLab0 } from "./components/exercise/lab0/Main";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -24,10 +25,8 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import LabFooter from "./components/footer/LabFooter";
+// import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
-import NavigationPane from "./components/all-components/Lab/NavigationPane";
-import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -50,6 +49,10 @@ import "./assets/stylesheets/main.scss";
 import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
+import { Spinner } from "reactstrap";
+const LabWindow = lazy(
+  () => import("./components/all-components/Lab/LabWindow"),
+);
 const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
@@ -87,54 +90,56 @@ const App = () => {
   const lab = state.main.lab;
   const body = state.main.body;
   const isImagine = state.main.isImagine;
+  const labInProgress = lab !== 99;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   const renderLabs = () => {
     return (
-      <Router basepath={process.env.PUBLIC_URL}>
-        <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-        <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
+      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+        <Router basepath={process.env.PUBLIC_URL}>
+          <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
+          <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
+          <Reading
+            path={`/Lab${lab}/Reading`}
+            user={state.main.user}
+            labID={lab}
+            isImagine={isImagine}
+          />
+          <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
+          <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+          <ExerciseLab2
+            path="/Lab2/Exercise"
+            user={state.main.user}
+            isImagine={isImagine}
+          />
+          <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+          <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+          <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+          <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+          <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+          <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
+          <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
+          <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
+          <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
+          <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
 
-        <Reading
-          path={`/Lab${lab}/Reading`}
-          user={state.main.user}
-          labID={lab}
-          isImagine={isImagine}
-        />
-
-        <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-        <ExerciseLab2
-          path="/Lab2/Exercise"
-          user={state.main.user}
-          isImagine={isImagine}
-        />
-        <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-        <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-        <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-        <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
-        <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
-        <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
-        <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
-        <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
-        <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-        <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
-
-        <Reinforcement
-          path={`/Lab${lab}/Reinforcement`}
-          user={state.main.user}
-          labID={lab}
-        />
-        <Quiz
-          path={`/Lab${lab}/Quiz`}
-          labId={lab}
-          user={state.main.user}
-          isFinalQuiz={true}
-          hideCertificate={false}
-          quizCompleted={quizCompleted}
-          setQuizCompleted={setQuizCompleted}
-        />
-      </Router>
+          <Reinforcement
+            path={`/Lab${lab}/Reinforcement`}
+            user={state.main.user}
+            labID={lab}
+          />
+          <Quiz
+            path={`/Lab${lab}/Quiz`}
+            labId={lab}
+            user={state.main.user}
+            isFinalQuiz={true}
+            hideCertificate={false}
+            quizCompleted={quizCompleted}
+            setQuizCompleted={setQuizCompleted}
+          />
+        </Router>
+      </div>
     );
   };
 
@@ -170,78 +175,38 @@ const App = () => {
   return (
     <>
       <div
-        className={`overflow-x-hidden tw-h-lvh ${isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
+        className={`overflow-x-hidden ${
+          labInProgress || isImagine
+            ? "overflow-y-hidden tw-h-lvh"
+            : "overflow-y-auto min-h-screen"
+        }`}
       >
         <Header isImagine={isImagine} />
-        <Suspense
-          fallback={
-            <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
-          }
-        >
-          <div className="appBody tw-min-h-[40rem] tw-relative xs:tw-mt-[6rem] md:tw-mt-[8rem]">
-            <div className={"tw-relative"}>
-              {lab !== 0 && (
-                <div
-                  className={
-                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw xs:tw-h-[30rem] md:tw-h-[40rem] tw-gap-y-4"
-                  }
+        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
+          <div className={`tw-relative tw-grid tw-h-full`}>
+            <Suspense fallback={<Spinner />}>
+              {labInProgress ? (
+                <LabWindow
+                  lab={lab}
+                  title={Sections[lab].fullname}
+                  context={context}
+                  quizCompleted={quizCompleted}
+                  setQuizCompleted={setQuizCompleted}
+                  isImagine={isImagine}
+                  body={body}
                 >
-                  <div
-                    className={
-                      "tw-row-start-2 tw-col-start-1 tw-row-span-3 tw-col-span-12 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
-                    }
-                  />
-                  <div
-                    className={
-                      "tw-row-span-6 tw-col-span-12 tw-col-start-1 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
-                    }
-                  />
-                </div>
-              )}
-
-              {lab !== 0 ? (
-                <div
-                  className={
-                    "tw-grid tw-justify-center tw-grid-cols-12 tw-py-6 tw-h-[40rem] tw-gap-x-3 tw-p-6"
-                  }
-                >
-                  <div
-                    className={
-                      "tw-flex tw-col-start-1 tw-col-span-2 tw-max-h-[40rem]"
-                    }
-                  >
-                    <NavigationPane
-                      labID={lab}
-                      title={Sections[lab].fullname}
-                    />
-                  </div>
-                  <div
-                    className={
-                      "tw-flex-row tw-z-10 xs:tw-col-start-1 md:tw-col-start-3 xs:tw-col-span-12 tw-p-4 md:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
-                    }
-                  >
-                    {renderLabs()}
-                  </div>
-                </div>
+                  {renderLabs()}
+                </LabWindow>
               ) : (
                 <div className={"tw-flex tw-row-span-10 tw-text-center"}>
                   {renderPages()}
                 </div>
               )}
-            </div>
+            </Suspense>
           </div>
-          {lab === 0 && !isImagine && <MainFooter />}
-          <ALLSnackbar />
-          {lab !== 0 && (
-            <LabFooter
-              context={context}
-              quizCompleted={quizCompleted}
-              setQuizCompleted={setQuizCompleted}
-              isImagine={isImagine}
-            />
-          )}
-          {body !== 2 && <SiteAccessibilityButton />}
-        </Suspense>
+        </div>
+        {!labInProgress && !isImagine && <MainFooter />}
+        <ALLSnackbar />
       </div>
     </>
   );

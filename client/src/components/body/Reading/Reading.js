@@ -118,20 +118,17 @@ const Reading = (props) => {
 
   return (
     <div
-      className={
-        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem] tw-rounded-4xl"
-      }
+      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center"}
     >
       <h2
         className={
           "tw-title tw-text-left tw-bg-white tw-w-[100%] tw-px-10 tw-text-[2.5rem]"
         }
       >
-        {" "}
-        Reading{" "}
+        Reading
       </h2>
-      <div className="tw-w-full tw-overflow-y-scroll">
-        <div className="study tw-h-full tw-bg-white p-5 tw-rounded-lg">
+      <div className="tw-w-full">
+        <div className="study tw-bg-white p-5 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
               <h3 className={"tw-title"}>{readingData?.description.header}</h3>
@@ -142,7 +139,7 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {readingData?.piechart?.header && (
+          {readingData?.piechart && (
             <>
               <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
               <div className="flex tw-body-text">
@@ -154,8 +151,8 @@ const Reading = (props) => {
               </div>
             </>
           )}
-          {readingData?.piechart.caption !== "" ? (
-            readingData?.piechart.caption.map((data, index) => {
+          {readingData?.piechart?.caption !== "" ? (
+            readingData?.piechart?.caption.map((data, index) => {
               return (
                 <div
                   key={index}

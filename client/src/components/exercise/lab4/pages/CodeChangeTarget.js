@@ -242,7 +242,7 @@ const CodeChangeTarget = () => {
               onChange={handleChange}
               aria-label={"Please set min width to 40px"}
               className={
-                "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+                "tw-bg-[#333] tw-rounded-md tw-text-primary-yellow tw-px-3"
               }
             />
             <code className="language-css">{` px; /*Set to at least 44px*/
@@ -255,7 +255,7 @@ const CodeChangeTarget = () => {
               onChange={handleChange1}
               aria-label={"Please set min height to 40px"}
               className={
-                "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+                "tw-bg-[#333] tw-rounded-md tw-text-primary-yellow tw-px-3"
               }
             />
             <code className="language-css">
