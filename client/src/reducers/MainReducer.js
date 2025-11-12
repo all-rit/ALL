@@ -29,6 +29,7 @@ export const MainReducer = (state = initialState, action) => {
         body: action.body,
       };
     case types.UPDATE_USER:
+      localStorage.setItem("user", JSON.stringify(action.user));
       return {
         ...state,
         user: action.user,

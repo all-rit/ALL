@@ -47,7 +47,7 @@ export const types = {
 export const initialState = {
   userState: EXERCISE_IDLE,
   main: {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")) || null,
     lab: 99,
     body: 0,
     isImagine: false,
