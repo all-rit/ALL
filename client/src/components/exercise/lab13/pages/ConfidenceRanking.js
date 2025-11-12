@@ -15,21 +15,29 @@ const ConfidenceRanking = () => {
     setRankingBank,
   } = useContext(ExerciseStateContext);
 
-  // Initialize from context if available, otherwise use initial values
   const [cols, setCols] = useState(() =>
     rankingColumns.length > 0
-      ? rankingColumns
+      ? structuredClone(rankingColumns)
       : structuredClone(initialColumns),
   );
-  const [bank, setBank] = useState(() =>
-    rankingBank.length > 0 ? rankingBank : structuredClone(initialBank),
-  );
+
+  const [bank, setBank] = useState(() => {
+    const placedIds = new Set(
+      (rankingColumns.length > 0 ? rankingColumns : initialColumns).flatMap(
+        (col) => col.cards.map((card) => card.id),
+      ),
+    );
+
+    const sourceBank = rankingBank.length > 0 ? rankingBank : initialBank;
+    return sourceBank.filter((card) => !placedIds.has(card.id));
+  });
+
   const [success, setSuccess] = useState(rankingSuccess);
 
   // Create a permissive correctAssignments that accepts any arrangement
   const correctAssignments = initialColumns.map((col) => ({
     id: col.id,
-    cards: initialBank.map((item) => item.id), // All cards are valid in any column
+    cards: initialBank.map((item) => item.id),
   }));
 
   // Save to context whenever cols or bank changes
