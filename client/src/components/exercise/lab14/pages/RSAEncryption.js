@@ -1,10 +1,15 @@
-import { React, useState } from "react";
+import { React, useContext } from "react";
 import { navigate } from "@reach/router";
+import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 
 const RSAEncryption = () => {
-  const [baseMessage, setBaseMessage] = useState("");
-  const [encryptedMessage, setEncryptedMessage] = useState("");
+  const {
+    rsaBaseMessage,
+    setRsaBaseMessage,
+    rsaEncryptedMessage,
+    setRsaEncryptedMessage,
+  } = useContext(ExerciseStateContext);
 
   const handleContinue = () => {
     navigate("/Lab14/Exercise/RSADecryption");
@@ -13,7 +18,7 @@ const RSAEncryption = () => {
   const encrypt = () => {
     const encryptedString = "fart fart fart";
 
-    setEncryptedMessage(encryptedString);
+    setRsaEncryptedMessage(encryptedString);
     return encryptedString;
   };
 
@@ -22,9 +27,9 @@ const RSAEncryption = () => {
       RSA Encryption
       <Encryption
         encryptionFunction={encrypt}
-        encryptedMessage={encryptedMessage}
-        baseMessage={baseMessage}
-        setBaseMessage={setBaseMessage}
+        encryptedMessage={rsaEncryptedMessage}
+        baseMessage={rsaBaseMessage}
+        setBaseMessage={setRsaBaseMessage}
         minSlider={0} // TODO: Change
         maxSlider={25} // TODO: Change
       />

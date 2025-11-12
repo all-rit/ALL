@@ -1,5 +1,6 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { navigate } from "@reach/router";
+import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
 
 const CaesarDecryption = () => {
@@ -7,6 +8,9 @@ const CaesarDecryption = () => {
   const [classicBoxElements, setClassicBoxElements] = useState([]);
   const [quantumAttempts, setQuantumAttempts] = useState(0);
   const [quantumBoxElements, setQuantumBoxElements] = useState([]);
+
+  const { caesarBaseMessage, caesarEncryptedMessage } =
+    useContext(ExerciseStateContext);
 
   const handleContinue = () => {
     navigate("/Lab14/Exercise/RSAEncryption");
@@ -36,8 +40,8 @@ const CaesarDecryption = () => {
     <div>
       <h1>Caesar Decryption</h1>
       <Decryption
-        encryptedMessage={"encryptedMessage"}
-        baseMessage={"baseMessage"}
+        encryptedMessage={caesarEncryptedMessage}
+        baseMessage={caesarBaseMessage}
         decryptionFunction={decrypt}
         classicAttempts={classicAttempts}
         classicBoxElements={classicBoxElements}

@@ -23,12 +23,25 @@ const Main = () => {
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
 
+  const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
+  const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [rsaBaseMessage, setRsaBaseMessage] = useState("");
+  const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
+
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
         value={{
           exerciseState,
           setExerciseState,
+          caesarBaseMessage,
+          setCaesarBaseMessage,
+          caesarEncryptedMessage,
+          setCaesarEncryptedMessage,
+          rsaBaseMessage,
+          setRsaBaseMessage,
+          rsaEncryptedMessage,
+          setRsaEncryptedMessage,
         }}
       >
         <Router className="app">
