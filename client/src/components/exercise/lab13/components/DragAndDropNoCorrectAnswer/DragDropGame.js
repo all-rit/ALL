@@ -9,6 +9,7 @@ import StatusBanner from "../../../../all-components/StatusBanner";
 /**
  * Use this format to pass in columns, bank and correct assignments
  * Note: Keep ids the same across objects
+ * Each column can now only accept ONE card
  *
  * const initialColumns = [
  *   { id: "column1", title: "Column 1", cards: [] },
@@ -23,7 +24,7 @@ import StatusBanner from "../../../../all-components/StatusBanner";
  *
  * const correctAssignments = [
  *   { id: "column1", cards: ["card1"] },
- *   { id: "column2", cards: ["card2", "card3"] },
+ *   { id: "column2", cards: ["card2"] },
  * ];
  */
 
@@ -75,6 +76,23 @@ const DragDropGame = ({
         return prevColumns;
       }
 
+      // Check if destination column already has a card (and it's not the bank)
+      if (
+        destinationId !== "bank" &&
+        newColumns[destinationId].cards.length >= 1
+      ) {
+        // Move the existing card back to the bank
+        const existingCard = newColumns[destinationId].cards[0];
+        setBank((prevBank) => {
+          if (!prevBank.some((card) => card.id === existingCard.id)) {
+            return [...prevBank, existingCard];
+          }
+          return prevBank;
+        });
+        // Clear the column
+        newColumns[destinationId].cards = [];
+      }
+
       // First, find and remove the card from its source
       for (let key in newColumns) {
         if (newColumns[key].cards.some((card) => card.id === sourceId)) {
@@ -107,12 +125,8 @@ const DragDropGame = ({
             return prevBank;
           });
         } else {
-          newColumns[destinationId].cards = [
-            ...newColumns[destinationId].cards.filter(
-              (card) => card.id !== movedCard.id,
-            ),
-            movedCard,
-          ];
+          // Add the moved card to the destination column
+          newColumns[destinationId].cards = [movedCard];
         }
       }
 
@@ -198,7 +212,7 @@ const DragDropGame = ({
       </div>
       <div
         className={
-          "tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center"
+          "tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center tw-mt-4"
         }
       >
         {message && <StatusBanner style={msgStyle}>{message}</StatusBanner>}

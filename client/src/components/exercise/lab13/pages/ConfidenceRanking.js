@@ -66,13 +66,13 @@ const ConfidenceRanking = () => {
         Deaf/Hard of Hearing from your most familiar to least familiar.
       </p>
       <DragDropGame
-        gameStyle="tw-flex tw-grid tw-grid-cols-[2fr_1fr] tw-justify-between tw-w-auto tw-max-w-4xl tw-mx-auto tw-gap-8 tw-direction-rtl tw-items-stretch"
-        containerStyle="tw-flex tw-p-3 tw-flex-col tw-w-full tw-gap-5 tw-bg-[#0144D5] tw-rounded-lg tw-items-center tw-h-full"
-        colStyle="tw-p-0 tw-w-[15rem] tw-h-[3.5rem] tw-shadow-md tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-items-center tw-border tw-border-dashed tw-border-black"
-        colCardStyle="tw-p-2 tw-w-[15rem] tw-h-[3.5rem] tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-text-left tw-text-black tw-text-sm tw-bg-white"
+        gameStyle="tw-grid tw-grid-cols-[2fr_1fr] tw-max-w-4xl tw-mx-auto tw-gap-8 tw-direction-rtl tw-items-center"
+        containerStyle="tw-flex tw-flex-col tw-w-full tw-gap-5 tw-bg-[#0144D5] tw-rounded-lg tw-items-center tw-h-full tw-p-3"
+        colStyle="tw-w-[15rem] tw-h-[3.5rem] tw-shadow-md tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-items-center tw-border tw-border-dashed tw-border-black"
+        colCardStyle="tw-p-2 tw-w-[15rem] tw-h-[3.5rem] tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-text-black tw-text-sm tw-bg-white"
         colHeaderStyle="tw-m-1 tw-text-center tw-body-text tw-text-white"
-        bankStyle="tw-flex tw-flex-col tw-gap-3 tw-w-full tw-p-3 tw-rounded-lg tw-bg-[#FACE35] tw-text-white tw-items-center tw-justify-center tw-h-full"
-        bankCardStyle="tw-p-2 tw-w-[15rem] tw-h-[3.5rem] tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-text-left tw-text-black tw-text-sm tw-bg-white"
+        bankStyle="tw-flex tw-flex-col tw-gap-3 tw-w-full tw-p-3 tw-rounded-lg tw-bg-[#FACE35] tw-items-center tw-justify-center tw-h-full"
+        bankCardStyle="tw-p-2 tw-w-[15rem] tw-h-[3.5rem] tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-text-black tw-text-sm tw-bg-white"
         msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
         cols={cols}
         setCols={setCols}
