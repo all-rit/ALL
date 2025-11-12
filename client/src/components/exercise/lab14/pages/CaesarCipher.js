@@ -12,7 +12,7 @@ const CaesarCipher = () => {
     navigate("/Lab14/Exercise/RSA");
   };
 
-  const Encrypt = (baseMessage, shiftValue) => {
+  const encrypt = (baseMessage, shiftValue) => {
     if (shiftValue == 0) {
       setEncryptedMessage(baseMessage);
       return baseMessage;
@@ -43,10 +43,14 @@ const CaesarCipher = () => {
 
   return (
     <div>
+      <div className="tw-flex tw-items-center tw-font-semibold tw-relative">
+        <h1>Caesar Cipher</h1>
+      </div>
+      <p className="tw-flex tw-gap-8 tw-items-center tw-w-full tw-max-w-2xl">
+        Caesar Cipher Description
+      </p>
       <Encryption
-        cipherName={"Ceaser Cipher Encryption"}
-        cipherDescription={"This is the cipher description"}
-        encryptionFunction={Encrypt}
+        encryptionFunction={encrypt}
         encryptedMessage={encryptedMessage}
         baseMessage={baseMessage}
         setBaseMessage={setBaseMessage}

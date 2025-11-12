@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { FormGroup, Input, Label } from "reactstrap";
 
 const Encryption = ({
-  cipherName,
-  cipherDescription,
   encryptionFunction,
   encryptedMessage,
   baseMessage,
@@ -14,17 +12,10 @@ const Encryption = ({
   maxSlider,
 }) => {
   const [shiftValue, setShiftValue] = useState(0);
-  const fillPercent = (shiftValue / 21) * 100;
+  const fillPercent = (shiftValue / 26) * 100;
 
   return (
     <div className="tw-flex tw-flex-col tw-items-center tw-gap-8 tw-mt-20 tw-w-full">
-      <div className="tw-flex tw-items-center tw-font-semibold tw-relative">
-        <h1>{cipherName}</h1>
-      </div>
-      <div className="tw-flex tw-gap-8 tw-items-center tw-w-full tw-max-w-2xl">
-        {cipherDescription}
-      </div>
-
       <div className="tw-flex tw-gap-8 tw-items-center tw-w-full tw-max-w-2xl">
         {/* Base Message */}
         <FormGroup className="tw-flex-full">
@@ -86,7 +77,7 @@ const Encryption = ({
           <div
             className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
             style={{
-              left: `calc(${(shiftValue / 21) * 100}% - 12px)`,
+              left: `calc(${(shiftValue / 26) * 100}% - 12px)`,
             }}
           >
             {shiftValue}
@@ -126,8 +117,8 @@ Encryption.propTypes = {
   baseMessage: PropTypes.string.isRequired,
   setBaseMessage: PropTypes.func.isRequired,
   encryptedMessage: PropTypes.string,
-  minSlider: PropTypes.Number,
-  maxSlider: PropTypes.Number,
+  minSlider: PropTypes.number,
+  maxSlider: PropTypes.number,
 };
 
 export default Encryption;
