@@ -7,21 +7,15 @@ import LabButton from "../../../../all-components/LabButton";
 import StatusBanner from "../../../../all-components/StatusBanner";
 
 /**
- * Use this format to pass in columns, bank and correct assignments
- * Note: Keep ids the same across objects
- * Each column can now only accept ONE card
- *
+ * Example usage:
  * const initialColumns = [
  *   { id: "column1", title: "Column 1", cards: [] },
  *   { id: "column2", title: "Column 2", cards: [] },
  * ];
- *
  * const initialBank = [
- *   { id: "card1", content: "Card 1", isCorrect: true },
- *   { id: "card2", content: "Card 2", isCorrect: true },
- *   { id: "card3", content: "Card 3", isCorrect: true },
+ *   { id: "card1", content: "Card 1" },
+ *   { id: "card2", content: "Card 2" },
  * ];
- *
  * const correctAssignments = [
  *   { id: "column1", cards: ["card1"] },
  *   { id: "column2", cards: ["card2"] },
@@ -29,12 +23,7 @@ import StatusBanner from "../../../../all-components/StatusBanner";
  */
 
 const arrayToObject = (array, key) => {
-  return array.reduce((obj, item) => {
-    return {
-      ...obj,
-      [item[key]]: item,
-    };
-  }, {});
+  return array.reduce((obj, item) => ({ ...obj, [item[key]]: item }), {});
 };
 
 const DragDropGame = ({
@@ -57,9 +46,9 @@ const DragDropGame = ({
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initialBank);
   const [message, setMessage] = useState("");
-  const correct_assignments = arrayToObject(correctAssignments, "id");
-
   const [correct, setCorrect] = useState(success);
+
+  const correct_assignments = arrayToObject(correctAssignments, "id");
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -69,44 +58,38 @@ const DragDropGame = ({
     const destinationId = over.id;
 
     setColumns((prevColumns) => {
-      let newColumns = { ...prevColumns };
+      const newColumns = { ...prevColumns };
       let movedCard;
 
-      if (sourceId === destinationId) {
-        return prevColumns;
-      }
+      if (sourceId === destinationId) return prevColumns;
 
-      // Check if destination column already has a card (and it's not the bank)
+      // Prevent placing more than one card in a column
       if (
         destinationId !== "bank" &&
         newColumns[destinationId].cards.length >= 1
       ) {
-        // Move the existing card back to the bank
         const existingCard = newColumns[destinationId].cards[0];
-        setBank((prevBank) => {
-          if (!prevBank.some((card) => card.id === existingCard.id)) {
-            return [...prevBank, existingCard];
-          }
-          return prevBank;
-        });
-        // Clear the column
+        setBank((prevBank) =>
+          prevBank.some((card) => card.id === existingCard.id)
+            ? prevBank
+            : [...prevBank, existingCard],
+        );
         newColumns[destinationId].cards = [];
       }
 
-      // First, find and remove the card from its source
-      for (let key in newColumns) {
-        if (newColumns[key].cards.some((card) => card.id === sourceId)) {
-          movedCard = newColumns[key].cards.find(
-            (card) => card.id === sourceId,
-          );
-          newColumns[key].cards = newColumns[key].cards.filter(
+      // Remove the card from its source
+      for (const key in newColumns) {
+        const sourceCards = newColumns[key].cards;
+        if (sourceCards.some((card) => card.id === sourceId)) {
+          movedCard = sourceCards.find((card) => card.id === sourceId);
+          newColumns[key].cards = sourceCards.filter(
             (card) => card.id !== sourceId,
           );
           break;
         }
       }
 
-      // If card was not found in columns, get it from the bank
+      // If not found in columns, get from bank
       if (!movedCard) {
         movedCard = bank.find((card) => card.id === sourceId);
         if (movedCard) {
@@ -118,14 +101,12 @@ const DragDropGame = ({
 
       if (movedCard) {
         if (destinationId === "bank") {
-          setBank((prevBank) => {
-            if (!prevBank.some((card) => card.id === movedCard.id)) {
-              return [...prevBank, movedCard];
-            }
-            return prevBank;
-          });
+          setBank((prevBank) =>
+            prevBank.some((card) => card.id === movedCard.id)
+              ? prevBank
+              : [...prevBank, movedCard],
+          );
         } else {
-          // Add the moved card to the destination column
           newColumns[destinationId].cards = [movedCard];
         }
       }
@@ -135,52 +116,38 @@ const DragDropGame = ({
   };
 
   const verifyPlacement = () => {
-    let incorrectCards = [];
-    let updatedColumns = { ...columns };
-
-    // Don't let them submit without placing all the cards
     if (bank.length !== 0) {
       setMessage("Please place all cards before submitting.");
       return;
     }
 
-    for (const [columnId, currentCol] of Object.entries(correct_assignments)) {
-      const placedCards = updatedColumns[columnId].cards;
-      const correctCards = currentCol.cards;
+    const updatedColumns = { ...columns };
+    let incorrectCards = [];
 
-      // Find misplaced card objects
+    for (const [columnId, correctCol] of Object.entries(correct_assignments)) {
+      const placedCards = updatedColumns[columnId].cards;
+      const correctCards = correctCol.cards;
+
       const misplaced = placedCards.filter(
         (card) => !correctCards.includes(card.id),
       );
 
       placedCards.forEach((card) => {
-        if (correctCards.includes(card.id)) {
-          card.isCorrect = true;
-        }
+        card.isCorrect = correctCards.includes(card.id);
       });
 
       if (misplaced.length > 0) {
-        incorrectCards = incorrectCards.concat(misplaced);
+        incorrectCards = [...incorrectCards, ...misplaced];
       }
     }
+
     if (incorrectCards.length > 0) {
       setMessage("Incorrect placement. Try again!");
-
-      incorrectCards.forEach((card) => {
-        card.isCorrect = false;
-      });
-
       setColumns(updatedColumns);
       return;
     }
 
-    for (const columnId in updatedColumns) {
-      updatedColumns[columnId].cards.forEach((card) => {
-        card.isCorrect = true; // Revert all cards to correct state
-      });
-    }
-
-    setMessage("Correct placement! Well done!");
+    setMessage("Success! All cards are placed.");
     setSuccess(true);
     setCorrect(true);
     setColumns(updatedColumns);
@@ -188,7 +155,20 @@ const DragDropGame = ({
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <div className={gameStyle}>
+      <div
+        className={
+          gameStyle ||
+          "tw-grid tw-gap-8 tw-max-w-4xl tw-mx-auto tw-items-center"
+        }
+      >
+        <div className="tw-flex tw-justify-center tw-items-center tw-h-full">
+          <DroppableBank
+            bank={bank}
+            bankStyle={bankStyle}
+            cardStyle={bankCardStyle}
+          />
+        </div>
+
         <div className={containerStyle}>
           {Object.keys(columns).map((colId) => (
             <DroppableColumn
@@ -202,19 +182,9 @@ const DragDropGame = ({
             />
           ))}
         </div>
-        <div className={"tw-flex tw-justify-center tw-items-center tw-h-full"}>
-          <DroppableBank
-            bank={bank}
-            bankStyle={bankStyle}
-            cardStyle={bankCardStyle}
-          />
-        </div>
       </div>
-      <div
-        className={
-          "tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center tw-mt-4"
-        }
-      >
+
+      <div className="tw-w-full tw-flex tw-flex-col tw-items-center tw-mt-4">
         {message && <StatusBanner style={msgStyle}>{message}</StatusBanner>}
         <LabButton
           onClick={correct ? handleNav : verifyPlacement}
