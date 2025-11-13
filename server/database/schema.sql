@@ -3450,7 +3450,7 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Computing', 'Quantum', 'AI', '/identity.jpg', 'Learn about quantum computing.', '',
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",

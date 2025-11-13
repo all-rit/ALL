@@ -62,7 +62,7 @@ const Superposition = () => {
         </p>
       </div>
       <h2 className={"tw-subtitle tw-text-center"}>Classic Computer</h2>
-      <div className="tw-flex-row tw-flex tw-gap-10 tw-justify-evenly tw-items-center">
+      <div className="tw-flex-row tw-flex-wrap tw-flex tw-gap-x-10 tw-mb-8 tw-justify-evenly tw-items-center">
         <p className="tw-body-text tw-text-left tw-py-6 tw-justify-start tw-max-w-[500px]">
           Classic computers work with what are called bits. Bits are values
           within a computers memory that can be stored as either 0 or 1. Try
@@ -76,10 +76,10 @@ const Superposition = () => {
         </div>
       </div>
       <h2 className={"tw-subtitle tw-text-center"}>Quantum Computer</h2>
-      <div className="tw-flex-row tw-flex tw-gap-10 tw-justify-evenly tw-items-center">
+      <div className="tw-flex-row tw-flex-wrap tw-flex tw-gap-x-10 tw-mb-8 tw-justify-evenly tw-items-center">
         <p className="tw-body-text tw-text-left tw-py-6 tw-justify-start tw-max-w-[625px]">
           Quantum computers work with qubits, which harness the power of
-          superposition to have values of 0 and 1 simultaneously. However, if a
+          superposition to hold values of 0 and 1 simultaneously. However, if a
           qubit is measured for too long, it will collapse to a static value of
           0 or 1 like a classic bit. Go ahead and test it for yourself! Make
           sure to wait a bit when hovering over the qubit. Notice how the qubit
