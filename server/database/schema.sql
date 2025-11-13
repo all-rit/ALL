@@ -3585,7 +3585,7 @@ e'[
        "val": 1,
        "type": "1",
        "content": "Generative AI using \"✅\" in its responses",
-       "explanation": "The Halo Effect is a cognitive bias in which our overall impression of a person, company, brand, or product influences how we feel and think about their character or properties. In this case, the use of \"✅\" gives the impression that the answer is correct, even if it is not."
+       "explanation": "The Halo Effect is a cognitive bias in which our overall impression of a person, company, brand, or product is influenced by how we feel and think about their character or properties. In this case, the use of \"✅\" gives the impression that the answer is correct, even if it is not."
      },
      {
        "val": 0,
