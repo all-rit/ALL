@@ -3,7 +3,6 @@ import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
 import { Tabs } from "../components/Tab/Tabs";
 import { Tab } from "../components/Tab/Tab";
-import "./styles.css";
 
 const AIPanel = () => {
   const handleContinue = () => {
