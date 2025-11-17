@@ -1,11 +1,15 @@
-import { React, useState } from "react";
+import { React, useContext } from "react";
 import { navigate } from "@reach/router";
-
+import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 
 const CaesarEncryption = () => {
-  const [baseMessage, setBaseMessage] = useState("");
-  const [encryptedMessage, setEncryptedMessage] = useState("");
+  const {
+    caesarBaseMessage,
+    setCaesarBaseMessage,
+    caesarEncryptedMessage,
+    setCaesarEncryptedMessage,
+  } = useContext(ExerciseStateContext);
 
   const handleContinue = () => {
     navigate("/Lab14/Exercise/CaesarDecryption");
@@ -13,7 +17,7 @@ const CaesarEncryption = () => {
 
   const encrypt = (baseMessage, shiftValue) => {
     if (shiftValue == 0) {
-      setEncryptedMessage(baseMessage);
+      setCaesarEncryptedMessage(baseMessage);
       return baseMessage;
     }
 
@@ -36,8 +40,7 @@ const CaesarEncryption = () => {
       }
     }
 
-    setEncryptedMessage(encryptedString);
-    return encryptedString;
+    setCaesarEncryptedMessage(encryptedString);
   };
 
   return (
@@ -45,9 +48,9 @@ const CaesarEncryption = () => {
       Caesar Encryption
       <Encryption
         encryptionFunction={encrypt}
-        encryptedMessage={encryptedMessage}
-        baseMessage={baseMessage}
-        setBaseMessage={setBaseMessage}
+        encryptedMessage={caesarEncryptedMessage}
+        baseMessage={caesarBaseMessage}
+        setBaseMessage={setCaesarBaseMessage}
         minSlider={0}
         maxSlider={25}
       />
