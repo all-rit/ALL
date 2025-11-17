@@ -3787,137 +3787,128 @@ e'[
 }',
 '[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
  {
-   "question": "What does gender refer to?",
+   "question": "Which cognitive bias best describes this scenario? Bob is a student who used ChatGPT to do his math homework. He argues with his teacher about his homework that he got a 0 on. He believes that his math skills are strong enough to not check the answers of ChatGPT because they \"look right\". His teacher continued to give him a 0.",
    "answers": [
      {
        "val": 0,
        "type": "0",
-       "content": "A person’s assigned sex at birth"
+       "content": "Truth Bias"
      },
      {
-       "val": 1,
+       "val": 0,
        "type": "1",
-       "content": "A person’s unique perception of who they are",
-       "explanation": "While sex is a biological characteristic, gender is a self-identified concept."
+       "content": "Halo Effect"
      },
      {
        "val": 0,
        "type": "2",
-       "content": "The sex other people perceive a person as"
+       "content": "Authority Bias"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "Dunning-Kruger Effect",
+       "explanation": "The Dunning-Kruger Effect is a cognitive bias in which people overestimate their ability in a task. In this case, Bob overestimates his math skills and trusts the AI without verification."
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "Why is it important to respect someone’s chosen pronouns/name?",
+   "question": "Which one describes the Halo Effect?",
    "answers": [
      {
        "val": 0,
        "type": "0",
-       "content": "To show respect to others"
+       "content": "Generative AI giving a wrong answer"
      },
      {
-       "val": 0,
+       "val": 1,
        "type": "1",
-       "content": "It can lead to a decrease in anxiety"
+       "content": "Generative AI using \"✅\" in its responses",
+       "explanation": "The Halo Effect is a cognitive bias in which our overall impression of a person, company, brand, or product is influenced by how we feel and think about their character or properties. In this case, the use of \"✅\" gives the impression that the answer is correct, even if it is not."
      },
      {
        "val": 0,
        "type": "2",
-       "content": "To foster a bias-free environment"
+       "content": "Believing that Generative AI is correct because it is an online resource"
      },
      {
-       "val": 1,
+       "val": 0,
        "type": "3",
-       "content": "All of the above",
-       "explanation": "Using a person’s preferred name and pronouns creates a respectful environment and can decrease anxiety regarding gender expression."
+       "content": "A lack of knowledge in the topic leading to believing that Generative AI is correct"
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "Which of the following could be used to add gender non-discrimination features to software?",
+   "question": "True or False: Since Generative AI has access to lots of information and is trained on a vast dataset, it can always be trusted.",
    "answers": [
      {
        "val": 0,
        "type": "0",
-       "content": "Making everything rainbow colored"
+       "content": "True"
      },
      {
        "val": 1,
        "type": "1",
-       "content": "Adding an ‘other’ text field when asking for gender",
-       "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
-     },
-     {
-       "val": 0,
-       "type": "2",
-       "content": "Mandating/requiring users to input their gender"
-     },
-     {
-       "val": 0,
-       "type": "3",
-       "content": "Adjust font size, font color, and text alignment"
+       "content": "False",
+       "explanation": "Generative AI can produce incorrect or misleading information, so it should not always be trusted without verification."
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "ADP, an HR and Payroll consulting company, has recently strived for accessibility in which of the following ways?",
+   "question": "Which of the following can users use to check the validity of Generative AI responses?",
    "answers": [
      {
        "val": 1,
        "type": "0",
-       "content": "Advocates for the importance of using preferred names",
-       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
-       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
-     },
-     {
-       "val": 1,
-       "type": "1",
-       "content": "Outline the best practices for using preferred names at work",
-       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
-       "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+       "content": "Disclaimers",
+       "explanation": "Many Generative AI tools include disclaimers that the information provided may not be accurate or up-to-date."
      },
      {
        "val": 0,
+       "type": "1",
+       "content": "The tone of the response"
+     },
+     {
+       "val": 1,
        "type": "2",
-       "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
+       "content": "Confidence Scores",
+       "explanation": "Generative AI tools can provide confidence scores indicating how certain the model is about its response."
      },
      {
        "val": 1,
        "type": "3",
-       "content": "Become familiar with and consistent with someone’s preferred pronouns",
-       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
-       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+       "content": "A separate search of the question",
+       "explanation": "Users should verify the information provided by Generative AI through independent research or trusted sources."
      }
    ],
    "multiChoice": true
  },
  {
-   "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
+   "question": "Which of these is cognitive bias NOT based on?",
    "answers": [
      {
-       "val": 1,
+       "val": 0,
        "type": "0",
-       "content": "76%",
-       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
-       "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
+       "content": "Intuition"
      },
      {
-       "val": 0,
+       "val": 1,
        "type": "1",
-       "content": "31%"
+       "content": "Facts",
+       "explanation": "Cognitive biases are systematic patterns of deviation from norm or rationality in judgment, often based on intuition rather than objective facts."
      },
      {
        "val": 0,
        "type": "2",
-       "content": "12%"
+       "content": "Familiarity"
      },
      {
        "val": 0,
        "type": "3",
-       "content": "This hasn’t been surveyed before."
+       "content": "Quick Conclusions"
      }
    ],
    "multiChoice": false
