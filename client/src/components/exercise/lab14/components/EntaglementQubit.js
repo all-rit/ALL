@@ -34,7 +34,7 @@ const EntanglementQubit = ({ colorChange, text, time, bgColor, fontColor }) => {
         alignItems: "center",
       }}
     >
-      {colorChange ? text : "Qubit"}
+      {text}
     </div>
   );
 };

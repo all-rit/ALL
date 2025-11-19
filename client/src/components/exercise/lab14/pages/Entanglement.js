@@ -11,10 +11,22 @@ const Entanglement = () => {
   const [altColor, setAltColor] = useState("qubit");
   const [altText, setAltText] = useState("");
   const [altFontColor, setAltFontColor] = useState("white");
+  var resetButton = document.getElementById("reset");
 
   const handleContinue = () => {
     startExercise();
     navigate("/Lab14/Exercise/CaesarCipher");
+  };
+
+  const resetQubits = () => {
+    setBgColor("qubit");
+    setFontColor("white");
+    setText("");
+    setTime(0);
+    setAltColor("qubit");
+    setAltText("");
+    setAltFontColor("white");
+    resetButton.style.display = "none";
   };
 
   const colorChange = () => {
@@ -28,12 +40,14 @@ const Entanglement = () => {
       setAltText("1");
       setAltFontColor("black");
       setTime(0);
+      resetButton.style.display = "block";
     } else {
       setBgColor("labYellow");
       setAltColor("labBlue");
       setFontColor("black");
       setText("1");
       setAltText("0");
+      resetButton.style.display = "block";
     }
   };
 
@@ -54,8 +68,8 @@ const Entanglement = () => {
       <div className="tw-flex tw-items-center tw-justify-center tw-gap-8">
         <div className="tw-flex tw-flex-row tw-w-1/2 tw-py-10">
           <EntanglementQubit
-            text={text}
             colorChange={colorChange}
+            text={text ? text : "Qubit"}
             bgColor={bgColor}
             fontColor={fontColor}
             time={time}
@@ -63,11 +77,20 @@ const Entanglement = () => {
           <div className="tw-flex-grow tw-border-b-7 tw-border-dashed tw-border-labGray tw-w-1/2 tw-my-12 tw-h-0"></div>
           <EntanglementQubit
             colorChange={colorChange}
-            text={altText}
+            text={altText ? altText : "Qubit"}
             bgColor={altColor}
             fontColor={altFontColor}
           ></EntanglementQubit>
         </div>
+      </div>
+      <div id="reset" className="tw-flex tw-justify-evenly tw-my-20">
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase"
+          onClick={resetQubits}
+          key="start"
+        >
+          Reset
+        </button>
       </div>
       <div className="tw-flex tw-justify-evenly tw-my-20">
         <button
