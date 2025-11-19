@@ -61,7 +61,7 @@ const CaesarEncryption = () => {
     <div>
       <h1 className="tw-title tw-text-left">Caesar Cipher Encryption</h1>
       <p className="tw-body-text tw-text-left tw-py-6">
-        In this section, you will encrypt a message using the Caesar cipher.
+        In this section, you will encrypt a message using the Caesar Cipher.
         Enter a base message and choose a shift value below. Click on the
         &quot;Encrypt&quot; button to see the Caesar Cipher in action!
       </p>
