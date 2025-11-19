@@ -7,6 +7,7 @@ import ExerciseStateContext from "./Lab14Context";
 // lab imported dependencies;
 import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
+import CaesarIntro from "./pages/CaesarIntro";
 import CaesarEncryption from "./pages/CaesarEncryption";
 import CaesarDecryption from "./pages/CaesarDecryption";
 import RSAEncryption from "./pages/RSAEncryption";
@@ -47,6 +48,7 @@ const Main = () => {
         <Router className="app">
           <Superposition default path="/" />
           <Entanglement path="/Entanglement" />
+          <CaesarIntro path="/CaesarIntro" />
           <CaesarEncryption path="/CaesarEncryption" />
           <CaesarDecryption path="/CaesarDecryption" />
           <RSAEncryption path="/RSAEncryption" />

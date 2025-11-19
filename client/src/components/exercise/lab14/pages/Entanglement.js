@@ -3,7 +3,7 @@ import { navigate } from "@reach/router";
 
 const Entanglement = () => {
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/CaesarEncryption");
+    navigate("/Lab14/Exercise/CaesarIntro");
   };
 
   return (
