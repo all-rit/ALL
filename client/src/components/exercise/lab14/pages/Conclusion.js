@@ -84,6 +84,12 @@ const Conclusion = () => {
           cybersecurity, in ways that are hard to imagine today. It’s a
           technology with huge potential, but also big challenges.
         </p>
+
+        <p className="tw-text-left tw-py-6">
+          {" "}
+          Press the <q>Next</q> button to continue on to the Reinforcement
+          Section
+        </p>
       </div>
     </div>
   );
