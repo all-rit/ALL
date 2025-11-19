@@ -3698,7 +3698,7 @@ e'[
     "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
   ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null, 
   -- About Section
-  'temp', e'{
+  'In this lab, you will learn about the fundamentals of quantum computing and how it differs from classical computing. You will practice applying these concepts through interactive exercises, including encrypting and decrypting messages with the Caesar cipher to compare classical and quantum approaches. Click “Next” to start!', e'{
   "piechart": {
     "header":"Header Name",
     "caption":["59% of Gen Z believes forms should have options outside of male and female."],
