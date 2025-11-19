@@ -9,6 +9,8 @@ import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
 import CaesarEncryption from "./pages/CaesarEncryption";
 import CaesarDecryption from "./pages/CaesarDecryption";
+import VigenereEncryption from "./pages/VigenereEncryption";
+import VigenereDecryption from "./pages/VigenereDecryption";
 import RSAEncryption from "./pages/RSAEncryption";
 import RSADecryption from "./pages/RSADecryption";
 import Conclusion from "./pages/Conclusion";
@@ -25,6 +27,9 @@ const Main = () => {
 
   const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
   const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [vigenereBaseMessage, setVigenereBaseMessage] = useState("");
+  const [vigenereKey, setVigenereKey] = useState("");
+  const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState("");
   const [rsaBaseMessage, setRsaBaseMessage] = useState("");
   const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
 
@@ -38,6 +43,12 @@ const Main = () => {
           setCaesarBaseMessage,
           caesarEncryptedMessage,
           setCaesarEncryptedMessage,
+          vigenereBaseMessage,
+          setVigenereBaseMessage,
+          vigenereKey,
+          setVigenereKey,
+          vigenereEncryptedMessage,
+          setVigenereEncryptedMessage,
           rsaBaseMessage,
           setRsaBaseMessage,
           rsaEncryptedMessage,
@@ -47,10 +58,19 @@ const Main = () => {
         <Router className="app">
           <Superposition default path="/" />
           <Entanglement path="/Entanglement" />
+
+          {/* Caesar Cipher */}
           <CaesarEncryption path="/CaesarEncryption" />
           <CaesarDecryption path="/CaesarDecryption" />
+
+          {/* Vigenère Cipher */}
+          <VigenereEncryption path="/VigenereEncryption" />
+          <VigenereDecryption path="/VigenereDecryption" />
+
+          {/* RSA Cipher */}
           <RSAEncryption path="/RSAEncryption" />
           <RSADecryption path="/RSADecryption" />
+
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
