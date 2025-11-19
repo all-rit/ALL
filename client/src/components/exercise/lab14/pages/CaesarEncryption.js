@@ -1,7 +1,8 @@
-import { React, useContext } from "react";
+import { React, useContext, useState } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
+import LabButton from "../../../all-components/LabButton";
 
 const CaesarEncryption = () => {
   const {
@@ -9,10 +10,17 @@ const CaesarEncryption = () => {
     setCaesarBaseMessage,
     caesarEncryptedMessage,
     setCaesarEncryptedMessage,
+    setCaesarShiftAmount,
   } = useContext(ExerciseStateContext);
 
+  const [error, setError] = useState(false);
+
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/CaesarDecryption");
+    if (caesarEncryptedMessage) {
+      navigate("/Lab14/Exercise/CaesarDecryption");
+    } else {
+      setError(true);
+    }
   };
 
   const encrypt = (baseMessage, shiftValue) => {
@@ -24,28 +32,37 @@ const CaesarEncryption = () => {
     let encryptedString = "";
     for (let i = 0; i < baseMessage.length; i++) {
       let char = baseMessage[i];
-      let charAscii = char.charCodeAt(0);
 
-      if (charAscii >= 65 && charAscii <= 90) {
+      if (char >= "A" && char <= "Z") {
         // Uppercase
-        let shiftApplied = ((charAscii - 65 + shiftValue + 26) % 26) + 65;
-        encryptedString += String.fromCharCode(shiftApplied);
-      } else if (charAscii >= 97 && charAscii <= 122) {
+        let code = char.charCodeAt(0) - 65;
+        let shifted = (code + shiftValue) % 26;
+        shifted = (shifted + 26) % 26;
+        encryptedString += String.fromCharCode(shifted + 65);
+      } else if (char >= "a" && char <= "z") {
         // Lowercase
-        let shiftApplied = ((charAscii - 97 + shiftValue + 26) % 26) + 97;
-        encryptedString += String.fromCharCode(shiftApplied);
+        let code = char.charCodeAt(0) - 97;
+        let shifted = (code + shiftValue) % 26;
+        shifted = (shifted + 26) % 26;
+        encryptedString += String.fromCharCode(shifted + 97);
       } else {
         // Non alphabet char
         encryptedString += char;
       }
     }
 
+    setCaesarShiftAmount(parseInt(shiftValue));
     setCaesarEncryptedMessage(encryptedString);
   };
 
   return (
     <div>
-      Caesar Encryption
+      <h1 className="tw-title tw-text-left">Caesar Encryption</h1>
+      <p className="tw-body-text tw-text-left tw-py-6">
+        In this section, you will encrypt a message using the Caesar cipher.
+        Enter a base message and choose a shift value below. Click on the
+        &quot;Encrypt&quot; button to see the Caesar Cipher in action!
+      </p>
       <Encryption
         encryptionFunction={encrypt}
         encryptedMessage={caesarEncryptedMessage}
@@ -54,7 +71,15 @@ const CaesarEncryption = () => {
         minSlider={0}
         maxSlider={25}
       />
-      <button onClick={handleContinue}>Next</button>
+      <div className="tw-mt-10">
+        <LabButton onClick={handleContinue} label={"Next"} />
+      </div>
+
+      <p
+        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
+      >
+        Error: Please Encrypt a valid string to continue
+      </p>
     </div>
   );
 };

@@ -25,6 +25,7 @@ const Main = () => {
 
   const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
   const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [caesarShiftAmount, setCaesarShiftAmount] = useState(0);
   const [rsaBaseMessage, setRsaBaseMessage] = useState("");
   const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
 
@@ -38,6 +39,8 @@ const Main = () => {
           setCaesarBaseMessage,
           caesarEncryptedMessage,
           setCaesarEncryptedMessage,
+          caesarShiftAmount,
+          setCaesarShiftAmount,
           rsaBaseMessage,
           setRsaBaseMessage,
           rsaEncryptedMessage,

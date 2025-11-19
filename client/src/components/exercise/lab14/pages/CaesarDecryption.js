@@ -9,36 +9,99 @@ const CaesarDecryption = () => {
   const [quantumAttempts, setQuantumAttempts] = useState(0);
   const [quantumBoxElements, setQuantumBoxElements] = useState([]);
 
-  const { caesarBaseMessage, caesarEncryptedMessage } =
+  const { caesarBaseMessage, caesarEncryptedMessage, caesarShiftAmount } =
     useContext(ExerciseStateContext);
 
   const handleContinue = () => {
     navigate("/Lab14/Exercise/RSAEncryption");
   };
 
+  const encrypt = (baseMessage, shiftValue) => {
+    if (shiftValue == 0) {
+      return baseMessage;
+    }
+
+    let encryptedString = "";
+    for (let i = 0; i < baseMessage.length; i++) {
+      let char = baseMessage[i];
+
+      if (char >= "A" && char <= "Z") {
+        // Uppercase
+        let code = char.charCodeAt(0) - 65;
+        let shifted = (code + shiftValue) % 26;
+        encryptedString += String.fromCharCode(shifted + 65);
+      } else if (char >= "a" && char <= "z") {
+        // Lowercase
+        let code = char.charCodeAt(0) - 97;
+        let shifted = (code + shiftValue) % 26;
+        encryptedString += String.fromCharCode(shifted + 97);
+      } else {
+        // Non alphabet char
+        encryptedString += char;
+      }
+    }
+    return encryptedString;
+  };
+
+  const decimalToBinary = (num) => {
+    return (num >>> 0).toString(2);
+  };
+
   const decrypt = () => {
     // update the classic and quantum boxes with decryption process
     // update state of graph bars accordingly
 
-    setClassicAttempts(13);
+    // Classic
+    const classicArray = [];
+    for (let i = caesarShiftAmount; i >= 0; i--) {
+      classicArray.push({
+        text: encrypt(caesarBaseMessage, i),
+        binary: [decimalToBinary(i)],
+      });
+    }
+    console.log("classicArray: ", classicArray);
+
+    // Quantum
+    const quantumArray = [];
+    const quantumNum = caesarShiftAmount / 5;
+    for (let i = 4; i >= 0; i--) {
+      const innerArray = [];
+      for (let k = quantumNum; k >= 0; k--) {
+        innerArray.push(decimalToBinary(i * quantumNum + k));
+      }
+
+      quantumArray.push({
+        text: encrypt(caesarBaseMessage, i * Math.floor(caesarShiftAmount / 5)),
+        binary: innerArray,
+      });
+    }
+
+    console.warn("get here");
+    console.warn("caesarShiftAmount: ", caesarShiftAmount);
+    console.warn(typeof caesarShiftAmount);
+
+    setClassicAttempts(parseInt(caesarShiftAmount));
     setQuantumAttempts(5);
 
-    setClassicBoxElements([
-      { text: "Element1", binary: ["000"] },
-      { text: "Element2", binary: ["001"] },
-      { text: "Element3", binary: ["010"] },
-      { text: "Element4", binary: ["100"] },
-    ]);
-    setQuantumBoxElements([
-      { text: "ElementA", binary: ["000", "001", "010", "100"] },
-      { text: "ElementB", binary: ["100", "101", "110"] },
-      { text: "ElementC", binary: ["111"] },
-    ]);
+    setClassicBoxElements(classicArray);
+    setQuantumBoxElements(quantumArray);
   };
 
   return (
     <div>
-      <h1>Caesar Decryption</h1>
+      <h1 className="tw-title tw-text-left">Decryption Encryption</h1>
+      <p className="tw-body-text tw-text-left tw-py-6">
+        Below, you will see the encrypted message from the previous section. Use
+        the Caesar decryption function to decrypt the message back to its
+        original form, and observe how the classic and quantum decryption
+        processes differ in terms of attempts and efficiency!
+      </p>
+      <p className="tw-body-text tw-text-left">
+        At the very bottom, you&apos;ll see a graph that visualizes the number
+        of attempts taken by both classic and quantum methods to decrypt the
+        message. Notice how quantum decryption typically requires fewer attempts
+        due to its ability to process multiple possibilities simultaneously.
+      </p>
       <Decryption
         encryptedMessage={caesarEncryptedMessage}
         baseMessage={caesarBaseMessage}
