@@ -24,6 +24,8 @@ const CaesarEncryption = () => {
   };
 
   const encrypt = (baseMessage, shiftValue) => {
+    shiftValue = parseInt(shiftValue);
+
     if (shiftValue == 0) {
       setCaesarEncryptedMessage(baseMessage);
       return baseMessage;
@@ -57,7 +59,7 @@ const CaesarEncryption = () => {
 
   return (
     <div>
-      <h1 className="tw-title tw-text-left">Caesar Encryption</h1>
+      <h1 className="tw-title tw-text-left">Caesar Cipher Encryption</h1>
       <p className="tw-body-text tw-text-left tw-py-6">
         In this section, you will encrypt a message using the Caesar cipher.
         Enter a base message and choose a shift value below. Click on the
