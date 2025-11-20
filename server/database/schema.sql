@@ -83,6 +83,35 @@ create table imagine23
     primary key (id)
 );
 
+create type enum_lab0_progress_category as enum ('DESIGN', 'BACKEND', 'FRONTEND');
+
+create type enum_lab0_progress_section as enum (
+    'LabIdeation',
+    'LabDecision',
+    'WireframeIntro',
+    'ScrumIntro',
+    'LabDataRepair', 
+    'SchemaRepair', 
+    'ServiceControllerRepair', 
+    'RoutingRepair', 
+    'BackendTipsTricks', 
+    'IntegrationRepair',
+    'CoreLabPagesRepair',
+    'ComponentLibrary',
+    'FrontendTipsTricks'
+);
+
+create type enum_lab0_progress_section_status as enum ('IN_PROGRESS', 'COMPLETED');
+
+create table lab0_progress (
+    id              serial,
+    userid          bigint,
+    category        enum_lab0_progress_category,
+    section         enum_lab0_progress_section,
+    "sectionStatus" enum_lab0_progress_section_status,
+    primary key (id) 
+);
+
 create table lab1_choice
 (
     choiceid  serial,
@@ -459,7 +488,218 @@ create table lab12_exercise
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
+VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessible Learning Lab', 'Tutorials', '/wrench.jpg',
+        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',
+        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.',
+        '["Lab Design: Learn how we categorize and structure our labs, ensure each one is experiential and engaging, design intuitive UI/UX through wireframing, and refine our development process using Scrum.",
+          "Backend Development: Gain hands-on experience with our database, service layers, controllers, and endpoints through guided exercises, and understand how each component integrates to form our complete backend architecture.",
+          "Frontend Development: Explore our component architecture, boilerplate, and core lab components, and learn how to bring them together into a cohesive framework."]',
+        'Heather Moses, Domenic Mangano, Jonathan Cruz, Melissa Burisky, Jack Barter, Ursula Parker',
+        'https://all.rit.edu/Lab0/', NULL,
+        'In this lab, you will learn how to develop a lab for ALL from beginning to end. Starting with writing a lab, you will explore concepts like ideation, gathering sources, and finally designing the lab’s structure. Afterward, you will be able to implement a lab on both the frontend and backend while upholding best practices and standards. Click “Next” to start!',
+        e'{
+        "description": {
+            "header": "",
+            "content": ""
+        },
+        "body": [
+            {
+                "header": "History of Accessible Learning Labs",
+                "type": "",
+                "content": [
+"Accessible Learning Labs (ALL) was founded in 2018 at Rochester Institute of Technology through support from the National Science Foundation. Spearheaded by principal investigators Daniel Krutz and Samuel Malachowsky, the project was built to promote awareness of digital accessibility and the vital role that developers play in creating inclusive, usable software for all. From the beginning, ALL has been powered by a fully undergraduate development team—an intentional decision to educate the next generation of engineers on accessible development practices from the ground up. Since launching its first lab, Accessibility to Sound and Speech, in 2018, ALL has expanded to over a dozen interactive labs. These span a broad range of topics including accessibility for cognitive disabilities, ethics in artificial intelligence, machine learning fundamentals, and cybersecurity. Each lab combines experiential learning with real-world accessibility insights, continually evolving with new releases every semester."
+]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "What Goes into Building a Lab?",
+                "type": "",
+                "content": [
+"Every ALL lab follows a standardized structure that ensures consistency, engagement, and educational value. The flow consists of five core sections: Reading, Exercise (including the Experiential Exercise and Experiential Repair), Reinforcement, and Quiz. This progression introduces core concepts, provides hands-on activities, reinforces knowledge through multimedia content, and concludes with an assessment to solidify understanding. Labs are built not just to educate but to immerse students in real challenges. Whether a student is simulating screen reader experiences or identifying design flaws in inaccessible applications, the lab experience is designed to encourage critical thinking and foster empathy. Every lab is backed by data models stored in a PostgreSQL database, and each exercise is powered by a Redux-based state engine, ensuring a dynamic and reactive experience."              ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "Our Tech Stack",
+                "type": "",
+                "content": [
+"The frontend is built with React, a declarative JavaScript framework known for building interactive and modular user interfaces. Components are styled using Tailwind CSS and follow an accessibility-first design philosophy. The backend is powered by Express.js running on Node.js. It follows a clean separation-of-concerns pattern using folders like routes, controllers, services, and database. All backend routes are exposed as RESTful API endpoints on port 5005, which are consumed by the frontend’s service layer to maintain a clean, modular architecture. Persistent data is managed with PostgreSQL, a relational database used to store lab content, quiz data, user progress, and session data. Schemas and models are defined using Sequelize and organized by domain. The entire system is containerized and can be spun up locally using docker-compose, with environment variables configured through .env files and ecosystem.config.js."             ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": [
+                    {
+                        "name": "React Documentation",
+                        "link": "https://react.dev/"
+                    },
+                    {
+                        "name": "ExpressJS Documentation",
+                        "link": "https://expressjs.com/"
+                    },
+                    {
+                        "name": "PostgreSQL Documentation",
+                        "link": "https://www.postgresql.org/docs/"
+                    }
+                ]
+            }
+        ],
+        "footer": {
+            "links": [
+                {
+                    "name": "National Science Foundation",
+                    "link": "https://www.nsf.gov/"
+                },
+                {
+                    "name": "Rochester Institute of Technology",
+                    "link": "https://www.rit.edu/"
+                }
+            ]
+        }
+    }', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+', e'[
+  {
+    "question": "What are the two main categories that a new lab will fall into? (Select all that apply)",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "AI/ML",
+        "explanation": "We have multiple labs in the AI/ML sector."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Accessibility",
+        "explanation": "True to our name, we focus heavily on web accessibility."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Cybersecurity"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Data Structures and Algorithms"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What is the name of the collection of reusable UI/UX elements that ALL developers can pull from to make more interactive exercises?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "UI Utopia"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Component Library",
+        "explanation": "We have a fully-fledged set of reusable components in our component component library."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Extra UX Stuff"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How do experiential exercises impact a lab users connection to a subject they are studying? (Select all that apply)",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Putting a user in the shoes of someone with a physical limitation gives them an empathic view of another users situation."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A user that experiences someone elses physical limitation may be more likely to push for an equitable outcome for that other user.",
+        "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "They dont make a big impact on the user."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "It decreases the amount of interest the user has in the subject."
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "How do we use AGILE and SCRUM to improve our development process?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "By doing work in time-boxed increments (sprints)."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "By holding a retrospective after every sprint to recap our work and improve for future sprints.",
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
+        "source": "https://www.w3.org/TR/WCAG21/#perceivable"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "By holding daily standups to have a quick meeting, give updates, and check for blockers."
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is the order of data flow from when the request hits the API?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Database -> Service -> Endpoint -> Controller"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Service -> Database -> Controller -> Endpoint"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Endpoint -> Controller -> Service -> Database"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', 3, 'coming soon', 'coming soon', true),
+       (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,
@@ -3450,7 +3690,7 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Computing', 'Quantum', 'AI', '/identity.jpg', 'Learn about quantum computing.', '',
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
@@ -3544,7 +3784,7 @@ e'[
       ]
     }
   }',
-  '[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use accessible language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Non-Discrimination","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
+  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', '[
   {
     "question": "Question?",
     "answers": [

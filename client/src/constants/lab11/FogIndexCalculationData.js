@@ -2,6 +2,7 @@ const FogIndexCalculationData = {
   words: [
     {
       id: "0",
+      fileId: 0,
       key: "wordsInput0",
       variableName: "wordCount",
       comment: `// Enter 'letterContent.split(' ').length' for the correct implementation of the word count.`,
@@ -13,6 +14,7 @@ const FogIndexCalculationData = {
   sentences: [
     {
       id: "0",
+      fileId: 0,
       key: "sentenceInput0",
       variableName: "sentenceCount",
       comment: `// Enter 'letterContent.split(/[.!?]/).length - 1' for the correct implementation of the sentence count.`,
@@ -24,6 +26,7 @@ const FogIndexCalculationData = {
   complexWords: [
     {
       id: "0",
+      fileId: 0,
       key: "complexWordInput0",
       variableName: "complexWordCount",
       comment: `// Enter 'countSyllables(word) > 3' for the correct implementation of the complex word count.`,

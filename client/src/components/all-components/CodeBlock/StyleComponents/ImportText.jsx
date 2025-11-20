@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { javascriptRegex } from "../Constants";
 
 /**
  * React component for rendering plain text with a background color suitable for HTML content.
@@ -17,8 +18,26 @@ import React from "react";
  */
 
 const ImportText = ({ children }) => {
+  const highlightSyntax = (string) => {
+    return string.split(/(\s+|\b|\W)/).map((segment, index) => {
+      if (javascriptRegex.test(segment)) {
+        return (
+          <span key={index} className="keyword">
+            {segment}
+          </span>
+        );
+      }
+      return (
+        <span key={index} className={"import"}>
+          {segment}
+        </span>
+      );
+    });
+  };
   /* Will color all text white as it would in an IDE */
-  return <div className="code_editor__code import">{children}</div>;
+  return (
+    <div className="code_editor__code import">{highlightSyntax(children)}</div>
+  );
 };
 
 ImportText.propTypes = {

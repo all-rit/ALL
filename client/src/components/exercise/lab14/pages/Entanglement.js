@@ -14,8 +14,7 @@ const Entanglement = () => {
   const [resetVisible, setResetVisible] = useState(false);
 
   const handleContinue = () => {
-    startExercise();
-    navigate("/Lab14/Exercise/CaesarCipher");
+    navigate("/Lab14/Exercise/CaesarEncryption");
   };
 
   const resetQubits = () => {
