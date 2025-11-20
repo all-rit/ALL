@@ -18,8 +18,8 @@ const CaesarIntro = () => {
       </p>
 
       <h2 className="tw-sub-title tw-text-left tw-mt-6">How it Works</h2>
-      <div className="tw-flex tw-flex-row tw-justify-between tw-flex-wrap tw-gap-x-8">
-        <div className="tw-w-1/3 tw-max-w-[600px] tw-min-w-[400px]">
+      <div className="tw-flex tw-flex-row tw-justify-between tw-flex-wrap xl:tw-mr-16 lg:tw-flex-nowrap tw-gap-4 xl:tw-gap-x-8">
+        <div className="lg:tw-w-1/3 lg:tw-max-w-[600px] lg:tw-min-w-[300px]">
           <p className="tw-body-text tw-text-left tw-py-4">
             This cipher works by shifting each letter in a plaintext message by
             a fixed number, called the &apos;key&apos;. For example, with a key
@@ -39,7 +39,7 @@ const CaesarIntro = () => {
             shift, and <strong>&apos;k&apos;</strong> is the key.
           </p>
         </div>
-        <div className="tw-flex tw-flex-col tw-max-w-[700px] tw-min-w-[400px] tw-mr-16">
+        <div className="tw-flex tw-flex-col tw-max-w-[600px] tw-min-w-[400px] tw-mb-8">
           <img src={CaesarImage} />
           <div className="tw-flex tw-flex-row">
             <p>Sourced from:&nbsp;</p>
@@ -59,10 +59,11 @@ const CaesarIntro = () => {
       </h2>
       <p className="tw-body-text tw-text-left tw-my-2">
         Below, you will see the breakdown of how both Classic and Quantum
-        computers use algorithms to solve the Caesar Cipher, and the amount of
+        computers use algorithms to solve the Caesar Cipher, as well as the
+        base-time complexity of cracking these codes.
       </p>
-      <div className="tw-flex tw-flex-row tw-justify-center">
-        <div className="tw-flex tw-flex-col tw-max-w-1/2">
+      <div className="tw-flex tw-flex-row tw-justify-center tw-my-8 tw-gap-16 tw-w-full tw-flex-wrap lg:tw-flex-nowrap">
+        <div className="tw-flex tw-flex-col tw-max-w-[500px] tw-min-w-[300px] tw-gap-y-4 tw-flex-1">
           <h1 className="tw-sub-title">Classic Computer Decryption</h1>
           <p className="tw-body-text tw-text-left">
             With there being 26 letters in the English alphabet, the maximum
@@ -70,14 +71,43 @@ const CaesarIntro = () => {
             amount of checks that a Classic Computer would have to do to
             brute-force solve this Cipher is 25.
           </p>
-        </div>
-        <div className="tw-flex tw-flex-col tw-max-w-1/2">
-          <h1 className="tw-sub-title">Quantum Decryption</h1>
           <p className="tw-body-text tw-text-left">
-            Hello my name is blah blah bnlah
+            When the worst case scenario for an algorithm is checking every
+            single element possible, we call that O(N) time complexity, where
+            &apos;N&apos; is the number of elements to search (25).
           </p>
         </div>
+        <div className="tw-flex tw-flex-col tw-max-w-[500px] tw-min-w-[300px] tw-gap-4 tw-flex-1">
+          <h1 className="tw-sub-title">Quantum Decryption</h1>
+          <p className="tw-body-text tw-text-left">
+            While a Classic Computer solves the Caesar Cipher in O(N) time, when
+            using Grover&apos; search algorithm, Quantum can search for the
+            correct element much faster. Through the use of Quantum Physics, the
+            base-time complexity for Quantum Computers is{" "}
+            <span className="tw-math">O(&radic;N)</span>, meaning the greatest
+            amount of elements that need to be searched is 5.
+          </p>
+          <p className="tw-body-text tw-text-left">
+            Rather than searching every key one-by-one, Grover&apos;s algorithm
+            uses repeated &quot;amplification&quot; steps to increase the
+            probability of the correct key standing out. Below, you can find an
+            academic paper explaining each of these concepts in depth.
+          </p>
+          <a
+            href="https://eprint.iacr.org/2021/554.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Paper: Grover on Caesar and Vigenère Cipher
+          </a>
+        </div>
       </div>
+
+      <h2 className="tw-sub-title tw-text-left tw-mt-6">Simulation</h2>
+      <p className="tw-text-body tw-text-left tw-py-2">
+        On the next page, you will be able to see these algorithms in action.
+        Click the &apos;Continue&apos; button to start the activity!
+      </p>
 
       <div className="tw-mt-10">
         <LabButton onClick={handleContinue} label={"Continue"} />
