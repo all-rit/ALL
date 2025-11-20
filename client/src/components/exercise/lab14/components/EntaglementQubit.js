@@ -22,7 +22,7 @@ const EntanglementQubit = ({ colorChange, text, time, bgColor, fontColor }) => {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`tw-bg-${bgColor}`}
+      className={`tw-bg-${bgColor} tw-cursor-pointer`}
       style={{
         color: fontColor,
         width: "250px",

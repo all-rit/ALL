@@ -11,7 +11,7 @@ const Entanglement = () => {
   const [altColor, setAltColor] = useState("qubit");
   const [altText, setAltText] = useState("");
   const [altFontColor, setAltFontColor] = useState("white");
-  var resetButton = document.getElementById("reset");
+  const [resetVisible, setResetVisible] = useState(false);
 
   const handleContinue = () => {
     startExercise();
@@ -26,7 +26,7 @@ const Entanglement = () => {
     setAltColor("qubit");
     setAltText("");
     setAltFontColor("white");
-    resetButton.style.display = "none";
+    setResetVisible(false);
   };
 
   const colorChange = () => {
@@ -40,14 +40,14 @@ const Entanglement = () => {
       setAltText("1");
       setAltFontColor("black");
       setTime(0);
-      resetButton.style.display = "block";
+      setResetVisible(true);
     } else {
       setBgColor("labYellow");
       setAltColor("labBlue");
       setFontColor("black");
       setText("1");
       setAltText("0");
-      resetButton.style.display = "block";
+      setResetVisible(true);
     }
   };
 
@@ -65,7 +65,7 @@ const Entanglement = () => {
           advanced protocols like quantum teleportation and superdense coding.
         </p>
       </div>
-      <div className="tw-flex tw-items-center tw-justify-center tw-gap-8">
+      <div className="tw-flex tw-items-center tw-justify-evenly tw-gap-8">
         <div className="tw-flex tw-flex-row tw-w-1/2 tw-py-10">
           <EntanglementQubit
             colorChange={colorChange}
@@ -83,9 +83,9 @@ const Entanglement = () => {
           ></EntanglementQubit>
         </div>
       </div>
-      <div id="reset" className="tw-flex tw-justify-evenly tw-my-20">
+      <div id="reset" className="tw-flex tw-justify-center">
         <button
-          className="btn btn-primary text-black btn-xl text-uppercase"
+          className={`btn tw-bg-labGray tw-text-white text-black btn-xl text-uppercase ${resetVisible ? "tw-visible" : "tw-invisible"}`}
           onClick={resetQubits}
           key="start"
         >
