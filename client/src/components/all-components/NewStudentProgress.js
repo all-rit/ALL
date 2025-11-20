@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import BrandedALLModal from "./BrandedALLModal";
 import PropTypes from "prop-types";
-import LabRow from "../body/profilepage/components/LabRow";
+import ALLCardRow from "../all-components/ALLCardRow";
 import ALLButton from "./ALLButton";
+import EnrolledStudentsTable from "../body/profilepage/EnrolledStudentsTable";
 import { SUCCESS } from "../../constants/notifications";
 import useMainStateContext from "../../reducers/MainContext";
 
@@ -11,9 +12,16 @@ const NewStudentProgress = (props) => {
   const { actions } = useMainStateContext();
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [labsOpen, setLabsOpen] = useState(assignedLabs.map(() => false));
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
+  };
+
+  const toggleLabOpen = (index) => {
+    let newLabsOpen = labsOpen.slice();
+    newLabsOpen[index] = !newLabsOpen[index];
+    setLabsOpen(newLabsOpen);
   };
 
   const copyToClipboard = () => {
@@ -61,13 +69,25 @@ const NewStudentProgress = (props) => {
           {assignedLabs ? (
             assignedLabs.map((lab, labid) => {
               return (
-                <LabRow
+                <ALLCardRow
                   key={labid}
-                  lab={lab}
-                  studentProgress={true}
-                  group={group}
-                  enrolledStudents={enrolledStudents}
-                />
+                  title={lab.labName}
+                  imageURL={`/img/lab_thumbnails/${lab.thumbnailImageURL}`}
+                  circlesLabel="Difficulty"
+                  circles={3}
+                  circlesFilled={lab.difficulty}
+                  buttonLabel={labsOpen[labid] ? "Close List" : "Open List"}
+                  buttonStyle="tw-cursor-pointer tw-border-none tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-px-3"
+                  onClick={() => toggleLabOpen(labid)}
+                >
+                  {labsOpen[labid] && (
+                    <EnrolledStudentsTable
+                      groupid={group.id}
+                      enrolledStudents={enrolledStudents}
+                      lab={lab}
+                    />
+                  )}
+                </ALLCardRow>
               );
             })
           ) : (

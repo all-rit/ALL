@@ -139,7 +139,7 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {readingData?.piechart?.header && (
+          {readingData?.piechart && (
             <>
               <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
               <div className="flex tw-body-text">

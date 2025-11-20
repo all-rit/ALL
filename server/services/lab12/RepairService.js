@@ -45,7 +45,7 @@ async function submitRepair(data) {
         attemptTime: currentTime,
         repairCount: 1,
       };
-      return await db.RepairLab12.create(newRepair).id;
+      return (await db.RepairLab12.create(newRepair)).id;
     }
     const convert = parseInt(outputData.repairCount);
     const newCount = convert + 1;
@@ -57,7 +57,7 @@ async function submitRepair(data) {
       attemptTime: currentTime,
       repairCount: newCount,
     };
-    return await db.RepairLab12.create(postRepair).id;
+    return (await db.RepairLab12.create(postRepair)).id;
   } catch (error) {
     console.error(error);
   }
