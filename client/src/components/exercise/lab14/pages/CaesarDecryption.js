@@ -63,38 +63,34 @@ const CaesarDecryption = () => {
 
     // Classic
     const classicArray = [];
-    for (let i = caesarShiftAmount; i >= 0; i--) {
+    for (let i = caesarShiftAmount - 1; i >= 0; i--) {
       classicArray.push({
         text: encrypt(caesarBaseMessage, i),
         binary: [decimalToBinary(i)],
       });
     }
-    console.log("classicArray: ", classicArray);
+    setClassicAttempts(parseInt(caesarShiftAmount));
+    setClassicBoxElements(classicArray);
 
     // Quantum
     const quantumArray = [];
-    const quantumNum = caesarShiftAmount / 5;
-    for (let i = 4; i >= 0; i--) {
-      const innerArray = [];
-      for (let k = quantumNum; k >= 0; k--) {
-        innerArray.push(decimalToBinary(i * quantumNum + k));
+    let attempts = Math.max(1, Math.floor(Math.sqrt(caesarShiftAmount)));
+    let binarySize = Math.floor(25 / attempts);
+
+    for (let i = attempts; i > 0; i--) {
+      const binaryArray = [];
+      for (let x = binarySize; x > 0; x--) {
+        binaryArray.push(decimalToBinary(i * x));
       }
 
       quantumArray.push({
         text: encrypt(caesarBaseMessage, i * Math.floor(caesarShiftAmount / 5)),
-        binary: innerArray,
+        binary: binaryArray,
       });
     }
-
-    console.warn("get here");
-    console.warn("caesarShiftAmount: ", caesarShiftAmount);
-    console.warn(typeof caesarShiftAmount);
-
-    setClassicAttempts(parseInt(caesarShiftAmount));
-    setQuantumAttempts(5);
-
-    setClassicBoxElements(classicArray);
+    setQuantumAttempts(attempts);
     setQuantumBoxElements(quantumArray);
+
     setDecryptionCompleted(true);
   };
 

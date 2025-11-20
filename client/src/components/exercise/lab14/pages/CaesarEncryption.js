@@ -1,8 +1,69 @@
 import { React, useContext, useState } from "react";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
+
+const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => (
+  <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
+    <span className="tw-font-semibold">Shift</span>
+    <div className="tw-flex tw-justify-between tw-w-full">
+      <span className="tw-font-semibold">{0}</span>
+      <span className="tw-font-semibold">{25}</span>
+    </div>
+
+    <input
+      type="range"
+      min={0}
+      max={25}
+      onChange={(e) => setShiftValue(Number(e.target.value))}
+      value={shiftValue}
+      className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
+      style={{
+        background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
+      }}
+    />
+
+    {/* Button Style */}
+    <style>
+      {`
+        input[type="range"]::-webkit-slider-thumb {
+          appearance: none;
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background: black;
+          cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background: black;
+          cursor: pointer;
+        }
+      `}
+    </style>
+
+    {/* Shift Bubble */}
+    <div
+      className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
+      style={{
+        left: `calc(${(shiftValue / 25) * 100}% - 12px)`,
+        pointerEvents: "none",
+      }}
+    >
+      {shiftValue}
+    </div>
+  </div>
+);
+
+InputComponent.propTypes = {
+  shiftValue: PropTypes.number,
+  setShiftValue: PropTypes.func,
+  fillPercent: PropTypes.number,
+};
 
 const CaesarEncryption = () => {
   const {
@@ -13,7 +74,9 @@ const CaesarEncryption = () => {
     setCaesarShiftAmount,
   } = useContext(ExerciseStateContext);
 
+  const [shiftValue, setShiftValue] = useState(0);
   const [error, setError] = useState(false);
+  const fillPercent = (shiftValue / 26) * 100;
 
   const handleContinue = () => {
     if (caesarEncryptedMessage) {
@@ -23,17 +86,15 @@ const CaesarEncryption = () => {
     }
   };
 
-  const encrypt = (baseMessage, shiftValue) => {
-    shiftValue = parseInt(shiftValue);
-
+  const encrypt = () => {
     if (shiftValue == 0) {
-      setCaesarEncryptedMessage(baseMessage);
-      return baseMessage;
+      setCaesarEncryptedMessage(caesarBaseMessage);
+      return caesarBaseMessage;
     }
 
     let encryptedString = "";
-    for (let i = 0; i < baseMessage.length; i++) {
-      let char = baseMessage[i];
+    for (let i = 0; i < caesarBaseMessage.length; i++) {
+      let char = caesarBaseMessage[i];
 
       if (char >= "A" && char <= "Z") {
         // Uppercase
@@ -70,8 +131,10 @@ const CaesarEncryption = () => {
         encryptedMessage={caesarEncryptedMessage}
         baseMessage={caesarBaseMessage}
         setBaseMessage={setCaesarBaseMessage}
-        minSlider={0}
-        maxSlider={25}
+        inputComponent={InputComponent}
+        shiftValue={shiftValue}
+        setShiftValue={setShiftValue}
+        fillPercent={fillPercent}
       />
       <div className="tw-mt-10">
         <LabButton onClick={handleContinue} label={"Next"} />
