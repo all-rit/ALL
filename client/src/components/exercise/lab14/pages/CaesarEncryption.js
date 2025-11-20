@@ -132,10 +132,13 @@ const CaesarEncryption = () => {
         baseMessage={caesarBaseMessage}
         setBaseMessage={setCaesarBaseMessage}
         inputComponent={InputComponent}
-        shiftValue={shiftValue}
-        setShiftValue={setShiftValue}
-        fillPercent={fillPercent}
-      />
+      >
+        <InputComponent
+          shiftValue={shiftValue}
+          setShiftValue={setShiftValue}
+          fillPercent={fillPercent}
+        />
+      </Encryption>
       <div className="tw-mt-10">
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>

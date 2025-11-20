@@ -8,10 +8,7 @@ const Encryption = ({
   encryptedMessage,
   baseMessage,
   setBaseMessage,
-  inputComponent: InputComponent,
-  shiftValue,
-  setShiftValue,
-  fillPercent,
+  children,
 }) => {
   const handleMessageChange = (e) => {
     setBaseMessage(e.target.value);
@@ -34,11 +31,7 @@ const Encryption = ({
             className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb]  tw-text-center tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
         </FormGroup>
-        <InputComponent
-          shiftValue={shiftValue}
-          setShiftValue={setShiftValue}
-          fillPercent={fillPercent}
-        />
+        {children}
       </div>
 
       {/* Button */}
@@ -71,10 +64,7 @@ Encryption.propTypes = {
   baseMessage: PropTypes.string,
   setBaseMessage: PropTypes.func,
   encryptedMessage: PropTypes.string,
-  inputComponent: PropTypes.elementType.isRequired,
-  shiftValue: PropTypes.number,
-  setShiftValue: PropTypes.func,
-  fillPercent: PropTypes.number,
+  children: PropTypes.element.isRequired,
 };
 
 export default Encryption;
