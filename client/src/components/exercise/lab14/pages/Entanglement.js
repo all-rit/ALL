@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
 import EntanglementQubit from "src/components/exercise/lab14/components/EntaglementQubit.js";
 
