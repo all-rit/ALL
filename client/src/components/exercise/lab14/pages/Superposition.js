@@ -23,6 +23,7 @@ const Superposition = () => {
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        className="hover:tw-cursor-pointer"
         style={{
           backgroundColor: isHovering ? "#ffc334" : "#0d28bc",
           color: isHovering ? "black" : "white",
