@@ -1,20 +1,10 @@
-import { React, useEffect } from "react";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import { startExercise } from "src/reducers/lab2/actions";
-import useMainStateContext from "src/reducers/MainContext";
+import { React } from "react";
 import { navigate } from "@reach/router";
 import { useState } from "react";
 import Qubit from "src/components/exercise/lab14/components/Qubit.js";
 
 const Superposition = () => {
-  const { actions } = useMainStateContext();
-
-  useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
-  }, []);
-
   const handleContinue = () => {
-    startExercise();
     navigate("/Lab14/Exercise/Entanglement");
   };
 
