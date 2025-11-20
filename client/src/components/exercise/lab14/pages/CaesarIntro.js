@@ -33,7 +33,11 @@ const CaesarIntro = () => {
           <p className="tw-body-text tw-text-center">
             This encryption algorithm can be modelled as the following:
           </p>
-          <p className="tw-georgia tw-italics tw-text-center">(x + k) % 26</p>
+          <p className="tw-font-bold tw-italics tw-text-center">(x + k) % 26</p>
+          <p className="tw-body-text tw-text-center">
+            Where <strong>&apos;x&apos;</strong> is the character you want to
+            shift, and <strong>&apos;k&apos;</strong> is the key.
+          </p>
         </div>
         <div className="tw-flex tw-flex-col tw-max-w-[700px] tw-min-w-[400px] tw-mr-16">
           <img src={CaesarImage} />
@@ -53,6 +57,27 @@ const CaesarIntro = () => {
       <h2 className="tw-sub-title tw-text-left tw-mt-6">
         The Decryption Algorithms
       </h2>
+      <p className="tw-body-text tw-text-left tw-my-2">
+        Below, you will see the breakdown of how both Classic and Quantum
+        computers use algorithms to solve the Caesar Cipher, and the amount of
+      </p>
+      <div className="tw-flex tw-flex-row tw-justify-center">
+        <div className="tw-flex tw-flex-col tw-max-w-1/2">
+          <h1 className="tw-sub-title">Classic Computer Decryption</h1>
+          <p className="tw-body-text tw-text-left">
+            With there being 26 letters in the English alphabet, the maximum
+            shift amount for a Caesar Cipher is 25. This means that the largest
+            amount of checks that a Classic Computer would have to do to
+            brute-force solve this Cipher is 25.
+          </p>
+        </div>
+        <div className="tw-flex tw-flex-col tw-max-w-1/2">
+          <h1 className="tw-sub-title">Quantum Decryption</h1>
+          <p className="tw-body-text tw-text-left">
+            Hello my name is blah blah bnlah
+          </p>
+        </div>
+      </div>
 
       <div className="tw-mt-10">
         <LabButton onClick={handleContinue} label={"Continue"} />
