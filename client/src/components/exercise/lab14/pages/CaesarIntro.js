@@ -18,8 +18,8 @@ const CaesarIntro = () => {
       </p>
 
       <h2 className="tw-sub-title tw-text-left tw-mt-6">How it Works</h2>
-      <div className="tw-flex tw-flex-row tw-justify-between tw-flex-wrap xl:tw-mr-16 lg:tw-flex-nowrap tw-gap-4 xl:tw-gap-x-8">
-        <div className="lg:tw-w-1/3 lg:tw-max-w-[600px] lg:tw-min-w-[300px]">
+      <div className="tw-flex tw-flex-row tw-justify-center lg:tw-justify-between tw-flex-wrap xl:tw-mr-16 lg:tw-flex-nowrap tw-gap-4 xl:tw-gap-x-8">
+        <div className="lg:tw-max-w-[600px] lg:tw-min-w-[300px]">
           <p className="tw-body-text tw-text-left tw-py-4">
             This cipher works by shifting each letter in a plaintext message by
             a fixed number, called the &apos;key&apos;. For example, with a key
@@ -39,7 +39,7 @@ const CaesarIntro = () => {
             shift, and <strong>&apos;k&apos;</strong> is the key.
           </p>
         </div>
-        <div className="tw-flex tw-flex-col tw-max-w-[600px] tw-min-w-[400px] tw-mb-8">
+        <div className="tw-flex tw-flex-col tw-items-center tw-max-w-[600px] tw-min-w-[400px] tw-mb-8">
           <img src={CaesarImage} />
           <div className="tw-flex tw-flex-row">
             <p>Sourced from:&nbsp;</p>
