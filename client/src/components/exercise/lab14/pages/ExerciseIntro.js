@@ -1,18 +1,29 @@
 import React from "react";
 import useMainStateContext from "src/reducers/MainContext";
+
 import { navigate } from "@reach/router";
 import { useEffect } from "react";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import { ExerciseService } from "../../../../services/lab14/ExerciseService";
 
 const ExerciseIntro = () => {
-  const { actions } = useMainStateContext();
+  const { actions, state } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_IDLE);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
+  const startExercise = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isExerciseComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
+
   const handleContinue = () => {
-    actions.updateUserState(EXERCISE_PLAYING);
+    startExercise();
     navigate("/Lab14/Exercise/Superposition");
   };
 
