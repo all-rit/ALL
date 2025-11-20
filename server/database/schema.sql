@@ -3690,7 +3690,7 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Computing', 'Quantum', 'AI', '/identity.jpg', 'Learn about quantum computing.', '',
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'AI', '/identity.jpg', 'Learn about quantum computing.', '',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
@@ -3699,25 +3699,6 @@ e'[
   ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null, 
   -- About Section
   'In this lab, you will learn about the fundamentals of quantum computing and how it differs from classical computing. You will practice applying these concepts through interactive exercises, including encrypting and decrypting messages with the Caesar cipher to compare classical and quantum approaches. Click “Next” to start!', e'{
-  "piechart": {
-    "header":"Header Name",
-    "caption":["59% of Gen Z believes forms should have options outside of male and female."],
-    "data": {
-      "labels": [
-        "Gen Zers who believe forms should have options outside of male / female",
-        "Gen Zers who DO NOT believe forms should have options outside of male / female"
-      ],
-      "datasets": [
-        {
-          "label": "Unbiased Forms",
-          "borderColor": "black",
-          "backgroundColor": ["#FFC107","#004D40"],
-          "data": [59, 41],
-          "borderWidth": "2"
-        }
-      ]
-    }
-  },
   "description":"",
   "body":[
     {
