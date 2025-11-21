@@ -18,7 +18,7 @@ const CaesarDecryption = () => {
 
   const handleContinue = () => {
     if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/RSAEncryption");
+      navigate("/Lab14/Exercise/VigenereIntro");
     } else {
       setError(true);
     }

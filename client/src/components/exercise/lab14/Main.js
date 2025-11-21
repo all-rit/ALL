@@ -10,6 +10,7 @@ import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
 import CaesarEncryption from "./pages/CaesarEncryption";
 import CaesarDecryption from "./pages/CaesarDecryption";
+import VigenereIntro from "./pages/VigenereIntro";
 import VigenereEncryption from "./pages/VigenereEncryption";
 import VigenereDecryption from "./pages/VigenereDecryption";
 import RSAEncryption from "./pages/RSAEncryption";
@@ -69,6 +70,7 @@ const Main = () => {
           <CaesarDecryption path="/CaesarDecryption" />
 
           {/* Vigenère Cipher */}
+          <VigenereIntro path="/VigenereIntro" />
           <VigenereEncryption path="/VigenereEncryption" />
           <VigenereDecryption path="/VigenereDecryption" />
 

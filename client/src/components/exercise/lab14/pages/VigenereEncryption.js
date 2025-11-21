@@ -1,13 +1,37 @@
 import { React, useContext, useState } from "react";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
+import { Input, Label } from "reactstrap";
+
+const InputComponent = ({ vigenereKey, setVigenereKey }) => (
+  <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
+    <Label for="baseMessage" className="tw-font-semibold">
+      Shift Key
+    </Label>
+    <Input
+      type="text"
+      placeholder="Shift Key Here"
+      onChange={(e) => setVigenereKey(e.target.value)}
+      value={vigenereKey}
+      className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
+    />
+  </div>
+);
+
+InputComponent.propTypes = {
+  vigenereKey: PropTypes.string,
+  setVigenereKey: PropTypes.func,
+};
 
 const VigenereEncryption = () => {
   const {
     vigenereBaseMessage,
     setVigenereBaseMessage,
+    vigenereKey,
+    setVigenereKey,
     vigenereEncryptedMessage,
     setVigenereEncryptedMessage,
   } = useContext(ExerciseStateContext);
@@ -39,9 +63,12 @@ const VigenereEncryption = () => {
         encryptedMessage={vigenereEncryptedMessage}
         baseMessage={vigenereBaseMessage}
         setBaseMessage={setVigenereBaseMessage}
-        minSlider={0}
-        maxSlider={25}
-      />
+      >
+        <InputComponent
+          vigenereKey={vigenereKey}
+          setVigenereKey={setVigenereKey}
+        />
+      </Encryption>
       <div className="tw-mt-10">
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
