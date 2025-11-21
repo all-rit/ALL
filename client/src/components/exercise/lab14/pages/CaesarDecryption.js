@@ -104,7 +104,7 @@ const CaesarDecryption = () => {
         processes differ in terms of attempts and efficiency!
       </p>
       <p className="tw-body-text tw-text-left tw-py-2">
-        The chart in the middle visuales the decryption attempts made by both
+        The chart in the middle visualizes the decryption attempts made by both
         classic and quantum methods. As you proceed with the decryption, pay
         attention to how many attempts each method takes to successfully decrypt
         the message.
@@ -112,9 +112,9 @@ const CaesarDecryption = () => {
       <p className="tw-body-text tw-text-left tw-py-4">
         At the very bottom, you&apos;ll see a graph that visualizes the number
         of attempts taken by both classic and quantum methods to decrypt the
-        message. Notice how at high shift values, quantum decryption requires
-        fewer attempts due to its ability to process multiple possibilities
-        simultaneously. This is superposition in action!
+        message. Notice how quantum decryption requires fewer attempts due to
+        its ability to process multiple possibilities simultaneously. This is
+        superposition in action!
       </p>
       <Decryption
         encryptedMessage={caesarEncryptedMessage}
