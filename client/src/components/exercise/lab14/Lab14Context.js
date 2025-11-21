@@ -6,6 +6,8 @@ const ExerciseStateContext = createContext({
   setCaesarBaseMessage: () => {},
   caesarEncryptedMessage: "",
   setCaesarEncryptedMessage: () => {},
+  caesarShiftAmount: 0,
+  setCaesarShiftAmount: () => {},
   vigenereBaseMessage: "",
   setVigenereBaseMessage: () => {},
   vigenereKey: "",

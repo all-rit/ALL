@@ -5,6 +5,7 @@ import { EXERCISE_STATES } from "../../../constants/lab14";
 import ExerciseStateContext from "./Lab14Context";
 
 // lab imported dependencies;
+import ExerciseIntro from "./pages/ExerciseIntro";
 import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
 import CaesarEncryption from "./pages/CaesarEncryption";
@@ -27,6 +28,7 @@ const Main = () => {
 
   const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
   const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [caesarShiftAmount, setCaesarShiftAmount] = useState(0);
   const [vigenereBaseMessage, setVigenereBaseMessage] = useState("");
   const [vigenereKey, setVigenereKey] = useState("");
   const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState("");
@@ -43,6 +45,8 @@ const Main = () => {
           setCaesarBaseMessage,
           caesarEncryptedMessage,
           setCaesarEncryptedMessage,
+          caesarShiftAmount,
+          setCaesarShiftAmount,
           vigenereBaseMessage,
           setVigenereBaseMessage,
           vigenereKey,
@@ -56,7 +60,8 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <Superposition default path="/" />
+          <ExerciseIntro default path="/" />
+          <Superposition path="/Superposition" />
           <Entanglement path="/Entanglement" />
 
           {/* Caesar Cipher */}

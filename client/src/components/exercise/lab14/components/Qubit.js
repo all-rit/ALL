@@ -46,7 +46,7 @@ const Qubit = () => {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`${isHovering ? collapseHex : "tw-bg-qubit"}`}
+      className={`hover:tw-cursor-pointer ${isHovering ? collapseHex : "tw-bg-qubit"}`}
       style={{
         color: fontColor,
         width: "100px",
