@@ -113,8 +113,11 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
 
   return (
     <div
-      className="tw-w-full tw-h-[400px] tw-rounded-lg tw-border-solid tw-border-primary-blue tw-flex tw-flex-col tw-overflow-hidden tw-font-sans"
-      style={{ backgroundColor: "#faf9f6", fontFamily: "Calibri, sans-serif" }}
+      className="tw-w-full tw-h-[400px] tw-rounded-lg tw-border-solid tw-border-primary-blue tw-flex tw-flex-col tw-overflow-hidden"
+      style={{
+        backgroundColor: "#0144D51A",
+        fontFamily: "Calibri, sans-serif",
+      }}
     >
       {/* Scrollable container that displays the chat messages */}
       <div
@@ -183,11 +186,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         {/* Container with list of question buttons */}
         <div
           ref={dropdownRef}
-          className={`tw-absolute tw-bottom-[48px] tw-w-[95%] tw-bg-white tw-shadow-lg tw-transition-all tw-duration-300 tw-border-2 tw-overflow-y-auto tw-border-black tw-rounded-lg tw-ease-[cubic-bezier(0.4,0,0.2,1)] ${
-            isOpen
-              ? "tw-opacity-100 tw-pointer-events-auto"
-              : "tw-opacity-0 tw-pointer-events-none"
-          }`}
+          className={`tw-absolute tw-bottom-[48px] tw-w-[95%] tw-bg-white tw-shadow-lg tw-transition-all tw-duration-300 tw-border-2 tw-overflow-y-auto tw-border-black tw-rounded-lg tw-ease-[cubic-bezier(0.4,0,0.2,1)]`}
           style={{
             maxHeight: isOpen ? "400px" : "0px",
             fontFamily: "Calibri, sans-serif",
@@ -195,19 +194,19 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
           }}
         >
           {/* Container for indvidual questions */}
-          <div className="tw-py-2">
+          <div className="tw-relative">
             {userQuestions.map((question, index) => (
               <button
                 key={question.id}
                 onClick={() => handleQuestionClick(question)}
-                className="tw-relative tw-w-full tw-text-center tw-text-black tw-border-none tw-text-sm tw-bg-white tw-transition tw-flex tw-flex-col tw-items-center tw-p-0"
+                className="tw-relative tw-w-full hover:tw-bg-bgwhite tw-rounded-smtw-text-center tw-text-black tw-border-none tw-text-sm tw-bg-white tw-transition tw-flex tw-flex-col tw-items-center"
               >
-                <span className="tw-w-[90%] hover:tw-bg-bgwhite  tw-py-2 tw-rounded tw-transition">
+                <span className="tw-w-[90%] tw-py-2 tw-rounded tw-transition">
                   {question.text}
                 </span>
                 {/* Add seperator lines for all questions except the last */}
                 {index < userQuestions.length - 1 && (
-                  <span className="tw-h-[1px] tw-w-[90%] tw-bg-black"></span>
+                  <span className="tw-h-[1px] tw-w-[90%] tw-bg-primary-blue"></span>
                 )}
               </button>
             ))}
@@ -216,30 +215,26 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
       </div>
 
       {/* AI search bottom panel */}
-      <div className="tw-w-full tw-bg-white tw-border-0 tw-border-t-4 tw-border-solid tw-border-primary-blue tw-rounded-b-lg tw-flex tw-justify-end">
+      <button
+        className="tw-w-full tw-bg-white tw-border-0 tw-border-t-4 tw-border-solid tw-border-primary-blue tw-rounded-b-lg tw-flex tw-justify-end tw-p-0 tw-cursor-pointer tw-items-center disabled:tw-cursor-not-allowed"
+        onClick={() => !isTyping && setIsOpen(!isOpen)}
+        disabled={isTyping}
+      >
         {/* Toggle button for dropdown menu */}
-        <button
-          className="tw-bg-white tw-border-0 tw-p-0 tw-mr-20px tw-cursor-pointer tw-flex tw-items-center tw-justify-center disabled:tw-cursor-not-allowed"
-          // Disable if typing
-          onClick={() => !isTyping && setIsOpen(!isOpen)}
-          disabled={isTyping}
-          style={{
-            opacity: isTyping ? 0.5 : 1,
-          }}
-        >
+        <div className="tw-mr-20px tw-flex tw-items-center tw-justify-center">
           {isOpen ? (
             <ArrowDropUpIcon
               className="tw-text-primary-blue"
-              fontSize="large"
+              sx={{ fontSize: 50 }}
             />
           ) : (
             <ArrowDropDownIcon
               className="tw-text-primary-blue"
-              fontSize="large"
+              sx={{ fontSize: 50 }}
             />
           )}
-        </button>
-      </div>
+        </div>
+      </button>
       {/* Message fade in keyframe animation */}
       <style>{`
         @keyframes fadeIn {
