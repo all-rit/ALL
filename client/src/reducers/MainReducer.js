@@ -6,7 +6,7 @@ export const types = {
   SET_IS_IMAGINE: "@accessibility-lab/isImagine",
   SHOW_SNACKBAR: "@accessibility-lab/showSnackbar",
   HIDE_SNACKBAR: "@accessibility-lab/hideSnackbar",
-  DEV_LOGIN: "@accessibility-lab/devLogin",
+  DEV_LOGIN: "@accessibility-lab/developmentLogin",
 };
 
 export const initialState = {
@@ -29,7 +29,6 @@ export const MainReducer = (state = initialState, action) => {
         body: action.body,
       };
     case types.UPDATE_USER:
-      localStorage.setItem("user", JSON.stringify(action.user));
       return {
         ...state,
         user: action.user,
@@ -69,7 +68,7 @@ export const MainReducer = (state = initialState, action) => {
 export const actions = {
   setBody: (body) => ({ type: types.SET_BODY, body }),
   login: () => ({ type: types.LOGIN }),
-  devLogin: (user) => ({ type: types.LOGIN, user }),
+  developmentLogin: (user) => ({ type: types.LOGIN, user }),
   setLab: (lab) => ({ type: types.SET_LAB, lab }),
   updateUser: (user) => ({ type: types.UPDATE_USER, user }),
   setIsImagine: (isImagine) => ({ type: types.SET_IS_IMAGINE, isImagine }),

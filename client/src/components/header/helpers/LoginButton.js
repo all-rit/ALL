@@ -14,10 +14,8 @@ const LoginButton = (props) => {
 
   const isDev = process.env.NODE_ENV === "development";
 
-  console.warn(isDev);
-
   const developmentLogin = (userId) => {
-    actions.devLogin(userId);
+    actions.developmentLogin(userId);
   };
 
   const devLogin = () => {

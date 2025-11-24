@@ -79,16 +79,14 @@ export const MainContextProvider = ({ children }) => {
         console.error(error);
       }
     },
-    devLogin: async (userId) => {
+    developmentLogin: async (userId) => {
       try {
-        console.warn(userId);
-        const user = await UserService.getUser(userId);
-        console.warn(user);
+        const user = await UserService.developmentLogin(userId);
         if (user) {
           dispatch({ type: types.UPDATE_USER, payload: { user: user } });
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
     setLab: (newLab) =>

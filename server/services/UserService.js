@@ -108,6 +108,7 @@ const getSession = async (token) => {
     throw error;
   }
 };
+
 const getUserEnrolledGroups = (userid) => {
   return db.sequelize.query(
       `SELECT * FROM "enrollment" 
