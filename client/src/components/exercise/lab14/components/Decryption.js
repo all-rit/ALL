@@ -20,7 +20,7 @@ const Decryption = ({
     datasets: [
       {
         label: "Number of Computing Attempts to Solve",
-        data: [classicAttempts, quantumAttempts], // TODO: Replace with actual data
+        data: [classicAttempts, quantumAttempts],
         backgroundColor: ["#face35", "#0d28bc"],
         borderWidth: 1,
       },
@@ -34,7 +34,7 @@ const Decryption = ({
           ticks: {
             beginAtZero: true,
             min: 0,
-            max: 25,
+            max: Math.max(25, classicAttempts),
           },
         },
       ],

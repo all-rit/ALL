@@ -36,18 +36,69 @@ const VigenereEncryption = () => {
     setVigenereEncryptedMessage,
   } = useContext(ExerciseStateContext);
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
+  const [alphabetic, setAlphabetic] = useState(true);
+
+  const isAlphabetic = (str) => {
+    return /^[A-Za-z]+$/.test(str);
+  };
 
   const handleContinue = () => {
-    if (vigenereEncryptedMessage) {
-      navigate("/Lab14/Exercise/VigenereDecryption");
-    } else {
+    if (!alphabetic) {
+      return;
+    } else if (!vigenereEncryptedMessage) {
       setError(true);
+    } else {
+      navigate("/Lab14/Exercise/VigenereDecryption");
     }
   };
 
   const encrypt = () => {
-    setVigenereEncryptedMessage("hello"); // TODO: Change
+    if (isAlphabetic(vigenereBaseMessage) && isAlphabetic(vigenereKey)) {
+      setAlphabetic(true);
+    } else {
+      setAlphabetic(false);
+      setVigenereEncryptedMessage("");
+      return;
+    }
+
+    const A = "A".charCodeAt(0);
+    const a = "a".charCodeAt(0);
+
+    const keyShifts = [];
+    for (let char of vigenereKey) {
+      if (/[A-Za-z]/.test(char)) {
+        let shift = char.toLowerCase().charCodeAt(0) - a;
+        keyShifts.push(Number(shift));
+      }
+    }
+
+    let result = "";
+    let keyIndex = 0;
+    for (let char of vigenereBaseMessage) {
+      if (/[A-Za-z]/.test(char)) {
+        // uppercase
+        if (char >= "A" && char <= "Z") {
+          let originalPos = char.codePointAt(0) - A;
+          let shift = keyShifts[keyIndex % keyShifts.length];
+          let newPos = (originalPos + shift) % 26;
+
+          result += String.fromCharCode(newPos + A);
+          keyIndex++;
+        } else if (char >= "a" && char <= "z") {
+          let originalPos = char.codePointAt(0) - a;
+          let shift = keyShifts[keyIndex % keyShifts.length];
+          let newPos = (originalPos + shift) % 26;
+
+          result += String.fromCharCode(newPos + a);
+          keyIndex++;
+        } else {
+          result += char;
+        }
+      }
+    }
+
+    setVigenereEncryptedMessage(result);
   };
 
   return (
@@ -73,10 +124,12 @@ const VigenereEncryption = () => {
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
 
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
-      >
+      <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
         Error: Please Encrypt a valid string to continue
+      </p>
+      <p className={`${!alphabetic ? "tw-visible" : "tw-invisible"} tw-italic`}>
+        Error: Please make sure that the message and key boxes have no numeric
+        or special characters.
       </p>
     </div>
   );
