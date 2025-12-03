@@ -12,6 +12,7 @@ import CaesarDecryption from "./pages/CaesarDecryption";
 import RSAEncryption from "./pages/RSAEncryption";
 import RSADecryption from "./pages/RSADecryption";
 import Conclusion from "./pages/Conclusion";
+import RSAIntro from "./pages/RSAIntro";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -49,6 +50,7 @@ const Main = () => {
           <Entanglement path="/Entanglement" />
           <CaesarEncryption path="/CaesarEncryption" />
           <CaesarDecryption path="/CaesarDecryption" />
+          <RSAIntro path="/RSAIntro" />
           <RSAEncryption path="/RSAEncryption" />
           <RSADecryption path="/RSADecryption" />
           <Conclusion path="/Conclusion" />

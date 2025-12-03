@@ -13,7 +13,7 @@ const CaesarDecryption = () => {
     useContext(ExerciseStateContext);
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/RSAEncryption");
+    navigate("/Lab14/Exercise/RSAIntro");
   };
 
   const decrypt = () => {
