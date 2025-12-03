@@ -17,9 +17,8 @@ const CaesarDecryption = () => {
   const [decryptionCompleted, setDecryptionCompleted] = useState(false);
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/RSAIntro");
     if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/RSAEncryption");
+      navigate("/Lab14/Exercise/RSAIntro");
     } else {
       setError(true);
     }
