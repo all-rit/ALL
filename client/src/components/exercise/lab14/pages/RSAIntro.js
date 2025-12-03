@@ -11,7 +11,7 @@ const RSAIntro = () => {
       <h1 className={"tw-title tw-text-left"}>The RSA Encryption Algorithm</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
-          Rivest Shamir Adleman, also known as RSA, is a well-known public-key
+          Rivest-Shamir-Adleman, also known as RSA, is a well-known public-key
           or asymmetric cryptographic algorithm. It protects sensitive data
           through encryption and decryption using a private and public key pair.
           The encryption method first appeared in 1977 and is widely used for
@@ -24,14 +24,16 @@ const RSAIntro = () => {
           together to create a modulus that then creates a public key and a
           private key. The public key is used for encryption and is known to
           everyone, while the private key is used for decryption and must be
-          kept secret by the receiver
+          kept secret by the receiver.
         </p>
         <p className="tw-body-text tw-text-left">
-          The reason RSA is so secure is because of it reliance on the
-          mathematical properties of large prime numbers. Factoring the product
-          of two large prime numbers is significantly harder with current
-          computers, however this can all be changed with the introduction of
-          quantum computers in the future!
+          The reason RSA is so secure is because of it&apos;s reliance on the
+          mathematical properties of large prime numbers. While it&apos;s easy
+          to create an encryption for RSA by multiplying two large prime
+          numbers, creating the decryption for it to perfectly match this is way
+          harder and can take a lot of attempts to crack if you do not know the
+          original encryption method. However, this can all be changed with the
+          introduction of quantum computers in the future!
         </p>
       </div>
       <div className="tw-body-text tw-text-center tw-pb-6">
