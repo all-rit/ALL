@@ -5,6 +5,7 @@ import { EXERCISE_STATES } from "../../../constants/lab14";
 import ExerciseStateContext from "./Lab14Context";
 
 // lab imported dependencies;
+import ExerciseIntro from "./pages/ExerciseIntro";
 import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
 import CaesarEncryption from "./pages/CaesarEncryption";
@@ -26,6 +27,7 @@ const Main = () => {
 
   const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
   const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [caesarShiftAmount, setCaesarShiftAmount] = useState(0);
   const [rsaBaseMessage, setRsaBaseMessage] = useState("");
   const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
 
@@ -39,6 +41,8 @@ const Main = () => {
           setCaesarBaseMessage,
           caesarEncryptedMessage,
           setCaesarEncryptedMessage,
+          caesarShiftAmount,
+          setCaesarShiftAmount,
           rsaBaseMessage,
           setRsaBaseMessage,
           rsaEncryptedMessage,
@@ -46,7 +50,8 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <Superposition default path="/" />
+          <ExerciseIntro default path="/" />
+          <Superposition path="/Superposition" />
           <Entanglement path="/Entanglement" />
           <CaesarEncryption path="/CaesarEncryption" />
           <CaesarDecryption path="/CaesarDecryption" />
