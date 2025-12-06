@@ -8,6 +8,7 @@ import ExerciseStateContext from "./Lab14Context";
 import ExerciseIntro from "./pages/ExerciseIntro";
 import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
+import ExerciseTransition from "./pages/ExerciseTransition";
 import CaesarEncryption from "./pages/CaesarEncryption";
 import CaesarDecryption from "./pages/CaesarDecryption";
 import VigenereIntro from "./pages/VigenereIntro";
@@ -65,6 +66,7 @@ const Main = () => {
           <ExerciseIntro default path="/" />
           <Superposition path="/Superposition" />
           <Entanglement path="/Entanglement" />
+          <ExerciseTransition path="/Transition" />
 
           {/* Caesar Cipher */}
           <CaesarEncryption path="/CaesarEncryption" />
