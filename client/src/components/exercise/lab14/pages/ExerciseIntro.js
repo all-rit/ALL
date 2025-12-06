@@ -31,17 +31,15 @@ const ExerciseIntro = () => {
     <div className="center-div">
       <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
       <div className="guidance margin-bottom-2">
-        <p className="tw-body-text tw-text-left tw-py-6">
+        <p className="tw-body-text tw-text-left tw-py-4">
           Congrats! You are a quantum researcher at ALL Research and
           Development. You are tasked with looking into how quantum computing
           can improve everyday tasks, specifically with ciphers and data
-          security.
-        </p>
-        <p className="tw-body-text tw-text-left">
-          In this exercise, you will work with quantum concepts such as
-          superposition and entanglement to see how they can be applied to
+          security. In this exercise, you will work with quantum concepts such
+          as superposition and entanglement to see how they can be applied to
           encrypting and decrypting messages using the Caesar and RSA ciphers.
         </p>
+        <p className="tw-body-text tw-text-left tw-py-2"></p>
       </div>
       <div className="tw-body-text tw-text-center tw-pb-6">
         Click the <strong>Start</strong> button to begin the exercise!

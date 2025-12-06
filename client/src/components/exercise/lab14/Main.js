@@ -8,6 +8,7 @@ import ExerciseStateContext from "./Lab14Context";
 import ExerciseIntro from "./pages/ExerciseIntro";
 import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
+import ExerciseTransition from "./pages/ExerciseTransition";
 import CaesarEncryption from "./pages/CaesarEncryption";
 import CaesarDecryption from "./pages/CaesarDecryption";
 import RSAEncryption from "./pages/RSAEncryption";
@@ -52,6 +53,7 @@ const Main = () => {
           <ExerciseIntro default path="/" />
           <Superposition path="/Superposition" />
           <Entanglement path="/Entanglement" />
+          <ExerciseTransition path="/Transition" />
           <CaesarEncryption path="/CaesarEncryption" />
           <CaesarDecryption path="/CaesarDecryption" />
           <RSAEncryption path="/RSAEncryption" />
