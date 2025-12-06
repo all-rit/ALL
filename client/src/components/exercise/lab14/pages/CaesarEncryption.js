@@ -131,7 +131,6 @@ const CaesarEncryption = () => {
         encryptedMessage={caesarEncryptedMessage}
         baseMessage={caesarBaseMessage}
         setBaseMessage={setCaesarBaseMessage}
-        inputComponent={InputComponent}
       >
         <InputComponent
           shiftValue={shiftValue}
