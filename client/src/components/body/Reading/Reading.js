@@ -170,7 +170,7 @@ const Reading = (props) => {
           )}
 
           {readingData?.body !== "" ? (
-            readingData?.body.map((data, index) => {
+            readingData?.body?.map((data, index) => {
               return (
                 <Fragment key={index}>
                   {data.header !== "" && (
