@@ -16,6 +16,7 @@ import VigenereDecryption from "./pages/VigenereDecryption";
 import RSAEncryption from "./pages/RSAEncryption";
 import RSADecryption from "./pages/RSADecryption";
 import Conclusion from "./pages/Conclusion";
+import RSAIntro from "./pages/RSAIntro";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -75,6 +76,7 @@ const Main = () => {
           <VigenereDecryption path="/VigenereDecryption" />
 
           {/* RSA Cipher */}
+          <RSAIntro path="/RSAIntro" />
           <RSAEncryption path="/RSAEncryption" />
           <RSADecryption path="/RSADecryption" />
 
