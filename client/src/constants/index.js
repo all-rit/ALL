@@ -262,7 +262,7 @@ export const Sections = {
     },
   },
   14: {
-    fullname: "Lab 14: Quantum Computing",
+    fullname: "Lab 14: Quantum Cryptography",
     name: "Lab14",
     0: {
       name: "About",

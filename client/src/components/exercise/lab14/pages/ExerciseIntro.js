@@ -35,9 +35,10 @@ const ExerciseIntro = () => {
           Congrats! You are a quantum researcher at ALL Research and
           Development. You are tasked with looking into how quantum computing
           can improve everyday tasks, specifically with ciphers and data
-          security. In this exercise, you will work with quantum concepts such
-          as superposition and entanglement to see how they can be applied to
-          encrypting and decrypting messages using the Caesar and RSA ciphers.
+          security. First, we are going to refresh your memory on the quantum
+          concepts of superposition and entanglement. These will be key to
+          understanding how quantum computing can impact cryptography later in
+          this lab.
         </p>
         <p className="tw-body-text tw-text-left tw-py-2"></p>
       </div>
