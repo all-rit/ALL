@@ -43,8 +43,8 @@ const VigenereIntro = () => {
             </p>
             <p className="tw-text-left">
               3. Repeat for all possible characters in the message! The message{" "}
-              <i>quantum</i>
-              encrypted with key <i>cryptography</i> yields <i>slycmis</i>.
+              <i>quantum</i> encrypted with key <i>cryptography</i> yields{" "}
+              <i>slycmis</i>.
             </p>
             <p className="tw-text-left">
               4. If your key is shorter in length than your message, you may
@@ -160,7 +160,7 @@ const VigenereIntro = () => {
       <h2 className="tw-sub-title tw-text-left tw-mt-6">Simulation</h2>
       <p className="tw-text-body tw-text-left tw-py-2">
         On the next page, you will be able to see these algorithms in action.
-        Click the &apos;Continue&apos; button to start the activity!
+        Click the <strong>Continue</strong> button to start the activity!
       </p>
 
       <div className="tw-mt-10">
