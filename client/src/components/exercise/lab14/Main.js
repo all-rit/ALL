@@ -9,15 +9,16 @@ import ExerciseIntro from "./pages/ExerciseIntro";
 import Superposition from "./pages/Superposition";
 import Entanglement from "./pages/Entanglement";
 import ExerciseTransition from "./pages/ExerciseTransition";
+import CaesarIntro from "./pages/CaesarIntro";
 import CaesarEncryption from "./pages/CaesarEncryption";
 import CaesarDecryption from "./pages/CaesarDecryption";
 import VigenereIntro from "./pages/VigenereIntro";
 import VigenereEncryption from "./pages/VigenereEncryption";
 import VigenereDecryption from "./pages/VigenereDecryption";
+import RSAIntro from "./pages/RSAIntro";
 import RSAEncryption from "./pages/RSAEncryption";
 import RSADecryption from "./pages/RSADecryption";
 import Conclusion from "./pages/Conclusion";
-import RSAIntro from "./pages/RSAIntro";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -69,6 +70,7 @@ const Main = () => {
           <ExerciseTransition path="/Transition" />
 
           {/* Caesar Cipher */}
+          <CaesarIntro path="/CaesarIntro" />
           <CaesarEncryption path="/CaesarEncryption" />
           <CaesarDecryption path="/CaesarDecryption" />
 
