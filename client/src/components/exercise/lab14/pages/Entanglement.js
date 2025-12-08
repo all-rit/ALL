@@ -52,17 +52,21 @@ const Entanglement = () => {
   return (
     <div>
       <h1 className={"tw-title tw-text-left"}>Entanglement</h1>
-      <div className="guidance margin-bottom-2">
-        <p className="tw-body-text tw-text-left tw-py-6">
-          Entanglement is a unique quantum phenomenon where pairs or groups of
-          qubits are linked together in such a way that the state of one qubit
-          directly influences the state of another, regardless of the distance
-          between them. This means that measuring one entangled qubit instantly
-          determines the state of its partner qubit. Entanglement is a crucial
-          resource in quantum computing and quantum communication, enabling
-          advanced protocols like quantum teleportation and superdense coding.
-        </p>
-      </div>
+      <p className="tw-body-text tw-text-left tw-py-4">
+        Entanglement is another important idea in quantum computing, much like
+        superposition. When two qubits become entangled, their states become
+        linked. This means that whatever happens to one qubit will instantly
+        affect the other, even if they are far apart. Because of this
+        connection, measuring one entangled qubit immediately tells you the
+        state of its partner. Entanglement is a key tool in quantum computing
+        and is used in advanced techniques, such as quantum communication.
+      </p>
+      <p className="tw-body-text tw-text-left tw-py-2">
+        Much like on the Superposition page, hover over one of the entangled
+        qubits below. After a few seconds, see how they both collapse at exactly
+        the same time, and that their state is exactly opposite? This is due to
+        entanglement.
+      </p>
       <div className="tw-flex tw-items-center tw-justify-evenly tw-gap-8">
         <div className="tw-flex tw-flex-row tw-w-1/2 tw-py-10">
           <EntanglementQubit
@@ -90,7 +94,7 @@ const Entanglement = () => {
           Reset
         </button>
       </div>
-      <div className="tw-flex tw-justify-evenly tw-my-20">
+      <div className="tw-flex tw-justify-evenly tw-mt-10">
         <button
           className="btn btn-primary text-black btn-xl text-uppercase"
           onClick={handleContinue}

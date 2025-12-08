@@ -33,10 +33,10 @@ const CaesarIntro = () => {
           <p className="tw-body-text tw-text-center">
             This encryption algorithm can be modelled as the following:
           </p>
-          <p className="tw-font-bold tw-italics tw-text-center">(x + k) % 26</p>
+          <p className="tw-font-bold tw-italics tw-text-center">(L + K) % 26</p>
           <p className="tw-body-text tw-text-center">
-            Where <strong>&apos;x&apos;</strong> is the character you want to
-            shift, and <strong>&apos;k&apos;</strong> is the key.
+            Where <strong>&apos;L&apos;</strong> is the letter you want to
+            shift, and <strong>&apos;K&apos;</strong> is the key.
           </p>
         </div>
         <div className="tw-flex tw-flex-col tw-items-center tw-max-w-[600px] tw-min-w-[400px] tw-mb-8">

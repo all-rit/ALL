@@ -120,17 +120,21 @@ const VigenereEncryption = () => {
           setVigenereKey={setVigenereKey}
         />
       </Encryption>
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
+
+      <div className="tw-my-2">
+        <p
+          className={`${!alphabetic ? "tw-visible" : "tw-invisible"} tw-italic`}
+        >
+          Error: Please make sure that the message and key boxes have no numeric
+          or special characters.
+        </p>
+
+        <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
+          Error: Please Encrypt a valid string to continue
+        </p>
       </div>
 
-      <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
-        Error: Please Encrypt a valid string to continue
-      </p>
-      <p className={`${!alphabetic ? "tw-visible" : "tw-invisible"} tw-italic`}>
-        Error: Please make sure that the message and key boxes have no numeric
-        or special characters.
-      </p>
+      <LabButton onClick={handleContinue} label={"Next"} />
     </div>
   );
 };

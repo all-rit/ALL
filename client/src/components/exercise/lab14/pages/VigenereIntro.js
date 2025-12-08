@@ -64,12 +64,12 @@ const VigenereIntro = () => {
             following:
           </p>
           <p className="tw-font-bold tw-italics tw-text-center">
-            E<sub>i</sub> = (P<sub>i</sub> + K<sub>i</sub>) % 26
+            E<sub>i</sub> = (L<sub>i</sub> + K<sub>i</sub>) % 26
           </p>
           <p className="tw-body-text tw-text-center">
             Where{" "}
             <strong>
-              E<sub>i</sub>
+              L<sub>i</sub>
             </strong>{" "}
             is the encrypted letter,{" "}
             <strong>

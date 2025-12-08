@@ -29,19 +29,16 @@ const ExerciseIntro = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
-      <div className="guidance margin-bottom-2">
-        <p className="tw-body-text tw-text-left tw-py-4">
-          Congrats! You are a quantum researcher at ALL Research and
-          Development. You are tasked with looking into how quantum computing
-          can improve everyday tasks, specifically with ciphers and data
-          security. First, we are going to refresh your memory on the quantum
-          concepts of superposition and entanglement. These will be key to
-          understanding how quantum computing can impact cryptography later in
-          this lab.
-        </p>
-        <p className="tw-body-text tw-text-left tw-py-2"></p>
-      </div>
+      <h1 className="tw-title tw-text-left">Exercise Start</h1>
+      <p className="tw-body-text tw-text-left tw-py-4 tw-mb-8">
+        Congratulations! You have been accepted for the position of quantum
+        researcher at ALL Research and Development Labs. You are tasked with
+        investigating how quantum computing can impact cryptography,
+        specifically in relation to ciphers and data security. First, we are
+        going to refresh your memory on the quantum concepts of superposition
+        and entanglement. Then, we will explore how effective quantum computing
+        can be at solving ciphers through a series of activities.
+      </p>
       <div className="tw-body-text tw-text-center tw-pb-6">
         Click the <strong>Start</strong> button to begin the exercise!
       </div>
