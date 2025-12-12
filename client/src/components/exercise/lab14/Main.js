@@ -29,7 +29,8 @@ const Main = () => {
   const [caesarShiftAmount, setCaesarShiftAmount] = useState(0);
   const [rsaBaseMessage, setRsaBaseMessage] = useState("");
   const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
-
+  const [rsaBitAmount, setRsaBitAmount] = useState(15);
+  const [rsaPrivateKey, setrsaPrivateKey] = useState(0);
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
@@ -46,6 +47,10 @@ const Main = () => {
           setRsaBaseMessage,
           rsaEncryptedMessage,
           setRsaEncryptedMessage,
+          rsaBitAmount,
+          setRsaBitAmount,
+          rsaPrivateKey,
+          setrsaPrivateKey,
         }}
       >
         <Router className="app">
