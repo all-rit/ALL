@@ -88,6 +88,7 @@ const RSAEncryption = () => {
       setError(true);
     }
   };
+
   function power(x, y, p) {
     let res = 1n;
     x = x % p;
@@ -290,11 +291,13 @@ const RSAEncryption = () => {
         encryptedMessage={rsaEncryptedMessage}
         baseMessage={rsaBaseMessage}
         setBaseMessage={setRsaBaseMessage}
-        inputComponent={InputComponent}
-        shiftValue={shiftValue}
-        setShiftValue={setShiftValue}
-        fillPercent={fillPercent}
-      />
+      >
+        <InputComponent
+          shiftValue={shiftValue}
+          setShiftValue={setShiftValue}
+          fillPercent={fillPercent}
+        />
+      </Encryption>
 
       <h1 className="gap-y-8 flex justify-start tw-title tw-text-left tw-py-4">
         RSA Keys Generated
