@@ -7,16 +7,17 @@ import LabButton from "../../../all-components/LabButton";
 
 const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => (
   <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
-    <span className="tw-font-semibold">Bit: Key length Generator</span>
+    <span className="tw-font-semibold">Number of Bits</span>
     <div className="tw-flex tw-justify-between tw-w-full">
-      <span className="tw-font-semibold">{15}</span>
+      <span className="tw-font-semibold">{1024}</span>
       <span className="tw-font-semibold">{2048}</span>
     </div>
 
     <input
       type="range"
-      min={15}
+      min={1024}
       max={2048}
+      step={8}
       onChange={(e) => setShiftValue(Number(e.target.value))}
       value={shiftValue}
       className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
@@ -50,7 +51,7 @@ const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => (
     <div
       className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
       style={{
-        left: `calc(${((shiftValue - 15) / (2048 - 15)) * 100}% - 12px)`,
+        left: `calc(${((shiftValue - 1024) / (2048 - 1024)) * 100}% - 12px)`,
         pointerEvents: "none",
       }}
     >
@@ -71,15 +72,15 @@ const RSAEncryption = () => {
     setRsaBaseMessage,
     rsaEncryptedMessage,
     setRsaEncryptedMessage,
-    setRsaBitAmount,
-    setrsaPrivateKey,
+    rsaShiftValue,
+    setRsaShiftValue,
   } = useContext(ExerciseStateContext);
 
-  const [shiftValue, setShiftValue] = useState(15); //Starts at 15 bc thats smallest possible RSA
   const [error, setError] = useState(false);
-  const [publicKey, setPublicKey] = useState(null);
-  const [privateKey, setPrivateKey] = useState(null);
-  const fillPercent = ((shiftValue - 15) / (2048 - 15)) * 100;
+  const [n, setN] = useState(null);
+  const [e, setE] = useState(null);
+  const [d, setD] = useState(null);
+  const fillPercent = ((rsaShiftValue - 1024) / (2048 - 1024)) * 100;
 
   const handleContinue = () => {
     if (rsaEncryptedMessage) {
@@ -89,179 +90,52 @@ const RSAEncryption = () => {
     }
   };
 
-  function power(x, y, p) {
-    let res = 1n;
-    x = x % p;
+  const encrypt = async () => {
+    const { publicKey, n, e, d } = await generateRSA();
 
-    while (y > 0n) {
-      if (y % 2n === 1n) res = (res * x) % p;
-
-      y = y / 2n;
-      x = (x * x) % p;
-    }
-    return res;
-  }
-
-  //Due to Bit Size this ensures that it does not overflow
-  //Prevents infinity error due to large bit size
-  function randomBigIntBelow(n) {
-    const bits = n.toString(2).length;
-    let r;
-    do {
-      r = BigInt(
-        "0b" +
-          Array.from(
-            crypto.getRandomValues(new Uint8Array(Math.ceil(bits / 8))),
-          )
-            .map((b) => b.toString(2).padStart(8, "0"))
-            .join(""),
-      );
-    } while (r >= n);
-    return r;
-  }
-
-  function miillerTest(d, n) {
-    const a = 2n + randomBigIntBelow(n - 4n);
-    let x = power(a, d, n);
-
-    if (x === 1n || x === n - 1n) return true;
-
-    let temp = d;
-    while (temp !== n - 1n) {
-      x = (x * x) % n;
-      temp *= 2n;
-
-      if (x === 1n) return false;
-      if (x === n - 1n) return true;
-    }
-
-    return false;
-  }
-
-  function isPrime(n, k) {
-    if (n <= 1n || n === 4n) return false;
-    if (n <= 3n) return true;
-
-    let d = n - 1n;
-    while (d % 2n === 0n) d /= 2n;
-
-    for (let i = 0; i < k; i++) {
-      if (!miillerTest(d, n)) return false;
-    }
-
-    return true;
-  }
-
-  function generateRandomNumber(bits) {
-    const bytesNeeded = Math.ceil(bits / 8);
-    const byteArray = new Uint8Array(bytesNeeded);
-    crypto.getRandomValues(byteArray);
-
-    let randomBigInt = 0n;
-    for (let i = 0; i < bytesNeeded; i++) {
-      randomBigInt = (randomBigInt << 8n) | BigInt(byteArray[i]);
-    }
-
-    const mask = (1n << BigInt(bits)) - 1n;
-    randomBigInt &= mask;
-    const result = isPrime(randomBigInt, 4);
-    if (result) {
-      return randomBigInt;
-    }
-
-    return generateRandomNumber(bits);
-  }
-
-  function modInverse(a, m) {
-    let m0 = BigInt(m);
-    let x0 = BigInt(0);
-    let x1 = BigInt(1);
-
-    if (m === 1) return 0;
-
-    while (a > 1) {
-      let q = BigInt(a / m);
-      let temp = m;
-      m = a % m;
-      a = temp;
-      temp = x0;
-      x0 = x1 - q * x0;
-      x1 = temp;
-    }
-
-    // Edge Case: if x1 is negative, wrap it mod m0
-    if (x1 < 0) {
-      x1 += m0;
-    }
-    return x1;
-  }
-  function gcd(a, b) {
-    while (b !== 0n) {
-      [a, b] = [b, a % b];
-    }
-    return a;
-  }
-
-  function generateKeys() {
-    const e = 65537n;
-    const one = 1n;
-    let p, q, phi;
-
-    do {
-      p = generateRandomNumber(shiftValue);
-      do {
-        q = generateRandomNumber(shiftValue);
-      } while (q === p);
-
-      phi = (p - one) * (q - one);
-    } while (gcd(e, phi) !== 1n); //Prevents public & private from being same
-
-    const n = p * q;
-    const d = modInverse(e, phi);
-
-    return {
-      publicKey: [n, e],
-      privateKey: [n, d],
-    };
-  }
-
-  function stringToInteger(message) {
-    let result = BigInt(0);
-    for (let i = 0; i < message.length; i++) {
-      result = (result << BigInt(8)) + BigInt(message.charCodeAt(i));
-    }
-    return result;
-  }
-
-  function numericEncryption(base, exponent, modulus) {
-    base = base % modulus;
-    let result = 1n;
-    while (exponent > 0) {
-      if (exponent % 2n === 1n) {
-        result = (result * base) % modulus;
-      }
-      base = (base * base) % modulus;
-      exponent = exponent / 2n;
-    }
-    return result;
-  }
-
-  const encrypt = () => {
-    const { publicKey, privateKey } = generateKeys();
-    setPublicKey(publicKey);
-    setPrivateKey(privateKey);
-    setrsaPrivateKey(privateKey);
-    const [n, e] = publicKey;
-    const numericMessage = stringToInteger(rsaBaseMessage);
     //Message len
-    if (numericMessage >= n) {
+    if (rsaBaseMessage.length >= n) {
       alert("Message too large for this key size");
       return;
     }
 
-    let ciphertext = numericEncryption(numericMessage, e, n);
-    setRsaEncryptedMessage(ciphertext.toString());
-    setRsaBitAmount(parseInt(shiftValue));
+    let ciphertext = await crypto.subtle.encrypt(
+      {
+        name: "RSA-OAEP",
+        hash: "SHA-256",
+      },
+      publicKey,
+      new TextEncoder().encode(rsaBaseMessage),
+    );
+
+    setRsaEncryptedMessage(new Uint8Array(ciphertext).toHex());
+    setN(n);
+    setE(e);
+    setD(d);
+  };
+
+  const generateRSA = async () => {
+    const keyPair = await window.crypto.subtle.generateKey(
+      {
+        name: "RSA-OAEP",
+        modulusLength: rsaShiftValue,
+        publicExponent: new Uint8Array([0x01, 0x00, 0x01]), // 65537
+        hash: "SHA-256",
+      },
+      true, // extractable (REQUIRED to get D)
+      ["encrypt", "decrypt"],
+    );
+
+    // Export keys as JWK
+    const publicJwk = await crypto.subtle.exportKey("jwk", keyPair.publicKey);
+    const privateJwk = await crypto.subtle.exportKey("jwk", keyPair.privateKey);
+
+    let publicKey = keyPair.publicKey;
+    let n = publicJwk.n;
+    let e = publicJwk.e;
+    let d = privateJwk.d;
+
+    return { publicKey, n, e, d };
   };
 
   return (
@@ -293,8 +167,8 @@ const RSAEncryption = () => {
         setBaseMessage={setRsaBaseMessage}
       >
         <InputComponent
-          shiftValue={shiftValue}
-          setShiftValue={setShiftValue}
+          shiftValue={rsaShiftValue}
+          setShiftValue={setRsaShiftValue}
           fillPercent={fillPercent}
         />
       </Encryption>
@@ -306,56 +180,55 @@ const RSAEncryption = () => {
       {/*Left -  KEYS */}
       <div className="tw-flex tw-flex-row tw-gap-12 tw-items-start">
         <div>
-          <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4 tw-text-left">
+          <h5 className="tw-text-sub-title tw-mt-4 tw-mb-2 tw-text-left">
             Public Key:
           </h5>
           <p
             className="
-          tw-flex tw-items-center
-          tw-bg-[#face3580]
-          tw-w-[20rem] tw-h-[4rem]
-          tw-p-3
-          tw-border-2 tw-border-solid
-          tw-rounded-lg
-          tw-font-mono tw-text-xs
-          tw-whitespace-nowrap
-          tw-overflow-x-auto
-        "
+            tw-flex tw-items-center
+            tw-bg-[#face3580]
+            tw-w-[20rem] tw-h-[4rem]
+            tw-p-3
+            tw-border-2 tw-border-solid
+            tw-rounded-lg
+            tw-font-mono tw-text-xs
+            tw-whitespace-nowrap
+            tw-overflow-x-auto"
           >
-            {publicKey ? `n = ${publicKey[0]}, e = ${publicKey[1]}` : ""}
+            {n ? `n = ${n}, e = ${e}` : ""}
           </p>
 
-          <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4 tw-text-left">
+          <h5 className="tw-text-sub-title tw-mt-4 tw-mb-2 tw-text-left">
             Private Key:
           </h5>
           <p
             className="
-          tw-flex tw-items-center
-          tw-bg-[#face3580]
-          tw-w-[20rem] tw-h-[4rem]
-          tw-p-3
-          tw-border-2 tw-border-solid
-          tw-rounded-lg
-          tw-font-mono tw-text-xs
-          tw-whitespace-nowrap
-          tw-overflow-x-auto
-        "
+            tw-flex tw-items-center
+            tw-bg-[#face3580]
+            tw-w-[20rem] tw-h-[4rem]
+            tw-p-3
+            tw-border-2 tw-border-solid
+            tw-rounded-lg
+            tw-font-mono tw-text-xs
+            tw-whitespace-nowrap
+            tw-overflow-x-auto"
           >
-            {privateKey ? `n = ${privateKey[0]}, d = ${privateKey[1]}` : ""}
+            {n ? `n = ${n}, d = ${d}` : ""}
           </p>
         </div>
 
         {/* Right - Explanation Paragraph */}
-        <p className="tw-font-poppins tw-text-base tw-leading-6 tw-max-w-[40rem]">
-          <strong>RSA Key Basics:</strong>
-          <br />
-          RSA uses a public key (for locking/encrypting, shared with everyone)
-          and a private key (for unlocking/decrypting, kept secret by the
-          owner). Anyone can use your public key to encrypt a message, but only
-          your private key can decrypt it, due to the difficulty of factoring
-          large primes. In the next section we will be using the private key to
-          decrypt the message.
-        </p>
+        <div className="tw-flex tw-flex-col tw-gap-4">
+          <h5 className="tw-text-sub-title tw-text-left">RSA Keys</h5>
+          <p className="tw-font-poppins tw-text-left tw-leading-6 tw-max-w-[40rem]">
+            RSA uses a public key (for locking/encrypting, shared with everyone)
+            and a private key (for unlocking/decrypting, kept secret by the
+            owner). Anyone can use your public key to encrypt a message, but
+            only your private key can decrypt it, due to the difficulty of
+            factoring large primes. On the left, you can see the two prime
+            numbers associated with each public and private key.
+          </p>
+        </div>
       </div>
 
       <div className="tw-mt-10">

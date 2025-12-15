@@ -12,13 +12,8 @@ const RSADecryption = () => {
   const [quantumBoxElements, setQuantumBoxElements] = useState([]);
   const [decryptionCompleted, setDecryptionCompleted] = useState(false);
 
-  const {
-    rsaBaseMessage,
-    rsaEncryptedMessage,
-    rsaBitAmount,
-    rsaPrivateKey,
-    setRsaEncryptedMessage,
-  } = useContext(ExerciseStateContext);
+  const { rsaBaseMessage, rsaEncryptedMessage, rsaShiftValue } =
+    useContext(ExerciseStateContext);
 
   const handleContinue = () => {
     if (decryptionCompleted) {
@@ -28,52 +23,24 @@ const RSADecryption = () => {
     }
   };
 
-  function calculateTime() {
-    const classicAttempts = Math.pow(2, rsaBitAmount / 2);
-    const quantumAttempts = Math.floor(Math.random() * 3) + 1; //The number of gates increase not number of attempts
-
-    return [classicAttempts, quantumAttempts];
-  }
-
-  function modPow(base, exponent, modulus) {
-    let result = 1n;
-    base = base % modulus;
-
-    while (exponent > 0n) {
-      if (exponent % 2n === 1n) {
-        result = (result * base) % modulus;
-      }
-      base = (base * base) % modulus;
-      exponent /= 2n;
-    }
-
-    return result;
-  }
-
-  function integerToString(num) {
-    let result = "";
-    while (num > 0n) {
-      const charCode = Number(num & 255n); // last byte
-      result = String.fromCharCode(charCode) + result;
-      num >>= 8n;
-    }
-    return result;
-  }
-
   const decrypt = () => {
-    const [classic, quantum] = calculateTime();
-    setClassicAttempts(180); //Hard Coded this because any larger number cause it to not show up
-    setQuantumAttempts(quantum);
+    const classicAttempts = Math.pow(
+      2,
+      Math.floor(parseInt(rsaShiftValue) / 2),
+    );
+    const quantumAttempts = Math.pow(parseInt(rsaShiftValue), 3);
 
-    setClassicBoxElements([{ text: "Total Attempts", binary: [classic] }]);
+    setClassicAttempts(classicAttempts);
+    setQuantumAttempts(quantumAttempts);
 
-    setQuantumBoxElements([{ text: "Total Attempts", binary: [quantum] }]);
+    setClassicBoxElements([
+      { text: `Total Attempts: ${classicAttempts}`, binary: [] },
+    ]);
+    setQuantumBoxElements([
+      { text: `Total Attempts: ${quantumAttempts}`, binary: [] },
+    ]);
 
     setDecryptionCompleted(true);
-    const [n, d] = rsaPrivateKey;
-    let decrypt = modPow(BigInt(rsaEncryptedMessage), d, n);
-    decrypt = integerToString(decrypt);
-    setRsaEncryptedMessage(decrypt);
   };
 
   return (
@@ -106,22 +73,22 @@ const RSADecryption = () => {
         quantumBoxElements={quantumBoxElements}
       />
 
-      <h1 className="flex justify-start tw-title tw-text-left tw-py-8 ">
+      <h1 className="tw-title tw-text-left tw-mt-4">
         Quantum Cryptography: Theory vs. Reality
       </h1>
-      <p>
+      <p className="tw-body-text tw-text-left tw-py-4">
         The attempt counts shown above are theoretical estimates based on
         established cryptography research. While quantum computers may need to
         repeat an algorithm a small number of times, the number of attempts
-        remains very low and does not increase with key size, unlike classical
-        attacks. In theory, quantum computers could break RSA encryption much
-        faster using Shor’s algorithm. In practice, however, today’s quantum
-        computers are not powerful enough to break the large RSA keys used on
-        the internet. So far, quantum devices have only broken very small,
-        simplified RSA examples due to the high cost, instability, and
-        difficulty of scaling quantum hardware. As a result, despite its
-        theoretical vulnerability, RSA encryption remains secure with current
-        technology.
+        remains very low. In theory, quantum computers could implement Shor’s
+        algorithm and break RSA encryption in a matter of minutes. In practice,
+        however, today’s quantum computers are not powerful enough to break the
+        large RSA keys used on the internet. So far, quantum devices have only
+        factored a 90-bit integer, which is incredibly small compared to the
+        2048 used in real-world applications. This is due to the high cost,
+        instability, and difficulty of scaling quantum hardware. As a result,
+        despite its theoretical vulnerability, RSA encryption remains secure
+        with current technology.
       </p>
 
       <div className="tw-mt-10">
@@ -131,7 +98,7 @@ const RSADecryption = () => {
       <p
         className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
       >
-        Error: Please decrypt the message to continue
+        Error: Please decrypt the message to continue.
       </p>
     </div>
   );

@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
 import OutputBox from "./OutputBox";
 
-// import useMainStateContext from "src/reducers/MainContext";
-// import ExerciseStateContext from "../Lab14Context";
-
 const Decryption = ({
   encryptedMessage,
   decryptionFunction,
@@ -56,7 +53,7 @@ const Decryption = ({
           <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4">
             Encrypted Message
           </h5>
-          <p className="tw-flex tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4">
+          <p className="tw-flex tw-overflow-x-scroll tw-overflow-y-hidden tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4">
             {encryptedMessage}
           </p>
         </div>

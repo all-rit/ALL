@@ -38,8 +38,8 @@ const Main = () => {
   const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState("");
   const [rsaBaseMessage, setRsaBaseMessage] = useState("");
   const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
-  const [rsaBitAmount, setRsaBitAmount] = useState(15);
-  const [rsaPrivateKey, setrsaPrivateKey] = useState(0);
+  const [rsaShiftValue, setRsaShiftValue] = useState(1024);
+
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
@@ -62,10 +62,8 @@ const Main = () => {
           setRsaBaseMessage,
           rsaEncryptedMessage,
           setRsaEncryptedMessage,
-          rsaBitAmount,
-          setRsaBitAmount,
-          rsaPrivateKey,
-          setrsaPrivateKey,
+          rsaShiftValue,
+          setRsaShiftValue,
         }}
       >
         <Router className="app">
