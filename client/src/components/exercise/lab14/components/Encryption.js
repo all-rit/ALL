@@ -8,10 +8,7 @@ const Encryption = ({
   encryptedMessage,
   baseMessage,
   setBaseMessage,
-  inputComponent: InputComponent,
-  shiftValue,
-  setShiftValue,
-  fillPercent,
+  children,
 }) => {
   const handleMessageChange = (e) => {
     setBaseMessage(e.target.value);
@@ -19,7 +16,7 @@ const Encryption = ({
 
   return (
     <div className="tw-flex tw-flex-col tw-items-center tw-gap-8 tw-mt-20 tw-w-full">
-      <div className="tw-flex tw-gap-8 tw-items-center tw-w-full tw-max-w-2xl">
+      <div className="tw-flex tw-gap-8 tw-items-start tw-w-full tw-max-w-2xl">
         {/* Base Message */}
         <FormGroup className="tw-flex-full">
           <Label for="baseMessage" className="tw-font-semibold">
@@ -31,14 +28,10 @@ const Encryption = ({
             placeholder="Input Message Here"
             value={baseMessage}
             onChange={handleMessageChange}
-            className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb]  tw-text-center tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
+            className="tw-flex tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
         </FormGroup>
-        <InputComponent
-          shiftValue={shiftValue}
-          setShiftValue={setShiftValue}
-          fillPercent={fillPercent}
-        />
+        {children}
       </div>
 
       {/* Button */}
@@ -71,10 +64,7 @@ Encryption.propTypes = {
   baseMessage: PropTypes.string,
   setBaseMessage: PropTypes.func,
   encryptedMessage: PropTypes.string,
-  inputComponent: PropTypes.elementType.isRequired,
-  shiftValue: PropTypes.number,
-  setShiftValue: PropTypes.func,
-  fillPercent: PropTypes.number,
+  children: PropTypes.element.isRequired,
 };
 
 export default Encryption;

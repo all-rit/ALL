@@ -24,14 +24,12 @@ const Conclusion = () => {
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"}>
-        Quantum Computing & The Future
-      </h1>
-      <div className="guidance margin-bottom-2 tw-gap-x-10">
-        <h2 className="tw-text-left tw-py-6 tw-subtitle">
+      <h1 className="tw-title tw-text-left">Quantum Computing & The Future</h1>
+      <div className="margin-bottom-2 tw-text-left tw-gap-x-10">
+        <h2 className="tw-sub-title tw-py-6">
           What tasks are ideal for quantum computers?
         </h2>
-        <p>
+        <p className="tw-body-text">
           Quantum computers use the weird rules of quantum physics to do certain
           things that regular computers struggle with. They work best when the
           problem fits the “quantum way” of thinking. For example lots of
@@ -40,7 +38,7 @@ const Conclusion = () => {
           at:
         </p>
 
-        <ul className="tw-list-disc  tw-mb-6 tw-py-6">
+        <ul className="tw-list-disc tw-body-text tw-pl-6 tw-py-6">
           <li>
             Simulating molecules and chemistry (helps discover new materials or
             medicines)
@@ -52,16 +50,16 @@ const Conclusion = () => {
           <li>Breaking some older forms of encryption</li>
         </ul>
 
-        <h2 className="tw-text-left tw-py-6 tw-subtitle">
-          What tasks aren’t ideal for quantum computers?{" "}
+        <h2 className="tw-sub-title tw-py-6">
+          What tasks aren’t ideal for quantum computers?
         </h2>
-        <p>
+        <p className="tw-body-text">
           Quantum computers sound powerful, but they aren’t good at every type
           of task. Their unique way of processing information makes them
           excellent for some problems, yet they struggle with others. They have
           difficulty when:
         </p>
-        <ul className="tw-list-disc tw-pl-6 tw-mb-6 tw-py-6">
+        <ul className="tw-list-disc tw-body-text tw-pl-6 tw-py-6">
           <li>
             The task is something normal computers already do extremely well
           </li>
@@ -72,11 +70,10 @@ const Conclusion = () => {
           <li>Everyday computing</li>
         </ul>
 
-        <h2 className="tw-text-left tw-py-6 tw-subtitle">
-          {" "}
+        <h2 className="tw-text-left tw-py-6 tw-sub-title">
           Quantum Computing Future
         </h2>
-        <p>
+        <p className="tw-body-text">
           The future of quantum computing is unknown and wide open. Scientists
           are making progress, but nobody knows exactly when quantum computers
           will become common or how powerful they’ll get.What we do know is that
@@ -85,10 +82,9 @@ const Conclusion = () => {
           technology with huge potential, but also big challenges.
         </p>
 
-        <p className="tw-text-left tw-py-6">
-          {" "}
-          Press the <q>Next</q> button to continue on to the Reinforcement
-          Section
+        <p className="tw-text-center tw-body-text tw-py-6">
+          Press the <strong>Next</strong> button to the left to continue on to
+          the Reinforcement section.
         </p>
       </div>
     </div>

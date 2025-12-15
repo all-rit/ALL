@@ -46,20 +46,21 @@ const Superposition = () => {
       <h1 className={"tw-title tw-text-left"}>Superposition</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
-          Superposition is the phenomona in quantum computing that makes it so
-          powerful compared to classic computers! Qubits fluctuate between
-          values of 0 and 1 simultaneously and can be valued at either all at
-          the same time.
+          Superposition is an important idea in quantum computing that helps
+          explain why it can be more powerful than regular computers. Instead of
+          being only a 0 or a 1, a qubit can be in both states at the same time.
+          This means a quantum computer can work with many possibilities at
+          once, which can make certain types of problems easier to solve.
         </p>
       </div>
       <h2 className={"tw-subtitle tw-text-center"}>Classic Computer</h2>
       <div className="tw-flex-row tw-flex-wrap tw-flex tw-gap-x-10 tw-mb-8 tw-justify-evenly tw-items-center">
         <p className="tw-body-text tw-text-left tw-py-6 tw-justify-start tw-max-w-[500px]">
-          Classic computers work with what are called bits. Bits are values
-          within a computers memory that can be stored as either 0 or 1. Try
-          hovering over the bit values below to see for yourself! Notice how the
-          bits can only be one of two values? This is what all of classic
-          comupting breaks down to!
+          Classical computers use units of information called <i>bits</i>. A bit
+          is a value in the computer&apos;s memory that can be either a 0 or a
+          1. Try hovering over the bit values below to see how they work. Notice
+          that each bit can only be one of these two values. This simple idea is
+          the basis of all classical computing.
         </p>
         <div className="tw-flex tw-flex-row tw-gap-7 tw-max-w-1/2 p-2">
           <Bit></Bit>
@@ -69,14 +70,14 @@ const Superposition = () => {
       <h2 className={"tw-subtitle tw-text-center"}>Quantum Computer</h2>
       <div className="tw-flex-row tw-flex-wrap tw-flex tw-gap-x-10 tw-mb-8 tw-justify-evenly tw-items-center">
         <p className="tw-body-text tw-text-left tw-py-6 tw-justify-start tw-max-w-[625px]">
-          Quantum computers work with qubits, which harness the power of
-          superposition to hold values of 0 and 1 simultaneously. However, if a
-          qubit is measured for too long, it will collapse to a static value of
-          0 or 1 like a classic bit. Go ahead and test it for yourself! Make
-          sure to wait a bit when hovering over the qubit. Notice how the qubit
-          collapses to a random value whenever it&apos;s measured for some time?
-          If you test it multiple times, it will change values to either 0 or 1.
-          This shows how real qubits will collapse to a random value of 0 or 1.
+          While Classical computers use <i>bits</i>, Quantum computers use{" "}
+          <i>qubits</i>. Qubits harness the power of superposition to hold the
+          values of 0 and 1 simultaneously. However, when a qubit is measured
+          for long enough, it collapses into a single value, either 0 or 1. Try
+          hovering over the qubit. If you wait a moment, you&apos;ll see how the
+          qubit collapses to a random value. When you test it again, this value
+          may be change! This shows how real qubits behave when they are
+          measured.
         </p>
         <div className="tw-flex tw-flex-row tw-gap-7 tw-max-w-1/2 p-2">
           <Qubit></Qubit>

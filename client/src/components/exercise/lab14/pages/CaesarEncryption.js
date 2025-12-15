@@ -76,10 +76,10 @@ const CaesarEncryption = () => {
 
   const [shiftValue, setShiftValue] = useState(0);
   const [error, setError] = useState(false);
-  const fillPercent = (shiftValue / 26) * 100;
+  const fillPercent = (shiftValue / 25) * 100;
 
   const handleContinue = () => {
-    if (caesarEncryptedMessage) {
+    if (caesarEncryptedMessage && error == false) {
       navigate("/Lab14/Exercise/CaesarDecryption");
     } else {
       setError(true);
@@ -87,6 +87,12 @@ const CaesarEncryption = () => {
   };
 
   const encrypt = () => {
+    if (caesarBaseMessage === "" || shiftValue == 0) {
+      setError(true);
+      return;
+    }
+    setError(false);
+
     if (shiftValue == 0) {
       setCaesarEncryptedMessage(caesarBaseMessage);
       return caesarBaseMessage;
@@ -131,20 +137,20 @@ const CaesarEncryption = () => {
         encryptedMessage={caesarEncryptedMessage}
         baseMessage={caesarBaseMessage}
         setBaseMessage={setCaesarBaseMessage}
-        inputComponent={InputComponent}
-        shiftValue={shiftValue}
-        setShiftValue={setShiftValue}
-        fillPercent={fillPercent}
-      />
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
-
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
       >
-        Error: Please Encrypt a valid string to continue
+        <InputComponent
+          shiftValue={shiftValue}
+          setShiftValue={setShiftValue}
+          fillPercent={fillPercent}
+        />
+      </Encryption>
+      <p
+        className={`tw-my-2 ${error ? "tw-visible" : "tw-invisible"} tw-italic`}
+      >
+        Error: Please Encrypt a valid string, and make sure the shift value is
+        not 0 to continue.
       </p>
+      <LabButton onClick={handleContinue} label={"Next"} />
     </div>
   );
 };

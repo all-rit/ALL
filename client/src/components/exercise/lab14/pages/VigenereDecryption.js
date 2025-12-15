@@ -4,27 +4,27 @@ import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
 import LabButton from "../../../all-components/LabButton";
 
-const CaesarDecryption = () => {
+const VigenereDecryption = () => {
   const [classicAttempts, setClassicAttempts] = useState(0);
   const [classicBoxElements, setClassicBoxElements] = useState([]);
   const [quantumAttempts, setQuantumAttempts] = useState(0);
   const [quantumBoxElements, setQuantumBoxElements] = useState([]);
 
-  const { caesarBaseMessage, caesarEncryptedMessage, caesarShiftAmount } =
+  const { vigenereBaseMessage, vigenereKey, vigenereEncryptedMessage } =
     useContext(ExerciseStateContext);
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [decryptionCompleted, setDecryptionCompleted] = useState(false);
 
   const handleContinue = () => {
     if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/VigenereIntro");
+      navigate("/Lab14/Exercise/RSAEncryption");
     } else {
       setError(true);
     }
   };
 
-  const encrypt = (baseMessage, shiftValue) => {
+  const encode = (baseMessage, shiftValue) => {
     shiftValue = parseInt(shiftValue);
 
     if (shiftValue == 0) {
@@ -61,45 +61,61 @@ const CaesarDecryption = () => {
     // update the classic and quantum boxes with decryption process
     // update state of graph bars accordingly
 
+    const MAX_CLASSIC_ATTEMPTS = 25;
+    const MAX_QUANTUM_ATTEMPTS = Math.floor(
+      Math.pow(MAX_CLASSIC_ATTEMPTS, 0.5),
+    );
+
     // Classic
     const classicArray = [];
-    for (let i = caesarShiftAmount - 1; i >= 0; i--) {
+    const classicAttempts = Math.pow(26, vigenereKey.length);
+
+    for (let i = 0; i < Math.min(classicAttempts, MAX_CLASSIC_ATTEMPTS); i++) {
       classicArray.push({
-        text: encrypt(caesarBaseMessage, i),
-        binary: [decimalToBinary(i)],
+        text: encode(vigenereBaseMessage, i),
+        binary: [
+          decimalToBinary(Math.min(classicAttempts, MAX_CLASSIC_ATTEMPTS) - i),
+        ],
       });
     }
-    setClassicAttempts(parseInt(caesarShiftAmount));
+    classicArray.push({
+      text: `+ ${classicAttempts - MAX_CLASSIC_ATTEMPTS} more`,
+      binary: ["0"],
+    });
     setClassicBoxElements(classicArray);
+    setClassicAttempts(classicAttempts);
 
     // Quantum
     const quantumArray = [];
-    let attempts = Math.max(1, Math.floor(Math.sqrt(caesarShiftAmount)));
-    let binarySize = Math.floor(25 / attempts);
+    const quantumAttempts = Math.floor(Math.pow(classicAttempts, 0.5));
 
-    for (let i = attempts; i > 0; i--) {
+    for (let i = Math.min(quantumAttempts, MAX_QUANTUM_ATTEMPTS); i > 0; i--) {
       const binaryArray = [];
-      for (let x = binarySize; x > 0; x--) {
+      for (let x = 5; x > 0; x--) {
         binaryArray.push(decimalToBinary(i * x));
       }
 
       quantumArray.push({
-        text: encrypt(caesarBaseMessage, i * Math.floor(caesarShiftAmount / 5)),
+        text: encode(vigenereBaseMessage, i),
         binary: binaryArray,
       });
     }
-    setQuantumAttempts(attempts);
+    quantumArray.push({
+      text: `+ ${quantumAttempts - MAX_QUANTUM_ATTEMPTS} more`,
+      binary: ["0"],
+    });
     setQuantumBoxElements(quantumArray);
+    setQuantumAttempts(quantumAttempts);
 
     setDecryptionCompleted(true);
   };
 
   return (
     <div>
-      <h1 className="tw-title tw-text-left">Caesar Cipher Decryption</h1>
+      <h1 className="tw-title tw-text-left">Vigenère Decryption</h1>
       <p className="tw-body-text tw-text-left tw-py-4">
         Below, you will see the encrypted message from the previous section. Use
-        the Caesar decryption function to decrypt the message back to its
+        the Vigenère decryption function to decrypt the message back to its
         original form, and observe how the classic and quantum decryption
         processes differ in terms of attempts and efficiency!
       </p>
@@ -112,13 +128,15 @@ const CaesarDecryption = () => {
       <p className="tw-body-text tw-text-left tw-py-4">
         At the very bottom, you&apos;ll see a graph that visualizes the number
         of attempts taken by both classic and quantum methods to decrypt the
-        message. Notice how quantum decryption requires fewer attempts due to
-        its ability to process multiple possibilities simultaneously. This is
-        superposition in action!
+        message. Compare these numbers to the Caesar Cipher from before. Notice
+        how quantum decryption requires <i>astronomically</i> fewer attempts
+        this time! Since the Vigenère Cipher is far more complex than a
+        traditional Caesar Cipher, Quantum is <i>exponentially</i> more
+        effective!
       </p>
       <Decryption
-        encryptedMessage={caesarEncryptedMessage}
-        baseMessage={caesarBaseMessage}
+        encryptedMessage={vigenereEncryptedMessage}
+        baseMessage={vigenereBaseMessage}
         decryptionFunction={decrypt}
         classicAttempts={classicAttempts}
         classicBoxElements={classicBoxElements}
@@ -129,13 +147,11 @@ const CaesarDecryption = () => {
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
 
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
-      >
+      <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
         Error: Please decrypt the message to continue
       </p>
     </div>
   );
 };
 
-export default CaesarDecryption;
+export default VigenereDecryption;
