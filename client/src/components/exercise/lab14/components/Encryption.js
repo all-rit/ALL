@@ -50,7 +50,7 @@ const Encryption = ({
           <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4">
             Encrypted Message
           </h5>
-          <p className="tw-flex tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4 tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold">
+          <p className="tw-flex tw-overflow-x-scroll tw-overflow-y-hidden tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4 tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold">
             {encryptedMessage}
           </p>
         </div>

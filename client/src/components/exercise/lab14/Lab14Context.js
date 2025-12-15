@@ -18,6 +18,8 @@ const ExerciseStateContext = createContext({
   setRsaBaseMessage: () => {},
   rsaEncryptedMessage: "",
   setRsaEncryptedMessage: () => {},
+  rsaShiftValue: 1024,
+  setRsaShiftValue: () => {},
 });
 
 export default ExerciseStateContext;

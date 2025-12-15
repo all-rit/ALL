@@ -38,6 +38,7 @@ const Main = () => {
   const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState("");
   const [rsaBaseMessage, setRsaBaseMessage] = useState("");
   const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
+  const [rsaShiftValue, setRsaShiftValue] = useState(1024);
 
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
@@ -61,6 +62,8 @@ const Main = () => {
           setRsaBaseMessage,
           rsaEncryptedMessage,
           setRsaEncryptedMessage,
+          rsaShiftValue,
+          setRsaShiftValue,
         }}
       >
         <Router className="app">
