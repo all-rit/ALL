@@ -18,7 +18,7 @@ const VigenereDecryption = () => {
 
   const handleContinue = () => {
     if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/RSAEncryption");
+      navigate("/Lab14/Exercise/RSAIntro");
     } else {
       setError(true);
     }
@@ -70,7 +70,7 @@ const VigenereDecryption = () => {
     const classicArray = [];
     const classicAttempts = Math.pow(26, vigenereKey.length);
 
-    for (let i = 0; i < Math.min(classicAttempts, MAX_CLASSIC_ATTEMPTS); i++) {
+    for (let i = Math.min(classicAttempts, MAX_CLASSIC_ATTEMPTS); i > 0; i--) {
       classicArray.push({
         text: encode(vigenereBaseMessage, i),
         binary: [
