@@ -5,7 +5,20 @@ import { EXERCISE_STATES } from "../../../constants/lab14";
 import ExerciseStateContext from "./Lab14Context";
 
 // lab imported dependencies;
-// add here
+import ExerciseIntro from "./pages/ExerciseIntro";
+import Superposition from "./pages/Superposition";
+import Entanglement from "./pages/Entanglement";
+import ExerciseTransition from "./pages/ExerciseTransition";
+import CaesarIntro from "./pages/CaesarIntro";
+import CaesarEncryption from "./pages/CaesarEncryption";
+import CaesarDecryption from "./pages/CaesarDecryption";
+import VigenereIntro from "./pages/VigenereIntro";
+import VigenereEncryption from "./pages/VigenereEncryption";
+import VigenereDecryption from "./pages/VigenereDecryption";
+import RSAIntro from "./pages/RSAIntro";
+import RSAEncryption from "./pages/RSAEncryption";
+import RSADecryption from "./pages/RSADecryption";
+import Conclusion from "./pages/Conclusion";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -16,14 +29,16 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
-  // lab state variables here
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [preferredName, setPreferredName] = useState("");
-  // const [pronouns, setPronouns] = useState("");
-  // const [college, setCollege] = useState("");
-  // const [major, setMajor] = useState("");
-  // const [gradTerm, setGradTerm] = useState("");
+
+  const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
+  const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [caesarShiftAmount, setCaesarShiftAmount] = useState(0);
+  const [vigenereBaseMessage, setVigenereBaseMessage] = useState("");
+  const [vigenereKey, setVigenereKey] = useState("");
+  const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState("");
+  const [rsaBaseMessage, setRsaBaseMessage] = useState("");
+  const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
+  const [rsaShiftValue, setRsaShiftValue] = useState(1024);
 
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
@@ -31,22 +46,48 @@ const Main = () => {
         value={{
           exerciseState,
           setExerciseState,
+          caesarBaseMessage,
+          setCaesarBaseMessage,
+          caesarEncryptedMessage,
+          setCaesarEncryptedMessage,
+          caesarShiftAmount,
+          setCaesarShiftAmount,
+          vigenereBaseMessage,
+          setVigenereBaseMessage,
+          vigenereKey,
+          setVigenereKey,
+          vigenereEncryptedMessage,
+          setVigenereEncryptedMessage,
+          rsaBaseMessage,
+          setRsaBaseMessage,
+          rsaEncryptedMessage,
+          setRsaEncryptedMessage,
+          rsaShiftValue,
+          setRsaShiftValue,
         }}
       >
         <Router className="app">
-          {/* elements here */}
-          {/* <FormRepair path="/FormRepair" />
-          <DatabaseRepair path={"/DatabaseRepair"} />
           <ExerciseIntro default path="/" />
-          <GradApplication path="/GraduationApplication" />
-          <PreWrongDiploma path="/PreWrongDiploma" />
-          <Diploma path="/Diploma" />
-          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
-          <PostWrongNewsletter path="/PostWrongNewsletter" />
-          <PreDbRepair path={"/PreDbRepair"} />
-          <PreCorrectDiploma path="/PreCorrectDiploma" />
-          <PostCorrectNewsletter path="/PostCorrectNewsletter" />
-          <KeyTakeaways path="/KeyTakeaways" /> */}
+          <Superposition path="/Superposition" />
+          <Entanglement path="/Entanglement" />
+          <ExerciseTransition path="/Transition" />
+
+          {/* Caesar Cipher */}
+          <CaesarIntro path="/CaesarIntro" />
+          <CaesarEncryption path="/CaesarEncryption" />
+          <CaesarDecryption path="/CaesarDecryption" />
+
+          {/* Vigenère Cipher */}
+          <VigenereIntro path="/VigenereIntro" />
+          <VigenereEncryption path="/VigenereEncryption" />
+          <VigenereDecryption path="/VigenereDecryption" />
+
+          {/* RSA Cipher */}
+          <RSAIntro path="/RSAIntro" />
+          <RSAEncryption path="/RSAEncryption" />
+          <RSADecryption path="/RSADecryption" />
+
+          <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
     </div>
