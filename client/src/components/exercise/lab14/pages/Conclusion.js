@@ -76,9 +76,9 @@ const Conclusion = () => {
         <p className="tw-body-text">
           The future of quantum computing is unknown and wide open. Scientists
           are making progress, but nobody knows exactly when quantum computers
-          will become common or how powerful they’ll get.What we do know is that
-          quantum tech could change many fields, from AI to climate science to
-          cybersecurity, in ways that are hard to imagine today. It’s a
+          will become common or how powerful they’ll get. What we do know is
+          that quantum tech could change many fields, from AI to climate science
+          to cybersecurity, in ways that are hard to imagine today. It’s a
           technology with huge potential, but also big challenges.
         </p>
 

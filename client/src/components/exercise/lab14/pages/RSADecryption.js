@@ -73,9 +73,7 @@ const RSADecryption = () => {
         quantumBoxElements={quantumBoxElements}
       />
 
-      <h1 className="tw-title tw-text-left tw-mt-4">
-        Quantum Cryptography: Theory vs. Reality
-      </h1>
+      <h1 className="tw-title tw-text-left tw-mt-4">RSA: Theory vs. Reality</h1>
       <p className="tw-body-text tw-text-left tw-py-4">
         The attempt counts shown above are theoretical estimates based on
         established cryptography research. While quantum computers may need to
