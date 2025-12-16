@@ -46,7 +46,7 @@ completeQuiz = (req, res) => {
     labid: req.body.labid,
     usersessionid: req.session.token,
     date: Date.now(),
-    quizscore: req.body.quizscore,
+    quizscore: Math.floor(req.body.quizscore),
     quizresult: req.body.quizresult,
   }).then(() => {
     res.sendStatus(200);
@@ -98,7 +98,7 @@ userCompleteQuiz = (req, res) => {
     labid: req.body.labid,
     userid: req.body.userid,
     date: Date.now(),
-    quizscore: req.body.quizscore,
+    quizscore: Math.floor(req.body.quizscore),
   }).then(() => {
     res.sendStatus(200);
   });

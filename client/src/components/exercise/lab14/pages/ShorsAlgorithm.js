@@ -1,0 +1,20 @@
+import { React } from "react";
+import { startExercise } from "src/reducers/lab2/actions";
+import { navigate } from "@reach/router";
+
+const ShorsAlgorithm = () => {
+  const handleContinue = () => {
+    startExercise();
+    // TODO: Update this to next Page
+    navigate("/Lab14/Exercise/Conclusion");
+  };
+
+  return (
+    <div>
+      Shors Algorithm Page
+      <button onClick={handleContinue}>Next</button>
+    </div>
+  );
+};
+
+export default ShorsAlgorithm;
