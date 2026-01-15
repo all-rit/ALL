@@ -85,7 +85,7 @@ const CaesarDecryption = () => {
     // Quantum
     const quantumArray = [];
     let attempts = Math.max(1, Math.floor(Math.sqrt(caesarShiftAmount)));
-    let binarySize = Math.floor(25 / attempts);
+    let binarySize = Math.min(Math.floor(25 / attempts), 5);
 
     for (let i = attempts; i > 0; i--) {
       const binaryArray = [];
@@ -136,7 +136,7 @@ const CaesarDecryption = () => {
         quantumBoxElements={quantumBoxElements}
       />
       <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
-        <LabButton onClick={handleReturn} label={"Retry Encryption"} />
+        <on onClick={handleReturn} label={"Retry Encryption"} />
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
 

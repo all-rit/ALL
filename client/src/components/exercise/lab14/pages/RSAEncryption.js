@@ -185,17 +185,19 @@ const RSAEncryption = () => {
           </h5>
           <p
             className="
-            tw-flex tw-items-center
-            tw-bg-[#face3580]
-            tw-w-[20rem] tw-h-[4rem]
-            tw-p-3
-            tw-border-2 tw-border-solid
-            tw-rounded-lg
-            tw-font-mono tw-text-xs
-            tw-whitespace-nowrap
-            tw-overflow-x-auto"
+              tw-text-left
+              tw-bg-[#face3580]
+              tw-w-[20rem]
+              tw-p-3
+              tw-border-2 tw-border-solid
+              tw-rounded-lg
+              tw-font-mono tw-text-sm
+              tw-whitespace-nowrap
+              tw-overflow-x-auto"
           >
-            {n ? `n = ${n}, e = ${e}` : ""}
+            {n ? `n = ${n}` : ""}
+            <br />
+            {e ? `e = ${e}` : ""}
           </p>
 
           <h5 className="tw-text-sub-title tw-mt-4 tw-mb-2 tw-text-left">
@@ -203,17 +205,19 @@ const RSAEncryption = () => {
           </h5>
           <p
             className="
-            tw-flex tw-items-center
-            tw-bg-[#face3580]
-            tw-w-[20rem] tw-h-[4rem]
-            tw-p-3
-            tw-border-2 tw-border-solid
-            tw-rounded-lg
-            tw-font-mono tw-text-xs
-            tw-whitespace-nowrap
-            tw-overflow-x-auto"
+              tw-text-left
+              tw-bg-[#face3580]
+              tw-w-[20rem]
+              tw-p-3
+              tw-border-2 tw-border-solid
+              tw-rounded-lg
+              tw-font-mono tw-text-sm
+              tw-whitespace-nowrap
+              tw-overflow-x-auto"
           >
-            {n ? `n = ${n}, d = ${d}` : ""}
+            {n ? `n = ${n}` : ""}
+            <br />
+            {d ? `d = ${d}` : ""}
           </p>
         </div>
 
@@ -227,6 +231,14 @@ const RSAEncryption = () => {
             only your private key can decrypt it, due to the difficulty of
             factoring large primes. On the left, you can see the two prime
             numbers associated with each public and private key.
+          </p>
+          <p className="tw-font-poppins tw-text-left tw-leading-6 tw-max-w-[40rem]">
+            The &apos;n&apos; value is the modulus, a large number derived from
+            two prime numbers. The &apos;e&apos; value is the public exponent
+            used in the encryption process, while the &apos;d&apos; value is the
+            private exponent used in decryption. Together, these values form the
+            core of RSA&apos;s security, enabling secure communication over
+            insecure channels.
           </p>
         </div>
       </div>
