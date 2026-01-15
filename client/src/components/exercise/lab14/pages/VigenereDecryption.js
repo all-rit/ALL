@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
@@ -15,6 +15,16 @@ const VigenereDecryption = () => {
 
   const [error, setError] = useState("");
   const [decryptionCompleted, setDecryptionCompleted] = useState(false);
+
+  useEffect(() => {
+    if (vigenereEncryptedMessage === "") {
+      handleReturn();
+    }
+  }, []);
+
+  const handleReturn = () => {
+    navigate("/Lab14/Exercise/VigenereEncryption");
+  };
 
   const handleContinue = () => {
     if (decryptionCompleted) {
@@ -143,7 +153,8 @@ const VigenereDecryption = () => {
         quantumAttempts={quantumAttempts}
         quantumBoxElements={quantumBoxElements}
       />
-      <div className="tw-mt-10">
+      <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+        <LabButton onClick={handleReturn} label={"Retry Encryption"} />
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
 

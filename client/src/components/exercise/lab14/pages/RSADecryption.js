@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
@@ -14,6 +14,16 @@ const RSADecryption = () => {
 
   const { rsaBaseMessage, rsaEncryptedMessage, rsaShiftValue } =
     useContext(ExerciseStateContext);
+
+  useEffect(() => {
+    if (rsaEncryptedMessage === "") {
+      handleReturn();
+    }
+  }, []);
+
+  const handleReturn = () => {
+    navigate("/Lab14/Exercise/RSAEncryption");
+  };
 
   const handleContinue = () => {
     if (decryptionCompleted) {
@@ -89,7 +99,8 @@ const RSADecryption = () => {
         with current technology.
       </p>
 
-      <div className="tw-mt-10">
+      <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+        <LabButton onClick={handleReturn} label={"Retry Encryption"} />
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
 

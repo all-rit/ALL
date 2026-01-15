@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
@@ -15,6 +15,16 @@ const CaesarDecryption = () => {
 
   const [error, setError] = useState(false);
   const [decryptionCompleted, setDecryptionCompleted] = useState(false);
+
+  useEffect(() => {
+    if (caesarEncryptedMessage === "") {
+      handleReturn();
+    }
+  }, []);
+
+  const handleReturn = () => {
+    navigate("/Lab14/Exercise/CaesarEncryption");
+  };
 
   const handleContinue = () => {
     if (decryptionCompleted) {
@@ -79,12 +89,12 @@ const CaesarDecryption = () => {
 
     for (let i = attempts; i > 0; i--) {
       const binaryArray = [];
-      for (let x = binarySize; x > 0; x--) {
+      for (let x = binarySize - 1; x >= 0; x--) {
         binaryArray.push(decimalToBinary(i * x));
       }
 
       quantumArray.push({
-        text: encrypt(caesarBaseMessage, i * Math.floor(caesarShiftAmount / 5)),
+        text: encrypt(caesarBaseMessage, i - 1),
         binary: binaryArray,
       });
     }
@@ -125,7 +135,8 @@ const CaesarDecryption = () => {
         quantumAttempts={quantumAttempts}
         quantumBoxElements={quantumBoxElements}
       />
-      <div className="tw-mt-10">
+      <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+        <LabButton onClick={handleReturn} label={"Retry Encryption"} />
         <LabButton onClick={handleContinue} label={"Next"} />
       </div>
 
