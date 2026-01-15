@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { FormGroup, Input, Label } from "reactstrap";
+import LabButton from "src/components/all-components/LabButton";
 
 const Encryption = ({
   encryptionFunction,
@@ -36,12 +37,7 @@ const Encryption = ({
 
       {/* Button */}
       <div className="tw-flex tw-flex-col tw-items-center">
-        <button
-          className="tw-bg-labYellow tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold tw-duration-300"
-          onClick={encryptionFunction}
-        >
-          Encrypt
-        </button>
+        <LabButton onClick={encryptionFunction} label={"Encrypt"}></LabButton>
       </div>
 
       {/* Encrypted Message */}

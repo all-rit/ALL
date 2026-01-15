@@ -18,6 +18,7 @@ const Decryption = ({
       {
         label: "Number of Computing Attempts to Solve",
         data: [classicAttempts, quantumAttempts],
+        minBarLength: 3,
         backgroundColor: ["#face35", "#0d28bc"],
         borderWidth: 1,
       },
@@ -25,6 +26,12 @@ const Decryption = ({
   };
 
   const graphOptions = {
+    title: {
+      display: true,
+      text: "Decryption Attempts Comparison",
+      fontSize: 20,
+      fontColor: "#212529",
+    },
     scales: {
       yAxes: [
         {
@@ -88,6 +95,15 @@ const Decryption = ({
       {/* Graph section */}
       <div className="tw-w-full tw-max-w-144">
         <Bar data={graphData} options={graphOptions} width={600} height={400} />
+      </div>
+
+      {/* Comparison section */}
+      <div className="tw-flex tw-justify-center tw-items-center">
+        <p className="tw-text-center tw-max-w-2xl tw-text-lg">
+          In this example, a quantum computer was{" "}
+          {classicAttempts / quantumAttempts} times faster than a classical
+          computer!
+        </p>
       </div>
     </div>
   );
