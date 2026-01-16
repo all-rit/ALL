@@ -140,11 +140,11 @@
 .tab-panels {
   position: relative;
   background: white;
-  /* Blend line between active tab and panel */
+  /* Blend the line between active tab and panel */
   margin-top: -1px;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
   padding: 25px 30px 25px 25px;
-  height: calc(75vh - 150px);
+  height: calc(75vh - 125px);
   overflow-y: scroll;
   border-bottom: 30px solid white;
 }
