@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import BlobLoader from "./BlobLoader";
+import robotImage from "./robot.png";
 
 // Example prop
 // const questions = [
@@ -63,6 +65,8 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
   const dropdownRef = useRef(null);
   const messagesContainerRef = useRef(null);
 
@@ -97,18 +101,45 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
     };
 
     setMessages((prev) => [...prev, userMsg]);
-    setIsTyping(true);
+    // AI begins processing before they type
+    // Start pulsing animation
+    setIsThinking(true);
 
     // Add message display delay proportional to the AI output size
     const delay = Math.ceil(botMsg.text.length / 100) * 500 + 500;
 
     setTimeout(() => {
       setMessages((prev) => [...prev, botMsg]);
+      // Stop pulsing animation
+      setIsThinking(false);
+      // Start spinning animation
+      setIsTyping(true);
     }, delay);
     // Delay before the AI begins typing
 
     // Close dropdown menu after question is selected
     setIsOpen(false);
+  };
+
+  /**
+   * Decide which animation the blob should use based
+   * on the AI state
+   * @returns {string} "pulsing" | "spinning" | "static"
+   */
+  const getBlobMode = () => {
+    if (isThinking) return "pulsing";
+    if (isTyping) return "spinning";
+    return "static";
+  };
+
+  const handleToggleClick = () => {
+    if (!isTyping) {
+      setIsOpen(!isOpen);
+      // Hide overlay on first click
+      if (showOverlay) {
+        setShowOverlay(false);
+      }
+    }
   };
 
   return (
@@ -119,14 +150,30 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
       {/* Scrollable container that displays the chat messages */}
       <div
         ref={messagesContainerRef}
-        className="tw-flex-1 tw-overflow-y-auto tw-rounded-lg tw-p-4 tw-space-y-3"
+        className="tw-flex-1 tw-overflow-y-auto tw-rounded-lg tw-p-4 tw-pb-16 tw-space-y-3 tw-relative tw-z-0"
       >
+        {showOverlay && (
+          <div
+            className="tw-absolute tw-left-[38%]  tw-z-0 tw-pointer-events-none tw-transition-opacity 3s tw-duration-5000"
+            style={{
+              backgroundImage: `url(${robotImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              width: "255px",
+              height: "255px",
+              padding: "none",
+              marginTop: "30px",
+              opacity: showOverlay ? 0.3 : 0,
+            }}
+          />
+        )}
         {/* Container for indvidual messages */}
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`tw-flex ${
-              msg.sender === "user" ? "tw-justify-end" : "tw-justify-start"
+            className={`tw-flex tw-flex-col tw-relative tw-z-10 ${
+              msg.sender === "user" ? "tw-items-end" : "tw-items-start"
             }`}
             style={{
               animation: "fadeIn 0.5s ease-in",
@@ -157,11 +204,28 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
                 msg.text
               )}
             </div>
+            {/* Show blob for most recent AI messages */}
+            {msg.sender === "bot" && index === messages.length - 1 && (
+              <div className="tw-flex tw-items-start tw-border-none">
+                <BlobLoader animationMode={getBlobMode()} />
+              </div>
+            )}
           </div>
         ))}
+        {/* Show thinking blob when AI is thinking (before message appears) */}
+        {isThinking && (
+          <div
+            className="tw-flex tw-justify-start"
+            style={{ animation: "fadeIn 0.5s ease-in", border: "none" }}
+          >
+            <div className="tw-flex tw-items-start tw-border-none">
+              <BlobLoader animationMode="pulsing" />
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="tw-relative tw-w-full tw-flex tw-justify-center">
+      <div className="tw-relative tw-w-full tw-flex tw-justify-center tw-z-20">
         {/* Upside down triangle on dropdown menu box */}
         <div
           className={`tw-absolute tw-pointer-events-none tw-transition-all tw-duration-300 ${
@@ -171,11 +235,11 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
             width: 0,
             height: 0,
             bottom: "38px",
-            right: "36px",
+            right: "8%",
             borderLeft: "10px solid transparent",
             borderRight: "10px solid transparent",
             borderTop: "10px solid white",
-            zIndex: 11,
+            zIndex: 21,
             transition: "opacity 0.3s ease-out, bottom 0.3s ease-out",
           }}
         />
@@ -183,7 +247,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         {/* Container with list of question buttons */}
         <div
           ref={dropdownRef}
-          className={`tw-absolute tw-bottom-[48px] tw-w-[95%] tw-bg-white tw-shadow-lg tw-transition-all tw-duration-300 tw-border-2 tw-overflow-y-auto tw-border-black tw-rounded-lg tw-ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          className={`tw-absolute tw-bottom-[48px] tw-w-[95%] tw-bg-white tw-shadow-lg tw-transition-all tw-duration-300 tw-border-2 tw-overflow-y-auto tw-border-black tw-rounded-lg tw-z-20 tw-ease-[cubic-bezier(0.4,0,0.2,1)] ${
             isOpen
               ? "tw-opacity-100 tw-pointer-events-auto"
               : "tw-opacity-0 tw-pointer-events-none"
@@ -221,8 +285,8 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         <button
           className="tw-bg-white tw-border-0 tw-p-0 tw-mr-20px tw-cursor-pointer tw-flex tw-items-center tw-justify-center disabled:tw-cursor-not-allowed"
           // Disable if typing
-          onClick={() => !isTyping && setIsOpen(!isOpen)}
-          disabled={isTyping}
+          onClick={handleToggleClick}
+          disabled={isTyping || isThinking}
           style={{
             opacity: isTyping ? 0.5 : 1,
           }}
