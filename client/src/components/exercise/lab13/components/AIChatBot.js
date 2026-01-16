@@ -288,7 +288,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
           onClick={handleToggleClick}
           disabled={isTyping || isThinking}
           style={{
-            opacity: isTyping ? 0.5 : 1,
+            opacity: isTyping || isThinking ? 0.5 : 1,
           }}
         >
           {isOpen ? (
