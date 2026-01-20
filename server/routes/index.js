@@ -61,7 +61,6 @@ const ExerciseControllerLab14 = require('../controllers/lab14/ExerciseController
 // Lab Controller
 const LabController = require('../controllers/LabController');
 
-
 // Team Members Controller
 const TeamMemberController = require('../controllers/TeamMemberController');
 

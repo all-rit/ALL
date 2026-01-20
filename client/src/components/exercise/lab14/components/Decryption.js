@@ -101,8 +101,8 @@ const Decryption = ({
       <div className="tw-flex tw-justify-center tw-items-center">
         <p className="tw-text-center tw-max-w-2xl tw-text-lg">
           In this example, a quantum computer was{" "}
-          {classicAttempts / quantumAttempts} times faster than a classical
-          computer!
+          {(classicAttempts / quantumAttempts).toFixed(2)} times faster than a
+          classical computer!
         </p>
       </div>
     </div>
