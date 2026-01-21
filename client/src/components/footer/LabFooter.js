@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import useMainStateContext from "../../reducers/MainContext";
 import { EXERCISE_IN_PROGRESS } from "../../constants/notifications";
 import { ArrowBack, ArrowForward, Home } from "@mui/icons-material";
+import { Button } from "reactstrap";
 
 const mapStateToProps = (state) => {
   return {
@@ -43,6 +44,7 @@ const LabFooter = (props) => {
       handleRedirect(actions, state.main.lab, section);
     }
   };
+
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
 
@@ -59,8 +61,8 @@ const LabFooter = (props) => {
             style={{ display: display ? "flex" : "none" }}
           >
             {body > 0 && (
-              <button
-                className="tw-flex tw-items-center tw-justify-center tw-p-3 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-text-[14px] tw-gap-x-1 tw-border-0 tw-shadow hover:tw-bg-labYellow tw-w-full"
+              <Button
+                className="tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full"
                 onClick={() => handleOnClick(body - 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -68,23 +70,23 @@ const LabFooter = (props) => {
               >
                 <ArrowBack />
                 BACK
-              </button>
+              </Button>
             )}
 
             {body === 4 && quizCompleted ? (
-              <button
+              <Button
                 href="# "
-                className="tw-flex tw-items-center tw-justify-center tw-gap-x-2 tw-cursor-pointer tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-text-[14px] tw-gap-x-1 tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full"
+                className="tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full"
                 onClick={navigateHome}
                 style={{
                   display: display ? "1" : "0",
                 }}
               >
                 <Home /> Home
-              </button>
+              </Button>
             ) : (
-              <button
-                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-text-[14px] tw-gap-x-1 tw-font-medium tw-rounded-full tw-bg-primary-yellow tw-border-0 tw-shadow tw-p-3 hover:tw-bg-labYellow tw-w-full`}
+              <Button
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -93,7 +95,7 @@ const LabFooter = (props) => {
               >
                 NEXT
                 <ArrowForward />
-              </button>
+              </Button>
             )}
           </div>
         </div>

@@ -10,11 +10,11 @@ import PropTypes from "prop-types";
 import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
-  const { dateForms, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
   return (
     <>
       <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
-      {dateForms.map((country, index) => (
+      {inputs.map((country, index) => (
         <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
@@ -31,55 +31,42 @@ const DateFormRepair = (props = {}) => {
         <Tab /> <ReactText> const dates = &#123; </ReactText>
       </CodeLine>
 
-      {dateForms.map((country, index) => (
+      {inputs.map((input, index) => (
         <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
               {" "}
-              &ldquo;{country.countryVariable}&rdquo; = &#123;
+              &ldquo;{input.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={3} />
-            <CommentText>{country.comment}</CommentText>
+            <CommentText>{input.comment}</CommentText>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <JSONText>&ldquo;</JSONText>
-            {country.userInput ? (
-              <CodeBlockInput
-                value={country.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(country.id, event.target.value);
-                  },
-                  name: country.name,
-                  type: "text",
-                  placeholder: "Enter Dateform Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(country.id, event.target.value);
-                  },
-                  name: country.name,
-                  type: "text",
-                  placeholder: "Enter Dateform Here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.name,
+                type: "text",
+                placeholder: "Enter Dateform Here",
+              }}
+            />
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
-          {!isInputValid[index] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
                 Error in form submission. Please enter &quot;
-                {country.correct_expression}&quot; and resubmit.
+                {input.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
@@ -99,9 +86,9 @@ const DateFormRepair = (props = {}) => {
   );
 };
 DateFormRepair.propTypes = {
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
-  dateForms: PropTypes.array,
-  isInputValid: PropTypes.array,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 

@@ -17,7 +17,7 @@ import { useState } from "react";
  */
 const useDataService = (user, section, defaultExerciseState) => {
   const { data, functions } = useLabRepair();
-  const { exercisePromptsState, isInputValid } = data;
+  const { exercisePromptsState, validInputs } = data;
   const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
     functions;
   const [isFirst, setIsFirst] = useState(true);
@@ -111,7 +111,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   }
 
   return {
-    data: { exercisePromptsState, isInputValid, isFirst },
+    data: { exercisePromptsState, validInputs, isFirst },
     functions: {
       checkInputValid,
       handleUserInputChange,

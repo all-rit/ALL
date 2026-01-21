@@ -18,8 +18,26 @@ const ExerciseIntroduction = () => {
 
   return (
     <div>
-      Exercise Introduction Page
-      <button onClick={handleContinue}>Next</button>
+      <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+      <div className="guidance margin-bottom-2">
+        <p className="tw-body-text tw-text-left tw-py-6">
+          You are a student at ALL university who is doing their psychology
+          homework. You are given 3 questions to answer and are allowed to use
+          ALL&apos;s new Generative AI tool, AL, to help you answer them. You
+          want to tackle each question from your most least knowledgeable to
+          most knowledgable. Let&apos;s start with ranking your knowledge about
+          each topic before you use AL to help you answer.
+        </p>
+        <div className="tw-body-text tw-text-center tw-pb-6">
+          Click the <strong>Start</strong> button to begin the exercise!
+        </div>
+      </div>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase"
+        onClick={handleContinue}
+      >
+        Start
+      </button>
     </div>
   );
 };
