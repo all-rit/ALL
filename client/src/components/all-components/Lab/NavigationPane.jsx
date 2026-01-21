@@ -57,6 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 const NavigationPane = (props) => {
   const { state, actions } = useMainStateContext();
   const currentSection = state.main.body;
+  const labInProgress = props.labID !== 99;
 
   const handleOnClick = (section) => {
     if (
@@ -75,62 +76,69 @@ const NavigationPane = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem]"
+        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem] tw-h-full tw-justify-between tw-z-10"
       }
     >
-      <div
-        className={
-          "tw-py-4 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
-        }
-      >
-        <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
-      </div>
-      <div
-        className={
-          "tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-shadow-md"
-        }
-      >
-        <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
-          <p
-            className={
-              "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-text-xl tw-leading-tight"
-            }
-          >
-            Table of Contents
-          </p>
-          <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
-            {sections.map(({ title, subTitle, section }) => {
-              return (
-                <a
-                  key={title}
-                  href={"#"}
-                  onClick={() => handleOnClick(section)}
-                  className={
-                    "tw-flex tw-flex-col tw-items-start tw-leading-snug tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
-                  }
-                >
-                  <p
-                    className={twMerge(
-                      "tw-font-semibold tw-body-text tw-px-4 ",
-                      currentSection === section ? "tw-bg-primary-yellow" : "",
-                    )}
-                  >
-                    {title}
-                  </p>
-                  <p
+      <div className={"tw-flex tw-flex-col tw-h-3/4 tw-gap-y-4"}>
+        {/* Title Block */}
+        <div
+          className={
+            "tw-py-4 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
+          }
+        >
+          <h1 className={"tw-title tw-text-xl tw-py-2"}>{props.title} </h1>
+        </div>
+        {/* Table of Contents Block */}
+        <div
+          className={
+            "tw-flex tw-flex-col tw-justify-between tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-full tw-shadow-md"
+          }
+        >
+          <div className={"tw-flex tw-flex-col tw-gap-y-3 tw-h-full"}>
+            <p
+              className={
+                "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-py-2 tw-text-xl tw-leading-tight"
+              }
+            >
+              Table of Contents
+            </p>
+            <div className={"tw-flex tw-flex-col tw-h-full tw-justify-around"}>
+              {sections.map(({ title, subTitle, section }) => {
+                return (
+                  <a
+                    key={title}
+                    href={"#"}
+                    onClick={() => handleOnClick(section)}
                     className={
-                      "tw-pl-4 tw-body-text sm:tw-text-sm xl:tw-text-[16px] tw-leading-tight"
+                      "tw-flex tw-flex-col tw-items-start tw-leading-snug tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
                     }
                   >
-                    {subTitle}
-                  </p>
-                </a>
-              );
-            })}
+                    <p
+                      className={twMerge(
+                        "tw-font-semibold tw-body-text tw-px-4 ",
+                        currentSection === section
+                          ? "tw-bg-primary-yellow"
+                          : "",
+                      )}
+                    >
+                      {title}
+                    </p>
+                    <p
+                      className={
+                        "tw-pl-4 tw-body-text sm:tw-text-sm xl:tw-text-[16px] tw-leading-tight"
+                      }
+                    >
+                      {subTitle}
+                    </p>
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
-      {props.labID !== 0 && (
+
+      {labInProgress && (
         <LabFooter
           context={props.context}
           quizCompleted={props.quizCompleted}

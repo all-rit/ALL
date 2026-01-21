@@ -9,12 +9,12 @@ const handleRedirect = (actions = {}, lab, body = 0) => {
   if (!(lab in Sections)) {
     // check if lab exists
     alert("Page does not exist");
-    lab = 0;
+    lab = 99;
   }
   const labname = Sections[lab].name;
   const bodyname = Sections[lab][body].name;
   navigate(
-    process.env.PUBLIC_URL + "/" + (lab !== 0 ? labname + "/" : "") + bodyname,
+    process.env.PUBLIC_URL + "/" + (lab !== 99 ? labname + "/" : "") + bodyname,
   );
 };
 
@@ -26,7 +26,7 @@ export const stateChange = (actions, pathname) => {
   let noMatch = false;
   if (parsed.length === 0) {
     // if url is all.rit.edu
-    actions.setLab(0);
+    actions.setLab(99);
     actions.setBody(0);
     return;
   }
@@ -59,6 +59,9 @@ export const stateChange = (actions, pathname) => {
     });
   }
   switch (redirectLab) {
+    case "Lab0":
+      actions.setLab(0);
+      break;
     case "Lab1":
       actions.setLab(1);
       break;
@@ -95,14 +98,17 @@ export const stateChange = (actions, pathname) => {
     case "Lab12":
       actions.setLab(12);
       break;
+    case "Lab14":
+      actions.setLab(14);
+      break;
     case "":
-      actions.setLab(0);
+      actions.setLab(99);
       break;
     default:
       if (redirectBody !== "Imagine") {
         noMatch = true;
       }
-      actions.setLab(0);
+      actions.setLab(99);
       break;
   }
   switch (redirectBody) {
@@ -139,7 +145,7 @@ export const stateChange = (actions, pathname) => {
   }
   if (noMatch) {
     actions.setBody(0);
-    actions.setLab(0);
+    actions.setLab(99);
   }
 };
 const getLabsBodies = (home = false) => {
@@ -147,7 +153,7 @@ const getLabsBodies = (home = false) => {
   const bodies = [];
   for (let lab in Sections) {
     if (home) {
-      lab = 0;
+      lab = 99;
     }
     labs.push(Sections[lab].name);
     for (const body in Sections[lab]) {

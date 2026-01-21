@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
 const LoginBody = (props) => {
   const { state } = useMainStateContext();
   const loginEnabled =
-    state.main.lab === 0 ||
+    state.main.lab === 99 ||
     getExerciseState(state, props.state) === EXERCISE_IDLE ||
     state.main.body !== 2 ||
     props.state.main.body !== 2;

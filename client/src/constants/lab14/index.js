@@ -1,0 +1,9 @@
+const LAB_ID = 14;
+const EXERCISE_PATH = "/Lab14/Exercise";
+
+const EXERCISE_SELECTION_DEFAULT = "default selection";
+const EXERCISE_STATES = {
+  EXERCISE_SELECTION_DEFAULT,
+};
+
+export { LAB_ID, EXERCISE_STATES, EXERCISE_PATH };
