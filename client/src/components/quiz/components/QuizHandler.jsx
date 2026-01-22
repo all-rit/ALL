@@ -27,7 +27,6 @@ const QuizHandler = (props) => {
       const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
       props.setQuestions(quiz);
       setAnswerOption(quizAnswers);
-      console.log(props.questions);
     } else {
       getQuiz();
     }
