@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 const FORM_REPAIR = 'FormRepair';
 const DATABASE_REPAIR = 'DatabaseRepair';
 module.exports = (sequelize, DataTypes) => {

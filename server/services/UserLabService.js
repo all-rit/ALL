@@ -1,8 +1,6 @@
-/* eslint-disable no-tabs */
-/* eslint-disable no-mixed-spaces-and-tabs */
 const db = require('../database');
 
-completeAbout = (data) => {
+const completeAbout = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -35,7 +33,7 @@ completeAbout = (data) => {
   return Promise.resolve();
 };
 
-completeReading = (data) => {
+const completeReading = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -68,7 +66,7 @@ completeReading = (data) => {
   return Promise.resolve();
 };
 
-completeExercise = (data) => {
+const completeExercise = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -101,7 +99,7 @@ completeExercise = (data) => {
   return Promise.resolve();
 };
 
-completeReinforcement = (data) => {
+const completeReinforcement = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -134,7 +132,7 @@ completeReinforcement = (data) => {
   return Promise.resolve();
 };
 
-completeQuiz = (data) => {
+const completeQuiz = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -175,7 +173,7 @@ completeQuiz = (data) => {
   return Promise.resolve();
 };
 
-userCompleteAbout = (data) => {
+const userCompleteAbout = (data) => {
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -218,7 +216,7 @@ userCompleteAbout = (data) => {
   return Promise.resolve();
 };
 
-userCompleteReading = (data) => {
+const userCompleteReading = (data) => {
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -261,7 +259,7 @@ userCompleteReading = (data) => {
   return Promise.resolve();
 };
 
-userCompleteExercise = (data) => {
+const userCompleteExercise = (data) => {
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -304,7 +302,7 @@ userCompleteExercise = (data) => {
   return Promise.resolve();
 };
 
-userCompleteReinforcement = (data) => {
+const userCompleteReinforcement = (data) => {
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -347,7 +345,7 @@ userCompleteReinforcement = (data) => {
   return Promise.resolve();
 };
 
-userCompleteQuiz = (data) => {
+const userCompleteQuiz = (data) => {
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -394,7 +392,7 @@ userCompleteQuiz = (data) => {
 };
 
 
-getUserLabCompletion = (data) => {
+const getUserLabCompletion = (data) => {
   if (data.userid) {
     return db.UserLabCompletion
       .findOne({
@@ -413,7 +411,7 @@ getUserLabCompletion = (data) => {
   return Promise.resolve();
 };
 
-getUserLabRecords = async (userid) => {
+const getUserLabRecords = async (userid) => {
   try {
     if (userid) {
       return db.sequelize.query(

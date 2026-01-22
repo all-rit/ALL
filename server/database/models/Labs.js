@@ -1,5 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
-
 module.exports = (sequelize, DataTypes) => {
   const Labs = sequelize.define(
     'Labs', {

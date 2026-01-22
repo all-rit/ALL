@@ -1,6 +1,6 @@
 const UserLabService = require('../services/UserLabService');
 
-completeAbout = (req, res) => {
+const completeAbout = (req, res) => {
   UserLabService.completeAbout({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -10,7 +10,7 @@ completeAbout = (req, res) => {
   });
 };
 
-completeReading = (req, res) => {
+const completeReading = (req, res) => {
   UserLabService.completeReading({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -20,7 +20,7 @@ completeReading = (req, res) => {
   });
 };
 
-completeExercise = (req, res) => {
+const completeExercise = (req, res) => {
   UserLabService.completeExercise({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -30,7 +30,7 @@ completeExercise = (req, res) => {
   });
 };
 
-completeReinforcement = (req, res) => {
+const completeReinforcement = (req, res) => {
   UserLabService.completeReinforcement({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -40,7 +40,7 @@ completeReinforcement = (req, res) => {
   });
 };
 
-completeQuiz = (req, res) => {
+const completeQuiz = (req, res) => {
   UserLabService.completeQuiz({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -52,7 +52,7 @@ completeQuiz = (req, res) => {
   });
 };
 
-userCompleteAbout = (req, res) => {
+const userCompleteAbout = (req, res) => {
   UserLabService.userCompleteAbout({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -62,7 +62,7 @@ userCompleteAbout = (req, res) => {
   });
 };
 
-userCompleteReading = (req, res) => {
+const userCompleteReading = (req, res) => {
   UserLabService.userCompleteReading({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -72,7 +72,7 @@ userCompleteReading = (req, res) => {
   });
 };
 
-userCompleteExercise = (req, res) => {
+const userCompleteExercise = (req, res) => {
   UserLabService.userCompleteExercise({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -82,7 +82,7 @@ userCompleteExercise = (req, res) => {
   });
 };
 
-userCompleteReinforcement = (req, res) => {
+const userCompleteReinforcement = (req, res) => {
   UserLabService.userCompleteReinforcement({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -92,7 +92,7 @@ userCompleteReinforcement = (req, res) => {
   });
 };
 
-userCompleteQuiz = (req, res) => {
+const userCompleteQuiz = (req, res) => {
   UserLabService.userCompleteQuiz({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -103,7 +103,7 @@ userCompleteQuiz = (req, res) => {
   });
 };
 
-getUserLabCompletion = (req, res) => {
+const getUserLabCompletion = (req, res) => {
   UserLabService.getUserLabCompletion({
     userid: req.params.userID,
     labid: req.params.labID,
@@ -112,7 +112,7 @@ getUserLabCompletion = (req, res) => {
   });
 };
 
-getUserLabRecords = async (req, res) => {
+const getUserLabRecords = async (req, res) => {
   try {
     const labs = await UserLabService.getUserLabRecords(req.params.userID);
     res.status(200).json(labs);

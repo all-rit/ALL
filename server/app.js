@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 require('dotenv').config();
 
 const express = require('express');

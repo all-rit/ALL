@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 const REPAIR_WORD_COUNT = 'WordCount';
 const REPAIR_SENTENCE_COUNT = 'SentenceCount';
 const REPAIR_COMPLEX_WORDS = 'ComplexWordCount';
