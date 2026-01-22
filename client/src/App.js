@@ -203,7 +203,7 @@ const App = () => {
                   {renderLabs()}
                 </LabWindow>
               ) : (
-                <div className={"tw-grid tw-row-span-10 tw-text-center"}>
+                <div className={"tw-flex tw-row-span-10 tw-text-center"}>
                   {renderPages()}
                 </div>
               )}

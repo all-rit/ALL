@@ -3461,6 +3461,7 @@ to test your knowledge. Click "Next" to start!', e'{
   }
 ]
 ', 2, 'coming soon', 'coming soon', true), 
+
 (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
 e'[
    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
@@ -3692,6 +3693,7 @@ e'[
    "multiChoice": false
  }
 ]', 2, 'coming soon', 'coming soon', true),
+
 (13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artifical Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
 e'[
    "LO1: Recognize how cognitive biases such as the Halo Effect, Authority Bias, and Truth Bias influence trust in AI-generated content (Knowledge)",
@@ -3913,11 +3915,9 @@ e'[
    ],
    "multiChoice": false
  }
-]', 1, 'coming soon', 'coming soon', true);
+]', 1, 'coming soon', 'coming soon', true), 
 
-
-
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+(14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
