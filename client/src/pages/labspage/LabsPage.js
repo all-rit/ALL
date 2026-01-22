@@ -22,6 +22,7 @@ import {
   DIFFICULTY_1,
   DIFFICULTY_2,
   DIFFICULTY_3,
+  TUTORIALS,
 } from "../../constants/labs";
 import {
   EXPLORE_LABS_BODY,
@@ -185,6 +186,12 @@ const LabsPage = (props) => {
         break;
       case DIFFICULTY_3:
         setDisplayedLabs(labsByDifficulty(labInformation, 3));
+        break;
+      case TUTORIALS:
+        if (labInformation.has("Tutorials")) {
+          tempMap.set("Tutorials", labInformation.get("Tutorials"));
+          setDisplayedLabs(tempMap);
+        }
         break;
       default:
         setDisplayedLabs(labInformation);
@@ -357,11 +364,21 @@ const LabsPage = (props) => {
                   >
                     Difficulty 3
                   </button>
+                  <button
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    onClick={() => {
+                      handleSearchChange(TUTORIALS);
+                    }}
+                  >
+                    Tutorials
+                  </button>
                 </div>
 
                 <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap">
-                  {Array.from(displayedLabs.entries()).map(
-                    ([category, labArray]) => (
+                  {Array.from(displayedLabs.entries())
+                    .sort(([a], [b]) => a.localeCompare(b))
+                    .map(([category, labArray]) => (
                       <div
                         key={category}
                         className="tw-flex tw-flex-col tw-mb-4"
@@ -385,8 +402,7 @@ const LabsPage = (props) => {
                           </div>
                         </div>
                       </div>
-                    ),
-                  )}
+                    ))}
                 </div>
               </div>
             </div>

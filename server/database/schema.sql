@@ -83,6 +83,35 @@ create table imagine23
     primary key (id)
 );
 
+create type enum_lab0_progress_category as enum ('DESIGN', 'BACKEND', 'FRONTEND');
+
+create type enum_lab0_progress_section as enum (
+    'LabIdeation',
+    'LabDecision',
+    'WireframeIntro',
+    'ScrumIntro',
+    'LabDataRepair', 
+    'SchemaRepair', 
+    'ServiceControllerRepair', 
+    'RoutingRepair', 
+    'BackendTipsTricks', 
+    'IntegrationRepair',
+    'CoreLabPagesRepair',
+    'ComponentLibrary',
+    'FrontendTipsTricks'
+);
+
+create type enum_lab0_progress_section_status as enum ('IN_PROGRESS', 'COMPLETED');
+
+create table lab0_progress (
+    id              serial,
+    userid          bigint,
+    category        enum_lab0_progress_category,
+    section         enum_lab0_progress_section,
+    "sectionStatus" enum_lab0_progress_section_status,
+    primary key (id) 
+);
+
 create table lab1_choice
 (
     choiceid  serial,
@@ -459,7 +488,218 @@ create table lab12_exercise
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
+VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessible Learning Lab', 'Tutorials', '/wrench.jpg',
+        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',
+        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.',
+        '["Lab Design: Learn how we categorize and structure our labs, ensure each one is experiential and engaging, design intuitive UI/UX through wireframing, and refine our development process using Scrum.",
+          "Backend Development: Gain hands-on experience with our database, service layers, controllers, and endpoints through guided exercises, and understand how each component integrates to form our complete backend architecture.",
+          "Frontend Development: Explore our component architecture, boilerplate, and core lab components, and learn how to bring them together into a cohesive framework."]',
+        'Heather Moses, Domenic Mangano, Jonathan Cruz, Melissa Burisky, Jack Barter, Ursula Parker',
+        'https://all.rit.edu/Lab0/', NULL,
+        'In this lab, you will learn how to develop a lab for ALL from beginning to end. Starting with writing a lab, you will explore concepts like ideation, gathering sources, and finally designing the lab’s structure. Afterward, you will be able to implement a lab on both the frontend and backend while upholding best practices and standards. Click “Next” to start!',
+        e'{
+        "description": {
+            "header": "",
+            "content": ""
+        },
+        "body": [
+            {
+                "header": "History of Accessible Learning Labs",
+                "type": "",
+                "content": [
+"Accessible Learning Labs (ALL) was founded in 2018 at Rochester Institute of Technology through support from the National Science Foundation. Spearheaded by principal investigators Daniel Krutz and Samuel Malachowsky, the project was built to promote awareness of digital accessibility and the vital role that developers play in creating inclusive, usable software for all. From the beginning, ALL has been powered by a fully undergraduate development team—an intentional decision to educate the next generation of engineers on accessible development practices from the ground up. Since launching its first lab, Accessibility to Sound and Speech, in 2018, ALL has expanded to over a dozen interactive labs. These span a broad range of topics including accessibility for cognitive disabilities, ethics in artificial intelligence, machine learning fundamentals, and cybersecurity. Each lab combines experiential learning with real-world accessibility insights, continually evolving with new releases every semester."
+]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "What Goes into Building a Lab?",
+                "type": "",
+                "content": [
+"Every ALL lab follows a standardized structure that ensures consistency, engagement, and educational value. The flow consists of five core sections: Reading, Exercise (including the Experiential Exercise and Experiential Repair), Reinforcement, and Quiz. This progression introduces core concepts, provides hands-on activities, reinforces knowledge through multimedia content, and concludes with an assessment to solidify understanding. Labs are built not just to educate but to immerse students in real challenges. Whether a student is simulating screen reader experiences or identifying design flaws in inaccessible applications, the lab experience is designed to encourage critical thinking and foster empathy. Every lab is backed by data models stored in a PostgreSQL database, and each exercise is powered by a Redux-based state engine, ensuring a dynamic and reactive experience."              ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "Our Tech Stack",
+                "type": "",
+                "content": [
+"The frontend is built with React, a declarative JavaScript framework known for building interactive and modular user interfaces. Components are styled using Tailwind CSS and follow an accessibility-first design philosophy. The backend is powered by Express.js running on Node.js. It follows a clean separation-of-concerns pattern using folders like routes, controllers, services, and database. All backend routes are exposed as RESTful API endpoints on port 5005, which are consumed by the frontend’s service layer to maintain a clean, modular architecture. Persistent data is managed with PostgreSQL, a relational database used to store lab content, quiz data, user progress, and session data. Schemas and models are defined using Sequelize and organized by domain. The entire system is containerized and can be spun up locally using docker-compose, with environment variables configured through .env files and ecosystem.config.js."             ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": [
+                    {
+                        "name": "React Documentation",
+                        "link": "https://react.dev/"
+                    },
+                    {
+                        "name": "ExpressJS Documentation",
+                        "link": "https://expressjs.com/"
+                    },
+                    {
+                        "name": "PostgreSQL Documentation",
+                        "link": "https://www.postgresql.org/docs/"
+                    }
+                ]
+            }
+        ],
+        "footer": {
+            "links": [
+                {
+                    "name": "National Science Foundation",
+                    "link": "https://www.nsf.gov/"
+                },
+                {
+                    "name": "Rochester Institute of Technology",
+                    "link": "https://www.rit.edu/"
+                }
+            ]
+        }
+    }', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+', e'[
+  {
+    "question": "What are the two main categories that a new lab will fall into? (Select all that apply)",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "AI/ML",
+        "explanation": "We have multiple labs in the AI/ML sector."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Accessibility",
+        "explanation": "True to our name, we focus heavily on web accessibility."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Cybersecurity"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Data Structures and Algorithms"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What is the name of the collection of reusable UI/UX elements that ALL developers can pull from to make more interactive exercises?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "UI Utopia"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Component Library",
+        "explanation": "We have a fully-fledged set of reusable components in our component component library."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Extra UX Stuff"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How do experiential exercises impact a lab users connection to a subject they are studying? (Select all that apply)",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Putting a user in the shoes of someone with a physical limitation gives them an empathic view of another users situation."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A user that experiences someone elses physical limitation may be more likely to push for an equitable outcome for that other user.",
+        "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "They dont make a big impact on the user."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "It decreases the amount of interest the user has in the subject."
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "How do we use AGILE and SCRUM to improve our development process?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "By doing work in time-boxed increments (sprints)."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "By holding a retrospective after every sprint to recap our work and improve for future sprints.",
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
+        "source": "https://www.w3.org/TR/WCAG21/#perceivable"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "By holding daily standups to have a quick meeting, give updates, and check for blockers."
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is the order of data flow from when the request hits the API?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Database -> Service -> Endpoint -> Controller"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Service -> Database -> Controller -> Endpoint"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Endpoint -> Controller -> Service -> Database"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', 3, 'coming soon', 'coming soon', true),
+       (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,
@@ -3221,6 +3461,7 @@ to test your knowledge. Click "Next" to start!', e'{
   }
 ]
 ', 2, 'coming soon', 'coming soon', true), 
+
 (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
 e'[
    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
@@ -3452,6 +3693,7 @@ e'[
    "multiChoice": false
  }
 ]', 2, 'coming soon', 'coming soon', true),
+
 (13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artifical Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
 e'[
    "LO1: Recognize how cognitive biases such as the Halo Effect, Authority Bias, and Truth Bias influence trust in AI-generated content (Knowledge)",
@@ -3547,145 +3789,403 @@ e'[
 }',
 '[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
  {
-   "question": "What does gender refer to?",
+   "question": "Which cognitive bias best describes this scenario? Bob is a student who used ChatGPT to do his math homework. He argues with his teacher about his homework that he got a 0 on. He believes that his math skills are strong enough to not check the answers of ChatGPT because they \"look right\". His teacher continued to give him a 0.",
    "answers": [
      {
        "val": 0,
        "type": "0",
-       "content": "A person’s assigned sex at birth"
+       "content": "Truth Bias"
      },
      {
-       "val": 1,
+       "val": 0,
        "type": "1",
-       "content": "A person’s unique perception of who they are",
-       "explanation": "While sex is a biological characteristic, gender is a self-identified concept."
+       "content": "Halo Effect"
      },
      {
        "val": 0,
        "type": "2",
-       "content": "The sex other people perceive a person as"
+       "content": "Authority Bias"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "Dunning-Kruger Effect",
+       "explanation": "The Dunning-Kruger Effect is a cognitive bias in which people overestimate their ability in a task. In this case, Bob overestimates his math skills and trusts the AI without verification."
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "Why is it important to respect someone’s chosen pronouns/name?",
+   "question": "Which one describes the Halo Effect?",
    "answers": [
      {
        "val": 0,
        "type": "0",
-       "content": "To show respect to others"
+       "content": "Generative AI giving a wrong answer"
      },
      {
-       "val": 0,
+       "val": 1,
        "type": "1",
-       "content": "It can lead to a decrease in anxiety"
+       "content": "Generative AI using \"✅\" in its responses",
+       "explanation": "The Halo Effect is a cognitive bias in which our overall impression of a person, company, brand, or product is influenced by how we feel and think about their character or properties. In this case, the use of \"✅\" gives the impression that the answer is correct, even if it is not."
      },
      {
        "val": 0,
        "type": "2",
-       "content": "To foster a bias-free environment"
+       "content": "Believing that Generative AI is correct because it is an online resource"
      },
      {
-       "val": 1,
+       "val": 0,
        "type": "3",
-       "content": "All of the above",
-       "explanation": "Using a person’s preferred name and pronouns creates a respectful environment and can decrease anxiety regarding gender expression."
+       "content": "A lack of knowledge in the topic leading to believing that Generative AI is correct"
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "Which of the following could be used to add gender non-discrimination features to software?",
+   "question": "True or False: Since Generative AI has access to lots of information and is trained on a vast dataset, it can always be trusted.",
    "answers": [
      {
        "val": 0,
        "type": "0",
-       "content": "Making everything rainbow colored"
+       "content": "True"
      },
      {
        "val": 1,
        "type": "1",
-       "content": "Adding an ‘other’ text field when asking for gender",
-       "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
-     },
-     {
-       "val": 0,
-       "type": "2",
-       "content": "Mandating/requiring users to input their gender"
-     },
-     {
-       "val": 0,
-       "type": "3",
-       "content": "Adjust font size, font color, and text alignment"
+       "content": "False",
+       "explanation": "Generative AI can produce incorrect or misleading information, so it should not always be trusted without verification."
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "ADP, an HR and Payroll consulting company, has recently strived for accessibility in which of the following ways?",
+   "question": "Which of the following can users use to check the validity of Generative AI responses?",
    "answers": [
      {
        "val": 1,
        "type": "0",
-       "content": "Advocates for the importance of using preferred names",
-       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
-       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
-     },
-     {
-       "val": 1,
-       "type": "1",
-       "content": "Outline the best practices for using preferred names at work",
-       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
-       "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+       "content": "Disclaimers",
+       "explanation": "Many Generative AI tools include disclaimers that the information provided may not be accurate or up-to-date."
      },
      {
        "val": 0,
+       "type": "1",
+       "content": "The tone of the response"
+     },
+     {
+       "val": 1,
        "type": "2",
-       "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
+       "content": "Confidence Scores",
+       "explanation": "Generative AI tools can provide confidence scores indicating how certain the model is about its response."
      },
      {
        "val": 1,
        "type": "3",
-       "content": "Become familiar with and consistent with someone’s preferred pronouns",
-       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
-       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
+       "content": "A separate search of the question",
+       "explanation": "Users should verify the information provided by Generative AI through independent research or trusted sources."
      }
    ],
    "multiChoice": true
  },
  {
-   "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
+   "question": "Which of these is cognitive bias NOT based on?",
    "answers": [
      {
-       "val": 1,
+       "val": 0,
        "type": "0",
-       "content": "76%",
-       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
-       "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
+       "content": "Intuition"
      },
      {
-       "val": 0,
+       "val": 1,
        "type": "1",
-       "content": "31%"
+       "content": "Facts",
+       "explanation": "Cognitive biases are systematic patterns of deviation from norm or rationality in judgment, often based on intuition rather than objective facts."
      },
      {
        "val": 0,
        "type": "2",
-       "content": "12%"
+       "content": "Familiarity"
      },
      {
        "val": 0,
        "type": "3",
-       "content": "This hasn’t been surveyed before."
+       "content": "Quick Conclusions"
      }
    ],
    "multiChoice": false
  }
-]', 1, 'coming soon', 'coming soon', true);
+]', 1, 'coming soon', 'coming soon', true), 
 
-
-
+(14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+  e'[
+    "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
+    "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
+    "LO3: Use the simulation to factor a small number and decrypt an encrypted message (Application)",
+    "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
+  ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://ball.rit.edu/Lab14/', null,
+  -- About Section
+  'In this lab, you will learn about the fundamentals of quantum computing and how it differs from classical computing. You will practice applying these concepts through interactive exercises, including encrypting and decrypting messages with the Caesar cipher to compare classical and quantum approaches. Click “Next” to start!', e'{
+  "description":"",
+  "body":[
+    {
+      "header":"What is Quantum Computing? ",
+      "type":"",
+      "content":["What if computers could think beyond just 0s and 1s? That’s exactly what quantum computers do. Quantum computers use special rules of quantum physics—like superposition, entanglement, and interference—to process information in ways normal computers can’t. This lets them solve some problems much faster and introduces new ways to think about programming. Real-life applications of quantum computing are already being developed in several fields. In medicine, it’s being used to help solve problems related to genome assembly, which can improve how we understand and treat diseases. In artificial intelligence (AI), quantum computing can make machines learn and think faster. In finance, it’s being used to improve portfolio optimization, asset management, and risk analysis, helping businesses make smarter financial decisions."]
+    },
+    {
+      "header": "Bit vs. Quibit",
+      "type": "",
+      "content": ["The smallest unit of information in a classical computer is called a bit. A bit can only have one of two values — 0 or 1 — like a light switch that’s either off or on. A qubit, or quantum bit, is the basic unit of information in quantum computing. It’s kind of like a regular bit in a normal computer, which stores data as a 0 or 1. But a qubit is different—it can be both 0 and 1 at the same time, thanks to quantum physics. This special ability lets quantum computers process information much faster and in more complex ways than regular computers."]
+    },
+    {
+      "header": "",
+      "type": "image",
+        "content" : {
+            "image":"/Bit_vs_qubit.png",
+            "alt":"Bit vs Qubit",
+            "sub_caption":"Figure 1",
+            "caption":"Bit vs Quibit"
+           }
+    },
+    {
+      "header": "Superposition",
+      "type": "",
+      "content": ["Superposition lets a qubit be in multiple states at the same time. Instead of just being 0 or 1, it can be a mix of both—like a spinning coin that is both heads and tails while it’s in the air. But as soon as you observe it, the qubit “collapses” into a single, definite value: either 0 or 1. This collapse happens because measuring the qubit forces it to pick one state, which is an important concept in quantum computing."]
+    },
+    {
+      "header": "",
+      "type": "image",
+        "content" : {
+            "image":"/Quantum_Superposition.gif",
+            "alt":"Quantum Superposition",
+            "sub_caption":"Figure 2",
+            "caption":"Quantum Superposition"
+           }
+    },
+    {
+      "header": "Entanglement and Interference",
+      "type": "",
+      "content": ["Entanglement:  When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other instantly becomes a 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers."]
+    },
+    {
+      "header": "",
+      "type": "image",
+        "content" : {
+            "image":"/Quantum_Entanglement.gif",
+            "alt":"Quantum Entanglement",
+            "sub_caption":"Figure 3",
+            "caption":"Quantum Entanglement"
+           }
+    },
+    {
+      "header": " ",
+      "type": "",
+      "content": ["Interference: Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one. This is similar to how noise-canceling headphones block out background noise so you can hear the music more clearly."]
+    }
+  ],
+  "footer":{
+      "links":[
+        {
+          "name":"Quantum Computing",
+          "link":"https://www.ibm.com/think/topics/quantum-computing"
+        },
+        {
+          "name":"Quantum Computing Explained",
+          "link":"https://www.nist.gov/quantum-information-science/quantum-computing-explained"
+        },
+        {
+          "name":"What is Quantum Computing",
+          "link":"https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-quantum-computing"
+        },
+        {
+          "name":"Real World Applications",
+          "link":"https://www.spinquanta.com/news-detail/top-quantum-computer-applications-with-real-world-examples20250113034956"
+        }
+      ]
+    }
+  }',
+  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', '[
+  {
+    "question": "What causes a qubit to collapse?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "When the temperature is too cold"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "When there is light on the qubit"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "When a qubit is measured",
+        "explanation": "Qubits are fragile, so when they are observed they collapse to a state of either 1 or 0."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "When a qubit is linked to another qubit"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is superposition?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A term for the color of qubits after measured"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A term for the value of qubits before measured which is both 0 and 1",
+        "explanation": "Superposition is the state when qubits fluctuate between 0 and 1 values simultaneously before it collapses to a value on measurement."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "A part of the quantum computer used to cool down qubits"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "A quantum based super hero"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is entanglement?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "When qubits break apart into string like pieces"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "A term for the pathing needed in a quantum computer"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "A term for qubits that are linked together and share a single state",
+        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and share a single quantum state."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "When a qubit changes in position rapidly"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these isn’t true regarding quantum computing?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Quantum computing is expensive to build and maintain research on"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Quantum computers face high error rates"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Quantum computers are kept at near absolute zero temperature"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Quantum computing is set to replace classic computers",
+        "explanation": "Quantum computing is very expensive and overkill for a lot of modern processes, instead it should be used complimentary to classic computers."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How are ciphers solved faster with quantum computers?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Quantum computers are able to tell which cipher it’s dealing with easily"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Qubits allow for more attempts decrypting the cipher at once",
+        "explanation": "Due to the phenomena of superposition, qubits are able to provide multiple valued attempts at the same time in comparison to classic computers which can only do one at a time."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Quantum code is stronger at cracking ciphers"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Ciphers are solved easier on bigger machines"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "True or False: Current quantum computers have the power to solve every cipher.",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "True"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "False",
+        "explanation": "While quantum computers can solve ciphers better than classic computers, they are still not able to solve some of the harder ones out there, such as 2048-bit RSA."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these scenarios is a quantum computer viable in?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Simulate nature at a fundamental level for medical and drug research"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Create new encryption methods that are more secure and only accessible to solve via another quantum computer"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Help detect and prevent fraudulent activity more effectively by analyzing at faster speeds"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above",
+        "explanation": "All of these are scenarios where a quantum computer can allow for better and faster results."
+      }
+    ],
+    "multiChoice": false
+  } 
+ ]', 3, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
@@ -3694,38 +4194,47 @@ VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of 
 (4, 'Juan', 'Zheng', 'Advisor', 'Assistant Professor, Lehigh University','/Zheng.jpg', '[{"link":"https://ed.lehigh.edu/faculty/jzheng","network": "sharethis"}]', 'Dr. Zheng is an assistant professor of the Teaching, Learning, and Technology program. She has a background in both educational technology and educational psychology. Her research focuses on integrating artificial intelligence (AI) and computer simulations into science, technology, engineering, and mathematics education (STEM).', null, null),
 (5, 'Saikat', 'Dutta', 'Advisor', 'Assistant Professor, Cornell University','/Dutta.jpg', '[{"link":"https://www.cs.cornell.edu/~saikatd/","network": "sharethis"}]', 'I am an Assistant Professor in the Department of Computer Science at Cornell University. My research interests are at the intersection of Software Engineering and Machine Learning. I am a member of the growing Software Engineering Group at Cornell. I received my PhD in Computer Science from the University of Illinois Urbana-Champaign in Summer 2023.', null, null);
 
-INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive", aboutMe, favoriteLab, labCredits) VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false, null, null, '{1, 3, 4, 5}')
-,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true, 'I’m a recent graduate of the Software Engineering program at RIT, and I’m currently pursuing an MBA, also at RIT. I’m passionate about technology!', 8, '{1, 3, 4, 8, 9, 12}')
-,(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false, null, null, '{3}')
-,(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
-,(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null)
-,(16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null)
-,(5, 'Mark', 'Sternefeld', 'PM, Engineer', '/Mark_Sternefeld.jpg', '[{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}]', null, '2020-2024', false, null, null, '{3, 6, 11}')
-,(6, 'Shantanav', 'Saurav', 'Engineer', '/Shantanav_Saurav.jpg', '[{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}]', null, '2021-2022', false, null, null, null)
-,(7, 'Bashir', 'Jaji', 'Engineer', '/Bashir_Jaji.jpg', '[{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}]', null, '2021-2022', false, null, null, null)
-,(8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-2024', false, null, null, '{8, 9, 11, 12}')
-,(10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-2024', false, null, null, '{6}')
-,(4, 'Su Thit', 'Thazin', 'PM, Engineer, Director of Outreach', '/Su_Thit_Thazin.jpg', '[{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}]', null, '2020-2023', false, null, null, null)
-,(9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-2024', false, null, null, '{9, 11, 12}')
-,(18, 'Fabi', 'Marrufo', 'Engineer', '/Fabi.jpg', '[{"link":"https://www.linkedin.com/in/fabi-marrufo/","network":"linkedin"}]', null, '2022-2022', false, null, null, null)
-,(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-Present', true, '5th year BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{7, 10}')
-,(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
-,(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false, null, null, '{6, 8}')
-,(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false, null, null, '{7}')
-,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', false, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!', 2, null)
-,(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
-,(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-Present', false, null, null, '{8}')
-,(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false, null, null, null)
-,(12, 'Carla', 'Lopez', 'Outreach', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true, null, null, null)
-,(11, 'Domenic', 'Mangano', 'PM, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true, 'Student. Father. Engineer. Graduating from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{7, 8, 9, 10, 11, 12}')
-,(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-2024', false, null, null, '{12}')
-,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 6, '{12}')
-,(27, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Upcoming Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', null, null)
-,(28, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 6, '{12}')
-,(29, 'Jack', 'DeFeo', 'Engineer', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null)
-,(30, 'Jack', 'Barter', 'Engineer', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null)
-,(31, 'Ursula', 'Parker', 'Project Manager', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null)
-,(32, 'Emma', 'Schmidt', 'Director of Outreach', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null);
+INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive", aboutMe, favoriteLab, labCredits) 
+VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false, null, null, '{1,3,4,5}'),
+(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-2025', false, 'I’m a recent graduate of the Software Engineering program at RIT, and I’m currently pursuing an MBA, also at RIT. I’m passionate about technology!', 8, '{1,3,4,8,9,12}'),
+(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false, null, null, '{3}'),
+(4, 'Su Thit', 'Thazin', 'PM, Engineer, Director of Outreach', '/Su_Thit_Thazin.jpg', '[{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}]', null, '2020-2023', false, null, null, null),
+(5, 'Mark', 'Sternefeld', 'PM, Engineer', '/Mark_Sternefeld.jpg', '[{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}]', null, '2020-2024', false, null, null, '{3,6,11}'),
+(6, 'Shantanav', 'Saurav', 'Engineer', '/Shantanav_Saurav.jpg', '[{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}]', null, '2021-2022', false, null, null, null),
+(7, 'Bashir', 'Jaji', 'Engineer', '/Bashir_Jaji.jpg', '[{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}]', null, '2021-2022', false, null, null, null),
+(8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-2024', false, null, null, '{8,9,11,12}'),
+(9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-2024', false, null, null, '{9,11,12}'),
+(10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-2024', false, null, null, '{6}'),
+(11, 'Domenic', 'Mangano', 'Tech Lead, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true, 'Student. Father. Engineer. Graduating from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{0,7,8,9,10,11,12}'),
+(12, 'Carla', 'Lopez', 'Outreach, Engineer', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true, null, null, null),
+(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-2025', false, 'BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{0,7,10}'),
+(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-2025', false, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!of the Computing Organization for Multicultural Students at RIT!', 2, null),
+(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-2022', false, null, null, null),
+(16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null),
+(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null),
+(18, 'Fabi', 'Marrufo', 'Engineer', '/Fabi.jpg', '[{"link":"https://www.linkedin.com/in/fabi-marrufo/","network":"linkedin"}]', null, '2022-2022', false, null, null, null),
+(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-2022', false, null, null, null),
+(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false, null, null, '{6,8}'),
+(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false, null, null, '{7}'),
+(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-2022', false, null, null, null),
+(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-2024', false, null, null, '{8}'),
+(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false, null, null, null),
+(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-2024', false, null, 12, '{12}'),
+(26, 'Owen', 'Luts', 'Quantum Lab Team Lead, Engineer', '/Owen_Luts.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null, '2024-Present', true, 'Team Lead and Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 12, '{0,12}'),
+(27, 'Kristen', 'Fang', 'Engineer', '/Kristen_Fang.jpg', '[{"link":"https://www.linkedin.com/in/kristenfang/","network":"linkedin"}]', null, '2024-Present', true, null, 3, '{0}'),
+(28, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/melissa-burisky-7b24bb230/"}]', null, '2024-2025', false, 'Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', 0, '{0}'),
+(29, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/michael-dibiase-8765632b8/"}]', null, '2024-2025', false, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 12, '{0,12}'),
+(30, 'Jack', 'DeFeo', 'Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2024-Present', true, null, null, null),
+(31, 'Jack', 'Barter', 'Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2024-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
+(32, 'Ursula', 'Parker', 'Project Manager, Imagine Team Lead', '/Ursula_Parker.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2024-Present', true, null, null, null),
+(33, 'Emma', 'Schmitt', 'AI Lab Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
+(34, 'Warner', 'Harper', 'Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
+(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
+(36, 'William', 'Herrick', 'Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, null),
+(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, null),
+(38, 'Darlyn', 'Gomez', 'Engineer', '/Darlyn_Gomez.jpg', '[{"link" : "https://www.linkedin.com/in/darlyn-gomez/"}]', null, '2025-Present', true, null, null, null),
+(39, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
+(40, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', null, null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);
 
 INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
 (2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),
