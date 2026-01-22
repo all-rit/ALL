@@ -62,10 +62,10 @@
     "build": "react-scripts build",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix --ext .js,.jsx ."
+    "lint": "eslint --fix ."
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "lint-staged": {
+    "*": "npx eslint --fix"
   },
   "browserslist": [
     ">0.2%",
