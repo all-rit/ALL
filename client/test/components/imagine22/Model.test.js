@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const {
   Players,
   createNewBoard,

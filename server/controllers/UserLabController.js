@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const UserLabService = require('../services/UserLabService');
 
 completeAbout = (req, res) => {
@@ -119,7 +118,7 @@ getUserLabRecords = async (req, res) => {
     res.status(200).json(labs);
   } catch (error) {
     console.error('Error while executing getUserLabRecords', error);
-    res.status(500).json({error: error.message});
+    res.status(500).json({ error: error.message });
   }
 };
 

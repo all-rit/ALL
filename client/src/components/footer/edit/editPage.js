@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable require-jsdoc */
 // New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
   let elems = document.querySelectorAll(

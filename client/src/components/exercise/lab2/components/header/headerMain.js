@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ColorUpdate from "./buttons/colorUpdate";
 import Home from "./buttons/homeReset.js";
@@ -90,8 +88,8 @@ class Header extends Component {
                         <div className="oneline">
                           <div>
                             {exercisesPlayed > 1 &&
-                            !thirdInfoState &&
-                            !endSystem ? (
+                              !thirdInfoState &&
+                              !endSystem ? (
                               <ColorUpdate openColorChange={openColorChange} />
                             ) : null}
                           </div>

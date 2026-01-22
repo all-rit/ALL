@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-// eslint-disable-next-line max-len
 import { NotificationAccessibleRepairKnowledgeCheck as KnowledgeCheck } from "../../../../../constants/lab5";
 class NotificationAccessibleRepairKnowledgeCheck extends Component {
   constructor(props) {

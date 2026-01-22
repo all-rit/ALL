@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
@@ -74,7 +72,7 @@ class ViewFix extends Component {
             textToSpeech(
               e,
               "If you have updated the buttons with the appropriate " +
-                "aria-labels then you have succeeded. They can now be effectively described by screenreaders.",
+              "aria-labels then you have succeeded. They can now be effectively described by screenreaders.",
             )
           }
         >

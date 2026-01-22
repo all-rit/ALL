@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 import API from "./API";
 
 const endpoints = {
@@ -57,8 +55,8 @@ const UserLabService = {
   user_complete_about: (userid, labid) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-        `/${userid}` +
-        endpoints.COMPLETE_ABOUT,
+      `/${userid}` +
+      endpoints.COMPLETE_ABOUT,
       {
         userid,
         labid,
@@ -68,8 +66,8 @@ const UserLabService = {
   user_complete_reading: (userid, labid) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-        `/${userid}` +
-        endpoints.COMPLETE_READING,
+      `/${userid}` +
+      endpoints.COMPLETE_READING,
       {
         userid,
         labid,
@@ -79,8 +77,8 @@ const UserLabService = {
   user_complete_exercise: (userid, labid) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-        `/${userid}` +
-        endpoints.COMPLETE_EXERCISE,
+      `/${userid}` +
+      endpoints.COMPLETE_EXERCISE,
       {
         userid,
         labid,
@@ -90,8 +88,8 @@ const UserLabService = {
   user_complete_reinforcement: (userid, labid) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-        `/${userid}` +
-        endpoints.COMPLETE_REINFORCEMENT,
+      `/${userid}` +
+      endpoints.COMPLETE_REINFORCEMENT,
       {
         userid,
         labid,

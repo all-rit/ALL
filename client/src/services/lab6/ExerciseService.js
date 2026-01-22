@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import API from "../API";
 
 const endpoints = {
@@ -46,7 +45,7 @@ const ExerciseService = {
   submitAIReasoningQuestion: (aiReasoningQuestion) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-        endpoints.SUBMIT_AI_REASONING_QUESTIONS,
+      endpoints.SUBMIT_AI_REASONING_QUESTIONS,
       {
         aiReasoningQuestion,
       },

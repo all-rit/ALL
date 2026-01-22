@@ -123,7 +123,7 @@ const FauxPostman = (props) => {
         try {
           setIncorrectRequestComplete(true);
           setResponse(ERROR_MESSAGE);
-        } catch (error) {
+        } catch (error) { // eslint-disable-line no-unused-vars
           console.error("Something went wrong.");
         }
       } else {

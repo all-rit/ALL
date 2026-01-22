@@ -1,9 +1,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import RepairService from "../../../../../services/lab5/RepairService";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
@@ -250,9 +248,8 @@ class PageLayoutRepair extends Component {
                     <input
                       name="h1value"
                       type="text"
-                      className={`htmlinput ${
-                        this.state.h1error ? "form-error-input" : ""
-                      }`}
+                      className={`htmlinput ${this.state.h1error ? "form-error-input" : ""
+                        }`}
                       defaultValue={data.h1value}
                       onChange={this.changeHandler.bind(this)}
                       required
@@ -351,9 +348,8 @@ class PageLayoutRepair extends Component {
                     <input
                       name="ulvalue"
                       type="text"
-                      className={`htmlinput ${
-                        this.state.ulerror ? "form-error-input" : ""
-                      }`}
+                      className={`htmlinput ${this.state.ulerror ? "form-error-input" : ""
+                        }`}
                       defaultValue={data.ulvalue}
                       onChange={this.changeHandler.bind(this)}
                       title="must enter ul"

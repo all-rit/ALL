@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
 
@@ -141,9 +140,8 @@ class FormComp extends Component {
             type="button"
             disabled={!this.state.answered}
             value="Give Up"
-            className={`formButtonHelp ${
-              this.state.answered ? "" : " disabled"
-            }`}
+            className={`formButtonHelp ${this.state.answered ? "" : " disabled"
+              }`}
             style={{ marginLeft: "20px" }}
             onClick={(e) => this.handleSubmit(e)}
           />

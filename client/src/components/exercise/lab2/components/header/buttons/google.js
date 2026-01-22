@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import GoogleButton from "react-google-button";
 import { withRouter } from "react-router";

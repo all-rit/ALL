@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ExerciseService from "../../../../services/lab1/ExerciseService";
 import UserLabService from "../../../../services/UserLabService";
@@ -251,7 +250,7 @@ class Exercise extends Component {
     const { handlers } = this.props;
     const message =
       CONGRATULATION_MESSAGES[
-        Math.floor(Math.random() * CONGRATULATION_MESSAGES.length)
+      Math.floor(Math.random() * CONGRATULATION_MESSAGES.length)
       ];
 
     handlers.updateCongratulationMessage(message);

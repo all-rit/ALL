@@ -1,6 +1,4 @@
-/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 

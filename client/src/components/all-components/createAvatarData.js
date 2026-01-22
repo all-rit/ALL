@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-/* eslint-disable require-jsdoc */
 
 const createAvatarData = (avatarNumber, weightedValues) => {
   let appearanceWeight =
@@ -355,7 +354,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
               FacialHairs[Math.floor(Math.random() * FacialHairs.length)],
             clotheType:
               noBlazerClothes[
-                Math.floor(Math.random() * noBlazerClothes.length)
+              Math.floor(Math.random() * noBlazerClothes.length)
               ],
             clotheColor: scolor,
             eyeType: Eyes[Math.floor(Math.random() * Eyes.length)],

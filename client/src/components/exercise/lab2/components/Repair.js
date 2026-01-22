@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-/* eslint-disable max-len */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
 import RepairService from "../../../../services/lab2/RepairService";
@@ -337,11 +335,10 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
-                      }`}
+                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
+                        ? "form-error-input"
+                        : ""
+                        }`}
                     />
                   )}
                 </div>
@@ -398,11 +395,10 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
-                      }`}
+                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
+                        ? "form-error-input"
+                        : ""
+                        }`}
                     />
                   )}
                 </div>
@@ -459,11 +455,10 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
-                      }`}
+                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
+                        ? "form-error-input"
+                        : ""
+                        }`}
                     />
                   )}
                 </div>
@@ -520,11 +515,10 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
-                      }`}
+                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
+                        ? "form-error-input"
+                        : ""
+                        }`}
                     />
                   )}
                 </div>

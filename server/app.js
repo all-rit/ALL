@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable max-len */
 require('dotenv').config();
 
 const express = require('express');
@@ -37,7 +36,7 @@ auth(passport);
 app.use(cookieParser());
 
 app.use(cors({
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1) {
       return callback(null, true);
     }

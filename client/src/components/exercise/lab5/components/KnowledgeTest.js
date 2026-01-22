@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ExerciseService from "../../../../services/lab5/ExerciseService";
 import { navigate } from "@reach/router";
@@ -56,14 +55,13 @@ class KnowledgeTest extends Component {
               key={index}
               onClick={this.handleSelection.bind(this)}
               value={option}
-              className={`option + ${
-                option === this.state.currentSelection && !this.state.correct
+              className={`option + ${option === this.state.currentSelection && !this.state.correct
                   ? "incorrect"
                   : "" + option === this.state.currentSelection &&
-                      this.state.correct
+                    this.state.correct
                     ? "correct"
                     : ""
-              }`}
+                }`}
             >
               {option}
             </button>
@@ -75,8 +73,8 @@ class KnowledgeTest extends Component {
               {this.state.correct
                 ? "Good Job! "
                 : "Incorrect! Correct Response was: '" +
-                  this.getCorrectChoice() +
-                  "'. "}{" "}
+                this.getCorrectChoice() +
+                "'. "}{" "}
               Select 'Next' To Move On
             </div>
             <button
