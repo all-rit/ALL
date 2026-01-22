@@ -91,6 +91,11 @@ const RSAEncryption = () => {
   };
 
   const encrypt = async () => {
+    if (!rsaBaseMessage) {
+      alert("Please Input a Message before pressing Encrypt");
+      return;
+    }
+
     const { publicKey, n, e, d } = await generateRSA();
 
     //Message len

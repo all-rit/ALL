@@ -133,11 +133,11 @@ const VigenereEncryption = () => {
           className={`${!validInput ? "tw-visible" : "tw-invisible"} tw-italic`}
         >
           Error: Please make sure that the message and key boxes have no numeric
-          or special characters.
+          or special characters, and are not empty!
         </p>
 
         <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
-          Error: Please Encrypt to continue
+          Error: Please presss Encrypt to continue.
         </p>
       </div>
 

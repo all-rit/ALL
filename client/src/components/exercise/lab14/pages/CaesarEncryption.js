@@ -147,8 +147,8 @@ const CaesarEncryption = () => {
       <p
         className={`tw-my-2 ${error ? "tw-visible" : "tw-invisible"} tw-italic`}
       >
-        Error: Please Encrypt a valid string, and make sure the shift value is
-        not 0 to continue.
+        Error: Make sure the shift value is not 0 to continue, and the input
+        message is not empty.
       </p>
       <LabButton onClick={handleContinue} label={"Next"} />
     </div>
