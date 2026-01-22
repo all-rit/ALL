@@ -9,7 +9,7 @@ const GroupService = {
   getCompletedGroupLabs: (userID, groupID) => {
     return API.get(
       process.env.REACT_APP_SERVER_URL +
-      `/group/${groupID}/labs/${userID}/completed`,
+        `/group/${groupID}/labs/${userID}/completed`,
     ).then((response) => response.json());
   },
 

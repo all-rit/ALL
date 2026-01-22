@@ -140,8 +140,9 @@ class FormComp extends Component {
             type="button"
             disabled={!this.state.answered}
             value="Give Up"
-            className={`formButtonHelp ${this.state.answered ? "" : " disabled"
-              }`}
+            className={`formButtonHelp ${
+              this.state.answered ? "" : " disabled"
+            }`}
             style={{ marginLeft: "20px" }}
             onClick={(e) => this.handleSubmit(e)}
           />

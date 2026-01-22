@@ -1,4 +1,5 @@
 /* eslint-disable react/no-deprecated */
+/* eslint-disable jest/expect-expect */
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";

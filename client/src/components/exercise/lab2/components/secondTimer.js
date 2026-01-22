@@ -52,9 +52,9 @@ class SecondTimer extends Component {
     const calculateScore = () => {
       if (
         this.numRightOnClick +
-        this.numRightOnNoClick +
-        this.numWrongOnClick +
-        this.numWrongOnNoClick !==
+          this.numRightOnNoClick +
+          this.numWrongOnClick +
+          this.numWrongOnNoClick !==
         15
       ) {
         if (this.clicked) {

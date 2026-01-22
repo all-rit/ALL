@@ -65,7 +65,7 @@ const ImagineService = {
     return Promise.resolve(
       API.get(
         process.env.REACT_APP_SERVER_URL +
-        `/imagine${year}/getTeammate/${userID}`,
+          `/imagine${year}/getTeammate/${userID}`,
         {},
       ).then((response) => response.json()),
     );
@@ -99,7 +99,7 @@ const ImagineService = {
   ) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-      `/imagine${year}/readingSectionPagePosition`,
+        `/imagine${year}/readingSectionPagePosition`,
       {
         userID,
         readingSectionPagePosition,
@@ -110,7 +110,7 @@ const ImagineService = {
   postTeammateSelection: async (userID, teammateAvatar, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-      `/imagine${year}/teammateAvatarSelection`,
+        `/imagine${year}/teammateAvatarSelection`,
       {
         userID,
         teammateAvatar,
@@ -131,7 +131,7 @@ const ImagineService = {
   postOpponentSelection: async (userID, opponentAvatar, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
-      `/imagine${year}/opponentAvatarSelection`,
+        `/imagine${year}/opponentAvatarSelection`,
       {
         userID,
         opponentAvatar,

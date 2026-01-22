@@ -250,7 +250,7 @@ class Exercise extends Component {
     const { handlers } = this.props;
     const message =
       CONGRATULATION_MESSAGES[
-      Math.floor(Math.random() * CONGRATULATION_MESSAGES.length)
+        Math.floor(Math.random() * CONGRATULATION_MESSAGES.length)
       ];
 
     handlers.updateCongratulationMessage(message);

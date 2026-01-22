@@ -248,8 +248,9 @@ class PageLayoutRepair extends Component {
                     <input
                       name="h1value"
                       type="text"
-                      className={`htmlinput ${this.state.h1error ? "form-error-input" : ""
-                        }`}
+                      className={`htmlinput ${
+                        this.state.h1error ? "form-error-input" : ""
+                      }`}
                       defaultValue={data.h1value}
                       onChange={this.changeHandler.bind(this)}
                       required
@@ -348,8 +349,9 @@ class PageLayoutRepair extends Component {
                     <input
                       name="ulvalue"
                       type="text"
-                      className={`htmlinput ${this.state.ulerror ? "form-error-input" : ""
-                        }`}
+                      className={`htmlinput ${
+                        this.state.ulerror ? "form-error-input" : ""
+                      }`}
                       defaultValue={data.ulvalue}
                       onChange={this.changeHandler.bind(this)}
                       title="must enter ul"

@@ -72,7 +72,7 @@ class ViewFix extends Component {
             textToSpeech(
               e,
               "If you have updated the buttons with the appropriate " +
-              "aria-labels then you have succeeded. They can now be effectively described by screenreaders.",
+                "aria-labels then you have succeeded. They can now be effectively described by screenreaders.",
             )
           }
         >

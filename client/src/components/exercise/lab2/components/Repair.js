@@ -335,10 +335,11 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
-                        ? "form-error-input"
-                        : ""
-                        }`}
+                      className={`form ${
+                        this.state.errorEqual || this.state.errorDarkBackground
+                          ? "form-error-input"
+                          : ""
+                      }`}
                     />
                   )}
                 </div>
@@ -395,10 +396,11 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
-                        ? "form-error-input"
-                        : ""
-                        }`}
+                      className={`form ${
+                        this.state.errorEqual || this.state.errorDarkBackground
+                          ? "form-error-input"
+                          : ""
+                      }`}
                     />
                   )}
                 </div>
@@ -455,10 +457,11 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
-                        ? "form-error-input"
-                        : ""
-                        }`}
+                      className={`form ${
+                        this.state.errorEqual || this.state.errorDarkBackground
+                          ? "form-error-input"
+                          : ""
+                      }`}
                     />
                   )}
                 </div>
@@ -515,10 +518,11 @@ class Repair extends Component {
                         height: "25px",
                         borderRadius: "25px",
                       }}
-                      className={`form ${this.state.errorEqual || this.state.errorDarkBackground
-                        ? "form-error-input"
-                        : ""
-                        }`}
+                      className={`form ${
+                        this.state.errorEqual || this.state.errorDarkBackground
+                          ? "form-error-input"
+                          : ""
+                      }`}
                     />
                   )}
                 </div>

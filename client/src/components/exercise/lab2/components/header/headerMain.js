@@ -88,8 +88,8 @@ class Header extends Component {
                         <div className="oneline">
                           <div>
                             {exercisesPlayed > 1 &&
-                              !thirdInfoState &&
-                              !endSystem ? (
+                            !thirdInfoState &&
+                            !endSystem ? (
                               <ColorUpdate openColorChange={openColorChange} />
                             ) : null}
                           </div>
