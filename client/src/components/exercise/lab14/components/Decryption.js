@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import PropTypes from "prop-types";
 
 import { Bar } from "react-chartjs-2";
@@ -12,6 +12,8 @@ const Decryption = ({
   quantumAttempts,
   quantumBoxElements,
 }) => {
+  const [decrypted, setDecrypted] = useState(false);
+
   const graphData = {
     labels: ["Classical", "Quantum"],
     datasets: [
@@ -47,6 +49,7 @@ const Decryption = ({
 
   const handleDecrypt = () => {
     decryptionFunction();
+    setDecrypted(true);
   };
 
   return (
@@ -80,31 +83,46 @@ const Decryption = ({
       {/* Spacer block */}
       <div className="tw-mt-10" />
 
-      {/* Output box section */}
-      <div className="tw-flex tw-flex-row tw-justify-center tw-w-full tw-flex-wrap tw-gap-y-16">
-        <OutputBox
-          title="Classical Computer"
-          boxElements={classicBoxElements}
-        />
-        <OutputBox title="Quantum Computer" boxElements={quantumBoxElements} />
-      </div>
+      {/* Only show below after button is pressed */}
+      {decrypted ? (
+        <div className="tw-flex tw-flex-col tw-items-center">
+          {/* Output box section */}
+          <div className="tw-flex tw-flex-row tw-justify-center tw-w-full tw-flex-wrap tw-gap-y-16">
+            <OutputBox
+              title="Classical Computer"
+              boxElements={classicBoxElements}
+            />
+            <OutputBox
+              title="Quantum Computer"
+              boxElements={quantumBoxElements}
+            />
+          </div>
 
-      {/* Spacer block */}
-      <div className="tw-mt-10" />
+          {/* Spacer block */}
+          <div className="tw-mt-10" />
 
-      {/* Graph section */}
-      <div className="tw-w-full tw-max-w-144">
-        <Bar data={graphData} options={graphOptions} width={600} height={400} />
-      </div>
+          {/* Graph section */}
+          <div className="tw-w-full tw-max-w-144">
+            <Bar
+              data={graphData}
+              options={graphOptions}
+              width={600}
+              height={400}
+            />
+          </div>
 
-      {/* Comparison section */}
-      <div className="tw-flex tw-justify-center tw-items-center">
-        <p className="tw-text-center tw-max-w-2xl tw-text-lg">
-          In this example, a quantum computer was{" "}
-          {(classicAttempts / quantumAttempts).toFixed(2)} times faster than a
-          classical computer!
-        </p>
-      </div>
+          {/* Comparison section */}
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <p className="tw-text-center tw-max-w-2xl tw-text-lg">
+              In this example, a quantum computer was{" "}
+              {(classicAttempts / quantumAttempts).toFixed(2)} times faster than
+              a classical computer!
+            </p>
+          </div>
+        </div>
+      ) : (
+        <p>Press the Decrypt Message button to see the results!</p>
+      )}
     </div>
   );
 };
