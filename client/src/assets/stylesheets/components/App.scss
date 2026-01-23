@@ -147,13 +147,15 @@ li {
   text-decoration: underline;
   padding-right: 10px;
   padding-left: 10px;
+  text-align: center;
+  align-items: center;
 }
 
 .link-footer {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -272,12 +274,6 @@ li {
 
 .RepairHeader {
   background: linear-gradient(to right, #414141, #d3d3d3, #fff);
-}
-
-.link {
-  text-decoration: underline;
-  padding-right: 10px;
-  padding-left: 10px;
 }
 
 .playthrough__sentence__imagine {
