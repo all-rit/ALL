@@ -63,7 +63,7 @@ const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
       ? 1
       : 0;
 
-  if (letterContent.length !== 0 && wordCount !== 0 && sentenceCount !== 0) {
+  if (letterContent.length !== 0) {
     fogIndex = (
       0.4 *
       (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))
