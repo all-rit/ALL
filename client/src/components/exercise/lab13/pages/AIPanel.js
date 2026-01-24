@@ -31,7 +31,9 @@ const AIPanel = () => {
         </Tab>
 
         <Tab label="Example 2">
-          <h2>Example Cases of AI</h2>
+          <h2>Example 2</h2>
+          <h3>Subtitle</h3>
+          <hr></hr>
           <p>{lorem.repeat(4)}</p>
           <hr />
           <ul>

@@ -144,7 +144,9 @@
   margin-top: -1px;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
   padding: 25px 30px 25px 25px;
-  height: calc(75vh - 125px);
+  height: calc(56vh);
   overflow-y: scroll;
-  border-bottom: 30px solid white;
+  border-top: 15px solid white;
+  border: solid white;
+  border-width: 15px 0;
 }
