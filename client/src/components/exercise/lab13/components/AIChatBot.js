@@ -153,7 +153,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         className="tw-flex-1 tw-overflow-y-auto tw-rounded-lg tw-p-4 tw-pb-16 tw-space-y-3 tw-relative tw-z-0"
       >
         <div
-          className="tw-absolute tw-inset-0 tw-m-auto tw-z-0 tw-pointer-events-none tw-transition-opacity tw-duration-1000 tw-ease-in-out"
+          className="tw-absolute tw-inset-0 tw-m-auto tw-z-0 tw-pointer-events-none tw-transition-opacity tw-duration-500 tw-ease-in-out"
           style={{
             backgroundImage: `url(${robotImage})`,
             backgroundSize: "cover",
