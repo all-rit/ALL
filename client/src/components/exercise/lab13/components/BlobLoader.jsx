@@ -156,8 +156,8 @@ const styles = {
   // Blob container
   blobContainer: {
     position: "relative",
-    width: "48px",
-    height: "48px",
+    width: "40px",
+    height: "40px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

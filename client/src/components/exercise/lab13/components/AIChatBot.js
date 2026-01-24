@@ -152,22 +152,20 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         ref={messagesContainerRef}
         className="tw-flex-1 tw-overflow-y-auto tw-rounded-lg tw-p-4 tw-pb-16 tw-space-y-3 tw-relative tw-z-0"
       >
-        {showOverlay && (
-          <div
-            className="tw-absolute tw-left-[38%]  tw-z-0 tw-pointer-events-none tw-transition-opacity 3s tw-duration-5000"
-            style={{
-              backgroundImage: `url(${robotImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              width: "255px",
-              height: "255px",
-              padding: "none",
-              marginTop: "30px",
-              opacity: showOverlay ? 0.3 : 0,
-            }}
-          />
-        )}
+        <div
+          className="tw-absolute tw-left-[38%] tw-z-0 tw-pointer-events-none tw-transition-opacity tw-duration-500 tw-ease-in-out"
+          style={{
+            backgroundImage: `url(${robotImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            width: "255px",
+            height: "255px",
+            padding: "none",
+            marginTop: "30px",
+            opacity: showOverlay ? 0.3 : 0,
+          }}
+        />
         {/* Container for indvidual messages */}
         {messages.map((msg, index) => (
           <div
@@ -280,10 +278,10 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
       </div>
 
       {/* AI search bottom panel */}
-      <div className="tw-w-full tw-bg-white tw-border-0 tw-border-t-4 tw-border-solid tw-border-primary-blue tw-rounded-b-lg tw-flex tw-justify-end">
+      <div className="tw-w-full tw-bg-white tw-border-0 tw-border-t-4 tw-border-solid tw-border-primary-blue tw-rounded-b-lg tw-flex">
         {/* Toggle button for dropdown menu */}
         <button
-          className="tw-bg-white tw-border-0 tw-p-0 tw-mr-20px tw-cursor-pointer tw-flex tw-items-center tw-justify-center disabled:tw-cursor-not-allowed"
+          className="tw-w-full tw-bg-white tw-border-0 tw-py-2 tw-px-4 tw-justify-end tw-cursor-pointer tw-flex tw-items-center disabled:tw-cursor-not-allowed tw-group"
           // Disable if typing
           onClick={handleToggleClick}
           disabled={isTyping || isThinking}
@@ -291,17 +289,13 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
             opacity: isTyping || isThinking ? 0.5 : 1,
           }}
         >
-          {isOpen ? (
-            <ArrowDropUpIcon
-              className="tw-text-primary-blue"
-              fontSize="large"
-            />
-          ) : (
-            <ArrowDropDownIcon
-              className="tw-text-primary-blue"
-              fontSize="large"
-            />
-          )}
+          <div className="tw-bg-primary-blue tw-rounded-lg tw-p-0 tw-flex tw-items-center tw-justify-center group-hover:tw-bg-labBlue group-disabled:group-hover:tw-bg-primary-blue tw-transition-colors tw-duration-200">
+            {isOpen ? (
+              <ArrowDropUpIcon className="tw-text-white" fontSize="large" />
+            ) : (
+              <ArrowDropDownIcon className="tw-text-white" fontSize="large" />
+            )}
+          </div>
         </button>
       </div>
       {/* Message fade in keyframe animation */}
