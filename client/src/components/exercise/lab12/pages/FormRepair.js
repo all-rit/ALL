@@ -6,7 +6,6 @@ import { navigate } from "@reach/router";
 import {
   FORM_REPAIR_HEADING,
   EXERCISE_STATES,
-  REPAIR,
   EXERCISE_PATH,
 } from "src/constants/lab12/index";
 import FormRepairImplementation from "./repairs/FormRepairImplementation";
@@ -28,29 +27,22 @@ const FormRepair = () => {
     EXERCISE_STATES.FORM_REPAIR,
     IdentityFormData.inputData,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
 
   return (
     <Repair
-      fileName={"IdentityForm.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.FORM_REPAIR}`}
+      data={data}
+      functions={functions}
       headingText={FORM_REPAIR_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         'In this section you will be making changes to the IdentityForm.js file that handles inputs in the previous form. Once completed, click the "Next" button to fill out the updated form!',
       ]}
-      CodeImplementation={
-        <FormRepairImplementation
-          handleUserInputChange={handleUserInputChange}
-          identityData={exercisePromptsState}
-          isInputValid={isInputValid}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "IdentityForm.js",
+          implementation: FormRepairImplementation,
+        },
+      ]}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/GraduationApplication`);
       }}

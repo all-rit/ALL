@@ -1,5 +1,5 @@
 export const Sections = {
-  0: {
+  99: {
     name: "", // represents Landing Page
     0: {
       name: "",
@@ -12,6 +12,25 @@ export const Sections = {
     },
     3: {
       name: "Imagine",
+    },
+  },
+  0: {
+    fullname: "Lab 0: How to Build an Accessible Learning Lab",
+    name: "Lab0",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
     },
   },
   1: {
@@ -149,7 +168,6 @@ export const Sections = {
   },
   8: {
     fullname: "Lab 8: Algorithmic Bias",
-    // TODO: edit this once we have an official title
     name: "Lab8",
     0: {
       name: "About",
@@ -245,8 +263,26 @@ export const Sections = {
   },
   13: {
     fullname: "Lab 13: Human Cognitive Bias & AI Lab",
-    // TODO: edit this once we have an official title
     name: "Lab13",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
+  14: {
+    fullname: "Lab 14: Quantum Cryptography",
+    name: "Lab14",
     0: {
       name: "About",
     },

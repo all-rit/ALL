@@ -1,6 +1,6 @@
 import handleRedirect from "../../../helpers/Redirect";
 import InfoModal from "./InfoModal";
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const LabFooter = (props) => {
@@ -51,6 +51,11 @@ const LabFooter = (props) => {
     },
   };
 
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
+
   const labButtons = () => {
     let currentUseCase;
 
@@ -66,8 +71,15 @@ const LabFooter = (props) => {
               Launch
             </button>
             <div className={`${buttonStyles.notCompleted.infoModal}`}>
+              <button
+                className="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                onClick={toggleOpen}
+              >
+                More Info
+              </button>
               <InfoModal
-                buttonLabel={"More Info"}
+                open={open}
+                toggleOpen={toggleOpen}
                 labName={name}
                 fullDescription={fullDescription}
                 learningObjectives={learningObjectives}
@@ -88,8 +100,15 @@ const LabFooter = (props) => {
               Launch
             </button>
             <div className={`${buttonStyles.completed.infoModal}`}>
+              <button
+                className="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                onClick={toggleOpen}
+              >
+                More Info
+              </button>
               <InfoModal
-                buttonLabel={"More Info"}
+                open={open}
+                toggleOpen={toggleOpen}
                 labName={name}
                 fullDescription={fullDescription}
                 learningObjectives={learningObjectives}
@@ -110,8 +129,15 @@ const LabFooter = (props) => {
               Launch
             </button>
             <div className={`${buttonStyles.default.infoModal}`}>
+              <button
+                className="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                onClick={toggleOpen}
+              >
+                More Info
+              </button>
               <InfoModal
-                buttonLabel={"More Info"}
+                open={open}
+                toggleOpen={toggleOpen}
                 labName={name}
                 fullDescription={fullDescription}
                 learningObjectives={learningObjectives}

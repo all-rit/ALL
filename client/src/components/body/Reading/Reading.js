@@ -155,8 +155,8 @@ const Reading = (props) => {
               </div>
             </>
           )}
-          {!hasPiechartInBody() && readingData?.piechart.caption !== "" ? (
-            readingData?.piechart.caption.map((data, index) => {
+          {!hasPiechartInBody() && readingData?.piechart?.caption !== "" ? (
+            readingData?.piechart?.caption.map((data, index) => {
               return (
                 <div
                   key={index}

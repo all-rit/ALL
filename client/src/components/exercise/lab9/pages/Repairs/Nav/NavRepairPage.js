@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../../body/Repair/Repair";
-import {
-  HEADINGS,
-  EXERCISE_STATES,
-  REPAIR,
-} from "../../../../../../constants/lab9";
+import { HEADINGS, EXERCISE_STATES } from "../../../../../../constants/lab9";
 import NavBarRepair from "./NavBarRepair";
 import useDataService from "../../../hooks/useDataService";
 import { navigate } from "@reach/router";
@@ -28,9 +24,6 @@ const NavRepairPage = ({ user }) => {
     EXERCISE_STATES.REPAIR_NAV_BAR,
     NavBarData.navItems,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
 
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
@@ -42,23 +35,19 @@ const NavRepairPage = ({ user }) => {
 
   return (
     <Repair
-      fileName={"NavBar.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_NAV_BAR}`}
+      data={data}
+      functions={functions}
       headingText={HEADINGS.REPAIR_NAV_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         "in this section you will be making changes to the repair data file below",
       ]}
-      CodeImplementation={
-        <NavBarRepair
-          navItems={exercisePromptsState}
-          userInput={handleUserInputChange}
-          isInputValid={isInputValid}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "NavBar.js",
+          implementation: NavBarRepair,
+        },
+      ]}
       navigateNext={() => handleNav()}
     />
   );
