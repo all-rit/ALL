@@ -10,12 +10,12 @@ import React from "react";
 import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const AddressRepairCodeBlock = (props = {}) => {
-  const { addressForms, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
 
   return (
     <>
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
-      {addressForms.map((country, index) => (
+      {inputs.map((country, index) => (
         <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
@@ -32,21 +32,21 @@ const AddressRepairCodeBlock = (props = {}) => {
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
 
-      {addressForms.map((country, index) => (
-        <div key={index}>
+      {inputs.map((input) => (
+        <div key={input.id}>
           {/* line 1 */}
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
               {" "}
-              &ldquo;{country.countryVariable}&rdquo; = &#123;
+              &ldquo;{input.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
 
           {/* line 2 */}
           <CodeLine>
             <MultiTab numberOfTabs={3} />
-            <CommentText>{country.comment}</CommentText>
+            <CommentText>{input.comment}</CommentText>
           </CodeLine>
 
           {/* line 3 */}
@@ -54,41 +54,27 @@ const AddressRepairCodeBlock = (props = {}) => {
             <MultiTab numberOfTabs={3} />
             <JSONText>&ldquo;addressFormat&rdquo; :</JSONText>
             <JSONText>&ldquo;</JSONText>
-            {country.userInput ? (
-              <CodeBlockInput
-                value={country.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(country.id, event.target.value);
-                  },
-                  name: country.countryName,
-                  type: "text",
-                  placeholder: "Enter Address Format Here",
-                  // overwrite styling to make input wider
-                  className: "p-1 tw-w-[34rem] code_editor__input",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(country.id, event.target.value);
-                  },
-                  name: country.countryName,
-                  type: "text",
-                  placeholder: "Enter Address Format Here",
-                  className: "p-1 tw-w-[34rem] code_editor__input",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.countryName,
+                type: "text",
+                placeholder: "Enter Address Format Here",
+                // overwrite styling to make input wider
+                className: "p-1 tw-w-[34rem] code_editor__input",
+              }}
+            />
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
-          {!isInputValid[index] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
                 Error in form submission. Please type &quot;
-                {country.correct_expression}&quot; and resubmit.
+                {input.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
@@ -111,9 +97,9 @@ const AddressRepairCodeBlock = (props = {}) => {
 };
 
 AddressRepairCodeBlock.propTypes = {
-  addressForms: PropTypes.array,
-  isInputValid: PropTypes.array,
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 

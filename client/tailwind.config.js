@@ -58,6 +58,7 @@ module.exports = {
       success: "#369d2a",
       hoverSuccess: "#238418",
       error: "#d03c3c",
+      transparent: "transparent",
     },
     extend: {
       borderWidth: {
@@ -77,6 +78,7 @@ module.exports = {
           gray: "#d3d3d3",
           white: "#FFFFFF",
         },
+        transparent: "transparent",
       },
       spacing: {
         128: "32rem",
@@ -86,10 +88,8 @@ module.exports = {
         "4xl": "2rem",
       },
       backgroundImage: {
-        "hero-light":
-          "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
-        "hero-dark":
-          "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
+        qubit:
+          "linear-gradient(280.39deg, rgba(13, 40, 188, 1) 0%, rgba(255, 195, 52, 1) 100%)",
       },
       height: {
         128: "31rem",
@@ -164,6 +164,18 @@ module.exports = {
           fontSize: "1.125rem",
           lineHeight: "1.6rem",
           textAlign: "left",
+        },
+        ".perspective-distant": {
+          perspective: "1200px",
+        },
+        ".backface-hidden": {
+          backfaceVisibility: "hidden",
+        },
+        ".transform-3d": {
+          transformStyle: "preserve-3d",
+        },
+        ".rotate-y-180": {
+          transform: "rotateY(180deg)",
         },
       });
     }),

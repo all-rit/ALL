@@ -2,6 +2,7 @@ const DateFormData = {
   countries: [
     {
       id: 0,
+      fileId: 0,
       countryVariable: "us",
       countryName: "united_states",
       comment: "// Enter 'MM-DD-YYYY' for localized dateform for the US",
@@ -11,6 +12,7 @@ const DateFormData = {
     },
     {
       id: 1,
+      fileId: 0,
       countryVariable: "uk",
       countryName: "united_kingdom",
       comment: "// Enter 'YYYY-MM-DD' for localized dateform for the UK",
@@ -20,6 +22,7 @@ const DateFormData = {
     },
     {
       id: 2,
+      fileId: 0,
       countryVariable: "jp",
       countryName: "japan",
       comment: "// Enter 'YYYY-MM-DD' for localized dateform for Japan",
@@ -29,6 +32,7 @@ const DateFormData = {
     },
     {
       id: 3,
+      fileId: 0,
       countryVariable: "db",
       countryName: "dubai",
       comment: "// Enter 'DD-MM-YYYY' for localized dateform for the Dubai",
@@ -38,6 +42,7 @@ const DateFormData = {
     },
     {
       id: 4,
+      fileId: 0,
       countryVariable: "df",
       countryName: "default_format",
       comment: "// Enter 'MM-DD-YYYY' for the default dateform",

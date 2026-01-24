@@ -116,9 +116,13 @@ const Reading = (props) => {
     navigate("/Imagine2023/PostSurvey");
   };
 
+  const hasPiechartInBody = () => {
+    return readingData?.body?.some((item) => item.type === "piechart");
+  };
+
   return (
     <div
-      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center"}
+      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem]"}
     >
       <h2
         className={
@@ -127,7 +131,7 @@ const Reading = (props) => {
       >
         Reading
       </h2>
-      <div className="tw-w-full">
+      <div className="tw-w-full tw-overflow-y-scroll">
         <div className="study tw-bg-white p-5 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
@@ -139,7 +143,7 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {readingData?.piechart?.header && (
+          {!hasPiechartInBody() && readingData?.piechart?.header && (
             <>
               <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
               <div className="flex tw-body-text">
@@ -151,8 +155,8 @@ const Reading = (props) => {
               </div>
             </>
           )}
-          {readingData?.piechart.caption !== "" ? (
-            readingData?.piechart.caption.map((data, index) => {
+          {!hasPiechartInBody() && readingData?.piechart?.caption !== "" ? (
+            readingData?.piechart?.caption.map((data, index) => {
               return (
                 <div
                   key={index}
@@ -203,6 +207,22 @@ const Reading = (props) => {
                   )}
                   {data.type === "image" && <Image data={data.content} />}
                   {data.type === "links" && <Links data={data.content} />}
+                  {data.type === "piechart" && data.content && (
+                    <>
+                      <div className="flex tw-body-text">
+                        <Pie
+                          data={data.content.data}
+                          height={!isImagine && 100}
+                          options={isImagine && { maintainAspectRatio: false }}
+                        />
+                      </div>
+                      {data.content.caption && (
+                        <div className="tw-body-text tw-text-[#666] tw-text-sm tw-text-center">
+                          {data.content.caption}
+                        </div>
+                      )}
+                    </>
+                  )}
                 </Fragment>
               );
             })

@@ -6,7 +6,7 @@ import Redirect from "../../helpers/Redirect";
 const Error = (props) => {
   const { actions } = props;
   return (
-    <div className="errorpage">
+    <div className="errorpage tw-w-full">
       <div>
         <h1>Invalid Page</h1>
         <hr className="horiz" />
@@ -14,7 +14,7 @@ const Error = (props) => {
         <hr className="horiz" />
         <button
           className="btn btn-second btn-xl text-uppercase"
-          onClick={() => Redirect(actions, 0, 0)}
+          onClick={() => Redirect(actions, 99, 0)}
         >
           Return Home
         </button>

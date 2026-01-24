@@ -8,6 +8,7 @@ import { default as Reinforcement } from "./components/body/Reinforcement";
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
 /** Exercise Components **/
+import { default as ExerciseLab0 } from "./components/exercise/lab0/Main";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -21,6 +22,8 @@ import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
+import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
+
 import { Sections } from "./constants/index";
 
 /** Persistent Components **/
@@ -90,24 +93,23 @@ const App = () => {
   const lab = state.main.lab;
   const body = state.main.body;
   const isImagine = state.main.isImagine;
-  const labInProgress = lab !== 0;
+  const labInProgress = lab !== 99;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+      <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
-
           <Reading
             path={`/Lab${lab}/Reading`}
             user={state.main.user}
             labID={lab}
             isImagine={isImagine}
           />
-
+          <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
           <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
           <ExerciseLab2
             path="/Lab2/Exercise"
@@ -125,6 +127,7 @@ const App = () => {
           <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
           <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
           <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
+          <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
 
           <Reinforcement
             path={`/Lab${lab}/Reinforcement`}
@@ -207,7 +210,7 @@ const App = () => {
             </Suspense>
           </div>
         </div>
-        {lab === 0 && !isImagine && <MainFooter />}
+        {!labInProgress && !isImagine && <MainFooter />}
         <ALLSnackbar />
       </div>
     </>

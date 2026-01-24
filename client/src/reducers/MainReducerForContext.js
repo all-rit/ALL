@@ -47,7 +47,7 @@ export const initialState = {
   userState: EXERCISE_IDLE,
   main: {
     user: null,
-    lab: 0,
+    lab: 99,
     body: 0,
     isImagine: false,
     snackbar: {
