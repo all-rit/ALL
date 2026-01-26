@@ -20,6 +20,8 @@ const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
   const [readingData, setReadingData] = useState("");
   const [modalOpen, setModalOpen] = useState(true);
+  const [pieModalOpen, setPieModalOpen] = useState(false);
+  const [showPieModalButton, setShowPieModalButton] = useState(false);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
@@ -42,6 +44,14 @@ const Reading = (props) => {
       setScrollPositionPercentage(percentage);
     }
   };
+
+  useEffect(() => {
+    if (window.innerWidth > 767) {
+      setShowPieModalButton(false);
+    } else {
+      setShowPieModalButton(true);
+    }
+  }, []);
 
   useEffect(() => {
     const readingAnalytics = async () => {
@@ -141,32 +151,64 @@ const Reading = (props) => {
           )}
           {readingData?.piechart && (
             <>
-              <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
-              <div className="flex tw-body-text">
-                <Pie
-                  data={readingData?.piechart.data}
-                  height={!isImagine && 100}
-                  options={isImagine && { maintainAspectRatio: false }}
-                />
-              </div>
+              {showPieModalButton ? (
+                <>
+                  <button
+                    className="responsive-button"
+                    onClick={() => {
+                      setPieModalOpen(true);
+                      console.log(pieModalOpen);
+                    }}
+                  >
+                    Show Pie Chart
+                  </button>
+                  <Modal
+                    isOpen={pieModalOpen}
+                    onClosed={() => setPieModalOpen(false)}
+                  >
+                    <ModalHeader>
+                      <h3 className={"tw-title tw-text-center"}>
+                        {readingData?.piechart.header}
+                      </h3>
+                    </ModalHeader>
+                    <ModalBody>
+                      <div className="flex tw-body-text">
+                        <Pie
+                          data={readingData?.piechart.data}
+                          height={!isImagine && 100}
+                          options={isImagine && { maintainAspectRatio: false }}
+                        />
+                      </div>
+                    </ModalBody>
+                  </Modal>
+                </>
+              ) : (
+                <>
+                  <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+                  <div className="flex tw-body-text">
+                    <Pie
+                      data={readingData?.piechart.data}
+                      height={!isImagine && 100}
+                      options={isImagine && { maintainAspectRatio: false }}
+                    />
+                  </div>
+                  {readingData?.piechart?.caption !== "" &&
+                    readingData?.piechart?.caption.map((data, index) => {
+                      return (
+                        <div
+                          key={index}
+                          id={"caption"}
+                          className={
+                            "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                          }
+                        >
+                          {data}
+                        </div>
+                      );
+                    })}
+                </>
+              )}
             </>
-          )}
-          {readingData?.piechart?.caption !== "" ? (
-            readingData?.piechart?.caption.map((data, index) => {
-              return (
-                <div
-                  key={index}
-                  id={"caption"}
-                  className={
-                    "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
-                  }
-                >
-                  {data}
-                </div>
-              );
-            })
-          ) : (
-            <></>
           )}
 
           {readingData?.body !== "" ? (
