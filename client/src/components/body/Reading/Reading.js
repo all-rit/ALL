@@ -165,6 +165,8 @@ const Reading = (props) => {
                   <Modal
                     isOpen={pieModalOpen}
                     onClosed={() => setPieModalOpen(false)}
+                    centered
+                    fullscreen={true}
                   >
                     <ModalHeader>
                       <h3 className={"tw-title tw-text-center"}>
@@ -172,11 +174,12 @@ const Reading = (props) => {
                       </h3>
                     </ModalHeader>
                     <ModalBody>
-                      <div className="flex tw-body-text">
+                      <div className="w-full max-w-md mx-auto tw-min-h-100vh">
                         <Pie
                           data={readingData?.piechart.data}
-                          height={!isImagine && 100}
-                          options={isImagine && { maintainAspectRatio: false }}
+                          options={{
+                            maintainAspectRatio: false,
+                          }}
                         />
                       </div>
                     </ModalBody>
