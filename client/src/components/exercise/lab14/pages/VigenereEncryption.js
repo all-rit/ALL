@@ -132,7 +132,10 @@ const VigenereEncryption = () => {
         Enter a base message and choose a key below. Click on the
         &quot;Encrypt&quot; button to see the Vigenère Cipher in action!
       </p>
-      <p className="tw-body-text tw-text-left tw-py-2"></p>
+      <p className="tw-body-text tw-text-left tw-py-2">
+        Below, the &quot;Encryption Key&quot; input box takes in a word or
+        phrase.
+      </p>
       <Encryption
         encryptionFunction={encrypt}
         encryptedMessage={vigenereEncryptedMessage}
