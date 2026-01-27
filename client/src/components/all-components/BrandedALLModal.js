@@ -36,10 +36,12 @@ const BrandedALLModal = (props) => {
           }
         >
           <button
-            className="tw-absolute sm:md:lg:tw-text-5xl
-                                            tw-font-poppins line-height-0 tw-top-0 tw-right-3
-                                            tw-text-primary-blue tw-bg-white
-                                            tw-rounded-4xl tw-border-0 xs:tw-text-xl "
+            className="tw-absolute tw-text-5xl 
+                                        tw-font-poppins tw-top-2 tw-right-2
+                                        tw-text-primary-blue tw-bg-white
+                                        tw-rounded-4xl tw-border-0
+                                        tw-w-10 tw-h-10
+                                        tw-flex tw-items-center tw-justify-center "
             onClick={toggle}
             aria-label="Escape Button"
           >
