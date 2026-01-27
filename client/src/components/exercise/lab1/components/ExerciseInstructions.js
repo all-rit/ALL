@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 
 import Image1 from "../../../../assets/images/lab1/exercise/1.jpg";

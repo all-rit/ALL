@@ -98,7 +98,6 @@ const useDataService = (user, section, defaultExerciseState) => {
         isComplete: checkInputValid(),
       };
       const repairID = await RepairService.submitRepair(body);
-      // eslint-disable-next-line no-unused-vars
       await handleExerciseUpdate(body, section);
 
       return repairID;

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const db = require('../database');
 
 exports.getAllTeamMembers = () => {
@@ -10,12 +9,12 @@ exports.getAllTeamMembers = () => {
 
 exports.getAllProfessors = () => {
   return db.Professors
-      .findAll({
-        order: [
-          ['id'],
-        ],
-        raw: true,
-      });
+    .findAll({
+      order: [
+        ['id'],
+      ],
+      raw: true,
+    });
 };
 
 exports.getAllAlumni = () => {

@@ -10,7 +10,6 @@ const RepairService = require('../../services/lab12/RepairService');
 async function submitChange(req) {
   try {
     const {userID, repair, isComplete, section} = req.body;
-    // eslint-disable-next-line max-len
     if (userID !== '' || repair !== '' || isComplete !== null || section !== '') {
       const response = RepairService.submitRepair({
         userID, repair, section, isComplete,

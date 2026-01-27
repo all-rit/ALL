@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable require-jsdoc */
 import React, { useEffect, useState } from "react";
 import Profile from "./Profile";
 import TeamMemberService from "../../../services/TeamMemberService";
@@ -56,7 +55,6 @@ const ProfileGeneration = (props) => {
         setAlumniInformation(data);
       });
     }
-    // eslint-disable-next-line
   }, []);
   return (
     <section className="page-section landingpage__pagesection">
