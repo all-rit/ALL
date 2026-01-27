@@ -61,7 +61,19 @@ const AIPanel = () => {
           <p>{lorem.repeat(3)}</p>
         </Tab>
       </Tabs>
-      <button onClick={handleContinue}>Next</button>
+
+      <div className="tw-flex tw-justify-end tw-mt-3 tw-pr-8">
+        <button
+          onClick={handleContinue}
+          className="
+            tw-group tw-relative tw-flex tw-items-center tw-gap-3 tw-px-8 tw-py-2 tw-bg-primary-blue tw-text-white tw-text-sm tw-font-semibold 
+            tw-rounded-full tw-border-4 tw-border-labBlue tw-shadow-lg hover:tw-bg-lightBlue hover:tw-border-lightBlue tw-transition-all tw-duration-200
+            focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-mediumBlue focus:tw-ring-offset-2
+          "
+        >
+          <span className="tw-leading-none">Next</span>
+        </button>
+      </div>
     </div>
   );
 };

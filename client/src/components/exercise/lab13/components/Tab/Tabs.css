@@ -10,7 +10,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  margin-bottom: 25px;
   /* background-color: #EEEEEE; */
   border-radius: 8px 8px 0 0;
 }
@@ -144,7 +143,7 @@
   margin-top: -1px;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
   padding: 25px 30px 25px 25px;
-  height: calc(56vh);
+  height: calc(54vh);
   overflow-y: scroll;
   border-top: 15px solid white;
   border: solid white;
