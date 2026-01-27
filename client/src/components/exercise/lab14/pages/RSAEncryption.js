@@ -5,60 +5,62 @@ import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
 
-const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => (
-  <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
-    <span className="tw-font-semibold">Number of Bits</span>
-    <div className="tw-flex tw-justify-between tw-w-full">
-      <span className="tw-font-semibold">{1024}</span>
-      <span className="tw-font-semibold">{2048}</span>
+const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
+  return (
+    <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
+      <span className="tw-font-semibold">Number of Bits</span>
+      <div className="tw-flex tw-justify-between tw-w-full">
+        <span className="tw-font-semibold">{1024}</span>
+        <span className="tw-font-semibold">{2048}</span>
+      </div>
+
+      <input
+        type="range"
+        min={1024}
+        max={2048}
+        step={8}
+        onChange={(e) => setShiftValue(Number(e.target.value))}
+        value={shiftValue}
+        className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
+        style={{
+          background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
+        }}
+      />
+
+      {/* Button Style */}
+      <style>
+        {`
+        input[type="range"]::-webkit-slider-thumb {
+          appearance: none;
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background: black;
+          cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background: black;
+          cursor: pointer;
+        }
+      `}
+      </style>
+
+      {/* Shift Bubble */}
+      <div
+        className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
+        style={{
+          left: `calc(${((shiftValue - 1024) / (2048 - 1024)) * 100}% - 12px)`,
+          pointerEvents: "none",
+        }}
+      >
+        {shiftValue}
+      </div>
     </div>
-
-    <input
-      type="range"
-      min={1024}
-      max={2048}
-      step={8}
-      onChange={(e) => setShiftValue(Number(e.target.value))}
-      value={shiftValue}
-      className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
-      style={{
-        background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
-      }}
-    />
-
-    {/* Button Style */}
-    <style>
-      {`
-       input[type="range"]::-webkit-slider-thumb {
-         appearance: none;
-         height: 16px;
-         width: 16px;
-         border-radius: 50%;
-         background: black;
-         cursor: pointer;
-       }
-       input[type="range"]::-moz-range-thumb {
-         height: 16px;
-         width: 16px;
-         border-radius: 50%;
-         background: black;
-         cursor: pointer;
-       }
-     `}
-    </style>
-
-    {/* Shift Bubble */}
-    <div
-      className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
-      style={{
-        left: `calc(${((shiftValue - 1024) / (2048 - 1024)) * 100}% - 12px)`,
-        pointerEvents: "none",
-      }}
-    >
-      {shiftValue}
-    </div>
-  </div>
-);
+  );
+};
 
 InputComponent.propTypes = {
   shiftValue: PropTypes.number,
@@ -76,26 +78,17 @@ const RSAEncryption = () => {
     setRsaShiftValue,
   } = useContext(ExerciseStateContext);
 
-  const [error, setError] = useState(false);
   const [n, setN] = useState(null);
   const [e, setE] = useState(null);
   const [d, setD] = useState(null);
+  const [encrypted, setEncrypted] = useState(false);
   const fillPercent = ((rsaShiftValue - 1024) / (2048 - 1024)) * 100;
 
   const handleContinue = () => {
-    if (rsaEncryptedMessage) {
-      navigate("/Lab14/Exercise/RSADecryption");
-    } else {
-      setError(true);
-    }
+    navigate("/Lab14/Exercise/RSADecryption");
   };
 
   const encrypt = async () => {
-    if (!rsaBaseMessage) {
-      alert("Please Input a Message before pressing Encrypt");
-      return;
-    }
-
     const { publicKey, n, e, d } = await generateRSA();
 
     //Message len
@@ -117,6 +110,7 @@ const RSAEncryption = () => {
     setN(n);
     setE(e);
     setD(d);
+    setEncrypted(true);
   };
 
   const generateRSA = async () => {
@@ -170,6 +164,7 @@ const RSAEncryption = () => {
         encryptedMessage={rsaEncryptedMessage}
         baseMessage={rsaBaseMessage}
         setBaseMessage={setRsaBaseMessage}
+        shiftValueValid={true} // there is no invalid value for RSA key size
       >
         <InputComponent
           shiftValue={rsaShiftValue}
@@ -247,16 +242,12 @@ const RSAEncryption = () => {
           </p>
         </div>
       </div>
-
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
-
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
-      >
-        Error: Please Encrypt a valid string to continue
-      </p>
+      <LabButton
+        className="tw-mt-10"
+        disabled={!encrypted}
+        onClick={handleContinue}
+        label={"Next"}
+      />
     </div>
   );
 };

@@ -13,9 +13,6 @@ const CaesarDecryption = () => {
   const { caesarBaseMessage, caesarEncryptedMessage, caesarShiftAmount } =
     useContext(ExerciseStateContext);
 
-  const [error, setError] = useState(false);
-  const [decryptionCompleted, setDecryptionCompleted] = useState(false);
-
   useEffect(() => {
     if (caesarEncryptedMessage === "") {
       handleReturn();
@@ -27,11 +24,7 @@ const CaesarDecryption = () => {
   };
 
   const handleContinue = () => {
-    if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/VigenereIntro");
-    } else {
-      setError(true);
-    }
+    navigate("/Lab14/Exercise/VigenereIntro");
   };
 
   const encrypt = (baseMessage, shiftValue) => {
@@ -100,8 +93,6 @@ const CaesarDecryption = () => {
     }
     setQuantumAttempts(attempts);
     setQuantumBoxElements(quantumArray);
-
-    setDecryptionCompleted(true);
   };
 
   return (
@@ -134,17 +125,12 @@ const CaesarDecryption = () => {
         classicBoxElements={classicBoxElements}
         quantumAttempts={quantumAttempts}
         quantumBoxElements={quantumBoxElements}
-      />
-      <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
-        <LabButton onClick={handleReturn} label={"Retry Encryption"} />
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
-
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
       >
-        Error: Please decrypt the message to continue
-      </p>
+        <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+          <LabButton onClick={handleReturn} label={"Retry Encryption"} />
+          <LabButton onClick={handleContinue} label={"Next"} />
+        </div>
+      </Decryption>
     </div>
   );
 };

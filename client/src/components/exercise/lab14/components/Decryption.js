@@ -11,6 +11,7 @@ const Decryption = ({
   classicBoxElements,
   quantumAttempts,
   quantumBoxElements,
+  children,
 }) => {
   const [decrypted, setDecrypted] = useState(false);
 
@@ -101,6 +102,16 @@ const Decryption = ({
           {/* Spacer block */}
           <div className="tw-mt-10" />
 
+          {/* Summary section */}
+          <p className="tw-text-center tw-max-w-2xl tw-text-lg">
+            In this example, a classical computer took {classicAttempts}{" "}
+            attempt(s) to decrypt the message, while a quantum computer only
+            took {quantumAttempts} attempt(s)!
+          </p>
+
+          {/* Spacer block */}
+          <div className="tw-mt-10" />
+
           {/* Graph section */}
           <div className="tw-w-full tw-max-w-144">
             <Bar
@@ -115,10 +126,11 @@ const Decryption = ({
           <div className="tw-flex tw-justify-center tw-items-center">
             <p className="tw-text-center tw-max-w-2xl tw-text-lg">
               In this example, a quantum computer was{" "}
-              {(classicAttempts / quantumAttempts).toFixed(2)} times faster than
-              a classical computer!
+              {classicAttempts / quantumAttempts} times faster than a classical
+              computer!
             </p>
           </div>
+          <div>{children}</div>
         </div>
       ) : (
         <p>Press the Decrypt Message button to see the results!</p>
@@ -135,6 +147,7 @@ Decryption.propTypes = {
   classicBoxElements: PropTypes.array,
   quantumAttempts: PropTypes.number,
   quantumBoxElements: PropTypes.array,
+  children: PropTypes.element.isRequired,
 };
 
 export default Decryption;

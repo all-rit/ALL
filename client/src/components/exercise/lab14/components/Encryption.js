@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import PropTypes from "prop-types";
 
 import { FormGroup, Input, Label } from "reactstrap";
@@ -9,10 +9,22 @@ const Encryption = ({
   encryptedMessage,
   baseMessage,
   setBaseMessage,
+  shiftValueValid,
   children,
 }) => {
+  const [validInput, setValidInput] = useState(null);
+
   const handleMessageChange = (e) => {
-    setBaseMessage(e.target.value);
+    const value = e.target.value;
+    setBaseMessage(value);
+
+    if (value === "") {
+      setValidInput(false);
+      return;
+    }
+
+    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
+    setValidInput(filteredValue === value ? true : false);
   };
 
   return (
@@ -26,18 +38,29 @@ const Encryption = ({
           <Input
             id="baseMessage"
             name="Message"
+            invalid={validInput === false}
             placeholder="Input Message Here"
             value={baseMessage}
             onChange={handleMessageChange}
             className="tw-flex tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
+          <p
+            className={`tw-w-[20rem] tw-my-2 ${validInput ? "tw-hidden" : ""}`}
+          >
+            Error: Remove any special characters or numbers from the input, and
+            make sure the input box is not empty.
+          </p>
         </FormGroup>
         {children}
       </div>
 
       {/* Button */}
       <div className="tw-flex tw-flex-col tw-items-center">
-        <LabButton onClick={encryptionFunction} label={"Encrypt"}></LabButton>
+        <LabButton
+          disabled={!shiftValueValid || !validInput}
+          onClick={encryptionFunction}
+          label={"Encrypt"}
+        ></LabButton>
       </div>
 
       {/* Encrypted Message */}
@@ -62,6 +85,7 @@ Encryption.propTypes = {
   baseMessage: PropTypes.string,
   setBaseMessage: PropTypes.func,
   encryptedMessage: PropTypes.string,
+  shiftValueValid: PropTypes.bool,
   children: PropTypes.element.isRequired,
 };
 

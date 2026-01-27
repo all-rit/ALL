@@ -6,20 +6,42 @@ import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
 import { Input, Label } from "reactstrap";
 
-const InputComponent = ({ vigenereKey, setVigenereKey }) => (
-  <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
-    <Label for="baseMessage" className="tw-font-semibold">
-      Encryption Key
-    </Label>
-    <Input
-      type="text"
-      placeholder="Enter Encryption Key Here"
-      onChange={(e) => setVigenereKey(e.target.value)}
-      value={vigenereKey}
-      className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
-    />
-  </div>
-);
+const InputComponent = ({ vigenereKey, setVigenereKey }) => {
+  const [validInput, setValidInput] = useState(null);
+
+  const handleShiftValueChange = (e) => {
+    const value = e.target.value;
+    setVigenereKey(value);
+
+    if (value === "") {
+      setValidInput(false);
+      return;
+    }
+
+    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
+    setValidInput(filteredValue === value ? true : false);
+  };
+
+  return (
+    <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
+      <Label for="baseMessage" className="tw-font-semibold">
+        Encryption Key
+      </Label>
+      <Input
+        id="vigenereKey"
+        invalid={validInput === false}
+        placeholder="Enter Encryption Key Here"
+        onChange={handleShiftValueChange}
+        value={vigenereKey}
+        className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
+      />
+      <p className={`tw-w-[20rem] tw-my-2 ${validInput ? "tw-hidden" : ""}`}>
+        Error: Remove any special characters or numbers from the input, and make
+        sure the input box is not empty.
+      </p>
+    </div>
+  );
+};
 
 InputComponent.propTypes = {
   vigenereKey: PropTypes.string,
@@ -36,32 +58,20 @@ const VigenereEncryption = () => {
     setVigenereEncryptedMessage,
   } = useContext(ExerciseStateContext);
 
-  const [error, setError] = useState(false);
-  const [validInput, setValidInput] = useState(true);
+  const [encrypted, setEncrypted] = useState(false);
 
   const isValidInput = (str) => {
+    if (str === "") {
+      return false;
+    }
     return /^[A-Za-z\s]+$/.test(str);
   };
 
   const handleContinue = () => {
-    if (!validInput) {
-      return;
-    } else if (!vigenereEncryptedMessage) {
-      setError(true);
-    } else {
-      navigate("/Lab14/Exercise/VigenereDecryption");
-    }
+    navigate("/Lab14/Exercise/VigenereDecryption");
   };
 
   const encrypt = () => {
-    if (isValidInput(vigenereBaseMessage) && isValidInput(vigenereKey)) {
-      setValidInput(true);
-    } else {
-      setValidInput(false);
-      setVigenereEncryptedMessage("");
-      return;
-    }
-
     const A = "A".charCodeAt(0);
     const a = "a".charCodeAt(0);
 
@@ -105,6 +115,7 @@ const VigenereEncryption = () => {
     }
 
     setVigenereEncryptedMessage(result);
+    setEncrypted(true);
   };
 
   return (
@@ -121,27 +132,18 @@ const VigenereEncryption = () => {
         encryptedMessage={vigenereEncryptedMessage}
         baseMessage={vigenereBaseMessage}
         setBaseMessage={setVigenereBaseMessage}
+        shiftValueValid={isValidInput(vigenereKey)}
       >
         <InputComponent
           vigenereKey={vigenereKey}
           setVigenereKey={setVigenereKey}
         />
       </Encryption>
-
-      <div className="tw-my-2">
-        <p
-          className={`${!validInput ? "tw-visible" : "tw-invisible"} tw-italic`}
-        >
-          Error: Please make sure that the message and key boxes have no numeric
-          or special characters, and are not empty!
-        </p>
-
-        <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
-          Error: Please presss Encrypt to continue.
-        </p>
-      </div>
-
-      <LabButton onClick={handleContinue} label={"Next"} />
+      <LabButton
+        disabled={!encrypted}
+        onClick={handleContinue}
+        label={"Next"}
+      />
     </div>
   );
 };
