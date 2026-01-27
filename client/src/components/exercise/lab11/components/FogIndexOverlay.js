@@ -65,7 +65,7 @@ const FogIndexOverlay = ({
             Complex Words: {totalComplexWords}
           </div>
           <div className={`tw-body-text tw-font-bold tw-self-start tw-py-2`}>
-            Fog Index: {fogIndex}
+            Fog Index: {fogIndex == Infinity ? 0 : fogIndex}
           </div>
         </div>
       </div>
