@@ -64,7 +64,7 @@ const Decryption = ({
           <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4">
             Encrypted Message
           </h5>
-          <p className="tw-flex tw-overflow-x-auto tw-overflow-y-hidden tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4">
+          <p className="tw-flex tw-overflow-x-auto tw-overflow-y-hidden tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4 tw-cursor-default">
             {encryptedMessage}
           </p>
         </div>

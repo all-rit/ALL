@@ -193,7 +193,8 @@ const RSAEncryption = () => {
               tw-rounded-lg
               tw-font-mono tw-text-sm
               tw-whitespace-nowrap
-              tw-overflow-x-auto"
+              tw-overflow-x-auto
+              tw-cursor-default"
           >
             {n ? `n = ${n}` : ""}
             <br />
@@ -213,7 +214,8 @@ const RSAEncryption = () => {
               tw-rounded-lg
               tw-font-mono tw-text-sm
               tw-whitespace-nowrap
-              tw-overflow-x-auto"
+              tw-overflow-x-auto
+              tw-cursor-default"
           >
             {n ? `n = ${n}` : ""}
             <br />

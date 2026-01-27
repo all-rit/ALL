@@ -12,7 +12,7 @@ const OutputBox = ({ title, boxElements }) => {
     }
 
     return (
-      <ol className="tw-list-inside tw-w-full">
+      <ol className="tw-list-inside tw-w-full tw-cursor-default">
         {boxElements.map((element, index) => (
           <li
             key={index}

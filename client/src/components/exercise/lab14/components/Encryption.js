@@ -70,7 +70,7 @@ const Encryption = ({
             Encrypted Message
           </h5>
           <div className="tw-w-[20rem] tw-min-h-[4rem] tw-p-4">
-            <p className="tw-bg-[#face3580] tw-overflow-x-auto tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold">
+            <p className="tw-bg-[#face3580] tw-overflow-x-auto tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold tw-cursor-default">
               {encryptedMessage}
             </p>
           </div>
