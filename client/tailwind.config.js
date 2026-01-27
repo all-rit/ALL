@@ -1,7 +1,5 @@
 const plugin = require("tailwindcss/plugin");
 
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 module.exports = {
   prefix: "tw-",
   content: ["../client/src/**/*.{js,jsx}"],

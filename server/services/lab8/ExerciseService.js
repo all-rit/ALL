@@ -1,6 +1,4 @@
-/* eslint-disable valid-jsdoc */
 const db = require('../../database');
-
 
 /**
  * submitChange(): is a function responsible for retrieving data

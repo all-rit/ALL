@@ -155,7 +155,7 @@ const getTeammate = async (data) => {
         userid: userID,
       },
     });
-    avatar = user.teammateAvatar;
+    const avatar = user.teammateAvatar;
     console.log('avatar======' + avatar);
     return avatar.id;
   } catch (error) {

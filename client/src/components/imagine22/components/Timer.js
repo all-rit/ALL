@@ -19,7 +19,6 @@ const Timer = ({ seconds: startTime, finished }) => {
       clearInterval(timer.current);
       timer.current = null; // safer to set to null
     };
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ const Timer = ({ seconds: startTime, finished }) => {
       timer.current = null;
       finished(); // change this or the logic inside
     }
-    // eslint-disable-next-line
   }, [seconds]);
 
   return (

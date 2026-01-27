@@ -1,9 +1,7 @@
-// eslint-disable-next-line max-len
 const ControllerTestUtil = require('../ControllerTestUtil');
 const ExerciseController = require(
     '../../../controllers/lab12/ExerciseController');
 
-// eslint-disable-next-line max-len
 describe('Test successful payloads in Lab 12 ExerciseController functions', () => {
   test('Test postExercise function', async () => {
     const req = ControllerTestUtil.formatRequest({

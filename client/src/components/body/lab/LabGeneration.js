@@ -1,6 +1,4 @@
-/* eslint-disable no-inner-declarations */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { useEffect, useState } from "react";
 import Lab from "./Lab";
 import LabService from "../../../services/LabService";
@@ -42,6 +40,7 @@ const LabGeneration = (props) => {
 
   useEffect(() => {
     if (labInformation.length === 0) {
+      // eslint-disable-next-line
       async function fetchGroups() {
         return LabService.getAllLabs();
       }

@@ -162,7 +162,7 @@ function Result(props) {
         const questionNumber = parseInt(answer) + 1;
         return (
           <ul>
-            <a key={questionNumber}>{answers[answer]["content"]}</a>
+            <div key={questionNumber}>{answers[answer]["content"]}</div>
           </ul>
         );
       });
@@ -170,7 +170,9 @@ function Result(props) {
       const questionNumber = parseInt(selectedAnswers.type) + 1;
       return (
         <ul>
-          <a key={questionNumber}>{answers[selectedAnswers.type]["content"]}</a>
+          <div key={questionNumber}>
+            {answers[selectedAnswers.type]["content"]}
+          </div>
         </ul>
       );
     }
@@ -231,7 +233,7 @@ Result.propTypes = {
   quizQuestions: PropTypes.array,
   state: PropTypes.shape({
     main: PropTypes.shape({
-      user: PropTypes.number,
+      user: PropTypes.object,
     }),
   }),
 };

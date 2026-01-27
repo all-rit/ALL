@@ -1,11 +1,6 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-tabs */
-/* eslint-disable new-cap */
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
 import RepairService from "../../../../services/lab3/RepairService";
@@ -191,7 +186,7 @@ class Repair extends Component {
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
               <span className="code_editor__line--gold">
-                {() => CatClick()}
+                {() => CatClick() /* eslint-disable-line no-undef */}
               </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
@@ -243,7 +238,7 @@ class Repair extends Component {
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
               <span className="code_editor__line--gold">
-                {() => CarClick()}
+                {() => CarClick() /* eslint-disable-line no-undef */}
               </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
@@ -307,7 +302,7 @@ class Repair extends Component {
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
               <span className="code_editor__line--gold">
-                {() => BurgerClick()}
+                {() => BurgerClick() /* eslint-disable-line no-undef */}
               </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
@@ -359,7 +354,7 @@ class Repair extends Component {
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
               <span className="code_editor__line--gold">
-                {() => CowClick()}
+                {() => CowClick() /* eslint-disable-line no-undef */}
               </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>

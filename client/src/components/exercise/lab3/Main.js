@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Router } from "@reach/router";
@@ -40,7 +38,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Main extends Component {
-  // eslint-disable-next-line require-jsdoc
   render() {
     const { actions, state, user } = this.props;
     return (

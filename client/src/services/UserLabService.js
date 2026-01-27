@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 import API from "./API";
 
 const endpoints = {
