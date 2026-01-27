@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
@@ -77,6 +77,12 @@ const RSAEncryption = () => {
     rsaShiftValue,
     setRsaShiftValue,
   } = useContext(ExerciseStateContext);
+
+  useEffect(() => {
+    setRsaBaseMessage("");
+    setRsaEncryptedMessage("");
+    setRsaShiftValue(1024);
+  }, []);
 
   const [n, setN] = useState(null);
   const [e, setE] = useState(null);
@@ -244,8 +250,11 @@ const RSAEncryption = () => {
           </p>
         </div>
       </div>
+
+      {/* Spacer block */}
+      <div className="tw-mt-10"></div>
+
       <LabButton
-        className="tw-mt-10"
         disabled={!encrypted}
         onClick={handleContinue}
         label={"Next"}

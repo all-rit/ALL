@@ -1,4 +1,4 @@
-import { React, useContext, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
@@ -57,6 +57,12 @@ const VigenereEncryption = () => {
     vigenereEncryptedMessage,
     setVigenereEncryptedMessage,
   } = useContext(ExerciseStateContext);
+
+  useEffect(() => {
+    setVigenereBaseMessage("");
+    setVigenereEncryptedMessage("");
+    setVigenereKey("");
+  }, []);
 
   const [encrypted, setEncrypted] = useState(false);
 

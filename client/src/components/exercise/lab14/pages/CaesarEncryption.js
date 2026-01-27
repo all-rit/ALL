@@ -1,4 +1,4 @@
-import { React, useContext, useState } from "react";
+import { React, useContext, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
@@ -87,6 +87,12 @@ const CaesarEncryption = () => {
     setCaesarEncryptedMessage,
     setCaesarShiftAmount,
   } = useContext(ExerciseStateContext);
+
+  useEffect(() => {
+    setCaesarBaseMessage("");
+    setCaesarEncryptedMessage("");
+    setCaesarShiftAmount(0);
+  }, []);
 
   const [encrypted, setEncrypted] = useState(false);
   const [shiftValue, setShiftValue] = useState(0);
