@@ -16,12 +16,19 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 
+const pieWindowHeightPercentage = 0.7;
+const pieWinodwResizeWidth = 880;
+
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
   const [readingData, setReadingData] = useState("");
   const [modalOpen, setModalOpen] = useState(true);
   const [pieModalOpen, setPieModalOpen] = useState(false);
   const [showPieModalButton, setShowPieModalButton] = useState(false);
+  const [pieHeight, setPieHeight] = useState(
+    window.innerHeight * pieWindowHeightPercentage,
+  );
+  const [pieWidth, setPieWidth] = useState(window.innerWidth);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
@@ -45,15 +52,23 @@ const Reading = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (window.innerWidth > 767) {
+  window.onresize = () => {
+    windowResizeEvent();
+    setPieHeight(window.innerHeight * pieWindowHeightPercentage);
+    setPieWidth(window.innerWidth);
+  };
+
+  function windowResizeEvent() {
+    if (window.innerWidth > pieWinodwResizeWidth) {
       setShowPieModalButton(false);
     } else {
       setShowPieModalButton(true);
     }
-  }, []);
+  }
 
   useEffect(() => {
+    pieWidth;
+    windowResizeEvent();
     const readingAnalytics = async () => {
       await UserLabService.complete_reading(labID);
       if (user?.firstname !== null && user !== null) {
@@ -174,12 +189,14 @@ const Reading = (props) => {
                       </h3>
                     </ModalHeader>
                     <ModalBody>
-                      <div className="w-full max-w-md mx-auto tw-min-h-100vh">
+                      <div>
                         <Pie
+                          className="tw-w-auto"
                           data={readingData?.piechart.data}
                           options={{
                             maintainAspectRatio: false,
                           }}
+                          height={pieHeight}
                         />
                       </div>
                     </ModalBody>
