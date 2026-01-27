@@ -189,7 +189,7 @@ const Reading = (props) => {
                       </h3>
                     </ModalHeader>
                     <ModalBody>
-                      <div>
+                      <div className="flex tw-body-text">
                         <Pie
                           className="tw-w-auto"
                           data={readingData?.piechart.data}
