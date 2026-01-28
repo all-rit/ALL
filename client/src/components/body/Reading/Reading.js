@@ -182,7 +182,7 @@ const Reading = (props) => {
               {showPieModalButton ? (
                 <>
                   <button
-                    className="responsive-button"
+                    className="btn tw-rounded-full tw-bg-secondary-gray tw-shadow-md btn-xl text-uppercase"
                     onClick={() => {
                       setPieModalOpen(true);
                       console.log(pieModalOpen);
