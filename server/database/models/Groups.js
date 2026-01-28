@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 module.exports = (sequelize, DataTypes) => {
   const Groups = sequelize.define(
       'Groups',

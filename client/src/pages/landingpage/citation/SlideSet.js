@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
-/* eslint-disable guard-for-in */
 import React, { useEffect, useState } from "react";
 import { Carousel, CarouselItem, CarouselControl } from "reactstrap";
 
@@ -65,7 +63,6 @@ const SlideSet = (props) => {
         );
       }),
     );
-    // eslint-disable-next-line
   }, [teamInformation]);
 
   return (

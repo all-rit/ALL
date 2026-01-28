@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable max-len */
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { Typography } from "@mui/material";
 import "../../../../../assets/stylesheets/prism.scss";

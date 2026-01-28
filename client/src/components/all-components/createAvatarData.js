@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-/* eslint-disable require-jsdoc */
 
 const createAvatarData = (avatarNumber, weightedValues) => {
   let appearanceWeight =

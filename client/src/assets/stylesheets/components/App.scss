@@ -147,14 +147,21 @@ li {
   text-decoration: underline;
   padding-right: 10px;
   padding-left: 10px;
+  text-align: center;
+  align-items: center;
 }
 
 .link-footer {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+}
+
+.footer-header {
+  margin: 0rem;
+  margin-bottom: 1.25rem;
 }
 
 @keyframes spin {
@@ -267,20 +274,6 @@ li {
 
 .RepairHeader {
   background: linear-gradient(to right, #414141, #d3d3d3, #fff);
-}
-
-.link {
-  text-decoration: underline;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.link-footer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  flex-direction: column;
-  align-items: center;
 }
 
 .playthrough__sentence__imagine {

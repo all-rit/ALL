@@ -1,8 +1,5 @@
-/* eslint-disable brace-style */
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from "victory";
 

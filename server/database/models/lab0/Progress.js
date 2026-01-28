@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
   const lab0ProgressCategory = DataTypes.ENUM(
       'DESIGN',
