@@ -23,7 +23,7 @@ const Encryption = ({
       return;
     }
 
-    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
+    const filteredValue = value.replace(/[^a-zA-Z]/g, "");
     setValidInput(filteredValue === value ? true : false);
   };
 

@@ -184,7 +184,7 @@ const RSAEncryption = () => {
       </h1>
 
       {/*Left -  KEYS */}
-      <div className="tw-flex tw-flex-row tw-gap-12 tw-justify-center">
+      <div className="tw-flex tw-flex-row tw-flex-wrap tw-gap-12 tw-justify-center">
         <div>
           <h5 className="tw-text-sub-title tw-mt-4 tw-mb-2 tw-text-left">
             Public Key:
