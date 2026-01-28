@@ -1,11 +1,9 @@
 import { React } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
 import LabButton from "src/components/all-components/LabButton";
 
 const IDEIntroduction = () => {
   const handleContinue = () => {
-    startExercise();
     navigate("/Lab13/Exercise/IDEExercise");
   };
 
