@@ -113,7 +113,7 @@ const App = () => {
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full"}>
+      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
@@ -200,11 +200,7 @@ const App = () => {
   return (
     <>
       <div
-        className={`overflow-x-hidden ${
-          labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
-        }`}
+        className={`overflow-x-hidden ${labInProgress || isImagine ? "overflow-y-hidden tw-h-lvh" : "overflow-y-auto min-h-screen"}`}
       >
         <Header isImagine={isImagine} />
         <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
