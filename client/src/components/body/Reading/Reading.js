@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
@@ -18,6 +18,7 @@ import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 880;
+const pieWindowResizeHeight = 900;
 
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
@@ -28,14 +29,19 @@ const Reading = (props) => {
   const [pieHeight, setPieHeight] = useState(
     window.innerHeight * pieWindowHeightPercentage,
   );
-  const [pieWidth, setPieWidth] = useState(window.innerWidth);
+  const [pieWidth, setPieWidth] = useState(0);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
   let [saveData, setSaveData] = useState(false);
+  const pieDivRef = useRef(null);
 
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+  const togglePie = () => {
+    setPieModalOpen(!pieModalOpen);
   };
 
   useScroll();
@@ -55,7 +61,7 @@ const Reading = (props) => {
   window.onresize = () => {
     windowResizeEvent();
     setPieHeight(window.innerHeight * pieWindowHeightPercentage);
-    setPieWidth(window.innerWidth);
+    console.log(pieWidth);
   };
 
   function windowResizeEvent() {
@@ -64,11 +70,13 @@ const Reading = (props) => {
     } else {
       setShowPieModalButton(true);
     }
+    setPieWidth(window.innerWidth);
   }
 
   useEffect(() => {
-    pieWidth;
     windowResizeEvent();
+    if (pieDivRef.current)
+      setPieWidth(pieDivRef.current.getBoundingClientRect().width);
     const readingAnalytics = async () => {
       await UserLabService.complete_reading(labID);
       if (user?.firstname !== null && user !== null) {
@@ -164,6 +172,10 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
+          {/* 
+            DEV NOTE:
+              This is if we choose to go with button format for smaller devices
+          */}
           {readingData?.piechart && (
             <>
               {showPieModalButton ? (
@@ -182,8 +194,9 @@ const Reading = (props) => {
                     onClosed={() => setPieModalOpen(false)}
                     centered
                     fullscreen={true}
+                    toggle={togglePie}
                   >
-                    <ModalHeader>
+                    <ModalHeader toggle={togglePie}>
                       <h3 className={"tw-title tw-text-center"}>
                         {readingData?.piechart.header}
                       </h3>
@@ -228,6 +241,38 @@ const Reading = (props) => {
                     })}
                 </>
               )}
+            </>
+          )}
+
+          {/* End */}
+          {/* 
+            DEV NOTE:
+              This is for rendering in the page on both
+          */}
+          {readingData?.piechart && (
+            <>
+              <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+              <div ref={pieDivRef} className="flex tw-body-text">
+                <Pie
+                  data={readingData?.piechart.data}
+                  height={pieHeight <= pieWindowResizeHeight ? pieHeight : 100}
+                  options={isImagine && { maintainAspectRatio: false }}
+                />
+              </div>
+              {readingData?.piechart?.caption !== "" &&
+                readingData?.piechart?.caption.map((data, index) => {
+                  return (
+                    <div
+                      key={index}
+                      id={"caption"}
+                      className={
+                        "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                      }
+                    >
+                      {data}
+                    </div>
+                  );
+                })}
             </>
           )}
 
