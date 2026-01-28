@@ -18,7 +18,7 @@ import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 880;
-const pieWindowResizeHeight = 900;
+// const pieWindowResizeHeight = 900;
 
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
@@ -70,6 +70,7 @@ const Reading = (props) => {
     } else {
       setShowPieModalButton(true);
     }
+    setPieHeight(window.innerHeight * pieWindowHeightPercentage);
     setPieWidth(window.innerWidth);
   }
 
@@ -249,13 +250,14 @@ const Reading = (props) => {
             DEV NOTE:
               This is for rendering in the page on both
           */}
-          {readingData?.piechart && (
+          {/* {readingData?.piechart && (
             <>
               <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
               <div ref={pieDivRef} className="flex tw-body-text">
                 <Pie
                   data={readingData?.piechart.data}
-                  height={pieHeight <= pieWindowResizeHeight ? pieHeight : 100}
+                  height={showPieModalButton ? pieHeight : 100}
+                  width={showPieModalButton && pieWidth}
                   options={isImagine && { maintainAspectRatio: false }}
                 />
               </div>
@@ -274,7 +276,7 @@ const Reading = (props) => {
                   );
                 })}
             </>
-          )}
+          )} */}
 
           {readingData?.body !== "" ? (
             readingData?.body.map((data, index) => {
