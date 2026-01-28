@@ -27,13 +27,20 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [preferredName, setPreferredName] = useState("");
-  // const [pronouns, setPronouns] = useState("");
-  // const [college, setCollege] = useState("");
-  // const [major, setMajor] = useState("");
-  // const [gradTerm, setGradTerm] = useState("");
+  // User profile state
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [preferredName, setPreferredName] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [college, setCollege] = useState("");
+  const [major, setMajor] = useState("");
+  const [gradTerm, setGradTerm] = useState("");
+
+  // Ranking state
+  const [rankingSuccess, setRankingSuccess] = useState(false);
+  const [rankingColumns, setRankingColumns] = useState([]);
+  const [rankingBank, setRankingBank] = useState([]);
+  const [rankingComplete, setRankingComplete] = useState(false);
 
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
@@ -41,13 +48,35 @@ const Main = () => {
         value={{
           exerciseState,
           setExerciseState,
-          // firstName,
-          // setFirstName,
-          // lastName,
-          // setLastName,
-          // preferredName,
-          // setPreferredName,
-          // pronouns,
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
+          preferredName,
+          setPreferredName,
+          pronouns,
+          setPronouns,
+          college,
+          setCollege,
+          major,
+          setMajor,
+          gradTerm,
+          setGradTerm,
+          // Ranking state
+          rankingSuccess,
+          setRankingSuccess,
+          rankingColumns,
+          setRankingColumns,
+          rankingBank,
+          setRankingBank,
+          rankingComplete,
+          setRankingComplete,
+          resetRanking: () => {
+            setRankingSuccess(false);
+            setRankingColumns([]);
+            setRankingBank([]);
+            setRankingComplete(false);
+          },
           // setPronouns,
           // college,
           // setCollege,
