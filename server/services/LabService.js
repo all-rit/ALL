@@ -19,6 +19,7 @@ const quizNotRetrieved = 'Error: Quiz Not Retrieved';
 async function getAllLabs() {
   return await db.Labs.findAll({
     raw: true,
+    order: [['id', 'ASC']],
   });
 };
 /**
