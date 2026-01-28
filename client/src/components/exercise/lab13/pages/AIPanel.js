@@ -1,33 +1,36 @@
-import { React } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
-import { navigate } from "@reach/router";
-import AIChatBot from "../components/AIChatBot";
+import { React } from 'react';
+import { startExercise } from 'src/reducers/lab2/actions';
+import { navigate } from '@reach/router';
+import AIChatBot from '../components/AIChatBot';
+import { Tabs } from '../components/Tab/Tabs';
+import { Tab } from '../components/Tab/Tab';
+import dyslexiaImage from '../components/dyslexia.jpg';
 
 const AIPanel = () => {
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab13/Exercise/HaloExplination");
+    navigate('/Lab13/Exercise/HaloExplination');
   };
 
   const questions = [
     {
       id: 1,
-      text: "Lorem ipsum dolor sit amet?",
+      text: 'Is dyslexia a vision problem?',
     },
     {
       id: 2,
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat?",
+      text: 'Do people who have dyslexia see words and letters backward?',
     },
     {
       id: 3,
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum?",
+      text: 'Can dyslexia be cured?',
     },
   ];
 
   const answers = [
     {
       id: 1,
-      text: "Lorem ipsum dolor.",
+      text: 'Lorem ipsum dolor.',
     },
     {
       id: 2,
@@ -41,9 +44,58 @@ const AIPanel = () => {
 
   return (
     <div>
-      <AIChatBot userQuestions={questions} fixedAIResponse={answers} />
-      AI Panel Page
-      <button onClick={handleContinue}>Next</button>
+      <Tabs>
+        <Tab label="AIChatBot">
+          <div className="tw-h-[50%]">
+            <AIChatBot userQuestions={questions} fixedAIResponse={answers} />
+          </div>
+        </Tab>
+        <Tab label="ALLpedia">
+          <div className="tw-h-[98%]">
+            <h2 className="tw-text-start">Dyslexia</h2>
+            <hr></hr>
+
+            <div className="tw-flex tw-justify-between tw-w-full tw-h-56">
+              <div className="tw-w-[48%] tw-h-full">
+                <p className="tw-text-left">
+                  Dyslexia is a neurological learning disability that primarily
+                  affects reading and language processing. It is not a vision
+                  problem and does not affect intelligence. People with dyslexia
+                  may have difficulty connecting written letters to spoken
+                  sounds, not how letters visually appear.
+                </p>
+                <br></br>
+                <p className="tw-text-left">
+                  Dyslexia cannot be cured, but it can be effectively supported
+                  through early intervention, structured reading instruction,
+                  and classroom accommodations.
+                </p>
+              </div>
+              <div
+                className="tw-bg-labYellow tw-w-[48%]"
+                style={{
+                  backgroundImage: `url(${dyslexiaImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              ></div>
+            </div>
+          </div>
+        </Tab>
+      </Tabs>
+      <div className="tw-flex tw-justify-end tw-mt-3 tw-pr-8">
+        <button
+          onClick={handleContinue}
+          className="
+            tw-group tw-relative tw-flex tw-items-center tw-gap-3 tw-px-8 tw-py-2 tw-bg-primary-blue tw-text-white tw-text-sm tw-font-semibold 
+            tw-rounded-full tw-border-4 tw-border-labBlue tw-shadow-lg hover:tw-bg-lightBlue hover:tw-border-lightBlue tw-transition-all tw-duration-200
+            focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-mediumBlue focus:tw-ring-offset-2
+          "
+        >
+          <span className="tw-leading-none">Next</span>
+        </button>
+      </div>
     </div>
   );
 };

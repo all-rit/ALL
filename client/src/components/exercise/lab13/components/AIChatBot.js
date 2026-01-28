@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
-import PropTypes from "prop-types";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import BlobLoader from "./BlobLoader";
-import robotImage from "./robot.png";
+import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import BlobLoader from './BlobLoader';
+import robotImage from './robot.png';
 
 // Example prop
 // const questions = [
@@ -26,7 +26,7 @@ import robotImage from "./robot.png";
  * @returns
  */
 const TypingMessage = ({ text, onUpdate, onComplete }) => {
-  const [displayedText, setDisplayedText] = useState("");
+  const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   /**
@@ -91,13 +91,13 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
    * @param {} question : Question object from questions array
    */
   const handleQuestionClick = (question) => {
-    const userMsg = { sender: "user", text: question.text };
+    const userMsg = { sender: 'user', text: question.text };
 
     // Find the corresponding AI response by the matching ID
     const botObj = fixedAIResponse.find((resp) => resp.id === question.id);
     const botMsg = {
-      sender: "bot",
-      text: botObj ? botObj.text : "No response found.",
+      sender: 'bot',
+      text: botObj ? botObj.text : 'No response found.',
     };
 
     setMessages((prev) => [...prev, userMsg]);
@@ -127,9 +127,9 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
    * @returns {string} "pulsing" | "spinning" | "static"
    */
   const getBlobMode = () => {
-    if (isThinking) return "pulsing";
-    if (isTyping) return "spinning";
-    return "static";
+    if (isThinking) return 'pulsing';
+    if (isTyping) return 'spinning';
+    return 'static';
   };
 
   const handleToggleClick = () => {
@@ -145,7 +145,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
   return (
     <div
       className="tw-w-full tw-h-[400px] tw-rounded-lg tw-border-solid tw-border-primary-blue tw-flex tw-flex-col tw-overflow-hidden tw-font-sans"
-      style={{ backgroundColor: "#faf9f6", fontFamily: "Calibri, sans-serif" }}
+      style={{ backgroundColor: '#faf9f6', fontFamily: 'Calibri, sans-serif' }}
     >
       {/* Scrollable container that displays the chat messages */}
       <div
@@ -156,12 +156,12 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
           className="tw-absolute tw-inset-0 tw-m-auto tw-z-0 tw-pointer-events-none tw-transition-opacity tw-duration-500 tw-ease-in-out"
           style={{
             backgroundImage: `url(${robotImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "255px",
-            height: "255px",
-            padding: "none",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            width: '255px',
+            height: '255px',
+            padding: 'none',
             opacity: showOverlay ? 0.3 : 0,
           }}
         />
@@ -170,22 +170,22 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
           <div
             key={index}
             className={`tw-flex tw-flex-col tw-relative tw-z-10 ${
-              msg.sender === "user" ? "tw-items-end" : "tw-items-start"
+              msg.sender === 'user' ? 'tw-items-end' : 'tw-items-start'
             }`}
             style={{
-              animation: "fadeIn 0.5s ease-in",
+              animation: 'fadeIn 0.5s ease-in',
             }}
           >
             <div
               className={`tw-text-black tw-text-left tw-p-3 tw-rounded-lg tw-break-words ${
-                msg.sender === "bot"
-                  ? "tw-max-w-[90%] tw-bg-transparent tw-shadow-none"
-                  : "tw-max-w-[45%] tw-bg-white tw-shadow"
+                msg.sender === 'bot'
+                  ? 'tw-max-w-[90%] tw-bg-transparent tw-shadow-none'
+                  : 'tw-max-w-[45%] tw-bg-white tw-shadow'
               }`}
-              style={{ fontFamily: "Calibri, sans-serif" }}
+              style={{ fontFamily: 'Calibri, sans-serif' }}
             >
               {/* Scroll to the bottom each time a new chaarcter is generated */}
-              {msg.sender === "bot" ? (
+              {msg.sender === 'bot' ? (
                 // Add animation to the latest bot message
                 index === messages.length - 1 ? (
                   <TypingMessage
@@ -202,7 +202,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
               )}
             </div>
             {/* Show blob for most recent AI messages */}
-            {msg.sender === "bot" && index === messages.length - 1 && (
+            {msg.sender === 'bot' && index === messages.length - 1 && (
               <div className="tw-flex tw-items-start tw-border-none">
                 <BlobLoader animationMode={getBlobMode()} />
               </div>
@@ -213,7 +213,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         {isThinking && (
           <div
             className="tw-flex tw-justify-start"
-            style={{ animation: "fadeIn 0.5s ease-in", border: "none" }}
+            style={{ animation: 'fadeIn 0.5s ease-in', border: 'none' }}
           >
             <div className="tw-flex tw-items-start tw-border-none">
               <BlobLoader animationMode="pulsing" />
@@ -226,18 +226,18 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
         {/* Upside down triangle on dropdown menu box */}
         <div
           className={`tw-absolute tw-pointer-events-none tw-transition-all tw-duration-300 ${
-            isOpen ? "tw-opacity-100" : "tw-opacity-0"
+            isOpen ? 'tw-opacity-100' : 'tw-opacity-0'
           }`}
           style={{
             width: 0,
             height: 0,
-            bottom: "38px",
-            right: "8%",
-            borderLeft: "10px solid transparent",
-            borderRight: "10px solid transparent",
-            borderTop: "10px solid white",
+            bottom: '38px',
+            right: '8%',
+            borderLeft: '10px solid transparent',
+            borderRight: '10px solid transparent',
+            borderTop: '10px solid white',
             zIndex: 21,
-            transition: "opacity 0.3s ease-out, bottom 0.3s ease-out",
+            transition: 'opacity 0.3s ease-out, bottom 0.3s ease-out',
           }}
         />
 
@@ -246,13 +246,13 @@ const AIChatBot = ({ userQuestions, fixedAIResponse }) => {
           ref={dropdownRef}
           className={`tw-absolute tw-bottom-[48px] tw-w-[95%] tw-bg-white tw-shadow-lg tw-transition-all tw-duration-300 tw-border-2 tw-overflow-y-auto tw-border-black tw-rounded-lg tw-z-20 tw-ease-[cubic-bezier(0.4,0,0.2,1)] ${
             isOpen
-              ? "tw-opacity-100 tw-pointer-events-auto"
-              : "tw-opacity-0 tw-pointer-events-none"
+              ? 'tw-opacity-100 tw-pointer-events-auto'
+              : 'tw-opacity-0 tw-pointer-events-none'
           }`}
           style={{
-            maxHeight: isOpen ? "400px" : "0px",
-            fontFamily: "Calibri, sans-serif",
-            overflowY: isOpen ? "auto" : "hidden",
+            maxHeight: isOpen ? '400px' : '0px',
+            fontFamily: 'Calibri, sans-serif',
+            overflowY: isOpen ? 'auto' : 'hidden',
           }}
         >
           {/* Container for indvidual questions */}
@@ -336,13 +336,13 @@ AIChatBot.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       text: PropTypes.string.isRequired,
-    }),
+    })
   ),
   fixedAIResponse: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       text: PropTypes.string.isRequired,
-    }),
+    })
   ),
 };
 
