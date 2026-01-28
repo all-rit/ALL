@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import React, { Component } from "react";
 // link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
 // license: https://pixabay.com/service/license/

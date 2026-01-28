@@ -66,14 +66,6 @@ const Reading = (props) => {
               positionPercentage: scrollPositionPercentage,
             },
           ]);
-          console.log(
-            "Scroll position percentage: " +
-              JSON.stringify(pagePosition) +
-              "\n" +
-              "at " +
-              seconds +
-              " seconds",
-          );
         }, 1000);
 
         return () => {
@@ -122,7 +114,9 @@ const Reading = (props) => {
 
   return (
     <div
-      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem]"}
+      className={
+        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem]"
+      }
     >
       <h2
         className={

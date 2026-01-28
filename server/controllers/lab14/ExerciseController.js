@@ -1,5 +1,4 @@
 const ExerciseService = require('../../services/lab14/ExerciseService');
-// eslint-disable-next-line valid-jsdoc
 /**
  * getExercise(): is a function responsible for retrieving the
  * user id from the query params from the route to the endpoint.
@@ -26,10 +25,11 @@ async function getExercise(req) {
  */
 async function postExercise(req) {
   try {
-    const {userID, hasViewed} = req.body;
+    const {userID, hasViewed, isExerciseComplete} = req.body;
     const response = await ExerciseService.postExercise({
       userId: userID,
       hasViewed: hasViewed,
+      isExerciseComplete: isExerciseComplete,
     });
     return response;
   } catch (error) {

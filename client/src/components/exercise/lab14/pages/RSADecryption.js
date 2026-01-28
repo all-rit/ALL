@@ -1,26 +1,30 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
 import LabButton from "../../../all-components/LabButton";
 
 const RSADecryption = () => {
-  const [error, setError] = useState(false);
   const [classicAttempts, setClassicAttempts] = useState(0);
   const [classicBoxElements, setClassicBoxElements] = useState([]);
   const [quantumAttempts, setQuantumAttempts] = useState(0);
   const [quantumBoxElements, setQuantumBoxElements] = useState([]);
-  const [decryptionCompleted, setDecryptionCompleted] = useState(false);
 
   const { rsaBaseMessage, rsaEncryptedMessage, rsaShiftValue } =
     useContext(ExerciseStateContext);
 
-  const handleContinue = () => {
-    if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/Conclusion");
-    } else {
-      setError(true);
+  useEffect(() => {
+    if (rsaEncryptedMessage === "") {
+      handleReturn();
     }
+  }, []);
+
+  const handleReturn = () => {
+    navigate("/Lab14/Exercise/RSAEncryption");
+  };
+
+  const handleContinue = () => {
+    navigate("/Lab14/Exercise/Conclusion");
   };
 
   const decrypt = () => {
@@ -39,8 +43,6 @@ const RSADecryption = () => {
     setQuantumBoxElements([
       { text: `Total Attempts: ${quantumAttempts}`, binary: [] },
     ]);
-
-    setDecryptionCompleted(true);
   };
 
   return (
@@ -71,33 +73,32 @@ const RSADecryption = () => {
         classicBoxElements={classicBoxElements}
         quantumAttempts={quantumAttempts}
         quantumBoxElements={quantumBoxElements}
-      />
-
-      <h1 className="tw-title tw-text-left tw-mt-4">RSA: Theory vs. Reality</h1>
-      <p className="tw-body-text tw-text-left tw-py-4">
-        The attempt counts shown above are theoretical estimates based on
-        established cryptography research. While quantum computers may need to
-        repeat an algorithm a small number of times, the number of attempts
-        remains very low. In theory, quantum computers could implement Shor’s
-        algorithm and break RSA encryption in a matter of minutes. In practice,
-        however, today’s quantum computers are not powerful enough to break the
-        large RSA keys used on the internet. So far, quantum devices have only
-        factored a 90-bit integer, which is incredibly small compared to the
-        2048 used in real-world applications. This is due to the high cost,
-        instability, and difficulty of scaling quantum hardware. As a result,
-        despite its theoretical vulnerability, RSA encryption remains secure
-        with current technology.
-      </p>
-
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
-
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
       >
-        Error: Please decrypt the message to continue.
-      </p>
+        <>
+          <h1 className="tw-title tw-text-left tw-mt-4">
+            RSA: Theory vs. Reality
+          </h1>
+          <p className="tw-body-text tw-text-left tw-py-4">
+            The attempt counts shown above are theoretical estimates based on
+            established cryptography research. While quantum computers may need
+            to repeat an algorithm a small number of times, the number of
+            attempts remains very low. In theory, quantum computers could
+            implement Shor’s algorithm and break RSA encryption in a matter of
+            minutes. In practice, however, today’s quantum computers are not
+            powerful enough to break the large RSA keys used on the internet. So
+            far, quantum devices have only factored a 90-bit integer, which is
+            incredibly small compared to the 2048 used in real-world
+            applications. This is due to the high cost, instability, and
+            difficulty of scaling quantum hardware. As a result, despite its
+            theoretical vulnerability, RSA encryption remains secure with
+            current technology.
+          </p>
+          <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+            <LabButton onClick={handleReturn} label={"Retry Encryption"} />
+            <LabButton onClick={handleContinue} label={"Next"} />
+          </div>
+        </>
+      </Decryption>
     </div>
   );
 };

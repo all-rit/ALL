@@ -1,64 +1,66 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
 
-const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => (
-  <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
-    <span className="tw-font-semibold">Number of Bits</span>
-    <div className="tw-flex tw-justify-between tw-w-full">
-      <span className="tw-font-semibold">{1024}</span>
-      <span className="tw-font-semibold">{2048}</span>
+const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
+  return (
+    <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
+      <span className="tw-font-semibold">Number of Bits</span>
+      <div className="tw-flex tw-justify-between tw-w-full">
+        <span className="tw-font-semibold">{1024}</span>
+        <span className="tw-font-semibold">{2048}</span>
+      </div>
+
+      <input
+        type="range"
+        min={1024}
+        max={2048}
+        step={8}
+        onChange={(e) => setShiftValue(Number(e.target.value))}
+        value={shiftValue}
+        className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
+        style={{
+          background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
+        }}
+      />
+
+      {/* Button Style */}
+      <style>
+        {`
+        input[type="range"]::-webkit-slider-thumb {
+          appearance: none;
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background: black;
+          cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background: black;
+          cursor: pointer;
+        }
+      `}
+      </style>
+
+      {/* Shift Bubble */}
+      <div
+        className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
+        style={{
+          left: `calc(${((shiftValue - 1024) / (2048 - 1024)) * 100}% - 12px)`,
+          pointerEvents: "none",
+        }}
+      >
+        {shiftValue}
+      </div>
     </div>
-
-    <input
-      type="range"
-      min={1024}
-      max={2048}
-      step={8}
-      onChange={(e) => setShiftValue(Number(e.target.value))}
-      value={shiftValue}
-      className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
-      style={{
-        background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
-      }}
-    />
-
-    {/* Button Style */}
-    <style>
-      {`
-       input[type="range"]::-webkit-slider-thumb {
-         appearance: none;
-         height: 16px;
-         width: 16px;
-         border-radius: 50%;
-         background: black;
-         cursor: pointer;
-       }
-       input[type="range"]::-moz-range-thumb {
-         height: 16px;
-         width: 16px;
-         border-radius: 50%;
-         background: black;
-         cursor: pointer;
-       }
-     `}
-    </style>
-
-    {/* Shift Bubble */}
-    <div
-      className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
-      style={{
-        left: `calc(${((shiftValue - 1024) / (2048 - 1024)) * 100}% - 12px)`,
-        pointerEvents: "none",
-      }}
-    >
-      {shiftValue}
-    </div>
-  </div>
-);
+  );
+};
 
 InputComponent.propTypes = {
   shiftValue: PropTypes.number,
@@ -76,18 +78,20 @@ const RSAEncryption = () => {
     setRsaShiftValue,
   } = useContext(ExerciseStateContext);
 
-  const [error, setError] = useState(false);
+  useEffect(() => {
+    setRsaBaseMessage("");
+    setRsaEncryptedMessage("");
+    setRsaShiftValue(1024);
+  }, []);
+
   const [n, setN] = useState(null);
   const [e, setE] = useState(null);
   const [d, setD] = useState(null);
+  const [encrypted, setEncrypted] = useState(false);
   const fillPercent = ((rsaShiftValue - 1024) / (2048 - 1024)) * 100;
 
   const handleContinue = () => {
-    if (rsaEncryptedMessage) {
-      navigate("/Lab14/Exercise/RSADecryption");
-    } else {
-      setError(true);
-    }
+    navigate("/Lab14/Exercise/RSADecryption");
   };
 
   const encrypt = async () => {
@@ -112,6 +116,7 @@ const RSAEncryption = () => {
     setN(n);
     setE(e);
     setD(d);
+    setEncrypted(true);
   };
 
   const generateRSA = async () => {
@@ -165,6 +170,7 @@ const RSAEncryption = () => {
         encryptedMessage={rsaEncryptedMessage}
         baseMessage={rsaBaseMessage}
         setBaseMessage={setRsaBaseMessage}
+        shiftValueValid={true} // there is no invalid value for RSA key size
       >
         <InputComponent
           shiftValue={rsaShiftValue}
@@ -178,24 +184,27 @@ const RSAEncryption = () => {
       </h1>
 
       {/*Left -  KEYS */}
-      <div className="tw-flex tw-flex-row tw-gap-12 tw-justify-center">
+      <div className="tw-flex tw-flex-row tw-flex-wrap tw-gap-12 tw-justify-center">
         <div>
           <h5 className="tw-text-sub-title tw-mt-4 tw-mb-2 tw-text-left">
             Public Key:
           </h5>
           <p
             className="
-            tw-flex tw-items-center
-            tw-bg-[#face3580]
-            tw-w-[20rem] tw-h-[4rem]
-            tw-p-3
-            tw-border-2 tw-border-solid
-            tw-rounded-lg
-            tw-font-mono tw-text-xs
-            tw-whitespace-nowrap
-            tw-overflow-x-auto"
+              tw-text-left
+              tw-bg-[#face3580]
+              tw-w-[20rem]
+              tw-p-3
+              tw-border-2 tw-border-solid
+              tw-rounded-lg
+              tw-font-mono tw-text-sm
+              tw-whitespace-nowrap
+              tw-overflow-x-auto
+              tw-cursor-default"
           >
-            {n ? `n = ${n}, e = ${e}` : ""}
+            {n ? `n = ${n}` : ""}
+            <br />
+            {e ? `e = ${e}` : ""}
           </p>
 
           <h5 className="tw-text-sub-title tw-mt-4 tw-mb-2 tw-text-left">
@@ -203,17 +212,20 @@ const RSAEncryption = () => {
           </h5>
           <p
             className="
-            tw-flex tw-items-center
-            tw-bg-[#face3580]
-            tw-w-[20rem] tw-h-[4rem]
-            tw-p-3
-            tw-border-2 tw-border-solid
-            tw-rounded-lg
-            tw-font-mono tw-text-xs
-            tw-whitespace-nowrap
-            tw-overflow-x-auto"
+              tw-text-left
+              tw-bg-[#face3580]
+              tw-w-[20rem]
+              tw-p-3
+              tw-border-2 tw-border-solid
+              tw-rounded-lg
+              tw-font-mono tw-text-sm
+              tw-whitespace-nowrap
+              tw-overflow-x-auto
+              tw-cursor-default"
           >
-            {n ? `n = ${n}, d = ${d}` : ""}
+            {n ? `n = ${n}` : ""}
+            <br />
+            {d ? `d = ${d}` : ""}
           </p>
         </div>
 
@@ -228,18 +240,25 @@ const RSAEncryption = () => {
             factoring large primes. On the left, you can see the two prime
             numbers associated with each public and private key.
           </p>
+          <p className="tw-font-poppins tw-text-left tw-leading-6 tw-max-w-[40rem]">
+            The &apos;n&apos; value is the modulus, a large number derived from
+            two prime numbers. The &apos;e&apos; value is the public exponent
+            used in the encryption process, while the &apos;d&apos; value is the
+            private exponent used in decryption. Together, these values form the
+            core of RSA&apos;s security, enabling secure communication over
+            insecure channels.
+          </p>
         </div>
       </div>
 
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
+      {/* Spacer block */}
+      <div className="tw-mt-10"></div>
 
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
-      >
-        Error: Please Encrypt a valid string to continue
-      </p>
+      <LabButton
+        disabled={!encrypted}
+        onClick={handleContinue}
+        label={"Next"}
+      />
     </div>
   );
 };

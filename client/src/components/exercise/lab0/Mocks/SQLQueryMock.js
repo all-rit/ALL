@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint react/prop-types: 0 */
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

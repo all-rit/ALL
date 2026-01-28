@@ -1,5 +1,3 @@
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";

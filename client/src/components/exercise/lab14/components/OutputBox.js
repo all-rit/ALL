@@ -12,7 +12,7 @@ const OutputBox = ({ title, boxElements }) => {
     }
 
     return (
-      <ol className="tw-list-inside tw-w-full">
+      <ol className="tw-list-inside tw-w-full tw-cursor-default">
         {boxElements.map((element, index) => (
           <li
             key={index}
@@ -23,7 +23,9 @@ const OutputBox = ({ title, boxElements }) => {
               <p>{element.text}</p>
               <div>
                 {element.binary.map((bin, binIndex) => (
-                  <p key={binIndex}>{bin}</p>
+                  <p className="tw-text-right" key={binIndex}>
+                    {bin}
+                  </p>
                 ))}
               </div>
             </div>
@@ -36,9 +38,10 @@ const OutputBox = ({ title, boxElements }) => {
   return (
     <div className="tw-flex tw-flex-col tw-items-start tw-mx-8 tw-max-w-1/2 tw-min-w-96 tw-gap-y-2">
       <h5 className="tw-font-poppins tw-text-lg tw-font-semibold">{title}</h5>
-      <div className="tw-flex tw-w-full tw-border-[2px] tw-border-solid tw-border-black tw-rounded-md tw-overflow-hidden">
+      <div className="tw-flex tw-justify-center tw-w-full tw-border-[2px] tw-border-solid tw-border-black tw-rounded-md tw-overflow-hidden">
         {addboxElements()}
       </div>
+      <h5 className="tw-font-poppins tw-text-lg tw-font-semibold">{title}</h5>
     </div>
   );
 };

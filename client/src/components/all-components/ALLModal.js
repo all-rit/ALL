@@ -62,7 +62,6 @@ const ALLModal = (props) => {
       clearInterval(timer.current);
       timer.current = null;
     };
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -71,7 +70,6 @@ const ALLModal = (props) => {
       timer.current = null;
       setShow(false);
     }
-    // eslint-disable-next-line
   }, [seconds]);
 
   {

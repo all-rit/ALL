@@ -28,7 +28,6 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-// import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
@@ -96,10 +95,25 @@ const App = () => {
   const labInProgress = lab !== 99;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "Default",
+      answers: [
+        {
+          val: 0,
+          type: "0",
+          content: "Default",
+        },
+      ],
+      multiChoice: false,
+    },
+  ]);
+  const [result, setResult] = useState(0);
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full"}>
+      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
@@ -142,6 +156,12 @@ const App = () => {
             hideCertificate={false}
             quizCompleted={quizCompleted}
             setQuizCompleted={setQuizCompleted}
+            selectedAnswers={selectedAnswers}
+            setSelectedAnswers={setSelectedAnswers}
+            questions={questions}
+            setQuestions={setQuestions}
+            result={result}
+            setResult={setResult}
           />
         </Router>
       </div>
@@ -180,11 +200,7 @@ const App = () => {
   return (
     <>
       <div
-        className={`overflow-x-hidden ${
-          labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
-        }`}
+        className={`overflow-x-hidden ${labInProgress || isImagine ? "overflow-y-hidden tw-h-lvh" : "overflow-y-auto min-h-screen"}`}
       >
         <Header isImagine={isImagine} />
         <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>

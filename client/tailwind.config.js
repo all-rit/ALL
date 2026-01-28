@@ -1,7 +1,5 @@
 const plugin = require("tailwindcss/plugin");
 
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 module.exports = {
   prefix: "tw-",
   content: ["../client/src/**/*.{js,jsx}"],
@@ -51,6 +49,8 @@ module.exports = {
       labYellow: "#ffc334",
       labGreen: "#7B7B7B",
       labBlue: "#0d28bc",
+      lightBlue: "#5D90FE",
+      mediumBlue: "#0143D0",
       darkGreen: "#0c3515",
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
@@ -143,6 +143,8 @@ module.exports = {
     extend: {
       animation: ["group", "responsive", "hover", "focus", "reduced-bounce"],
       bg: ["group", "responsive", "hover", "focus"],
+      translate: ["group-hover"],
+      transform: ["group-hover"],
     },
   },
   plugins: [
