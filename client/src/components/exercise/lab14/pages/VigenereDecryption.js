@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
@@ -13,15 +13,18 @@ const VigenereDecryption = () => {
   const { vigenereBaseMessage, vigenereKey, vigenereEncryptedMessage } =
     useContext(ExerciseStateContext);
 
-  const [error, setError] = useState("");
-  const [decryptionCompleted, setDecryptionCompleted] = useState(false);
+  useEffect(() => {
+    if (vigenereEncryptedMessage === "") {
+      handleReturn();
+    }
+  }, []);
+
+  const handleReturn = () => {
+    navigate("/Lab14/Exercise/VigenereEncryption");
+  };
 
   const handleContinue = () => {
-    if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/RSAIntro");
-    } else {
-      setError(true);
-    }
+    navigate("/Lab14/Exercise/RSAIntro");
   };
 
   const encode = (baseMessage, shiftValue) => {
@@ -106,8 +109,6 @@ const VigenereDecryption = () => {
     });
     setQuantumBoxElements(quantumArray);
     setQuantumAttempts(quantumAttempts);
-
-    setDecryptionCompleted(true);
   };
 
   return (
@@ -142,14 +143,12 @@ const VigenereDecryption = () => {
         classicBoxElements={classicBoxElements}
         quantumAttempts={quantumAttempts}
         quantumBoxElements={quantumBoxElements}
-      />
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
-
-      <p className={`${error ? "tw-visible" : "tw-invisible"} tw-italic`}>
-        Error: Please decrypt the message to continue
-      </p>
+      >
+        <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+          <LabButton onClick={handleReturn} label={"Retry Encryption"} />
+          <LabButton onClick={handleContinue} label={"Next"} />
+        </div>
+      </Decryption>
     </div>
   );
 };

@@ -10,12 +10,6 @@ module.exports = (sequelize, DataTypes) => {
         userid: {
           type: DataTypes.BIGINT,
         },
-        isFormRepairComplete: {
-          type: DataTypes.BOOLEAN,
-        },
-        isDatabaseRepairComplete: {
-          type: DataTypes.BOOLEAN,
-        },
         attemptTime: {
           type: DataTypes.DATE,
         },
