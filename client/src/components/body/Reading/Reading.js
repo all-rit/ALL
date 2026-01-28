@@ -17,7 +17,7 @@ import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
-const pieWinodwResizeWidth = 880;
+const pieWinodwResizeWidth = 610;
 // const pieWindowResizeHeight = 900;
 
 const Reading = (props) => {
@@ -42,6 +42,10 @@ const Reading = (props) => {
 
   const togglePie = () => {
     setPieModalOpen(!pieModalOpen);
+  };
+
+  const pieModalOptions = {
+    maintainAspectRatio: false,
   };
 
   useScroll();
@@ -207,10 +211,8 @@ const Reading = (props) => {
                         <Pie
                           className="tw-w-auto"
                           data={readingData?.piechart.data}
-                          options={{
-                            maintainAspectRatio: false,
-                          }}
-                          height={pieHeight}
+                          options={pieModalOptions}
+                          height={!isImagine && pieHeight}
                         />
                       </div>
                       {readingData?.piechart?.caption !== "" &&
