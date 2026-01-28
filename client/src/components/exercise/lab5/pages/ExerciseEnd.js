@@ -1,6 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";

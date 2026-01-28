@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Form from "../../components/Form";

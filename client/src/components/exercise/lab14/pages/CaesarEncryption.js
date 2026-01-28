@@ -1,63 +1,77 @@
-import { React, useContext, useState } from "react";
+import { React, useContext, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";
 import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
 
-const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => (
-  <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
-    <span className="tw-font-semibold">Shift</span>
-    <div className="tw-flex tw-justify-between tw-w-full">
-      <span className="tw-font-semibold">{0}</span>
-      <span className="tw-font-semibold">{25}</span>
+const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
+  const [validInput, setValidInput] = useState(false);
+
+  const handleShiftValueChange = (e) => {
+    const value = Number(e.target.value);
+
+    setValidInput(value !== 0);
+    setShiftValue(value);
+  };
+
+  return (
+    <div className="tw-flex-1 tw-relative tw-flex tw-flex-col tw-items-center">
+      <span className="tw-font-semibold">Shift</span>
+      <div className="tw-flex tw-justify-between tw-w-full">
+        <span className="tw-font-semibold">{0}</span>
+        <span className="tw-font-semibold">{25}</span>
+      </div>
+
+      <input
+        type="range"
+        min={0}
+        max={25}
+        onChange={handleShiftValueChange}
+        value={shiftValue}
+        className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
+        style={{
+          background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
+        }}
+      />
+      <p className={`tw-mt-4 ${validInput ? "tw-hidden" : "tw-visible"}`}>
+        Error: Make sure the shift value is not 0 to continue.
+      </p>
+
+      {/* Button Style */}
+      <style>
+        {`
+          input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+          }
+          input[type="range"]::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+          }
+        `}
+      </style>
+
+      {/* Shift Bubble */}
+      <div
+        className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
+        style={{
+          left: `calc(${(shiftValue / 25) * 100}% - 12px)`,
+          pointerEvents: "none",
+        }}
+      >
+        {shiftValue}
+      </div>
     </div>
-
-    <input
-      type="range"
-      min={0}
-      max={25}
-      onChange={(e) => setShiftValue(Number(e.target.value))}
-      value={shiftValue}
-      className="tw-w-full tw-h-3 tw-appearance-none tw-cursor-pointer tw-rounded-none tw-outline-none"
-      style={{
-        background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
-      }}
-    />
-
-    {/* Button Style */}
-    <style>
-      {`
-        input[type="range"]::-webkit-slider-thumb {
-          appearance: none;
-          height: 16px;
-          width: 16px;
-          border-radius: 50%;
-          background: black;
-          cursor: pointer;
-        }
-        input[type="range"]::-moz-range-thumb {
-          height: 16px;
-          width: 16px;
-          border-radius: 50%;
-          background: black;
-          cursor: pointer;
-        }
-      `}
-    </style>
-
-    {/* Shift Bubble */}
-    <div
-      className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
-      style={{
-        left: `calc(${(shiftValue / 25) * 100}% - 12px)`,
-        pointerEvents: "none",
-      }}
-    >
-      {shiftValue}
-    </div>
-  </div>
-);
+  );
+};
 
 InputComponent.propTypes = {
   shiftValue: PropTypes.number,
@@ -74,30 +88,21 @@ const CaesarEncryption = () => {
     setCaesarShiftAmount,
   } = useContext(ExerciseStateContext);
 
+  useEffect(() => {
+    setCaesarBaseMessage("");
+    setCaesarEncryptedMessage("");
+    setCaesarShiftAmount(0);
+  }, []);
+
+  const [encrypted, setEncrypted] = useState(false);
   const [shiftValue, setShiftValue] = useState(0);
-  const [error, setError] = useState(false);
   const fillPercent = (shiftValue / 25) * 100;
 
   const handleContinue = () => {
-    if (caesarEncryptedMessage && error == false) {
-      navigate("/Lab14/Exercise/CaesarDecryption");
-    } else {
-      setError(true);
-    }
+    navigate("/Lab14/Exercise/CaesarDecryption");
   };
 
   const encrypt = () => {
-    if (caesarBaseMessage === "" || shiftValue == 0) {
-      setError(true);
-      return;
-    }
-    setError(false);
-
-    if (shiftValue == 0) {
-      setCaesarEncryptedMessage(caesarBaseMessage);
-      return caesarBaseMessage;
-    }
-
     let encryptedString = "";
     for (let i = 0; i < caesarBaseMessage.length; i++) {
       let char = caesarBaseMessage[i];
@@ -122,6 +127,7 @@ const CaesarEncryption = () => {
 
     setCaesarShiftAmount(parseInt(shiftValue));
     setCaesarEncryptedMessage(encryptedString);
+    setEncrypted(true);
   };
 
   return (
@@ -137,6 +143,7 @@ const CaesarEncryption = () => {
         encryptedMessage={caesarEncryptedMessage}
         baseMessage={caesarBaseMessage}
         setBaseMessage={setCaesarBaseMessage}
+        shiftValueValid={shiftValue !== 0}
       >
         <InputComponent
           shiftValue={shiftValue}
@@ -144,13 +151,11 @@ const CaesarEncryption = () => {
           fillPercent={fillPercent}
         />
       </Encryption>
-      <p
-        className={`tw-my-2 ${error ? "tw-visible" : "tw-invisible"} tw-italic`}
-      >
-        Error: Please Encrypt a valid string, and make sure the shift value is
-        not 0 to continue.
-      </p>
-      <LabButton onClick={handleContinue} label={"Next"} />
+      <LabButton
+        disabled={!encrypted}
+        onClick={handleContinue}
+        label={"Next"}
+      />
     </div>
   );
 };

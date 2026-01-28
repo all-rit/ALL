@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import LabGeneration from "../../components/body/lab/LabGeneration";
@@ -37,18 +36,18 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-    let lab11;
     let lab12;
+    let lab14;
 
     allLabs.map((lab) => {
       if (lab.labShortName == "Identity") {
         lab12 = lab;
-      } else if (lab.labShortName == "Literacy") {
-        lab11 = lab;
+      } else if (lab.labShortName == "Quantum") {
+        lab14 = lab;
       }
     });
 
-    setFeaturedLabs([lab11, lab12]);
+    setFeaturedLabs([lab14, lab12]);
   };
 
   const endImagine = () => actions.setIsImagine(false);

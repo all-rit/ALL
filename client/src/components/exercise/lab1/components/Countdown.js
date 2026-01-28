@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component, Fragment } from "react";
 
 import CongratulationMessage from "./CongratulationMessage";

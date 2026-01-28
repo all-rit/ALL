@@ -28,7 +28,6 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-// import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
@@ -96,6 +95,21 @@ const App = () => {
   const labInProgress = lab !== 99;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "Default",
+      answers: [
+        {
+          val: 0,
+          type: "0",
+          content: "Default",
+        },
+      ],
+      multiChoice: false,
+    },
+  ]);
+  const [result, setResult] = useState(0);
 
   const renderLabs = () => {
     return (
@@ -142,6 +156,12 @@ const App = () => {
             hideCertificate={false}
             quizCompleted={quizCompleted}
             setQuizCompleted={setQuizCompleted}
+            selectedAnswers={selectedAnswers}
+            setSelectedAnswers={setSelectedAnswers}
+            questions={questions}
+            setQuestions={setQuestions}
+            result={result}
+            setResult={setResult}
           />
         </Router>
       </div>

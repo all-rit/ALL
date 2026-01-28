@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable guard-for-in */
-/* eslint-disable max-len */
 import { Sections } from "../constants/index";
 import { navigate } from "@reach/router";
 

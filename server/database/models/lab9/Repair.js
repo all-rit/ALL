@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 const ADDRESS_REPAIR = 'address-repair';
 const DATE_REPAIR = 'date-repair';
 const NAV_REPAIR = 'nav-repair';

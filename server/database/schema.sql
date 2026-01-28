@@ -3987,9 +3987,9 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       "type": "image",
         "content" : {
             "image":"/Bit_vs_qubit.png",
-            "alt":"Bit vs Qubit",
-            "sub_caption":"Figure 1",
-            "caption":"Bit vs Quibit"
+            "alt":"This image shows the difference between a classical bit and a quantum qubit. While a classical bit can only be 0 or 1, a qubit can be both at the same time.",
+            "caption":"Credit: Microsoft Azure",
+            "sub_caption":"Figure 1: Bit vs. Qubit"
            }
     },
     {
@@ -4003,47 +4003,47 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
         "content" : {
             "image":"/Quantum_Superposition.gif",
             "alt":"Quantum Superposition",
-            "sub_caption":"Figure 2",
-            "caption":"Quantum Superposition"
+            "sub_caption":"Figure 2: Quantum Superposition",
+            "caption":"Credit: N. Hanacek/NIST"
            }
     },
     {
       "header": "Entanglement and Interference",
       "type": "",
-      "content": ["Entanglement:  When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other instantly becomes a 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers."]
+      "content": ["When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other instantly becomes a 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers."]
     },
     {
-      "header": "",
+      "header": " ",
       "type": "image",
         "content" : {
             "image":"/Quantum_Entanglement.gif",
             "alt":"Quantum Entanglement",
-            "sub_caption":"Figure 3",
-            "caption":"Quantum Entanglement"
+            "sub_caption":"Figure 3: Quantum Entanglement",
+            "caption":"Credit: N. Hanacek/NIST"
            }
     },
     {
-      "header": " ",
+      "header": "",
       "type": "",
-      "content": ["Interference: Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one. This is similar to how noise-canceling headphones block out background noise so you can hear the music more clearly."]
+      "content": ["Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one. This is similar to how noise-canceling headphones block out background noise so you can hear the music more clearly."]
     }
   ],
   "footer":{
       "links":[
         {
-          "name":"Quantum Computing",
+          "name":"What is Quantum Computing? | IBM",
           "link":"https://www.ibm.com/think/topics/quantum-computing"
         },
         {
-          "name":"Quantum Computing Explained",
+          "name":"Quantum Computing Explained | NIST",
           "link":"https://www.nist.gov/quantum-information-science/quantum-computing-explained"
         },
         {
-          "name":"What is Quantum Computing",
+          "name":"What is Quantum Computing? | Microsoft",
           "link":"https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-quantum-computing"
         },
         {
-          "name":"Real World Applications",
+          "name":"Real World Applications of Quantum Computing",
           "link":"https://www.spinquanta.com/news-detail/top-quantum-computer-applications-with-real-world-examples20250113034956"
         }
       ]

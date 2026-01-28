@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 import { React, useEffect, useState } from "react";
 import TicTacToeButton from "./TicTacToeButton";

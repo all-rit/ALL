@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";

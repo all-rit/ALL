@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ColorUpdate from "./buttons/colorUpdate";
 import Home from "./buttons/homeReset.js";

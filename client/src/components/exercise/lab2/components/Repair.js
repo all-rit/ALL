@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-/* eslint-disable max-len */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
 import RepairService from "../../../../services/lab2/RepairService";

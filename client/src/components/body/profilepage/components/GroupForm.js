@@ -182,7 +182,8 @@ const GroupForm = (props) => {
             </p>
             <p className={"tw-font-calibri tw-font-medium"}>
               {" "}
-              Select a color for this group to distinguish it from the others!{" "}
+              Select a color for this group to distinguish it from the
+              others!{" "}
             </p>
           </div>
           <div className={"tw-grid tw-grid-cols-2 tw-gap-8 tw-w-1/2 tw-py-5"}>

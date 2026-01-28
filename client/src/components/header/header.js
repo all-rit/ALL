@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import Logo from "../../assets/images/logos/ALL_Logo.svg";
 import { connect } from "react-redux";
