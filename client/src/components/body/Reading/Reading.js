@@ -213,6 +213,20 @@ const Reading = (props) => {
                           height={pieHeight}
                         />
                       </div>
+                      {readingData?.piechart?.caption !== "" &&
+                        readingData?.piechart?.caption.map((data, index) => {
+                          return (
+                            <div
+                              key={index}
+                              id={"caption"}
+                              className={
+                                "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                              }
+                            >
+                              {data}
+                            </div>
+                          );
+                        })}
                     </ModalBody>
                   </Modal>
                 </>
