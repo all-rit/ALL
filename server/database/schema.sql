@@ -3849,8 +3849,8 @@ e'[
       {
         "val": 1,
         "type": "2",
-        "content": "A term for qubits that are linked together and share a single state",
-        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and share a single quantum state."
+        "content": "A term for qubits that are linked together and have opposing states",
+        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and have opposing quantum states. One of them is 0, and the other is 1."
       },
       {
         "val": 0,
