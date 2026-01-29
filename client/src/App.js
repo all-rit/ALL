@@ -112,7 +112,7 @@ const App = () => {
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+      <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
@@ -200,13 +200,13 @@ const App = () => {
       <div
         className={`overflow-x-hidden ${
           labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
+            ? "overflow-y-hidden"
+            : "overflow-y-hidden min-h-screen"
         }`}
       >
         <Header isImagine={isImagine} />
-        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-          <div className={`tw-relative tw-grid tw-h-full`}>
+        <div className={`tw-relative ${labInProgress}`}>
+          <div className={`tw-relative tw-grid`}>
             <Suspense fallback={<Spinner />}>
               {labInProgress ? (
                 <LabWindow
