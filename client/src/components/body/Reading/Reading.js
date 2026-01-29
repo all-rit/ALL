@@ -19,7 +19,7 @@ import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
-const maxPieLabelLength = 53;
+const maxPieLabelLength = 45;
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -47,12 +47,6 @@ const Reading = (props) => {
     setPieModalOpen(!pieModalOpen);
   };
 
-  const pieModalPlugins = {
-    legend: {
-      display: false,
-    },
-  };
-
   useScroll();
 
   const screenPositionPercentage = (scrollPosition) => {
@@ -77,9 +71,18 @@ const Reading = (props) => {
       const labelsForReturn = [];
       for (let label of labels) {
         if (label.length > maxPieLabelLength) {
+          let createSpace = maxPieLabelLength;
+          if (label[maxPieLabelLength] != " ") {
+            for (let j = maxPieLabelLength; j > 0; j--) {
+              if (label[j] == " ") {
+                createSpace = j;
+                break;
+              }
+            }
+          }
           label = [
-            label.slice(0, maxPieLabelLength).trim(),
-            label.slice(maxPieLabelLength).trim(),
+            label.slice(0, createSpace).trim(),
+            label.slice(createSpace).trim(),
           ];
         }
         labelsForReturn.push(label);
@@ -232,7 +235,17 @@ const Reading = (props) => {
                           className="tw-w-auto"
                           data={readingData?.piechart.data}
                           options={{
-                            pieModalPlugins,
+                            plugins: {
+                              legend: {
+                                labels: {
+                                  padding: 16,
+                                  textAlign: "left",
+                                },
+                                position: "top",
+                                fullSize: true,
+                                align: "start",
+                              },
+                            },
                           }}
                           // plugins={pieModalPlugins}
                           height={!isImagine && pieHeight}
@@ -261,13 +274,7 @@ const Reading = (props) => {
                   <div className="flex tw-body-text">
                     <Pie
                       data={readingData?.piechart.data}
-                      height={!isImagine && 100}
-                      options={
-                        isImagine && {
-                          maintainAspectRatio: false,
-                          pieModalPlugins,
-                        }
-                      }
+                      height={!isImagine ? 100 : 100}
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
