@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Router } from "@reach/router";
-
-import { EXERCISE_STATES } from "../../../constants/lab13";
-import ExerciseStateContext from "./Lab13Context";
-
-// lab imported dependencies;
+import { ExerciseStateProvider } from "./Lab13Context";
 
 import ExerciseIntroduction from "./pages/ExerciseIntroduction";
 import ConfidenceRanking from "./pages/ConfidenceRanking";
@@ -24,68 +20,9 @@ import TruthBiasExplination from "./pages/TruthBiasExplination";
  * and acting as the container managing the state of the user.
  */
 const Main = () => {
-  const [exerciseState, setExerciseState] = useState(
-    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
-  );
-  // User profile state
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [preferredName, setPreferredName] = useState("");
-  const [pronouns, setPronouns] = useState("");
-  const [college, setCollege] = useState("");
-  const [major, setMajor] = useState("");
-  const [gradTerm, setGradTerm] = useState("");
-
-  // Ranking state
-  const [rankingSuccess, setRankingSuccess] = useState(false);
-  const [rankingColumns, setRankingColumns] = useState([]);
-  const [rankingBank, setRankingBank] = useState([]);
-  const [rankingComplete, setRankingComplete] = useState(false);
-
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
-      <ExerciseStateContext.Provider
-        value={{
-          exerciseState,
-          setExerciseState,
-          firstName,
-          setFirstName,
-          lastName,
-          setLastName,
-          preferredName,
-          setPreferredName,
-          pronouns,
-          setPronouns,
-          college,
-          setCollege,
-          major,
-          setMajor,
-          gradTerm,
-          setGradTerm,
-          // Ranking state
-          rankingSuccess,
-          setRankingSuccess,
-          rankingColumns,
-          setRankingColumns,
-          rankingBank,
-          setRankingBank,
-          rankingComplete,
-          setRankingComplete,
-          resetRanking: () => {
-            setRankingSuccess(false);
-            setRankingColumns([]);
-            setRankingBank([]);
-            setRankingComplete(false);
-          },
-          // setPronouns,
-          // college,
-          // setCollege,
-          // major,
-          // setMajor,
-          // gradTerm,
-          // setGradTerm,
-        }}
-      >
+      <ExerciseStateProvider>
         <Router className="app">
           <ExerciseIntroduction default path="/" />
           <ConfidenceRanking path="/ConfidenceRanking" />
@@ -98,20 +35,22 @@ const Main = () => {
           <PanelswithIDEFixes path="/PanelswithIDEFixes" />
           <TruthBiasExplination path="/TruthBiasExplination" />
           <Conclusion path="/Conclusion" />
-          {/* // /* <FormRepair path="/FormRepair" />
-          // <DatabaseRepair path={"/DatabaseRepair"} />
-          // <ExerciseIntro default path="/" />
-          // <GradApplication path="/GraduationApplication" />
-          // <PreWrongDiploma path="/PreWrongDiploma" />
-          // <Diploma path="/Diploma" />
-          // <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
-          // <PostWrongNewsletter path="/PostWrongNewsletter" />
-          // <PreDbRepair path={"/PreDbRepair"} />
-          // <PreCorrectDiploma path="/PreCorrectDiploma" />
-          // <PostCorrectNewsletter path="/PostCorrectNewsletter" />
-          // <KeyTakeaways path="/KeyTakeaways" /> */}
+          {/*
+            // <FormRepair path="/FormRepair" />
+            // <DatabaseRepair path={"/DatabaseRepair"} />
+            // <ExerciseIntro default path="/" />
+            // <GradApplication path="/GraduationApplication" />
+            // <PreWrongDiploma path="/PreWrongDiploma" />
+            // <Diploma path="/Diploma" />
+            // <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
+            // <PostWrongNewsletter path="/PostWrongNewsletter" />
+            // <PreDbRepair path={"/PreDbRepair"} />
+            // <PreCorrectDiploma path="/PreCorrectDiploma" />
+            // <PostCorrectNewsletter path="/PostCorrectNewsletter" />
+            // <KeyTakeaways path="/KeyTakeaways" />
+          */}
         </Router>
-      </ExerciseStateContext.Provider>
+      </ExerciseStateProvider>
     </div>
   );
 };
