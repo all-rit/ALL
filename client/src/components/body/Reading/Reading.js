@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
@@ -18,7 +18,7 @@ import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
-// const pieWindowResizeHeight = 900;
+const maxPieLabelLength = 53;
 
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
@@ -29,12 +29,12 @@ const Reading = (props) => {
   const [pieHeight, setPieHeight] = useState(
     window.innerHeight * pieWindowHeightPercentage,
   );
-  const [pieWidth, setPieWidth] = useState(0);
+  // const [pieWidth, setPieWidth] = useState(0);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
   let [saveData, setSaveData] = useState(false);
-  const pieDivRef = useRef(null);
+  // const pieDivRef = useRef(null);
 
   const closeModal = () => {
     setModalOpen(false);
@@ -44,8 +44,10 @@ const Reading = (props) => {
     setPieModalOpen(!pieModalOpen);
   };
 
-  const pieModalOptions = {
-    maintainAspectRatio: false,
+  const pieModalPlugins = {
+    legend: {
+      display: false,
+    },
   };
 
   useScroll();
@@ -65,8 +67,25 @@ const Reading = (props) => {
   window.onresize = () => {
     windowResizeEvent();
     setPieHeight(window.innerHeight * pieWindowHeightPercentage);
-    console.log(pieWidth);
   };
+
+  function labelChecker(labels) {
+    if (window.innerWidth < pieWinodwResizeWidth) {
+      const labelsForReturn = [];
+      for (let label of labels) {
+        if (label.length > maxPieLabelLength) {
+          label =
+            label.slice(0, maxPieLabelLength).trim() +
+            "\n" +
+            label.slice(maxPieLabelLength).trim();
+        }
+        labelsForReturn.push(label);
+      }
+      console.log(labelsForReturn);
+      return labelsForReturn;
+    }
+    return labels;
+  }
 
   function windowResizeEvent() {
     if (window.innerWidth > pieWinodwResizeWidth) {
@@ -75,19 +94,19 @@ const Reading = (props) => {
       setShowPieModalButton(true);
     }
     setPieHeight(window.innerHeight * pieWindowHeightPercentage);
-    setPieWidth(window.innerWidth);
   }
 
   useEffect(() => {
     windowResizeEvent();
-    if (pieDivRef.current)
-      setPieWidth(pieDivRef.current.getBoundingClientRect().width);
     const readingAnalytics = async () => {
       await UserLabService.complete_reading(labID);
       if (user?.firstname !== null && user !== null) {
         await UserLabService.user_complete_reading(user.userid, labID);
       }
       LabService.getLabReading(labID).then((data) => {
+        data[0].reading.piechart.data.labels = labelChecker(
+          data[0].reading.piechart.data.labels,
+        );
         setReadingData(data[0].reading);
       });
 
@@ -189,7 +208,6 @@ const Reading = (props) => {
                     className="btn tw-rounded-full tw-bg-secondary-gray tw-shadow-md btn-xl text-uppercase"
                     onClick={() => {
                       setPieModalOpen(true);
-                      console.log(pieModalOpen);
                     }}
                   >
                     Show Pie Chart
@@ -211,7 +229,10 @@ const Reading = (props) => {
                         <Pie
                           className="tw-w-auto"
                           data={readingData?.piechart.data}
-                          options={pieModalOptions}
+                          options={{
+                            pieModalPlugins,
+                          }}
+                          // plugins={pieModalPlugins}
                           height={!isImagine && pieHeight}
                         />
                       </div>
@@ -239,7 +260,12 @@ const Reading = (props) => {
                     <Pie
                       data={readingData?.piechart.data}
                       height={!isImagine && 100}
-                      options={isImagine && { maintainAspectRatio: false }}
+                      options={
+                        isImagine && {
+                          maintainAspectRatio: false,
+                          pieModalPlugins,
+                        }
+                      }
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
