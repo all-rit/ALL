@@ -74,14 +74,13 @@ const Reading = (props) => {
       const labelsForReturn = [];
       for (let label of labels) {
         if (label.length > maxPieLabelLength) {
-          label =
-            label.slice(0, maxPieLabelLength).trim() +
-            "\n" +
-            label.slice(maxPieLabelLength).trim();
+          label = [
+            label.slice(0, maxPieLabelLength).trim(),
+            label.slice(maxPieLabelLength).trim(),
+          ];
         }
         labelsForReturn.push(label);
       }
-      console.log(labelsForReturn);
       return labelsForReturn;
     }
     return labels;
