@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import useScroll from "../../../use-hooks/useScroll";
 import StudyList from "./studylist";
 import NonBulletList from "./NonBulletList";
@@ -19,6 +20,8 @@ import PropTypes from "prop-types";
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
 const maxPieLabelLength = 53;
+
+Chart.register(ArcElement, Tooltip, Legend);
 
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
