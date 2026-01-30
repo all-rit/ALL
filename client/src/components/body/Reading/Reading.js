@@ -87,18 +87,14 @@ const Reading = (props) => {
   function labelFlip() {
     if (readingData.piechart) {
       if (!mobileView) {
-        console.log("to large");
         let newReadingData = readingData;
         newReadingData.piechart.data.labels = labelChecker(
           newReadingData.piechart.data.labels,
         );
-        console.log(newReadingData.piechart.data.labels);
         setReadingData(newReadingData);
       } else {
-        console.log("to mobile");
         let newReadingData = readingData;
         newReadingData.piechart.data.labels = originalPieLabels;
-        console.log(newReadingData.piechart.data.labels);
         setReadingData(newReadingData);
       }
     }
