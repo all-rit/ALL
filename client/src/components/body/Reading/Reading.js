@@ -29,8 +29,7 @@ const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
   const [readingData, setReadingData] = useState("");
   const [modalOpen, setModalOpen] = useState(true);
-  const [pieModalOpen, setPieModalOpen] = useState(false);
-  const [showPieModalButton, setShowPieModalButton] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
   const [pieHeight, setPieHeight] = useState(
     window.innerHeight * pieWindowHeightPercentage,
   );
@@ -42,10 +41,6 @@ const Reading = (props) => {
 
   const closeModal = () => {
     setModalOpen(false);
-  };
-
-  const togglePie = () => {
-    setPieModalOpen(!pieModalOpen);
   };
 
   const mobileLegendMargin = {
@@ -108,9 +103,9 @@ const Reading = (props) => {
 
   function windowResizeEvent() {
     if (window.innerWidth > pieWinodwResizeWidth) {
-      setShowPieModalButton(false);
+      setMobileView(false);
     } else {
-      setShowPieModalButton(true);
+      setMobileView(true);
     }
     setPieHeight(window.innerHeight * pieWindowHeightPercentage);
   }
@@ -223,63 +218,44 @@ const Reading = (props) => {
           */}
           {readingData?.piechart && (
             <>
-              {showPieModalButton ? (
+              {mobileView ? (
                 <>
-                  <button
-                    className="btn tw-rounded-full tw-bg-secondary-gray tw-shadow-md btn-xl text-uppercase"
-                    onClick={() => {
-                      setPieModalOpen(true);
-                    }}
-                  >
-                    Show Pie Chart
-                  </button>
-                  <Modal
-                    isOpen={pieModalOpen}
-                    onClosed={() => setPieModalOpen(false)}
-                    toggle={togglePie}
-                  >
-                    <ModalHeader toggle={togglePie}>
-                      <h3 className={"tw-title tw-text-center"}>
-                        {readingData?.piechart.header}
-                      </h3>
-                    </ModalHeader>
-                    <ModalBody>
-                      <div className="flex tw-body-text">
-                        <Pie
-                          className="tw-w-auto"
-                          data={readingData?.piechart.data}
-                          options={{
-                            plugins: {
-                              legend: {
-                                labels: {
-                                  padding: 16,
-                                  textAlign: "left",
-                                },
-                                position: "top",
-                                align: "start",
+                  <div className="flex tw-body-text">
+                    {readingData.piechart && (
+                      <Pie
+                        className="tw-w-auto"
+                        data={readingData?.piechart?.data}
+                        options={{
+                          plugins: {
+                            legend: {
+                              labels: {
+                                padding: 16,
+                                textAlign: "left",
                               },
+                              position: "top",
+                              align: "start",
                             },
-                          }}
-                          height={!isImagine && pieHeight}
-                          plugins={[mobileLegendMargin]}
-                        />
-                      </div>
-                      {readingData?.piechart?.caption !== "" &&
-                        readingData?.piechart?.caption.map((data, index) => {
-                          return (
-                            <div
-                              key={index}
-                              id={"caption"}
-                              className={
-                                "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
-                              }
-                            >
-                              {data}
-                            </div>
-                          );
-                        })}
-                    </ModalBody>
-                  </Modal>
+                          },
+                        }}
+                        height={!isImagine && pieHeight}
+                        plugins={[mobileLegendMargin]}
+                      />
+                    )}
+                  </div>
+                  {readingData?.piechart?.caption !== "" &&
+                    readingData?.piechart?.caption.map((data, index) => {
+                      return (
+                        <div
+                          key={index}
+                          id={"caption"}
+                          className={
+                            "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                          }
+                        >
+                          {data}
+                        </div>
+                      );
+                    })}
                 </>
               ) : (
                 <>
@@ -314,42 +290,6 @@ const Reading = (props) => {
           )}
 
           {/* End */}
-          <div className="flex tw-body-text">
-            {readingData.piechart && (
-              <Pie
-                className="tw-w-auto"
-                data={readingData?.piechart?.data}
-                options={{
-                  plugins: {
-                    legend: {
-                      labels: {
-                        padding: 16,
-                        textAlign: "left",
-                      },
-                      position: "top",
-                      align: "start",
-                    },
-                  },
-                }}
-                height={!isImagine && pieHeight}
-                plugins={[mobileLegendMargin]}
-              />
-            )}
-          </div>
-          {readingData?.piechart?.caption !== "" &&
-            readingData?.piechart?.caption.map((data, index) => {
-              return (
-                <div
-                  key={index}
-                  id={"caption"}
-                  className={
-                    "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
-                  }
-                >
-                  {data}
-                </div>
-              );
-            })}
 
           {readingData?.body !== "" ? (
             readingData?.body.map((data, index) => {
