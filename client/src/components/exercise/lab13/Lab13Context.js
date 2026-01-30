@@ -1,5 +1,4 @@
-import React from "react";
-import { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import PropTypes from "prop-types";
 const ExerciseStateContext = createContext({
   // Existing user info state
@@ -56,9 +55,64 @@ export const ExerciseStateProvider = ({ children }) => {
     setRankingComplete(false);
   };
 
+  // --- REPAIR SECTION STATE ---
+  const [exercisePromptsState, setExercisePromptsState] = useState([
+    {
+      id: "disclaimer",
+      fileId: 0,
+      value: "",
+    },
+    {
+      id: "confidence",
+      fileId: 0,
+      value: false,
+    },
+    {
+      id: "citations",
+      fileId: 0,
+      value: false,
+    },
+  ]);
+  const [validInputs, setValidInputs] = useState({
+    disclaimer: null,
+    confidence: null,
+    citations: null,
+  });
+  const [isFirst, setIsFirst] = useState(true);
+
+  const handleUserInputChange = (id, value) => {
+    setExercisePromptsState((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, value } : item)),
+    );
+    setIsFirst(false);
+  };
+
+  const checkInputValid = () => {
+    const disclaimerValid =
+      exercisePromptsState.find((i) => i.id === "disclaimer").value.trim() ===
+      "Disclaimer - ALL-IE's outputs can be wrong and should be double-checked.";
+    const confidenceValid = !!exercisePromptsState.find(
+      (i) => i.id === "confidence",
+    ).value;
+    const citationsValid = !!exercisePromptsState.find(
+      (i) => i.id === "citations",
+    ).value;
+    setValidInputs({
+      disclaimer: disclaimerValid,
+      confidence: confidenceValid,
+      citations: citationsValid,
+    });
+    return disclaimerValid && confidenceValid && citationsValid;
+  };
+
+  // No-ops for fetchRepair/postRepair for this exercise
+  const fetchRepair = () => {};
+  const postRepair = () => {};
+
   return (
     <ExerciseStateContext.Provider
       value={{
+        // Existing context values
         exerciseState,
         setExerciseState,
         firstName,
@@ -84,6 +138,17 @@ export const ExerciseStateProvider = ({ children }) => {
         rankingComplete,
         setRankingComplete,
         resetRanking,
+        // --- REPAIR SECTION CONTEXT ---
+        exercisePromptsState,
+        setExercisePromptsState,
+        validInputs,
+        setValidInputs,
+        isFirst,
+        setIsFirst,
+        handleUserInputChange,
+        checkInputValid,
+        fetchRepair,
+        postRepair,
       }}
     >
       {children}
@@ -94,5 +159,7 @@ export const ExerciseStateProvider = ({ children }) => {
 ExerciseStateProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export const useLab13 = () => useContext(ExerciseStateContext);
 
 export default ExerciseStateContext;
