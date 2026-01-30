@@ -19,7 +19,7 @@ import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
-const maxPieLabelLength = 45;
+const maxPieLabelLength = 35;
 const pxSpaceBetweenLegendToChart = 10;
 const pieSize = 300;
 
