@@ -20,6 +20,7 @@ import PropTypes from "prop-types";
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
 const maxPieLabelLength = 45;
+const pxSpaceBetweenLegendToChart = 10;
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -45,6 +46,20 @@ const Reading = (props) => {
 
   const togglePie = () => {
     setPieModalOpen(!pieModalOpen);
+  };
+
+  const legendMargin = {
+    id: "legendMargin",
+    afterInit(chart) {
+      console.log(chart.legend.fit);
+      const originalFit = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        if (originalFit) {
+          originalFit.call(this);
+        }
+        return (this.height += pxSpaceBetweenLegendToChart);
+      };
+    },
   };
 
   useScroll();
@@ -220,8 +235,6 @@ const Reading = (props) => {
                   <Modal
                     isOpen={pieModalOpen}
                     onClosed={() => setPieModalOpen(false)}
-                    centered
-                    fullscreen={true}
                     toggle={togglePie}
                   >
                     <ModalHeader toggle={togglePie}>
@@ -247,8 +260,8 @@ const Reading = (props) => {
                               },
                             },
                           }}
-                          // plugins={pieModalPlugins}
                           height={!isImagine && pieHeight}
+                          plugins={[legendMargin]}
                         />
                       </div>
                       {readingData?.piechart?.caption !== "" &&
