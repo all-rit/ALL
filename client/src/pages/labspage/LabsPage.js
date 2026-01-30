@@ -82,10 +82,6 @@ const LabsPage = (props) => {
   const [myLabs, setMyLabs] = useState([]);
 
   useEffect(() => {
-    if (labInformation.size !== 0) {
-      return;
-    }
-
     async function fetchGroups() {
       return LabService.getAllLabs();
     }
@@ -103,7 +99,7 @@ const LabsPage = (props) => {
       });
       setLabInformation(hashmap);
     });
-  });
+  }, []);
 
   const labsByDifficulty = (labMap, difficulty) => {
     const filteredMap = new Map();
