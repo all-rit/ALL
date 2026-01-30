@@ -125,7 +125,7 @@ const Reading = (props) => {
       >
         Reading
       </h2>
-      <div className="tw-w-full tw-overflow-y-scroll">
+      <div className="tw-w-full">
         <div className="study tw-bg-white p-5 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
