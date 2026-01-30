@@ -33,6 +33,7 @@ const Reading = (props) => {
   const [pieHeight, setPieHeight] = useState(
     window.innerHeight * pieWindowHeightPercentage,
   );
+  const [originalPieLabels, setOriginalPieLabels] = useState([]);
 
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
@@ -41,6 +42,19 @@ const Reading = (props) => {
 
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+  const mobileOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          padding: 16,
+          textAlign: "left",
+        },
+        position: "top",
+        align: "start",
+      },
+    },
   };
 
   const mobileLegendMargin = {
@@ -70,35 +84,47 @@ const Reading = (props) => {
     }
   };
 
-  window.onresize = () => {
-    windowResizeEvent();
-    setPieHeight(window.innerHeight * pieWindowHeightPercentage);
-  };
+  function labelFlip() {
+    if (readingData.piechart) {
+      if (!mobileView) {
+        console.log("to large");
+        let newReadingData = readingData;
+        newReadingData.piechart.data.labels = labelChecker(
+          newReadingData.piechart.data.labels,
+        );
+        console.log(newReadingData.piechart.data.labels);
+        setReadingData(newReadingData);
+      } else {
+        console.log("to mobile");
+        let newReadingData = readingData;
+        newReadingData.piechart.data.labels = originalPieLabels;
+        console.log(newReadingData.piechart.data.labels);
+        setReadingData(newReadingData);
+      }
+    }
+  }
 
   function labelChecker(labels) {
-    if (window.innerWidth < pieWinodwResizeWidth) {
-      const labelsForReturn = [];
-      for (let label of labels) {
-        if (label.length > maxPieLabelLength) {
-          let createSpace = maxPieLabelLength;
-          if (label[maxPieLabelLength] != " ") {
-            for (let j = maxPieLabelLength; j > 0; j--) {
-              if (label[j] == " ") {
-                createSpace = j;
-                break;
-              }
+    const labelsForReturn = [];
+    for (let label of labels) {
+      if (label.length > maxPieLabelLength) {
+        let createSpace = maxPieLabelLength;
+        if (label[maxPieLabelLength] != " ") {
+          for (let j = maxPieLabelLength; j > 0; j--) {
+            if (label[j] == " ") {
+              createSpace = j;
+              break;
             }
           }
-          label = [
-            label.slice(0, createSpace).trim(),
-            label.slice(createSpace).trim(),
-          ];
         }
-        labelsForReturn.push(label);
+        label = [
+          label.slice(0, createSpace).trim(),
+          label.slice(createSpace).trim(),
+        ];
       }
-      return labelsForReturn;
+      labelsForReturn.push(label);
     }
-    return labels;
+    return labelsForReturn;
   }
 
   function windowResizeEvent() {
@@ -110,6 +136,10 @@ const Reading = (props) => {
     setPieHeight(window.innerHeight * pieWindowHeightPercentage);
   }
 
+  window.onresize = () => {
+    windowResizeEvent();
+  };
+
   useEffect(() => {
     windowResizeEvent();
     const readingAnalytics = async () => {
@@ -119,9 +149,12 @@ const Reading = (props) => {
       }
       LabService.getLabReading(labID).then((data) => {
         if (data[0].reading.piechart) {
-          data[0].reading.piechart.data.labels = labelChecker(
-            data[0].reading.piechart.data.labels,
-          );
+          setOriginalPieLabels(data[0].reading.piechart.data.labels);
+          if (window.innerWidth < pieWinodwResizeWidth) {
+            data[0].reading.piechart.data.labels = labelChecker(
+              data[0].reading.piechart.data.labels,
+            );
+          }
         }
         setReadingData(data[0].reading);
       });
@@ -175,6 +208,10 @@ const Reading = (props) => {
     scrollPositionPercentage,
   ]);
 
+  useEffect(() => {
+    labelFlip();
+  }, [mobileView]);
+
   if (!readingData) {
     return (
       <div className="landingpage__row">
@@ -212,10 +249,6 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {/* 
-            DEV NOTE:
-              This is if we choose to go with button format for smaller devices
-          */}
           {readingData?.piechart && (
             <>
               {mobileView ? (
@@ -225,18 +258,7 @@ const Reading = (props) => {
                       <Pie
                         className="tw-w-auto"
                         data={readingData?.piechart?.data}
-                        options={{
-                          plugins: {
-                            legend: {
-                              labels: {
-                                padding: 16,
-                                textAlign: "left",
-                              },
-                              position: "top",
-                              align: "start",
-                            },
-                          },
-                        }}
+                        options={mobileOptions}
                         height={!isImagine && pieHeight}
                         plugins={[mobileLegendMargin]}
                       />
@@ -288,8 +310,6 @@ const Reading = (props) => {
               )}
             </>
           )}
-
-          {/* End */}
 
           {readingData?.body !== "" ? (
             readingData?.body.map((data, index) => {
