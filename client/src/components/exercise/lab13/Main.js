@@ -7,12 +7,9 @@ import ConfidenceRanking from "./pages/ConfidenceRanking";
 import AIPanel from "./pages/AIPanel.js";
 import AIandSearchPanel from "./pages/AIandSearchPanel.js";
 import Conclusion from "./pages/Conclusion.js";
-import DunningKrugerExplination from "./pages/DunningKrugerExplination";
-import HaloExplination from "./pages/HaloExplination";
 import IDEExercise from "./pages/IDEExercise";
 import IDEIntroduction from "./pages/IDEIntroduction";
 import PanelswithIDEFixes from "./pages/PanelswithIDEFixes";
-import TruthBiasExplination from "./pages/TruthBiasExplination";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -28,12 +25,9 @@ const Main = () => {
           <ConfidenceRanking path="/ConfidenceRanking" />
           <AIPanel path="/AIPanel" />
           <AIandSearchPanel path="/AIandSearchPanel" />
-          <HaloExplination path="/HaloExplination" />
-          <DunningKrugerExplination path="/DunningKrugerExplination" />
-          <IDEExercise path="/IDEExercise" />
           <IDEIntroduction path="/IDEIntroduction" />
+          <IDEExercise path="/IDEExercise" />
           <PanelswithIDEFixes path="/PanelswithIDEFixes" />
-          <TruthBiasExplination path="/TruthBiasExplination" />
           <Conclusion path="/Conclusion" />
           {/*
             // <FormRepair path="/FormRepair" />

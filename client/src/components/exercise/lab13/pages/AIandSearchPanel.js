@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 const AIandSearchPanel = () => {
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab13/Exercise/TruthBiasExplination");
+    navigate("/Lab13/Exercise/IDEIntroduction");
   };
 
   return (
