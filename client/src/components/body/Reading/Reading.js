@@ -21,6 +21,7 @@ const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
 const maxPieLabelLength = 45;
 const pxSpaceBetweenLegendToChart = 10;
+const pieSize = 300;
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -33,12 +34,11 @@ const Reading = (props) => {
   const [pieHeight, setPieHeight] = useState(
     window.innerHeight * pieWindowHeightPercentage,
   );
-  // const [pieWidth, setPieWidth] = useState(0);
+
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
   let [saveData, setSaveData] = useState(false);
-  // const pieDivRef = useRef(null);
 
   const closeModal = () => {
     setModalOpen(false);
@@ -48,14 +48,13 @@ const Reading = (props) => {
     setPieModalOpen(!pieModalOpen);
   };
 
-  const legendMargin = {
-    id: "legendMargin",
+  const mobileLegendMargin = {
+    id: "mobileLegendMargin",
     afterInit(chart) {
-      console.log(chart.legend.fit);
-      const originalFit = chart.legend.fit;
+      const smallOriginalFit = chart.legend.fit;
       chart.legend.fit = function fit() {
-        if (originalFit) {
-          originalFit.call(this);
+        if (smallOriginalFit) {
+          smallOriginalFit.call(this);
         }
         return (this.height += pxSpaceBetweenLegendToChart);
       };
@@ -124,7 +123,6 @@ const Reading = (props) => {
         await UserLabService.user_complete_reading(user.userid, labID);
       }
       LabService.getLabReading(labID).then((data) => {
-        console.log(data);
         if (data[0].reading.piechart) {
           data[0].reading.piechart.data.labels = labelChecker(
             data[0].reading.piechart.data.labels,
@@ -264,7 +262,7 @@ const Reading = (props) => {
                             },
                           }}
                           height={!isImagine && pieHeight}
-                          plugins={[legendMargin]}
+                          plugins={[mobileLegendMargin]}
                         />
                       </div>
                       {readingData?.piechart?.caption !== "" &&
@@ -290,7 +288,11 @@ const Reading = (props) => {
                   <div className="flex tw-body-text">
                     <Pie
                       data={readingData?.piechart.data}
-                      height={!isImagine ? 100 : 100}
+                      options={{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                      }}
+                      height={!isImagine && pieSize}
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
