@@ -6,7 +6,7 @@ import AIChatBot from "../components/AIChatBot";
 const AIPanel = () => {
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab13/Exercise/HaloExplination");
+    navigate("/Lab13/Exercise/AIandSearchPanel");
   };
 
   const questions = [

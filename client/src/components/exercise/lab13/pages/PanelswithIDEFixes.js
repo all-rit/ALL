@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 const IDEIntroduction = () => {
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab13/Exercise/DunningKrugerExplination");
+    navigate("/Lab13/Exercise/Conclusion");
   };
 
   return (
