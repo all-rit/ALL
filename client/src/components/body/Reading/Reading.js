@@ -124,9 +124,12 @@ const Reading = (props) => {
         await UserLabService.user_complete_reading(user.userid, labID);
       }
       LabService.getLabReading(labID).then((data) => {
-        data[0].reading.piechart.data.labels = labelChecker(
-          data[0].reading.piechart.data.labels,
-        );
+        console.log(data);
+        if (data[0].reading.piechart) {
+          data[0].reading.piechart.data.labels = labelChecker(
+            data[0].reading.piechart.data.labels,
+          );
+        }
         setReadingData(data[0].reading);
       });
 
