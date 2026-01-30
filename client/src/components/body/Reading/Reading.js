@@ -256,7 +256,6 @@ const Reading = (props) => {
                                   textAlign: "left",
                                 },
                                 position: "top",
-                                fullSize: true,
                                 align: "start",
                               },
                             },
