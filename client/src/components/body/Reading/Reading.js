@@ -44,18 +44,9 @@ const Reading = (props) => {
     setModalOpen(false);
   };
 
-  const mobileOptions = {
-    plugins: {
-      legend: {
-        labels: {
-          padding: 16,
-          textAlign: "left",
-        },
-        position: "top",
-        align: "start",
-      },
-    },
-  };
+  // const mobileOptions = {
+
+  // };
 
   const mobileLegendMargin = {
     id: "mobileLegendMargin",
@@ -105,35 +96,52 @@ const Reading = (props) => {
     const labelsForReturn = [];
     // for every label
     for (let label of labels) {
+      console.log(label);
       // See if the length is greater than maxPieLabelLength
       if (label.length > maxPieLabelLength) {
         // Create empty array for where to input spaces
         const spaces = [];
         // starting from the end of each label - maxPieLabelLength
-        for (let i = label.length - maxPieLabelLength; i > 0; i--) {
+        for (let i = maxPieLabelLength; i < label.length; i++) {
           // see if the char is a space
           if (label[i] == " ") {
             // if it is
             // add that index to the array of spaces
             spaces.push(i);
-            i -= maxPieLabelLength;
+            i += maxPieLabelLength;
             // subtract the index by maxPieLabelLength
+          } else {
+            let cont = true;
+            while (cont) {
+              --i;
+              if (label[i] == " ") {
+                spaces.push(i);
+                i += maxPieLabelLength;
+                cont = false;
+              }
+            }
           }
         }
+        console.log(spaces);
         // Create an empty array to store the new label
         const newLabel = [];
         // Append each section starting from the beginning until the end
-        for (let j = spaces.length; j >= 0; j--) {
-          // Add the string to the array to return
-          if (j == spaces.length) {
-            newLabel.push(label.slice(0, spaces[j - 1]).trim());
-          } else if (j == 0) {
-            newLabel.push(label.slice(spaces[j]).trim());
+        for (let j = 0; j <= spaces.length; j++) {
+          console.log("j: ", j);
+          if (j == 0) {
+            console.log("START: ", label.slice(0, spaces[j]).trim());
+            newLabel.push(label.slice(0, spaces[j]).trim());
+          } else if (j == spaces.length) {
+            console.log("END: ", label.slice(spaces[j - 1]).trim());
+            newLabel.push(label.slice(spaces[j - 1]).trim());
           } else {
             let t = j - 1;
-            newLabel.push(label.slice(spaces[j], spaces[t]).trim());
+            console.log("T, J", t, j);
+            console.log("MIDDLE: ", label.slice(spaces[t], spaces[j]).trim());
+            newLabel.push(label.slice(spaces[t], spaces[j]).trim());
           }
         }
+        console.log(newLabel);
         labelsForReturn.push(newLabel);
       }
       // If it is not
@@ -277,7 +285,18 @@ const Reading = (props) => {
                       <Pie
                         className="tw-w-auto"
                         data={readingData?.piechart?.data}
-                        options={mobileOptions}
+                        options={{
+                          plugins: {
+                            legend: {
+                              labels: {
+                                padding: 28,
+                                textAlign: "left",
+                              },
+                              position: "top",
+                              align: "start",
+                            },
+                          },
+                        }}
                         height={!isImagine && pieHeight}
                         plugins={[mobileLegendMargin]}
                       />
