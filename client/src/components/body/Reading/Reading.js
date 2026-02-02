@@ -20,7 +20,7 @@ import PropTypes from "prop-types";
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
 const maxPieLabelLength = 25;
-const pxSpaceBetweenLegendToChart = 70;
+const pxSpaceBetweenLegendToChart = 50;
 const pieSize = 300;
 
 Chart.register(ArcElement, Tooltip, Legend);
@@ -34,7 +34,7 @@ const Reading = (props) => {
     window.innerHeight * pieWindowHeightPercentage,
   );
   const [originalPieLabels, setOriginalPieLabels] = useState([]);
-
+  const [mobileLabelWrap, setMobileLabelWrap] = useState(false);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
@@ -44,7 +44,8 @@ const Reading = (props) => {
     setModalOpen(false);
   };
 
-  const mobileOptions = {
+  const mobileWrapOptions = {
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         labels: {
@@ -57,8 +58,18 @@ const Reading = (props) => {
     },
   };
 
-  const mobileLegendMargin = {
-    id: "mobileLegendMargin",
+  const mobileNoWrapOptions = {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+        align: "center",
+      },
+    },
+  };
+
+  const mobileLegendWrap = {
+    id: "mobileLegendWrap",
     afterInit(chart) {
       const smallOriginalFit = chart.legend.fit;
       chart.legend.fit = function fit() {
@@ -105,9 +116,9 @@ const Reading = (props) => {
     const labelsForReturn = [];
     // for every label
     for (let label of labels) {
-      console.log(label);
       // See if the length is greater than maxPieLabelLength
       if (label.length > maxPieLabelLength) {
+        setMobileLabelWrap(true);
         // Create empty array for where to input spaces
         const spaces = [];
         // starting from the end of each label - maxPieLabelLength
@@ -294,9 +305,13 @@ const Reading = (props) => {
                       <Pie
                         className="tw-w-auto"
                         data={readingData?.piechart?.data}
-                        options={mobileOptions}
+                        options={
+                          mobileLabelWrap
+                            ? mobileWrapOptions
+                            : mobileNoWrapOptions
+                        }
                         height={!isImagine && pieHeight}
-                        plugins={[mobileLegendMargin]}
+                        plugins={mobileLabelWrap ? [mobileLegendWrap] : []}
                       />
                     )}
                   </div>
