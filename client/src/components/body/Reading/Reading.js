@@ -102,41 +102,47 @@ const Reading = (props) => {
 
   function labelChecker(labels) {
     // Create empty array to return
-    // for every label
-    // See if the length is greater than maxPieLabelLength
-    // If it is
-    // Create empty array for where to input spaces
-    // starting from the end of each label - maxPieLabelLength
-    // see if the char is a space
-    // if it is
-    // add that index to the array of spaces
-    // subtract the index by maxPieLabelLength
-    // Create an empty array to store the new label
-    // Append each section starting from the beginning until the end
-    // Add the string to the array to return
-    // If it is not
-    // Add the label to the array to return
-    // return the array
-
     const labelsForReturn = [];
+    // for every label
     for (let label of labels) {
+      // See if the length is greater than maxPieLabelLength
       if (label.length > maxPieLabelLength) {
-        let createSpace = maxPieLabelLength;
-        if (label[maxPieLabelLength] != " ") {
-          for (let j = maxPieLabelLength; j > 0; j--) {
-            if (label[j] == " ") {
-              createSpace = j;
-              break;
-            }
+        // Create empty array for where to input spaces
+        const spaces = [];
+        // starting from the end of each label - maxPieLabelLength
+        for (let i = label.length - maxPieLabelLength; i > 0; i--) {
+          // see if the char is a space
+          if (label[i] == " ") {
+            // if it is
+            // add that index to the array of spaces
+            spaces.push(i);
+            i -= maxPieLabelLength;
+            // subtract the index by maxPieLabelLength
           }
         }
-        label = [
-          label.slice(0, createSpace).trim(),
-          label.slice(createSpace).trim(),
-        ];
+        // Create an empty array to store the new label
+        const newLabel = [];
+        // Append each section starting from the beginning until the end
+        for (let j = spaces.length; j >= 0; j--) {
+          // Add the string to the array to return
+          if (j == spaces.length) {
+            newLabel.push(label.slice(0, spaces[j - 1]).trim());
+          } else if (j == 0) {
+            newLabel.push(label.slice(spaces[j]).trim());
+          } else {
+            let t = j - 1;
+            newLabel.push(label.slice(spaces[j], spaces[t]).trim());
+          }
+        }
+        labelsForReturn.push(newLabel);
       }
-      labelsForReturn.push(label);
+      // If it is not
+      else {
+        // Add the label to the array to return
+        labelsForReturn.push(label);
+      }
     }
+    // return the array
     return labelsForReturn;
   }
 
