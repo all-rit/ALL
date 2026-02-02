@@ -1,8 +1,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
+import { BarElement, CategoryScale, LinearScale } from "chart.js";
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
+
+Chart.register(BarElement, CategoryScale, LinearScale);
 
 class ScoreComparison extends Component {
   constructor(props) {
@@ -71,7 +74,8 @@ class ScoreComparison extends Component {
     };
 
     const fetchData = () => {
-      fetch(process.env.API_URL + "/scoreComparison", {
+      console.log("Something");
+      fetch(process.env.s + "/scoreComparison", {
         method: "GET",
         credentials: "include",
       })
