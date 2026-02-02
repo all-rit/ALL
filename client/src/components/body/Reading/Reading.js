@@ -55,6 +55,9 @@ const Reading = (props) => {
         position: "top",
         align: "start",
       },
+      title: {
+        position: "bottom",
+      },
     },
   };
 
