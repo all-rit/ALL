@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 
 import { Bar } from "react-chartjs-2";
 import OutputBox from "./OutputBox";
+import { BarElement, CategoryScale, Chart, LinearScale } from "chart.js";
+
+Chart.register(BarElement, CategoryScale, LinearScale);
 
 const Decryption = ({
   encryptedMessage,
@@ -20,21 +23,17 @@ const Decryption = ({
         data: [classicAttempts, quantumAttempts],
         backgroundColor: ["#face35", "#0d28bc"],
         borderWidth: 1,
+        yAxisID: "y",
       },
     ],
   };
 
   const graphOptions = {
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            min: 0,
-            max: Math.max(25, classicAttempts),
-          },
-        },
-      ],
+      y: {
+        min: 0,
+        max: Math.max(25, classicAttempts),
+      },
     },
   };
 
