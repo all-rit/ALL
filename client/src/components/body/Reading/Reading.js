@@ -112,24 +112,15 @@ const Reading = (props) => {
   }
 
   function labelChecker(labels) {
-    // Create empty array to return
     const labelsForReturn = [];
-    // for every label
     for (let label of labels) {
-      // See if the length is greater than maxPieLabelLength
       if (label.length > maxPieLabelLength) {
         setMobileLabelWrap(true);
-        // Create empty array for where to input spaces
         const spaces = [];
-        // starting from the end of each label - maxPieLabelLength
         for (let i = maxPieLabelLength; i < label.length; i++) {
-          // see if the char is a space
           if (label[i] == " ") {
-            // if it is
-            // add that index to the array of spaces
             spaces.push(i);
             i += maxPieLabelLength;
-            // subtract the index by maxPieLabelLength
           } else {
             let cont = true;
             while (cont) {
@@ -142,35 +133,22 @@ const Reading = (props) => {
             }
           }
         }
-        console.log(spaces);
-        // Create an empty array to store the new label
         const newLabel = [];
-        // Append each section starting from the beginning until the end
         for (let j = 0; j <= spaces.length; j++) {
-          console.log("j: ", j);
           if (j == 0) {
-            console.log("START: ", label.slice(0, spaces[j]).trim());
             newLabel.push(label.slice(0, spaces[j]).trim());
           } else if (j == spaces.length) {
-            console.log("END: ", label.slice(spaces[j - 1]).trim());
             newLabel.push(label.slice(spaces[j - 1]).trim());
           } else {
             let t = j - 1;
-            console.log("T, J", t, j);
-            console.log("MIDDLE: ", label.slice(spaces[t], spaces[j]).trim());
             newLabel.push(label.slice(spaces[t], spaces[j]).trim());
           }
         }
-        console.log(newLabel);
         labelsForReturn.push(newLabel);
-      }
-      // If it is not
-      else {
-        // Add the label to the array to return
+      } else {
         labelsForReturn.push(label);
       }
     }
-    // return the array
     return labelsForReturn;
   }
 
