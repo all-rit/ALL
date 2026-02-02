@@ -20,7 +20,7 @@ import PropTypes from "prop-types";
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
 const maxPieLabelLength = 25;
-const pxSpaceBetweenLegendToChart = 10;
+const pxSpaceBetweenLegendToChart = 70;
 const pieSize = 300;
 
 Chart.register(ArcElement, Tooltip, Legend);
@@ -44,9 +44,18 @@ const Reading = (props) => {
     setModalOpen(false);
   };
 
-  // const mobileOptions = {
-
-  // };
+  const mobileOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          padding: 28,
+          textAlign: "left",
+        },
+        position: "top",
+        align: "start",
+      },
+    },
+  };
 
   const mobileLegendMargin = {
     id: "mobileLegendMargin",
@@ -285,18 +294,7 @@ const Reading = (props) => {
                       <Pie
                         className="tw-w-auto"
                         data={readingData?.piechart?.data}
-                        options={{
-                          plugins: {
-                            legend: {
-                              labels: {
-                                padding: 28,
-                                textAlign: "left",
-                              },
-                              position: "top",
-                              align: "start",
-                            },
-                          },
-                        }}
+                        options={mobileOptions}
                         height={!isImagine && pieHeight}
                         plugins={[mobileLegendMargin]}
                       />
