@@ -19,7 +19,7 @@ import PropTypes from "prop-types";
 
 const pieWindowHeightPercentage = 0.7;
 const pieWinodwResizeWidth = 610;
-const maxPieLabelLength = 35;
+const maxPieLabelLength = 25;
 const pxSpaceBetweenLegendToChart = 10;
 const pieSize = 300;
 
@@ -101,6 +101,23 @@ const Reading = (props) => {
   }
 
   function labelChecker(labels) {
+    // Create empty array to return
+    // for every label
+    // See if the length is greater than maxPieLabelLength
+    // If it is
+    // Create empty array for where to input spaces
+    // starting from the end of each label - maxPieLabelLength
+    // see if the char is a space
+    // if it is
+    // add that index to the array of spaces
+    // subtract the index by maxPieLabelLength
+    // Create an empty array to store the new label
+    // Append each section starting from the beginning until the end
+    // Add the string to the array to return
+    // If it is not
+    // Add the label to the array to return
+    // return the array
+
     const labelsForReturn = [];
     for (let label of labels) {
       if (label.length > maxPieLabelLength) {
