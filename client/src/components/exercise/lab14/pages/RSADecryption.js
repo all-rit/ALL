@@ -84,7 +84,7 @@ const RSADecryption = () => {
             to repeat an algorithm a small number of times, the number of
             attempts remains very low. In theory, quantum computers could
             implement Shor’s algorithm and break RSA encryption in a matter of
-            minutes. In practice, however, today’s quantum computers are not
+            minutes. In practice however, today’s quantum computers are not
             powerful enough to break the large RSA keys used on the internet. So
             far, quantum devices have only factored a 90-bit integer, which is
             incredibly small compared to the 2048 used in real-world

@@ -19,6 +19,7 @@ import {
   ACCESSIBILITY,
   AI_MACHINE_LEARNING,
   ALL_LABS,
+  QUANTUM,
   DIFFICULTY_1,
   DIFFICULTY_2,
   DIFFICULTY_3,
@@ -171,6 +172,15 @@ const LabsPage = (props) => {
       case ACCESSIBILITY:
         if (labInformation.has("Accessibility")) {
           tempMap.set("Accessibility", labInformation.get("Accessibility"));
+          setDisplayedLabs(tempMap);
+        }
+        break;
+      case QUANTUM:
+        if (labInformation.has("Quantum Computing")) {
+          tempMap.set(
+            "Quantum Computing",
+            labInformation.get("Quantum Computing"),
+          );
           setDisplayedLabs(tempMap);
         }
         break;
@@ -332,6 +342,15 @@ const LabsPage = (props) => {
                     }}
                   >
                     Accessibility
+                  </button>
+                  <button
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    onClick={() => {
+                      handleSearchChange(QUANTUM);
+                    }}
+                  >
+                    Quantum Computing
                   </button>
                   <button
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
