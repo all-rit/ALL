@@ -58,6 +58,17 @@ const Reading = (props) => {
       title: {
         position: "bottom",
       },
+      tooltip: {
+        callbacks: {
+          title: (ctx) => {
+            return ctx.label;
+          },
+
+          label: (ctx) => {
+            return ctx.parsed;
+          },
+        },
+      },
     },
   };
 
@@ -67,6 +78,35 @@ const Reading = (props) => {
       legend: {
         position: "top",
         align: "center",
+      },
+      tooltip: {
+        callbacks: {
+          title: (ctx) => {
+            return ctx.label;
+          },
+
+          label: (ctx) => {
+            return ctx.parsed;
+          },
+        },
+      },
+    },
+  };
+
+  const largeViewPortOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: (ctx) => {
+            return ctx.label;
+          },
+
+          label: (ctx) => {
+            return ctx.parsed;
+          },
+        },
       },
     },
   };
@@ -318,10 +358,7 @@ const Reading = (props) => {
                   <div className="flex tw-body-text">
                     <Pie
                       data={readingData?.piechart.data}
-                      options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                      }}
+                      options={largeViewPortOptions}
                       height={!isImagine && pieSize}
                     />
                   </div>
