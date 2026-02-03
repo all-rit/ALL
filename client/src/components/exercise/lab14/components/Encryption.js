@@ -18,12 +18,12 @@ const Encryption = ({
     const value = e.target.value;
     setBaseMessage(value);
 
-    if (value === "") {
+    if (value === "" || value.trim().length == 0) {
       setValidInput(false);
       return;
     }
 
-    const filteredValue = value.replace(/[^a-zA-Z]/g, "");
+    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
     setValidInput(filteredValue === value ? true : false);
   };
 
