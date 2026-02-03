@@ -281,6 +281,7 @@ const Reading = (props) => {
             <>
               {mobileView ? (
                 <>
+                  <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
                   <div className="flex tw-body-text">
                     {readingData.piechart && (
                       <Pie
