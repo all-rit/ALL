@@ -114,9 +114,7 @@ const Reading = (props) => {
 
   return (
     <div
-      className={
-        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem]"
-      }
+      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center"}
     >
       <h2
         className={
