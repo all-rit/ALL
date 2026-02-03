@@ -50,9 +50,7 @@ const LabWindow = (props) => {
           }
         >
           <div
-            className={
-              "tw-flex tw-col-start-1 tw-mx-2 tw-col-span-2 tw-max-h-[77vh]"
-            }
+            className={"tw-flex tw-col-start-1 tw-col-span-2 tw-max-h-[77vh]"}
           >
             <NavigationPane
               labID={lab}
