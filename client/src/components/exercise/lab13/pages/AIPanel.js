@@ -1,4 +1,4 @@
-import { React, useContext, useMemo, useState } from 'react';
+import { React, useContext, useMemo, useState, useCallback } from 'react';
 import { startExercise } from 'src/reducers/lab2/actions';
 import { navigate } from '@reach/router';
 import AIChatBot from '../components/AIChatBot';
@@ -16,20 +16,23 @@ const AIPanel = () => {
     const { rankingColumns } = useContext(ExerciseStateContext);
     const [topicIndex, setTopicIndex] = useState(0);
     const [showRatingModal, setShowRatingModal] = useState(false);
-    const [toneRating, setToneRating] = useState('');
-    const [confidenceRating, setConfidenceRating] = useState('');
     const [showBiasExplanation, setShowBiasExplanation] = useState(false);
     const [selectedBiasData, setSelectedBiasData] = useState(null);
-    // const handleContinue = () => {
-    //     startExercise();
-    //     navigate("/Lab13/Exercise/AIandSearchPanel");
-    // };
+    const [currentAnswerData, setCurrentAnswerData] = useState(null);
+    const [isBotTyping, setIsBotTyping] = useState(false);
+    const [isBotThinking, setIsBotThinking] = useState(false);
+    const [toneRating, setToneRating] = useState('');
+    const [confidenceRating, setConfidenceRating] = useState('');
+
+    const BIAS_POSITION_MAP = {
+        0: BIAS_TYPES.TRUTH_BIAS, // Most knowledgeable
+        1: BIAS_TYPES.HALO_EFFECT, // Medium knowledgeable
+        2: BIAS_TYPES.DUNNING_KRUGER, // Least knowledgeable
+    };
 
     // Get all three topics in order: medium, most, least
     const getOrderedTopics = useMemo(() => {
-        if (!rankingColumns || rankingColumns.length === 0) {
-            return [];
-        }
+        if (!rankingColumns?.length) return [];
 
         const topics = [];
         // Medium knowledgeable (index 1) - Halo Effect
@@ -48,80 +51,36 @@ const AIPanel = () => {
         return topics;
     }, [rankingColumns]);
 
-    const currentTopic = getOrderedTopics && getOrderedTopics.length > 0 ? getOrderedTopics[topicIndex] || null : null;
-
-    const getActiveBiasForTopic = (biasPosition) => {
-        const biasMap = {
-            0: BIAS_TYPES.TRUTH_BIAS, // Most knowledgeable
-            1: BIAS_TYPES.HALO_EFFECT, // Medium knowledgeable
-            2: BIAS_TYPES.DUNNING_KRUGER, // Least knowledgeable
-        };
-        return biasMap[biasPosition] || BIAS_TYPES.HALO_EFFECT;
-    };
-
-    const activeTopic = currentTopic ? currentTopic.id : null;
-
-    const activeBias = currentTopic ? getActiveBiasForTopic(currentTopic.biasPosition) : BIAS_TYPES.HALO_EFFECT;
-
-    // Get questions formatted for AIChatBot
-    const generateQuestionsAndAnswers = () => {
-        if (!activeTopic) {
-            return { questions: [], answers: [] };
-        }
-
-        const topic = getTopicById(activeTopic);
-        if (!topic) {
-            return { questions: [], answers: [] };
-        }
-
-        const questions = topic.questions.map((q, index) => ({
-            id: index + 1,
-            text: q.text,
-        }));
-
-        const answers = topic.questions.map((q, index) => ({
-            id: index + 1,
-            text: q.answers[activeBias].text,
-            isCorrect: q.answers[activeBias].isCorrect,
-            explanation: q.answers[activeBias].explanation,
-            biasType: activeBias,
-            biasDefinition: BIAS_DEFINITIONS[activeBias],
-        }));
-
-        return { questions, answers };
-    };
-
-    const { questions, answers } = useMemo(() => generateQuestionsAndAnswers(), [activeTopic, activeBias]);
-
+    const currentTopic = getOrderedTopics[topicIndex] || null;
+    const activeTopic = currentTopic?.id || null;
+    const activeBias = BIAS_POSITION_MAP[currentTopic?.biasPosition] || BIAS_TYPES.HALO_EFFECT;
     const topicData = getTopicById(activeTopic);
 
-    const handleAnswerSelected = (biasType, biasDefinition, explanation) => {
-        setSelectedBiasData({ biasType, biasDefinition, explanation });
-        setShowRatingModal(true);
-    };
-
-    const handleRatingSubmit = () => {
-        setShowBiasExplanation(true);
-    };
-
-    const handleBiasExplanationClose = () => {
-        // Close both modals first
+    const resetModalState = useCallback(() => {
         setShowBiasExplanation(false);
         setShowRatingModal(false);
-
-        // Reset modal data
         setSelectedBiasData(null);
+        setCurrentAnswerData(null);
         setToneRating('');
         setConfidenceRating('');
+    }, []);
 
-        // Delay the topic index update to ensure modals are fully closed
+    const handleAnswerSelected = useCallback((biasType, biasDefinition, explanation) => {
+        setSelectedBiasData({ biasType, biasDefinition, explanation });
+        setShowRatingModal(true);
+    }, []);
+
+    const handleRatingSubmit = useCallback(() => {
+        setShowBiasExplanation(true);
+    }, []);
+
+    const handleBiasExplanationClose = useCallback(() => {
+        resetModalState();
+
         setTimeout(() => {
-            // Move to next topic - use functional update to avoid stale closure
             setTopicIndex((prevIndex) => {
                 const nextIndex = prevIndex + 1;
-                // Check if we've completed all topics
                 if (nextIndex >= getOrderedTopics.length) {
-                    // Navigate to next page after a small delay to ensure state settles
                     setTimeout(() => {
                         startExercise();
                         navigate('/Lab13/Exercise/AIandSearchPanel');
@@ -130,7 +89,9 @@ const AIPanel = () => {
                 return nextIndex;
             });
         }, 100);
-    };
+    }, [resetModalState, getOrderedTopics.length]);
+
+    const biasDefinition = selectedBiasData ? BIAS_DEFINITIONS[selectedBiasData.biasType] : null;
 
     return (
         <div>
@@ -138,12 +99,36 @@ const AIPanel = () => {
                 <>
                     <Tabs>
                         <Tab label="AIChatBot">
-                            <div className="tw-h-[50%]">
-                                <AIChatBot
-                                    userQuestions={questions}
-                                    fixedAIResponse={answers}
-                                    onAnswerSelected={handleAnswerSelected}
-                                />
+                            <div className="tw-h-full tw-flex tw-flex-col">
+                                <div className="tw-flex-1 tw-overflow-auto">
+                                    <AIChatBot
+                                        userQuestions={topicData.questions.map((q, index) => ({
+                                            id: index + 1,
+                                            text: q.text,
+                                        }))}
+                                        fixedAIResponse={topicData.questions.map((q, index) => ({
+                                            id: index + 1,
+                                            text: q.answers[activeBias].text,
+                                            isCorrect: q.answers[activeBias].isCorrect,
+                                            explanation: q.answers[activeBias].explanation,
+                                            biasType: activeBias,
+                                            biasDefinition: BIAS_DEFINITIONS[activeBias],
+                                        }))}
+                                        onAnswerDataChange={setCurrentAnswerData}
+                                        onTypingChange={setIsBotTyping}
+                                        onThinkingChange={setIsBotThinking}
+                                    />
+                                </div>
+                                <div className="tw-bg-white tw-flex tw-justify-center tw-py-4 tw-border-t tw-border-gray-200">
+                                    {currentAnswerData && !isBotTyping && !isBotThinking && !showRatingModal && (
+                                        <button
+                                            onClick={() => handleAnswerSelected(currentAnswerData.biasType, currentAnswerData.biasDefinition, currentAnswerData.explanation)}
+                                            className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
+                                        >
+                                            Review ALL-IE&apos;s Reponse
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </Tab>
                     </Tabs>
@@ -159,14 +144,14 @@ const AIPanel = () => {
                         showTextModal={showBiasExplanation}
                         setShowTextModal={setShowBiasExplanation}
                         textModalHeader={
-                            selectedBiasData ? (
+                            biasDefinition ? (
                                 <div className="tw-text-xl tw-font-bold tw-text-textGray tw-m-3">
-                                    {BIAS_DEFINITIONS[selectedBiasData.biasType]?.name}
+                                    {biasDefinition.name}
                                 </div>
                             ) : null
                         }
                         textModalBody={
-                            selectedBiasData ? (
+                            selectedBiasData && biasDefinition ? (
                                 <div className="tw-p-4 tw-text-sm tw-text-gray-700">
                                     <div className="tw-mb-6">
                                         <p className="tw-italic tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-4">
@@ -175,9 +160,9 @@ const AIPanel = () => {
                                     </div>
                                     <div className="tw-bg-blue-50 tw-p-4 tw-rounded tw-mb-6">
                                         <h4 className="tw-font-bold tw-mb-2">
-                                            Understanding {BIAS_DEFINITIONS[selectedBiasData.biasType]?.name}:
+                                            Understanding {biasDefinition.name}:
                                         </h4>
-                                        <p>{BIAS_DEFINITIONS[selectedBiasData.biasType]?.definition}</p>
+                                        <p>{biasDefinition.definition}</p>
                                     </div>
                                 </div>
                             ) : null

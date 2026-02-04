@@ -49,13 +49,12 @@ const TypingMessage = ({ text, onUpdate, onComplete }) => {
  * @param {*} onAnswerSelected : Callback function when an answer is displayed
  * @returns
  */
-const AIChatBot = ({ userQuestions, fixedAIResponse, onAnswerSelected }) => {
+const AIChatBot = ({ userQuestions, fixedAIResponse, onAnswerDataChange, onTypingChange, onThinkingChange }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([]);
     const [isTyping, setIsTyping] = useState(false);
     const [isThinking, setIsThinking] = useState(false);
     const [showOverlay, setShowOverlay] = useState(true);
-    const [currentAnswerData, setCurrentAnswerData] = useState(null);
     const dropdownRef = useRef(null);
     const messagesContainerRef = useRef(null);
 
@@ -63,8 +62,21 @@ const AIChatBot = ({ userQuestions, fixedAIResponse, onAnswerSelected }) => {
     // Keep messages to maintain chat history
     useEffect(() => {
         setIsOpen(false);
-        setCurrentAnswerData(null);
     }, [userQuestions]);
+
+    // Notify parent when typing state changes
+    useEffect(() => {
+        if (onTypingChange) {
+            onTypingChange(isTyping);
+        }
+    }, [isTyping, onTypingChange]);
+
+    // Notify parent when thinking state changes
+    useEffect(() => {
+        if (onThinkingChange) {
+            onThinkingChange(isThinking);
+        }
+    }, [isThinking, onThinkingChange]);
 
     // Scroll function to show the most recent message
     const scrollToBottom = () => {
@@ -96,12 +108,15 @@ const AIChatBot = ({ userQuestions, fixedAIResponse, onAnswerSelected }) => {
             text: botObj ? botObj.text : 'No response found.',
         };
 
-        // Store the answer data for the callback
-        setCurrentAnswerData({
+        // Store the answer data and notify parent
+        const answerData = {
             biasType: botObj?.biasType,
             biasDefinition: botObj?.biasDefinition,
             explanation: botObj?.explanation,
-        });
+        };
+        if (onAnswerDataChange) {
+            onAnswerDataChange(answerData);
+        }
 
         setMessages((prev) => [...prev, userMsg]);
         // AI begins processing before they type
@@ -192,19 +207,8 @@ const AIChatBot = ({ userQuestions, fixedAIResponse, onAnswerSelected }) => {
                                     <TypingMessage
                                         text={msg.text}
                                         onUpdate={scrollToBottom}
-                                        // Set typing to false when done and trigger callback
                                         onComplete={() => {
                                             setIsTyping(false);
-                                            if (onAnswerSelected && currentAnswerData) {
-                                                setTimeout(() => {
-                                                    onAnswerSelected(
-                                                        currentAnswerData.biasType,
-                                                        currentAnswerData.biasDefinition,
-                                                        currentAnswerData.explanation,
-                                                    );
-                                                    setCurrentAnswerData(null);
-                                                }, 500); // Small delay before showing modal
-                                            }
                                         }}
                                     />
                                 ) : (
@@ -287,7 +291,7 @@ const AIChatBot = ({ userQuestions, fixedAIResponse, onAnswerSelected }) => {
                 </div>
             </div>
 
-            {/* AI search bottom panel */}
+            {/* Dropdown and toggle button */}
             <div className="tw-w-full tw-bg-white tw-border-0 tw-border-t-4 tw-border-solid tw-border-primary-blue tw-rounded-b-lg tw-flex">
                 {/* Toggle button for dropdown menu */}
                 <button
@@ -355,7 +359,9 @@ AIChatBot.propTypes = {
             text: PropTypes.string.isRequired,
         })
     ),
-    onAnswerSelected: PropTypes.func,
+    onAnswerDataChange: PropTypes.func,
+    onTypingChange: PropTypes.func,
+    onThinkingChange: PropTypes.func,
 };
 
 export default AIChatBot;
