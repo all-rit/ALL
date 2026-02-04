@@ -22,6 +22,7 @@ import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
+import { default as ExerciseLab15 } from "./components/exercise/lab15/Main";
 
 import { Sections } from "./constants/index";
 
@@ -140,6 +141,7 @@ const App = () => {
           <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
           <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
           <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
+          <ExerciseLab15 path="/Lab15/Exercise/*" user={state.main.user} />
 
           <Reinforcement
             path={`/Lab${lab}/Reinforcement`}
@@ -198,11 +200,7 @@ const App = () => {
   return (
     <>
       <div
-        className={`overflow-x-hidden ${
-          labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
-        }`}
+        className={`overflow-x-hidden ${labInProgress || isImagine ? "overflow-y-hidden tw-h-lvh" : "overflow-y-auto min-h-screen"}`}
       >
         <Header isImagine={isImagine} />
         <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
