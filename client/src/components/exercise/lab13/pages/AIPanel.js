@@ -20,6 +20,10 @@ const AIPanel = () => {
     const [confidenceRating, setConfidenceRating] = useState('');
     const [showBiasExplanation, setShowBiasExplanation] = useState(false);
     const [selectedBiasData, setSelectedBiasData] = useState(null);
+    // const handleContinue = () => {
+    //     startExercise();
+    //     navigate("/Lab13/Exercise/AIandSearchPanel");
+    // };
 
     // Get all three topics in order: medium, most, least
     const getOrderedTopics = useMemo(() => {
@@ -120,7 +124,7 @@ const AIPanel = () => {
                     // Navigate to next page after a small delay to ensure state settles
                     setTimeout(() => {
                         startExercise();
-                        navigate('/Lab13/Exercise/HaloExplination');
+                        navigate('/Lab13/Exercise/AIandSearchPanel');
                     }, 50);
                 }
                 return nextIndex;
