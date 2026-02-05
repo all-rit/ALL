@@ -197,13 +197,7 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div
-        className={`overflow-x-hidden ${
-          labInProgress || isImagine
-            ? "overflow-y-hidden"
-            : "overflow-y-hidden min-h-screen"
-        }`}
-      >
+      <div className={labInProgress || isImagine ? "" : "min-h-screen"}>
         <Header isImagine={isImagine} />
         <div className={`tw-relative ${labInProgress}`}>
           <div className={`tw-relative tw-grid`}>
