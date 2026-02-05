@@ -13,7 +13,7 @@ const InputComponent = ({ vigenereKey, setVigenereKey }) => {
     const value = e.target.value;
     setVigenereKey(value);
 
-    if (value === "") {
+    if (value === "" || value.trim().length == 0) {
       setValidInput(false);
       return;
     }
