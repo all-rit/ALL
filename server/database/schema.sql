@@ -3778,7 +3778,8 @@ e'[
       ]
     }
   }',
-  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', '[
+  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', 
+'[
   {
     "question": "What causes a qubit to collapse?",
     "answers": [
@@ -3975,13 +3976,18 @@ e'[
   "footer":{
       "links":[
         {
-          "name":"What is AI Hallucinations? | IBM",
-          "link":"https://www.ibm.com/think/topics/quantum-computing"
+          "name":"",
+          "link":""
         }
       ]
     }
   }',
-  '[{"title":"AI Hallucinations Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"}]', 
+  '[
+    {"title":"What actually is an AI hallucination??? (in 10 min. or less)","link": "https://www.youtube.com/embed/d-pvxa042MM"},
+    {"title":"Ai Hallucinations Explained in Non Nerd English","link": "https://www.youtube.com/embed/RUSbumBu7Ks"},
+    {"title":"The Step-by-Step master class on writing better prompts than 99% of people","link": "https://www.youtube.com/embed/FxP1O6Q07Go"},
+    {"title":"The Secret to Perfect Prompts (Without Prompt Engineering)","link": "https://www.youtube.com/embed/WPGVKxVrhLI"}
+  ]', 
 '[
   {
     "question": "What causes a qubit to collapse?",
@@ -3990,7 +3996,7 @@ e'[
         "val": 0,
         "type": "0",
         "content": "When the temperature is too cold"
-      },
+      }
     ],
     "multiChoice": false
   }
