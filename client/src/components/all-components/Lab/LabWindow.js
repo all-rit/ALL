@@ -29,7 +29,7 @@ const LabWindow = (props) => {
         {/* Blue and Yellow stripes*/}
         <div
           className={
-            "tw-absolute tw-grid tw-grid-cols-12 tw-w-lvw tw-gap-y-4 tw-inset-3 tw-grid-rows-6"
+            "tw-fixed tw-grid tw-grid-cols-12 tw-w-lvw tw-gap-y-4 tw-inset-3 tw-grid-rows-6 tw-mt-32"
           }
         >
           <div
@@ -46,20 +46,24 @@ const LabWindow = (props) => {
         {/* Nav Pane and Lab Window */}
         <div
           className={
-            "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-gap-x-[1rem]"
+            "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-gap-x-[1rem] tw-mb-2 tw-w-full"
           }
         >
           <div
-            className={"tw-flex tw-col-start-1 tw-col-span-2 tw-max-h-[77vh]"}
+            className={
+              "tw-col-start-1 md:tw-col-span-3 lg:tw-col-span-2 tw-ml-2"
+            }
           >
-            <NavigationPane
-              labID={lab}
-              title={title}
-              context={context}
-              quizCompleted={quizCompleted}
-              setQuizCompleted={setQuizCompleted}
-              isImagine={isImagine}
-            />
+            <div className={"tw-sticky tw-top-[8.75rem]"}>
+              <NavigationPane
+                labID={lab}
+                title={title}
+                context={context}
+                quizCompleted={quizCompleted}
+                setQuizCompleted={setQuizCompleted}
+                isImagine={isImagine}
+              />
+            </div>
             {body !== 2 && <SiteAccessibilityButton />}
           </div>
           <div

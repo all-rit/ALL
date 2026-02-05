@@ -94,10 +94,10 @@ const NavigationPane = (props) => {
             "tw-flex tw-flex-col tw-justify-between tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-full tw-shadow-md"
           }
         >
-          <div className={"tw-flex tw-flex-col tw-gap-y-3 tw-h-full"}>
+          <div className={"tw-flex tw-flex-col tw-gap-y-2 tw-h-full"}>
             <p
               className={
-                "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-py-2 tw-text-xl tw-leading-tight"
+                "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-py-1 tw-text-xl tw-leading-tight"
               }
             >
               Table of Contents
