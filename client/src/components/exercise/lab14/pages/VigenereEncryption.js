@@ -13,7 +13,7 @@ const InputComponent = ({ vigenereKey, setVigenereKey }) => {
     const value = e.target.value;
     setVigenereKey(value);
 
-    if (value === "" || value.trim().length == 0) {
+    if (value === "") {
       setValidInput(false);
       return;
     }
@@ -72,7 +72,7 @@ const VigenereEncryption = () => {
     if (str === "") {
       return false;
     }
-    return /^[A-Za-z\s]+$/.test(str);
+    return /^[A-Za-z]+$/.test(str);
   };
 
   const handleContinue = () => {
