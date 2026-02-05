@@ -145,7 +145,7 @@ const VigenereDecryption = () => {
         quantumBoxElements={quantumBoxElements}
       >
         <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
-          <LabButton onClick={handleReturn} label={"Retry Encryption"} />
+          <LabButton onClick={handleReturn} label={"Re-do Encryption"} />
           <LabButton onClick={handleContinue} label={"Next"} />
         </div>
       </Decryption>
