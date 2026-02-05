@@ -22,7 +22,7 @@ import { Lab7ContextProvider } from "src/reducers/lab7/Lab7Context";
 const Main = () => {
   return (
     <Lab7ContextProvider>
-      <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
+      <div className="bottomSpace tw-p-6">
         <Router className="app">
           <ExerciseStart default path="/*" />
 

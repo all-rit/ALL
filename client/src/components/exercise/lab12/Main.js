@@ -36,7 +36,7 @@ const Main = () => {
   const [gradTerm, setGradTerm] = useState("");
 
   return (
-    <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
+    <div className="bottomSpace tw-p-6">
       <ExerciseStateContext.Provider
         value={{
           exerciseState,
