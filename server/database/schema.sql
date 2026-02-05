@@ -3958,7 +3958,43 @@ e'[
     ],
     "multiChoice": false
   } 
- ]', 3, 'coming soon', 'coming soon', true);
+ ]', 3, 'coming soon', 'coming soon', true),
+ (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/aihallucinations.jpg', 'Learn how prompting influences AI Hallucinations', 
+ 'Learn how prompting influences AI Hallucinations', e'[]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez', 'https://all.rit.edu/lab15', null, 
+
+ -- About Section
+  'In this lab, you will learn about AI hallucinations. Click “Next” to start!', e'{
+  "description":"",
+  "body":[
+    {
+      "header":"",
+      "type":"",
+      "content":[""]
+    }
+  ],
+  "footer":{
+      "links":[
+        {
+          "name":"What is AI Hallucinations? | IBM",
+          "link":"https://www.ibm.com/think/topics/quantum-computing"
+        }
+      ]
+    }
+  }',
+  '[{"title":"AI Hallucinations Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"}]', 
+'[
+  {
+    "question": "What causes a qubit to collapse?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "When the temperature is too cold"
+      },
+    ],
+    "multiChoice": false
+  }
+ ]', 1, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
