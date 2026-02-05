@@ -28,7 +28,7 @@ const IDEExerciseImplementation = (props = {}) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />
-        <CommentText>{`// Enter 'Disclaimer - ALL-IE's outputs can be wrong and should be double-checked.' below:`}</CommentText>
+        <CommentText>{`// Enter a disclaimer of at least 20 characters, including the words "verify" and "output".`}</CommentText>
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />

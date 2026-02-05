@@ -88,9 +88,15 @@ export const ExerciseStateProvider = ({ children }) => {
   };
 
   const checkInputValid = () => {
+    const disclaimerValue = exercisePromptsState
+      .find((i) => i.id === "disclaimer")
+      .value.trim()
+      .toLowerCase();
+    // The disclaimer should be at least 20 characters, and include the words "verify" and "output"
     const disclaimerValid =
-      exercisePromptsState.find((i) => i.id === "disclaimer").value.trim() ===
-      "Disclaimer - ALL-IE's outputs can be wrong and should be double-checked.";
+      disclaimerValue.length >= 20 &&
+      disclaimerValue.includes("verify") &&
+      disclaimerValue.includes("output");
     const confidenceValid = !!exercisePromptsState.find(
       (i) => i.id === "confidence",
     ).value;
