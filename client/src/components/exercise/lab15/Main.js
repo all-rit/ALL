@@ -6,6 +6,11 @@ import ExerciseStateContext from "./Lab15Context";
 
 // lab imported dependencies;
 import ExerciseIntro from "./pages/ExerciseIntro";
+import ModelHallucination from "./pages/ModelHallucination";
+import GoodPromptingGuide from "./pages/GoodPromptingGuide";
+import ModelRepair from "./pages/ModelRepair";
+import ModelWithGrades from "./pages/ModelWithGrades";
+import Conclusion from "./pages/Conclusion";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -23,6 +28,11 @@ const Main = () => {
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
+          <ModelHallucination path="/model-hallucination" />
+          <GoodPromptingGuide path="/good-prompting-guide" />
+          <ModelRepair path="/model-repair" />
+          <ModelWithGrades path="/model-with-grades" />
+          <Conclusion path="/conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
     </div>

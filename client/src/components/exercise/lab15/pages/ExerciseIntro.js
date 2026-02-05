@@ -1,5 +1,11 @@
+import { navigate } from "@reach/router";
+
 const ExerciseIntro = () => {
-  return <div>Exercise Intro Component</div>;
+  return (
+    <button onClick={() => navigate("/model-hallucination")}>
+      Start Exercise
+    </button>
+  );
 };
 
 export default ExerciseIntro;
