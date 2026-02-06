@@ -3,56 +3,56 @@ import PropTypes from 'prop-types';
 const ExerciseStateContext = createContext({
   // Existing user info state
   exerciseState: '',
-  setExerciseState: () => {},
+  setExerciseState: () => { },
   firstName: '',
-  setFirstName: () => {},
+  setFirstName: () => { },
   lastName: '',
-  setLastName: () => {},
+  setLastName: () => { },
   preferredName: '',
-  setPreferredName: () => {},
+  setPreferredName: () => { },
   pronouns: '',
-  setPronouns: () => {},
+  setPronouns: () => { },
   college: '',
-  setCollege: () => {},
+  setCollege: () => { },
   major: '',
-  setMajor: () => {},
+  setMajor: () => { },
   gradTerm: '',
-  setGradTerm: () => {},
+  setGradTerm: () => { },
 
   // Ranking state
   rankingSuccess: false,
-  setRankingSuccess: () => {},
+  setRankingSuccess: () => { },
   rankingColumns: [],
-  setRankingColumns: () => {},
+  setRankingColumns: () => { },
   rankingBank: [],
-  setRankingBank: () => {},
+  setRankingBank: () => { },
   rankingComplete: false,
-  setRankingComplete: () => {},
-  resetRanking: () => {},
+  setRankingComplete: () => { },
+  resetRanking: () => { },
 
   // Save chat history
   chatMessages: [],
-  setChatMessages: () => {},
-  resetChatMessages: () => {},
+  setChatMessages: () => { },
+  resetChatMessages: () => { },
 
   // Wikpedia page states
   currentPhase: 1,
-  setCurrentPhase: () => {},
+  setCurrentPhase: () => { },
   hasVisitedWikipedia: false,
-  setHasVisitedWikipedia: () => {},
+  setHasVisitedWikipedia: () => { },
   wikipediaTimeSpent: 0,
-  setWikipediaTimeSpent: () => {},
+  setWikipediaTimeSpent: () => { },
 
   // IDE fix states
   showConfidenceScore: false,
-  setShowConfidenceScore: () => {},
+  setShowConfidenceScore: () => { },
   showCitations: false,
-  setShowCitations: () => {},
+  setShowCitations: () => { },
   disclaimerMessage: '',
-  setDisclaimerMessage: () => {},
+  setDisclaimerMessage: () => { },
   // Question tracking states
   askedQuestions: [],
-  setAskedQuestions: () => {},
+  setAskedQuestions: () => { },
 });
 
 export const ExerciseStateProvider = ({ children }) => {
@@ -135,9 +135,15 @@ export const ExerciseStateProvider = ({ children }) => {
   };
 
   const checkInputValid = () => {
+    const disclaimerValue = exercisePromptsState
+      .find((i) => i.id === "disclaimer")
+      .value.trim()
+      .toLowerCase();
+    // The disclaimer should be at least 20 characters, and include the words "verify" and "output"
     const disclaimerValid =
-      exercisePromptsState.find((i) => i.id === 'disclaimer').value.trim() ===
-      "Disclaimer - ALL-IE's outputs can be wrong and should be double-checked.";
+      disclaimerValue.length >= 20 &&
+      disclaimerValue.includes("verify") &&
+      disclaimerValue.includes("output");
     const confidenceValid = !!exercisePromptsState.find(
       (i) => i.id === 'confidence'
     ).value;
@@ -153,8 +159,8 @@ export const ExerciseStateProvider = ({ children }) => {
   };
 
   // No-ops for fetchRepair/postRepair for this exercise
-  const fetchRepair = () => {};
-  const postRepair = () => {};
+  const fetchRepair = () => { };
+  const postRepair = () => { };
 
   return (
     <ExerciseStateContext.Provider
@@ -210,7 +216,7 @@ export const ExerciseStateProvider = ({ children }) => {
         wikipediaAccumulatedTime,
         setWikipediaAccumulatedTime,
         wikipediaSessionStart,
-        setWikipediaSessionStart, 
+        setWikipediaSessionStart,
 
         showConfidenceScore,
         setShowConfidenceScore,
@@ -222,7 +228,7 @@ export const ExerciseStateProvider = ({ children }) => {
         setAskedQuestions,
         topicIndex,
         setTopicIndex,
-        
+
       }}
     >
       {children}
