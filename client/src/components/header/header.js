@@ -75,7 +75,7 @@ const Header = ({ isImagine }) => {
           <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
             <button
               type="button"
-              className="tw-bg-transparent tw-border-0 tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+              className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
               onClick={toggleSignInShown}
             >
               Sign In
