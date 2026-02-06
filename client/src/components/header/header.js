@@ -38,44 +38,44 @@ const Header = ({ isImagine }) => {
 
   const renderCommonLinks = () => {
     return (
-      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-end tw-px-4 lg:tw-px-0 *:tw-py-2 lg:*:tw-py-0 lg:*:tw-px-4 lg:*:tw-border-solid lg:*:tw-border-0 lg:*:tw-border-r-2 lg:*:tw-border-primary-blue">
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-start tw-justify-center lg:tw-flex-row lg:tw-items-center lg:tw-justify-end tw-px-4 lg:tw-px-0 *:tw-py-2 lg:*:tw-py-0 lg:*:tw-px-4 lg:*:tw-border-solid lg:*:tw-border-0 lg:*:tw-border-r-2 lg:*:tw-border-primary-blue">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/"
           >
             Home
           </a>
         </li>
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/Labs"
           >
             Labs
           </a>
         </li>
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/about-us"
           >
             About Us
           </a>
         </li>
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/EducatorResources"
           >
             Educator Resources
           </a>
         </li>
         {!state.main.user?.email1 && (
-          <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
             <button
               type="button"
-              className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+              className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors tw-text-left lg:tw-text-center"
               onClick={toggleSignInShown}
             >
               Sign In
@@ -88,35 +88,35 @@ const Header = ({ isImagine }) => {
 
   const renderProfileLinks = () => {
     return (
-      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-center tw-justify-end tw-px-4 *:tw-py-2">
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-start tw-justify-center tw-px-4 *:tw-py-2">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/Profile"
           >
             Profile
           </a>
         </li>
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/Profile#MyLabs"
           >
             My Labs
           </a>
         </li>
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/Profile#MyGroups"
           >
             My Groups
           </a>
         </li>
-        <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <button
             type="button"
-            className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
+            className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             onClick={logout}
           >
             Logout
@@ -162,39 +162,43 @@ const Header = ({ isImagine }) => {
         {/* Mobile Site Links */}
         {!isImagine && (
           <ClickAwayListener onClickAway={() => setLinksCollapseOpen(false)}>
-            <div className="lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center tw-relative">
-              <MenuIcon
-                onClick={toggleLinksCollapse}
-                fontSize="large"
-                className="tw-mr-6 tw-cursor-pointer"
-              />
+            <>
+              <div className="tw-relative lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center">
+                <MenuIcon
+                  onClick={toggleLinksCollapse}
+                  fontSize="large"
+                  className="tw-mr-6 tw-cursor-pointer"
+                />
+              </div>
 
               <Fade in={linksCollapseOpen}>
                 <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
                   {renderCommonLinks()}
                 </div>
               </Fade>
-            </div>
+            </>
           </ClickAwayListener>
         )}
 
         {/* Profile Links */}
         {state.main.user?.email1 && !isImagine && (
           <ClickAwayListener onClickAway={() => setProfileCollapseOpen(false)}>
-            <div className="tw-flex tw-justify-center tw-items-center tw-mr-6">
-              <button
-                className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
-                onClick={toggleProfileCollapse}
-              >
-                <img src={state.main.user?.userpfp} />
-              </button>
+            <>
+              <div className="tw-flex tw-justify-center tw-items-center tw-mr-6">
+                <button
+                  className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
+                  onClick={toggleProfileCollapse}
+                >
+                  <img src={state.main.user?.userpfp} />
+                </button>
+              </div>
 
               <Fade in={profileCollapseOpen}>
                 <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
                   {renderProfileLinks()}
                 </div>
               </Fade>
-            </div>
+            </>
           </ClickAwayListener>
         )}
 
