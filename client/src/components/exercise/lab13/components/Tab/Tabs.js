@@ -1,65 +1,78 @@
-import React, { useState } from "react";
-import { TabsContext } from "./TabsContext";
-import PropTypes from "prop-types";
-import "./Tabs.css";
+import React, { useState, useCallback } from 'react';
+import { TabsContext } from './TabsContext';
+import PropTypes from 'prop-types';
+import './Tabs.css';
 
-export const Tabs = ({ children }) => {
-    /**
-     * A component that displays and holds tabs
-     *
-     * @param {object} children - Tab components placed inside Tabs
-     * @returns {JSX.Element}
-     */
+export const Tabs = ({
+  children,
+  activeTab: externalActiveTab,
+  onTabChange,
+}) => {
+  // Store tab(s) that log themselves in Tabs parent
+  const [tabs, setTabs] = useState([]);
 
-    // State storing index of current active tab
-    const [activeTab, setActiveTab] = useState(0); // First tab is active by default
-    // Store tab(s) that log themselves in Tabs parent
-    const [tabs, setTabs] = useState([]);
+  // Use external activeTab or fall back to first tab
+  const activeTabIndex = tabs.findIndex(
+    (tab) => tab.label === externalActiveTab
+  );
+  const currentActiveIndex = activeTabIndex !== -1 ? activeTabIndex : 0;
 
-    // Add newly register tabs to existing tab array, or update if it already exists
-    const logTab = (tab) => {
-        setTabs((prev) => {
-            const existingIndex = prev.findIndex((t) => t.label === tab.label);
-            if (existingIndex !== -1) {
-                const updated = [...prev];
-                updated[existingIndex] = tab;
-                return updated;
-            }
-            return [...prev, tab];
-        });
-    };
+  // Memoize logTab to prevent infinite loops
+  const logTab = useCallback((tab) => {
+    setTabs((prev) => {
+      const existingIndex = prev.findIndex((t) => t.label === tab.label);
+      if (existingIndex !== -1) {
+        const updated = [...prev];
+        updated[existingIndex] = tab;
+        return updated;
+      }
+      return [...prev, tab];
+    });
+  }, []); // Empty dependency array since it only uses setTabs
 
-    return (
-        <TabsContext.Provider value={{ logTab, activeTab, setActiveTab }}>
-            <div className="tabs-container">
-                {/* Populate headers with buttons for logged tabs */}
-                <div className="tabs-header">
-                    {tabs.map((tab, index) => (
-                        <div
-                            className={`tab-shadow-wrapper ${index === activeTab ? "active" : ""}`}
-                            key={index}
-                        >
-                            <button
-                                className={`${index === activeTab ? "active" : ""}`}
-                                onClick={() => setActiveTab(index)}
-                            >
-                                <span className="tab-label">{tab.label}</span>
-                            </button>
-                        </div>
-                    ))}
-                </div>
-                {/* Populate with tab content */}
-                <div className="tab-panels">
-                    {tabs.map((tab, index) =>
-                        index === activeTab ? <div key={index}>{tab.content}</div> : null,
-                    )}
-                </div>
+  const handleTabClick = (index) => {
+    if (onTabChange) {
+      onTabChange(tabs[index].label);
+    }
+  };
+
+  return (
+    <TabsContext.Provider
+      value={{ logTab, activeTab: currentActiveIndex, setActiveTab: () => {} }}
+    >
+      <div className="tabs-container">
+        {/* Populate headers with buttons for logged tabs */}
+        <div className="tabs-header">
+          {tabs.map((tab, index) => (
+            <div
+              className={`tab-shadow-wrapper ${index === currentActiveIndex ? 'active' : ''}`}
+              key={index}
+            >
+              <button
+                className={`${index === currentActiveIndex ? 'active' : ''}`}
+                onClick={() => handleTabClick(index)}
+              >
+                <span className="tab-label">{tab.label}</span>
+              </button>
             </div>
-            {children}
-        </TabsContext.Provider>
-    );
+          ))}
+        </div>
+        {/* Populate with tab content */}
+        <div className="tab-panels">
+          {tabs.map((tab, index) =>
+            index === currentActiveIndex ? (
+              <div key={index}>{tab.content}</div>
+            ) : null
+          )}
+        </div>
+      </div>
+      {children}
+    </TabsContext.Provider>
+  );
 };
 
 Tabs.propTypes = {
-    children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
+  activeTab: PropTypes.string,
+  onTabChange: PropTypes.func,
 };

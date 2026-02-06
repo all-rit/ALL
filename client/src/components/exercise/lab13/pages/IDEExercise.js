@@ -1,10 +1,10 @@
-import React from "react";
-import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
-import { useLab13 } from "../Lab13Context";
-import Repair from "src/components/body/Repair/Repair";
-import PropTypes from "prop-types";
-import { startExercise } from "src/reducers/lab2/actions";
-import { navigate } from "@reach/router";
+import React from 'react';
+import CodeBlockInput from 'src/components/all-components/CodeBlock/Components/CodeBlockInput';
+import { useLab13 } from '../Lab13Context';
+import Repair from 'src/components/body/Repair/Repair';
+import PropTypes from 'prop-types';
+import { startExercise } from 'src/reducers/lab2/actions';
+import { navigate } from '@reach/router';
 
 const IDEExercise = () => {
   const {
@@ -15,36 +15,64 @@ const IDEExercise = () => {
     checkInputValid,
     fetchRepair,
     postRepair,
+    setShowConfidenceScore,
+    setShowCitations,
+    setDisclaimerMessage,
+    setCurrentPhase,
+    setTopicIndex,
   } = useLab13();
 
   const handleContinue = () => {
+    if (!checkInputValid()) {
+      alert('Please complete all fields correctly before continuing.');
+      return;
+    }
+
+    // Save IDE settings to context
+    const disclaimerValue = exercisePromptsState.find(
+      (i) => i.id === 'disclaimer'
+    ).value;
+    const confidenceValue = exercisePromptsState.find(
+      (i) => i.id === 'confidence'
+    ).value;
+    const citationsValue = exercisePromptsState.find(
+      (i) => i.id === 'citations'
+    ).value;
+
+    setDisclaimerMessage(disclaimerValue);
+    setShowConfidenceScore(!!confidenceValue);
+    setShowCitations(!!citationsValue);
+
+    setCurrentPhase(4);
+    setTopicIndex(2);
+
     startExercise();
-    navigate("/Lab13/Exercise/PanelswithIDEFixes");
+    navigate('/Lab13/Exercise/AIPanel');
   };
 
   const CodeBlock = React.useCallback(
     ({ inputs, userInput, validInputs, isFirst }) => (
       <div
         style={{
-          background: "#222",
-          color: "#fff",
+          background: '#222',
+          color: '#fff',
           borderRadius: 8,
           padding: 24,
-          fontFamily: "monospace",
-          width: "100%",
-          boxSizing: "border-box",
+          fontFamily: 'monospace',
+          width: '100%',
+          boxSizing: 'border-box',
         }}
       >
         <div style={{ marginBottom: 20 }}>
-          <span style={{ color: "#8ef" }}>function</span>{" "}
-          <span style={{ color: "#fff" }}>addDisclaimers</span>() {"{"}
+          <span style={{ color: '#8ef' }}>function</span>{' '}
+          <span style={{ color: '#fff' }}>addDisclaimers</span>() {'{'}
         </div>
         <div style={{ marginLeft: 24, marginBottom: 16 }}>
           <div
             style={{
-              color: "#6a9955",
-              fontFamily: "monospace",
-              fontSize: "1em",
+              color: '#6a9955',
+              fontFamily: 'monospace',
+              fontSize: '1em',
               marginBottom: 4,
             }}
           >
@@ -52,33 +80,33 @@ const IDEExercise = () => {
               "// Enter 'Disclaimer - ALL-IE's outputs can be wrong and should be double-checked.' below:"
             }
           </div>
-          <span style={{ color: "#ffb347" }}>disclaimerText</span> = &quot;
+          <span style={{ color: '#ffb347' }}>disclaimerText</span> = &quot;
           <CodeBlockInput
-            value={inputs.find((i) => i.id === "disclaimer").value}
+            value={inputs.find((i) => i.id === 'disclaimer').value}
             attributes={{
-              type: "text",
-              onChange: (e) => userInput("disclaimer", e.target.value),
-              placeholder: "Enter Answer Here",
-              className: "tw-p-1 code_editor__input",
+              type: 'text',
+              onChange: (e) => userInput('disclaimer', e.target.value),
+              placeholder: 'Enter Answer Here',
+              className: 'tw-p-1 code_editor__input',
               style: {
                 width: 400,
-                fontFamily: "monospace",
-                fontSize: "1em",
-                margin: "0 8px",
+                fontFamily: 'monospace',
+                fontSize: '1em',
+                margin: '0 8px',
                 borderRadius: 4,
                 border:
                   validInputs.disclaimer === false && !isFirst
-                    ? "1px solid #e00"
-                    : "1px solid #888",
-                padding: "2px 6px",
-                background: "#333",
-                color: "lightsalmon",
+                    ? '1px solid #e00'
+                    : '1px solid #888',
+                padding: '2px 6px',
+                background: '#333',
+                color: 'lightsalmon',
               },
             }}
           />
           &quot;;
           {validInputs.disclaimer === false && !isFirst && (
-            <div style={{ color: "#e00", fontSize: 12, marginTop: 2 }}>
+            <div style={{ color: '#e00', fontSize: 12, marginTop: 2 }}>
               Please enter the correct disclaimer.
             </div>
           )}
@@ -86,40 +114,40 @@ const IDEExercise = () => {
         <div style={{ marginLeft: 24, marginBottom: 16 }}>
           <div
             style={{
-              color: "#6a9955",
-              fontFamily: "monospace",
-              fontSize: "1em",
+              color: '#6a9955',
+              fontFamily: 'monospace',
+              fontSize: '1em',
               marginBottom: 4,
             }}
           >
             {"// Enter 'True' below:"}
           </div>
-          <span style={{ color: "#ffb347" }}>showConfidenceScores</span> =
+          <span style={{ color: '#ffb347' }}>showConfidenceScores</span> =
           <CodeBlockInput
-            value={inputs.find((i) => i.id === "confidence").value}
+            value={inputs.find((i) => i.id === 'confidence').value}
             attributes={{
-              type: "text",
-              onChange: (e) => userInput("confidence", e.target.value),
-              placeholder: "Enter Answer Here",
-              className: "tw-p-1 code_editor__input",
+              type: 'text',
+              onChange: (e) => userInput('confidence', e.target.value),
+              placeholder: 'Enter Answer Here',
+              className: 'tw-p-1 code_editor__input',
               style: {
                 width: 400,
-                fontFamily: "monospace",
-                fontSize: "1em",
-                margin: "0 8px",
+                fontFamily: 'monospace',
+                fontSize: '1em',
+                margin: '0 8px',
                 borderRadius: 4,
                 border:
                   validInputs.confidence === false && !isFirst
-                    ? "1px solid #e00"
-                    : "1px solid #888",
-                padding: "2px 6px",
-                background: "#333",
-                color: "lightsalmon",
+                    ? '1px solid #e00'
+                    : '1px solid #888',
+                padding: '2px 6px',
+                background: '#333',
+                color: 'lightsalmon',
               },
             }}
           />
           {validInputs.confidence === false && !isFirst && (
-            <div style={{ color: "#e00", fontSize: 12, marginLeft: 8 }}>
+            <div style={{ color: '#e00', fontSize: 12, marginLeft: 8 }}>
               Please enter &quot;True&quot;.
             </div>
           )}
@@ -127,48 +155,48 @@ const IDEExercise = () => {
         <div style={{ marginLeft: 24, marginBottom: 16 }}>
           <div
             style={{
-              color: "#6a9955",
-              fontFamily: "monospace",
-              fontSize: "1em",
+              color: '#6a9955',
+              fontFamily: 'monospace',
+              fontSize: '1em',
               marginBottom: 4,
             }}
           >
             {"// Enter 'True' below:"}
           </div>
-          <span style={{ color: "#ffb347" }}>showCitations</span> =
+          <span style={{ color: '#ffb347' }}>showCitations</span> =
           <CodeBlockInput
-            value={inputs.find((i) => i.id === "citations").value}
+            value={inputs.find((i) => i.id === 'citations').value}
             attributes={{
-              type: "text",
-              onChange: (e) => userInput("citations", e.target.value),
-              placeholder: "Enter Answer Here",
-              className: "tw-p-1 code_editor__input",
+              type: 'text',
+              onChange: (e) => userInput('citations', e.target.value),
+              placeholder: 'Enter Answer Here',
+              className: 'tw-p-1 code_editor__input',
               style: {
                 width: 400,
-                fontFamily: "monospace",
-                fontSize: "1em",
-                margin: "0 8px",
+                fontFamily: 'monospace',
+                fontSize: '1em',
+                margin: '0 8px',
                 borderRadius: 4,
                 border:
                   validInputs.citations === false && !isFirst
-                    ? "1px solid #e00"
-                    : "1px solid #888",
-                padding: "2px 6px",
-                background: "#333",
-                color: "lightsalmon",
+                    ? '1px solid #e00'
+                    : '1px solid #888',
+                padding: '2px 6px',
+                background: '#333',
+                color: 'lightsalmon',
               },
             }}
           />
           {validInputs.citations === false && !isFirst && (
-            <div style={{ color: "#e00", fontSize: 12, marginLeft: 8 }}>
+            <div style={{ color: '#e00', fontSize: 12, marginLeft: 8 }}>
               Please enter &quot;True&quot;.
             </div>
           )}
         </div>
-        <div>{"}"}</div>
+        <div>{'}'}</div>
       </div>
     ),
-    [],
+    []
   );
 
   CodeBlock.propTypes = {
@@ -195,14 +223,14 @@ const IDEExercise = () => {
       <Repair
         data={data}
         functions={functions}
-        headingText={"Disclaimers, Confidence Scores and Citations"}
+        headingText={'Disclaimers, Confidence Scores and Citations'}
         repairText={[
-          "Fill in the blanks to add the disclaimers, confidence scores, and citations to the chatbot outputs.",
+          'Fill in the blanks to add the disclaimers, confidence scores, and citations to the chatbot outputs.',
         ]}
         files={[
           {
             fileId: 0,
-            fileName: "ALLIEChatbot.py",
+            fileName: 'ALLIEChatbot.py',
             implementation: CodeBlock,
           },
         ]}

@@ -1,15 +1,14 @@
-import React from "react";
-import { Router } from "@reach/router";
-import { ExerciseStateProvider } from "./Lab13Context";
+import React from 'react';
+import { Router } from '@reach/router';
+import { ExerciseStateProvider } from './Lab13Context';
 
-import ExerciseIntroduction from "./pages/ExerciseIntroduction";
-import ConfidenceRanking from "./pages/ConfidenceRanking";
-import AIPanel from "./pages/AIPanel.js";
-import AIandSearchPanel from "./pages/AIandSearchPanel.js";
-import Conclusion from "./pages/Conclusion.js";
-import IDEExercise from "./pages/IDEExercise";
-import IDEIntroduction from "./pages/IDEIntroduction";
-import PanelswithIDEFixes from "./pages/PanelswithIDEFixes";
+import ExerciseIntroduction from './pages/ExerciseIntroduction';
+import ConfidenceRanking from './pages/ConfidenceRanking';
+import AIPanel from './pages/AIPanel.js';
+import AIandSearchPanel from './pages/AIandSearchPanel.js';
+import Conclusion from './pages/Conclusion.js';
+import IDEExercise from './pages/IDEExercise';
+import IDEIntroduction from './pages/IDEIntroduction';
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -27,7 +26,6 @@ const Main = () => {
           <AIandSearchPanel path="/AIandSearchPanel" />
           <IDEIntroduction path="/IDEIntroduction" />
           <IDEExercise path="/IDEExercise" />
-          <PanelswithIDEFixes path="/PanelswithIDEFixes" />
           <Conclusion path="/Conclusion" />
           {/*
             // <FormRepair path="/FormRepair" />

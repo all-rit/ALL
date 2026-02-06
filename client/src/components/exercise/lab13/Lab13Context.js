@@ -1,22 +1,22 @@
-import React, { createContext, useState, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 const ExerciseStateContext = createContext({
   // Existing user info state
-  exerciseState: "",
+  exerciseState: '',
   setExerciseState: () => {},
-  firstName: "",
+  firstName: '',
   setFirstName: () => {},
-  lastName: "",
+  lastName: '',
   setLastName: () => {},
-  preferredName: "",
+  preferredName: '',
   setPreferredName: () => {},
-  pronouns: "",
+  pronouns: '',
   setPronouns: () => {},
-  college: "",
+  college: '',
   setCollege: () => {},
-  major: "",
+  major: '',
   setMajor: () => {},
-  gradTerm: "",
+  gradTerm: '',
   setGradTerm: () => {},
 
   // Ranking state
@@ -29,23 +29,66 @@ const ExerciseStateContext = createContext({
   rankingComplete: false,
   setRankingComplete: () => {},
   resetRanking: () => {},
+
+  // Save chat history
+  chatMessages: [],
+  setChatMessages: () => {},
+  resetChatMessages: () => {},
+
+  // Wikpedia page states
+  currentPhase: 1,
+  setCurrentPhase: () => {},
+  hasVisitedWikipedia: false,
+  setHasVisitedWikipedia: () => {},
+  wikipediaTimeSpent: 0,
+  setWikipediaTimeSpent: () => {},
+
+  // IDE fix states
+  showConfidenceScore: false,
+  setShowConfidenceScore: () => {},
+  showCitations: false,
+  setShowCitations: () => {},
+  disclaimerMessage: '',
+  setDisclaimerMessage: () => {},
+  // Question tracking states
+  askedQuestions: [],
+  setAskedQuestions: () => {},
 });
 
 export const ExerciseStateProvider = ({ children }) => {
-  const [exerciseState, setExerciseState] = useState("submitting");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [preferredName, setPreferredName] = useState("");
-  const [pronouns, setPronouns] = useState("");
-  const [college, setCollege] = useState("");
-  const [major, setMajor] = useState("");
-  const [gradTerm, setGradTerm] = useState("");
+  const [exerciseState, setExerciseState] = useState('submitting');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [preferredName, setPreferredName] = useState('');
+  const [pronouns, setPronouns] = useState('');
+  const [college, setCollege] = useState('');
+  const [major, setMajor] = useState('');
+  const [gradTerm, setGradTerm] = useState('');
 
   // Ranking state
   const [rankingSuccess, setRankingSuccess] = useState(false);
   const [rankingColumns, setRankingColumns] = useState(() => []); // Initialize as empty array
   const [rankingBank, setRankingBank] = useState(() => []); // Initialize as empty array
   const [rankingComplete, setRankingComplete] = useState(false);
+
+  // Chat history state
+  const [chatMessages, setChatMessages] = useState([]);
+
+  // Wikpedia page tracking states
+  const [wikipediaTimeSpent, setWikipediaTimeSpent] = useState(0);
+  const [currentPhase, setCurrentPhase] = useState(1);
+  const [hasVisitedWikipedia, setHasVisitedWikipedia] = useState(false);
+  const [wikipediaAccumulatedTime, setWikipediaAccumulatedTime] = useState(0);
+  const [wikipediaSessionStart, setWikipediaSessionStart] = useState(null);
+
+  // Post IDE fix tracking states
+  const [showConfidenceScore, setShowConfidenceScore] = useState(false);
+  const [showCitations, setShowCitations] = useState(false);
+  const [disclaimerMessage, setDisclaimerMessage] = useState('');
+
+  // Question tracking states
+  const [askedQuestions, setAskedQuestions] = useState([]);
+  const [topicIndex, setTopicIndex] = useState(0);
 
   // Reset ranking function
   const resetRanking = () => {
@@ -55,20 +98,24 @@ export const ExerciseStateProvider = ({ children }) => {
     setRankingComplete(false);
   };
 
+  const resetChatMessages = () => {
+    setChatMessages([]);
+  };
+
   // --- REPAIR SECTION STATE ---
   const [exercisePromptsState, setExercisePromptsState] = useState([
     {
-      id: "disclaimer",
+      id: 'disclaimer',
       fileId: 0,
-      value: "",
+      value: '',
     },
     {
-      id: "confidence",
+      id: 'confidence',
       fileId: 0,
       value: false,
     },
     {
-      id: "citations",
+      id: 'citations',
       fileId: 0,
       value: false,
     },
@@ -82,20 +129,20 @@ export const ExerciseStateProvider = ({ children }) => {
 
   const handleUserInputChange = (id, value) => {
     setExercisePromptsState((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, value } : item)),
+      prev.map((item) => (item.id === id ? { ...item, value } : item))
     );
     setIsFirst(false);
   };
 
   const checkInputValid = () => {
     const disclaimerValid =
-      exercisePromptsState.find((i) => i.id === "disclaimer").value.trim() ===
+      exercisePromptsState.find((i) => i.id === 'disclaimer').value.trim() ===
       "Disclaimer - ALL-IE's outputs can be wrong and should be double-checked.";
     const confidenceValid = !!exercisePromptsState.find(
-      (i) => i.id === "confidence",
+      (i) => i.id === 'confidence'
     ).value;
     const citationsValid = !!exercisePromptsState.find(
-      (i) => i.id === "citations",
+      (i) => i.id === 'citations'
     ).value;
     setValidInputs({
       disclaimer: disclaimerValid,
@@ -149,6 +196,33 @@ export const ExerciseStateProvider = ({ children }) => {
         checkInputValid,
         fetchRepair,
         postRepair,
+        // --- CHAT HISTORY IN AICHATBOT ---
+        chatMessages,
+        setChatMessages,
+        resetChatMessages,
+        // --- WIKIPEDIA PAGE TRACKING ---
+        wikipediaTimeSpent,
+        setWikipediaTimeSpent,
+        currentPhase,
+        setCurrentPhase,
+        hasVisitedWikipedia,
+        setHasVisitedWikipedia,
+        wikipediaAccumulatedTime,
+        setWikipediaAccumulatedTime,
+        wikipediaSessionStart,
+        setWikipediaSessionStart, 
+
+        showConfidenceScore,
+        setShowConfidenceScore,
+        showCitations,
+        setShowCitations,
+        disclaimerMessage,
+        setDisclaimerMessage,
+        askedQuestions,
+        setAskedQuestions,
+        topicIndex,
+        setTopicIndex,
+        
       }}
     >
       {children}
