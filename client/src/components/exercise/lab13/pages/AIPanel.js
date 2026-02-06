@@ -269,7 +269,7 @@ Although many cases are inherited, they can also develop later in life due to ey
         {
           id: 'greeting',
           sender: 'bot',
-          text: `Hi! I'm ALL-IE the AI, please choose your prompt on ${currentTopic.title}.`,
+          text: `Hi! I'm ALL-IE the AI. Thanks for ranking your familiarity with the topics. I'll start with the one you feel moderately confident about. Select a prompt below on ${currentTopic.title}.`,
           timestamp: new Date(),
         },
       ]);
