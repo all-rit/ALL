@@ -26,7 +26,7 @@ import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
 import { Sections } from "./constants/index";
 
 /** Persistent Components **/
-import Header from "./components/header/Header";
+import Header from "./components/header/header";
 import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
