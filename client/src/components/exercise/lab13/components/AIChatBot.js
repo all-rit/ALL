@@ -144,6 +144,7 @@ const AIChatBot = ({
         biasType: botObj?.biasType,
         biasDefinition: botObj?.biasDefinition,
         explanation: botObj?.explanation,
+        aiResponseText: botObj?.text,
       };
 
       setIsThinking(true);

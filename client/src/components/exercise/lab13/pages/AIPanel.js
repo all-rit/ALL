@@ -417,8 +417,13 @@ Although many cases are inherited, they can also develop later in life due to ey
   ]);
 
   const handleAnswerSelected = useCallback(
-    (biasType, biasDefinition, explanation) => {
-      setSelectedBiasData({ biasType, biasDefinition, explanation });
+    (biasType, biasDefinition, explanation, aiResponseText) => {
+      setSelectedBiasData({
+        biasType,
+        biasDefinition,
+        explanation,
+        aiResponseText,
+      });
       setShowRatingModal(true);
     },
     []
@@ -535,7 +540,8 @@ Although many cases are inherited, they can also develop later in life due to ey
                           handleAnswerSelected(
                             currentAnswerData.biasType,
                             currentAnswerData.biasDefinition,
-                            currentAnswerData.explanation
+                            currentAnswerData.explanation,
+                            currentAnswerData.aiResponseText
                           )
                         }
                         className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
@@ -669,23 +675,34 @@ Although many cases are inherited, they can also develop later in life due to ey
             setShowTextModal={setShowBiasExplanation}
             textModalHeader={
               biasDefinition ? (
-                <div className="tw-text-xl tw-font-bold tw-text-textGray">
+                <div className="tw-text-xl tw-font-bold tw-text-textGray tw-pb-0 tw-mb-0">
                   {biasDefinition.name}
                 </div>
               ) : null
             }
             textModalBody={
               selectedBiasData && biasDefinition ? (
-                <div className="tw-p-4 tw-text-sm tw-text-gray-700">
-                  <div className="tw-mb-6">
-                    <p className="tw-italic tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-4">
+                <div className="tw-p-4 tw-pt-0 tw-text-sm tw-text-gray-700">
+                  {selectedBiasData.aiResponseText && (
+                    <div className="tw-mb-2 tw-p-1 tw-bg-gray-50 tw-rounded tw-border tw-border-gray-200">
+                
+                      <p className=" tw-text-left tw-text-gray-700">
+                        <strong>Given AI Response: </strong>
+                        <em>
+                        &quot;{selectedBiasData.aiResponseText}&quot;
+                        </em>
+                      </p>
+                    </div>
+                  )}
+                  <div className="tw-mb-2">
+                    <p className="tw-text-left tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-1 tw-pb-3">
                       {selectedBiasData.explanation}
                     </p>
                   </div>
-                  <div className="tw-bg-blue-50 tw-p-4 tw-rounded tw-mb-6">
-                    <h4 className="tw-font-bold tw-mb-2">
-                      Understanding {biasDefinition.name}:
-                    </h4>
+                  <div className="tw-bg-blue-50 tw-p-1 tw-rounded tw-mb-2">
+                    <h5 className="tw-font-bold tw-mb-2">
+                      What is {biasDefinition.name}?
+                    </h5>
                     <p>{biasDefinition.definition}</p>
                   </div>
                 </div>

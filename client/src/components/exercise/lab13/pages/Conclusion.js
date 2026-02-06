@@ -3,7 +3,6 @@ import useMainStateContext from 'src/reducers/MainContext';
 import UserLabService from '../../../../services/UserLabService';
 import { EXERCISE_IDLE } from 'src/constants/index';
 import { LAB_ID } from '../../../../constants/lab13';
-import LabButton from 'src/components/all-components/LabButton';
 
 const Conclusion = () => {
   const { actions, state } = useMainStateContext();
@@ -56,11 +55,12 @@ const Conclusion = () => {
         outputs, and engage with AI thoughtfully!
       </p>
       <div className="tw-space-y-4 tw-flex tw-justify-center">
-        <LabButton
-          className="tw-w-36 "
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase"
           onClick={handleFinish}
-          label="Complete"
-        />
+        >
+          Complete
+        </button>
       </div>
     </div>
   );
