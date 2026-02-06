@@ -41,7 +41,7 @@ const Header = ({ isImagine }) => {
       <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-end tw-px-4 lg:tw-px-0 *:tw-py-2 lg:*:tw-py-0 lg:*:tw-px-4 lg:*:tw-border-solid lg:*:tw-border-0 lg:*:tw-border-r-2 lg:*:tw-border-primary-blue">
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/"
           >
             Home
@@ -49,7 +49,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/Labs"
           >
             Labs
@@ -57,7 +57,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/about-us"
           >
             About Us
@@ -65,7 +65,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/EducatorResources"
           >
             Educator Resources
@@ -91,7 +91,7 @@ const Header = ({ isImagine }) => {
       <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-center tw-justify-end tw-px-4 *:tw-py-2">
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/Profile"
           >
             Profile
@@ -99,7 +99,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/Profile#MyLabs"
           >
             My Labs
@@ -107,7 +107,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             href="/Profile#MyGroups"
           >
             My Groups
@@ -116,7 +116,7 @@ const Header = ({ isImagine }) => {
         <li className="tw-h-full tw-w-full lg:tw-w-auto tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <button
             type="button"
-            className="tw-bg-transparent tw-border-0 tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center"
+            className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-text-center tw-transition-colors"
             onClick={logout}
           >
             Logout
@@ -153,29 +153,33 @@ const Header = ({ isImagine }) => {
         </a>
 
         {/* Desktop Site Links */}
-        <div className="tw-hidden lg:tw-block tw-mx-6 tw-my-3 tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
-          {renderCommonLinks()}
-        </div>
+        {!isImagine && (
+          <div className="tw-hidden lg:tw-block tw-mx-6 tw-my-3 tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
+            {renderCommonLinks()}
+          </div>
+        )}
 
         {/* Mobile Site Links */}
-        <ClickAwayListener onClickAway={() => setLinksCollapseOpen(false)}>
-          <div className="lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center tw-relative">
-            <MenuIcon
-              onClick={toggleLinksCollapse}
-              fontSize="large"
-              className="tw-mr-6 tw-cursor-pointer"
-            />
+        {!isImagine && (
+          <ClickAwayListener onClickAway={() => setLinksCollapseOpen(false)}>
+            <div className="lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center tw-relative">
+              <MenuIcon
+                onClick={toggleLinksCollapse}
+                fontSize="large"
+                className="tw-mr-6 tw-cursor-pointer"
+              />
 
-            <Fade in={linksCollapseOpen}>
-              <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
-                {renderCommonLinks()}
-              </div>
-            </Fade>
-          </div>
-        </ClickAwayListener>
+              <Fade in={linksCollapseOpen}>
+                <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
+                  {renderCommonLinks()}
+                </div>
+              </Fade>
+            </div>
+          </ClickAwayListener>
+        )}
 
         {/* Profile Links */}
-        {state.main.user?.email1 && (
+        {state.main.user?.email1 && !isImagine && (
           <ClickAwayListener onClickAway={() => setProfileCollapseOpen(false)}>
             <div className="tw-flex tw-justify-center tw-items-center tw-mr-6">
               <button
