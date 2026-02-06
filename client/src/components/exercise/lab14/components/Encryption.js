@@ -18,12 +18,12 @@ const Encryption = ({
     const value = e.target.value;
     setBaseMessage(value);
 
-    if (value === "") {
+    if (value === "" || value.trim().length == 0) {
       setValidInput(false);
       return;
     }
 
-    const filteredValue = value.replace(/[^a-zA-Z]/g, "");
+    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
     setValidInput(filteredValue === value ? true : false);
   };
 
@@ -45,7 +45,7 @@ const Encryption = ({
             className="tw-flex tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
           <p
-            className={`tw-w-[20rem] tw-my-2 ${validInput ? "tw-hidden" : ""}`}
+            className={`tw-w-[20rem] tw-my-2 ${validInput !== false ? "tw-hidden" : ""}`}
           >
             Error: Remove any special characters or numbers from the input, and
             make sure the input box is not empty.
@@ -70,7 +70,7 @@ const Encryption = ({
             Encrypted Message
           </h5>
           <div className="tw-w-[20rem] tw-min-h-[4rem] tw-p-4">
-            <p className="tw-bg-[#face3580] tw-overflow-x-auto tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold tw-cursor-default">
+            <p className="tw-h-[3rem] tw-flex tw-justify-start tw-overflow-y-hidden tw-overflow-x-auto tw-items-center tw-bg-[#face3580] tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold tw-cursor-default">
               {encryptedMessage}
             </p>
           </div>
