@@ -22,8 +22,22 @@ const Conclusion = () => {
   }, []);
   return (
     <div>
-      Conclusion Page
-      <button onClick={handleFinish}>Complete</button>
+      <h1 className={"tw-title tw-text-left"}>Exercise Complete</h1>
+      <div className="guidance margin-bottom-2">
+        <p className="tw-body-text tw-text-left tw-py-6">
+          Great job! You&apos;ve completed the exercise and now have a stronger
+          understanding about how AI bias works.
+        </p>
+        <div className="tw-body-text tw-text-center tw-pb-6">
+          Click the <strong>Finish</strong> button to complete the Exercise!
+        </div>
+      </div>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase"
+        onClick={handleFinish}
+      >
+        Finish
+      </button>
     </div>
   );
 };
