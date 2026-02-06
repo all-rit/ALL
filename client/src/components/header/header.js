@@ -65,7 +65,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors tw-leading-5"
             href="/EducatorResources"
           >
             Educator Resources
@@ -162,43 +162,39 @@ const Header = ({ isImagine }) => {
         {/* Mobile Site Links */}
         {!isImagine && (
           <ClickAwayListener onClickAway={() => setLinksCollapseOpen(false)}>
-            <>
-              <div className="tw-relative lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center">
-                <MenuIcon
-                  onClick={toggleLinksCollapse}
-                  fontSize="large"
-                  className="tw-mr-6 tw-cursor-pointer"
-                />
-              </div>
+            <div className="tw-relative lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center">
+              <MenuIcon
+                onClick={toggleLinksCollapse}
+                fontSize="large"
+                className="tw-mr-6 tw-cursor-pointer"
+              />
 
               <Fade in={linksCollapseOpen}>
                 <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
                   {renderCommonLinks()}
                 </div>
               </Fade>
-            </>
+            </div>
           </ClickAwayListener>
         )}
 
         {/* Profile Links */}
         {state.main.user?.email1 && !isImagine && (
           <ClickAwayListener onClickAway={() => setProfileCollapseOpen(false)}>
-            <>
-              <div className="tw-flex tw-justify-center tw-items-center tw-mr-6">
-                <button
-                  className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
-                  onClick={toggleProfileCollapse}
-                >
-                  <img src={state.main.user?.userpfp} />
-                </button>
-              </div>
+            <div className="tw-flex tw-justify-center tw-items-center tw-mr-6">
+              <button
+                className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
+                onClick={toggleProfileCollapse}
+              >
+                <img src={state.main.user?.userpfp} />
+              </button>
 
               <Fade in={profileCollapseOpen}>
                 <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
                   {renderProfileLinks()}
                 </div>
               </Fade>
-            </>
+            </div>
           </ClickAwayListener>
         )}
 
