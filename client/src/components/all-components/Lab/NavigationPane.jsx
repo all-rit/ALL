@@ -76,17 +76,17 @@ const NavigationPane = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem] tw-h-full tw-justify-between tw-z-10"
+        "tw-flex tw-flex-col tw-gap-y-1 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem] tw-h-full tw-justify-between tw-z-10"
       }
     >
-      <div className={"tw-flex tw-flex-col tw-h-3/4 tw-gap-y-4"}>
+      <div className={"tw-flex tw-flex-col tw-h-3/4 tw-gap-y-2"}>
         {/* Title Block */}
         <div
           className={
-            "tw-py-4 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
+            "tw-py-3 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
           }
         >
-          <h1 className={"tw-title tw-text-xl tw-py-2"}>{props.title} </h1>
+          <h1 className={"tw-title tw-text-sm tw-py-2"}>{props.title} </h1>
         </div>
         {/* Table of Contents Block */}
         <div
@@ -94,10 +94,10 @@ const NavigationPane = (props) => {
             "tw-flex tw-flex-col tw-justify-between tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-full tw-shadow-md"
           }
         >
-          <div className={"tw-flex tw-flex-col tw-gap-y-2 tw-h-full"}>
+          <div className={"tw-flex tw-flex-col tw-gap-y-1 tw-h-full"}>
             <p
               className={
-                "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-py-1 tw-text-xl tw-leading-tight"
+                "tw-font-poppins tw-font-bold tw-m-0 tw-pl-4 tw-py-1 xl:tw-text-md tw-text-sm tw-leading-tight"
               }
             >
               Table of Contents
@@ -115,7 +115,7 @@ const NavigationPane = (props) => {
                   >
                     <p
                       className={twMerge(
-                        "tw-font-semibold tw-body-text tw-px-4 ",
+                        "tw-font-semibold tw-body-text tw-px-4 tw-text-sm",
                         currentSection === section
                           ? "tw-bg-primary-yellow"
                           : "",
@@ -125,7 +125,7 @@ const NavigationPane = (props) => {
                     </p>
                     <p
                       className={
-                        "tw-pl-4 tw-body-text sm:tw-text-sm xl:tw-text-[16px] tw-leading-tight"
+                        "tw-pl-4 tw-body-text md:tw-text-sm xl:tw-text-md tw-leading-tight"
                       }
                     >
                       {subTitle}

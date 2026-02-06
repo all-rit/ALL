@@ -46,12 +46,12 @@ const LabWindow = (props) => {
         {/* Nav Pane and Lab Window */}
         <div
           className={
-            "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-gap-x-[1rem] tw-mb-2 tw-w-full"
+            "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-gap-x-[.5rem] tw-mb-2 tw-w-full"
           }
         >
           <div
             className={
-              "tw-col-start-1 md:tw-col-span-3 lg:tw-col-span-2 tw-ml-2"
+              "tw-col-start-1 md:tw-col-span-3 xl:tw-col-span-2 tw-ml-2"
             }
           >
             <div className={"tw-sticky tw-top-[8.75rem]"}>
@@ -68,7 +68,7 @@ const LabWindow = (props) => {
           </div>
           <div
             className={
-              "tw-flex tw-z-10 tw-relative xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 tw-p-3 md:tw-col-span-9 lg:tw-col-start-3 lg:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center"
+              "tw-flex tw-z-10 tw-relative xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 tw-p-3 md:tw-col-span-9 xl:tw-col-start-3 xl:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center"
             }
           >
             {children}
