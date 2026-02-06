@@ -237,7 +237,8 @@ const Code = (props) => {
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <span className="code_editor__line--darkgreen">
-              enter &lsquo;file.sensitivityLevel&lsquo; into the first input{" "}
+              enter &lsquo;file.sensitivityLevel&lsquo; into the first
+              input{" "}
             </span>
           </div>
           <div className="code_editor__line code_editor__line-background--light">

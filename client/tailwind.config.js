@@ -1,7 +1,5 @@
 const plugin = require("tailwindcss/plugin");
 
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 module.exports = {
   prefix: "tw-",
   content: ["../client/src/**/*.{js,jsx}"],
@@ -88,10 +86,8 @@ module.exports = {
         "4xl": "2rem",
       },
       backgroundImage: {
-        "hero-light":
-          "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
-        "hero-dark":
-          "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
+        qubit:
+          "linear-gradient(280.39deg, rgba(13, 40, 188, 1) 0%, rgba(255, 195, 52, 1) 100%)",
       },
       height: {
         128: "31rem",

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useCallback } from "react";
 import clsx from "clsx";
@@ -49,7 +48,6 @@ const GridImages = (props) => {
           setId((prevState) => prevState.filter((id) => id !== selectImg.id));
         }
       }
-      // eslint-disable-next-line
     },
     [id, currentFile],
   );
@@ -77,7 +75,6 @@ const GridImages = (props) => {
 
   useEffect(() => {
     setSelection(currentFile);
-    // eslint-disable-next-line
   }, [currentFile]);
 
   const gridImagesClassnames = clsx({

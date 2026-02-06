@@ -21,11 +21,12 @@ import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
+import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
+
 import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-// import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
@@ -93,6 +94,21 @@ const App = () => {
   const labInProgress = lab !== 99;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "Default",
+      answers: [
+        {
+          val: 0,
+          type: "0",
+          content: "Default",
+        },
+      ],
+      multiChoice: false,
+    },
+  ]);
+  const [result, setResult] = useState(0);
 
   const renderLabs = () => {
     return (
@@ -123,6 +139,7 @@ const App = () => {
           <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
           <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
           <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+          <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
 
           <Reinforcement
             path={`/Lab${lab}/Reinforcement`}
@@ -137,6 +154,12 @@ const App = () => {
             hideCertificate={false}
             quizCompleted={quizCompleted}
             setQuizCompleted={setQuizCompleted}
+            selectedAnswers={selectedAnswers}
+            setSelectedAnswers={setSelectedAnswers}
+            questions={questions}
+            setQuestions={setQuestions}
+            result={result}
+            setResult={setResult}
           />
         </Router>
       </div>

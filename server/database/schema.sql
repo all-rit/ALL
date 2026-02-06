@@ -3690,9 +3690,275 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true);
-
-
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'Quantum Computing', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+  e'[
+    "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
+    "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
+    "LO3: Use the simulation to factor a small number and decrypt an encrypted message (Application)",
+    "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
+  ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://ball.rit.edu/Lab14/', null,
+  -- About Section
+  'In this lab, you will learn about the fundamentals of quantum computing and how it differs from classical computing. You will practice applying these concepts through interactive exercises, including encrypting and decrypting messages with the Caesar cipher to compare classical and quantum approaches. Click “Next” to start!', e'{
+  "description":"",
+  "body":[
+    {
+      "header":"What is Quantum Computing? ",
+      "type":"",
+      "content":["What if computers could think beyond just 0s and 1s? That’s exactly what quantum computers do. Quantum computers use special rules of quantum physics—like superposition, entanglement, and interference—to process information in ways normal computers can’t. This lets them solve some problems much faster and introduces new ways to think about programming. Real-life applications of quantum computing are already being developed in several fields. In medicine, it’s being used to help solve problems related to genome assembly, which can improve how we understand and treat diseases. In artificial intelligence (AI), quantum computing can make machines learn and think faster. In finance, it’s being used to improve portfolio optimization, asset management, and risk analysis, helping businesses make smarter financial decisions."]
+    },
+    {
+      "header": "Bit vs. Quibit",
+      "type": "",
+      "content": ["The smallest unit of information in a classical computer is called a bit. A bit can only have one of two values — 0 or 1 — like a light switch that’s either off or on. A qubit, or quantum bit, is the basic unit of information in quantum computing. It’s kind of like a regular bit in a normal computer, which stores data as a 0 or 1. But a qubit is different—it can be both 0 and 1 at the same time, thanks to quantum physics. This special ability lets quantum computers process information much faster and in more complex ways than regular computers."]
+    },
+    {
+      "header": "",
+      "type": "image",
+        "content" : {
+            "image":"/Bit_vs_qubit.png",
+            "alt":"This image shows the difference between a classical bit and a quantum qubit. While a classical bit can only be 0 or 1, a qubit can be both at the same time.",
+            "caption":"Credit: Microsoft Azure",
+            "sub_caption":"Figure 1: Bit vs. Qubit"
+           }
+    },
+    {
+      "header": "Superposition",
+      "type": "",
+      "content": ["Superposition lets a qubit be in multiple states at the same time. Instead of just being 0 or 1, it can be a mix of both—like a spinning coin that is both heads and tails while it’s in the air. But as soon as you observe it, the qubit “collapses” into a single, definite value: either 0 or 1. This collapse happens because measuring the qubit forces it to pick one state, which is an important concept in quantum computing."]
+    },
+    {
+      "header": "",
+      "type": "image",
+        "content" : {
+            "image":"/Quantum_Superposition.gif",
+            "alt":"Quantum Superposition",
+            "sub_caption":"Figure 2: Quantum Superposition",
+            "caption":"Credit: N. Hanacek/NIST"
+           }
+    },
+    {
+      "header": "Entanglement and Interference",
+      "type": "",
+      "content": ["When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other instantly becomes a 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers."]
+    },
+    {
+      "header": " ",
+      "type": "image",
+        "content" : {
+            "image":"/Quantum_Entanglement.gif",
+            "alt":"Quantum Entanglement",
+            "sub_caption":"Figure 3: Quantum Entanglement",
+            "caption":"Credit: N. Hanacek/NIST"
+           }
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one. This is similar to how noise-canceling headphones block out background noise so you can hear the music more clearly."]
+    }
+  ],
+  "footer":{
+      "links":[
+        {
+          "name":"What is Quantum Computing? | IBM",
+          "link":"https://www.ibm.com/think/topics/quantum-computing"
+        },
+        {
+          "name":"Quantum Computing Explained | NIST",
+          "link":"https://www.nist.gov/quantum-information-science/quantum-computing-explained"
+        },
+        {
+          "name":"What is Quantum Computing? | Microsoft",
+          "link":"https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-quantum-computing"
+        },
+        {
+          "name":"Real World Applications of Quantum Computing",
+          "link":"https://www.spinquanta.com/news-detail/top-quantum-computer-applications-with-real-world-examples20250113034956"
+        }
+      ]
+    }
+  }',
+  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', '[
+  {
+    "question": "What causes a qubit to collapse?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "When the temperature is too cold"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "When there is light on the qubit"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "When a qubit is measured",
+        "explanation": "Qubits are fragile, so when they are observed they collapse to a state of either 1 or 0."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "When a qubit is linked to another qubit"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is superposition?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A term for the color of qubits after measured"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A term for the value of qubits before measured which is both 0 and 1",
+        "explanation": "Superposition is the state when qubits fluctuate between 0 and 1 values simultaneously before it collapses to a value on measurement."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "A part of the quantum computer used to cool down qubits"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "A quantum based super hero"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is entanglement?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "When qubits break apart into string like pieces"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "A term for the pathing needed in a quantum computer"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "A term for qubits that are linked together and have opposing states",
+        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and have opposing quantum states. One of them is 0, and the other is 1."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "When a qubit changes in position rapidly"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these isn’t true regarding quantum computing?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Quantum computing is expensive to build and maintain research on"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Quantum computers face high error rates"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Quantum computers are kept at near absolute zero temperature"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Quantum computing is set to replace classic computers",
+        "explanation": "Quantum computing is very expensive and overkill for a lot of modern processes, instead it should be used complimentary to classic computers."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How are ciphers solved faster with quantum computers?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Quantum computers are able to tell which cipher it’s dealing with easily"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Qubits allow for more attempts decrypting the cipher at once",
+        "explanation": "Due to the phenomena of superposition, qubits are able to provide multiple valued attempts at the same time in comparison to classic computers which can only do one at a time."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Quantum code is stronger at cracking ciphers"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Ciphers are solved easier on bigger machines"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "True or False: Current quantum computers have the power to solve every cipher.",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "True"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "False",
+        "explanation": "While quantum computers can solve ciphers better than classic computers, they are still not able to solve some of the harder ones out there, such as 2048-bit RSA."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these scenarios is a quantum computer viable in?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Simulate nature at a fundamental level for medical and drug research"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Create new encryption methods that are more secure and only accessible to solve via another quantum computer"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Help detect and prevent fraudulent activity more effectively by analyzing at faster speeds"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above",
+        "explanation": "All of these are scenarios where a quantum computer can allow for better and faster results."
+      }
+    ],
+    "multiChoice": false
+  } 
+ ]', 3, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
@@ -3712,9 +3978,9 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-2024', false, null, null, '{8,9,11,12}'),
 (9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-2024', false, null, null, '{9,11,12}'),
 (10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-2024', false, null, null, '{6}'),
-(11, 'Domenic', 'Mangano', 'Tech Lead, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true, 'Student. Father. Engineer. Graduating from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{0,7,8,9,10,11,12}'),
+(11, 'Domenic', 'Mangano', 'Tech Lead, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-2025', false, 'Student. Father. Engineer. Graduated from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{0,7,8,9,10,11,12}'),
 (12, 'Carla', 'Lopez', 'Outreach, Engineer', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true, null, null, null),
-(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-2025', false, 'BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{0,7,10}'),
+(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notjoncruz/"}]', null, '2023-2025', false, 'BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{0,7,10}'),
 (14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-2025', false, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!of the Computing Organization for Multicultural Students at RIT!', 2, null),
 (15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-2022', false, null, null, null),
 (16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null),
@@ -3727,18 +3993,18 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-2024', false, null, null, '{8}'),
 (24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false, null, null, null),
 (25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-2024', false, null, 12, '{12}'),
-(26, 'Owen', 'Luts', 'Quantum Lab Team Lead, Engineer', '/Owen_Luts.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null, '2024-Present', true, 'Team Lead and Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 12, '{0,12}'),
+(26, 'Owen', 'Luts', 'Tech Lead, Quantum Lab Team Lead, Engineer', '/Owen_Luts.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null, '2024-Present', true, 'Tech Lead and Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 14, '{0,12,14}'),
 (27, 'Kristen', 'Fang', 'Engineer', '/Kristen_Fang.jpg', '[{"link":"https://www.linkedin.com/in/kristenfang/","network":"linkedin"}]', null, '2024-Present', true, null, 3, '{0}'),
 (28, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/melissa-burisky-7b24bb230/"}]', null, '2024-2025', false, 'Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', 0, '{0}'),
 (29, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/michael-dibiase-8765632b8/"}]', null, '2024-2025', false, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 12, '{0,12}'),
-(30, 'Jack', 'DeFeo', 'Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2024-Present', true, null, null, null),
-(31, 'Jack', 'Barter', 'Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2024-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
+(30, 'Jack', 'DeFeo', 'AI Hallucination Team Lead, Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2024-Present', true, null, null, null),
+(31, 'Jack', 'Barter', 'Maintenance Team Lead, Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2024-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
 (32, 'Ursula', 'Parker', 'Project Manager, Imagine Team Lead', '/Ursula_Parker.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2024-Present', true, null, null, null),
-(33, 'Emma', 'Schmitt', 'AI Lab Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
-(34, 'Warner', 'Harper', 'Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
-(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
-(36, 'William', 'Herrick', 'Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, null),
-(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, null),
+(33, 'Emma', 'Schmitt', 'AI Bias Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
+(34, 'Warner', 'Harper', 'Engineer, Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
+(35, 'Juidane', 'Thomas', 'Outreach Team Lead', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
+(36, 'William', 'Herrick', 'AI Deepfake Team Lead, Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, '{14}'),
+(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, '{14}'),
 (38, 'Darlyn', 'Gomez', 'Engineer', '/Darlyn_Gomez.jpg', '[{"link" : "https://www.linkedin.com/in/darlyn-gomez/"}]', null, '2025-Present', true, null, null, null),
 (39, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
 (40, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', null, null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);

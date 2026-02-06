@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable guard-for-in */
-/* eslint-disable max-len */
 import { Sections } from "../constants/index";
 import { navigate } from "@reach/router";
 
@@ -97,6 +94,9 @@ export const stateChange = (actions, pathname) => {
       break;
     case "Lab12":
       actions.setLab(12);
+      break;
+    case "Lab14":
+      actions.setLab(14);
       break;
     case "":
       actions.setLab(99);

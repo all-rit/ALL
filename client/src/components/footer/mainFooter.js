@@ -1,6 +1,4 @@
-/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
 import { connect } from "react-redux";

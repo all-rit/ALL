@@ -261,6 +261,25 @@ export const Sections = {
       name: "Quiz",
     },
   },
+  14: {
+    fullname: "Lab 14: Quantum Cryptography",
+    name: "Lab14",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
 };
 // for shared component
 export const EXERCISE_IDLE = "EXERCISE_IDLE";

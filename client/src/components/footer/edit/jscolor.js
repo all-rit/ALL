@@ -1,10 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable no-tabs */
-/* eslint-disable new-cap */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-/* eslint-disable no-var */
+/* eslint-disable */
 /**
  * jscolor - JavaScript Color Picker
  *
@@ -68,14 +62,13 @@ if (!window.jscolor) {
             let opts = {};
             if (optsStr) {
               try {
-                // eslint-disable-next-line
                 opts = new Function("return (" + optsStr + ")")();
               } catch (eParseError) {
                 jsc.warn(
                   "Error parsing jscolor options: " +
-                    eParseError +
-                    ":\n" +
-                    optsStr,
+                  eParseError +
+                  ":\n" +
+                  optsStr,
                 );
               }
             }
@@ -182,7 +175,6 @@ if (!window.jscolor) {
           // IE
           document.attachEvent("onreadystatechange", function () {
             if (document.readyState === "complete") {
-              // eslint-disable-next-line
               document.detachEvent("onreadystatechange", arguments.callee);
               fireOnce();
             }
@@ -289,14 +281,14 @@ if (!window.jscolor) {
         for (let i = 0; i < classList.length; i += 1) {
           const repl = new RegExp(
             "^\\s*" +
-              classList[i] +
-              "\\s*|" +
-              "\\s*" +
-              classList[i] +
-              "\\s*$|" +
-              "\\s+" +
-              classList[i] +
-              "(\\s+)",
+            classList[i] +
+            "\\s*|" +
+            "\\s*" +
+            classList[i] +
+            "\\s*$|" +
+            "\\s+" +
+            classList[i] +
+            "(\\s+)",
             "g",
           );
           elm.className = elm.className.replace(repl, "$1");
@@ -529,12 +521,12 @@ if (!window.jscolor) {
           jsc.picker.boxS,
           thisObj.shadow
             ? new jsc.BoxShadow(
-                0,
-                vShadow,
-                thisObj.shadowBlur,
-                0,
-                thisObj.shadowColor,
-              )
+              0,
+              vShadow,
+              thisObj.shadowBlur,
+              0,
+              thisObj.shadowColor,
+            )
             : null,
         );
       },
@@ -543,19 +535,19 @@ if (!window.jscolor) {
         const displaySlider = !!jsc.getSliderComponent(thisObj);
         const dims = [
           2 * thisObj.insetWidth +
-            2 * thisObj.padding +
-            thisObj.width +
-            (displaySlider
-              ? 2 * thisObj.insetWidth +
-                jsc.getPadToSliderPadding(thisObj) +
-                thisObj.sliderSize
-              : 0),
+          2 * thisObj.padding +
+          thisObj.width +
+          (displaySlider
+            ? 2 * thisObj.insetWidth +
+            jsc.getPadToSliderPadding(thisObj) +
+            thisObj.sliderSize
+            : 0),
           2 * thisObj.insetWidth +
-            2 * thisObj.padding +
-            thisObj.height +
-            (thisObj.closable
-              ? 2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight
-              : 0),
+          2 * thisObj.padding +
+          thisObj.height +
+          (thisObj.closable
+            ? 2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight
+            : 0),
         ];
         return dims;
       },
@@ -783,7 +775,6 @@ if (!window.jscolor) {
         if (thisObj.onFineChange) {
           let callback;
           if (typeof thisObj.onFineChange === "string") {
-            // eslint-disable-next-line
             callback = new Function(thisObj.onFineChange);
           } else {
             callback = thisObj.onFineChange;
@@ -1357,7 +1348,6 @@ if (!window.jscolor) {
 
         this.fromString = function (str, flags) {
           let m;
-          // eslint-disable-next-line
           if ((m = str.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i))) {
             // HEX notation
             //
@@ -1380,8 +1370,6 @@ if (!window.jscolor) {
               );
             }
             return true;
-
-            // eslint-disable-next-line
           } else if ((m = str.match(/^\W*rgba?\(([^)]*)\)\W*$/i))) {
             const params = m[1].split(",");
             const re = /^\s*(\d*)(\.\d+)?\s*$/;
@@ -1765,12 +1753,12 @@ if (!window.jscolor) {
               insetColors.length < 2
                 ? insetColors[0]
                 : insetColors[1] +
-                  " " +
-                  insetColors[0] +
-                  " " +
-                  insetColors[0] +
-                  " " +
-                  insetColors[1];
+                " " +
+                insetColors[0] +
+                " " +
+                insetColors[0] +
+                " " +
+                insetColors[1];
             p.btn.style.borderColor = outsetColor;
           }
           p.btn.style.display = THIS.closable ? "block" : "none";
@@ -1982,28 +1970,28 @@ if (!window.jscolor) {
         }
 
         /*
-		var elm = this.targetElement;
-		do {
-			// If the target element or one of its offsetParents has fixed position,
-			// then use fixed positioning instead
-			//
-			// Note: In Firefox, getComputedStyle returns null in a hidden iframe,
-			// that's why we need to check if the returned style object is non-empty
-			var currStyle = jsc.getStyle(elm);
-			if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
-				this.fixed = true;
-			}
+    var elm = this.targetElement;
+    do {
+      // If the target element or one of its offsetParents has fixed position,
+      // then use fixed positioning instead
+      //
+      // Note: In Firefox, getComputedStyle returns null in a hidden iframe,
+      // that's why we need to check if the returned style object is non-empty
+      var currStyle = jsc.getStyle(elm);
+      if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
+        this.fixed = true;
+      }
 
-			if (elm !== this.targetElement) {
-				// attach onParentScroll so that we can recompute the picker position
-				// when one of the offsetParents is scrolled
-				if (!elm._jscEventsAttached) {
-					jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
-					elm._jscEventsAttached = true;
-				}
-			}
-		} while ((elm = elm.offsetParent) && !jsc.isElementType(elm, 'body'));
-		*/
+      if (elm !== this.targetElement) {
+        // attach onParentScroll so that we can recompute the picker position
+        // when one of the offsetParents is scrolled
+        if (!elm._jscEventsAttached) {
+          jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
+          elm._jscEventsAttached = true;
+        }
+      }
+    } while ((elm = elm.offsetParent) && !jsc.isElementType(elm, 'body'));
+    */
 
         // valueElement
         if (this.valueElement) {
