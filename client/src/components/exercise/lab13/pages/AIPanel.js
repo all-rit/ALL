@@ -19,10 +19,9 @@ const AIPanel = () => {
     const [showBiasExplanation, setShowBiasExplanation] = useState(false);
     const [selectedBiasData, setSelectedBiasData] = useState(null);
     const [currentAnswerData, setCurrentAnswerData] = useState(null);
-    const [isBotTyping, setIsBotTyping] = useState(false);
-    const [isBotThinking, setIsBotThinking] = useState(false);
     const [toneRating, setToneRating] = useState('');
     const [confidenceRating, setConfidenceRating] = useState('');
+    const [loadQuestionsTrigger, setLoadQuestionsTrigger] = useState(0);
 
     const BIAS_POSITION_MAP = {
         0: BIAS_TYPES.TRUTH_BIAS, // Most knowledgeable
@@ -65,11 +64,6 @@ const AIPanel = () => {
         setConfidenceRating('');
     }, []);
 
-    const handleAnswerSelected = useCallback((biasType, biasDefinition, explanation) => {
-        setSelectedBiasData({ biasType, biasDefinition, explanation });
-        setShowRatingModal(true);
-    }, []);
-
     const handleRatingSubmit = useCallback(() => {
         setShowBiasExplanation(true);
     }, []);
@@ -80,7 +74,10 @@ const AIPanel = () => {
         setTimeout(() => {
             setTopicIndex((prevIndex) => {
                 const nextIndex = prevIndex + 1;
-                if (nextIndex >= getOrderedTopics.length) {
+                if (nextIndex < getOrderedTopics.length) {
+                    // Signal to load new questions
+                    setLoadQuestionsTrigger((prev) => prev + 1);
+                } else {
                     setTimeout(() => {
                         startExercise();
                         navigate('/Lab13/Exercise/AIandSearchPanel');
@@ -89,9 +86,38 @@ const AIPanel = () => {
                 return nextIndex;
             });
         }, 100);
-    }, [resetModalState, getOrderedTopics.length]);
+    }, [resetModalState, getOrderedTopics]);
 
     const biasDefinition = selectedBiasData ? BIAS_DEFINITIONS[selectedBiasData.biasType] : null;
+
+    const questionData = useMemo(() => {
+        if (!topicData) return { userQuestions: [], responses: [] };
+        return {
+            userQuestions: topicData.questions.map((q, i) => ({ id: i + 1, text: q.text })),
+            responses: topicData.questions.map((q, i) => ({
+                id: i + 1,
+                text: q.answers[activeBias].text,
+                isCorrect: q.answers[activeBias].isCorrect,
+                explanation: q.answers[activeBias].explanation,
+                biasType: activeBias,
+                biasDefinition: BIAS_DEFINITIONS[activeBias],
+            })),
+        };
+    }, [topicData, activeBias]);
+
+    const biasExplanationContent = biasDefinition && selectedBiasData ? (
+        <div className="tw-p-4 tw-text-sm tw-text-gray-700">
+            <div className="tw-mb-6">
+                <p className="tw-italic tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-4">
+                    {selectedBiasData.explanation}
+                </p>
+            </div>
+            <div className="tw-bg-blue-50 tw-p-4 tw-rounded tw-mb-6">
+                <h4 className="tw-font-bold tw-mb-2">Understanding {biasDefinition.name}:</h4>
+                <p>{biasDefinition.definition}</p>
+            </div>
+        </div>
+    ) : null;
 
     return (
         <div>
@@ -102,30 +128,22 @@ const AIPanel = () => {
                             <div className="tw-h-full tw-flex tw-flex-col">
                                 <div className="tw-flex-1 tw-overflow-auto">
                                     <AIChatBot
-                                        userQuestions={topicData.questions.map((q, index) => ({
-                                            id: index + 1,
-                                            text: q.text,
-                                        }))}
-                                        fixedAIResponse={topicData.questions.map((q, index) => ({
-                                            id: index + 1,
-                                            text: q.answers[activeBias].text,
-                                            isCorrect: q.answers[activeBias].isCorrect,
-                                            explanation: q.answers[activeBias].explanation,
-                                            biasType: activeBias,
-                                            biasDefinition: BIAS_DEFINITIONS[activeBias],
-                                        }))}
+                                        userQuestions={questionData.userQuestions}
+                                        fixedAIResponse={questionData.responses}
                                         onAnswerDataChange={setCurrentAnswerData}
-                                        onTypingChange={setIsBotTyping}
-                                        onThinkingChange={setIsBotThinking}
+                                        triggerLoadQuestions={loadQuestionsTrigger}
                                     />
                                 </div>
                                 <div className="tw-bg-white tw-flex tw-justify-center tw-py-4 tw-border-t tw-border-gray-200">
-                                    {currentAnswerData && !isBotTyping && !isBotThinking && !showRatingModal && (
+                                    {currentAnswerData && !showRatingModal && (
                                         <button
-                                            onClick={() => handleAnswerSelected(currentAnswerData.biasType, currentAnswerData.biasDefinition, currentAnswerData.explanation)}
+                                            onClick={() => {
+                                                setSelectedBiasData(currentAnswerData);
+                                                setShowRatingModal(true);
+                                            }}
                                             className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
                                         >
-                                            Review ALL-IE&apos;s Reponse
+                                            Review ALL-IE&apos;s Response
                                         </button>
                                     )}
                                 </div>
@@ -144,29 +162,13 @@ const AIPanel = () => {
                         showTextModal={showBiasExplanation}
                         setShowTextModal={setShowBiasExplanation}
                         textModalHeader={
-                            biasDefinition ? (
+                            biasDefinition && (
                                 <div className="tw-text-xl tw-font-bold tw-text-textGray tw-m-3">
                                     {biasDefinition.name}
                                 </div>
-                            ) : null
+                            )
                         }
-                        textModalBody={
-                            selectedBiasData && biasDefinition ? (
-                                <div className="tw-p-4 tw-text-sm tw-text-gray-700">
-                                    <div className="tw-mb-6">
-                                        <p className="tw-italic tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-4">
-                                            {selectedBiasData.explanation}
-                                        </p>
-                                    </div>
-                                    <div className="tw-bg-blue-50 tw-p-4 tw-rounded tw-mb-6">
-                                        <h4 className="tw-font-bold tw-mb-2">
-                                            Understanding {biasDefinition.name}:
-                                        </h4>
-                                        <p>{biasDefinition.definition}</p>
-                                    </div>
-                                </div>
-                            ) : null
-                        }
+                        textModalBody={biasExplanationContent}
                         onCloseTextModal={handleBiasExplanationClose}
                     />
                 </>
