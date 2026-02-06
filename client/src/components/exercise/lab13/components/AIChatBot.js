@@ -318,7 +318,7 @@ const AIChatBot = ({
                       disabled={!canSelectQuestion}
                       className={`tw-w-full tw-text-left tw-px-4 tw-py-3 tw-text-black tw-text-sm tw-transition-all tw-duration-200 tw-rounded tw-border-none ${
                         canSelectQuestion
-                          ? 'tw-bg-transparent hover:!tw-bg-blue-100 tw-cursor-pointer'
+                          ? 'tw-bg-transparent hover:!tw-bg-bgwhite tw-cursor-pointer'
                           : 'tw-cursor-not-allowed tw-opacity-50 tw-bg-transparent'
                       }`}
                       style={{ fontFamily: 'Calibri, sans-serif' }}

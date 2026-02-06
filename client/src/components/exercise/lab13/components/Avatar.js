@@ -19,6 +19,7 @@ const Avatar = ({ type, size = 40 }) => {
         fontWeight: 'bold',
         color: isAI ? 'white' : 'black',
         fontSize: size * 0.5,
+        border: '0.5px solid #9ABDDC',
       }}
     >
       {isAI ? (
@@ -38,9 +39,10 @@ const Avatar = ({ type, size = 40 }) => {
             fontWeight: 'bold',
             color: 'black',
             fontSize: size * 0.5,
+            
           }}
         >
-          👤
+          
         </span>
       )}
     </div>
