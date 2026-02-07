@@ -67,12 +67,18 @@ const QuizHandler = (props) => {
       let updateCursor = currentQuestionCursor - 1;
       if (props.questions[currentQuestionCursor].multiChoice) {
         let tempAnswers = props.selectedAnswers;
-        tempAnswers.splice(currentQuestionCursor, 1);
+        tempAnswers.splice(currentQuestionCursor);
+        props.setSelectedAnswers(tempAnswers);
+      }
+      if (props.questions[updateCursor].multiChoice) {
+        let tempAnswers = props.selectedAnswers;
+        tempAnswers.splice(updateCursor);
         props.setSelectedAnswers(tempAnswers);
       }
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(props.questions[updateCursor].answers);
       setDisableNext(true);
+      console.log(props.selectedAnswers);
     }
   };
 
@@ -242,6 +248,7 @@ const QuizHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
+    console.log(tempAnswers);
     props.setSelectedAnswers(tempAnswers);
   }
 
