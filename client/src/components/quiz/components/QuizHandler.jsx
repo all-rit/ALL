@@ -78,7 +78,6 @@ const QuizHandler = (props) => {
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(props.questions[updateCursor].answers);
       setDisableNext(true);
-      console.log(props.selectedAnswers);
     }
   };
 
