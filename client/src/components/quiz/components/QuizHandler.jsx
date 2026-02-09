@@ -248,7 +248,6 @@ const QuizHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
-    console.log(tempAnswers);
     props.setSelectedAnswers(tempAnswers);
   }
 
