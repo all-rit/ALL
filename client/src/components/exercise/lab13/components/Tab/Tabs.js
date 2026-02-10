@@ -1,42 +1,56 @@
-import React, { useState } from "react";
-import { TabsContext } from "./TabsContext";
-import PropTypes from "prop-types";
-import "./Tabs.css";
+import React, { useState, useCallback } from 'react';
+import { TabsContext } from './TabsContext';
+import PropTypes from 'prop-types';
+import './Tabs.css';
 
-export const Tabs = ({ children }) => {
-  /**
-   * A component that displays and holds tabs
-   *
-   * @param {object} children - Tab components placed inside Tabs
-   * @returns {JSX.Element}
-   */
-
-  // State storing index of current active tab
-  const [activeTab, setActiveTab] = useState(0); // First tab is active by default
+export const Tabs = ({
+  children,
+  activeTab: externalActiveTab,
+  onTabChange,
+}) => {
   // Store tab(s) that log themselves in Tabs parent
   const [tabs, setTabs] = useState([]);
 
-  // Add newly register tabs to existing tab array
-  const logTab = (tab) => {
+  // Use external activeTab or fall back to first tab
+  const activeTabIndex = tabs.findIndex(
+    (tab) => tab.label === externalActiveTab
+  );
+  const currentActiveIndex = activeTabIndex !== -1 ? activeTabIndex : 0;
+
+  // Memoize logTab to prevent infinite loops
+  const logTab = useCallback((tab) => {
     setTabs((prev) => {
-      if (prev.some((t) => t.label === tab.label)) return prev;
+      const existingIndex = prev.findIndex((t) => t.label === tab.label);
+      if (existingIndex !== -1) {
+        const updated = [...prev];
+        updated[existingIndex] = tab;
+        return updated;
+      }
       return [...prev, tab];
     });
+  }, []); // Empty dependency array since it only uses setTabs
+
+  const handleTabClick = (index) => {
+    if (onTabChange) {
+      onTabChange(tabs[index].label);
+    }
   };
 
   return (
-    <TabsContext.Provider value={{ logTab, activeTab, setActiveTab }}>
+    <TabsContext.Provider
+      value={{ logTab, activeTab: currentActiveIndex, setActiveTab: () => {} }}
+    >
       <div className="tabs-container">
         {/* Populate headers with buttons for logged tabs */}
         <div className="tabs-header">
           {tabs.map((tab, index) => (
             <div
-              className={`tab-shadow-wrapper ${index === activeTab ? "active" : ""}`}
+              className={`tab-shadow-wrapper ${index === currentActiveIndex ? 'active' : ''}`}
               key={index}
             >
               <button
-                className={`${index === activeTab ? "active" : ""}`}
-                onClick={() => setActiveTab(index)}
+                className={`${index === currentActiveIndex ? 'active' : ''}`}
+                onClick={() => handleTabClick(index)}
               >
                 <span className="tab-label">{tab.label}</span>
               </button>
@@ -46,7 +60,9 @@ export const Tabs = ({ children }) => {
         {/* Populate with tab content */}
         <div className="tab-panels">
           {tabs.map((tab, index) =>
-            index === activeTab ? <div key={index}>{tab.content}</div> : null,
+            index === currentActiveIndex ? (
+              <div key={index}>{tab.content}</div>
+            ) : null
           )}
         </div>
       </div>
@@ -57,4 +73,6 @@ export const Tabs = ({ children }) => {
 
 Tabs.propTypes = {
   children: PropTypes.node.isRequired,
+  activeTab: PropTypes.string,
+  onTabChange: PropTypes.func,
 };

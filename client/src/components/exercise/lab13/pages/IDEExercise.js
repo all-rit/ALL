@@ -15,11 +15,39 @@ const IDEExercise = () => {
     checkInputValid,
     fetchRepair,
     postRepair,
+    setShowConfidenceScore,
+    setShowCitations,
+    setDisclaimerMessage,
+    setCurrentPhase,
+    setTopicIndex,
   } = useLab13();
 
   const handleContinue = () => {
+    if (!checkInputValid()) {
+      alert('Please complete all fields correctly before continuing.');
+      return;
+    }
+
+    // Save IDE settings to context
+    const disclaimerValue = exercisePromptsState.find(
+      (i) => i.id === 'disclaimer'
+    ).value;
+    const confidenceValue = exercisePromptsState.find(
+      (i) => i.id === 'confidence'
+    ).value;
+    const citationsValue = exercisePromptsState.find(
+      (i) => i.id === 'citations'
+    ).value;
+
+    setDisclaimerMessage(disclaimerValue);
+    setShowConfidenceScore(!!confidenceValue);
+    setShowCitations(!!citationsValue);
+
+    setCurrentPhase(4);
+    setTopicIndex(2);
+
     startExercise();
-    navigate("/Lab13/Exercise/PanelswithIDEFixes");
+    navigate('/Lab13/Exercise/AIPanel');
   };
 
   const data = {

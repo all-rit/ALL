@@ -1,20 +1,22 @@
-import { useContext, useEffect } from "react";
-import { TabsContext } from "./TabsContext";
-import PropTypes from "prop-types";
+import { useContext, useEffect, useRef } from 'react';
+import { TabsContext } from './TabsContext';
+import PropTypes from 'prop-types';
 
 export const Tab = ({ label, children }) => {
-  /**
-   * A component that defines a singular tab
-   * @param {string} label - Name of the tab
-   * @param {object} children - Content of the tab
-   */
-
   const { logTab } = useContext(TabsContext);
 
-  // Log tab once it appears on the screen
+  // Use ref to track if this is the first render
+  const isFirstRender = useRef(true);
+  const prevChildrenRef = useRef(children);
+
   useEffect(() => {
-    logTab({ label, content: children });
-  }, []);
+    // Only log if children actually changed or first render
+    if (isFirstRender.current || prevChildrenRef.current !== children) {
+      logTab({ label, content: children });
+      prevChildrenRef.current = children;
+      isFirstRender.current = false;
+    }
+  }, [children, label, logTab]);
 
   return null;
 };

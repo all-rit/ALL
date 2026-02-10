@@ -8,8 +8,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:jest/recommended",
-    "plugin:prettier/recommended"
+    "plugin:jest/recommended"
   ],
   "overrides": [
     {
@@ -40,7 +39,7 @@
         "varsIgnorePattern": "React"
       }
     ],
-    "indent": "off",
+    "indent": "off"
     // "indent": [
     //   "error", 
     //   2, 
@@ -48,11 +47,11 @@
     //     "ignoredNodes": ["TemplateLiteral", "BinaryExpression"]
     //   }
     // ],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+    // "prettier/prettier": [
+    //   "error",
+    //   {
+    //     "endOfLine": "auto"
+    //   }
+    // ]
   }
 }
