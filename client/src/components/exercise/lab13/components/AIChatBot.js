@@ -280,10 +280,10 @@ const AIChatBot = ({
                       </>
                     )}
                   </div>
-                  {/* Show blob for most recent AI messages */}
+                  {/* Show blob for most recent AI messages while its typing */}
                   {msg.sender === 'bot' &&
                     index === messages.length - 1 &&
-                    !isTyping && (
+                    isTyping && (
                       <div className="tw-flex tw-items-start tw-border-none">
                         <BlobLoader animationMode={getBlobMode()} />
                       </div>
