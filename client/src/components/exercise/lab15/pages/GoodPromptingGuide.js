@@ -1,7 +1,14 @@
 import { navigate } from "@reach/router";
 
 const GoodPromptingGuide = () => {
-  return <button onClick={() => navigate("model-repair")}>Next</button>;
+  return (
+    <div>
+      <h1>Good Prompting Guide</h1>
+      <button onClick={() => navigate("/Lab15/Exercise/model-repair")}>
+        Next
+      </button>
+    </div>
+  );
 };
 
 export default GoodPromptingGuide;

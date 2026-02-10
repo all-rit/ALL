@@ -1,7 +1,14 @@
 import { navigate } from "@reach/router";
 
 const ModelRepair = () => {
-  return <button onClick={() => navigate("model-with-grades")}>Next</button>;
+  return (
+    <div>
+      <h1>Model Repair</h1>
+      <button onClick={() => navigate("/Lab15/Exercise/model-with-grades")}>
+        Next
+      </button>
+    </div>
+  );
 };
 
 export default ModelRepair;

@@ -1,7 +1,14 @@
 import { navigate } from "@reach/router";
 
 const ModelWithGrades = () => {
-  return <button onClick={() => navigate("conclusion")}>Next</button>;
+  return (
+    <div>
+      <h1>Model with Grades</h1>
+      <button onClick={() => navigate("/Lab15/Exercise/conclusion")}>
+        Next
+      </button>
+    </div>
+  );
 };
 
 export default ModelWithGrades;
