@@ -681,7 +681,6 @@ Although many cases are inherited, they can also develop later in life due to ey
                     <div className="tw-mb-2 tw-p-1 tw-bg-gray-50 tw-rounded tw-border tw-border-gray-200">
 
                       <p className=" tw-text-left tw-text-gray-700 tw-body-text">
-                      <p className=" tw-text-left tw-text-gray-700">
                         <strong>Given AI Response: </strong>
                         <em>
                           &quot;{selectedBiasData.aiResponseText}&quot;
