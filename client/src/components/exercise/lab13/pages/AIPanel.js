@@ -669,7 +669,7 @@ Although many cases are inherited, they can also develop later in life due to ey
             setShowTextModal={setShowBiasExplanation}
             textModalHeader={
               biasDefinition ? (
-                <div className="tw-text-xl tw-font-bold tw-text-textGray tw-pb-0 tw-mb-0">
+                <div className="tw-text-xl tw-font-bold tw-text-textGray tw-pb-0 tw-mb-0 tw-body-text">
                   {biasDefinition.name}
                 </div>
               ) : null
@@ -680,6 +680,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                   {selectedBiasData.aiResponseText && (
                     <div className="tw-mb-2 tw-p-1 tw-bg-gray-50 tw-rounded tw-border tw-border-gray-200">
 
+                      <p className=" tw-text-left tw-text-gray-700 tw-body-text">
                       <p className=" tw-text-left tw-text-gray-700">
                         <strong>Given AI Response: </strong>
                         <em>
@@ -689,7 +690,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                     </div>
                   )}
                   <div className="tw-mb-2">
-                    <p className="tw-text-left tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-1 tw-pb-3">
+                    <p className="tw-text-left tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-1 tw-pb-3 tw-body-text">
                       {selectedBiasData.explanation}
                     </p>
                   </div>
@@ -697,7 +698,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                     <h5 className="tw-font-bold tw-mb-2">
                       What is {biasDefinition.name}?
                     </h5>
-                    <p>{biasDefinition.definition}</p>
+                    <p className='tw-body-text'>{biasDefinition.definition}</p>
                   </div>
                 </div>
               ) : null
