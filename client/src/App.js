@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
 /** Body Components **/
@@ -50,7 +50,8 @@ import "./assets/stylesheets/main.scss";
 import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
-import { Spinner } from "reactstrap";
+// import Spinner from "./common/Spinner/Spinner";
+
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
 );
@@ -79,6 +80,7 @@ function initializeReactGA() {
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
+  let [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
     actions.login();
@@ -87,6 +89,7 @@ const App = () => {
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
+    setLoaded(true);
   }, []);
   const lab = state.main.lab;
   const body = state.main.body;
@@ -197,17 +200,17 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div
-        className={`overflow-x-hidden ${
-          labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
-        }`}
-      >
-        <Header isImagine={isImagine} />
-        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-          <div className={`tw-relative tw-grid tw-h-full`}>
-            <Suspense fallback={<Spinner />}>
+      {isLoaded ? (
+        <div
+          className={`overflow-x-hidden ${
+            labInProgress || isImagine
+              ? "overflow-y-hidden tw-h-lvh"
+              : "overflow-y-auto min-h-screen"
+          }`}
+        >
+          <Header isImagine={isImagine} />
+          <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
+            <div className={`tw-relative tw-grid tw-h-full`}>
               {labInProgress ? (
                 <LabWindow
                   lab={lab}
@@ -225,12 +228,14 @@ const App = () => {
                   {renderPages()}
                 </div>
               )}
-            </Suspense>
+            </div>
           </div>
+          {!labInProgress && !isImagine && <MainFooter />}
+          <ALLSnackbar />
         </div>
-        {!labInProgress && !isImagine && <MainFooter />}
-        <ALLSnackbar />
-      </div>
+      ) : (
+        <></>
+      )}
     </>
   );
 };
