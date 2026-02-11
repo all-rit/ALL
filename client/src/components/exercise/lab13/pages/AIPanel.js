@@ -19,6 +19,7 @@ import {
   BIAS_DEFINITIONS,
   getTopicById,
 } from 'src/constants/lab13/BiasQuestionsConfig';
+import ProgressBar from 'src/components/all-components/ProgressBar';
 
 const AIPanel = () => {
   const {
@@ -576,11 +577,6 @@ Although many cases are inherited, they can also develop later in life due to ey
                         <div className="tw-flex tw-justify-end">
                           {requireWikipedia && (
                             <div className="tw-flex tw-flex-col tw-items-end">
-                              <span className="tw-text-xs tw-text-gray-600 tw-mb-1">
-                                {currentDisplayTime >= 15
-                                  ? 'Duration completed'
-                                  : 'Time on page:'}
-                              </span>
                               {currentDisplayTime >= 15 ? (
                                 <div className="tw-flex tw-items-center tw-gap-2">
                                   <span className="tw-text-3xl tw-text-green-600">
@@ -591,9 +587,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                                   </span>
                                 </div>
                               ) : (
-                                <span className="tw-text-2xl tw-font-bold tw-text-orange-600">
-                                  {currentDisplayTime}s
-                                </span>
+                                <ProgressBar duration={15 - currentDisplayTime} disableTitle className="tw-w-36" />
                               )}
                             </div>
                           )}
@@ -687,6 +681,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                     <div className="tw-mb-2 tw-p-1 tw-bg-gray-50 tw-rounded tw-border tw-border-gray-200">
 
                       <p className=" tw-text-left tw-text-gray-700 tw-body-text">
+                      <p className=" tw-text-left tw-text-gray-700">
                         <strong>Given AI Response: </strong>
                         <em>
                           &quot;{selectedBiasData.aiResponseText}&quot;
