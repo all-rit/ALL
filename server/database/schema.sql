@@ -1,5 +1,4 @@
 create type enum_imagine25 as enum ('experiential','expression','control');
-create type enum_imagine26 as enum ('experiential','expression','control');
 
 create table imagine25
 (
@@ -23,9 +22,6 @@ create table imagine26
     "section"                    enum_imagine26,
     primary key (id)
 );
-
-INSERT INTO imagine26 (userid, "preSurvey", "postSurvey", "section") 
-VALUES ('JVJBHT', 'blah', {}, {}, 'experiential');
 
 create table imagine22
 (

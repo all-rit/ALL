@@ -19,7 +19,7 @@ const Main = () => {
     if (!canContinue) {
       const timer = setTimeout(() => {
         setCanContinue(true);
-      }, 10000);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
