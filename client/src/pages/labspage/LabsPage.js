@@ -319,8 +319,9 @@ const LabsPage = (props) => {
                 </form>
                 <div className="xs:tw-hidden md:tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
                   <button
-                    className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow 
+                      ${selectedSearch === ALL_LABS ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(ALL_LABS);
                     }}
@@ -329,8 +330,9 @@ const LabsPage = (props) => {
                     All Labs
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === AI_MACHINE_LEARNING ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(AI_MACHINE_LEARNING);
                     }}
@@ -338,8 +340,9 @@ const LabsPage = (props) => {
                     AI/Machine Learning
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === ACCESSIBILITY ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(ACCESSIBILITY);
                     }}
@@ -347,17 +350,19 @@ const LabsPage = (props) => {
                     Accessibility
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange(QUANTUM);
                     }}
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === QUANTUM ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                   >
                     Quantum Computing
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === DIFFICULTY_1 ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(DIFFICULTY_1);
                     }}
@@ -365,8 +370,9 @@ const LabsPage = (props) => {
                     Difficulty 1
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === DIFFICULTY_2 ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(DIFFICULTY_2);
                     }}
@@ -374,8 +380,9 @@ const LabsPage = (props) => {
                     Difficulty 2
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === DIFFICULTY_3 ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(DIFFICULTY_3);
                     }}
@@ -383,8 +390,9 @@ const LabsPage = (props) => {
                     Difficulty 3
                   </button>
                   <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
+                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
+                      ${selectedSearch === TUTORIALS ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
                     onClick={() => {
                       handleSearchChange(TUTORIALS);
                     }}
