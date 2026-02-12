@@ -291,7 +291,7 @@ const LabsPage = (props) => {
                 <form className="tw-max-w-144 sm:tw-w-2/3 tw-flex tw-rounded-md">
                   <input
                     className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-l-md
-                                  tw-border-r-0 tw-border-darkGray tw-border-2 focus:tw-outline-0"
+                                  tw-border-r-0 tw-border-darkGray tw-border-2 focus:tw-outline-none"
                     placeholder="Search"
                     type="text"
                     id="searchLabs"
