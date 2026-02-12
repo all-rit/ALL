@@ -1,0 +1,28 @@
+name: "Scheduled PR: dev to prod"
+
+on:
+  schedule:
+    # Runs at 00:00 UTC on Monday and Thursday
+    - cron: '0 0 * * 1,4'
+  workflow_dispatch:
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        run: |
+          gh pr create \
+            --base prod \
+            --head dev \
+            --title "Scheduled Merge: dev to prod" \
+            --body "Automated PR created by GitHub Actions on a semi-weekly schedule." \
+          || echo "PR already exists or no changes to merge"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
