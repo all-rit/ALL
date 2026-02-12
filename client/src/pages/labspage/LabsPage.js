@@ -211,6 +211,7 @@ const LabsPage = (props) => {
 
   const handleSearchTextChange = (search) => {
     setTextSearch(search);
+    setDisplayedLabs(labsBySearchPhrase(labInformation, search));
   };
 
   const handleSearch = () => {
