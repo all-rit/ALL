@@ -146,7 +146,7 @@ const Reading = (props) => {
                 <Pie
                   data={readingData?.piechart.data}
                   height={!isImagine && 100}
-                  options={isImagine && { maintainAspectRatio: false }}
+                  options={isImagine ? { maintainAspectRatio: false } : {}}
                 />
               </div>
             </>
