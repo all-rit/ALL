@@ -321,4 +321,44 @@ router.post('/imagine25/quizScore', async function (req, res) {
   res.send(resp);
 });
 
+router.post('/imagine26/newID', async function (req, res) {
+  const resp = await ImagineController.newID(req);
+  res.send(resp);
+});
+
+router.get('/imagine26/user/:userID', async function (req, res) {
+  req.params.year = 26;
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
+});
+
+router.get('/imagine26/getGroup/:userID', async function (req, res) {
+  req.params.year = 26;
+  const imagineUser = await ImagineController.getGroup(req);
+  res.json(imagineUser);
+});
+
+router.get('/imagine26/getTeammate/:userID', async function (req, res) {
+  req.params.year = 26;
+  const imagineUser = await ImagineController.getTeammate(req);
+  res.json(imagineUser);
+});
+
+// Imagine 2026
+router.post('/imagine26/preSurvey', async function (req, res) {
+  const resp = await ImagineController.preSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+
+router.post('/imagine26/postSurvey', async function (req, res) {
+  const resp = await ImagineController.postSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+
+// add quiz backend
+router.post('/imagine26/quizScore', async function (req, res) {
+  const resp = await ImagineController.quizScore(req);
+  res.send(resp);
+});
+
 module.exports = router;

@@ -8,6 +8,9 @@ import ImagineService from "../../../services/ImagineService";
 import Spinner from "../../../common/Spinner/Spinner";
 import PreSurveyQuestions25 from "../../../constants/imagine25/preSurveyQuestions";
 import PostSurveyQuestions25 from "../../../constants/imagine25/postSurveyQuestions";
+import PreSurveyQuestions26 from "../../../constants/imagine26/preSurveyQuestions";
+import PostSurveyQuestions26 from "../../../constants/imagine26/postSurveyQuestions";
+
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
@@ -21,6 +24,8 @@ function assignQuizQuestions(surveyType, year) {
         return PreSurveyQuestions23;
       } else if (year == 25) {
         return PreSurveyQuestions25;
+      } else if (year == 26) {
+        return PreSurveyQuestions26;
       } else {
         return;
       }
@@ -30,6 +35,8 @@ function assignQuizQuestions(surveyType, year) {
         return PostSurveyQuestions23;
       } else if (year == 25) {
         return PostSurveyQuestions25;
+      } else if (year == 26) {
+        return PostSurveyQuestions26;
       } else {
         return;
       }
@@ -141,6 +148,15 @@ const SurveyHandler = (props) => {
         await ImagineService.preSurvey(props.userID, selectedAnswers, year);
         //will be changed to point to avatarCreation when merged
         navigate("/Imagine2025/AvatarCreation");
+      }
+    } else if (year == 26) {
+      sessionStorage.setItem("isUnderAge", isUnderAge);
+
+      if (isUnderAge) {
+        navigate("/Imagine2026/GalagaInstructions");
+      } else {
+        await ImagineService.preSurvey(props.userID, selectedAnswers, year);
+        navigate("/Imagine2025/GalagaInstructions");
       }
     } else {
       console.error("invalid year");
