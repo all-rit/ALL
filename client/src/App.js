@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
 /** Body Components **/
@@ -50,6 +50,7 @@ import "./assets/stylesheets/main.scss";
 import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
+import { Spinner } from "reactstrap";
 // import Spinner from "./common/Spinner/Spinner";
 
 const LabWindow = lazy(
@@ -208,33 +209,35 @@ const App = () => {
               : "overflow-y-auto min-h-screen"
           }`}
         >
-          <Header isImagine={isImagine} />
-          <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-            <div className={`tw-relative tw-grid tw-h-full`}>
-              {labInProgress ? (
-                <LabWindow
-                  lab={lab}
-                  title={Sections[lab].fullname}
-                  context={context}
-                  quizCompleted={quizCompleted}
-                  setQuizCompleted={setQuizCompleted}
-                  isImagine={isImagine}
-                  body={body}
-                >
-                  {renderLabs()}
-                </LabWindow>
-              ) : (
-                <div className={"tw-flex tw-row-span-10 tw-text-center"}>
-                  {renderPages()}
-                </div>
-              )}
+          <Suspense fallback={<Spinner />}>
+            <Header isImagine={isImagine} />
+            <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
+              <div className={`tw-relative tw-grid tw-h-full`}>
+                {labInProgress ? (
+                  <LabWindow
+                    lab={lab}
+                    title={Sections[lab].fullname}
+                    context={context}
+                    quizCompleted={quizCompleted}
+                    setQuizCompleted={setQuizCompleted}
+                    isImagine={isImagine}
+                    body={body}
+                  >
+                    {renderLabs()}
+                  </LabWindow>
+                ) : (
+                  <div className={"tw-flex tw-row-span-10 tw-text-center"}>
+                    {renderPages()}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          {!labInProgress && !isImagine && <MainFooter />}
-          <ALLSnackbar />
+            {!labInProgress && !isImagine && <MainFooter />}
+            <ALLSnackbar />
+          </Suspense>
         </div>
       ) : (
-        <></>
+        <Spinner />
       )}
     </>
   );
