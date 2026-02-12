@@ -288,7 +288,7 @@ const LabsPage = (props) => {
                 <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
-                <div className="tw-max-w-144 sm:tw-w-2/3 tw-flex tw-rounded-md">
+                <form className="tw-max-w-144 sm:tw-w-2/3 tw-flex tw-rounded-md">
                   <input
                     className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-l-md
                                   tw-border-r-0 tw-border-darkGray tw-border-2 focus:tw-outline-0"
@@ -300,8 +300,10 @@ const LabsPage = (props) => {
                     }}
                   />
                   <button
+                    type="submit"
                     className="tw-pr-4 tw-bg-white tw-rounded-r-md tw-border-l-0 tw-border-darkGray tw-border-2"
                     onClick={(e) => {
+                      e.preventDefault();
                       handleSearch(e);
                     }}
                   >
@@ -313,7 +315,7 @@ const LabsPage = (props) => {
                       <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
                     </svg>
                   </button>
-                </div>
+                </form>
                 <div className="xs:tw-hidden md:tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
                   <button
                     className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
@@ -390,7 +392,7 @@ const LabsPage = (props) => {
                   </button>
                 </div>
 
-                <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap">
+                <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full">
                   {Array.from(displayedLabs.entries())
                     .sort(([a], [b]) => a.localeCompare(b))
                     .map(([category, labArray]) => (
