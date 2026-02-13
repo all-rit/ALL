@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RobotImage from '../../../../assets/images/lab13/robot.png';
 import { AvatarType } from '../../../../constants/lab13/AvatarType';
+import UserPfp from 'src/components/all-components/UserPfp';
 
 const Avatar = ({ type, size = 40 }) => {
   const isAI = type === AvatarType.AI;
@@ -35,16 +36,7 @@ const Avatar = ({ type, size = 40 }) => {
           }}
         />
       ) : (
-        <span
-          style={{
-            fontWeight: 'bold',
-            color: 'black',
-            fontSize: size * 0.5,
-
-          }}
-        >
-
-        </span>
+        <UserPfp />
       )}
     </div>
   );

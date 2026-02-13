@@ -1,26 +1,27 @@
 import useMainStateContext from "src/reducers/MainContext";
 import PropTypes from "prop-types";
+import DefaultUser from '../../assets/images/DefaultUser.png';
 
 // User profile picture circle
 const UserPfp = ({ onClick }) => {
     const { state } = useMainStateContext();
     const user = state.main.user;
-    if (!user) {
-        return null; // or a default avatar
-    }
+    const className = `tw-w-full tw-h-full tw-object-cover tw-rounded-full ${onClick ? "tw-cursor-pointer" : ""}`;
 
-    return (
+    return (user && user.userpfp ?
         <div
             onClick={onClick}
             aria-label="Google Profile Photo"
-            alt = {`${user.firstname}'s profile picture`}
-            className={"tw-w-full tw-h-full tw-object-cover"}
+            alt={`${user.firstname}'s profile picture`}
+            className={className}
             style={{
                 backgroundImage: `url(${user?.userpfp})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
             }}
-        ></div>
+        />
+        :
+        <img src={DefaultUser} alt="Default User" className={`${className} tw-p-1`} />
     );
 };
 
