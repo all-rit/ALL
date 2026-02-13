@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RobotImage from './robot.png';
+import RobotImage from '../../../../assets/images/lab13/robot.png';
 
 const Avatar = ({ type, size = 40 }) => {
   const isAI = type === 'ai';
@@ -12,7 +12,7 @@ const Avatar = ({ type, size = 40 }) => {
         width: size,
         height: size,
         borderRadius: '50%',
-        backgroundColor: isAI ? '#0144D5' : '#FACE35',
+        backgroundColor: isAI ? '#FACE35' : '#0144D5',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -39,10 +39,10 @@ const Avatar = ({ type, size = 40 }) => {
             fontWeight: 'bold',
             color: 'black',
             fontSize: size * 0.5,
-            
+
           }}
         >
-          
+
         </span>
       )}
     </div>
