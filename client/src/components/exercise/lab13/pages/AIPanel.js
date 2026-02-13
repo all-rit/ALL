@@ -263,6 +263,75 @@ Although many cases are inherited, they can also develop later in life due to ey
 
   const wikipediaContent = getWikipediaContent(activeTopic);
 
+  // Check if ai review button should be enabled
+  const canReviewResponse = useMemo(() => {
+    if (!currentAnswerData || isBotTyping || isBotThinking || showRatingModal) {
+      return false;
+    }
+
+    // Phase 3 and 4 require Wikipedia visit for 15 or more seconds
+    if (requireWikipedia) {
+      return hasVisitedWikipedia && getWikipediaTimeSpent() >= 15;
+    }
+
+    return true;
+  }, [
+    currentAnswerData,
+    isBotTyping,
+    isBotThinking,
+    showRatingModal,
+    requireWikipedia,
+    hasVisitedWikipedia,
+    getWikipediaTimeSpent,
+  ]);
+
+  const getCurrentInstruction = useCallback(() => {
+    if (!currentTopic) return null;
+
+    if (topicIndex === 0 && !canReviewResponse) {
+      return `You're now on your moderately knowledgeable, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+    }
+
+    if (topicIndex === 1) {
+      if (questionAnswered && !hasVisitedWikipedia) {
+        return `ALLpedia is now available if you'd like to fact-check ALL-IE's response on ${currentTopic.title} before reviewing.`;
+      }
+      return `You're now on your most knowledgeable, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+    }
+
+    if (topicIndex === 2 && currentPhase < 4 && !canReviewResponse) {
+      const timeLeft = 15 - getWikipediaTimeSpent();
+      if (questionAnswered && !canReviewResponse) {
+        if (!hasVisitedWikipedia) {
+          return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
+        }
+        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
+      }
+      return `You're now on your least knowledgeable topic, ${currentTopic.title}. Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response.`;
+    }
+
+    if (currentPhase === 4 && !canReviewResponse) {
+      const timeLeft = 15 - getWikipediaTimeSpent();
+      if (questionAnswered && !canReviewResponse) {
+        if (!hasVisitedWikipedia) {
+          return `You must visit the ALLpedia page and spend at least 15 seconds reviewing before you can proceed.`;
+        }
+        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
+      }
+      return `Great! Now that you've implemented your IDE fixes, interact with ALL-IE again. You must review the ALLpedia page for at least 15 seconds before you can review ALL-IE's response.`;
+    }
+
+    return null;
+  }, [
+    currentTopic,
+    topicIndex,
+    currentPhase,
+    questionAnswered,
+    hasVisitedWikipedia,
+    canReviewResponse,
+    getWikipediaTimeSpent,
+  ]);
+
   // Initialize first exercise chat with the ALLie greeting
   useEffect(() => {
     if (chatMessages.length === 0 && currentTopic) {
@@ -270,7 +339,7 @@ Although many cases are inherited, they can also develop later in life due to ey
         {
           id: 'greeting',
           sender: 'bot',
-          text: `Hi! I'm ALL-IE the AI. Thanks for ranking your familiarity with the topics. I'll start with the one you feel moderately confident about. Select a prompt below on ${currentTopic.title}.`,
+          text: `Hi! I'm ALL-IE the AI. What can I help you with?`,
           timestamp: new Date(),
         },
       ]);
@@ -303,7 +372,7 @@ Although many cases are inherited, they can also develop later in life due to ey
       // Add intro message once
       if (!phase4IntroAddedRef.current && chatMessages.length > 0) {
         const lastMessage = chatMessages[chatMessages.length - 1];
-        const phase4IntroText = `Great! Now that you've implemented your IDE fixes, let's see the difference in your interaction. You must review the ALLpedia page for at least 15 seconds before proceeding. Select a prompt for ${currentTopic.title}.`;
+        const phase4IntroText = `I&apos;ve incorporated the updates you implemented! Please select a prompt.`;
 
         if (
           lastMessage.text !== phase4IntroText &&
@@ -382,14 +451,7 @@ Although many cases are inherited, they can also develop later in life due to ey
           const nextTopic = getOrderedTopics[nextIndex];
           if (nextTopic) {
             setTimeout(() => {
-              let transitionText = '';
-              if (nextIndex === 1) {
-                transitionText = `Onto part ${nextIndex + 1}. This time you have access to the ALLpedia page to fact-check the AI on ${nextTopic.title}. Select a prompt for ${nextTopic.title}.`;
-              } else if (nextIndex === 2) {
-                transitionText = `Onto part ${nextIndex + 1}. You must review the ALLpedia page for at least 15 seconds before proceeding. Select a prompt for ${nextTopic.title}.`;
-              } else {
-                transitionText = `Onto part ${nextIndex + 1}. Select a prompt for ${nextTopic.title}.`;
-              }
+              const transitionText = `Let's continue. Select another prompt.`;
 
               setChatMessages((prev) => [
                 ...prev,
@@ -434,28 +496,6 @@ Although many cases are inherited, they can also develop later in life due to ey
     setShowRatingModal(false);
     setShowBiasExplanation(true);
   }, []);
-
-  // Check if ai review button should be enabled
-  const canReviewResponse = useMemo(() => {
-    if (!currentAnswerData || isBotTyping || isBotThinking || showRatingModal) {
-      return false;
-    }
-
-    // Phase 3 and 4 require Wikipedia visit for 15 or more seconds
-    if (requireWikipedia) {
-      return hasVisitedWikipedia && getWikipediaTimeSpent() >= 15;
-    }
-
-    return true;
-  }, [
-    currentAnswerData,
-    isBotTyping,
-    isBotThinking,
-    showRatingModal,
-    requireWikipedia,
-    hasVisitedWikipedia,
-    getWikipediaTimeSpent,
-  ]);
 
   const biasDefinition = selectedBiasData
     ? BIAS_DEFINITIONS[selectedBiasData.biasType]
@@ -524,8 +564,14 @@ Although many cases are inherited, they can also develop later in life due to ey
                     />
                   </div>
                   <div className="tw-bg-white tw-flex tw-flex-col tw-items-center tw-py-4 tw-border-t tw-border-gray-200">
+                    {getCurrentInstruction() && (
+                      <div className="tw-mb-2 tw-text-sm tw-text-orange-600 tw-font-medium">
+                        {getCurrentInstruction()}
+                      </div>
+                    )}
+
                     {/* Wikipedia requirement warning for phase 3 */}
-                    {requireWikipedia &&
+                    {/* {requireWikipedia &&
                       !canReviewResponse &&
                       currentAnswerData && (
                         <div className="tw-mb-2 tw-text-sm tw-text-orange-600 tw-font-medium">
@@ -533,7 +579,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                             ? 'Visit the ALLpedia tab before reviewing'
                             : `Please spend ${15 - getWikipediaTimeSpent()} more seconds on ALLpedia`}
                         </div>
-                      )}
+                      )} */}
 
                     {canReviewResponse && (
                       <button
