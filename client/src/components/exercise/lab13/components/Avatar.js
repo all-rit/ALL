@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RobotImage from '../../../../assets/images/lab13/robot.png';
+import { AvatarType } from '../../../../constants/lab13/AvatarType';
 
 const Avatar = ({ type, size = 40 }) => {
-  const isAI = type === 'ai';
+  const isAI = type === AvatarType.AI;
 
   return (
     <div
@@ -50,7 +51,7 @@ const Avatar = ({ type, size = 40 }) => {
 };
 
 Avatar.propTypes = {
-  type: PropTypes.oneOf(['ai', 'user']).isRequired,
+  type: PropTypes.oneOf([AvatarType.AI, AvatarType.User]).isRequired,
   size: PropTypes.number,
 };
 
