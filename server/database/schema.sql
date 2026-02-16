@@ -3964,7 +3964,7 @@ e'[
  'Learn how prompting influences AI Hallucinations', e'[]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez', 'https://all.rit.edu/lab15', null, 
 
  -- About Section
-  'In this lab, you will learn about AI hallucinations. Click “Next” to start!', e'{
+  'In this lab, you will learn about AI hallucinations. Click “Next” to start! wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww', e'{
   "description":"",
   "body":[
     {
