@@ -281,7 +281,7 @@ export const Sections = {
     },
   },
   15: {
-    fullname: "AI Hallucinations",
+    fullname: "Lab 15: AI Hallucinations",
     name: "Lab15",
     0: {
       name: "About",
