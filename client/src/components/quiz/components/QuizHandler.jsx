@@ -65,6 +65,16 @@ const QuizHandler = (props) => {
   const handleBack = () => {
     if (currentQuestionCursor < props.questions.length) {
       let updateCursor = currentQuestionCursor - 1;
+      if (props.questions[currentQuestionCursor].multiChoice) {
+        let tempAnswers = props.selectedAnswers;
+        tempAnswers.splice(currentQuestionCursor);
+        props.setSelectedAnswers(tempAnswers);
+      }
+      if (props.questions[updateCursor].multiChoice) {
+        let tempAnswers = props.selectedAnswers;
+        tempAnswers.splice(updateCursor);
+        props.setSelectedAnswers(tempAnswers);
+      }
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(props.questions[updateCursor].answers);
       setDisableNext(true);
