@@ -17,11 +17,11 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 
-const pieWindowHeightPercentage = 0.7;
-const pieWinodwResizeWidth = 610;
-const maxPieLabelLength = 25;
-const pxSpaceBetweenLegendToChart = 50;
-const pieSize = 300;
+const PIE_WINDOW_HEIGHT_PERCENTAGE = 0.7;
+const PIE_WINDOW_RESIZE_WIDTH = 610;
+const MAX_PIE_LABEL_LENGTH = 25;
+const PX_SPACE_LEGEND_CHART = 50;
+const PIE_SIZE = 300;
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -31,7 +31,7 @@ const Reading = (props) => {
   const [modalOpen, setModalOpen] = useState(true);
   const [mobileView, setMobileView] = useState(false);
   const [pieHeight, setPieHeight] = useState(
-    window.innerHeight * pieWindowHeightPercentage,
+    window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE,
   );
   const [originalPieLabels, setOriginalPieLabels] = useState([]);
   const [mobileLabelWrap, setMobileLabelWrap] = useState(false);
@@ -119,7 +119,7 @@ const Reading = (props) => {
         if (smallOriginalFit) {
           smallOriginalFit.call(this);
         }
-        return (this.height += pxSpaceBetweenLegendToChart);
+        return (this.height += PX_SPACE_LEGEND_CHART);
       };
     },
   };
@@ -157,20 +157,20 @@ const Reading = (props) => {
   function labelChecker(labels) {
     const labelsForReturn = [];
     for (let label of labels) {
-      if (label.length > maxPieLabelLength) {
+      if (label.length > MAX_PIE_LABEL_LENGTH) {
         setMobileLabelWrap(true);
         const spaces = [];
-        for (let i = maxPieLabelLength; i < label.length; i++) {
+        for (let i = MAX_PIE_LABEL_LENGTH; i < label.length; i++) {
           if (label[i] == " ") {
             spaces.push(i);
-            i += maxPieLabelLength;
+            i += MAX_PIE_LABEL_LENGTH;
           } else {
             let cont = true;
             while (cont) {
               --i;
               if (label[i] == " ") {
                 spaces.push(i);
-                i += maxPieLabelLength;
+                i += MAX_PIE_LABEL_LENGTH;
                 cont = false;
               }
             }
@@ -196,12 +196,12 @@ const Reading = (props) => {
   }
 
   const windowResizeEvent = () => {
-    if (window.innerWidth > pieWinodwResizeWidth) {
+    if (window.innerWidth > PIE_WINDOW_RESIZE_WIDTH) {
       setMobileView(false);
     } else {
       setMobileView(true);
     }
-    setPieHeight(window.innerHeight * pieWindowHeightPercentage);
+    setPieHeight(window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE);
   };
 
   window.onresize = () => {
@@ -218,7 +218,7 @@ const Reading = (props) => {
       LabService.getLabReading(labID).then((data) => {
         if (data[0].reading.piechart) {
           setOriginalPieLabels(data[0].reading.piechart.data.labels);
-          if (window.innerWidth < pieWinodwResizeWidth) {
+          if (window.innerWidth < PIE_WINDOW_RESIZE_WIDTH) {
             data[0].reading.piechart.data.labels = labelChecker(
               data[0].reading.piechart.data.labels,
             );
@@ -359,7 +359,7 @@ const Reading = (props) => {
                     <Pie
                       data={readingData?.piechart.data}
                       options={largeViewPortOptions}
-                      height={!isImagine && pieSize}
+                      height={!isImagine && PIE_SIZE}
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
