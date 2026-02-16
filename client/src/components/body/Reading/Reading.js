@@ -195,21 +195,21 @@ const Reading = (props) => {
     return labelsForReturn;
   }
 
-  const windowResizeEvent = () => {
-    if (window.innerWidth > PIE_WINDOW_RESIZE_WIDTH) {
-      setMobileView(false);
-    } else {
-      setMobileView(true);
-    }
-    setPieHeight(window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE);
-  };
-
-  window.onresize = () => {
+  useEffect(() => {
+    const windowResizeEvent = () => {
+      if (window.innerWidth > PIE_WINDOW_RESIZE_WIDTH) {
+        setMobileView(false);
+      } else {
+        setMobileView(true);
+      }
+      setPieHeight(window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE);
+    };
+    window.addEventListener("resize", windowResizeEvent);
     windowResizeEvent();
-  };
+    return () => window.removeEventListener("resize", windowResizeEvent);
+  });
 
   useEffect(() => {
-    windowResizeEvent();
     const readingAnalytics = async () => {
       await UserLabService.complete_reading(labID);
       if (user?.firstname !== null && user !== null) {
