@@ -195,14 +195,14 @@ const Reading = (props) => {
     return labelsForReturn;
   }
 
-  function windowResizeEvent() {
+  const windowResizeEvent = () => {
     if (window.innerWidth > pieWinodwResizeWidth) {
       setMobileView(false);
     } else {
       setMobileView(true);
     }
     setPieHeight(window.innerHeight * pieWindowHeightPercentage);
-  }
+  };
 
   window.onresize = () => {
     windowResizeEvent();
