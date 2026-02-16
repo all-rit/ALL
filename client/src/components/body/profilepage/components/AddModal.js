@@ -168,7 +168,7 @@ const AddModal = (props) => {
 };
 
 AddModal.propTypes = {
-  addMode: PropTypes.bool,
+  addMode: PropTypes.string,
   user: PropTypes.shape({
     userid: PropTypes.number,
   }),
