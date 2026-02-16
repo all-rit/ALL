@@ -141,9 +141,9 @@ export const ExerciseStateProvider = ({ children }) => {
       .toLowerCase();
     // The disclaimer should be at least 20 characters, and include the words "verify" and "output"
     const disclaimerValid =
-      disclaimerValue.length >= 20 &&
-      disclaimerValue.includes("verify") &&
-      disclaimerValue.includes("output");
+    disclaimerValue.length >= 20 &&
+        /\bverify\b/.test(disclaimerValue) &&
+        /\boutput\b/.test(disclaimerValue);
     const confidenceValid = !!exercisePromptsState.find(
       (i) => i.id === 'confidence'
     ).value;
