@@ -31,12 +31,9 @@ const About = (props) => {
 
   return (
     <div className={"xs:tw-w-full tw-flex tw-flex-row tw-bg-white"}>
-      <div className=" tw-p-[3rem] xs:tw-w-full ">
-        <div className="tw-text-left tw-text-justify">
-          <p className={"tw-font-bold tw-font-poppins md:tw-title tw-pb-6"}>
-            {" "}
-            About This Lab
-          </p>
+      <div className="tw-p-[3rem] xs:tw-w-full ">
+        <div className="tw-text-left">
+          <h1 className={"tw-title tw-pb-6"}> About This Lab</h1>
           <p className={"tw-font-medium tw-body-text"}>{aboutText?.about}</p>
         </div>
       </div>
