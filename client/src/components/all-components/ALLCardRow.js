@@ -41,7 +41,7 @@ const ALLCardRow = (props) => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          alt="Image of Wrnech created by Google Gemini"
+          alt="Image of Wrench created by Google Gemini"
         />
         {/* Middle */}
         <div className="tw-p-5">
