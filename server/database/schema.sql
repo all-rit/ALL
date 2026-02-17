@@ -3964,23 +3964,67 @@ e'[
  'Learn how prompting influences AI Hallucinations', e'[]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez', 'https://all.rit.edu/lab15', null, 
 
  -- About Section
-  'In this lab, you will learn about AI hallucinations. Click “Next” to start! wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww', e'{
-  "description":"",
-  "body":[
-    {
-      "header":"",
-      "type":"",
-      "content":[""]
-    }
-  ],
-  "footer":{
-      "links":[
-        {
-          "name":"",
-          "link":""
-        }
-      ]
-    }
+  'In this lab, you will learn about the importance of AI hallucinations and how you can reduce them. You will learn what causes AI hallucinations and the GCSE framework, increase your understanding through an interactive module on AI hallucinations, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “Next” to start!', 
+  e'{
+    "piechart":{
+      "header":"Company investments towards AI",
+      "caption":["Billions of dollars invested towards AI by major tech companies"],
+      "data":{
+          "labels": [
+            "Google", "Facebook", "Amazon", "Microsoft", "Alibaba"
+          ],
+          "datasets": [
+            {
+              "label": "Company investments, in billions",
+              "borderColor": "black",
+              "backgroundColor": ["#ffeb00","#ff2713","#09da4f","#9e8fe5","#d67b41","#86aedf"],
+              "data": [30.7, 22.1, 10, 10, 17],
+              "borderWidth": "1"
+            }
+          ]
+      }
+    },
+    "description":{
+      "header":"What are AI Hallucinations?",
+      "content":"Hallucination in Large Language Models (LLMs) refers to outputs that appear fluent and coherent but are factually incorrect, logically inconsistent, or entirely fabricated."
+    },
+    "body":[
+      {
+        "header":"What causes AI Hallucinations?",
+        "type":"",
+        "content":["Broadly, hallucinations in LLMs can be divided into two primary sources: Prompting-induced hallucinations, where ill-structured, unspecified, or misleading prompts cause inefficient outputs, and Model-internal hallucinations, which is caused by the models architecture, the data it was trained on, or inference behavior."]
+      },
+      {
+        "header":"How does prompting influence AI Hallucinations?",
+        "type":"",
+        "content":[
+          "In a study of how prompting influences AI hallucination rates, researchers gave models difficult prompts to answer to maximize the hallucination rate. One set of these prompts were vague, and the others were clear and concise. The clear group had half the hallucination rates of the vague group",
+          "More context and directions reduce the models uncertainty and degrees of freedom. For instance if you don’t tell a model to admit that it isn’t fully aware of something, it will often just answer with its best guess. By giving models more context and clear instructions, it forces them to stay within tight constraints of how to respond, thus generating more consistent and reliable answers."
+        ]
+      },
+      {
+        "header":"Microsoft GCSE framework:",
+        "type":"",
+        "content":[
+          " 1. Goal: Define what you want the model to do",
+          " 2. Context: Add the required context you want the AI to make it’s answered based on",
+          " 3. Sources: This is kinda part of the context part, but is kinda optional. Should you want the AI to ONLY look at certain websites or reference certain documents, include them",
+          " 4. Expectations: Describe how the final output should look / feel. Specify the desired format, length, style, or tone."
+        ]
+      }
+    ],
+    "footer":{
+        "links":[
+          {
+            "name":"IBM on AI Hallucinations",
+            "link":"https://www.ibm.com/think/topics/ai-hallucinations"
+          },
+          {
+            "name":"Importance of Prompt Engineering in Preventing AI Hallucinations",
+            "link":"https://alfapeople.com/importance-of-prompt-engineering-preventing-ai-hallucinations"
+          }
+        ]
+      }
   }',
   '[
     {"title":"What actually is an AI hallucination??? (in 10 min. or less)","link": "https://www.youtube.com/embed/d-pvxa042MM"},
