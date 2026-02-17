@@ -2,8 +2,8 @@ name: "Scheduled PR: dev to prod"
 
 on:
   schedule:
-    # Runs at 00:00 UTC on Monday and Thursday
-    - cron: '0 0 * * 1,4'
+    # Runs at 9am EST (unless there is daylight savings)
+    - cron: '0 14 * * 1'
   workflow_dispatch:
 env:
   # The date of the first run of the action. It has to be set to a date that is on the same weekday as the cron.
