@@ -26,6 +26,7 @@ import {
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
+import UserPfp from "../all-components/UserPfp";
 
 const mapStateToProps = (state) => {
   return {
@@ -202,18 +203,7 @@ const Header = (props) => {
                   {loggedIn && user ? (
                     // TO-DO: PROFILE LINK HERE
                     <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
-                      <div
-                        onClick={() =>
-                          navigate(state, props.state, actions, 2, 99)
-                        }
-                        aria-label="Google Profile Photo"
-                        className="tw-h-12 tw-object-cover"
-                        style={{
-                          backgroundImage: `url(${user?.userpfp}`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundSize: "cover",
-                        }}
-                      ></div>
+                      <UserPfp onClick={() => navigate(state, props.state, actions, 2, 99)} />
                     </NavLink>
                   ) : (
                     <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">

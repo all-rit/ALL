@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RobotImage from './robot.png';
+import RobotImage from '../../../../assets/images/lab13/robot.png';
+import { AvatarType } from '../../../../constants/lab13/AvatarType';
+import UserPfp from 'src/components/all-components/UserPfp';
 
 const Avatar = ({ type, size = 40 }) => {
-  const isAI = type === 'ai';
+  const isAI = type === AvatarType.AI;
 
   return (
     <div
@@ -12,7 +14,7 @@ const Avatar = ({ type, size = 40 }) => {
         width: size,
         height: size,
         borderRadius: '50%',
-        backgroundColor: isAI ? '#0144D5' : '#FACE35',
+        backgroundColor: isAI ? '#FACE35' : '#0144D5',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -34,23 +36,14 @@ const Avatar = ({ type, size = 40 }) => {
           }}
         />
       ) : (
-        <span
-          style={{
-            fontWeight: 'bold',
-            color: 'black',
-            fontSize: size * 0.5,
-            
-          }}
-        >
-          
-        </span>
+        <UserPfp />
       )}
     </div>
   );
 };
 
 Avatar.propTypes = {
-  type: PropTypes.oneOf(['ai', 'user']).isRequired,
+  type: PropTypes.oneOf([AvatarType.AI, AvatarType.User]).isRequired,
   size: PropTypes.number,
 };
 
