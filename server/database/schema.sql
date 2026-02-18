@@ -3967,18 +3967,18 @@ e'[
   'In this lab, you will learn about the importance of AI hallucinations and how you can reduce them. You will learn what causes AI hallucinations and the GCSE framework, increase your understanding through an interactive module on AI hallucinations, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “Next” to start!', 
   e'{
     "piechart":{
-      "header":"Company investments towards AI",
-      "caption":["Billions of dollars invested towards AI by major tech companies"],
+      "header":"Hallucination Rates for Clear vs. Vague Prompts",
+      "caption":["Percentage of hallucinations for complex questions: clear vs. vague prompts"],
       "data":{
           "labels": [
-            "Google", "Facebook", "Amazon", "Microsoft", "Alibaba"
+            "Clear", "Vague"
           ],
           "datasets": [
             {
-              "label": "Company investments, in billions",
+              "label": "Percentage of hallucinations for complex questions: clear vs. vague prompts",
               "borderColor": "black",
-              "backgroundColor": ["#ffeb00","#ff2713","#09da4f","#9e8fe5","#d67b41","#86aedf"],
-              "data": [30.7, 22.1, 10, 10, 17],
+              "backgroundColor": ["#0d6efd","#ffc107"],
+              "data": [18.1, 38.3],
               "borderWidth": "1"
             }
           ]
@@ -4022,6 +4022,10 @@ e'[
           {
             "name":"Importance of Prompt Engineering in Preventing AI Hallucinations",
             "link":"https://alfapeople.com/importance-of-prompt-engineering-preventing-ai-hallucinations"
+          },
+          {
+            "name":"Promptings effect on AI Hallucinations",
+            "link":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12518350/#abstract1"
           }
         ]
       }
