@@ -49,6 +49,18 @@ const Profile = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    // We should perform scroll operations once we know data is succesfully loaded
+    // meaning the child DOM elements have had an opportunity to render themselves
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      let element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [labRecords]);
+
   // go through the lab records fetched from the database and categorize if
   // the lab has been completed by the user or still in progress
   if (labRecords) {
