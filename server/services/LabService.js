@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const db = require('../database');
 const shortNameNotFound = 'Error: Short Name Not Found';
 const shortNameNotRetrieved = 'Error: Short Name Not Retrieved';
@@ -19,6 +18,7 @@ const quizNotRetrieved = 'Error: Quiz Not Retrieved';
 async function getAllLabs() {
   return await db.Labs.findAll({
     raw: true,
+    order: [['id', 'ASC']],
   });
 };
 /**
@@ -29,7 +29,7 @@ async function getAllLabs() {
 async function getLabShortName(labID) {
   try {
     const shortName = await db.Labs.findOne({
-      where: {id: labID},
+      where: { id: labID },
       attributes: ['labShortName'],
       raw: true,
     });
@@ -50,7 +50,7 @@ async function getLabShortName(labID) {
 async function getLabAbout(labID) {
   try {
     const about = await db.Labs.findOne({
-      where: {id: labID},
+      where: { id: labID },
       attributes: ['about'],
       raw: true,
     });
@@ -71,7 +71,7 @@ async function getLabAbout(labID) {
 async function getLabReading(labID) {
   try {
     const reading = await db.Labs.findOne({
-      where: {id: labID},
+      where: { id: labID },
       attributes: ['reading'],
       raw: true,
     });
@@ -92,7 +92,7 @@ async function getLabReading(labID) {
 async function getLabReinforcement(labID) {
   try {
     const reinforcement = await db.Labs.findOne({
-      where: {id: labID},
+      where: { id: labID },
       attributes: ['reinforcement'],
       raw: true,
     });
@@ -113,7 +113,7 @@ async function getLabReinforcement(labID) {
 async function getLabQuiz(labID) {
   try {
     const quiz = await db.Labs.findOne({
-      where: {id: labID},
+      where: { id: labID },
       attributes: ['quiz'],
       raw: true,
     });

@@ -2990,7 +2990,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
 ]
-', 2, 'coming soon', 'coming soon', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
+', 2, 'coming soon', 'coming soon', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab explores where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge.', e'[
     "LO1: Construct a basic neural network using provided components (Synthesis)",
     "LO2: Simulate neural network training (Comprehension).",
     "LO3: Demonstrate bias present in a neural network (Application)."
@@ -3690,7 +3690,7 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'Quantum Computing', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', 'This lab introduces the concepts of Quantum Computing through the lens of cryptography. Participants will learn about different ways to encrypt messages, and the algorithms used to decrypt them. Then, the lab explores the difference in time and efficiency between breaking these ciphers with both Classical and Quantum computers.',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
@@ -3716,9 +3716,9 @@ e'[
       "type": "image",
         "content" : {
             "image":"/Bit_vs_qubit.png",
-            "alt":"Bit vs Qubit",
-            "sub_caption":"Figure 1",
-            "caption":"Bit vs Quibit"
+            "alt":"This image shows the difference between a classical bit and a quantum qubit. While a classical bit can only be 0 or 1, a qubit can be both at the same time.",
+            "caption":"Credit: Microsoft Azure",
+            "sub_caption":"Figure 1: Bit vs. Qubit"
            }
     },
     {
@@ -3732,47 +3732,47 @@ e'[
         "content" : {
             "image":"/Quantum_Superposition.gif",
             "alt":"Quantum Superposition",
-            "sub_caption":"Figure 2",
-            "caption":"Quantum Superposition"
+            "sub_caption":"Figure 2: Quantum Superposition",
+            "caption":"Credit: N. Hanacek/NIST"
            }
     },
     {
       "header": "Entanglement and Interference",
       "type": "",
-      "content": ["Entanglement:  When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other instantly becomes a 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers."]
+      "content": ["When two qubits are entangled, they become connected. What happens to one instantly affects the other, no matter how far apart they are. If you measure one qubit and it turns out to be 0, the other instantly becomes a 1. When two or more qubits are entangled, they act as a single system and can influence each other. By looking at one qubit, we can learn about the others. The more qubits you entangle, the more information a quantum computer can process, which lets it solve much more complicated problems than regular computers."]
     },
     {
-      "header": "",
+      "header": " ",
       "type": "image",
         "content" : {
             "image":"/Quantum_Entanglement.gif",
             "alt":"Quantum Entanglement",
-            "sub_caption":"Figure 3",
-            "caption":"Quantum Entanglement"
+            "sub_caption":"Figure 3: Quantum Entanglement",
+            "caption":"Credit: N. Hanacek/NIST"
            }
     },
     {
-      "header": " ",
+      "header": "",
       "type": "",
-      "content": ["Interference: Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one. This is similar to how noise-canceling headphones block out background noise so you can hear the music more clearly."]
+      "content": ["Quantum interference happens when the different possible states of a qubit (spinning coin) interact with each other. Quantum computers use this interference to increase the chances of getting the correct answer and reduce the chances of getting a wrong one. This is similar to how noise-canceling headphones block out background noise so you can hear the music more clearly."]
     }
   ],
   "footer":{
       "links":[
         {
-          "name":"Quantum Computing",
+          "name":"What is Quantum Computing? | IBM",
           "link":"https://www.ibm.com/think/topics/quantum-computing"
         },
         {
-          "name":"Quantum Computing Explained",
+          "name":"Quantum Computing Explained | NIST",
           "link":"https://www.nist.gov/quantum-information-science/quantum-computing-explained"
         },
         {
-          "name":"What is Quantum Computing",
+          "name":"What is Quantum Computing? | Microsoft",
           "link":"https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-quantum-computing"
         },
         {
-          "name":"Real World Applications",
+          "name":"Real World Applications of Quantum Computing",
           "link":"https://www.spinquanta.com/news-detail/top-quantum-computer-applications-with-real-world-examples20250113034956"
         }
       ]
@@ -3849,8 +3849,8 @@ e'[
       {
         "val": 1,
         "type": "2",
-        "content": "A term for qubits that are linked together and share a single state",
-        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and share a single quantum state."
+        "content": "A term for qubits that are linked together and have opposing states",
+        "explanation": "Entanglement is a quantum phenomenon where two or more qubits become connected and have opposing quantum states. One of them is 0, and the other is 1."
       },
       {
         "val": 0,
@@ -3978,9 +3978,9 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-2024', false, null, null, '{8,9,11,12}'),
 (9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-2024', false, null, null, '{9,11,12}'),
 (10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-2024', false, null, null, '{6}'),
-(11, 'Domenic', 'Mangano', 'Tech Lead, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true, 'Student. Father. Engineer. Graduating from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{0,7,8,9,10,11,12}'),
+(11, 'Domenic', 'Mangano', 'Tech Lead, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-2025', false, 'Student. Father. Engineer. Graduated from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{0,7,8,9,10,11,12}'),
 (12, 'Carla', 'Lopez', 'Outreach, Engineer', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true, null, null, null),
-(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-2025', false, 'BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{0,7,10}'),
+(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notjoncruz/"}]', null, '2023-2025', false, 'BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{0,7,10}'),
 (14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-2025', false, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!of the Computing Organization for Multicultural Students at RIT!', 2, null),
 (15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-2022', false, null, null, null),
 (16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null),
@@ -3993,18 +3993,18 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-2024', false, null, null, '{8}'),
 (24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false, null, null, null),
 (25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-2024', false, null, 12, '{12}'),
-(26, 'Owen', 'Luts', 'Quantum Lab Team Lead, Engineer', '/Owen_Luts.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null, '2024-Present', true, 'Team Lead and Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 12, '{0,12}'),
+(26, 'Owen', 'Luts', 'Tech Lead, Quantum Lab Team Lead, Engineer', '/Owen_Luts.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null, '2024-Present', true, 'Tech Lead and Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 14, '{0,12,14}'),
 (27, 'Kristen', 'Fang', 'Engineer', '/Kristen_Fang.jpg', '[{"link":"https://www.linkedin.com/in/kristenfang/","network":"linkedin"}]', null, '2024-Present', true, null, 3, '{0}'),
 (28, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/melissa-burisky-7b24bb230/"}]', null, '2024-2025', false, 'Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', 0, '{0}'),
 (29, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/michael-dibiase-8765632b8/"}]', null, '2024-2025', false, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 12, '{0,12}'),
-(30, 'Jack', 'DeFeo', 'Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2024-Present', true, null, null, null),
-(31, 'Jack', 'Barter', 'Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2024-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
+(30, 'Jack', 'DeFeo', 'AI Hallucination Team Lead, Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2024-Present', true, null, null, null),
+(31, 'Jack', 'Barter', 'Maintenance Team Lead, Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2024-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
 (32, 'Ursula', 'Parker', 'Project Manager, Imagine Team Lead', '/Ursula_Parker.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2024-Present', true, null, null, null),
-(33, 'Emma', 'Schmitt', 'AI Lab Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
-(34, 'Warner', 'Harper', 'Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
-(35, 'Juidane', 'Thomas', 'Outreach', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
-(36, 'William', 'Herrick', 'Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, null),
-(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, null),
+(33, 'Emma', 'Schmitt', 'AI Bias Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
+(34, 'Warner', 'Harper', 'Engineer, Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
+(35, 'Juidane', 'Thomas', 'Outreach Team Lead', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
+(36, 'William', 'Herrick', 'AI Deepfake Team Lead, Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, '{14}'),
+(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, '{14}'),
 (38, 'Darlyn', 'Gomez', 'Engineer', '/Darlyn_Gomez.jpg', '[{"link" : "https://www.linkedin.com/in/darlyn-gomez/"}]', null, '2025-Present', true, null, null, null),
 (39, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
 (40, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', null, null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);

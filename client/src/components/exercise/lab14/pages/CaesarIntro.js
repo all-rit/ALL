@@ -94,6 +94,7 @@ const CaesarIntro = () => {
             academic paper explaining each of these concepts in depth.
           </p>
           <a
+            className="tw-underline"
             href="https://eprint.iacr.org/2021/554.pdf"
             target="_blank"
             rel="noreferrer"

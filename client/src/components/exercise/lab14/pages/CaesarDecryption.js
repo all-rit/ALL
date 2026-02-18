@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";
@@ -13,15 +13,18 @@ const CaesarDecryption = () => {
   const { caesarBaseMessage, caesarEncryptedMessage, caesarShiftAmount } =
     useContext(ExerciseStateContext);
 
-  const [error, setError] = useState(false);
-  const [decryptionCompleted, setDecryptionCompleted] = useState(false);
+  useEffect(() => {
+    if (caesarEncryptedMessage === "") {
+      handleReturn();
+    }
+  }, []);
+
+  const handleReturn = () => {
+    navigate("/Lab14/Exercise/CaesarEncryption");
+  };
 
   const handleContinue = () => {
-    if (decryptionCompleted) {
-      navigate("/Lab14/Exercise/VigenereIntro");
-    } else {
-      setError(true);
-    }
+    navigate("/Lab14/Exercise/VigenereIntro");
   };
 
   const encrypt = (baseMessage, shiftValue) => {
@@ -75,23 +78,21 @@ const CaesarDecryption = () => {
     // Quantum
     const quantumArray = [];
     let attempts = Math.max(1, Math.floor(Math.sqrt(caesarShiftAmount)));
-    let binarySize = Math.floor(25 / attempts);
+    let binarySize = Math.min(Math.floor(25 / attempts), 5);
 
     for (let i = attempts; i > 0; i--) {
       const binaryArray = [];
-      for (let x = binarySize; x > 0; x--) {
+      for (let x = binarySize - 1; x >= 0; x--) {
         binaryArray.push(decimalToBinary(i * x));
       }
 
       quantumArray.push({
-        text: encrypt(caesarBaseMessage, i * Math.floor(caesarShiftAmount / 5)),
+        text: encrypt(caesarBaseMessage, i - 1),
         binary: binaryArray,
       });
     }
     setQuantumAttempts(attempts);
     setQuantumBoxElements(quantumArray);
-
-    setDecryptionCompleted(true);
   };
 
   return (
@@ -124,16 +125,12 @@ const CaesarDecryption = () => {
         classicBoxElements={classicBoxElements}
         quantumAttempts={quantumAttempts}
         quantumBoxElements={quantumBoxElements}
-      />
-      <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Next"} />
-      </div>
-
-      <p
-        className={`${error ? "tw-visible" : "tw-invisible"} tw-text-red-600 tw-italic`}
       >
-        Error: Please decrypt the message to continue
-      </p>
+        <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
+          <LabButton onClick={handleReturn} label={"Re-do Encryption"} />
+          <LabButton onClick={handleContinue} label={"Next"} />
+        </div>
+      </Decryption>
     </div>
   );
 };

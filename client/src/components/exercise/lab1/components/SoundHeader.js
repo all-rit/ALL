@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable max-len */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants/lab1";
 import SoundOption from "./SoundOption";

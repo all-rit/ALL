@@ -1,8 +1,6 @@
-// eslint-disable-next-line max-len
 const ControllerTestUtil = require('../ControllerTestUtil');
 const RepairController = require('../../../controllers/lab12/RepairController');
 
-// eslint-disable-next-line max-len
 describe('Test successful payloads in Lab 12 RepairController functions', () => {
   test('Test successful submitRepair function', async () => {
     const req = ControllerTestUtil.formatRequest({

@@ -48,7 +48,6 @@ const PlayerBoard = (props) => {
     const opossingData = createAvatarData(100);
     shuffleArray(opossingData);
     setOpposingTeam(opossingData.slice(0, 4));
-    // eslint-disable-next-line
   }, [user]);
 
   return (

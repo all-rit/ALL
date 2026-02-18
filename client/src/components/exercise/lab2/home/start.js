@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 /* eslint-disable react/prop-types */
 import React from "react";
 import "./homeStyle.css";

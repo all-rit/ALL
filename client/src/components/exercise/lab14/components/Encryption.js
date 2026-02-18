@@ -1,17 +1,30 @@
-import React from "react";
+import { React, useState } from "react";
 import PropTypes from "prop-types";
 
 import { FormGroup, Input, Label } from "reactstrap";
+import LabButton from "src/components/all-components/LabButton";
 
 const Encryption = ({
   encryptionFunction,
   encryptedMessage,
   baseMessage,
   setBaseMessage,
+  shiftValueValid,
   children,
 }) => {
+  const [validInput, setValidInput] = useState(null);
+
   const handleMessageChange = (e) => {
-    setBaseMessage(e.target.value);
+    const value = e.target.value;
+    setBaseMessage(value);
+
+    if (value === "" || value.trim().length == 0) {
+      setValidInput(false);
+      return;
+    }
+
+    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
+    setValidInput(filteredValue === value ? true : false);
   };
 
   return (
@@ -25,23 +38,29 @@ const Encryption = ({
           <Input
             id="baseMessage"
             name="Message"
+            invalid={validInput === false}
             placeholder="Input Message Here"
             value={baseMessage}
             onChange={handleMessageChange}
             className="tw-flex tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
+          <p
+            className={`tw-w-[20rem] tw-my-2 ${validInput !== false ? "tw-hidden" : ""}`}
+          >
+            Error: Remove any special characters or numbers from the input, and
+            make sure the input box is not empty.
+          </p>
         </FormGroup>
         {children}
       </div>
 
       {/* Button */}
       <div className="tw-flex tw-flex-col tw-items-center">
-        <button
-          className="tw-bg-labYellow tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold tw-duration-300"
+        <LabButton
+          disabled={!shiftValueValid || !validInput}
           onClick={encryptionFunction}
-        >
-          Encrypt
-        </button>
+          label={"Encrypt"}
+        ></LabButton>
       </div>
 
       {/* Encrypted Message */}
@@ -50,9 +69,11 @@ const Encryption = ({
           <h5 className="tw-font-poppins tw-text-lg tw-font-semibold tw-mb-4">
             Encrypted Message
           </h5>
-          <p className="tw-flex tw-overflow-x-scroll tw-overflow-y-hidden tw-items-center tw-justify-start tw-bg-[#face3580] tw-w-[20rem] tw-h-[4rem] tw-text-center tw-p-4 tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold">
-            {encryptedMessage}
-          </p>
+          <div className="tw-w-[20rem] tw-min-h-[4rem] tw-p-4">
+            <p className="tw-h-[3rem] tw-flex tw-justify-start tw-overflow-y-hidden tw-overflow-x-auto tw-items-center tw-bg-[#face3580] tw-border-[2px] tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold tw-cursor-default">
+              {encryptedMessage}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +85,7 @@ Encryption.propTypes = {
   baseMessage: PropTypes.string,
   setBaseMessage: PropTypes.func,
   encryptedMessage: PropTypes.string,
+  shiftValueValid: PropTypes.bool,
   children: PropTypes.element.isRequired,
 };
 

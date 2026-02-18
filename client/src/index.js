@@ -1,5 +1,3 @@
-/* eslint-disable react/no-deprecated */
-/* eslint-disable no-undef */
 import { createRoot } from "react-dom/client";
 import React from "react";
 import { createStore } from "redux";

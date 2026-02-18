@@ -1,7 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import "./userStats.css";
