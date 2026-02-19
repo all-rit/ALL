@@ -55,6 +55,12 @@ const AIPanel = () => {
   const [activeTab, setActiveTab] = useState('AIChatBot');
   const [currentDisplayTime, setCurrentDisplayTime] = useState(0);
   const phase4IntroAddedRef = useRef(false);
+  const [clickedReviewButtonThisPhase, setClickedReviewButtonThisPhase] =
+    useState(false);
+
+  // State to track when to show the wikipedia page
+  const [hasShownWikipediaInPhase, setHasShownWikipediaInPhase] =
+    useState(false);
 
   const BIAS_POSITION_MAP = {
     0: BIAS_TYPES.TRUTH_BIAS, // Most knowledgeable
@@ -101,8 +107,34 @@ const AIPanel = () => {
     BIAS_POSITION_MAP[currentTopic?.biasPosition] || BIAS_TYPES.HALO_EFFECT;
   const topicData = getTopicById(activeTopic);
 
-  // Display Wikipedia based on current phase
-  const showWikipediaTab = topicIndex >= 1;
+  // Display Wikipedia based on current phase and whether or not the AI has finished typing
+  const showWikipediaTab = useMemo(() => {
+    // Phase 1 does not show wiki
+    if (topicIndex === 0) {
+      return false;
+    }
+
+    // Phase 2, 3, 4 shows wiki after the first AI response is completed
+    if (topicIndex >= 1) {
+      // keep displaying if the wikishown was already set to true
+      if (hasShownWikipediaInPhase) {
+        return true;
+      }
+
+      if (currentAnswerData && !isBotTyping && !isBotThinking) {
+        return true;
+      }
+    }
+
+    return false;
+  }, [
+    topicIndex,
+    hasShownWikipediaInPhase,
+    currentAnswerData,
+    isBotThinking,
+    isBotTyping,
+  ]);
+
   const requireWikipedia = topicIndex === 2;
 
   // Wikipedia time tracking with interval
@@ -111,7 +143,9 @@ const AIPanel = () => {
 
     if (activeTab === 'ALLpedia' && showWikipediaTab) {
       // Mark as visited
+
       setHasVisitedWikipedia(true);
+      console.log('Set wikipedia to true');
 
       // Start new session if not already started
       if (!wikipediaSessionStart) {
@@ -157,6 +191,13 @@ const AIPanel = () => {
     setWikipediaAccumulatedTime,
     setWikipediaSessionStart,
   ]);
+
+  // Track and respond when Wikipedia becomes visible
+  useEffect(() => {
+    if (showWikipediaTab && !hasShownWikipediaInPhase) {
+      setHasShownWikipediaInPhase(true);
+    }
+  }, [showWikipediaTab, hasShownWikipediaInPhase]);
 
   const getWikipediaTimeSpent = useCallback(() => {
     return currentDisplayTime;
@@ -288,37 +329,58 @@ Although many cases are inherited, they can also develop later in life due to ey
   const getCurrentInstruction = useCallback(() => {
     if (!currentTopic) return null;
 
-    if (topicIndex === 0 && !canReviewResponse) {
-      return `You're now on your moderately knowledgeable, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+    // hide instructions when modals are open or when review button was clicked
+    if (
+      showRatingModal ||
+      showBiasExplanation ||
+      clickedReviewButtonThisPhase
+    ) {
+      return null;
+    }
+
+    if (topicIndex === 0) {
+      if (!canReviewResponse) {
+        return `You're now on your moderately knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+      }
+      return null;
     }
 
     if (topicIndex === 1) {
-      if (questionAnswered && !hasVisitedWikipedia) {
+      if (questionAnswered && showWikipediaTab && !hasVisitedWikipedia) {
         return `ALLpedia is now available if you'd like to fact-check ALL-IE's response on ${currentTopic.title} before reviewing.`;
       }
-      return `You're now on your most knowledgeable, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+      if (!questionAnswered) {
+        return `You're now on your most knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+      }
+      return null;
     }
 
-    if (topicIndex === 2 && currentPhase < 4 && !canReviewResponse) {
-      const timeLeft = 15 - getWikipediaTimeSpent();
+    if (topicIndex === 2 && currentPhase < 4) {
+      if (!questionAnswered) {
+        return `You're now on your least knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
+      }
       if (questionAnswered && !canReviewResponse) {
+        const timeLeft = 15 - getWikipediaTimeSpent();
         if (!hasVisitedWikipedia) {
           return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
         }
         return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
       }
-      return `You're now on your least knowledgeable topic, ${currentTopic.title}. Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response.`;
+      return null;
     }
 
-    if (currentPhase === 4 && !canReviewResponse) {
-      const timeLeft = 15 - getWikipediaTimeSpent();
+    if (currentPhase === 4) {
+      if (!questionAnswered) {
+        return `Great! Now that you've implemented your IDE fixes, interact with ALL-IE again on your least knowledgeable topic, ${currentTopic.title}.`;
+      }
       if (questionAnswered && !canReviewResponse) {
+        const timeLeft = 15 - getWikipediaTimeSpent();
         if (!hasVisitedWikipedia) {
-          return `You must visit the ALLpedia page and spend at least 15 seconds reviewing before you can proceed.`;
+          return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
         }
         return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
       }
-      return `Great! Now that you've implemented your IDE fixes, interact with ALL-IE again. You must review the ALLpedia page for at least 15 seconds before you can review ALL-IE's response.`;
+      return null;
     }
 
     return null;
@@ -329,6 +391,10 @@ Although many cases are inherited, they can also develop later in life due to ey
     questionAnswered,
     hasVisitedWikipedia,
     canReviewResponse,
+    showRatingModal,
+    showBiasExplanation,
+    clickedReviewButtonThisPhase,
+    showWikipediaTab,
     getWikipediaTimeSpent,
   ]);
 
@@ -360,6 +426,7 @@ Although many cases are inherited, they can also develop later in life due to ey
         setWikipediaAccumulatedTime(0);
         setWikipediaSessionStart(null);
         setCurrentDisplayTime(0);
+        setHasShownWikipediaInPhase(false);
       }
 
       // Enusure we're on the least knowledgeable topic
@@ -372,7 +439,7 @@ Although many cases are inherited, they can also develop later in life due to ey
       // Add intro message once
       if (!phase4IntroAddedRef.current && chatMessages.length > 0) {
         const lastMessage = chatMessages[chatMessages.length - 1];
-        const phase4IntroText = `I&apos;ve incorporated the updates you implemented! Please select a prompt.`;
+        const phase4IntroText = `Let's continue. Select another prompt.`;
 
         if (
           lastMessage.text !== phase4IntroText &&
@@ -412,18 +479,24 @@ Although many cases are inherited, they can also develop later in life due to ey
     setShowBiasExplanation(false);
     setShowRatingModal(false);
 
+    setClickedReviewButtonThisPhase(true);
+    setCurrentAnswerData(null);
+    setQuestionAnswered(false);
+    setIsBotThinking(false);
+    setIsBotTyping(false);
+    setHasShownWikipediaInPhase(false);
+
     setTimeout(() => {
       setSelectedBiasData(null);
-      setCurrentAnswerData(null);
       setToneRating('');
       setConfidenceRating('');
-      setQuestionAnswered(false);
       setActiveTab('AIChatBot');
 
       setTimeout(() => {
         setTopicIndex((prevIndex) => {
           const nextIndex = prevIndex + 1;
 
+          // Navigate to IDE introduction after Phase 3
           if (nextIndex >= getOrderedTopics.length && currentPhase < 4) {
             setTimeout(() => {
               startExercise();
@@ -446,19 +519,19 @@ Although many cases are inherited, they can also develop later in life due to ey
           setWikipediaAccumulatedTime(0);
           setWikipediaSessionStart(null);
           setCurrentDisplayTime(0);
+          setClickedReviewButtonThisPhase(false);
+
           setCurrentPhase(nextIndex + 1);
 
           const nextTopic = getOrderedTopics[nextIndex];
           if (nextTopic) {
             setTimeout(() => {
-              const transitionText = `Let's continue. Select another prompt.`;
-
               setChatMessages((prev) => [
                 ...prev,
                 {
                   id: `transition-${nextIndex}`,
                   sender: 'bot',
-                  text: transitionText,
+                  text: `Let's continue. Select another prompt.`,
                   timestamp: new Date(),
                 },
               ]);
@@ -583,14 +656,16 @@ Although many cases are inherited, they can also develop later in life due to ey
 
                     {canReviewResponse && (
                       <button
-                        onClick={() =>
+                        onClick={() => {
+                          setClickedReviewButtonThisPhase(true);
+
                           handleAnswerSelected(
                             currentAnswerData.biasType,
                             currentAnswerData.biasDefinition,
                             currentAnswerData.explanation,
                             currentAnswerData.aiResponseText
-                          )
-                        }
+                          );
+                        }}
                         className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
                       >
                         Review ALL-IE&apos;s Response
@@ -633,17 +708,16 @@ Although many cases are inherited, they can also develop later in life due to ey
                                   </span>
                                 </div>
                               ) : (
-                                <ProgressBar duration={15 - currentDisplayTime} disableTitle className="tw-w-36" />
+                                <ProgressBar
+                                  duration={15 - currentDisplayTime}
+                                  disableTitle
+                                  className="tw-w-36"
+                                />
                               )}
                             </div>
                           )}
                         </div>
                       </div>
-
-                      {/* Subtitle */}
-                      <p className="tw-text-sm tw-text-gray-600 tw-text-center tw-mt-2">
-                        Use this resource to fact-check ALL-IE&apos;s responses
-                      </p>
                     </div>
 
                     {/* Text on left and image on right */}
@@ -725,12 +799,9 @@ Although many cases are inherited, they can also develop later in life due to ey
                 <div className="tw-p-4 tw-pt-0 tw-text-sm tw-text-gray-700">
                   {selectedBiasData.aiResponseText && (
                     <div className="tw-mb-2 tw-p-1 tw-bg-gray-50 tw-rounded tw-border tw-border-gray-200">
-
                       <p className=" tw-text-left tw-text-gray-700 tw-body-text">
                         <strong>Given AI Response: </strong>
-                        <em>
-                          &quot;{selectedBiasData.aiResponseText}&quot;
-                        </em>
+                        <em>&quot;{selectedBiasData.aiResponseText}&quot;</em>
                       </p>
                     </div>
                   )}
@@ -743,7 +814,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                     <h5 className="tw-font-bold tw-mb-2">
                       What is {biasDefinition.name}?
                     </h5>
-                    <p className='tw-body-text'>{biasDefinition.definition}</p>
+                    <p className="tw-body-text">{biasDefinition.definition}</p>
                   </div>
                 </div>
               ) : null
