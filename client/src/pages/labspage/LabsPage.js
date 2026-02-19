@@ -298,7 +298,7 @@ const LabsPage = (props) => {
                           tw-text-black tw-bg-transparent
                           tw-rounded-4xl tw-border-0
                           tw-flex tw-w-10 tw-h-10
-                          tw-items-center tw-justify-center"
+                          tw-items-center tw-justify-end"
                         aria-label="Escape Button"
                       >
                         &times;{" "}
