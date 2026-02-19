@@ -2,7 +2,7 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   prefix: "tw-",
-  content: ["../client/src/**/*.{js,jsx}"],
+  content: ["./src/**/*.{js,jsx}"],
   important: true,
   theme: {
     screens: {
