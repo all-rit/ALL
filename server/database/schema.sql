@@ -2990,7 +2990,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
 ]
-', 2, 'coming soon', 'coming soon', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
+', 2, 'coming soon', 'coming soon', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab explores where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge.', e'[
     "LO1: Construct a basic neural network using provided components (Synthesis)",
     "LO2: Simulate neural network training (Comprehension).",
     "LO3: Demonstrate bias present in a neural network (Application)."
@@ -3690,7 +3690,7 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'Quantum Computing', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'Quantum Computing', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', 'This lab introduces the concepts of Quantum Computing through the lens of cryptography. Participants will learn about different ways to encrypt messages, and the algorithms used to decrypt them. Then, the lab explores the difference in time and efficiency between breaking these ciphers with both Classical and Quantum computers.',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",

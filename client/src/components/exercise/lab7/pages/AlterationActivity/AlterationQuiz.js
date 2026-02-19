@@ -15,7 +15,10 @@ import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
  */
 const AlterationQuiz = () => {
   const [showContinue, setShowContinue] = useState(false);
-  const [, setQuizComplete] = useState(false);
+  const [quizCompleted, setQuizComplete] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [questions, setQuestions] = useState(alterationQuizQuestions);
+  const [result, setResult] = useState(0);
   const { state: mainState, actions: mainActions } = useMainStateContext();
 
   useEffect(() => {
@@ -53,10 +56,16 @@ const AlterationQuiz = () => {
         hideCertificate
         isFinalQuiz={false}
         submitData={handleSubmitData}
-        quizQuestions={alterationQuizQuestions}
+        selectedAnswers={selectedAnswers}
+        setSelectedAnswers={setSelectedAnswers}
+        questions={questions}
+        setQuestions={setQuestions}
+        quizCompleted={quizCompleted}
         setQuizCompleted={() => {
           return true;
         }}
+        result={result}
+        setResult={setResult}
       />
       {showContinue && (
         <button
@@ -71,7 +80,7 @@ const AlterationQuiz = () => {
   );
 };
 AlterationQuiz.propTypes = {
-  setQuizCompleted: PropTypes.func.isRequired,
+  setQuizCompleted: PropTypes.func,
 };
 
 export default AlterationQuiz;
