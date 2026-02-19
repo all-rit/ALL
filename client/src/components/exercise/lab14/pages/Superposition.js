@@ -76,8 +76,7 @@ const Superposition = () => {
           for long enough, it collapses into a single value, either 0 or 1. Try
           hovering over the qubit. If you wait a moment, you&apos;ll see how the
           qubit collapses to a random value. When you test it again, this value
-          may be change! This shows how real qubits behave when they are
-          measured.
+          will change! This shows how real qubits behave when they are measured.
         </p>
         <div className="tw-flex tw-flex-row tw-gap-7 tw-max-w-1/2 p-2">
           <Qubit></Qubit>

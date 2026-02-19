@@ -82,7 +82,7 @@ function MySnackbarContentWrapper(props) {
           onClick={onClose}
           size="large"
         >
-          <CloseIcon className={classes.icon} />
+          <CloseIcon className={clsx(classes.icon)} />
         </IconButton>,
       ]}
       {...other}
@@ -278,11 +278,13 @@ const CodeChangeTarget = () => {
         autoHideDuration={6000}
         onClose={handleClose}
       >
-        <MySnackbarContentWrapper
-          onClose={handleClose}
-          variant="warning"
-          message={state.message}
-        />
+        <div>
+          <MySnackbarContentWrapper
+            onClose={handleClose}
+            variant="warning"
+            message={state.message}
+          />
+        </div>
       </Snackbar>
     </div>
   );
