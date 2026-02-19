@@ -376,6 +376,7 @@ const LabsPage = (props) => {
                                 tw-border tw-border-solid tw-border-primary-yellow
                                 tw-font-bold
                                 tw-transition
+                                hover:tw-bg-primary-yellow
                                 peer-checked:tw-bg-primary-yellow
                                 peer-checked:tw-text-black
                               "
@@ -399,7 +400,7 @@ const LabsPage = (props) => {
                       </button>
                       <button
                         type="submit"
-                        className="tw-flex-1 tw-px-6 tw-py-2 tw-bg-primary-yellow tw-border-none tw-text-black tw-rounded-md hover:tw-opacity-90 tw-transition tw-font-bold"
+                        className="tw-flex-1 tw-px-6 tw-py-2 tw-bg-primary-yellow tw-border-none tw-text-black tw-rounded-md tw-font-bold"
                       >
                         APPLY
                       </button>
