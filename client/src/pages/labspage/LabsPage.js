@@ -16,16 +16,6 @@ import Girl from "../../assets/images/stockImages/Girl1.png";
 import LandingSection from "../../components/all-components/LandingSection";
 import UserService from "../../services/UserService";
 import {
-  ACCESSIBILITY,
-  AI_MACHINE_LEARNING,
-  ALL_LABS,
-  QUANTUM,
-  DIFFICULTY_1,
-  DIFFICULTY_2,
-  DIFFICULTY_3,
-  TUTORIALS,
-} from "../../constants/labs";
-import {
   EXPLORE_LABS_BODY,
   EXPLORE_LABS_TITLE,
   VIEW_PROGRESS_BODY,
@@ -133,8 +123,29 @@ const LabsPage = (props) => {
   };
 
   const [displayedLabs, setDisplayedLabs] = useState(new Map());
-  const [selectedSearch, setSelectedSearch] = useState("ALL_LABS");
   const [textSearch, setTextSearch] = useState("");
+
+  const [showFilter, setShowFilter] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+
+  const applyFilters = (
+    topic = selectedTopic,
+    difficulty = selectedDifficulty,
+    text = textSearch,
+  ) => {
+    let filtered = new Map(labInformation);
+    if (topic && labInformation.has(topic)) {
+      filtered = new Map([[topic, labInformation.get(topic)]]);
+    }
+    if (difficulty !== null) {
+      filtered = labsByDifficulty(filtered, difficulty);
+    }
+    if (text.trim() !== "") {
+      filtered = labsBySearchPhrase(filtered, text);
+    }
+    setDisplayedLabs(filtered);
+  };
 
   const getMyLabs = async () => {
     if (loggedIn) {
@@ -157,65 +168,13 @@ const LabsPage = (props) => {
   };
 
   useEffect(() => {
-    const tempMap = new Map();
-
-    switch (selectedSearch) {
-      case ALL_LABS:
-        setDisplayedLabs(new Map(labInformation));
-        break;
-      case AI_MACHINE_LEARNING:
-        if (labInformation.has("AI")) {
-          tempMap.set("AI", labInformation.get("AI"));
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      case ACCESSIBILITY:
-        if (labInformation.has("Accessibility")) {
-          tempMap.set("Accessibility", labInformation.get("Accessibility"));
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      case QUANTUM:
-        if (labInformation.has("Quantum Computing")) {
-          tempMap.set(
-            "Quantum Computing",
-            labInformation.get("Quantum Computing"),
-          );
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      case DIFFICULTY_1:
-        setDisplayedLabs(labsByDifficulty(labInformation, 1));
-        break;
-      case DIFFICULTY_2:
-        setDisplayedLabs(labsByDifficulty(labInformation, 2));
-        break;
-      case DIFFICULTY_3:
-        setDisplayedLabs(labsByDifficulty(labInformation, 3));
-        break;
-      case TUTORIALS:
-        if (labInformation.has("Tutorials")) {
-          tempMap.set("Tutorials", labInformation.get("Tutorials"));
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      default:
-        setDisplayedLabs(labInformation);
-    }
+    setDisplayedLabs(new Map(labInformation));
     getMyLabs();
-  }, [labInformation, selectedSearch]);
-
-  const handleSearchChange = (search) => {
-    setSelectedSearch(search);
-  };
+  }, [labInformation]);
 
   const handleSearchTextChange = (search) => {
     setTextSearch(search);
-    setDisplayedLabs(labsBySearchPhrase(labInformation, search));
-  };
-
-  const handleSearch = () => {
-    setDisplayedLabs(labsBySearchPhrase(labInformation, textSearch));
+    applyFilters(selectedTopic, selectedDifficulty, search);
   };
 
   const loggedIn =
@@ -289,117 +248,164 @@ const LabsPage = (props) => {
                 <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
-                <form className="tw-max-w-144 sm:tw-w-2/3 tw-flex tw-rounded-md">
-                  <input
-                    className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-l-md
-                                  tw-border-r-0 tw-border-darkGray tw-border-2 focus:tw-outline-none"
-                    placeholder="Search"
-                    type="text"
-                    id="searchLabs"
-                    onChange={(e) => {
-                      handleSearchTextChange(e.target.value);
-                    }}
-                  />
+                <div className="tw-flex tw-items-center tw-gap-3 tw-max-w-144 sm:tw-w-2/3 ">
+                  <div className="tw-flex tw-flex-1 tw-rounded-md">
+                    <input
+                      className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-md
+                                  tw-border-darkGray tw-border-2"
+                      placeholder="Search"
+                      type="text"
+                      id="searchLabs"
+                      onChange={(e) => {
+                        handleSearchTextChange(e.target.value);
+                      }}
+                    />
+                  </div>
                   <button
-                    type="submit"
-                    className="tw-pr-4 tw-bg-white tw-rounded-r-md tw-border-l-0 tw-border-darkGray tw-border-2"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSearch(e);
-                    }}
+                    type="button"
+                    onClick={() => setShowFilter((prev) => !prev)}
+                    className="
+                      tw-px-4 tw-py-2
+                      tw-rounded-md
+                      tw-bg-primary-yellow
+                      tw-flex tw-justify-center tw-gap-2
+                      tw-font-bold tw-border-solid tw-border-primary-yellow"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="tw-fill-darkGray tw-w-5 tw-h-5 tw-align-middle tw-justify-self-center"
-                      viewBox="0 0 512 512"
+                      className="tw-w-5"
+                      viewBox="0 0 640 640"
                     >
-                      <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                      <path d="M96 128C78.3 128 64 142.3 64 160C64 177.7 78.3 192 96 192L182.7 192C195 220.3 223.2 240 256 240C288.8 240 317 220.3 329.3 192L544 192C561.7 192 576 177.7 576 160C576 142.3 561.7 128 544 128L329.3 128C317 99.7 288.8 80 256 80C223.2 80 195 99.7 182.7 128L96 128zM96 288C78.3 288 64 302.3 64 320C64 337.7 78.3 352 96 352L342.7 352C355 380.3 383.2 400 416 400C448.8 400 477 380.3 489.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L489.3 288C477 259.7 448.8 240 416 240C383.2 240 355 259.7 342.7 288L96 288zM96 448C78.3 448 64 462.3 64 480C64 497.7 78.3 512 96 512L150.7 512C163 540.3 191.2 560 224 560C256.8 560 285 540.3 297.3 512L544 512C561.7 512 576 497.7 576 480C576 462.3 561.7 448 544 448L297.3 448C285 419.7 256.8 400 224 400C191.2 400 163 419.7 150.7 448L96 448z" />
                     </svg>
-                  </button>
-                </form>
-                <div className="xs:tw-hidden md:tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
-                  <button
-                    className={`tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow 
-                      ${selectedSearch === ALL_LABS ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(ALL_LABS);
-                    }}
-                    autoFocus
-                  >
-                    All Labs
-                  </button>
-                  <button
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === AI_MACHINE_LEARNING ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(AI_MACHINE_LEARNING);
-                    }}
-                  >
-                    AI/Machine Learning
-                  </button>
-                  <button
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === ACCESSIBILITY ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(ACCESSIBILITY);
-                    }}
-                  >
-                    Accessibility
-                  </button>
-                  <button
-                    onClick={() => {
-                      handleSearchChange(QUANTUM);
-                    }}
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === QUANTUM ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                  >
-                    Quantum Computing
-                  </button>
-                  <button
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === DIFFICULTY_1 ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(DIFFICULTY_1);
-                    }}
-                  >
-                    Difficulty 1
-                  </button>
-                  <button
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === DIFFICULTY_2 ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(DIFFICULTY_2);
-                    }}
-                  >
-                    Difficulty 2
-                  </button>
-                  <button
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === DIFFICULTY_3 ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(DIFFICULTY_3);
-                    }}
-                  >
-                    Difficulty 3
-                  </button>
-                  <button
-                    className={`tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow
-                      ${selectedSearch === TUTORIALS ? "tw-bg-primary-yellow" : "tw-bg-white"}`}
-                    onClick={() => {
-                      handleSearchChange(TUTORIALS);
-                    }}
-                  >
-                    Tutorials
+                    FILTER
                   </button>
                 </div>
+                {showFilter && (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      applyFilters();
+                    }}
+                    className="tw-p-6 tw-mt-5 tw-space-y-4 tw-w-[90%] tw-max-w-[800px] tw-text-left tw-rounded-md tw-shadow-md"
+                  >
+                    <div className="tw-flex tw-justify-between">
+                      <h1 className="tw-text-2xl tw-font-bold">Filter</h1>
+                      <button
+                        onClick={() => setShowFilter(false)}
+                        className="tw-text-4xl 
+                          tw-font-poppins tw-top-2 tw-right-2
+                          tw-text-black tw-bg-transparent
+                          tw-rounded-4xl tw-border-0
+                          tw-flex tw-w-10 tw-h-10
+                          tw-items-center tw-justify-center"
+                        aria-label="Escape Button"
+                      >
+                        &times;{" "}
+                      </button>
+                    </div>
+                    <div className="tw-space-y-4">
+                      <h2 className="tw-text-lg tw-font-bold">Topic</h2>
+                      <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
+                      <div className="tw-space-y-3">
+                        {[
+                          {
+                            id: "accessibility",
+                            label: "Accessibility",
+                            value: "Accessibility",
+                          },
+                          {
+                            id: "ai_ml",
+                            label: "AI / Machine Learning",
+                            value: "AI",
+                          },
+                          {
+                            id: "quantum",
+                            label: "Quantum",
+                            value: "Quantum Computing",
+                          },
+                          {
+                            id: "tutorial",
+                            label: "Tutorial",
+                            value: "Tutorials",
+                          },
+                        ].map((option) => (
+                          <label
+                            key={option.id}
+                            htmlFor={option.id}
+                            className="tw-flex tw-items-center tw-gap-3 tw-cursor-pointer"
+                          >
+                            <input
+                              type="radio"
+                              id={option.id}
+                              name="topic"
+                              value={option.value}
+                              checked={selectedTopic === option.value}
+                              onChange={() => setSelectedTopic(option.value)}
+                              className="tw-accent-primary-yellow"
+                            />
+                            {option.label}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="tw-space-y-4">
+                      <h2 className="tw-text-lg tw-font-bold">Difficulty</h2>
+                      <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
+                      <div className="tw-flex tw-gap-6">
+                        {[1, 2, 3].map((level) => (
+                          <label
+                            key={level}
+                            htmlFor={`difficulty-${level}`}
+                            className="tw-cursor-pointer tw-flex-1"
+                          >
+                            <input
+                              type="radio"
+                              id={`difficulty-${level}`}
+                              name="difficulty"
+                              value={level}
+                              checked={selectedDifficulty === level}
+                              onChange={() => setSelectedDifficulty(level)}
+                              className="tw-peer tw-hidden"
+                            />
+                            <div
+                              className=" 
+                                tw-h-10
+                                tw-flex tw-items-center tw-justify-center
+                                tw-rounded-2xl
+                                tw-border tw-border-solid tw-border-primary-yellow
+                                tw-font-bold
+                                tw-transition
+                                peer-checked:tw-bg-primary-yellow
+                                peer-checked:tw-text-black
+                              "
+                            >
+                              {level}
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="tw-flex tw-gap-4 tw-pt-4">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedTopic(null);
+                          setSelectedDifficulty(null);
+                        }}
+                        className="tw-flex-1 tw-px-4 tw-py-2 tw-border-2 tw-bg-white tw-rounded-md tw-font-bold"
+                      >
+                        CLEAR
+                      </button>
+                      <button
+                        type="submit"
+                        className="tw-flex-1 tw-px-6 tw-py-2 tw-bg-primary-yellow tw-border-none tw-text-black tw-rounded-md hover:tw-opacity-90 tw-transition tw-font-bold"
+                      >
+                        APPLY
+                      </button>
+                    </div>
+                  </form>
+                )}
 
                 <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full">
                   {Array.from(displayedLabs.entries())
