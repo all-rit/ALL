@@ -153,7 +153,7 @@ const MemberDisplay = (props) => {
                 <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Lab Credits
                 </h4>
-                <p className="tw-pb-3">
+                <div className="tw-pb-3">
                   {labCredits.map((lab) => {
                     return (
                       <p className="tw-body-text tw-leading-snug" key={lab.id}>
@@ -161,7 +161,7 @@ const MemberDisplay = (props) => {
                       </p>
                     );
                   })}
-                </p>
+                </div>
               </div>
             )}
           </div>
