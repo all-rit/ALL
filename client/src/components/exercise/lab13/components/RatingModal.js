@@ -71,12 +71,12 @@ const RatingModal = ({
 						customBody={
 							<div className="tw-px-2 quiz">
 								<div className="tw-mb-8">
-									<div className="tw-mb-4 tw-text-sm">Tone:</div>
+									<div className="tw-mb-4 tw-body-text tw-text-center tw-border">Tone:</div>
 									<Likert name="tone" options={optionsList} onAnswerSelected={(e) => setToneRating(e.target.value.toLowerCase().replace(/ /g, '-'))} />
 								</div>
 
 								<div className="tw-mb-8">
-									<div className="tw-mb-4 tw-text-sm">Confidence:</div>
+									<div className="tw-mb-4 tw-body-text tw-text-center tw-border">Confidence:</div>
 									<Likert name="confidence" options={optionsList} onAnswerSelected={(e) => setConfidenceRating(e.target.value.toLowerCase().replace(/ /g, '-'))} />
 								</div>
 								<div className="tw-mt-8 tw-flex tw-justify-center">
