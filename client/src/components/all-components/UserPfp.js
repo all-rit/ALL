@@ -8,20 +8,13 @@ const UserPfp = ({ onClick }) => {
     const user = state.main.user;
     const className = `tw-w-full tw-h-full tw-object-cover tw-rounded-full ${onClick ? "tw-cursor-pointer" : ""}`;
 
-    return (user && user.userpfp ?
-        <div
-            onClick={onClick}
-            aria-label="Google Profile Photo"
-            alt={`${user.firstname}'s profile picture`}
-            className={className}
-            style={{
-                backgroundImage: `url(${user?.userpfp})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-            }}
-        />
-        :
-        <img src={DefaultUser} alt="Default User" className={`${className} tw-p-1`} />
+    return (
+        user?.userpfp ?
+            <img src={user.userpfp} alt="User Profile Picture" className={className} onClick={onClick} />
+            : user.firstname && user.lastinitial ?
+                <div>{user?.firstname[0] + user?.lastinitial}</div>
+                :
+                <img src={DefaultUser} alt="Default User" className={`${className} tw-p-1`} />
     );
 };
 
