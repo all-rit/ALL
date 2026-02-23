@@ -7,7 +7,6 @@ const UserPfp = ({ onClick }) => {
     const { state } = useMainStateContext();
     const user = state.main.user;
     const className = `tw-w-full tw-h-full tw-object-cover tw-rounded-full ${onClick ? "tw-cursor-pointer" : ""}`;
-    console.log()
 
     return (user && user.userpfp ?
         <div
