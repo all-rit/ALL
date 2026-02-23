@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         postSurvey: {
           type: DataTypes.JSON,
         },
+        imagepath: {
+          type: DataTypes.TEXT,
+        },
       },
       {tableName: 'imagine26'},
   );

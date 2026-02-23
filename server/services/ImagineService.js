@@ -1,5 +1,8 @@
 const {Op} = require('sequelize');
 const db = require('../database');
+const { GoogleGenAI } = require("@google/genai")
+const path = require('path');
+const fs = require('fs')
 
 const submitStudy = async (data) => {
   const {userID, study, year} = data;
@@ -54,7 +57,7 @@ const preSurvey = async (data) => {
       } else if (year == 25) {
         section = await determineSection2025();
       } else if (year == 26) {
-        section = await determineGroup(preSurvey, year);
+        section = await determineSection2025(preSurvey, year);
       } else {
         console.log('invalid year');
       }
@@ -415,6 +418,97 @@ const determineSection2025 = async () => {
   return options[randIndex];
 };
 
+const postImagepath = async (imagine,userID,imagepath) =>{
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.imagepath = imagepath;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          imagepath: imagepath,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+}
+
+const deepFakeGenerator = async (data) =>{
+  
+  const encoded = data.file.buffer.toString('base64');
+  const userID = data.body.userId
+  const imagine = `Imagine${data.body.year}` 
+  const folder = "images/deepfake"
+  const filePath = path.join(path.dirname(__dirname), folder, userID + ".png");
+  const imagePath = folder + "/" + userID + ".png"
+  
+  const ai = new GoogleGenAI({ 
+    apiKey: process.env.GEMINI_API_KEY
+  });
+  const textPrompt = "Generate an image of the person in this photo with a blue hat and holding a sign that says, I dont want cotton candy "
+  
+  const prompt = [
+    { text: textPrompt },
+    {
+      inlineData: {
+        mimeType: "image/png",
+        data: encoded,
+      },
+    },
+  ];
+
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash-image",
+    contents: prompt,
+  });
+
+  try {
+      for (const part of response.candidates[0].content.parts) {
+      if (part.text) {
+        console.log(part.text);
+      } else if (part.inlineData) {
+        const imageData = part.inlineData.data;
+        const buffer = Buffer.from(imageData, "base64");
+        fs.writeFileSync(filePath, buffer);
+        const response = await postImagepath(imagine,userID,imagePath)
+        if(response){
+          console.log("Saved deepfake successfuly")
+          return true
+        }
+      }
+    }
+    } catch (error) {
+      console.log(error)
+    }
+}
+
+const getDeepfakeImagePath = async (data) =>{  
+    const {userID,year} = data;
+    const imagine = `Imagine${year}`;
+    try {
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
+      return user.imagepath;
+    } catch (error) {
+      console.error('Could not get deepfake image path by user ID: ', error);
+    }
+}
+
 module.exports = {
   submitStudy,
   newID,
@@ -430,4 +524,6 @@ module.exports = {
   postOpponentAvatar,
   getGroup,
   getTeammate,
+  deepFakeGenerator,
+  getDeepfakeImagePath
 };

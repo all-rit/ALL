@@ -139,5 +139,22 @@ const ImagineService = {
       },
     );
   },
+
+  generateDeepfake: async (data) => {
+    return await API.postWithBodyFormData(
+      process.env.REACT_APP_SERVER_URL + `/imagine26/generateDeepfake`,
+      data,
+    );
+  },
+
+  getDeepfakeImagePath: (userID, year) => {
+    return Promise.resolve(
+      API.get(
+        process.env.REACT_APP_SERVER_URL +
+          `/imagine${year}/getDeepFakeImagePath/${userID}`,
+        {},
+      ).then((response) => response.json()),
+    );
+  },
 };
 export default ImagineService;

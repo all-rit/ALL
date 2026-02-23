@@ -1,4 +1,4 @@
-const { isWindows, WINDOWS_PATH, UNIX_PATH } = require('./configPath');
+const { isWindows, WINDOWS_PATH, UNIX_PATH } = require('./configPath.js');
 
 module.exports = {
   apps: [

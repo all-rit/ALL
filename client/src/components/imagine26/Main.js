@@ -8,6 +8,8 @@ import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
 import "./main.css";
+import WebcamCapture from "./pages/CapturePicture";
+import DisplayDeepFake from "./components/DisplayDeepfake";
 
 const Main = () => {
   const userID = sessionStorage.getItem("userID");
@@ -91,6 +93,8 @@ const Main = () => {
               year={year}
               userID={userID || ""}
             />
+            <WebcamCapture path={"/Webcam"} />
+            <DisplayDeepFake path={"/DisplayDeepfake"} />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
             <Survey
