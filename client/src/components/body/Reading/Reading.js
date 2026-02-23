@@ -413,12 +413,14 @@ const Reading = (props) => {
                   {data.type === "links" && <Links data={data.content} />}
                   {data.type === "piechart" && data.content && (
                     <>
-                      <div className="flex tw-body-text">
-                        <Pie
-                          data={data.content.data}
-                          height={!isImagine && 100}
-                          options={isImagine && { maintainAspectRatio: false }}
-                        />
+                      <div className="tw-w-full tw-flex tw-justify-center">
+                        <div className="flex tw-body-text">
+                            <Pie
+                            data={data.content.data}
+                            height={!isImagine && 100}
+                            options={isImagine && { maintainAspectRatio: false }}
+                            />
+                        </div>
                       </div>
                       {data.content.caption && (
                         <div className="tw-body-text tw-text-[#666] tw-text-sm tw-text-center">
