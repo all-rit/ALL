@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BlobLoader from './BlobLoader';
 import Avatar from './Avatar';
 import { AvatarType } from 'src/constants/lab13/AvatarType';
+import HyperLinkImage from 'src/assets/images/lab13/HyperLink.png';
 
 /**
  * Typewriter animation component effect for bot responses
@@ -247,32 +248,33 @@ const AIChatBot = ({
                       {(!isTyping || index !== messages.length - 1) &&
                         msg.confidence &&
                         msg.isPhase4 && (
-                          <>
+                          <div className='tw-grid tw-space-y-2 tw-mt-2 tw-text-sm'>
                             {showConfidenceScore && (
-                              <div className="tw-mt-2 tw-text-sm tw-text-gray-600">
-                                <strong>Confidence Score:</strong>{' '}
+                              <div className="tw-text-gray-600">
+                                <strong>Confidence Score: </strong>
                                 {msg.confidence}
                               </div>
                             )}
 
                             {disclaimerMessage && (
-                              <div className="tw-mt-2 tw-text-sm tw-italic tw-text-gray-500">
-                                <strong>Disclaimer:</strong>{' '}
-                                {disclaimerMessage}
+                              <div className="tw-text-gray-500">
+                                <strong>Disclaimer: </strong>
+                                <em>{disclaimerMessage}</em>
                               </div>
                             )}
 
                             {showCitations && (
-                              <button
-                                onClick={() =>
-                                  onCitationClick && onCitationClick()
-                                }
-                                className="tw-mt-2 tw-px-3 tw-py-1 tw-bg-blue-100 tw-text-blue-700 tw-rounded-full tw-text-xs tw-font-medium hover:tw-bg-blue-200 tw-transition-colors"
+                              <div
+                                className="tw-flex tw-items-center tw-gap-1"
                               >
-                                ALLpedia
-                              </button>
+                                <strong>Source: </strong>
+                                <div className='tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer' onClick={onCitationClick}>
+                                  <p>ALLpedia</p>
+                                  <img src={HyperLinkImage} alt="Hyper Link Image" className="tw-w-5 tw-h-5 mb-1" />
+                                </div>
+                              </div>
                             )}
-                          </>
+                          </div>
                         )}
                     </>
                   )}
