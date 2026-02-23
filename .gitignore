@@ -1,5 +1,5 @@
 #images folder
-# server/images/deepfake
+server/images/deepfake
 
 # IDE-specific directories
 .idea/

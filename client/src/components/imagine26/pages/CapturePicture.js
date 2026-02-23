@@ -48,12 +48,13 @@ const WebcamCapture = () => {
         setBlob(blob);
       }, "image/png");
 
+      //copy to vivian branch
       // Get the image data in the desired format
       const imageDataUrl = canvas.toDataURL("image/png"); // Default is image/png
       setImageSrc(imageDataUrl);
     }
   };
-
+  //copy to vivian branch
   //when the button is clicked, send the image to backend to generate the deepfake
   const sendImageforGeneration = async () => {
     if (!blob) {
@@ -64,9 +65,8 @@ const WebcamCapture = () => {
     form.append("userId", sessionStorage.getItem("userID"));
     form.append("year", 26);
     const response = await ImagineService.generateDeepfake(form);
-    if (response) {
-      navigate("/Imagine2026/DisplayDeepfake");
-    }
+    console.log(response);
+    navigate("/Imagine2026/DisplayDeepfake");
   };
 
   return (
@@ -93,6 +93,8 @@ const WebcamCapture = () => {
           />
         </div>
       )}
+
+      {/* Copy to vivian branch */}
       <ALLButton onClick={sendImageforGeneration} />
     </div>
   );
