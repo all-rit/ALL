@@ -4007,8 +4007,8 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (37, 'William', 'Herrick', 'AI Deepfake Team Lead, Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, '{14}'),
 (38, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, '{14}'),
 (39, 'Darlyn', 'Gomez', 'Engineer', '/Darlyn_Gomez.jpg', '[{"link" : "https://www.linkedin.com/in/darlyn-gomez/"}]', null, '2025-Present', true, null, null, null),
-(40, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
-(41, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', '[]', null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);
+(40, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "https://www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
+(41, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', '[{"link" : "https://www.linkedin.com/in/gabrielle-addotey-04993b300/"}]', null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);
 
 INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
 (2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),
