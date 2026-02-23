@@ -147,7 +147,6 @@ const AIPanel = () => {
       // Mark as visited
 
       setHasVisitedWikipedia(true);
-      console.log('Set wikipedia to true');
 
       // Start new session if not already started
       if (!wikipediaSessionStart) {
@@ -211,9 +210,6 @@ const AIPanel = () => {
 
     if (currentPhase === 4) {
       // Phase 4, show only unasked questions from current topic
-      console.log('Phase 4 - Topic:', activeTopic);
-      console.log('Phase 4 - All questions:', topicData.questions.length);
-      console.log('Asked questions:', askedQuestions);
 
       const available = topicData.questions
         .map((q, index) => ({ ...q, originalIndex: index }))
@@ -223,7 +219,6 @@ const AIPanel = () => {
         })
         .slice(0, 2); // Only first 2 unasked
 
-      console.log('Available questions:', available.length);
       return available;
     }
 
@@ -247,12 +242,6 @@ const AIPanel = () => {
 
       setAskedQuestions((prev) => {
         if (!prev.includes(questionKey)) {
-          console.log(
-            'Tracking question:',
-            questionKey,
-            'Phase:',
-            currentPhase
-          );
           return [...prev, questionKey];
         }
         return prev;
@@ -463,9 +452,6 @@ Although many cases are inherited, they can also develop later in life due to ey
   // Initialize phase 4 after IDE fixes
   useEffect(() => {
     if (currentPhase === 4 && currentTopic) {
-      console.log('Phase 4 Init - Topic Index:', topicIndex);
-      console.log('Phase 4 Init - Current Topic:', currentTopic);
-      console.log('Phase 4 Init - Topic Position:', currentTopic.biasPosition);
 
       // Reset Wikipedia tracking for Phase 4
       if (!phase4IntroAddedRef.current) {
