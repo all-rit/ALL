@@ -19,6 +19,13 @@ class exercise extends Component {
     };
   }
 
+  componentDidMount() {
+    // setting state for the start time of the exercise
+    if (this.state.startTime === 0) {
+      this.setState({ startTime: Date.now() });
+    }
+  }
+
   // custom renderer for the class
   render() {
     const {
@@ -40,11 +47,6 @@ class exercise extends Component {
       isImagine,
       userID,
     } = this.props;
-
-    // setting state for the start time of the exercise
-    if (this.state.startTime === 0) {
-      this.setState({ startTime: Date.now() });
-    }
 
     // Resets the state time of the exercise zero so the exercise repeats
     const updateTime = () => {
