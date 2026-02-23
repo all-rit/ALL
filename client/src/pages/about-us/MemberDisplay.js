@@ -156,7 +156,10 @@ const MemberDisplay = (props) => {
                 <div className="tw-pb-3">
                   {labCredits.map((lab) => {
                     return (
-                      <p className="tw-body-text tw-leading-snug" key={lab.id}>
+                      <p
+                        className="tw-body-text tw-leading-snug"
+                        key={labCredits.indexOf(lab)}
+                      >
                         {lab}
                       </p>
                     );
