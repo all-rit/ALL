@@ -27,14 +27,7 @@ const ProfileHeader = (props) => {
                       tw-rounded-full tw-border-solid xs:tw-mx-[2rem] md:tw-mx-[4rem]
                       tw-border-primary-yellow tw-z-[1rem] tw-flex tw-flex-row tw-overflow-hidden"
                 >
-                  {user?.userpfp ? (
-                    <UserPfp />
-                  ) : (
-                    <div>
-                      {/* get user's first and last initials */}
-                      {user?.firstname[0] + user?.lastinitial}
-                    </div>
-                  )}
+                  <UserPfp />
                 </div>
               </div>
               <div className={"tw-w-full tw-h-full tw-flex tw-items-center "}>
