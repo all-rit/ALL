@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
 import "./secondaryInstructions.css";
 import LabButton from "../../../all-components/LabButton";
 
@@ -19,20 +19,23 @@ const ThirdInstructions = ({
   isImagine,
 }) => {
   const alreadyCalled = false;
-  if (!alreadyCalled) {
-    selectOption("Protanopia");
+  useEffect(() => {
+    if (!alreadyCalled) {
+      selectOption("Protanopia");
+    }
+
+    if (background !== "white") {
+      toWhiteBackground();
+    }
+  }, []);
+
+  if (isImagine) {
+    navigate("/Imagine2023/Reading");
   }
 
   const changeColors = () => {
     activatePopup();
   };
-
-  if (background !== "white") {
-    toWhiteBackground();
-  }
-  if (isImagine) {
-    navigate("/Imagine2023/Reading");
-  }
 
   return (
     <>
