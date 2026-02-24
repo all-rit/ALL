@@ -4038,12 +4038,127 @@ e'[
   ]', 
 '[
   {
-    "question": "What causes a qubit to collapse?",
+    "question": "What happens when an AI model is not trained on enough data regarding a specific topic?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "The AI will try it’s best based on context and make a response that can be wrong.",
+        "explanation": "When an AI model is not trained on enough data regarding a specific topic, it will try to make the best response it can based on the context of the prompt. However, this can lead to hallucinations where the model generates incorrect or fabricated information."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "By default, it tells you it does not know about that topic and stops answering."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "It starts training itself on new data about that topic."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "It will reply with 100% correctness."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these does the GCSE framework not include?",
     "answers": [
       {
         "val": 0,
         "type": "0",
-        "content": "When the temperature is too cold"
+        "content": "Expectations"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Specifics",
+        "explanation": "The GCSE framework includes goal, context, sources, and expectations, not specifics."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Context"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Goal"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "True or False: An AI model makes better responses and decisions when given clear instructions.",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "True",
+        "explanation": "When given clear instructions, such as using the GCSE framework, an AI model can generate more accurate and relevant responses."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "False"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "AI models hallucinate when they are not trained on enough data about the topic that was asked of them.",
+        "explanation": "When an AI model is not trained on enough data regarding a specific topic, it will try to make the best response it can based on the context of the prompt. However, this can lead to hallucinations where the model generates incorrect or fabricated information."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "AI models hallucinate because they are used too much and do not have enough resources to run."
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "The GCSE prompting method will create better and more accurate AI model responses.",
+        "explanation": "The GCSE framework includes goal, context, sources, and expectations, which can help guide the AI model to generate more accurate and relevant responses."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Most AI models do not do well with a prompt that is too long."
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "Other than poor prompting practices, what else can influence an AI model to have hallucinations?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "The model wanting to have vision and telling the user about their hallucinations."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "The model having too much power and getting confused with itself."
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "The model’s structure including architecture, the quality of data its given.",
+        "explanation": "Model-internal hallucinations can be caused by the model’s architecture, the data it was trained on, or inference behavior."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "The model is trying to protect it’s privacy and being vague."
       }
     ],
     "multiChoice": false
