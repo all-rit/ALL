@@ -63,11 +63,23 @@ const AIChatBot = ({
   disclaimerMessage = '',
   onCitationClick = null,
   onQuestionAsked = null,
+  typedMessageIds,
+  setTypedMessageIds,
 }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [showQuestionOptions, setShowQuestionOptions] = useState(false);
   const messagesContainerRef = useRef(null);
+
+  // Auto-trigger typing animation for any new bot message (including greeting/intro messages)
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.sender === 'bot' && !typedMessageIds.has(lastMessage.id)) {
+        setIsTyping(true);
+      }
+    }
+  }, [messages, typedMessageIds]);
 
   useEffect(() => {
     if (onTypingChange) {
@@ -87,9 +99,13 @@ const AIChatBot = ({
       const lastMessage = messages[messages.length - 1];
       if (lastMessage.sender === 'bot' && !isTyping && !isThinking) {
         // Small delay to show questions after bot finishes typing
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           setShowQuestionOptions(true);
         }, 500);
+        return () => clearTimeout(timer);
+      } else {
+        // Last message is a user message, or bot is still typing/thinking — hide immediately
+        setShowQuestionOptions(false);
       }
     } else {
       setShowQuestionOptions(false);
@@ -236,6 +252,7 @@ const AIChatBot = ({
                           text={msg.text}
                           onUpdate={scrollToBottom}
                           onComplete={() => {
+                            setTypedMessageIds((prev) => new Set([...prev, msg.id]));
                             setIsTyping(false);
                           }}
                         />
@@ -407,6 +424,8 @@ AIChatBot.propTypes = {
   disclaimerMessage: PropTypes.string,
   onCitationClick: PropTypes.func,
   onQuestionAsked: PropTypes.func,
+  typedMessageIds: PropTypes.instanceOf(Set).isRequired,
+  setTypedMessageIds: PropTypes.func.isRequired,
 };
 
 export default AIChatBot;

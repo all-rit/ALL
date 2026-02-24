@@ -56,6 +56,7 @@ const AIPanel = () => {
   const [activeTab, setActiveTab] = useState('AIChatBot');
   const [currentDisplayTime, setCurrentDisplayTime] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [typedMessageIds, setTypedMessageIds] = useState(new Set());
   const phase4IntroAddedRef = useRef(false);
   const [clickedReviewButtonThisPhase, setClickedReviewButtonThisPhase] =
     useState(false);
@@ -478,10 +479,10 @@ Although many cases are inherited, they can also develop later in life due to ey
           lastMessage.text !== phase4IntroText &&
           !lastMessage.text.includes('implemented your IDE fixes')
         ) {
-          setQuestionAnswered(false);
           phase4IntroAddedRef.current = true;
 
           setTimeout(() => {
+            setQuestionAnswered(false);
             setChatMessages((prev) => [
               ...prev,
               {
@@ -514,7 +515,8 @@ Although many cases are inherited, they can also develop later in life due to ey
 
     setClickedReviewButtonThisPhase(true);
     setCurrentAnswerData(null);
-    setQuestionAnswered(false);
+    // Keep questionAnswered=true until the transition message is added,
+    // so the question dropdown doesn't flash up between topics.
     setIsBotThinking(false);
     setIsBotTyping(false);
     setHasShownWikipediaInPhase(false);
@@ -532,6 +534,7 @@ Although many cases are inherited, they can also develop later in life due to ey
           // Navigate to IDE introduction after Phase 3
           if (nextIndex >= getOrderedTopics.length && currentPhase < 4) {
             setTimeout(() => {
+              setQuestionAnswered(false);
               startExercise();
               navigate('/Lab13/Exercise/IDEIntroduction');
             }, 300);
@@ -541,6 +544,7 @@ Although many cases are inherited, they can also develop later in life due to ey
           if (currentPhase === 4) {
             phase4IntroAddedRef.current = false;
             setTimeout(() => {
+              setQuestionAnswered(false);
               startExercise();
               navigate('/Lab13/Exercise/Conclusion');
             }, 300);
@@ -559,6 +563,8 @@ Although many cases are inherited, they can also develop later in life due to ey
           const nextTopic = getOrderedTopics[nextIndex];
           if (nextTopic) {
             setTimeout(() => {
+              // Only allow question selection once the transition message is in place
+              setQuestionAnswered(false);
               setChatMessages((prev) => [
                 ...prev,
                 {
@@ -583,6 +589,7 @@ Although many cases are inherited, they can also develop later in life due to ey
     setWikipediaSessionStart,
     setCurrentPhase,
     currentPhase,
+    setQuestionAnswered,
   ]);
 
   const handleAnswerSelected = useCallback(
@@ -667,6 +674,8 @@ Although many cases are inherited, they can also develop later in life due to ey
                       }
                       onCitationClick={handleCitationClick}
                       onQuestionAsked={handleQuestionAsked}
+                      typedMessageIds={typedMessageIds}
+                      setTypedMessageIds={setTypedMessageIds}
                     />
                   </div>
                   <div className="tw-bg-white tw-flex tw-flex-col tw-items-center tw-py-4 tw-border-t tw-border-gray-200">
