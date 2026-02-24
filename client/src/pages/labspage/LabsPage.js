@@ -95,7 +95,9 @@ const LabsPage = (props) => {
   const labsByDifficulty = (labMap, difficulty) => {
     const filteredMap = new Map();
     for (const [key, value] of labMap.entries()) {
-      const filteredArr = value.filter((x) => x.difficulty === difficulty);
+      const filteredArr = value.filter((x) =>
+        difficulty.includes(x.difficulty),
+      );
       if (filteredArr.length > 0) {
         filteredMap.set(key, filteredArr);
       }
@@ -126,19 +128,35 @@ const LabsPage = (props) => {
   const [textSearch, setTextSearch] = useState("");
 
   const [showFilter, setShowFilter] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState(null);
-  const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+  const [selectedTopic, setSelectedTopic] = useState([]);
+  const [selectedDifficulty, setSelectedDifficulty] = useState([]);
 
+  const changeTopic = (value) => {
+    setSelectedTopic((prev) =>
+      prev.includes(value)
+        ? prev.filter((topic) => topic !== value)
+        : [...prev, value],
+    );
+  };
+  const changeDifficulty = (value) => {
+    setSelectedDifficulty((prev) =>
+      prev.includes(value)
+        ? prev.filter((level) => level !== value)
+        : [...prev, value],
+    );
+  };
   const applyFilters = (
     topic = selectedTopic,
     difficulty = selectedDifficulty,
     text = textSearch,
   ) => {
     let filtered = new Map(labInformation);
-    if (topic && labInformation.has(topic)) {
-      filtered = new Map([[topic, labInformation.get(topic)]]);
+    if (topic.length > 0) {
+      filtered = new Map(
+        Array.from(filtered.entries()).filter(([key]) => topic.includes(key)),
+      );
     }
-    if (difficulty !== null) {
+    if (difficulty.length > 0) {
       filtered = labsByDifficulty(filtered, difficulty);
     }
     if (text.trim() !== "") {
@@ -336,12 +354,12 @@ const LabsPage = (props) => {
                             className="tw-flex tw-items-center tw-gap-3 tw-cursor-pointer"
                           >
                             <input
-                              type="radio"
+                              type="checkbox"
                               id={option.id}
                               name="topic"
                               value={option.value}
-                              checked={selectedTopic === option.value}
-                              onChange={() => setSelectedTopic(option.value)}
+                              checked={selectedTopic.includes(option.value)}
+                              onChange={() => changeTopic(option.value)}
                               className="tw-accent-primary-yellow"
                             />
                             {option.label}
@@ -360,12 +378,12 @@ const LabsPage = (props) => {
                             className="tw-cursor-pointer tw-flex-1"
                           >
                             <input
-                              type="radio"
+                              type="checkbox"
                               id={`difficulty-${level}`}
                               name="difficulty"
                               value={level}
-                              checked={selectedDifficulty === level}
-                              onChange={() => setSelectedDifficulty(level)}
+                              checked={selectedDifficulty.includes(level)}
+                              onChange={() => changeDifficulty(level)}
                               className="tw-peer tw-hidden"
                             />
                             <div
@@ -376,7 +394,6 @@ const LabsPage = (props) => {
                                 tw-border tw-border-solid tw-border-primary-yellow
                                 tw-font-bold
                                 tw-transition
-                                hover:tw-bg-primary-yellow
                                 peer-checked:tw-bg-primary-yellow
                                 peer-checked:tw-text-black
                               "
@@ -391,8 +408,8 @@ const LabsPage = (props) => {
                       <button
                         type="button"
                         onClick={() => {
-                          setSelectedTopic(null);
-                          setSelectedDifficulty(null);
+                          setSelectedTopic([]);
+                          setSelectedDifficulty([]);
                         }}
                         className="tw-flex-1 tw-px-4 tw-py-2 tw-border-2 tw-bg-white tw-rounded-md tw-font-bold"
                       >
