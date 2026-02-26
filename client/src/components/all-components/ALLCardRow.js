@@ -31,7 +31,7 @@ const ALLCardRow = (props) => {
 
   return (
     <div className="tw-flex tw-flex-col tw-w-full tw-my-3">
-      <div className="tw-shadow-lg tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-rounded-lg tw-relative">
+      <div className="tw-shadow-lg tw-w-full tw-flex tw-flex-row tw-rounded-lg tw-relative">
         {/* Left */}
         <image
           className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
