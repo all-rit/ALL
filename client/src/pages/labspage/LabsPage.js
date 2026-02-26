@@ -307,21 +307,6 @@ const LabsPage = (props) => {
                     }}
                     className="tw-p-6 tw-mt-5 tw-space-y-4 tw-w-[90%] tw-max-w-[800px] tw-text-left tw-rounded-md tw-shadow-md"
                   >
-                    <div className="tw-flex tw-justify-between">
-                      <h1 className="tw-text-2xl tw-font-bold">Filter</h1>
-                      <button
-                        onClick={() => setShowFilter(false)}
-                        className="tw-text-4xl 
-                          tw-font-poppins tw-top-2 tw-right-2
-                          tw-text-black tw-bg-transparent
-                          tw-rounded-4xl tw-border-0
-                          tw-flex tw-w-10 tw-h-10
-                          tw-items-center tw-justify-end"
-                        aria-label="Escape Button"
-                      >
-                        &times;{" "}
-                      </button>
-                    </div>
                     <div className="tw-space-y-4">
                       <h2 className="tw-text-lg tw-font-bold">Topic</h2>
                       <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
