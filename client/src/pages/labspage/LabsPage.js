@@ -384,18 +384,17 @@ const LabsPage = (props) => {
                               value={level}
                               checked={selectedDifficulty.includes(level)}
                               onChange={() => changeDifficulty(level)}
-                              className="tw-peer tw-hidden"
+                              className="tw-peer tw-w-0 tw-h-0"
                             />
                             <div
                               className=" 
-                                tw-h-10
                                 tw-flex tw-items-center tw-justify-center
-                                tw-rounded-2xl
-                                tw-border tw-border-solid tw-border-primary-yellow
-                                tw-font-bold
-                                tw-transition
                                 peer-checked:tw-bg-primary-yellow
-                                peer-checked:tw-text-black
+                                peer-focus:tw-border-black
+                                btn tw-border-solid tw-shadow-md tw-border-1 
+                                xs:tw-text-xs md:tw-text-[1rem] tw-bg-white 
+                                hover:tw-bg-primary-yellow
+                                tw-z-10
                               "
                             >
                               {level}
