@@ -79,7 +79,7 @@ const SiteAccessibilityButton = () => {
               <img className="" src={AccessibilityImage} />
             </SquircleButton>
           </div>
-          <div className="tw-overflow-y-scroll tw-max-h-[80%] tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
+          <div className="tw-overflow-y-scroll tw-max-h-[85%] tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
             <Collapse isOpen={open}>
               <Card
                 className="tw-bg-white tw-flex-col tw-shadow-lg tw-shadow-labGray"
