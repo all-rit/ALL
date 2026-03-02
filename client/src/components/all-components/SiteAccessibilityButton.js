@@ -5,7 +5,8 @@ import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
 import AccessibilityImage from "../../assets/images/accessibility_icon.png";
-import { Card, CardHeader, CardBody, Button, Collapse } from "reactstrap";
+import "./SiteAccessibilityButton.css";
+import { Card, CardHeader, CardBody, Collapse, Modal } from "reactstrap";
 import {
   changeTSize,
   setTextColor,
@@ -45,6 +46,10 @@ const SiteAccessibilityButton = () => {
     }
   };
 
+  const modalToggleCollapse = () => {
+    setOpen(!open);
+  };
+
   let state = {
     fontSize: 0,
     textColor: false,
@@ -70,6 +75,139 @@ const SiteAccessibilityButton = () => {
     state = { ...state, backgroundColor: obj.color };
   }
 
+  return (
+    <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
+      <SquircleButton onClick={(e) => toggleCollapse(e)}>
+        <img className="" src={AccessibilityImage} />
+      </SquircleButton>
+      {isSmallView ? (
+        <Modal
+          isOpen={open}
+          toggle={modalToggleCollapse}
+          contentClassName="small-modal-style"
+        >
+          <Card
+            className="tw-bg-white tw-flex-col tw-shadow-lg tw-shadow-labGray"
+            outline
+            color="light"
+          >
+            <CardHeader className="tw-bg-primary-blue">
+              <h3 className="tw-title tw-text-xl tw-font-bold tw-text-white tw-text-center">
+                Accessibility Tools
+              </h3>
+            </CardHeader>
+            <CardBody className="tw-p-2">
+              <p className="tw-text-left tw-body-text tw-px-3">
+                Text Size Adjuster
+              </p>
+              <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
+                <button
+                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
+                  onClick={() => changeSize(1)}
+                >
+                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
+                    +
+                  </p>
+                </button>
+                <button
+                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
+                  onClick={() => changeSize(-1)}
+                >
+                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
+                    -
+                  </p>
+                </button>
+              </div>
+              <p className="tw-text-left tw-body-text tw-my-2 tw-px-3">
+                Text Color Adjuster
+              </p>
+              <div className={"tw-w-full tw-flex tw-justify-center"}>
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  defaultColor={"#345679"}
+                  color={state.color}
+                  onChange={onTextColorChange.bind(this)}
+                />
+              </div>
+              <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
+                Background Color Adjuster
+              </p>
+              <div className={"tw-w-full tw-flex tw-justify-center"}>
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  defaultColor={"#345679"}
+                  color={state.backgroundColor}
+                  onChange={onBgColorChange.bind(this)}
+                />
+              </div>
+            </CardBody>
+          </Card>
+        </Modal>
+      ) : (
+        <Collapse className="" isOpen={open}>
+          <Card
+            className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray tw-w-[20rem]"
+            outline
+            color="light"
+          >
+            <CardHeader className="tw-bg-primary-blue">
+              <h3 className="tw-title tw-text-xl tw-font-bold tw-text-white tw-text-center">
+                Accessibility Tools
+              </h3>
+            </CardHeader>
+            <CardBody className="tw-p-2">
+              <p className="tw-text-left tw-body-text tw-px-3">
+                Text Size Adjuster
+              </p>
+              <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
+                <button
+                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
+                  onClick={() => changeSize(1)}
+                >
+                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
+                    +
+                  </p>
+                </button>
+                <button
+                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
+                  onClick={() => changeSize(-1)}
+                >
+                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
+                    -
+                  </p>
+                </button>
+              </div>
+              <p className="tw-text-left tw-body-text tw-my-2 tw-px-3">
+                Text Color Adjuster
+              </p>
+              <div className={"tw-w-full tw-flex tw-justify-center"}>
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  defaultColor={"#345679"}
+                  color={state.color}
+                  onChange={onTextColorChange.bind(this)}
+                />
+              </div>
+              <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
+                Background Color Adjuster
+              </p>
+              <div className={"tw-w-full tw-flex tw-justify-center"}>
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  defaultColor={"#345679"}
+                  color={state.backgroundColor}
+                  onChange={onBgColorChange.bind(this)}
+                />
+              </div>
+            </CardBody>
+          </Card>
+        </Collapse>
+      )}
+    </div>
+  );
+};
+// };
+/*
   return (
     <>
       {isSmallView ? (
@@ -215,147 +353,7 @@ const SiteAccessibilityButton = () => {
         </div>
       )}
     </>
-  );
-};
-
-{
-  /* return (
-    <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
-      <SquircleButton onClick={(e) => toggleCollapse(e)}>
-        <img className="" src={AccessibilityImage} />
-      </SquircleButton>
-      {isSmallView ? (
-        <Modal isOpen={open}>
-          <Card
-            className="tw-bg-white tw-flex-col tw-shadow-lg tw-shadow-labGray"
-            outline
-            color="light"
-          >
-            <CardHeader className="tw-bg-primary-blue">
-              <h3 className="tw-title tw-text-xl tw-font-bold tw-text-white tw-text-center">
-                Accessibility Tools
-              </h3>
-            </CardHeader>
-            <CardBody className="tw-p-2">
-              <p className="tw-text-left tw-body-text tw-px-3">
-                Text Size Adjuster
-              </p>
-              <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
-                <button
-                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
-                  onClick={() => changeSize(1)}
-                >
-                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
-                    +
-                  </p>
-                </button>
-                <button
-                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
-                  onClick={() => changeSize(-1)}
-                >
-                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
-                    -
-                  </p>
-                </button>
-              </div>
-              <p className="tw-text-left tw-body-text tw-my-2 tw-px-3">
-                Text Color Adjuster
-              </p>
-              <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.color}
-                  onChange={onTextColorChange.bind(this)}
-                />
-              </div>
-              <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
-                Background Color Adjuster
-              </p>
-              <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.backgroundColor}
-                  onChange={onBgColorChange.bind(this)}
-                />
-              </div>
-              <div className="tw-pt-2 tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
-                <Button
-                  onClick={(e) => {
-                    toggleCollapse(e);
-                  }}
-                >
-                  Close
-                </Button>
-              </div>
-            </CardBody>
-          </Card>
-        </Modal>
-      ) : (
-        <Collapse className="" isOpen={open}>
-          <Card
-            className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray tw-w-[20rem]"
-            outline
-            color="light"
-          >
-            <CardHeader className="tw-bg-primary-blue">
-              <h3 className="tw-title tw-text-xl tw-font-bold tw-text-white tw-text-center">
-                Accessibility Tools
-              </h3>
-            </CardHeader>
-            <CardBody className="tw-p-2">
-              <p className="tw-text-left tw-body-text tw-px-3">
-                Text Size Adjuster
-              </p>
-              <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
-                <button
-                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
-                  onClick={() => changeSize(1)}
-                >
-                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
-                    +
-                  </p>
-                </button>
-                <button
-                  className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
-                  onClick={() => changeSize(-1)}
-                >
-                  <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
-                    -
-                  </p>
-                </button>
-              </div>
-              <p className="tw-text-left tw-body-text tw-my-2 tw-px-3">
-                Text Color Adjuster
-              </p>
-              <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.color}
-                  onChange={onTextColorChange.bind(this)}
-                />
-              </div>
-              <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
-                Background Color Adjuster
-              </p>
-              <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.backgroundColor}
-                  onChange={onBgColorChange.bind(this)}
-                />
-              </div>
-            </CardBody>
-          </Card>
-        </Collapse>
-      )}
-    </div>
-  );
-}; */
-}
+  );*/
 
 export default connect(
   mapStateToProps,
