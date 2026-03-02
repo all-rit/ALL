@@ -6,7 +6,7 @@ import { actions as mainActions } from "../../reducers/MainReducer";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
 import AccessibilityImage from "../../assets/images/accessibility_icon.png";
 import "./SiteAccessibilityButton.css";
-import { Card, CardHeader, CardBody, Collapse, Modal } from "reactstrap";
+import { Card, CardHeader, CardBody, Collapse } from "reactstrap";
 import {
   changeTSize,
   setTextColor,
@@ -46,9 +46,9 @@ const SiteAccessibilityButton = () => {
     }
   };
 
-  const modalToggleCollapse = () => {
-    setOpen(!open);
-  };
+  // const modalToggleCollapse = () => {
+  //   setOpen(!open);
+  // };
 
   let state = {
     fontSize: 0,
@@ -75,6 +75,7 @@ const SiteAccessibilityButton = () => {
     state = { ...state, backgroundColor: obj.color };
   }
 
+  /*
   return (
     <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
       <SquircleButton onClick={(e) => toggleCollapse(e)}>
@@ -204,10 +205,7 @@ const SiteAccessibilityButton = () => {
         </Collapse>
       )}
     </div>
-  );
-};
-// };
-/*
+  ); */
   return (
     <>
       {isSmallView ? (
@@ -217,7 +215,7 @@ const SiteAccessibilityButton = () => {
               <img className="" src={AccessibilityImage} />
             </SquircleButton>
           </div>
-          <div className="tw-overflow-y-scroll tw-max-h-[85%] tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
+          <div className="tw-overflow-y-scroll tw-max-h-[60%] tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-6 tw-mr-6 tw-left-0 tw-z-50">
             <Collapse isOpen={open}>
               <Card
                 className="tw-bg-white tw-flex-col tw-shadow-lg tw-shadow-labGray"
@@ -272,15 +270,6 @@ const SiteAccessibilityButton = () => {
                       color={state.backgroundColor}
                       onChange={onBgColorChange.bind(this)}
                     />
-                  </div>
-                  <div className="tw-pt-2 tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
-                    <Button
-                      onClick={(e) => {
-                        toggleCollapse(e);
-                      }}
-                    >
-                      Close
-                    </Button>
                   </div>
                 </CardBody>
               </Card>
@@ -353,7 +342,8 @@ const SiteAccessibilityButton = () => {
         </div>
       )}
     </>
-  );*/
+  );
+};
 
 export default connect(
   mapStateToProps,
