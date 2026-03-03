@@ -121,7 +121,7 @@ const RSAEncryption = () => {
     } catch (err) {
       // On some older systems, the 'crypto' library doesn't have full compatibility.
       // Instead of *actually* doing RSA, we fake it and just shuffle some numbers.
-      
+
       let publicKey =
         "69d8e47ce6873023aa78cfe7d7e0f93f5276fc3f704872b072a49e5c5c5a8480545bc614ff2ddcb8cf157b2500bb2695f2beaa1df4a55d25c985a7a6c6d48603c34cf67b717a31832d141ab485b78935fc6231d231cc987680ba8855a5d4505363323882c256abec86839466ef45194837f09e3c07f675b4b792524eba1b14cef21ffa2fad22d158851419167cc6ff4b166951c7645ff1bcf96f4c281f76a05fcb57c3eb9b8e93b13e87d04edebe6fed";
       let n =
