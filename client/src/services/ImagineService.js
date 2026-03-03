@@ -140,18 +140,18 @@ const ImagineService = {
     );
   },
 
-  generateDeepfake: async (data) => {
+  handleImageUploads: async (data) => {
     return await API.postWithBodyFormData(
-      process.env.REACT_APP_SERVER_URL + `/imagine26/generateDeepfake`,
+      process.env.REACT_APP_SERVER_URL + `/imagine26/handleImageUploads`,
       data,
     );
   },
 
-  getDeepfakeImagePath: (userID, year) => {
+  getImagePath: (userID, year, pictureType) => {
     return Promise.resolve(
       API.get(
         process.env.REACT_APP_SERVER_URL +
-          `/imagine${year}/getDeepFakeImagePath/${userID}`,
+          `/imagine${year}/getImagePath/${userID}/${pictureType}`,
         {},
       ).then((response) => response.json()),
     );

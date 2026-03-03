@@ -201,23 +201,23 @@ const postUserAvatar = async (req, _res) => {
   };
 };
 
-const deepFakeGenerator = async (req,_res) =>{
+const handleImageUploads = async (req,_res) =>{
   try{
-    const deepfakeBuffer = await ImagineService.deepFakeGenerator(req)
-    if (!deepfakeBuffer){
+    const response = await ImagineService.handleImageUploads(req)
+    if (!response){
       throw new Error("Error while generating deepfake")
     }
-    return deepfakeBuffer
+    return response
   }
   catch(error){
     console.log(error)
   }
 }
 
-const getDeepfakeImagePath = async(req,_res) =>{
+const getImagePath = async(req,_res) =>{
   try {
-    const {year, userID} = req.params;
-    const imagePath = await ImagineService.getDeepfakeImagePath({userID,year})
+    const {year, userID, pictureType} = req.params;
+    const imagePath = await ImagineService.getImagePath({userID,year,pictureType})
     if (!imagePath){
       throw new Error("Error while fetching deepfake image path")
     }
@@ -243,6 +243,6 @@ module.exports = {
   postOpponentAvatar,
   getGroup,
   getTeammate,
-  deepFakeGenerator,
-  getDeepfakeImagePath
+  handleImageUploads,
+  getImagePath
 };

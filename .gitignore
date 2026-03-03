@@ -1,5 +1,6 @@
 #images folder
 server/images/deepfake
+server/service_key.json
 
 # IDE-specific directories
 .idea/

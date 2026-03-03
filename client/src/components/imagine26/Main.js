@@ -10,6 +10,7 @@ import Galaga from "./pages/Game";
 import "./main.css";
 import WebcamCapture from "./pages/CapturePicture";
 import DisplayDeepFake from "./components/DisplayDeepfake";
+import UserProfile from "./components/UserProfile";
 
 const Main = () => {
   const userID = sessionStorage.getItem("userID");
@@ -94,8 +95,9 @@ const Main = () => {
               userID={userID || ""}
             />
             <WebcamCapture path={"/Webcam"} />
-            <DisplayDeepFake path={"/DisplayDeepfake"} />
             <GalagaInstructions path={"/GalagaInstructions"} />
+            <DisplayDeepFake path={"/DisplayDeepfake"} />
+            <UserProfile path={"/UserProfile"}></UserProfile>
             <Galaga path={"/Galaga"} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"

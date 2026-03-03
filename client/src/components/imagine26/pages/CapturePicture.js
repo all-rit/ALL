@@ -54,6 +54,7 @@ const WebcamCapture = () => {
       setImageSrc(imageDataUrl);
     }
   };
+
   //copy to vivian branch
   //when the button is clicked, send the image to backend to generate the deepfake
   const sendImageforGeneration = async () => {
@@ -64,9 +65,9 @@ const WebcamCapture = () => {
     form.append("image", blob, "image.png");
     form.append("userId", sessionStorage.getItem("userID"));
     form.append("year", 26);
-    const response = await ImagineService.generateDeepfake(form);
+    const response = await ImagineService.handleImageUploads(form);
     console.log(response);
-    navigate("/Imagine2026/DisplayDeepfake");
+    navigate("/Imagine2026/GalagaInstructions");
   };
 
   return (
@@ -95,7 +96,7 @@ const WebcamCapture = () => {
       )}
 
       {/* Copy to vivian branch */}
-      <ALLButton onClick={sendImageforGeneration} />
+      <ALLButton label={"Click here"} onClick={sendImageforGeneration} />
     </div>
   );
 };

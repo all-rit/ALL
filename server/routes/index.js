@@ -364,14 +364,14 @@ router.post('/imagine26/quizScore', async function (req, res) {
 });
 
 //deepfake generator
-router.post('/imagine26/generateDeepfake', upload.single('image'),async function(req,res){
-  const resp = await ImagineController.deepFakeGenerator(req)
+router.post('/imagine26/handleImageUploads', upload.single('image'),async function(req,res){
+  const resp = await ImagineController.handleImageUploads(req)
   res.send(resp)
 })
 
-router.get('/imagine26/getDeepFakeImagePath/:userID', async function (req,res){
+router.get('/imagine26/getImagePath/:userID/:pictureType', async function (req,res){
   req.params.year = 26;
-  const imagePath = await ImagineController.getDeepfakeImagePath(req)
+  const imagePath = await ImagineController.getImagePath(req)
   res.json(imagePath);
 })
 

@@ -1,8 +1,12 @@
 const {Op} = require('sequelize');
 const db = require('../database');
 const { GoogleGenAI } = require("@google/genai")
-const path = require('path');
-const fs = require('fs')
+const {Storage} = require('@google-cloud/storage');
+
+//starting google cloud storage
+const storage = new Storage({keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS})
+const bucket_name = 'all_test_deepfake'
+const bucket = storage.bucket(bucket_name);
 
 const submitStudy = async (data) => {
   const {userID, study, year} = data;
@@ -418,7 +422,7 @@ const determineSection2025 = async () => {
   return options[randIndex];
 };
 
-const postImagepath = async (imagine,userID,imagepath) =>{
+const postImagepath = async (imagine,userID,imagepath,isDeepfake) =>{
   try {
     if (userID) {
       const user = await db[imagine]
@@ -429,13 +433,27 @@ const postImagepath = async (imagine,userID,imagepath) =>{
           },
           });
       if (user !== null) {
-        user.imagepath = imagepath;
+        
+        if(!isDeepfake){
+          user.profilePicturePath = imagepath;
+        }else{
+          user.deepfakeImagePath = imagepath
+        }
         user.save();
       } else {
-        await db[imagine].create({
+        if(!isDeepfake){
+          await db[imagine].create({
           userid: userID,
-          imagepath: imagepath,
+          profilePicturePath: imagepath,
         });
+        }else{
+          await db[imagine].create({
+          userid: userID,
+          deepfakeImagePath: imagepath,
+        });
+
+        }
+        
       }
       return true;
     }
@@ -445,30 +463,39 @@ const postImagepath = async (imagine,userID,imagepath) =>{
 
 }
 
-const deepFakeGenerator = async (data) =>{
-  
-  const encoded = data.file.buffer.toString('base64');
-  const userID = data.body.userId
-  const imagine = `Imagine${data.body.year}` 
-  const folder = "images/deepfake"
-  const filePath = path.join(path.dirname(__dirname), folder, userID + ".png");
-  const imagePath = folder + "/" + userID + ".png"
+const uploadUserPicture = async (userID,imagine,imagePath,image,file) =>{
+  try {
+      await file.save(image.buffer,{
+      contentType: image.mimetype, 
+      });
+      const response = await postImagepath(imagine,userID,imagePath,false)
+      if (response){
+        console.log("Image saved successfully")
+        return true
+      }    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const deepFakeGenerator = async (imagine,userID,base64String,imagePath) =>{
+  const aiPath = imagePath.replace('user_images', 'deepfakes');
+  const file = bucket.file(aiPath);
   
   const ai = new GoogleGenAI({ 
     apiKey: process.env.GEMINI_API_KEY
   });
-  const textPrompt = "Generate an image of the person in this photo with a blue hat and holding a sign that says, I dont want cotton candy "
-  
+
+  const textPrompt = "Generate an image of the person in this photo with a blue hat and holding a sign that says, I dont want cotton candy"
   const prompt = [
     { text: textPrompt },
     {
       inlineData: {
         mimeType: "image/png",
-        data: encoded,
+        data: base64String,
       },
     },
   ];
-
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash-image",
     contents: prompt,
@@ -481,32 +508,73 @@ const deepFakeGenerator = async (data) =>{
       } else if (part.inlineData) {
         const imageData = part.inlineData.data;
         const buffer = Buffer.from(imageData, "base64");
-        fs.writeFileSync(filePath, buffer);
-        const response = await postImagepath(imagine,userID,imagePath)
+        await file.save(buffer,{
+          contentType: "image/png", 
+        });
+        const response = await postImagepath(imagine,userID,aiPath,true)
         if(response){
-          console.log("Saved deepfake successfuly")
+          console.log("Saved deepfake successfuly in google cloud")
           return true
         }
       }
     }
+
     } catch (error) {
       console.log(error)
     }
 }
 
-const getDeepfakeImagePath = async (data) =>{  
-    const {userID,year} = data;
+const handleImageUploads = async (data) =>{
+  const userID = data.body.userId
+  const imagine = `Imagine${data.body.year}` 
+  const imagePath = "user_images" + "/" + userID + ".png"
+  const image = data.file
+  const file = bucket.file(imagePath);
+  const response = await uploadUserPicture(userID,imagine,imagePath,image,file)
+  deepFakeGenerator(imagine,userID,image.buffer.toString('base64'),imagePath)
+  return response
+
+}
+
+const getImagePath = async (data) =>{  
+    const {userID,year,pictureType} = data;
+    console.log("user id")
+    console.log(userID)
+
     const imagine = `Imagine${year}`;
+    let imagePath = '';
+    
     try {
       const user = await db[imagine].findOne({
         where: {
           userid: userID,
         },
       });
-      return user.imagepath;
-    } catch (error) {
-      console.error('Could not get deepfake image path by user ID: ', error);
-    }
+      console.log(user)
+      
+      if(pictureType == 'deepfake'){
+        imagePath =  user.deepfakeImagePath
+      }else{
+        imagePath = user.profilePicturePath
+      }
+      
+      // These options will allow temporary read access to the file
+      const options = {
+        version: 'v4',
+        action: 'read',
+        expires: Date.now() + 15 * 60 * 1000, // 15 minutes
+      };
+      
+      //Get a v4 signed URL for reading the file
+      const [url] = await storage
+      .bucket(bucket_name)
+      .file(imagePath)
+      .getSignedUrl(options);
+
+      return url;
+      } catch (error) {
+        console.error('Could not get image path by user ID: ', error);
+      }
 }
 
 module.exports = {
@@ -525,5 +593,7 @@ module.exports = {
   getGroup,
   getTeammate,
   deepFakeGenerator,
-  getDeepfakeImagePath
+  getImagePath,
+  uploadUserPicture,
+  handleImageUploads
 };
