@@ -317,7 +317,7 @@ const LabsPage = (props) => {
                       </button>
                       <h2 className="tw-text-lg tw-font-bold">Topic</h2>
                       <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
-                      <div className="tw-space-y-3">
+                      <div className="tw-grid tw-grid-cols-2 tw-gap-6">
                         {[
                           {
                             id: "accessibility",
@@ -343,7 +343,19 @@ const LabsPage = (props) => {
                           <label
                             key={option.id}
                             htmlFor={option.id}
-                            className="tw-flex tw-items-center tw-gap-3 tw-cursor-pointer"
+                            className={`
+                                tw-flex tw-items-center tw-justify-center
+                                focus-within:tw-border-black
+                                btn tw-border-solid tw-shadow-md tw-border-1 
+                                xs:tw-text-xs md:tw-text-[1rem]
+                                hover:tw-bg-primary-yellow
+                                tw-z-10
+                                ${
+                                  selectedTopic.includes(option.value)
+                                    ? "tw-bg-primary-yellow"
+                                    : "tw-bg-white"
+                                }
+                            `}
                           >
                             <input
                               type="checkbox"
@@ -352,7 +364,7 @@ const LabsPage = (props) => {
                               value={option.value}
                               checked={selectedTopic.includes(option.value)}
                               onChange={() => changeTopic(option.value)}
-                              className="tw-accent-primary-yellow"
+                              className="tw-w-0 tw-h-0"
                             />
                             {option.label}
                           </label>
