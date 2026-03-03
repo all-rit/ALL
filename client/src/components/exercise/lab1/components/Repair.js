@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
+import ColorPicker from "@rc-component/color-picker";
 import RepairService from "../../../../services/lab1/RepairService";
 import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
@@ -48,7 +48,9 @@ class Repair extends Component {
         });
       } else if (e.target.parentNode.className) {
         if (
-          !e.target.parentNode.className.includes("rc-color-picker") &&
+          !e.target.parentNode.className.includes(
+            "@rc-component/color-picker",
+          ) &&
           e.target.id !== "changeAvailableColor"
         ) {
           this.setState({
@@ -64,7 +66,9 @@ class Repair extends Component {
         });
       } else if (e.target.parentNode.className) {
         if (
-          !e.target.parentNode.className.includes("rc-color-picker") &&
+          !e.target.parentNode.className.includes(
+            "@rc-component/color-picker",
+          ) &&
           e.target.id !== "changeUnavailableColor"
         ) {
           this.setState({
@@ -120,13 +124,13 @@ class Repair extends Component {
 
   changeAvailableBackgroundColorHandler(obj) {
     this.setState({
-      availableBackgroundColor: obj.color,
+      availableBackgroundColor: obj.toHexString(),
     });
   }
 
   changeUnavailableBackgroundColorHandler(obj) {
     this.setState({
-      unavailableBackgroundColor: obj.color,
+      unavailableBackgroundColor: obj.toHexString(),
     });
   }
 
@@ -435,7 +439,7 @@ class Repair extends Component {
                 />
                 {availableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
-                    <ColorPickerPanel
+                    <ColorPicker
                       enableAlpha={false}
                       color={this.state.availableBackgroundColor}
                       onChange={this.changeAvailableBackgroundColorHandler.bind(
@@ -478,7 +482,7 @@ class Repair extends Component {
                 />
                 {unavailableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
-                    <ColorPickerPanel
+                    <ColorPicker
                       enableAlpha={false}
                       color={this.state.unavailableBackgroundColor}
                       onChange={this.changeUnavailableBackgroundColorHandler.bind(
