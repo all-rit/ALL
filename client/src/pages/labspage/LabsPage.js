@@ -131,6 +131,10 @@ const LabsPage = (props) => {
   const [selectedTopic, setSelectedTopic] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState([]);
 
+  useEffect(() => {
+    applyFilters(selectedTopic, selectedDifficulty, textSearch);
+  }, [selectedTopic, selectedDifficulty, textSearch]);
+
   const changeTopic = (value) => {
     setSelectedTopic((prev) =>
       prev.includes(value)
@@ -192,7 +196,6 @@ const LabsPage = (props) => {
 
   const handleSearchTextChange = (search) => {
     setTextSearch(search);
-    applyFilters(selectedTopic, selectedDifficulty, search);
   };
 
   const loggedIn =
@@ -287,7 +290,7 @@ const LabsPage = (props) => {
                       tw-rounded-md
                       tw-bg-primary-yellow
                       tw-flex tw-justify-center tw-gap-2
-                      tw-font-bold tw-border-solid tw-border-primary-yellow"
+                      tw-font-bold tw-border-solid tw-border-primary-yellow tw-font-poppins"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -300,14 +303,18 @@ const LabsPage = (props) => {
                   </button>
                 </div>
                 {showFilter && (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      applyFilters();
-                    }}
-                    className="tw-p-6 tw-mt-5 tw-space-y-4 tw-w-[90%] tw-max-w-[800px] tw-text-left tw-rounded-md tw-shadow-md"
-                  >
-                    <div className="tw-space-y-4">
+                  <div className="tw-p-6 tw-mt-5 tw-space-y-4 tw-w-[90%] tw-max-w-[800px] tw-text-left tw-rounded-md tw-shadow-md tw-font-poppins">
+                    <div className="tw-relative tw-space-y-4">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedTopic([]);
+                          setSelectedDifficulty([]);
+                        }}
+                        className="tw-absolute tw-top-0 tw-right-0 tw-px-4 tw-py-2 tw-border-2 tw-bg-white tw-rounded-md tw-font-bold"
+                      >
+                        CLEAR
+                      </button>
                       <h2 className="tw-text-lg tw-font-bold">Topic</h2>
                       <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
                       <div className="tw-space-y-3">
@@ -388,25 +395,7 @@ const LabsPage = (props) => {
                         ))}
                       </div>
                     </div>
-                    <div className="tw-flex tw-gap-4 tw-pt-4">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSelectedTopic([]);
-                          setSelectedDifficulty([]);
-                        }}
-                        className="tw-flex-1 tw-px-4 tw-py-2 tw-border-2 tw-bg-white tw-rounded-md tw-font-bold"
-                      >
-                        CLEAR
-                      </button>
-                      <button
-                        type="submit"
-                        className="tw-flex-1 tw-px-6 tw-py-2 tw-bg-primary-yellow tw-border-none tw-text-black tw-rounded-md tw-font-bold"
-                      >
-                        APPLY
-                      </button>
-                    </div>
-                  </form>
+                  </div>
                 )}
 
                 <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full">
