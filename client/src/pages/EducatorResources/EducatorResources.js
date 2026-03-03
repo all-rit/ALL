@@ -10,7 +10,7 @@ import { ABOUT_US_BODY, ABOUT_US_TITLE } from "../../constants/sections";
 
 const EducatorResources = () => {
   return (
-    <div className={"tw-w-full tw-leading-snug tw-pt-[2rem]"}>
+    <div className={"tw-w-full tw-leading-snug"}>
       <LandingSection
         title={"Educator Resources"}
         body={`Welcome to Accessible Learning Labs Educators Resources! Below, you
