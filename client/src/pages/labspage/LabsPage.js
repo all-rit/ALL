@@ -304,7 +304,7 @@ const LabsPage = (props) => {
                 </div>
                 {showFilter && (
                   <div className="tw-p-6 tw-mt-5 tw-space-y-4 tw-w-[90%] tw-max-w-[800px] tw-text-left tw-rounded-md tw-shadow-md tw-font-poppins">
-                    <div className="tw-relative tw-space-y-4">
+                    <div className="tw-relative tw-py-1 tw-space-y-4">
                       <button
                         type="button"
                         onClick={() => {
