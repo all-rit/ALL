@@ -269,11 +269,11 @@ const LabsPage = (props) => {
                 <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
-                <div className="tw-flex tw-items-center tw-gap-3 tw-max-w-144 sm:tw-w-2/3 ">
-                  <div className="tw-flex tw-flex-1 tw-rounded-md">
+                <div className="tw-flex tw-items-center tw-gap-3 tw-max-w-144 sm:tw-w-2/3 tw-w-full">
+                  <div className="tw-flex tw-flex-1 tw-rounded-md tw-min-w-0">
                     <input
                       className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-md
-                                  tw-border-darkGray tw-border-2"
+                                  tw-border-darkGray tw-border-2 tw-min-w-0"
                       placeholder="Search"
                       type="text"
                       id="searchLabs"
@@ -303,7 +303,7 @@ const LabsPage = (props) => {
                   </button>
                 </div>
                 {showFilter && (
-                  <div className="tw-p-6 tw-mt-5 tw-space-y-4 tw-w-[90%] tw-max-w-[800px] tw-text-left tw-rounded-md tw-shadow-md tw-font-poppins">
+                  <div className="tw-p-6 tw-mt-5 tw-space-y-4 tw-max-w-144 sm:tw-w-2/3 tw-w-full tw-text-left tw-rounded-md tw-shadow-md tw-font-poppins">
                     <div className="tw-relative tw-py-1 tw-space-y-4">
                       <button
                         type="button"
