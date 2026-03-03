@@ -34,7 +34,7 @@ const Conclusion = () => {
             model architecture, and prompt design.
           </li>
           <li className={"tw-body-text"}>
-            Vauge and ambiguous prompts can lead to increased hallucinations.
+            Vague and ambiguous prompts can lead to increased hallucinations.
           </li>
           <li className={"tw-body-text"}>
             Clear and specific prompts can help reduce hallucinations and
