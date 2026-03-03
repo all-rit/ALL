@@ -162,8 +162,6 @@ const AIChatBot = ({
         aiResponseText: botObj?.text,
       };
 
-      setIsThinking(true);
-
       // Calculate delay based on response length
       const delay = Math.ceil((botObj?.text.length || 100) / 100) * 500 + 500;
 
