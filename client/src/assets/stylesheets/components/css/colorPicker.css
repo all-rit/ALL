@@ -1,4 +1,5 @@
 /*FOR COLOR PICKER*/
+/* All names changed to `color-picker` for updated dependency */
 .color-picker-panel-inner {
   position: relative;
   border-radius: 4px;

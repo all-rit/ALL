@@ -206,6 +206,7 @@ class Repair extends Component {
     this.verifyInput();
   };
 
+  // Run state setting inside a componentDidMount to run without warnings
   componentDidMount() {
     if (this.state.background === "") {
       this.setState({

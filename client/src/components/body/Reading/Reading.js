@@ -332,7 +332,7 @@ const Reading = (props) => {
                             ? mobileWrapOptions
                             : mobileNoWrapOptions
                         }
-                        height={!isImagine && pieHeight}
+                        height={!isImagine ? pieHeight : ""} // Converted to turnery so it never evaluates to boolean
                         plugins={mobileLabelWrap ? [mobileLegendWrap] : []}
                       />
                     )}
@@ -359,7 +359,7 @@ const Reading = (props) => {
                     <Pie
                       data={readingData?.piechart.data}
                       options={largeViewPortOptions}
-                      height={!isImagine && PIE_SIZE}
+                      height={!isImagine ? PIE_SIZE : ""} // Converted to turnery so it never evaluates to boolean
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&

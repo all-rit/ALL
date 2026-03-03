@@ -168,7 +168,7 @@ const AddModal = (props) => {
 };
 
 AddModal.propTypes = {
-  addMode: PropTypes.string,
+  addMode: PropTypes.string, // Everyone 'addMode' is used as a String
   user: PropTypes.shape({
     userid: PropTypes.number,
   }),

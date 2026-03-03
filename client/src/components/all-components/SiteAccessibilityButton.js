@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
-import ColorPicker from "@rc-component/color-picker";
+import ColorPicker from "@rc-component/color-picker"; // Updated from deprecated 'rc-color-picker'
 import AccessibilityImage from "../../assets/images/accessibility_icon.png";
 import { Collapse, Card, CardHeader, CardBody } from "reactstrap";
 import "@rc-component/color-picker/assets/index.css";

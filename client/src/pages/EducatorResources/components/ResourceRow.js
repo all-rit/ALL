@@ -18,7 +18,7 @@ const ResourceRow = (props) => {
           <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <hr
+          <hr // Moved out of p-tag and added styling to make it display similar to before
             style={{
               clear: "both",
               display: "block",

@@ -19,6 +19,7 @@ class exercise extends Component {
     };
   }
 
+  // Use if in a componentDidMount so it runs without throwing warnings
   componentDidMount() {
     // setting state for the start time of the exercise
     if (this.state.startTime === 0) {

@@ -33,7 +33,7 @@ const ALLCardRow = (props) => {
     <div className="tw-flex tw-flex-col tw-w-full tw-my-3">
       <div className="tw-shadow-lg tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-rounded-lg tw-relative">
         {/* Left */}
-        <img
+        <img // image was an unrecognized tag in the browser
           src={imageURL}
           className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
           style={{

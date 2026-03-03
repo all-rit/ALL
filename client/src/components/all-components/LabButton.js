@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const LabButton = (props) => {
+  // 'key' cannot be a prop
   const { onClick, type, label, _key, disabled, ariaLabel } = props;
 
   return (

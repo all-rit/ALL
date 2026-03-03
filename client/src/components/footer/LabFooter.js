@@ -47,7 +47,7 @@ const LabFooter = (props) => {
 
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
-
+  // Removed useless useEffect hook, that printed true whenever the LabFooter rendered
   return (
     <div className={"tw-z-10 tw-w-full"}>
       {display && (
