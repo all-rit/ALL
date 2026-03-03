@@ -165,8 +165,6 @@ const RSAEncryption = () => {
     let e = publicJwk.e;
     let d = privateJwk.d;
 
-    console.log(publicKey);
-
     return { publicKey, n, e, d };
   };
 
