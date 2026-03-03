@@ -63,23 +63,21 @@ const AIChatBot = ({
   disclaimerMessage = '',
   onCitationClick = null,
   onQuestionAsked = null,
-  typedMessageIds,
-  setTypedMessageIds,
 }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [showQuestionOptions, setShowQuestionOptions] = useState(false);
   const messagesContainerRef = useRef(null);
 
-  // Auto-trigger typing animation for any new bot message (including greeting/intro messages)
+  // Auto-trigger typing animation for any new bot message flagged as isNew
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
-      if (lastMessage.sender === 'bot' && !typedMessageIds.has(lastMessage.id)) {
+      if (lastMessage.sender === 'bot' && lastMessage.isNew) {
         setIsTyping(true);
       }
     }
-  }, [messages, typedMessageIds]);
+  }, [messages]);
 
   useEffect(() => {
     if (onTypingChange) {
@@ -177,6 +175,7 @@ const AIChatBot = ({
           timestamp: new Date(),
           confidence: botObj?.confidence,
           isPhase4: showConfidenceScore || showCitations || disclaimerMessage,
+          isNew: true,
         };
 
         // Add bot response to message history
@@ -218,8 +217,8 @@ const AIChatBot = ({
             <div
               key={msg.id || index}
               className={`tw-flex tw-items-start tw-gap-3 ${msg.sender === AvatarType.User
-                  ? 'tw-flex-row-reverse'
-                  : 'tw-flex-row'
+                ? 'tw-flex-row-reverse'
+                : 'tw-flex-row'
                 }`}
               style={{
                 animation: 'fadeIn 0.5s ease-in',
@@ -240,8 +239,8 @@ const AIChatBot = ({
               >
                 <div
                   className={`tw-text-black tw-text-left tw-p-3 tw-rounded-lg tw-break-words tw-body-text tw-bg-white tw-shadow ${msg.sender === 'bot'
-                      ? 'tw-max-w-[50vw]'
-                      : 'tw-max-w-[45vw]'
+                    ? 'tw-max-w-[50vw]'
+                    : 'tw-max-w-[45vw]'
                     }`}
                 >
                   {/* User messages - just display text */}
@@ -256,7 +255,11 @@ const AIChatBot = ({
                           text={msg.text}
                           onUpdate={scrollToBottom}
                           onComplete={() => {
-                            setTypedMessageIds((prev) => new Set([...prev, msg.id]));
+                            setMessages((prev) =>
+                              prev.map((m) =>
+                                m.id === msg.id ? { ...m, isNew: false } : m
+                              )
+                            );
                             setIsTyping(false);
                           }}
                         />
@@ -343,8 +346,8 @@ const AIChatBot = ({
                       onClick={() => handleQuestionClick(question)}
                       disabled={!canSelectQuestion}
                       className={`tw-w-full tw-text-left tw-p-3 tw-text-black tw-transition-all tw-duration-200 tw-rounded tw-border-none tw-body-text ${canSelectQuestion
-                          ? 'tw-bg-transparent hover:!tw-bg-bgwhite tw-cursor-pointer'
-                          : 'tw-cursor-not-allowed tw-opacity-50 tw-bg-transparent'
+                        ? 'tw-bg-transparent hover:!tw-bg-bgwhite tw-cursor-pointer'
+                        : 'tw-cursor-not-allowed tw-opacity-50 tw-bg-transparent'
                         }`}
                     >
                       {question.text}
@@ -433,8 +436,6 @@ AIChatBot.propTypes = {
   disclaimerMessage: PropTypes.string,
   onCitationClick: PropTypes.func,
   onQuestionAsked: PropTypes.func,
-  typedMessageIds: PropTypes.instanceOf(Set).isRequired,
-  setTypedMessageIds: PropTypes.func.isRequired,
 };
 
 export default AIChatBot;

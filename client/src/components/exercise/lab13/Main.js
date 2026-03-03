@@ -5,7 +5,6 @@ import { ExerciseStateProvider } from './Lab13Context';
 import ExerciseIntroduction from './pages/ExerciseIntroduction';
 import ConfidenceRanking from './pages/ConfidenceRanking';
 import AIPanel from './pages/AIPanel.js';
-import AIandSearchPanel from './pages/AIandSearchPanel.js';
 import Conclusion from './pages/Conclusion.js';
 import IDEExercise from './pages/IDEExercise';
 import IDEIntroduction from './pages/IDEIntroduction';
@@ -23,24 +22,9 @@ const Main = () => {
           <ExerciseIntroduction default path="/" />
           <ConfidenceRanking path="/ConfidenceRanking" />
           <AIPanel path="/AIPanel" />
-          <AIandSearchPanel path="/AIandSearchPanel" />
           <IDEIntroduction path="/IDEIntroduction" />
           <IDEExercise path="/IDEExercise" />
           <Conclusion path="/Conclusion" />
-          {/*
-            // <FormRepair path="/FormRepair" />
-            // <DatabaseRepair path={"/DatabaseRepair"} />
-            // <ExerciseIntro default path="/" />
-            // <GradApplication path="/GraduationApplication" />
-            // <PreWrongDiploma path="/PreWrongDiploma" />
-            // <Diploma path="/Diploma" />
-            // <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
-            // <PostWrongNewsletter path="/PostWrongNewsletter" />
-            // <PreDbRepair path={"/PreDbRepair"} />
-            // <PreCorrectDiploma path="/PreCorrectDiploma" />
-            // <PostCorrectNewsletter path="/PostCorrectNewsletter" />
-            // <KeyTakeaways path="/KeyTakeaways" />
-          */}
         </Router>
       </ExerciseStateProvider>
     </div>

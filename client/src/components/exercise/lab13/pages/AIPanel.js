@@ -56,7 +56,6 @@ const AIPanel = () => {
   const [activeTab, setActiveTab] = useState('AIChatBot');
   const [currentDisplayTime, setCurrentDisplayTime] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [typedMessageIds, setTypedMessageIds] = useState(new Set());
   const phase4IntroAddedRef = useRef(false);
   const [clickedReviewButtonThisPhase, setClickedReviewButtonThisPhase] =
     useState(false);
@@ -444,6 +443,7 @@ Although many cases are inherited, they can also develop later in life due to ey
           sender: 'bot',
           text: `Hi! I'm ALL-IE the AI. What can I help you with?`,
           timestamp: new Date(),
+          isNew: true,
         },
       ]);
       setCurrentPhase(1);
@@ -490,6 +490,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                 sender: 'bot',
                 text: phase4IntroText,
                 timestamp: new Date(),
+                isNew: true,
               },
             ]);
           }, 500);
@@ -572,6 +573,7 @@ Although many cases are inherited, they can also develop later in life due to ey
                   sender: 'bot',
                   text: `Let's continue. Select another prompt.`,
                   timestamp: new Date(),
+                  isNew: true,
                 },
               ]);
             }, 800);
@@ -674,8 +676,6 @@ Although many cases are inherited, they can also develop later in life due to ey
                       }
                       onCitationClick={handleCitationClick}
                       onQuestionAsked={handleQuestionAsked}
-                      typedMessageIds={typedMessageIds}
-                      setTypedMessageIds={setTypedMessageIds}
                     />
                   </div>
                   <div className="tw-bg-white tw-flex tw-flex-col tw-items-center tw-py-4 tw-border-t tw-border-gray-200">
