@@ -1,15 +1,24 @@
 import { React, useEffect } from "react";
 import { EXERCISE_PLAYING } from "src/constants/index";
-import { startExercise } from "src/reducers/lab2/actions";
 import useMainStateContext from "src/reducers/MainContext";
 import { navigate } from "@reach/router";
+import { ExerciseService } from "src/services/lab13/ExerciseService";
 
 const ExerciseIntroduction = () => {
-  const { actions } = useMainStateContext();
+  const { state, actions } = useMainStateContext();
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
   }, []);
+
+  const startExercise = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isExerciseComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
 
   const handleContinue = () => {
     startExercise();

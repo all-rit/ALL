@@ -488,6 +488,28 @@ create table lab12_exercise
     primary key ("repairId")
 );
 
+create table lab13_repair (
+  "repairId"    serial,
+  userid        bigint,
+  section       enum_lab12_repair_section,
+  repair        json,
+  "isComplete"  boolean,
+  "attemptTime" timestamp with time zone,
+  "repairCount" bigint,
+  primary key ("repairId")
+);
+
+create table lab13_exercise
+(
+  "repairId"                         serial,
+  userid                             bigint,
+  "attemptTime"                      timestamp with time zone,
+  "isExerciseComplete"               boolean,
+  "hasViewed"                        boolean,
+  "attemptCount"                     integer,
+  primary key ("repairId")
+);
+
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
 VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessible Learning Lab', 'Tutorials', '/wrench.jpg',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',

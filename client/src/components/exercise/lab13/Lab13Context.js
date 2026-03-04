@@ -102,7 +102,6 @@ export const ExerciseStateProvider = ({ children }) => {
     setChatMessages([]);
   };
 
-  // --- REPAIR SECTION STATE ---
   const [exercisePromptsState, setExercisePromptsState] = useState([
     {
       id: 'disclaimer',
@@ -120,6 +119,7 @@ export const ExerciseStateProvider = ({ children }) => {
       value: false,
     },
   ]);
+
   const [validInputs, setValidInputs] = useState({
     disclaimer: null,
     confidence: null,
@@ -141,9 +141,9 @@ export const ExerciseStateProvider = ({ children }) => {
       .toLowerCase();
     // The disclaimer should be at least 20 characters, and include the words "verify" and "output"
     const disclaimerValid =
-    disclaimerValue.length >= 20 &&
-        /\bverify\b/.test(disclaimerValue) &&
-        /\boutput\b/.test(disclaimerValue);
+      disclaimerValue.length >= 20 &&
+      /\bverify\b/.test(disclaimerValue) &&
+      /\boutput\b/.test(disclaimerValue);
     const confidenceValid = !!exercisePromptsState.find(
       (i) => i.id === 'confidence'
     ).value;

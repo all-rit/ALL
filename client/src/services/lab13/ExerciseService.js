@@ -29,8 +29,6 @@ const ExerciseService = {
     try {
       const body = {
         userID: data.userid,
-        isFormRepairComplete: data.isFormRepairComplete,
-        isDatabaseRepairComplete: data.isDatabaseRepairComplete,
         isExerciseComplete: data.isExerciseComplete,
         hasViewed: data.hasViewed,
       };
