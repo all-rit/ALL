@@ -225,6 +225,7 @@ const Reading = (props) => {
           }
         }
         setReadingData(data[0].reading);
+        console.log(data[0].reading);
       });
 
       if (isImagine) {
@@ -360,6 +361,9 @@ const Reading = (props) => {
                       data={readingData?.piechart.data}
                       options={largeViewPortOptions}
                       height={!isImagine && PIE_SIZE}
+                      aria-label={
+                        "Pie chart describing " + readingData.piechart.header
+                      }
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
