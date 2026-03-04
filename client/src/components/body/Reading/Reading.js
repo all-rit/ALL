@@ -362,7 +362,7 @@ const Reading = (props) => {
                       options={largeViewPortOptions}
                       height={!isImagine && PIE_SIZE}
                       aria-label={
-                        "Pie chart describing " + readingData.piechart.header
+                        "Pie chart titled " + readingData.piechart.header
                       }
                     />
                   </div>
