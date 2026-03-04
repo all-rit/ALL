@@ -4,42 +4,8 @@ import BlobLoader from './BlobLoader';
 import Avatar from './Avatar';
 import { AvatarType } from 'src/constants/lab13/AvatarType';
 import HyperLinkImage from 'src/assets/images/lab13/HyperLink.png';
+import TypingMessage from './TypingMessage';
 
-/**
- * Typewriter animation component effect for bot responses
- * that displays text character by character
- * @param {*} text : Text string to display with the typing effect
- * @param {*} onUpdate : Functon to flag after each character is written
- * @returns
- */
-const TypingMessage = ({ text, onUpdate, onComplete }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  /**
-   * Adds character from currentIndex to displayedText
-   * one at a time everytime the currentIndex, text, or onUpdate changes
-   */
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-
-        // Scroll to bottom when onUpdate is called by component
-        if (onUpdate) onUpdate();
-        // Typing speed, one character every 15ms
-      }, 15);
-
-      return () => clearTimeout(timeout);
-      // onComplete becomes true when finished typing
-    } else if (currentIndex === text.length && onComplete) {
-      onComplete();
-    }
-  }, [currentIndex, text, onUpdate, onComplete]);
-
-  return <>{displayedText}</>;
-};
 
 /**
  * Chatbot component that displays user-ai messages
@@ -400,13 +366,6 @@ const AIChatBot = ({
     </div>
   );
 };
-
-TypingMessage.propTypes = {
-  text: PropTypes.string.isRequired,
-  onUpdate: PropTypes.func,
-  onComplete: PropTypes.func,
-};
-
 AIChatBot.propTypes = {
   userQuestions: PropTypes.arrayOf(
     PropTypes.shape({
