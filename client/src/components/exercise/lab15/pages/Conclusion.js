@@ -20,8 +20,28 @@ const Conclusion = () => {
     }
   };
   return (
-    <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
-      <p>Conclusion</p>
+    <div className="center-div">
+      <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
+      <div className="guidance margin-bottom-2">
+        <p className="tw-body-text tw-text-left tw-py-3">
+          You have completed the exercise for AI Hallucinations. Some of your
+          key takeaways from this lab should include:
+        </p>
+        <ul>
+          <li className={"tw-body-text"}>
+            AI models can generate false or misleading information known as
+            hallucinations, caused by factors such as training data quality,
+            model architecture, and prompt design.
+          </li>
+          <li className={"tw-body-text"}>
+            Vague and ambiguous prompts can lead to increased hallucinations.
+          </li>
+          <li className={"tw-body-text"}>
+            Clear and specific prompts can help reduce hallucinations and
+            improve the accuracy of AI-generated responses.
+          </li>
+        </ul>
+      </div>
       <button
         className="center-div btn btn-primary text-black btn-xl text-uppercase"
         onClick={handleFinish}
