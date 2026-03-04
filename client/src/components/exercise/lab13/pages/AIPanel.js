@@ -390,14 +390,14 @@ Although many cases are inherited, they can also develop later in life due to ey
       }
       return null;
     }
-
     if (topicIndex === 2 && currentPhase < 4) {
-      if (!questionAnswered) {
+      if (!questionAnswered || !currentAnswerData) {
         return `You're now on your least knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
       }
       if (questionAnswered && !canReviewResponse) {
         const timeLeft = 15 - getWikipediaTimeSpent();
         if (!hasVisitedWikipedia) {
+          console.log("HERERERERER")
           return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
         }
         return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
