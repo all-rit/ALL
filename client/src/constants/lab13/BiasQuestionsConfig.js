@@ -15,6 +15,12 @@ export const BIAS_TYPES = {
   DUNNING_KRUGER: 'DUNNING_KRUGER',
 };
 
+export const BIAS_POSITION_MAP = {
+  0: BIAS_TYPES.TRUTH_BIAS, // Most knowledgeable
+  1: BIAS_TYPES.HALO_EFFECT, // Medium knowledgeable
+  2: BIAS_TYPES.DUNNING_KRUGER, // Least knowledgeable
+};
+
 export const BIAS_DEFINITIONS = {
   TRUTH_BIAS: {
     name: 'Truth Bias',

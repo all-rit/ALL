@@ -3,39 +3,29 @@ import {
   useContext,
   useMemo,
   useState,
-  useCallback,
   useEffect,
   useRef,
 } from 'react';
 import { startExercise } from 'src/reducers/lab2/actions';
 import { navigate } from '@reach/router';
-import AIChatBot from '../components/AIChatBot';
 import { Tabs } from '../components/Tab/Tabs';
-import { Tab } from '../components/Tab/Tab';
-import RatingModal from '../components/RatingModal';
 import ExerciseStateContext from '../Lab13Context';
 import {
-  BIAS_TYPES,
-  BIAS_DEFINITIONS,
   getTopicById,
 } from 'src/constants/lab13/BiasQuestionsConfig';
-import { HIGHLIGHTS_MAPPING } from 'src/constants/lab13/HighlightsMapping';
-import ProgressBar from 'src/components/all-components/ProgressBar';
+import { content } from 'src/constants/lab13/WikipediaContent';
+import AIPanelRatingModal from '../components/AIPanel/AIPanelRatingModal';
+import AIChatBotTab from '../components/AIPanel/AIChatBotTab';
+import AllPediaTab from '../components/AIPanel/AllPediaTab';
 
 const AIPanel = () => {
   const {
     rankingColumns,
     chatMessages,
     setChatMessages,
-    hasVisitedWikipedia,
     setHasVisitedWikipedia,
     currentPhase,
     setCurrentPhase,
-    showConfidenceScore,
-    showCitations,
-    disclaimerMessage,
-    askedQuestions,
-    setAskedQuestions,
     topicIndex,
     setTopicIndex,
     wikipediaAccumulatedTime,
@@ -50,25 +40,19 @@ const AIPanel = () => {
   const [currentAnswerData, setCurrentAnswerData] = useState(null);
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
-  const [toneRating, setToneRating] = useState('');
-  const [confidenceRating, setConfidenceRating] = useState('');
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [activeTab, setActiveTab] = useState('AIChatBot');
   const [currentDisplayTime, setCurrentDisplayTime] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const phase4IntroAddedRef = useRef(false);
+  const [toneRating, setToneRating] = useState('');
+  const [confidenceRating, setConfidenceRating] = useState('');
   const [clickedReviewButtonThisPhase, setClickedReviewButtonThisPhase] =
     useState(false);
 
   // State to track when to show the wikipedia page
   const [hasShownWikipediaInPhase, setHasShownWikipediaInPhase] =
     useState(false);
-
-  const BIAS_POSITION_MAP = {
-    0: BIAS_TYPES.TRUTH_BIAS, // Most knowledgeable
-    1: BIAS_TYPES.HALO_EFFECT, // Medium knowledgeable
-    2: BIAS_TYPES.DUNNING_KRUGER, // Least knowledgeable
-  };
 
   // Get all three topics in order: medium, most, least
   const getOrderedTopics = useMemo(() => {
@@ -105,8 +89,6 @@ const AIPanel = () => {
 
   const currentTopic = getOrderedTopics[topicIndex] || null;
   const activeTopic = currentTopic?.id || null;
-  const activeBias =
-    BIAS_POSITION_MAP[currentTopic?.biasPosition] || BIAS_TYPES.HALO_EFFECT;
   const topicData = getTopicById(activeTopic);
 
   // Display Wikipedia based on current phase and whether or not the AI has finished typing
@@ -200,239 +182,8 @@ const AIPanel = () => {
     }
   }, [showWikipediaTab, hasShownWikipediaInPhase]);
 
-  const getWikipediaTimeSpent = useCallback(() => {
-    return currentDisplayTime;
-  }, [currentDisplayTime]);
 
-  // Filter questions for round 4 to only show unasked questions
-  const getAvailableQuestions = useMemo(() => {
-    if (!topicData?.questions) return [];
-
-    if (currentPhase === 4) {
-      // Phase 4, show only unasked questions from current topic
-
-      const available = topicData.questions
-        .map((q, index) => ({ ...q, originalIndex: index }))
-        .filter((q) => {
-          const questionKey = `${activeTopic}-${q.originalIndex}`;
-          return !askedQuestions.includes(questionKey);
-        })
-        .slice(0, 2); // Only first 2 unasked
-
-      return available;
-    }
-
-    // All other phases, show all questions with originalIndex
-    return topicData.questions.map((q, index) => ({
-      ...q,
-      originalIndex: index,
-    }));
-  }, [currentPhase, topicData, askedQuestions, activeTopic]);
-
-  // Switch to Wikipedia tab on citation click
-  const handleCitationClick = useCallback(() => {
-    setActiveTab('ALLpedia');
-  }, []);
-
-  // Track when a question is asked
-  const handleQuestionAsked = useCallback(
-    (questionIndex) => {
-      const questionKey = `${activeTopic}-${questionIndex}`;
-      setCurrentQuestion(questionIndex);
-
-      setAskedQuestions((prev) => {
-        if (!prev.includes(questionKey)) {
-          return [...prev, questionKey];
-        }
-        return prev;
-      });
-    },
-    [currentPhase, setAskedQuestions, activeTopic]
-  );
-
-  // Helper function to parse text and highlight specific patterns
-  const renderTextWithHighlight = (text, highlightPatterns = []) => {
-    if (!text || !highlightPatterns.length) return text;
-
-    // Combine all patterns into one regex on a single pass
-    const sortedPatterns = [...highlightPatterns].sort(
-      (a, b) => b.length - a.length
-    );
-    const escapedPatterns = sortedPatterns.map((p) =>
-      p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    );
-    const combinedPattern = escapedPatterns.map((p) => `(${p})`).join('|');
-    const regex = new RegExp(combinedPattern, 'gi');
-
-    // Split once - capturing groups make matches return at odd indices
-    const segments = text.split(regex);
-    let keyCounter = 0;
-
-    return segments.map((segment, i) => {
-      // Odd indices are matches (from capturing groups)
-      if (i % 2 === 1 && segment) {
-        return (
-          <span
-            key={`highlight-${keyCounter++}`}
-            className="tw-bg-primary-yellow tw-px-1 tw-rounded-sm tw-font-semibold"
-          >
-            {segment}
-          </span>
-        );
-      }
-      return segment;
-    });
-  };
-
-  // Get highlights based on current answer data, topic, and question
-  const getAnswerDataHighlights = () => {
-    if (!currentAnswerData || currentQuestion === null) return [];
-
-    const topicKey = activeTopic?.toLowerCase();
-    const biasType = currentAnswerData.biasType;
-
-    return HIGHLIGHTS_MAPPING[topicKey]?.[currentQuestion]?.[biasType] || [];
-  };
-
-  // Get Wikipedia content based on topic
-  const getWikipediaContent = (topicId) => {
-    const content = {
-      localization: {
-        title: 'Localization',
-        text: `Localization is the process of adapting information or communication to align with the cultural, linguistic, and social expectations of a specific audience. Unlike translation, which focuses only on language, localization also adjusts context, examples, and cultural references.
-
-This may include using local currency or changing date formats, but it does not involve physical changes, such as changing clothing materials for climate. However, modifying language or tone to fit different social settings can be considered a form of cultural localization.`,
-        sources: [
-          'https://resources.gala-global.org/accessibility-localization/',
-          'https://www.vistatec.com/localization-for-all-advancing-accessibility-and-inclusion-in-a-globalized-world/',
-        ],
-        imageUrl:
-          'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=400', // Placeholder
-      },
-      colorblindness: {
-        title: 'Color Blindness',
-        text: `Color blindness is a visual condition that affects color perception, most commonly red and green. The most common type, red-green color blindness, is inherited through the X chromosome. People with red-green color blindness do not see only red and green, but may have difficulty distinguishing between certain shades.
-
-Although many cases are inherited, they can also develop later in life due to eye disease, injury, aging, or certain medications. Complete color blindness is rare and should not be assumed.`,
-        sources: [
-          'https://www.colourblindawareness.org/colour-blindness/',
-          'https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/color-blindness',
-        ],
-        imageUrl:
-          'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400', // Placeholder
-      },
-      dyslexia: {
-        title: 'Dyslexia',
-        text: `Dyslexia is a neurological learning disability that primarily affects reading and language processing. It is not a vision problem and does not affect intelligence. People with dyslexia may have difficulty connecting written letters to spoken sounds, not how letters visually appear.
-
-        Dyslexia cannot be cured, but it can be effectively supported through early intervention, structured reading instruction, and classroom accommodations.`,
-        sources: [
-          'https://dyslexiaida.org/definition-of-dyslexia/',
-          'https://www.losdschools.org/student-services/dyslexia-handbook/definition-of-dyslexia',
-        ],
-        imageUrl:
-          'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400', // Placeholder
-      },
-    };
-
-    return content[topicId?.toLowerCase()] || content.localization;
-  };
-
-  const wikipediaContent = getWikipediaContent(activeTopic);
-
-  // Check if ai review button should be enabled
-  const canReviewResponse = useMemo(() => {
-    if (!currentAnswerData || isBotTyping || isBotThinking || showRatingModal) {
-      return false;
-    }
-
-    // Phase 3 and 4 require Wikipedia visit for 15 or more seconds
-    if (requireWikipedia) {
-      return hasVisitedWikipedia && getWikipediaTimeSpent() >= 15;
-    }
-
-    return true;
-  }, [
-    currentAnswerData,
-    isBotTyping,
-    isBotThinking,
-    showRatingModal,
-    requireWikipedia,
-    hasVisitedWikipedia,
-    getWikipediaTimeSpent,
-  ]);
-
-  const getCurrentInstruction = useCallback(() => {
-    if (!currentTopic) return null;
-
-    // hide instructions when modals are open or when review button was clicked
-    if (
-      showRatingModal ||
-      showBiasExplanation ||
-      clickedReviewButtonThisPhase
-    ) {
-      return null;
-    }
-
-    if (topicIndex === 0) {
-      if (!canReviewResponse) {
-        return `You're now on your moderately knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
-      }
-      return null;
-    }
-
-    if (topicIndex === 1) {
-      if (questionAnswered && showWikipediaTab && !hasVisitedWikipedia) {
-        return `ALLpedia is now available if you'd like to fact-check ALL-IE's response on ${currentTopic.title} before reviewing.`;
-      }
-      if (!questionAnswered) {
-        return `You're now on your most knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
-      }
-      return null;
-    }
-    if (topicIndex === 2 && currentPhase < 4) {
-      if (!questionAnswered || !currentAnswerData) {
-        return `You're now on your least knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
-      }
-      if (questionAnswered && !canReviewResponse) {
-        const timeLeft = 15 - getWikipediaTimeSpent();
-        if (!hasVisitedWikipedia) {
-          console.log("HERERERERER")
-          return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
-        }
-        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
-      }
-      return null;
-    }
-
-    if (currentPhase === 4) {
-      if (!questionAnswered) {
-        return `Great! Now that you've implemented your IDE fixes, interact with ALL-IE again on your least knowledgeable topic, ${currentTopic.title}.`;
-      }
-      if (questionAnswered && !canReviewResponse) {
-        const timeLeft = 15 - getWikipediaTimeSpent();
-        if (!hasVisitedWikipedia) {
-          return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
-        }
-        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
-      }
-      return null;
-    }
-
-    return null;
-  }, [
-    currentTopic,
-    topicIndex,
-    currentPhase,
-    questionAnswered,
-    hasVisitedWikipedia,
-    canReviewResponse,
-    showRatingModal,
-    showBiasExplanation,
-    clickedReviewButtonThisPhase,
-    showWikipediaTab,
-    getWikipediaTimeSpent,
-  ]);
+  const wikipediaContent = content[activeTopic?.toLowerCase()] || content.localization;
 
   // Initialize first exercise chat with the ALLie greeting
   useEffect(() => {
@@ -510,7 +261,7 @@ Although many cases are inherited, they can also develop later in life due to ey
   ]);
 
   // Add transitions with instructional messages from ALL-ie
-  const handleBiasExplanationClose = useCallback(() => {
+  const handleBiasExplanationClose = () => {
     setShowBiasExplanation(false);
     setShowRatingModal(false);
 
@@ -583,43 +334,7 @@ Although many cases are inherited, they can also develop later in life due to ey
         });
       }, 200);
     }, 100);
-  }, [
-    getOrderedTopics,
-    setChatMessages,
-    setHasVisitedWikipedia,
-    setWikipediaAccumulatedTime,
-    setWikipediaSessionStart,
-    setCurrentPhase,
-    currentPhase,
-    setQuestionAnswered,
-  ]);
-
-  const handleAnswerSelected = useCallback(
-    (biasType, biasDefinition, explanation, aiResponseText) => {
-      setSelectedBiasData({
-        biasType,
-        biasDefinition,
-        explanation,
-        aiResponseText,
-      });
-      setShowRatingModal(true);
-    },
-    []
-  );
-
-  const handleRatingSubmit = useCallback(() => {
-    setShowRatingModal(false);
-    setShowBiasExplanation(true);
-  }, []);
-
-  const biasDefinition = selectedBiasData
-    ? BIAS_DEFINITIONS[selectedBiasData.biasType]
-    : null;
-
-  const handleAnswerDataChange = useCallback((data) => {
-    setCurrentAnswerData(data);
-    setQuestionAnswered(true);
-  }, []);
+  };
 
   return (
     <div className="tw-relative tw-h-full">
@@ -638,222 +353,57 @@ Although many cases are inherited, they can also develop later in life due to ey
             }
           >
             <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
-              <Tab label="AIChatBot">
-                <div className="tw-h-full tw-flex tw-flex-col">
-                  <div className="tw-flex-1 tw-overflow-auto">
-                    <AIChatBot
-                      userQuestions={getAvailableQuestions.map((q, index) => ({
-                        id: index + 1,
-                        text: q.text,
-                        originalIndex:
-                          q.originalIndex !== undefined
-                            ? q.originalIndex
-                            : index,
-                      }))}
-                      fixedAIResponse={getAvailableQuestions.map((q, index) => {
-                        return {
-                          id: index + 1,
-                          text: q.answers[activeBias].text,
-                          isCorrect: q.answers[activeBias].isCorrect,
-                          explanation: q.answers[activeBias].explanation,
-                          biasType: activeBias,
-                          biasDefinition: BIAS_DEFINITIONS[activeBias],
-                          confidence: q.answers[activeBias].confidence || 93,
-                        };
-                      })}
-                      onAnswerDataChange={handleAnswerDataChange}
-                      onTypingChange={setIsBotTyping}
-                      onThinkingChange={setIsBotThinking}
-                      messages={chatMessages}
-                      setMessages={setChatMessages}
-                      canSelectQuestion={!questionAnswered}
-                      showConfidenceScore={
-                        currentPhase === 4 && showConfidenceScore
-                      }
-                      showCitations={currentPhase === 4 && showCitations}
-                      disclaimerMessage={
-                        currentPhase === 4 ? disclaimerMessage : ''
-                      }
-                      onCitationClick={handleCitationClick}
-                      onQuestionAsked={handleQuestionAsked}
-                    />
-                  </div>
-                  <div className="tw-bg-white tw-flex tw-flex-col tw-items-center tw-py-4 tw-border-t tw-border-gray-200">
-                    {getCurrentInstruction() && (
-                      <div className="tw-mb-2 tw-text-sm tw-text-orange-600 tw-font-medium">
-                        {getCurrentInstruction()}
-                      </div>
-                    )}
-
-                    {canReviewResponse && (
-                      <button
-                        onClick={() => {
-                          setClickedReviewButtonThisPhase(true);
-
-                          handleAnswerSelected(
-                            currentAnswerData.biasType,
-                            currentAnswerData.biasDefinition,
-                            currentAnswerData.explanation,
-                            currentAnswerData.aiResponseText
-                          );
-                        }}
-                        className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
-                      >
-                        Review ALL-IE&apos;s Response
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </Tab>
-
+              <AIChatBotTab
+                currentTopic={currentTopic}
+                topicData={topicData}
+                setSelectedBiasData={setSelectedBiasData}
+                setShowRatingModal={setShowRatingModal}
+                setCurrentAnswerData={setCurrentAnswerData}
+                setQuestionAnswered={setQuestionAnswered}
+                showRatingModal={showRatingModal}
+                showBiasExplanation={showBiasExplanation}
+                clickedReviewButtonThisPhase={clickedReviewButtonThisPhase}
+                showWikipediaTab={showWikipediaTab}
+                currentDisplayTime={currentDisplayTime}
+                currentAnswerData={currentAnswerData}
+                questionAnswered={questionAnswered}
+                isBotThinking={isBotThinking}
+                isBotTyping={isBotTyping}
+                requireWikipedia={requireWikipedia}
+                activeTopic={activeTopic}
+                setClickedReviewButtonThisPhase={setClickedReviewButtonThisPhase}
+                setIsBotThinking={setIsBotThinking}
+                setIsBotTyping={setIsBotTyping}
+                setCurrentQuestion={setCurrentQuestion}
+                setActiveTab={setActiveTab}
+              />
               {/* ALLpedia Tab, from phase 2 onwards */}
               {showWikipediaTab && (
-                <Tab label="ALLpedia">
-                  <div className="tw-w-full tw-h-full tw-flex tw-flex-col tw-bg-white tw-overflow-auto">
-                    {/* Header with Title and Timer */}
-                    <div className="tw-bg-gradient-to-r tw-from-blue-50 tw-to-blue-100 tw-p-6 tw-border-b tw-border-blue-200">
-                      <div className="tw-grid tw-grid-cols-3 tw-items-center tw-max-w-6xl tw-mx-auto tw-gap-4">
-                        {/* Left: Empty spacer for balance */}
-                        <div className="tw-w-full">
-                          {/* Empty div for grid balance */}
-                        </div>
-
-                        {/* Title */}
-                        <div className="tw-text-center">
-                          <h1 className="tw-text-3xl tw-font-bold tw-text-gray-800">
-                            {wikipediaContent.title}
-                          </h1>
-                        </div>
-
-                        {/* Timer */}
-                        <div className="tw-flex tw-justify-end">
-                          {requireWikipedia && (
-                            <div className="tw-flex tw-flex-col tw-items-end">
-                              {currentDisplayTime >= 15 ? (
-                                <div className="tw-flex tw-items-center tw-gap-2">
-                                  <span className="tw-text-3xl tw-text-green-600">
-                                    ✓
-                                  </span>
-                                  <span className="tw-text-lg tw-font-semibold tw-text-green-600">
-                                    Complete
-                                  </span>
-                                </div>
-                              ) : (
-                                <ProgressBar
-                                  duration={15 - currentDisplayTime}
-                                  disableTitle
-                                  className="tw-w-36"
-                                />
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Text on left and image on right */}
-                    <div className="tw-flex-1 tw-p-8">
-                      <div className="tw-max-w-6xl tw-mx-auto tw-grid tw-grid-cols-2 tw-gap-8">
-                        {/* Left: Text Content */}
-                        <div className="tw-pr-4">
-                          <div className="tw-prose tw-prose-lg">
-                            {wikipediaContent.text
-                              .split('\n\n')
-                              .map((paragraph, index) => (
-                                <p
-                                  key={index}
-                                  className="tw-text-gray-700 tw-leading-relaxed tw-mb-4 tw-text-left"
-                                >
-                                  {renderTextWithHighlight(
-                                    paragraph,
-                                    getAnswerDataHighlights()
-                                  )}
-                                </p>
-                              ))}
-                          </div>
-                        </div>
-
-                        {/* Image */}
-                        <div className="tw-flex tw-items-start tw-justify-center">
-                          <img
-                            src={wikipediaContent.imageUrl}
-                            alt={wikipediaContent.title}
-                            className="tw-w-full tw-h-auto tw-rounded-lg tw-shadow-lg tw-object-cover"
-                            style={{ maxHeight: '400px' }}
-                          />
-                        </div>
-                      </div>
-
-                      {/* Sources at bottom */}
-                      <div className="tw-max-w-6xl tw-mx-auto tw-mt-12 tw-pt-6 tw-border-t tw-border-gray-200">
-                        <h3 className="tw-text-lg tw-font-semibold tw-text-gray-800 tw-mb-3">
-                          Sources:
-                        </h3>
-                        <ul className="tw-list-none tw-space-y-2">
-                          {wikipediaContent.sources.map((source, index) => (
-                            <li key={index}>
-                              <a
-                                href={source}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="tw-text-blue-600 hover:tw-text-blue-800 tw-underline tw-break-all"
-                              >
-                                {source}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </Tab>
+                <AllPediaTab
+                  wikipediaContent={wikipediaContent}
+                  requireWikipedia={requireWikipedia}
+                  currentDisplayTime={currentDisplayTime}
+                  currentAnswerData={currentAnswerData}
+                  currentQuestion={currentQuestion}
+                  activeTopic={activeTopic}
+                />
               )}
             </Tabs>
           </div>
 
-          <RatingModal
-            show={showRatingModal}
-            setShow={setShowRatingModal}
-            toneRating={toneRating}
+          {/* Rating Modal for Phase 4, shows bias explanation after rating submission */}
+          <AIPanelRatingModal
+            showRatingModal={showRatingModal}
+            setShowRatingModal={setShowRatingModal}
+            showBiasExplanation={showBiasExplanation}
+            setShowBiasExplanation={setShowBiasExplanation}
+            selectedBiasData={selectedBiasData}
+            setSelectedBiasData={setSelectedBiasData}
+            handleBiasExplanationClose={handleBiasExplanationClose}
             setToneRating={setToneRating}
-            confidenceRating={confidenceRating}
             setConfidenceRating={setConfidenceRating}
-            onSubmit={handleRatingSubmit}
-            showTextModal={showBiasExplanation}
-            setShowTextModal={setShowBiasExplanation}
-            textModalHeader={
-              biasDefinition ? (
-                <div className="tw-text-xl tw-font-bold tw-text-textGray tw-pb-0 tw-mb-0 tw-body-text">
-                  {biasDefinition.name}
-                </div>
-              ) : null
-            }
-            textModalBody={
-              selectedBiasData && biasDefinition ? (
-                <div className="tw-p-4 tw-pt-0 tw-text-sm tw-text-gray-700">
-                  {selectedBiasData.aiResponseText && (
-                    <div className="tw-mb-2 tw-p-1 tw-bg-gray-50 tw-rounded tw-border tw-border-gray-200">
-                      <p className=" tw-text-left tw-text-gray-700 tw-body-text">
-                        <strong>Given AI Response: </strong>
-                        <em>&quot;{selectedBiasData.aiResponseText}&quot;</em>
-                      </p>
-                    </div>
-                  )}
-                  <div className="tw-mb-2">
-                    <p className="tw-text-left tw-text-gray-600 tw-border-l-4 tw-border-primary-blue tw-pl-1 tw-pb-3 tw-body-text">
-                      {selectedBiasData.explanation}
-                    </p>
-                  </div>
-                  <div className="tw-bg-blue-50 tw-p-1 tw-rounded tw-mb-2">
-                    <h5 className="tw-font-bold tw-mb-2">
-                      What is {biasDefinition.name}?
-                    </h5>
-                    <p className="tw-body-text">{biasDefinition.definition}</p>
-                  </div>
-                </div>
-              ) : null
-            }
-            onCloseTextModal={handleBiasExplanationClose}
+            toneRating={toneRating}
+            confidenceRating={confidenceRating}
           />
         </>
       )}
