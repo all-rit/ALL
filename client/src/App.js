@@ -204,10 +204,11 @@ const App = () => {
     <>
       {isLoaded ? (
         <div
-          className={`overflow-x-hidden ${labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
-            }`}
+          className={`overflow-x-hidden ${
+            labInProgress || isImagine
+              ? "overflow-y-hidden tw-h-lvh"
+              : "overflow-y-auto min-h-screen"
+          }`}
         >
           <Suspense fallback={<Spinner />}>
             <Header isImagine={isImagine} />

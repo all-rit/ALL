@@ -415,11 +415,13 @@ const Reading = (props) => {
                     <>
                       <div className="tw-w-full tw-flex tw-justify-center">
                         <div className="flex tw-body-text">
-                            <Pie
+                          <Pie
                             data={data.content.data}
                             height={!isImagine && 100}
-                            options={isImagine && { maintainAspectRatio: false }}
-                            />
+                            options={
+                              isImagine && { maintainAspectRatio: false }
+                            }
+                          />
                         </div>
                       </div>
                       {data.content.caption && (

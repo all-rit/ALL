@@ -24,19 +24,19 @@ const IDEExercise = () => {
 
   const handleContinue = () => {
     if (!checkInputValid()) {
-      alert('Please complete all fields correctly before continuing.');
+      alert("Please complete all fields correctly before continuing.");
       return;
     }
 
     // Save IDE settings to context
     const disclaimerValue = exercisePromptsState.find(
-      (i) => i.id === 'disclaimer'
+      (i) => i.id === "disclaimer",
     ).value;
     const confidenceValue = exercisePromptsState.find(
-      (i) => i.id === 'confidence'
+      (i) => i.id === "confidence",
     ).value;
     const citationsValue = exercisePromptsState.find(
-      (i) => i.id === 'citations'
+      (i) => i.id === "citations",
     ).value;
 
     setDisclaimerMessage(disclaimerValue);
@@ -47,7 +47,7 @@ const IDEExercise = () => {
     setTopicIndex(2);
 
     startExercise();
-    navigate('/Lab13/Exercise/AIPanel');
+    navigate("/Lab13/Exercise/AIPanel");
   };
 
   const data = {

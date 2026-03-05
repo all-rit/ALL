@@ -1,69 +1,69 @@
-import React, { createContext, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { createContext, useState, useContext } from "react";
+import PropTypes from "prop-types";
 const ExerciseStateContext = createContext({
   // Existing user info state
-  exerciseState: '',
-  setExerciseState: () => { },
-  firstName: '',
-  setFirstName: () => { },
-  lastName: '',
-  setLastName: () => { },
-  preferredName: '',
-  setPreferredName: () => { },
-  pronouns: '',
-  setPronouns: () => { },
-  college: '',
-  setCollege: () => { },
-  major: '',
-  setMajor: () => { },
-  gradTerm: '',
-  setGradTerm: () => { },
+  exerciseState: "",
+  setExerciseState: () => {},
+  firstName: "",
+  setFirstName: () => {},
+  lastName: "",
+  setLastName: () => {},
+  preferredName: "",
+  setPreferredName: () => {},
+  pronouns: "",
+  setPronouns: () => {},
+  college: "",
+  setCollege: () => {},
+  major: "",
+  setMajor: () => {},
+  gradTerm: "",
+  setGradTerm: () => {},
 
   // Ranking state
   rankingSuccess: false,
-  setRankingSuccess: () => { },
+  setRankingSuccess: () => {},
   rankingColumns: [],
-  setRankingColumns: () => { },
+  setRankingColumns: () => {},
   rankingBank: [],
-  setRankingBank: () => { },
+  setRankingBank: () => {},
   rankingComplete: false,
-  setRankingComplete: () => { },
-  resetRanking: () => { },
+  setRankingComplete: () => {},
+  resetRanking: () => {},
 
   // Save chat history
   chatMessages: [],
-  setChatMessages: () => { },
-  resetChatMessages: () => { },
+  setChatMessages: () => {},
+  resetChatMessages: () => {},
 
   // Wikpedia page states
   currentPhase: 1,
-  setCurrentPhase: () => { },
+  setCurrentPhase: () => {},
   hasVisitedWikipedia: false,
-  setHasVisitedWikipedia: () => { },
+  setHasVisitedWikipedia: () => {},
   wikipediaTimeSpent: 0,
-  setWikipediaTimeSpent: () => { },
+  setWikipediaTimeSpent: () => {},
 
   // IDE fix states
   showConfidenceScore: false,
-  setShowConfidenceScore: () => { },
+  setShowConfidenceScore: () => {},
   showCitations: false,
-  setShowCitations: () => { },
-  disclaimerMessage: '',
-  setDisclaimerMessage: () => { },
+  setShowCitations: () => {},
+  disclaimerMessage: "",
+  setDisclaimerMessage: () => {},
   // Question tracking states
   askedQuestions: [],
-  setAskedQuestions: () => { },
+  setAskedQuestions: () => {},
 });
 
 export const ExerciseStateProvider = ({ children }) => {
-  const [exerciseState, setExerciseState] = useState('submitting');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [preferredName, setPreferredName] = useState('');
-  const [pronouns, setPronouns] = useState('');
-  const [college, setCollege] = useState('');
-  const [major, setMajor] = useState('');
-  const [gradTerm, setGradTerm] = useState('');
+  const [exerciseState, setExerciseState] = useState("submitting");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [preferredName, setPreferredName] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [college, setCollege] = useState("");
+  const [major, setMajor] = useState("");
+  const [gradTerm, setGradTerm] = useState("");
 
   // Ranking state
   const [rankingSuccess, setRankingSuccess] = useState(false);
@@ -84,7 +84,7 @@ export const ExerciseStateProvider = ({ children }) => {
   // Post IDE fix tracking states
   const [showConfidenceScore, setShowConfidenceScore] = useState(false);
   const [showCitations, setShowCitations] = useState(false);
-  const [disclaimerMessage, setDisclaimerMessage] = useState('');
+  const [disclaimerMessage, setDisclaimerMessage] = useState("");
 
   // Question tracking states
   const [askedQuestions, setAskedQuestions] = useState([]);
@@ -104,17 +104,17 @@ export const ExerciseStateProvider = ({ children }) => {
 
   const [exercisePromptsState, setExercisePromptsState] = useState([
     {
-      id: 'disclaimer',
+      id: "disclaimer",
       fileId: 0,
-      value: '',
+      value: "",
     },
     {
-      id: 'confidence',
+      id: "confidence",
       fileId: 0,
       value: false,
     },
     {
-      id: 'citations',
+      id: "citations",
       fileId: 0,
       value: false,
     },
@@ -129,7 +129,7 @@ export const ExerciseStateProvider = ({ children }) => {
 
   const handleUserInputChange = (id, value) => {
     setExercisePromptsState((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, value } : item))
+      prev.map((item) => (item.id === id ? { ...item, value } : item)),
     );
     setIsFirst(false);
   };
@@ -145,10 +145,10 @@ export const ExerciseStateProvider = ({ children }) => {
       /\bverify\b/.test(disclaimerValue) &&
       /\boutput\b/.test(disclaimerValue);
     const confidenceValid = !!exercisePromptsState.find(
-      (i) => i.id === 'confidence'
+      (i) => i.id === "confidence",
     ).value;
     const citationsValid = !!exercisePromptsState.find(
-      (i) => i.id === 'citations'
+      (i) => i.id === "citations",
     ).value;
     setValidInputs({
       disclaimer: disclaimerValid,
@@ -159,8 +159,8 @@ export const ExerciseStateProvider = ({ children }) => {
   };
 
   // No-ops for fetchRepair/postRepair for this exercise
-  const fetchRepair = () => { };
-  const postRepair = () => { };
+  const fetchRepair = () => {};
+  const postRepair = () => {};
 
   return (
     <ExerciseStateContext.Provider
@@ -228,7 +228,6 @@ export const ExerciseStateProvider = ({ children }) => {
         setAskedQuestions,
         topicIndex,
         setTopicIndex,
-
       }}
     >
       {children}

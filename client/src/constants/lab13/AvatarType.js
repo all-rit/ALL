@@ -1,4 +1,4 @@
 export const AvatarType = {
-    User: 'user',
-    AI: 'ai'
-}
+  User: "user",
+  AI: "ai",
+};

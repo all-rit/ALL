@@ -1,6 +1,6 @@
-import { useContext, useEffect, useRef } from 'react';
-import { TabsContext } from './TabsContext';
-import PropTypes from 'prop-types';
+import { useContext, useEffect, useRef } from "react";
+import { TabsContext } from "./TabsContext";
+import PropTypes from "prop-types";
 
 export const Tab = ({ label, children }) => {
   const { logTab } = useContext(TabsContext);

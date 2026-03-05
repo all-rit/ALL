@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import BlobLoader from './BlobLoader';
-import Avatar from './Avatar';
-import { AvatarType } from 'src/constants/lab13/AvatarType';
-import HyperLinkImage from 'src/assets/images/lab13/HyperLink.png';
-import TypingMessage from './TypingMessage';
-
+import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import BlobLoader from "./BlobLoader";
+import Avatar from "./Avatar";
+import { AvatarType } from "src/constants/lab13/AvatarType";
+import HyperLinkImage from "src/assets/images/lab13/HyperLink.png";
+import TypingMessage from "./TypingMessage";
 
 /**
  * Chatbot component that displays user-ai messages
@@ -26,7 +25,7 @@ const AIChatBot = ({
   canSelectQuestion = true,
   showConfidenceScore = false,
   showCitations = false,
-  disclaimerMessage = '',
+  disclaimerMessage = "",
   onCitationClick = null,
   onQuestionAsked = null,
 }) => {
@@ -39,7 +38,7 @@ const AIChatBot = ({
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
-      if (lastMessage.sender === 'bot' && lastMessage.isNew) {
+      if (lastMessage.sender === "bot" && lastMessage.isNew) {
         setIsTyping(true);
       }
     }
@@ -61,7 +60,7 @@ const AIChatBot = ({
   useEffect(() => {
     if (messages.length > 0 && canSelectQuestion) {
       const lastMessage = messages[messages.length - 1];
-      if (lastMessage.sender === 'bot' && !isTyping && !isThinking) {
+      if (lastMessage.sender === "bot" && !isTyping && !isThinking) {
         // Small delay to show questions after bot finishes typing
         const timer = setTimeout(() => {
           setShowQuestionOptions(true);
@@ -133,8 +132,8 @@ const AIChatBot = ({
 
       setTimeout(() => {
         const botMsg = {
-          sender: 'bot',
-          text: botObj ? botObj.text : 'No response found.',
+          sender: "bot",
+          text: botObj ? botObj.text : "No response found.",
           id: `bot-${question.id}-${Date.now()}`,
           timestamp: new Date(),
           confidence: botObj?.confidence,
@@ -160,15 +159,15 @@ const AIChatBot = ({
    * @returns {string} "pulsing" | "spinning" | "static"
    */
   const getBlobMode = () => {
-    if (isThinking) return 'pulsing';
-    if (isTyping) return 'spinning';
-    return 'static';
+    if (isThinking) return "pulsing";
+    if (isTyping) return "spinning";
+    return "static";
   };
 
   return (
     <div
       className="tw-w-full tw-h-[350px] tw-rounded-lg tw-border-solid tw-border-primary-blue tw-flex tw-flex-col tw-overflow-hidden tw-font-sans"
-      style={{ backgroundColor: '#faf9f6', fontFamily: 'Calibri, sans-serif' }}
+      style={{ backgroundColor: "#faf9f6", fontFamily: "Calibri, sans-serif" }}
     >
       {/* Scrollable container that displays the chat messages */}
       <div
@@ -178,111 +177,113 @@ const AIChatBot = ({
         {/* Container for indvidual messages */}
         {messages && messages.length > 0
           ? messages.map((msg, index) => (
-            <div
-              key={msg.id || index}
-              className={`tw-flex tw-items-start tw-gap-3 ${msg.sender === AvatarType.User
-                ? 'tw-flex-row-reverse'
-                : 'tw-flex-row'
-                }`}
-              style={{
-                animation: 'fadeIn 0.5s ease-in',
-              }}
-            >
-              {/* Avatar circle */}
-              <Avatar
-                type={
-                  msg.sender === AvatarType.User
-                    ? AvatarType.User
-                    : AvatarType.AI
-                }
-                size={40}
-              />
-              {/* Message box adjacent to user message */}
               <div
-                className={`tw-flex tw-flex-col ${msg.sender === AvatarType.User ? 'tw-items-end' : 'tw-items-start'}`}
+                key={msg.id || index}
+                className={`tw-flex tw-items-start tw-gap-3 ${
+                  msg.sender === AvatarType.User
+                    ? "tw-flex-row-reverse"
+                    : "tw-flex-row"
+                }`}
+                style={{
+                  animation: "fadeIn 0.5s ease-in",
+                }}
               >
+                {/* Avatar circle */}
+                <Avatar
+                  type={
+                    msg.sender === AvatarType.User
+                      ? AvatarType.User
+                      : AvatarType.AI
+                  }
+                  size={40}
+                />
+                {/* Message box adjacent to user message */}
                 <div
-                  className={`tw-text-black tw-text-left tw-p-3 tw-rounded-lg tw-break-words tw-body-text tw-bg-white tw-shadow ${msg.sender === 'bot'
-                    ? 'tw-max-w-[50vw]'
-                    : 'tw-max-w-[45vw]'
-                    }`}
+                  className={`tw-flex tw-flex-col ${msg.sender === AvatarType.User ? "tw-items-end" : "tw-items-start"}`}
                 >
-                  {/* User messages - just display text */}
-                  {msg.sender === AvatarType.User ? (
-                    msg.text
-                  ) : (
-                    // Bot messages - use renderAIMessage for additional features
-                    <>
-                      {index === messages.length - 1 && isTyping ? (
-                        // Typing animation for latest message
-                        <TypingMessage
-                          text={msg.text}
-                          onUpdate={scrollToBottom}
-                          onComplete={() => {
-                            setMessages((prev) =>
-                              prev.map((m) =>
-                                m.id === msg.id ? { ...m, isNew: false } : m
-                              )
-                            );
-                            setIsTyping(false);
-                          }}
-                        />
-                      ) : (
-                        // Display message text
-                        msg.text
-                      )}
-
-                      {/* Show confidence, disclaimer, citations AFTER typing completes */}
-                      {(!isTyping || index !== messages.length - 1) &&
-                        msg.confidence &&
-                        msg.isPhase4 && (
-                          <div className="tw-grid tw-space-y-2 tw-mt-2 tw-text-sm">
-                            {showConfidenceScore && (
-                              <div className="tw-text-gray-600">
-                                <strong>Confidence Score: </strong>
-                                {msg.confidence}
-                              </div>
-                            )}
-
-                            {disclaimerMessage && (
-                              <div className="tw-text-gray-500">
-                                <strong>Disclaimer: </strong>
-                                <em>{disclaimerMessage}</em>
-                              </div>
-                            )}
-
-                            {showCitations && (
-                              <div className="tw-flex tw-items-center tw-gap-1">
-                                <strong>Source: </strong>
-                                <div
-                                  className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
-                                  onClick={onCitationClick}
-                                >
-                                  <p>ALLpedia</p>
-                                  <img
-                                    src={HyperLinkImage}
-                                    alt="Hyper Link Image"
-                                    className="tw-w-5 tw-h-5 mb-1"
-                                  />
-                                </div>
-                              </div>
-                            )}
-                          </div>
+                  <div
+                    className={`tw-text-black tw-text-left tw-p-3 tw-rounded-lg tw-break-words tw-body-text tw-bg-white tw-shadow ${
+                      msg.sender === "bot"
+                        ? "tw-max-w-[50vw]"
+                        : "tw-max-w-[45vw]"
+                    }`}
+                  >
+                    {/* User messages - just display text */}
+                    {msg.sender === AvatarType.User ? (
+                      msg.text
+                    ) : (
+                      // Bot messages - use renderAIMessage for additional features
+                      <>
+                        {index === messages.length - 1 && isTyping ? (
+                          // Typing animation for latest message
+                          <TypingMessage
+                            text={msg.text}
+                            onUpdate={scrollToBottom}
+                            onComplete={() => {
+                              setMessages((prev) =>
+                                prev.map((m) =>
+                                  m.id === msg.id ? { ...m, isNew: false } : m,
+                                ),
+                              );
+                              setIsTyping(false);
+                            }}
+                          />
+                        ) : (
+                          // Display message text
+                          msg.text
                         )}
-                    </>
-                  )}
+
+                        {/* Show confidence, disclaimer, citations AFTER typing completes */}
+                        {(!isTyping || index !== messages.length - 1) &&
+                          msg.confidence &&
+                          msg.isPhase4 && (
+                            <div className="tw-grid tw-space-y-2 tw-mt-2 tw-text-sm">
+                              {showConfidenceScore && (
+                                <div className="tw-text-gray-600">
+                                  <strong>Confidence Score: </strong>
+                                  {msg.confidence}
+                                </div>
+                              )}
+
+                              {disclaimerMessage && (
+                                <div className="tw-text-gray-500">
+                                  <strong>Disclaimer: </strong>
+                                  <em>{disclaimerMessage}</em>
+                                </div>
+                              )}
+
+                              {showCitations && (
+                                <div className="tw-flex tw-items-center tw-gap-1">
+                                  <strong>Source: </strong>
+                                  <div
+                                    className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
+                                    onClick={onCitationClick}
+                                  >
+                                    <p>ALLpedia</p>
+                                    <img
+                                      src={HyperLinkImage}
+                                      alt="Hyper Link Image"
+                                      className="tw-w-5 tw-h-5 mb-1"
+                                    />
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                      </>
+                    )}
+                  </div>
+                  {/* Show blob for most recent AI messages while its typing */}
+                  {msg.sender === "bot" &&
+                    index === messages.length - 1 &&
+                    isTyping && (
+                      <div className="tw-flex tw-items-start tw-border-none">
+                        <BlobLoader animationMode={getBlobMode()} />
+                      </div>
+                    )}
                 </div>
-                {/* Show blob for most recent AI messages while its typing */}
-                {msg.sender === 'bot' &&
-                  index === messages.length - 1 &&
-                  isTyping && (
-                    <div className="tw-flex tw-items-start tw-border-none">
-                      <BlobLoader animationMode={getBlobMode()} />
-                    </div>
-                  )}
               </div>
-            </div>
-          ))
+            ))
           : null}
 
         {/*  Question options after greeting */}
@@ -290,7 +291,7 @@ const AIChatBot = ({
           <div
             className="tw-flex tw-items-start tw-gap-3 tw-flex-row-reverse"
             style={{
-              animation: 'fadeIn 0.5 ease-in',
+              animation: "fadeIn 0.5 ease-in",
             }}
           >
             <Avatar type="user" size={40} />
@@ -299,8 +300,8 @@ const AIChatBot = ({
               className="tw-max-w-[70%] tw-bg-white tw-rounded-lg tw-shadow-lg tw-border-2 tw-border-gray-200 tw-overflow-hidden"
               style={{
                 animation: showQuestionOptions
-                  ? 'fadeIn 0.5s ease-in'
-                  : 'fadeOut 0.3s ease-out',
+                  ? "fadeIn 0.5s ease-in"
+                  : "fadeOut 0.3s ease-out",
               }}
             >
               <div className="tw-p-2">
@@ -309,10 +310,11 @@ const AIChatBot = ({
                     <button
                       onClick={() => handleQuestionClick(question)}
                       disabled={!canSelectQuestion}
-                      className={`tw-w-full tw-text-left tw-p-3 tw-text-black tw-transition-all tw-duration-200 tw-rounded tw-border-none tw-body-text ${canSelectQuestion
-                        ? 'tw-bg-transparent hover:!tw-bg-bgwhite tw-cursor-pointer'
-                        : 'tw-cursor-not-allowed tw-opacity-50 tw-bg-transparent'
-                        }`}
+                      className={`tw-w-full tw-text-left tw-p-3 tw-text-black tw-transition-all tw-duration-200 tw-rounded tw-border-none tw-body-text ${
+                        canSelectQuestion
+                          ? "tw-bg-transparent hover:!tw-bg-bgwhite tw-cursor-pointer"
+                          : "tw-cursor-not-allowed tw-opacity-50 tw-bg-transparent"
+                      }`}
                     >
                       {question.text}
                     </button>
@@ -330,7 +332,7 @@ const AIChatBot = ({
         {isThinking && (
           <div
             className="tw-flex tw-justify-start"
-            style={{ animation: 'fadeIn 0.5s ease-in', border: 'none' }}
+            style={{ animation: "fadeIn 0.5s ease-in", border: "none" }}
           >
             <Avatar type="ai" size={40} />
             <div className="tw-flex tw-items-start tw-ml-3 tw-border-none">
@@ -371,7 +373,7 @@ AIChatBot.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       text: PropTypes.string.isRequired,
-    })
+    }),
   ),
   fixedAIResponse: PropTypes.arrayOf(
     PropTypes.shape({
@@ -380,7 +382,7 @@ AIChatBot.propTypes = {
       biasType: PropTypes.string,
       biasDefinition: PropTypes.object,
       explanation: PropTypes.string,
-    })
+    }),
   ),
   onAnswerDataChange: PropTypes.func,
   onTypingChange: PropTypes.func,

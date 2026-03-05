@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react';
-import { TabsContext } from './TabsContext';
-import PropTypes from 'prop-types';
-import './Tabs.css';
+import React, { useState, useCallback } from "react";
+import { TabsContext } from "./TabsContext";
+import PropTypes from "prop-types";
+import "./Tabs.css";
 
 export const Tabs = ({
   children,
@@ -13,7 +13,7 @@ export const Tabs = ({
 
   // Use external activeTab or fall back to first tab
   const activeTabIndex = tabs.findIndex(
-    (tab) => tab.label === externalActiveTab
+    (tab) => tab.label === externalActiveTab,
   );
   const currentActiveIndex = activeTabIndex !== -1 ? activeTabIndex : 0;
 
@@ -45,11 +45,11 @@ export const Tabs = ({
         <div className="tabs-header">
           {tabs.map((tab, index) => (
             <div
-              className={`tab-shadow-wrapper ${index === currentActiveIndex ? 'active' : ''}`}
+              className={`tab-shadow-wrapper ${index === currentActiveIndex ? "active" : ""}`}
               key={index}
             >
               <button
-                className={`${index === currentActiveIndex ? 'active' : ''}`}
+                className={`${index === currentActiveIndex ? "active" : ""}`}
                 onClick={() => handleTabClick(index)}
               >
                 <span className="tab-label">{tab.label}</span>
@@ -62,7 +62,7 @@ export const Tabs = ({
           {tabs.map((tab, index) =>
             index === currentActiveIndex ? (
               <div key={index}>{tab.content}</div>
-            ) : null
+            ) : null,
           )}
         </div>
       </div>
