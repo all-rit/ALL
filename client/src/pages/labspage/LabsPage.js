@@ -303,20 +303,19 @@ const LabsPage = (props) => {
                   </button>
                 </div>
                 {showFilter && (
-                  <div className="tw-p-6 tw-mt-5 tw-space-y-4 tw-max-w-144 sm:tw-w-2/3 tw-w-full tw-text-left tw-rounded-md tw-shadow-md tw-font-poppins">
-                    <div className="tw-relative tw-py-1 tw-space-y-4">
+                  <div className="tw-relative tw-flex tw-flex-col tw-gap-4 tw-p-6 tw-mt-5 tw-max-w-144 sm:tw-w-2/3 tw-w-full tw-text-left tw-rounded-md tw-font-poppins">
+                    <div className="tw-relative">
                       <button
                         type="button"
                         onClick={() => {
                           setSelectedTopic([]);
                           setSelectedDifficulty([]);
                         }}
-                        className="tw-absolute tw-top-0 tw-right-0 btn tw-text-black tw-bg-primary-yellow tw-shadow-md hover:tw-bg-secondary-gray hover:tw-shadow-lg text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap tw-border-none"
+                        className="tw-absolute tw-font-bold tw-z-10 tw-top-0 tw-right-0 btn tw-text-black tw-bg-primary-yellow tw-shadow-md hover:tw-bg-secondary-gray hover:tw-shadow-lg text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap tw-border-none"
                       >
                         CLEAR
                       </button>
-                      <h2 className="tw-text-lg tw-font-bold">Topic</h2>
-                      <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
+                      <h2 className="tw-text-lg tw-font-bold tw-py-4">Topic</h2>
                       <div className="tw-grid tw-grid-cols-2 tw-gap-6">
                         {[
                           {
@@ -371,15 +370,28 @@ const LabsPage = (props) => {
                         ))}
                       </div>
                     </div>
-                    <div className="tw-space-y-4">
-                      <h2 className="tw-text-lg tw-font-bold">Difficulty</h2>
-                      <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
+                    <div className="">
+                      <h2 className="tw-text-lg tw-font-bold tw-py-4">
+                        Difficulty
+                      </h2>
                       <div className="tw-flex tw-gap-6">
                         {[1, 2, 3].map((level) => (
                           <label
                             key={level}
                             htmlFor={`difficulty-${level}`}
-                            className="tw-cursor-pointer tw-flex-1"
+                            className={`
+                                tw-flex-1 tw-items-center tw-justify-center
+                                focus-within:tw-border-black
+                                btn tw-border-solid tw-shadow-md tw-border-1 
+                                xs:tw-text-xs md:tw-text-[1rem]
+                                hover:tw-bg-primary-yellow
+                                tw-z-10
+                                ${
+                                  selectedDifficulty.includes(level)
+                                    ? "tw-bg-primary-yellow"
+                                    : "tw-bg-white"
+                                }
+                            `}
                           >
                             <input
                               type="checkbox"
@@ -388,25 +400,23 @@ const LabsPage = (props) => {
                               value={level}
                               checked={selectedDifficulty.includes(level)}
                               onChange={() => changeDifficulty(level)}
-                              className="tw-peer tw-w-0 tw-h-0"
+                              className="tw-w-0 tw-h-0"
                             />
-                            <div
-                              className=" 
-                                tw-flex tw-items-center tw-justify-center
-                                peer-checked:tw-bg-primary-yellow
-                                peer-focus:tw-border-black
-                                btn tw-border-solid tw-shadow-md tw-border-1 
-                                xs:tw-text-xs md:tw-text-[1rem] tw-bg-white 
-                                hover:tw-bg-primary-yellow
-                                tw-z-10
-                              "
-                            >
-                              {level}
-                            </div>
+                            {level}
                           </label>
                         ))}
                       </div>
                     </div>
+                    <div
+                      className={`tw-absolute tw-border-solid tw-border-primary-blue
+                        tw-border-[0.4rem] tw-right-[-0.5rem] tw-top-[-0.5rem] tw-h-full tw-w-full tw-z-0
+                        tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg`}
+                    />
+                    <div
+                      className={`tw-absolute tw-border-solid tw-border-primary-yellow
+                        tw-border-[0.4rem] tw-left-[-0.5rem] tw-bottom-[-0.5rem]
+                        tw-w-full tw-h-full tw-z-0 tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg`}
+                    />
                   </div>
                 )}
 
