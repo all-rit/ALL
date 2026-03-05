@@ -31,12 +31,12 @@ const ExerciseIntro = () => {
         <div className="guidance margin-bottom-2">
           <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
           <p className="tw-body-text tw-my-6">
-            In this exercise, the user will explore how ineffective prompting
-            can lead to inaccurate AI responses and learn how to refine them.
-            Guided by GCSE standards for prompt engineering, the user will craft
-            your their own prompt and receive a real-time grade from the AI
-            agent. To complete the exercise, the user must iterate on their
-            prompt until it meets the passing criteria.
+            In this exercise, you will explore how ineffective prompting can
+            lead to inaccurate AI responses and learn how to refine them. Guided
+            by GCSE standards for prompt engineering, you will craft your own
+            prompt and receive a real-time grade from the AI agent. To complete
+            the exercise, you must iterate on your prompt until it meets the
+            passing criteria.
           </p>
         </div>
         <LabButton onClick={handleContinue} key="start" label={"Start"} />
