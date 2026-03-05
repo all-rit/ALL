@@ -303,8 +303,8 @@ const LabsPage = (props) => {
                   </button>
                 </div>
                 {showFilter && (
-                  <div className="tw-relative tw-p-6 tw-mt-5 tw-space-y-4 tw-max-w-144 sm:tw-w-2/3 tw-w-full tw-text-left tw-rounded-md tw-font-poppins">
-                    <div className="tw-relative tw-space-y-4">
+                  <div className="tw-p-6 tw-mt-5 tw-space-y-4 tw-max-w-144 sm:tw-w-2/3 tw-w-full tw-text-left tw-rounded-md tw-shadow-md tw-font-poppins">
+                    <div className="tw-relative tw-py-1 tw-space-y-4">
                       <button
                         type="button"
                         onClick={() => {
@@ -315,7 +315,7 @@ const LabsPage = (props) => {
                       >
                         CLEAR
                       </button>
-                      <h2 className="tw-text-lg tw-font-bold tw-pt-4">Topic</h2>
+                      <h2 className="tw-text-lg tw-font-bold">Topic</h2>
                       <div className="tw-h-[3px] tw-bg-primary-yellow tw-w-full"></div>
                       <div className="tw-grid tw-grid-cols-2 tw-gap-6">
                         {[
@@ -407,16 +407,6 @@ const LabsPage = (props) => {
                         ))}
                       </div>
                     </div>
-                    <div
-                      className={`tw-absolute tw-border-solid tw-border-primary-blue
-                            tw-border-[0.4rem] tw-right-[-0.5rem] tw-top-[-0.5rem] tw-h-full tw-w-full tw-z-1
-                            tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg`}
-                    />
-                    <div
-                      className={`tw-absolute tw-border-solid tw-border-primary-yellow
-                        tw-border-[0.4rem] tw-left-[-0.5rem] tw-bottom-[-0.5rem]
-                        tw-w-full tw-h-full tw-z-1 tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg`}
-                    />
                   </div>
                 )}
 
