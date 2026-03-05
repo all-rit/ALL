@@ -346,7 +346,7 @@ const LabsPage = (props) => {
                                 tw-flex tw-items-center tw-justify-center
                                 focus-within:tw-border-black
                                 btn tw-border-solid tw-shadow-md tw-border-1 
-                                xs:tw-text-xs md:tw-text-[1rem]
+                                tw-text-sm md:tw-text-[1rem]
                                 hover:tw-bg-primary-yellow
                                 tw-z-10
                                 ${
@@ -383,7 +383,7 @@ const LabsPage = (props) => {
                                 tw-flex-1 tw-items-center tw-justify-center
                                 focus-within:tw-border-black
                                 btn tw-border-solid tw-shadow-md tw-border-1 
-                                xs:tw-text-xs md:tw-text-[1rem]
+                                tw-text-sm md:tw-text-[1rem]
                                 hover:tw-bg-primary-yellow
                                 tw-z-10
                                 ${
