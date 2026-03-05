@@ -47,7 +47,7 @@
         "varsIgnorePattern": "React"
       }
     ],
-    "indent": "off"
+    "indent": "off",
     // "indent": [
     //   "error", 
     //   2, 
@@ -55,11 +55,11 @@
     //     "ignoredNodes": ["TemplateLiteral", "BinaryExpression"]
     //   }
     // ],
-    // "prettier/prettier": [
-    //   "error",
-    //   {
-    //     "endOfLine": "auto"
-    //   }
-    // ]
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
