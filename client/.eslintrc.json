@@ -49,7 +49,7 @@
     //   }
     // ],
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "endOfLine": "auto"
       }

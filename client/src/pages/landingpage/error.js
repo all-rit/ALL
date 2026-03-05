@@ -1,23 +1,16 @@
-/* eslint-disable react/prop-types */
 import React from "react";
-import Redirect from "../../helpers/Redirect";
+import { navigate } from "@reach/router";
+import ALLButton from "src/components/all-components/ALLButton";
+import useScroll from "src/use-hooks/useScroll";
 
-const Error = (props) => {
-  const { actions } = props;
+const Error = () => {
+  useScroll();
+
   return (
-    <div className="errorpage tw-w-full">
-      <div>
-        <h1>Invalid Page</h1>
-        <hr className="horiz" />
-        <p>Please click the button to navigate home</p>
-        <hr className="horiz" />
-        <button
-          className="btn btn-second btn-xl text-uppercase"
-          onClick={() => Redirect(actions, 99, 0)}
-        >
-          Return Home
-        </button>
-      </div>
+    <div className="tw-w-screen tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-10 tw-mt-[5rem]">
+      <h1 className="tw-title">Invalid Page</h1>
+      <p className="tw-subtitle">Please click the button to navigate home.</p>
+      <ALLButton label="Return Home" onClick={() => navigate("/")} />
     </div>
   );
 };
