@@ -38,7 +38,7 @@ const Header = ({ isImagine }) => {
 
   const renderCommonLinks = () => {
     return (
-      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-start tw-justify-center lg:tw-flex-row lg:tw-items-center lg:tw-justify-end tw-px-4 lg:tw-px-0 *:tw-py-2 lg:*:tw-py-0 lg:*:tw-px-4 lg:*:tw-border-solid lg:*:tw-border-0 lg:*:tw-border-r-2 lg:*:tw-border-primary-blue">
+      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-start tw-justify-center lg:tw-flex-row lg:tw-items-center lg:tw-justify-end tw-px-4 lg:tw-px-0 *:tw-py-2 lg:*:tw-py-0 lg:*:tw-px-4 lg:*:tw-border-solid lg:*:tw-border-0 lg:[&>*:not(:last-child)]:tw-border-r-2 lg:*:tw-border-primary-blue">
         <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
             className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
@@ -65,7 +65,7 @@ const Header = ({ isImagine }) => {
         </li>
         <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
           <a
-            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors tw-leading-5"
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
             href="/EducatorResources"
           >
             Educator Resources
