@@ -33,9 +33,9 @@ const ExerciseIntroduction = () => {
           You are a student at ALL university who is doing their psychology
           homework. You are given 3 questions to answer and are allowed to use
           ALL&apos;s new Generative AI tool, AL, to help you answer them. You
-          want to tackle each question from your most least knowledgeable to
-          most knowledgable. Let&apos;s start with ranking your knowledge about
-          each topic before you use AL to help you answer.
+          want to tackle each question from your least to most knowledgeable.
+          Let&apos;s start with ranking your knowledge about each topic before
+          you use AL to help you answer.
         </p>
         <div className="tw-body-text tw-text-center tw-pb-6">
           Click the <strong>Start</strong> button to begin the exercise!
