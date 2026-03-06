@@ -55,7 +55,8 @@ const RatingModal = ({
             customHeader={
               <div className="tw-flex tw-items-center tw-justify-between tw-p-4">
                 <div className="tw-text-xl tw-font-bold tw-text-textGray tw-m-3">
-                  Rate each factor by its influence on your trust.
+                  Rate how much each part of the AI response impacted your
+                  trust.
                 </div>
                 <button
                   type="button"
@@ -72,7 +73,10 @@ const RatingModal = ({
               <div className="tw-px-2 quiz">
                 <div className="tw-mb-8">
                   <div className="tw-mb-4 tw-body-text tw-text-center tw-border">
-                    Tone:
+                    <p>
+                      How much did the <em>tone</em> of the AI response impact
+                      your trust in it?
+                    </p>
                   </div>
                   <Likert
                     name="tone"
@@ -87,7 +91,10 @@ const RatingModal = ({
 
                 <div className="tw-mb-8">
                   <div className="tw-mb-4 tw-body-text tw-text-center tw-border">
-                    Confidence:
+                    <p>
+                      How much did the AI sounding <em>confident</em> impact
+                      your trust in it?
+                    </p>
                   </div>
                   <Likert
                     name="confidence"
