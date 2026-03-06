@@ -53,7 +53,7 @@ const IDEExerciseImplementation = (props = {}) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />
-        <CommentText>{`// Enter 'True' below:`}</CommentText>
+        <CommentText>{`// Enter 'true' below:`}</CommentText>
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />
@@ -68,12 +68,12 @@ const IDEExerciseImplementation = (props = {}) => {
         />
         <ReactText>;</ReactText>
         {validInputs.confidence === false && !isFirst && (
-          <ErrorText>Please enter {'"True"'}.</ErrorText>
+          <ErrorText>Please enter {'"true"'}.</ErrorText>
         )}
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />
-        <CommentText>{`// Enter 'True' below:`}</CommentText>
+        <CommentText>{`// Enter 'true' below:`}</CommentText>
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />
@@ -88,7 +88,7 @@ const IDEExerciseImplementation = (props = {}) => {
         />
         <ReactText>;</ReactText>
         {validInputs.citations === false && !isFirst && (
-          <ErrorText>Please enter {'"True"'}.</ErrorText>
+          <ErrorText>Please enter {'"true"'}.</ErrorText>
         )}
       </CodeLine>
       <CodeLine>

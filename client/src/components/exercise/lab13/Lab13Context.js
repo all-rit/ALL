@@ -144,12 +144,13 @@ export const ExerciseStateProvider = ({ children }) => {
       disclaimerValue.length >= 20 &&
       /\bverify\b/.test(disclaimerValue) &&
       /\boutput\b/.test(disclaimerValue);
-    const confidenceValid = !!exercisePromptsState.find(
-      (i) => i.id === "confidence",
-    ).value;
-    const citationsValid = !!exercisePromptsState.find(
-      (i) => i.id === "citations",
-    ).value;
+    const confidenceValid =
+      exercisePromptsState.find((i) => i.id === "confidence").value.trim() ===
+      "true";
+    const citationsValid =
+      exercisePromptsState.find((i) => i.id === "citations").value.trim() ===
+      "true";
+
     setValidInputs({
       disclaimer: disclaimerValid,
       confidence: confidenceValid,
