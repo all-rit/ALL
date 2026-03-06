@@ -89,7 +89,7 @@ const AIChatBotTab = ({
 
     if (topicIndex === 1) {
       if (questionAnswered && showWikipediaTab && !hasVisitedWikipedia) {
-        return `ALLpedia is now available if you'd like to fact-check ALL-IE's response on ${currentTopic.title} before reviewing.`;
+        return `ALLpedia is now available. Click the ALLpedia tab above if you'd like to fact-check ALL-IE's response on ${currentTopic.title} before reviewing it.`;
       }
       if (!questionAnswered) {
         return `You're now on your most knowledgeable topic, ${currentTopic.title}. Select a prompt to interact with ALL-IE.`;
@@ -104,7 +104,7 @@ const AIChatBotTab = ({
         const timeLeft = 15 - currentDisplayTime;
         if (!hasVisitedWikipedia) {
           console.log("HERERERERER");
-          return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
+          return `Before reviewing ALL-IE's response on ${currentTopic.title}, click the ALLpedia tab above and stay on the page for at least 15 seconds.`;
         }
         return `Please spend ${timeLeft} more second${timeLeft !== 1 ? "s" : ""} on ALLpedia`;
       }
@@ -118,7 +118,7 @@ const AIChatBotTab = ({
       if (questionAnswered && !canReviewResponse) {
         const timeLeft = 15 - currentDisplayTime;
         if (!hasVisitedWikipedia) {
-          return `Review the ALLpedia page for at least 15 seconds before reviewing ALL-IE's response on ${currentTopic.title}.`;
+          return `Before reviewing ALL-IE's response on ${currentTopic.title}, click the ALLpedia tab above and stay on the page for at least 15 seconds.`;
         }
         return `Please spend ${timeLeft} more second${timeLeft !== 1 ? "s" : ""} on ALLpedia`;
       }
