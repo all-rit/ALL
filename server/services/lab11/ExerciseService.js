@@ -1,4 +1,4 @@
-const db = require('../../database');
+const db = require("../../database");
 /**
  * getExercise(): is a function that is responsible for retrieving
  * the last played exercise by a particular user. this function is
@@ -9,15 +9,13 @@ const db = require('../../database');
  */
 async function getExercise(data) {
   try {
-    const exerciseResponse = await db.ExerciseLab11.findOne(
-        {
-          order: [['attemptCount', 'DESC']],
-          where: {
-            userid: data,
-          },
-          raw: true,
-        },
-    );
+    const exerciseResponse = await db.ExerciseLab11.findOne({
+      order: [["attemptCount", "DESC"]],
+      where: {
+        userid: data,
+      },
+      raw: true,
+    });
     return exerciseResponse;
   } catch (error) {
     console.error(error);
@@ -34,10 +32,13 @@ async function getExercise(data) {
  */
 async function postExercise(data) {
   try {
-    const {userId, isRepairWordCountComplete,
+    const {
+      userId,
+      isRepairWordCountComplete,
       isRepairSentenceCountComplete,
       isRepairComplexWordCountComplete,
-      isExerciseComplete} = data;
+      isExerciseComplete,
+    } = data;
     const getExerciseResponse = await getExercise(userId);
     const currentTime = new Date().toISOString();
     if (!getExerciseResponse || getExerciseResponse.isComplete === true) {
@@ -69,7 +70,6 @@ async function postExercise(data) {
     console.error(error);
   }
 }
-
 
 module.exports = {
   getExercise,

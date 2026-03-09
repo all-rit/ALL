@@ -1,4 +1,3 @@
-
 /**
  * formatRequest(): allows developers to format the request object
  * @param {Object} req Mock Object to format

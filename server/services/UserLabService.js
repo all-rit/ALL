@@ -1,19 +1,17 @@
-const db = require('../database');
+const db = require("../database");
 
 const completeAbout = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
   if (usersessionid) {
-    return db.UserLab
-      .findOne({
-        where:
-        {
-          usersessionid: usersessionid,
-          labid: labid,
-        },
+    return db.UserLab.findOne({
+      where: {
+        usersessionid: usersessionid,
+        labid: labid,
       },
-      ).then((userlab) => {
+    })
+      .then((userlab) => {
         if (userlab !== null) {
           userlab.aboutcompletedtime = datetime;
           userlab.save();
@@ -25,7 +23,8 @@ const completeAbout = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -38,15 +37,13 @@ const completeReading = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (usersessionid) {
-    return db.UserLab
-      .findOne({
-        where:
-        {
-          usersessionid: usersessionid,
-          labid: labid,
-        },
+    return db.UserLab.findOne({
+      where: {
+        usersessionid: usersessionid,
+        labid: labid,
       },
-      ).then((userlab) => {
+    })
+      .then((userlab) => {
         if (userlab !== null) {
           userlab.readingcompletedtime = datetime;
           userlab.save();
@@ -58,7 +55,8 @@ const completeReading = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -71,15 +69,13 @@ const completeExercise = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (usersessionid) {
-    return db.UserLab
-      .findOne({
-        where:
-        {
-          usersessionid: usersessionid,
-          labid: labid,
-        },
+    return db.UserLab.findOne({
+      where: {
+        usersessionid: usersessionid,
+        labid: labid,
       },
-      ).then((userlab) => {
+    })
+      .then((userlab) => {
         if (userlab !== null) {
           userlab.exercisecompletedtime = datetime;
           userlab.save();
@@ -91,7 +87,8 @@ const completeExercise = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -104,15 +101,13 @@ const completeReinforcement = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (usersessionid) {
-    return db.UserLab
-      .findOne({
-        where:
-        {
-          usersessionid: usersessionid,
-          labid: labid,
-        },
+    return db.UserLab.findOne({
+      where: {
+        usersessionid: usersessionid,
+        labid: labid,
       },
-      ).then((userlab) => {
+    })
+      .then((userlab) => {
         if (userlab !== null) {
           userlab.reinforcementcompletedtime = datetime;
           userlab.save();
@@ -124,7 +119,8 @@ const completeReinforcement = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -139,15 +135,13 @@ const completeQuiz = (data) => {
   const quizscore = data.quizscore;
   const quizresult = data.quizresult;
   if (usersessionid) {
-    return db.UserLab
-      .findOne({
-        where:
-        {
-          usersessionid: usersessionid,
-          labid: labid,
-        },
+    return db.UserLab.findOne({
+      where: {
+        usersessionid: usersessionid,
+        labid: labid,
       },
-      ).then((userlab) => {
+    })
+      .then((userlab) => {
         if (userlab !== null) {
           if (userlab.quizscore <= quizscore) {
             userlab.quizcompletedtime = datetime;
@@ -165,7 +159,8 @@ const completeQuiz = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -178,23 +173,23 @@ const userCompleteAbout = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: userid,
-          labid: labid,
-        },
+    return db.UserLabCompletion.findOne({
+      where: {
+        userid: userid,
+        labid: labid,
       },
-      ).then((userlabcompletion) => {
+    })
+      .then((userlabcompletion) => {
         if (userlabcompletion !== null) {
           if (userlabcompletion.aboutcompletedtime === null) {
             userlabcompletion.aboutcompletedtime = datetime;
-            if (userlabcompletion.aboutcompletedtime !== null &&
+            if (
+              userlabcompletion.aboutcompletedtime !== null &&
               userlabcompletion.readingcompletedtime !== null &&
               userlabcompletion.exercisecompletedtime !== null &&
               userlabcompletion.reinforcementcompletedtime !== null &&
-              userlabcompletion.quizcompletedtime !== null) {
+              userlabcompletion.quizcompletedtime !== null
+            ) {
               userlabcompletion.labcompletiontime = datetime;
             }
             userlabcompletion.save();
@@ -208,7 +203,8 @@ const userCompleteAbout = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -221,23 +217,23 @@ const userCompleteReading = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: userid,
-          labid: labid,
-        },
+    return db.UserLabCompletion.findOne({
+      where: {
+        userid: userid,
+        labid: labid,
       },
-      ).then((userlabcompletion) => {
+    })
+      .then((userlabcompletion) => {
         if (userlabcompletion !== null) {
           if (userlabcompletion.readingcompletedtime === null) {
             userlabcompletion.readingcompletedtime = datetime;
-            if (userlabcompletion.aboutcompletedtime !== null &&
+            if (
+              userlabcompletion.aboutcompletedtime !== null &&
               userlabcompletion.readingcompletedtime !== null &&
               userlabcompletion.exercisecompletedtime !== null &&
               userlabcompletion.reinforcementcompletedtime !== null &&
-              userlabcompletion.quizcompletedtime !== null) {
+              userlabcompletion.quizcompletedtime !== null
+            ) {
               userlabcompletion.labcompletiontime = datetime;
             }
             userlabcompletion.save();
@@ -251,7 +247,8 @@ const userCompleteReading = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -264,23 +261,23 @@ const userCompleteExercise = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: userid,
-          labid: labid,
-        },
+    return db.UserLabCompletion.findOne({
+      where: {
+        userid: userid,
+        labid: labid,
       },
-      ).then((userlabcompletion) => {
+    })
+      .then((userlabcompletion) => {
         if (userlabcompletion !== null) {
           if (userlabcompletion.exercisecompletedtime === null) {
             userlabcompletion.exercisecompletedtime = datetime;
-            if (userlabcompletion.aboutcompletedtime !== null &&
+            if (
+              userlabcompletion.aboutcompletedtime !== null &&
               userlabcompletion.readingcompletedtime !== null &&
               userlabcompletion.exercisecompletedtime !== null &&
               userlabcompletion.reinforcementcompletedtime !== null &&
-              userlabcompletion.quizcompletedtime !== null) {
+              userlabcompletion.quizcompletedtime !== null
+            ) {
               userlabcompletion.labcompletiontime = datetime;
             }
             userlabcompletion.save();
@@ -294,7 +291,8 @@ const userCompleteExercise = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -307,23 +305,23 @@ const userCompleteReinforcement = (data) => {
   const labid = data.labid;
   const datetime = data.date;
   if (userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: userid,
-          labid: labid,
-        },
+    return db.UserLabCompletion.findOne({
+      where: {
+        userid: userid,
+        labid: labid,
       },
-      ).then((userlabcompletion) => {
+    })
+      .then((userlabcompletion) => {
         if (userlabcompletion !== null) {
           if (userlabcompletion.reinforcementcompletedtime === null) {
             userlabcompletion.reinforcementcompletedtime = datetime;
-            if (userlabcompletion.aboutcompletedtime !== null &&
+            if (
+              userlabcompletion.aboutcompletedtime !== null &&
               userlabcompletion.readingcompletedtime !== null &&
               userlabcompletion.exercisecompletedtime !== null &&
               userlabcompletion.reinforcementcompletedtime !== null &&
-              userlabcompletion.quizcompletedtime !== null) {
+              userlabcompletion.quizcompletedtime !== null
+            ) {
               userlabcompletion.labcompletiontime = datetime;
             }
             userlabcompletion.save();
@@ -337,7 +335,8 @@ const userCompleteReinforcement = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -351,24 +350,24 @@ const userCompleteQuiz = (data) => {
   const datetime = data.date;
   const quizscore = data.quizscore;
   if (userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: userid,
-          labid: labid,
-        },
+    return db.UserLabCompletion.findOne({
+      where: {
+        userid: userid,
+        labid: labid,
       },
-      ).then((userlabcompletion) => {
+    })
+      .then((userlabcompletion) => {
         if (userlabcompletion !== null) {
           if (userlabcompletion.quizscore <= quizscore) {
             userlabcompletion.quizcompletedtime = datetime;
             userlabcompletion.quizscore = quizscore;
-            if (userlabcompletion.aboutcompletedtime !== null &&
+            if (
+              userlabcompletion.aboutcompletedtime !== null &&
               userlabcompletion.readingcompletedtime !== null &&
               userlabcompletion.exercisecompletedtime !== null &&
               userlabcompletion.reinforcementcompletedtime !== null &&
-              userlabcompletion.quizcompletedtime !== null) {
+              userlabcompletion.quizcompletedtime !== null
+            ) {
               userlabcompletion.labcompletiontime = datetime;
             }
             userlabcompletion.save();
@@ -383,7 +382,8 @@ const userCompleteQuiz = (data) => {
           });
         }
         return true;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -391,17 +391,15 @@ const userCompleteQuiz = (data) => {
   return Promise.resolve();
 };
 
-
 const getUserLabCompletion = (data) => {
   if (data.userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: data.userid,
-          labid: data.labid,
-        },
-      }).then((userlabcompletion) => {
+    return db.UserLabCompletion.findOne({
+      where: {
+        userid: data.userid,
+        labid: data.labid,
+      },
+    })
+      .then((userlabcompletion) => {
         return userlabcompletion;
       })
       .catch((err) => {
@@ -418,14 +416,16 @@ const getUserLabRecords = async (userid) => {
         `SELECT * FROM "userlabcompletion" 
 			JOIN "labs" ON  "userlabcompletion"."labid"="labs"."id" 
 			WHERE "userlabcompletion"."userid"=(:userID)
-		    `, {
-        replacements: { userID: userid },
-        type: db.sequelize.QueryTypes.SELECT,
-        raw: true,
-      });
+		    `,
+        {
+          replacements: { userID: userid },
+          type: db.sequelize.QueryTypes.SELECT,
+          raw: true,
+        },
+      );
     }
   } catch (error) {
-    console.warn('Error getting user lab records', error);
+    console.warn("Error getting user lab records", error);
   }
 };
 

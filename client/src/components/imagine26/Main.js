@@ -8,6 +8,7 @@ import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
 import "./main.css";
+import PHDConsentForm from "./pages/PHDConsentForm";
 
 const Main = () => {
   const userID = sessionStorage.getItem("userID");
@@ -91,6 +92,7 @@ const Main = () => {
               year={year}
               userID={userID || ""}
             />
+            <PHDConsentForm path={"/PHDConsentForm"} />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
             <Survey

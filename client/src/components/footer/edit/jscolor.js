@@ -66,9 +66,9 @@ if (!window.jscolor) {
               } catch (eParseError) {
                 jsc.warn(
                   "Error parsing jscolor options: " +
-                  eParseError +
-                  ":\n" +
-                  optsStr,
+                    eParseError +
+                    ":\n" +
+                    optsStr,
                 );
               }
             }
@@ -281,14 +281,14 @@ if (!window.jscolor) {
         for (let i = 0; i < classList.length; i += 1) {
           const repl = new RegExp(
             "^\\s*" +
-            classList[i] +
-            "\\s*|" +
-            "\\s*" +
-            classList[i] +
-            "\\s*$|" +
-            "\\s+" +
-            classList[i] +
-            "(\\s+)",
+              classList[i] +
+              "\\s*|" +
+              "\\s*" +
+              classList[i] +
+              "\\s*$|" +
+              "\\s+" +
+              classList[i] +
+              "(\\s+)",
             "g",
           );
           elm.className = elm.className.replace(repl, "$1");
@@ -521,12 +521,12 @@ if (!window.jscolor) {
           jsc.picker.boxS,
           thisObj.shadow
             ? new jsc.BoxShadow(
-              0,
-              vShadow,
-              thisObj.shadowBlur,
-              0,
-              thisObj.shadowColor,
-            )
+                0,
+                vShadow,
+                thisObj.shadowBlur,
+                0,
+                thisObj.shadowColor,
+              )
             : null,
         );
       },
@@ -535,19 +535,19 @@ if (!window.jscolor) {
         const displaySlider = !!jsc.getSliderComponent(thisObj);
         const dims = [
           2 * thisObj.insetWidth +
-          2 * thisObj.padding +
-          thisObj.width +
-          (displaySlider
-            ? 2 * thisObj.insetWidth +
-            jsc.getPadToSliderPadding(thisObj) +
-            thisObj.sliderSize
-            : 0),
+            2 * thisObj.padding +
+            thisObj.width +
+            (displaySlider
+              ? 2 * thisObj.insetWidth +
+                jsc.getPadToSliderPadding(thisObj) +
+                thisObj.sliderSize
+              : 0),
           2 * thisObj.insetWidth +
-          2 * thisObj.padding +
-          thisObj.height +
-          (thisObj.closable
-            ? 2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight
-            : 0),
+            2 * thisObj.padding +
+            thisObj.height +
+            (thisObj.closable
+              ? 2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight
+              : 0),
         ];
         return dims;
       },
@@ -1753,12 +1753,12 @@ if (!window.jscolor) {
               insetColors.length < 2
                 ? insetColors[0]
                 : insetColors[1] +
-                " " +
-                insetColors[0] +
-                " " +
-                insetColors[0] +
-                " " +
-                insetColors[1];
+                  " " +
+                  insetColors[0] +
+                  " " +
+                  insetColors[0] +
+                  " " +
+                  insetColors[1];
             p.btn.style.borderColor = outsetColor;
           }
           p.btn.style.display = THIS.closable ? "block" : "none";
