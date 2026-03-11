@@ -42,8 +42,8 @@
     ],
     "indent": "off",
     // "indent": [
-    //   "error", 
-    //   2, 
+    //   "error",
+    //   2,
     //   {
     //     "ignoredNodes": ["TemplateLiteral", "BinaryExpression"]
     //   }
