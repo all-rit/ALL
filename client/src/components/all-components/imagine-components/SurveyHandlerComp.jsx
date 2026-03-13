@@ -156,7 +156,7 @@ const SurveyHandler = (props) => {
         navigate("/Imagine2026/GalagaInstructions");
       } else {
         await ImagineService.preSurvey(props.userID, selectedAnswers, year);
-        navigate("/Imagine2026/Webcam");
+        navigate("/Imagine2026/UserProfilePicture");
       }
     } else {
       console.error("invalid year");

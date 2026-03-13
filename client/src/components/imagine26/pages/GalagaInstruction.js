@@ -21,7 +21,7 @@ const GalagaInstructions = () => {
             shoot! Avoid enemy ships or lose points!
           </p>
         </div>,
-        () => navigate("/Imagine2026/UserProfile"),
+        () => navigate("/Imagine2026/DisplayDeepfake"),
       )}
     </>
   );

@@ -3,7 +3,7 @@ const db = require('../database');
 const { GoogleGenAI } = require("@google/genai")
 const {Storage} = require('@google-cloud/storage');
 
-//starting google cloud storage
+//Starting google cloud storage
 const storage = new Storage({keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS})
 const bucket_name = 'all_test_deepfake'
 const bucket = storage.bucket(bucket_name);
@@ -463,20 +463,6 @@ const postImagepath = async (imagine,userID,imagepath,isDeepfake) =>{
 
 }
 
-const uploadUserPicture = async (userID,imagine,imagePath,image,file) =>{
-  try {
-      await file.save(image.buffer,{
-      contentType: image.mimetype, 
-      });
-      const response = await postImagepath(imagine,userID,imagePath,false)
-      if (response){
-        console.log("Image saved successfully")
-        return true
-      }    
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 const deepFakeGenerator = async (imagine,userID,base64String,imagePath) =>{
   const aiPath = imagePath.replace('user_images', 'deepfakes');
@@ -529,18 +515,12 @@ const handleImageUploads = async (data) =>{
   const imagine = `Imagine${data.body.year}` 
   const imagePath = "user_images" + "/" + userID + ".png"
   const image = data.file
-  const file = bucket.file(imagePath);
-  const response = await uploadUserPicture(userID,imagine,imagePath,image,file)
   deepFakeGenerator(imagine,userID,image.buffer.toString('base64'),imagePath)
-  return response
-
+  return true
 }
 
 const getImagePath = async (data) =>{  
     const {userID,year,pictureType} = data;
-    console.log("user id")
-    console.log(userID)
-
     const imagine = `Imagine${year}`;
     let imagePath = '';
     
@@ -594,6 +574,5 @@ module.exports = {
   getTeammate,
   deepFakeGenerator,
   getImagePath,
-  uploadUserPicture,
   handleImageUploads
 };

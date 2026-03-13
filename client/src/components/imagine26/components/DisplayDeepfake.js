@@ -22,12 +22,14 @@ const DisplayDeepFake = () => {
 
   return (
     <>
-      <ImagineHeader title={"I dont want cotton candy"}></ImagineHeader>
-      <img
-        src={imagePath}
-        alt="Deepfake image"
-        style={{ width: "100%", maxWidth: "500px" }}
-      />
+      <div className="tw-flex tw-flex-col tw-items-center tw-gap-4 tw-p-4">
+        <ImagineHeader title={"Alert"}></ImagineHeader>
+        <img
+          src={imagePath}
+          alt="Deepfake image"
+          className="tw-w-full tw-h-auto tw-rounded-lg tw-shadow-sm"
+        />
+      </div>
     </>
   );
 };

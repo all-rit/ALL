@@ -208,6 +208,7 @@ const Game = () => {
           <div>{seconds}</div>
         </div>
       </div>
+
       {gameActive ? (
         <TeammateVideo teammateId={teammateId} messageShown={false} />
       ) : (
