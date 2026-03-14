@@ -22,9 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         postSurvey: {
           type: DataTypes.JSON,
         },
-        profilePicturePath: {
-          type: DataTypes.TEXT,
-        },
         deepfakeImagePath: {
           type: DataTypes.TEXT,
         },

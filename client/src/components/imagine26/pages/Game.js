@@ -3,76 +3,94 @@ import { Button } from "reactstrap";
 import ImagineService from "src/services/ImagineService";
 import TeammateVideo from "../components/TeammateVideo";
 import { navigate } from "@reach/router";
+import DisplayDeepFake from "../components/DisplayDeepfake";
+import PropTypes from "prop-types";
 
-const Analysis = () => {
-  const [content, setContent] = useState(null);
+const ControlGroupOutcome = () => {
+  return (
+    <>
+      <div className="tw-flex tw-flex-col tw-gap-4">
+        <h4 className="tw-title tw-text-center">Congratulations!</h4>
+        <h5 className="tw-text-center"> You and your teammate won the game!</h5>
+        <p className="tw-text-center">
+          Please continue and collect your prize!
+        </p>
+      </div>
+    </>
+  );
+};
+
+const Analysis = (props) => {
+  const teammateId = props.teammateId;
+  const [group, setGroup] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
+  useEffect(() => {
+    const fetchGroup = async () => {
+      try {
+        const result = await ImagineService.getGroup(
+          sessionStorage.getItem("userID"),
+          26,
+        );
+        setGroup(result);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchGroup();
+  }, []);
+
+  const fetchContent = () => {
+    if (loading) return <div className="tw-py-10">Loading results...</div>;
+
+    const text = {
+      experiential: (
+        <DisplayDeepFake teammateId={teammateId} isExperential={true} />
+      ),
+      expression: (
+        <DisplayDeepFake teammateId={teammateId} isExperential={false} />
+      ),
+      control: <ControlGroupOutcome />,
+    };
+    return <div>{text[group] || text["control"]}</div>;
+  };
 
   const handleNavigation = async () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
-    console.log(isUnderAge);
     if (isUnderAge === "true") {
+      console.log("is not underage");
+      console.log(isUnderAge);
       navigate("/Imagine2026/Done");
     } else {
       navigate("/Imagine2026/PostSurvey");
     }
   };
 
-  //until the userID is grabbed, the page will techincally be blank until the useeffect activates
-  useEffect(() => {
-    const fetchContent = async () => {
-      //yoink that user data
-      const user = await ImagineService.getUserByID(
-        sessionStorage.getItem("userID"),
-        26,
-      );
-
-      //pastel yellow and blue annoyingly are stored in their key forms and need to be re-converted to a readable form
-      const colorMap = {
-        Gray02: "Gray",
-        Black: "Black",
-        Blue03: "Blue",
-      };
-
-      //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
-      const text = {
-        experiential:
-          "Parsing error #343: Cannot Process Player User's \"" +
-          colorMap[user.avatar.clotheColor].toLowerCase() +
-          '" shirt. Your points cannot be added due to error. Your team has been disqualified.',
-        expression:
-          "Parsing error #343: Cannot Process Teammate User's  \"" +
-          colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
-          "\" shirt. Your teammate's points cannot be added due to error. Your team has been disqualified.",
-        control:
-          "Congrats on winning! You may collect a prize after completing the post survey for being so awesome sauce.",
-      };
-
-      setContent(
-        <p className="tw-body-text tw-my-24">
-          {text[user.section] || text["control"]}
-        </p>,
-      );
-    };
-    fetchContent();
-  }, []);
-
   return (
     //container aligns everything horizontally
-    <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-h-[100%] tw-items-center">
-      <h3 className="tw-title text-center">Analysis</h3>
-      {content}
-      <Button
-        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
-        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
-        onClick={handleNavigation}
-      >
-        Next
-      </Button>
+    <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-flex tw-flex-col tw-items-center tw-gap-5">
+      <div>{fetchContent()}</div>
+      {!loading && (
+        <Button
+          className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
+          tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
+          onClick={handleNavigation}
+        >
+          Next
+        </Button>
+      )}
     </div>
   );
 };
+Analysis.propTypes = {
+  teammateId: PropTypes.number.isRequired,
+};
 
-const ScorePage = () => {
+const ScorePage = (props) => {
+  const { teammateId } = props;
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
@@ -86,17 +104,9 @@ const ScorePage = () => {
   const totalOpponentScore = Math.floor(
     Math.random() * (totalUserScore * 0.8) + totalUserScore * 0.2,
   );
-
-  // Ensure a fair distribution between opponents
-  const opponentScore1 = Math.floor(
-    Math.random() * (totalOpponentScore * 0.6) + totalOpponentScore * 0.2,
-  );
-  const opponentScore2 = totalOpponentScore - opponentScore1;
-
   const [content, setContent] = useState(
     <>
       <h3 className="tw-title text-center">Game Outcome</h3>
-
       <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
         <div className="tw-my-20 tw-body-text tw-mx-auto">
           <div className="tw-font-bold">
@@ -110,22 +120,23 @@ const ScorePage = () => {
           <div className="tw-font-bold ">
             Overall Opponent Score: {totalOpponentScore}
           </div>
-          <div>Opponent 1 Score: {opponentScore1}</div>
-          <div>Opponent 2 Score: {opponentScore2}</div>
         </div>
       </div>
 
       <Button
         className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
-        onClick={() => setContent(<Analysis />)}
+        //alert model should pop up and deepfake should be shown
+        onClick={() => setContent(<Analysis teammateId={teammateId} />)}
       >
-        Analyze Game
+        End Game and collect your prize
       </Button>
     </>,
   );
-
   return content;
+};
+ScorePage.propTypes = {
+  teammateId: PropTypes.number.isRequired,
 };
 
 const Game = () => {
@@ -173,14 +184,8 @@ const Game = () => {
   }, [iframeRef]);
 
   useEffect(() => {
-    const fetchTeammateID = async () => {
-      const id = await ImagineService.getTeammate(
-        sessionStorage.getItem("userID"),
-        25,
-      );
-      setTeammateId(id);
-    };
-    fetchTeammateID();
+    const id = Math.floor(Math.random() * 4);
+    setTeammateId(id);
   }, []);
 
   return (
@@ -201,7 +206,7 @@ const Game = () => {
             className={contentSizing}
           />
         ) : (
-          <ScorePage className={contentSizing} />
+          <ScorePage teammateId={teammateId} className={contentSizing} />
         )}
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
         <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">

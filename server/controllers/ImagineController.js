@@ -76,8 +76,8 @@ const getUsers = async (_req, _res) => {
 
 const getGroup = async (req, _res) => {
   try {
-    const {year, userID} = req.params;
-    const group = await ImagineService.getGroup(userID, year);
+    const {userID,year} = req.params;
+    const group = await ImagineService.getGroup({userID, year});
     return group;
   } catch (error) {
     console.log(error);

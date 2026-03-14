@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ImagineService from "src/services/ImagineService";
 import { videoPaths, groupVideoPaths } from "src/constants/imagine26/Videos";
+import PropTypes from "prop-types";
 
 const TeammateVideo = (props) => {
-  let teammateIdJSON = props;
-  let teammateId = teammateIdJSON.teammateId;
-  let messageShown = teammateIdJSON.messageShown;
+  const { teammateId, messageShown } = props;
 
   const [videoSrc, setVideoSrc] = useState(
     videoPaths[teammateId] || videoPaths[0],
@@ -36,7 +35,7 @@ const TeammateVideo = (props) => {
       if (delayedMessageShown) {
         const group = await ImagineService.getGroup(
           sessionStorage.getItem("userID"),
-          25,
+          26,
         );
         const groupVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
         setVideoSrc(groupVideos[group] || groupVideos.A);
@@ -94,8 +93,13 @@ const TeammateVideo = (props) => {
           src="/img/imagine_game_controls/SpaceBar.png"
         />
       </div>
+      {/* add chat component over here and have logic to only show it when the usergroup is expression*/}
     </div>
   );
 };
 
 export default TeammateVideo;
+TeammateVideo.propTypes = {
+  teammateId: PropTypes.number.isRequired,
+  messageShown: PropTypes.bool.isRequired,
+};

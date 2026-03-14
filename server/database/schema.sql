@@ -21,7 +21,6 @@ create table imagine26
     "preSurvey"                  json,
     "postSurvey"                 json,
     "section"                    enum_imagine26,
-    "profilePicturePath"         text,
     "deepfakeImagePath"            text,
     primary key (id)
 );

@@ -8,7 +8,6 @@ import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
 import "./main.css";
-import DisplayDeepFake from "./components/DisplayDeepfake";
 import { Imagine26Provider } from "src/reducers/imagine/imagine26Context";
 import UserProfilePicture from "./pages/UserProfilePicture";
 
@@ -95,9 +94,8 @@ const Main = () => {
                 year={year}
                 userID={userID || ""}
               />
-              <GalagaInstructions path={"/GalagaInstructions"} />
               <UserProfilePicture path="/UserProfilePicture" />
-              <DisplayDeepFake path={"/DisplayDeepfake"} />
+              <GalagaInstructions path={"/GalagaInstructions"} />
               <Galaga path={"/Galaga"} />
               <Survey
                 className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
