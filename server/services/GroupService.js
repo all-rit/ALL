@@ -1,92 +1,99 @@
-const db = require('../database');
-const crypto = require('crypto');
+const db = require("../database");
+const crypto = require("crypto");
 
 const getGroupLabs = (groupid) => {
-  return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
-    replacements: { groupID: groupid },
-    type: db.sequelize.QueryTypes.SELECT,
-    raw: true,
-  });
+  return db.sequelize.query(
+    'SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true',
+    {
+      replacements: { groupID: groupid },
+      type: db.sequelize.QueryTypes.SELECT,
+      raw: true,
+    },
+  );
 };
 
 const getGroupEnrolledStudents = (groupid) => {
-  return db.sequelize.query('SELECT * FROM "enrollment" JOIN "users" ON  "enrollment"."userID"="users"."userid" WHERE "enrollment"."groupID"=(:groupID)', {
-    replacements: { groupID: groupid },
-    type: db.sequelize.QueryTypes.SELECT,
-    raw: true,
-  });
+  return db.sequelize.query(
+    'SELECT * FROM "enrollment" JOIN "users" ON  "enrollment"."userID"="users"."userid" WHERE "enrollment"."groupID"=(:groupID)',
+    {
+      replacements: { groupID: groupid },
+      type: db.sequelize.QueryTypes.SELECT,
+      raw: true,
+    },
+  );
 };
 
 const getCompletedGroupLabs = (userid, groupid) => {
-  return db.sequelize.query('SELECT labs."labShortName" FROM userlabcompletion INNER JOIN labs ON labs.id = userlabcompletion.labid INNER JOIN group_labs ON group_labs."labID" = userlabcompletion.labid INNER JOIN enrollment ON enrollment."groupID" = group_labs."groupID" WHERE userlabcompletion.labcompletiontime IS NOT NULL AND userlabcompletion.userid=(:userID) AND group_labs."groupID"= (:groupID) AND enrollment."userID" = (:userID)', {
-    replacements: { groupID: groupid, userID: userid },
-    type: db.sequelize.QueryTypes.SELECT,
-    raw: true,
-  });
+  return db.sequelize.query(
+    'SELECT labs."labShortName" FROM userlabcompletion INNER JOIN labs ON labs.id = userlabcompletion.labid INNER JOIN group_labs ON group_labs."labID" = userlabcompletion.labid INNER JOIN enrollment ON enrollment."groupID" = group_labs."groupID" WHERE userlabcompletion.labcompletiontime IS NOT NULL AND userlabcompletion.userid=(:userID) AND group_labs."groupID"= (:groupID) AND enrollment."userID" = (:userID)',
+    {
+      replacements: { groupID: groupid, userID: userid },
+      type: db.sequelize.QueryTypes.SELECT,
+      raw: true,
+    },
+  );
 };
 
 const enrollUserInGroup = (userid, code) => {
-  return db.Groups
-    .findOne({
-      where: {
-        code: code,
-      },
-    }).then((group) => {
-      if (group) {
-        // check if user is already enrolled in the group
-        return db.Enrollment.findOne({
-          where: {
+  return db.Groups.findOne({
+    where: {
+      code: code,
+    },
+  }).then((group) => {
+    if (group) {
+      // check if user is already enrolled in the group
+      return db.Enrollment.findOne({
+        where: {
+          userID: userid,
+          groupID: group.id,
+          isActive: true,
+        },
+      }).then((record) => {
+        if (record !== null) {
+          // an active enrollment record already exists, do not duplicate record
+          return {
+            status: "failure",
+            message: "User is already enrolled in the group.",
+          };
+        } else {
+          return db.Enrollment.create({
             userID: userid,
             groupID: group.id,
+            enrolledDate: Date.now(),
             isActive: true,
-          },
-        }).then((record) => {
-          if (record !== null) {
-            // an active enrollment record already exists, do not duplicate record
+          }).then(() => {
             return {
-              'status': 'failure',
-              'message': 'User is already enrolled in the group.',
+              status: "success",
+              message: "User has been successfully enrolled in the group.",
             };
-          } else {
-            return db.Enrollment.create({
-              userID: userid,
-              groupID: group.id,
-              enrolledDate: Date.now(),
-              isActive: true,
-            }).then(() => {
-              return {
-                'status': 'success',
-                'message': 'User has been successfully enrolled in the group.',
-              };
-            });
-          }
-        });
-      } else {
-        return {
-          'status': 'failure',
-          'message': 'Invite code is not valid.',
-        };
-      }
-    },
-    );
+          });
+        }
+      });
+    } else {
+      return {
+        status: "failure",
+        message: "Invite code is not valid.",
+      };
+    }
+  });
 };
 
 const unenrollUserFromGroup = (data) => {
   const userid = data.userID;
   const groupid = data.groupID;
   if (userid && groupid) {
-    return db.Enrollment
-      .findOne({
-        where:
-        {
-          userID: userid,
-          groupID: groupid,
-          isActive: true,
-        },
-      }).then((enrollment) => {
+    return db.Enrollment.findOne({
+      where: {
+        userID: userid,
+        groupID: groupid,
+        isActive: true,
+      },
+    })
+      .then((enrollment) => {
         enrollment.isActive = false;
         enrollment.save();
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         return true;
       });
@@ -106,7 +113,7 @@ const createGroup = async (userID, groupName, color) => {
     });
     return data;
   } catch (error) {
-    console.error('Error while creating group', error);
+    console.error("Error while creating group", error);
   }
 };
 
@@ -129,7 +136,7 @@ const addGroupLab = async (groupID, labID) => {
 
     return groupLab;
   } catch (error) {
-    console.error('Error adding group lab', error);
+    console.error("Error adding group lab", error);
   }
 };
 
@@ -142,20 +149,23 @@ const deleteGroupLab = async (groupID, labID) => {
           groupID: groupID,
           labID: labID,
         },
-      });
+      },
+    );
   } catch (error) {
-    console.error('Error occurred while deleting lab: ', error);
+    console.error("Error occurred while deleting lab: ", error);
   }
 };
 
 const deleteGroup = (groupID) => {
-  return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupID); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupID);  ', {
-    replacements: { groupID: groupID },
-    type: db.sequelize.QueryTypes.UPDATE,
-    raw: true,
-  });
+  return db.sequelize.query(
+    'UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupID); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupID);  ',
+    {
+      replacements: { groupID: groupID },
+      type: db.sequelize.QueryTypes.UPDATE,
+      raw: true,
+    },
+  );
 };
-
 
 const updateGroup = async (groupID, groupName, groupColor) => {
   try {
@@ -165,9 +175,10 @@ const updateGroup = async (groupID, groupName, groupColor) => {
         where: {
           id: groupID,
         },
-      });
+      },
+    );
   } catch (error) {
-    console.warn('Error updating lab name: ', error);
+    console.warn("Error updating lab name: ", error);
   }
 };
 

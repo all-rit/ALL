@@ -10,6 +10,7 @@ import Galaga from "./pages/Game";
 import "./main.css";
 import { Imagine26Provider } from "src/reducers/imagine/imagine26Context";
 import UserProfilePicture from "./pages/UserProfilePicture";
+import PHDConsentForm from "./pages/PHDConsentForm";
 
 const Main = () => {
   const userID = sessionStorage.getItem("userID");
@@ -87,6 +88,7 @@ const Main = () => {
               }
             >
               <UpdateId default path={"/"} canContinue={canContinue} />
+              <PHDConsentForm path={"/PHDConsentForm"} />
               <Survey
                 className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
                 path={`/PreSurvey`}

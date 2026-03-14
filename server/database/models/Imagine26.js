@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.TEXT,
         },
       },
-      {tableName: 'imagine26'},
+    { tableName: "imagine26" },
   );
 
   Imagine26.sync();

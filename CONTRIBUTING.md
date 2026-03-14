@@ -1,6 +1,7 @@
 # Contributing
 
-The general process to contribute code to this repository is as follows: 
+The general process to contribute code to this repository is as follows:
+
 - Create a branch with a detailed name
 - Add your code
 - Commit (with a descriptive message) and push to your branch

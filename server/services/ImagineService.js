@@ -9,17 +9,15 @@ const bucket_name = 'all_test_deepfake'
 const bucket = storage.bucket(bucket_name);
 
 const submitStudy = async (data) => {
-  const {userID, study, year} = data;
+  const { userID, study, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.study = study;
         user.save();
@@ -37,7 +35,7 @@ const submitStudy = async (data) => {
 };
 
 const newID = async (data) => {
-  const {userID, year} = data;
+  const { userID, year } = data;
   const imagine = `Imagine${year}`;
 
   try {
@@ -51,7 +49,7 @@ const newID = async (data) => {
 };
 
 const preSurvey = async (data) => {
-  const {userID, preSurvey, year} = data;
+  const { userID, preSurvey, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
@@ -63,9 +61,9 @@ const preSurvey = async (data) => {
       } else if (year == 26) {
         section = await determineSection2025(preSurvey, year);
       } else {
-        console.log('invalid year');
+        console.log("invalid year");
       }
-      const user = await getUserByID({userID, year});
+      const user = await getUserByID({ userID, year });
       console.warn(section, user);
       if (user) {
         user.preSurvey = preSurvey;
@@ -86,17 +84,15 @@ const preSurvey = async (data) => {
 };
 
 const postSurvey = async (data) => {
-  const {userID, postSurvey, year} = data;
+  const { userID, postSurvey, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.postSurvey = postSurvey;
         user.save();
@@ -115,7 +111,7 @@ const postSurvey = async (data) => {
 
 const getUsers = async () => {
   const users = await db.Imagine23.findAll({
-    attributes: ['id', 'userid', 'preSurvey'],
+    attributes: ["id", "userid", "preSurvey"],
     where: {
       preSurvey: {
         [Op.not]: null,
@@ -126,7 +122,7 @@ const getUsers = async () => {
 };
 
 const getUserByID = async (data) => {
-  const {userID, year} = data;
+  const { userID, year } = data;
   const imagine = `Imagine${year}`;
   try {
     const user = await db[imagine].findOne({
@@ -136,7 +132,7 @@ const getUserByID = async (data) => {
     });
     return user;
   } catch (error) {
-    console.error('Could not get user by ID: ', error);
+    console.error("Could not get user by ID: ", error);
   }
 };
 
@@ -153,7 +149,7 @@ const getGroup = async (data) => {
     });
     return user.section;
   } catch (error) {
-    console.error('Could not get group by user ID: ', error);
+    console.error("Could not get group by user ID: ", error);
   }
 };
 
@@ -167,25 +163,23 @@ const getTeammate = async (data) => {
       },
     });
     const avatar = user.teammateAvatar;
-    console.log('avatar======' + avatar);
+    console.log("avatar======" + avatar);
     return avatar.id;
   } catch (error) {
-    console.error('Could not get group by user ID: ', error);
+    console.error("Could not get group by user ID: ", error);
   }
 };
 
 const readMoreCount = async (data) => {
-  const {userID, readMoreCount, year} = data;
+  const { userID, readMoreCount, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.readMoreCount = readMoreCount;
         user.save();
@@ -201,19 +195,16 @@ const readMoreCount = async (data) => {
   }
 };
 
-
 const readMoreTimeElapsed = async (data) => {
-  const {userID, readMoreTimeElapsed, year} = data;
+  const { userID, readMoreTimeElapsed, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.readMoreTimeElapsed = readMoreTimeElapsed;
         user.save();
@@ -224,25 +215,23 @@ const readMoreTimeElapsed = async (data) => {
         });
       }
       return true;
-    };
+    }
   } catch (error) {
     console.error(error);
   }
 };
 
 const readingSectionPagePosition = async (data) => {
-  const {userID, year} = data;
+  const { userID, year } = data;
   const imagine = `Imagine${year}`;
   const readingSectionPagePosition = data.readingSectionPagePosition;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.readingSectionPagePosition = readingSectionPagePosition;
         user.save();
@@ -283,7 +272,7 @@ const getSection = async (sectionName, year) => {
           return question.answer;
         }
       });
-      const userResponses = userResponse.flat().toString().replace(/,/g, '');
+      const userResponses = userResponse.flat().toString().replace(/,/g, "");
       output[userResponses] = (output[userResponses] || 0) + 1;
     });
     return output;
@@ -292,26 +281,30 @@ const getSection = async (sectionName, year) => {
   }
 };
 
-
 const determineGroup = async (preSurvey, year) => {
   // retrieve all existing groupings
-  const experiential = await getSection('experiential', year);
-  const discomfortCountPOC = await getSection('discomfortCountPOC', year);
-  const discomfortCountNonPOC = await getSection('discomfortCountNonPOC', year);
-  const control = await getSection('control', year);
+  const experiential = await getSection("experiential", year);
+  const discomfortCountPOC = await getSection("discomfortCountPOC", year);
+  const discomfortCountNonPOC = await getSection("discomfortCountNonPOC", year);
+  const control = await getSection("control", year);
   // repeats the same flattening for the user.
-  const userResponse = preSurvey.map((question, index) => {
-    if (index === 0 || index === 1 || index === 5) {
-      return question.answer;
-    }
-  }).toString().replace(/,/g, '');
+  const userResponse = preSurvey
+    .map((question, index) => {
+      if (index === 0 || index === 1 || index === 5) {
+        return question.answer;
+      }
+    })
+    .toString()
+    .replace(/,/g, "");
 
   let minValue = Infinity;
-  let lowestPool = '';
-  const dataset = [['experiential', experiential],
-    ['discomfortCountPOC', discomfortCountPOC],
-    ['discomfortCountNonPOC', discomfortCountNonPOC],
-    ['control', control]];
+  let lowestPool = "";
+  const dataset = [
+    ["experiential", experiential],
+    ["discomfortCountPOC", discomfortCountPOC],
+    ["discomfortCountNonPOC", discomfortCountNonPOC],
+    ["control", control],
+  ];
   // Iterate over each hashmap to find the lowest value
   for (const [pool, hashmap] of dataset) {
     // if user response is in the hashmap
@@ -334,17 +327,15 @@ const determineGroup = async (preSurvey, year) => {
 };
 
 const postUserAvatar = async (data) => {
-  const {userID, avatar, year} = data;
+  const { userID, avatar, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.avatar = avatar;
         user.save();
@@ -362,17 +353,15 @@ const postUserAvatar = async (data) => {
 };
 
 const postTeammateAvatar = async (data) => {
-  const {userID, teammateAvatar, year} = data;
+  const { userID, teammateAvatar, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.teammateAvatar = teammateAvatar;
         user.save();
@@ -390,17 +379,15 @@ const postTeammateAvatar = async (data) => {
 };
 
 const postOpponentAvatar = async (data) => {
-  const {userID, opponentAvatar, year} = data;
+  const { userID, opponentAvatar, year } = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const user = await db[imagine]
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
       if (user !== null) {
         user.opponentAvatar = opponentAvatar;
         user.save();
@@ -417,9 +404,8 @@ const postOpponentAvatar = async (data) => {
   }
 };
 
-
 const determineSection2025 = async () => {
-  const options = ['experiential', 'expression', 'control'];
+  const options = ["experiential", "expression", "control"];
   const randIndex = Math.floor(Math.random() * options.length);
   return options[randIndex];
 };

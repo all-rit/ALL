@@ -2,9 +2,7 @@
   --yellow-text: #fed136;
   --blue-text: #0144d5;
   --white-text: #fff;
-  --light-blue-text: #bed2fe
-    // this is the color that changes white text based on the color picker
-;
+  --light-blue-text: #bed2fe; // this is the color that changes white text based on the color picker
 }
 
 ul {

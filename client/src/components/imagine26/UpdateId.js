@@ -27,7 +27,7 @@ const UpdateId = (props) => {
       let userID = nanoid(6).toUpperCase();
       sessionStorage.setItem("userID", userID);
       await ImagineService.newID(userID, 26);
-      navigate("/Imagine2026/PreSurvey");
+      navigate("/Imagine2026/PHDConsentForm");
     } else {
       setWarning("");
     }

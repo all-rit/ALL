@@ -1,15 +1,14 @@
-const db = require('../database');
-const shortNameNotFound = 'Error: Short Name Not Found';
-const shortNameNotRetrieved = 'Error: Short Name Not Retrieved';
-const aboutNotFound = 'Error: About Not Found';
-const aboutNotRetrieved = 'Error: About Not Retrieved';
-const readingNotFound = 'Error: Reading Not Found';
-const readingNotRetrieved = 'Error: Reading Not Retrieved';
-const reinforcementNotFound = 'Error: Reinforcement Not Found';
-const reinforcementNotRetrieved = 'Error: Reinforcement Not Retrieved';
-const quizNotFound = 'Error: Quiz Not Found';
-const quizNotRetrieved = 'Error: Quiz Not Retrieved';
-
+const db = require("../database");
+const shortNameNotFound = "Error: Short Name Not Found";
+const shortNameNotRetrieved = "Error: Short Name Not Retrieved";
+const aboutNotFound = "Error: About Not Found";
+const aboutNotRetrieved = "Error: About Not Retrieved";
+const readingNotFound = "Error: Reading Not Found";
+const readingNotRetrieved = "Error: Reading Not Retrieved";
+const reinforcementNotFound = "Error: Reinforcement Not Found";
+const reinforcementNotRetrieved = "Error: Reinforcement Not Retrieved";
+const quizNotFound = "Error: Quiz Not Found";
+const quizNotRetrieved = "Error: Quiz Not Retrieved";
 
 /**
  * getAllLabs(): Get all Labs and information.
@@ -18,9 +17,9 @@ const quizNotRetrieved = 'Error: Quiz Not Retrieved';
 async function getAllLabs() {
   return await db.Labs.findAll({
     raw: true,
-    order: [['id', 'ASC']],
+    order: [["id", "ASC"]],
   });
-};
+}
 /**
  * getLabShortName(): Get the short name of the lab.
  * @param {Number} labID - the ID of the lab.
@@ -30,7 +29,7 @@ async function getLabShortName(labID) {
   try {
     const shortName = await db.Labs.findOne({
       where: { id: labID },
-      attributes: ['labShortName'],
+      attributes: ["labShortName"],
       raw: true,
     });
     if (!shortName) {
@@ -41,7 +40,7 @@ async function getLabShortName(labID) {
     console.error(error);
     return shortNameNotRetrieved;
   }
-};
+}
 /**
  * getLabAbout(): Get the about section of the lab.
  * @param {Number} labID - the ID of the lab.
@@ -51,7 +50,7 @@ async function getLabAbout(labID) {
   try {
     const about = await db.Labs.findOne({
       where: { id: labID },
-      attributes: ['about'],
+      attributes: ["about"],
       raw: true,
     });
     if (!about) {
@@ -61,8 +60,8 @@ async function getLabAbout(labID) {
   } catch (error) {
     console.error(error);
     return aboutNotRetrieved;
-  };
-};
+  }
+}
 /**
  * getLabReading(): Get the reading section of the lab.
  * @param {Number} labID - the ID of the lab.
@@ -72,7 +71,7 @@ async function getLabReading(labID) {
   try {
     const reading = await db.Labs.findOne({
       where: { id: labID },
-      attributes: ['reading'],
+      attributes: ["reading"],
       raw: true,
     });
     if (!reading) {
@@ -82,8 +81,8 @@ async function getLabReading(labID) {
   } catch (error) {
     console.error(error);
     return readingNotRetrieved;
-  };
-};
+  }
+}
 /**
  * getLabReinforcement(): Get the reinforcement section of the lab.
  * @param {Number} labID - the ID of the lab.
@@ -93,7 +92,7 @@ async function getLabReinforcement(labID) {
   try {
     const reinforcement = await db.Labs.findOne({
       where: { id: labID },
-      attributes: ['reinforcement'],
+      attributes: ["reinforcement"],
       raw: true,
     });
     if (!reinforcement) {
@@ -104,7 +103,7 @@ async function getLabReinforcement(labID) {
     console.error(error);
     return reinforcementNotRetrieved;
   }
-};
+}
 /**
  * getLabQuiz(): Get the quiz section of the lab.
  * @param {Number} labID - the ID of the lab.
@@ -114,7 +113,7 @@ async function getLabQuiz(labID) {
   try {
     const quiz = await db.Labs.findOne({
       where: { id: labID },
-      attributes: ['quiz'],
+      attributes: ["quiz"],
       raw: true,
     });
     if (!quiz) {
@@ -125,8 +124,7 @@ async function getLabQuiz(labID) {
     console.error(error);
     return quizNotRetrieved;
   }
-};
-
+}
 
 module.exports = {
   getAllLabs,
