@@ -1,4 +1,5 @@
 import { navigate } from "@reach/router";
+import LabButton from "src/components/all-components/LabButton";
 
 /**
  * GCSE icon styles
@@ -50,13 +51,17 @@ const GoodPromptingGuide = () => {
         </p>
       </div>
       {/* Columns for each term in GCSE */}
-      <div className="tw-flex tw-flex-col lg:tw-flex-row tw-flex-1 tw-min-h-[50vh]">
+      <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-flex-1 tw-min-h-[50vh]">
         {gcse_content.map((item, index) => (
-          <div
-            key={item.letter}
-            className="tw-flex tw-flex-col lg:tw-flex-row tw-flex-1"
-          >
-            <div className="tw-px-8 tw-py-6 lg:tw-py-0 tw-flex-1">
+          <div key={item.letter} className="tw-relative tw-h-full">
+            {/* Black dividers between the columns. First one is mobile, second is larger screen. */}
+            {index > 0 && (
+              <>
+                <div className="lg:tw-hidden tw-absolute tw-left-8 tw-right-8 tw-top-0 tw-h-px tw-bg-black" />
+                <div className="tw-hidden lg:tw-block tw-absolute tw-bottom-6 tw-left-0 tw-top-6 tw-w-px tw-bg-black" />
+              </>
+            )}
+            <div className="tw-px-8 tw-py-6 lg:tw-py-0 tw-h-full">
               <div
                 className={`tw-w-20 tw-h-20 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-3xl tw-font-bold tw-mb-4 tw-mx-auto tw-border-4 tw-border-solid ${circleStyles[index]}`}
               >
@@ -64,15 +69,14 @@ const GoodPromptingGuide = () => {
               </div>
               {item.content}
             </div>
-            {index < gcse_content.length - 1 && (
-              <div className="tw-bg-black tw-h-[2px] tw-w-full lg:tw-h-auto lg:tw-w-[2px] tw-my-4 lg:tw-my-0 lg:tw-mx-4" />
-            )}
           </div>
         ))}
       </div>
-      <button onClick={() => navigate("/Lab15/Exercise/model-repair")}>
-        Next
-      </button>
+      <LabButton
+        onClick={() => navigate("/Lab15/Exercise/model-repair")}
+        key="goodPromptingNext"
+        label="Next"
+      ></LabButton>
     </div>
   );
 };
