@@ -9,7 +9,7 @@ const GoodPromptingGuide = () => {
   return (
     <div className="center-div">
       <div className="guidance margin-bottom-2">
-        <h1 className="tw-title tw-text-left">Exercise Start</h1>
+        <h1 className="tw-title tw-text-left">What is GCSE?</h1>
         {/* Context about what the GCSE guide is */}
         <p className="tw-body-text tw-my-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor
