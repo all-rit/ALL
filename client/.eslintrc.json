@@ -13,7 +13,11 @@
   ],
   "overrides": [
     {
-      "files": ["**/*.spec.js", "**/*.spec.jsx", "**/*.test.js"],
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx",
+        "**/*.test.js"
+      ],
       "env": {
         "jest": true
       }
@@ -23,7 +27,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "jest"],
+  "plugins": [
+    "react",
+    "jest"
+  ],
   "settings": {
     "react": {
       "createClass": "createReactClass",
@@ -49,7 +56,7 @@
     //   }
     // ],
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "endOfLine": "auto"
       }

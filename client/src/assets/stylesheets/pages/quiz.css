@@ -122,9 +122,9 @@
 
 .quiz .checkboxCustomButton:checked ~ .checkboxCustomLabel:before {
   content: "";
-  background: #8bc53f no-repeat;
+  background: #0d28bc no-repeat;
   background-size: 27px;
-  border-color: #8bc53f;
+  border-color: #0d28bc;
 }
 
 .quiz .checkboxCustomButton:checked ~ .checkboxCustomLabel:after {
@@ -172,9 +172,9 @@
 
 .quiz .radioCustomButton:checked ~ .radioCustomLabel:before {
   content: "";
-  background: #8bc53f no-repeat;
+  background: #0d28bc no-repeat;
   background-size: 27px;
-  border-color: #8bc53f;
+  border-color: #0d28bc;
 }
 
 .quiz .radioCustomButton:checked ~ .radioCustomButton:after {
