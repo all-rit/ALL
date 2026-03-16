@@ -21,6 +21,7 @@ import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
+import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
 import { default as ExerciseLab15 } from "./components/exercise/lab15/Main";
 
@@ -143,6 +144,7 @@ const App = () => {
           <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
           <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
           <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+          <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
           <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
           <ExerciseLab15 path="/Lab15/Exercise/*" user={state.main.user} />
 

@@ -52,6 +52,7 @@ const DragDropGame = ({
   handleNav,
   colContainerStyle,
   gameStyle,
+  cardIcon,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initialBank);
@@ -193,6 +194,7 @@ const DragDropGame = ({
             bank={bank}
             bankStyle={bankStyle}
             cardStyle={bankCardStyle}
+            cardIcon={cardIcon}
           />
         </div>
       </div>
@@ -243,6 +245,7 @@ DragDropGame.propTypes = {
   handleNav: PropTypes.func.isRequired,
   colContainerStyle: PropTypes.string,
   gameStyle: PropTypes.string,
+  cardIcon: PropTypes.any,
 };
 
 export default DragDropGame;
