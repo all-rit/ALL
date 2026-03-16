@@ -23,8 +23,8 @@ const DroppableBank = ({ bank, bankStyle, cardStyle, cardIcon }) => {
 DroppableBank.propTypes = {
   bank: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      content: PropTypes.string,
     }),
   ).isRequired,
   bankStyle: PropTypes.string.isRequired,
