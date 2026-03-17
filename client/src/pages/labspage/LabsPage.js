@@ -270,7 +270,7 @@ const LabsPage = (props) => {
                   Labs
                 </h1>
                 <div className="tw-flex tw-items-center tw-gap-3 tw-max-w-144 sm:tw-w-2/3 tw-w-full">
-                  <div className="tw-flex tw-flex-1 tw-rounded-md tw-min-w-0">
+                  <div className="tw-flex tw-flex-1 tw-rounded-md tw-min-w-0 tw-shadow-md">
                     <input
                       className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-md
                                   tw-border-darkGray tw-border-2 tw-min-w-0"
@@ -287,7 +287,7 @@ const LabsPage = (props) => {
                     onClick={() => setShowFilter((prev) => !prev)}
                     className="
                       tw-px-4 tw-py-2
-                      tw-rounded-md
+                      tw-rounded-md tw-shadow-md
                       tw-bg-primary-yellow
                       tw-flex tw-justify-center tw-gap-2
                       tw-font-bold tw-border-solid tw-border-primary-yellow tw-font-poppins"
@@ -420,7 +420,7 @@ const LabsPage = (props) => {
                   </div>
                 )}
 
-                <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full">
+                <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full xl:tw-w-[80%] tw-max-w-[79rem]">
                   {Array.from(displayedLabs.entries())
                     .sort(([a], [b]) => a.localeCompare(b))
                     .map(([category, labArray]) => (
