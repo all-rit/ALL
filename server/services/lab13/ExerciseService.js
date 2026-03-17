@@ -10,13 +10,13 @@ const db = require('../../database');
 async function getExercise(data) {
   try {
     const exerciseResponse = await db.ExerciseLab13.findOne(
-        {
-          order: [['attemptTime', 'DESC']],
-          where: {
-            userid: data,
-          },
-          raw: true,
+      {
+        order: [['attemptTime', 'DESC']],
+        where: {
+          userid: data,
         },
+        raw: true,
+      },
     );
 
     return exerciseResponse;
@@ -37,8 +37,6 @@ async function postExercise(data) {
   try {
     const {
       userId,
-      isFormRepairComplete,
-      isDatabaseRepairComplete,
       isExerciseComplete,
       hasViewed,
     } = data;
@@ -46,8 +44,6 @@ async function postExercise(data) {
     const currentTime = new Date().toISOString();
     const newExercise = {
       userid: userId,
-      isFormRepairComplete: false,
-      isDatabaseRepairComplete: false,
       isExerciseComplete: false,
       attemptTime: currentTime,
       attemptCount: 1,
@@ -61,8 +57,6 @@ async function postExercise(data) {
       const newVal = convert + 1;
       const updatedExercise = {
         userid: userId,
-        isFormRepairComplete: isFormRepairComplete,
-        isDatabaseRepairComplete: isDatabaseRepairComplete,
         isExerciseComplete: isExerciseComplete,
         attemptTime: currentTime,
         attemptCount: newVal,

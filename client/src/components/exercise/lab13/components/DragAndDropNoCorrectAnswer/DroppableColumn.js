@@ -39,7 +39,7 @@ DroppableColumn.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
+      content: PropTypes.string,
       isCorrect: PropTypes.bool,
     }),
   ).isRequired,

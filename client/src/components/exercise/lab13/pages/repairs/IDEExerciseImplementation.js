@@ -24,7 +24,7 @@ const IDEExerciseImplementation = (props = {}) => {
   return (
     <>
       <CodeLine>
-        <ReactText>const addDisclaimers( ) =&#62; &#123;</ReactText>
+        <ReactText>const addDisclaimers = &#123;</ReactText>
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={1} />

@@ -38,6 +38,7 @@
   z-index: 1;
   overflow: hidden;
 }
+
 .tab-shadow-wrapper.active {
   z-index: 100;
 }
@@ -61,18 +62,14 @@
   /* Add ellispes for overflowed text */
   text-overflow: ellipsis;
 
-  clip-path: shape(
-    from bottom left,
-    curve to var(--tabGirth) calc(100% - var(--tabGirth)) with var(--tabGirth)
-      100%,
-    vline to calc(var(--tabGirth)),
-    curve to calc(var(--tabGirth) * 2) 0 with var(--tabGirth) 0,
-    hline to calc(100% - calc(var(--tabGirth) * 2)),
-    curve to calc(100% - var(--tabGirth)) var(--tabGirth) with
-      calc(100% - var(--tabGirth)) 0,
-    vline to calc(100% - var(--tabGirth)),
-    curve to 100% 100% with calc(100% - var(--tabGirth)) 100%
-  );
+  clip-path: shape(from bottom left,
+      curve to var(--tabGirth) calc(100% - var(--tabGirth)) with var(--tabGirth) 100%,
+      vline to calc(var(--tabGirth)),
+      curve to calc(var(--tabGirth) * 2) 0 with var(--tabGirth) 0,
+      hline to calc(100% - calc(var(--tabGirth) * 2)),
+      curve to calc(100% - var(--tabGirth)) var(--tabGirth) with calc(100% - var(--tabGirth)) 0,
+      vline to calc(100% - var(--tabGirth)),
+      curve to 100% 100% with calc(100% - var(--tabGirth)) 100%);
 
   transition: transform 0.1s;
   overflow: hidden;
@@ -124,16 +121,14 @@
 }
 
 .tabs-header button.active {
-  clip-path: shape(
-    from bottom left,
-    curve to 12px calc(100% - 12px) with 12px 100%,
-    vline to 12px,
-    curve to 24px 0 with 12px 0,
-    hline to calc(100% - 24px),
-    curve to calc(100% - 12px) 12px with calc(100% - 12px) 0,
-    vline to calc(100% - 12px),
-    curve to 100% 100% with calc(100% - 12px) 100%
-  );
+  clip-path: shape(from bottom left,
+      curve to 12px calc(100% - 12px) with 12px 100%,
+      vline to 12px,
+      curve to 24px 0 with 12px 0,
+      hline to calc(100% - 24px),
+      curve to calc(100% - 12px) 12px with calc(100% - 12px) 0,
+      vline to calc(100% - 12px),
+      curve to 100% 100% with calc(100% - 12px) 100%);
 }
 
 .tab-panels {
@@ -144,7 +139,7 @@
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
   padding: 25px 30px 25px 25px;
   height: calc(58vh);
-  overflow-y: scroll;
+  overflow-y: auto;
   border-top: 10px solid white;
   border: solid white;
   border-width: 10px 0;
