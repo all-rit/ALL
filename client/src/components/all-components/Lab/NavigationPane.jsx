@@ -76,7 +76,7 @@ const NavigationPane = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem] tw-z-10"
+        "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem] tw-h-full tw-justify-between tw-z-10"
       }
     >
       <div className={"tw-flex tw-flex-col tw-flex-1 tw-min-h-0 tw-gap-y-4"}>
