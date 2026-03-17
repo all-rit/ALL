@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Router } from "@reach/router";
 
 import { EXERCISE_STATES } from "../../../constants/lab15";
-import ExerciseStateContext from "./Lab15Context";
+import { ExerciseStateProvider } from "./Lab15Context";
 
 // lab imported dependencies;
 import ExerciseIntro from "./pages/ExerciseIntro";
@@ -23,8 +23,9 @@ const Main = () => {
 
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
-      <ExerciseStateContext.Provider
-        value={{ exerciseState, setExerciseState }}
+      <ExerciseStateProvider
+        exerciseState={exerciseState}
+        setExerciseState={setExerciseState}
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
@@ -34,7 +35,7 @@ const Main = () => {
           <ModelWithGrades path="/model-with-grades" />
           <Conclusion path="/conclusion" />
         </Router>
-      </ExerciseStateContext.Provider>
+      </ExerciseStateProvider>
     </div>
   );
 };
