@@ -303,7 +303,7 @@ const LabsPage = (props) => {
                   </button>
                 </div>
                 {showFilter && (
-                  <div className="tw-relative tw-flex tw-flex-col tw-gap-4 tw-p-6 tw-mt-5 tw-max-w-144 sm:tw-w-2/3 tw-w-full tw-text-left tw-rounded-md tw-font-poppins">
+                  <div className="tw-relative tw-flex tw-flex-col tw-gap-4 tw-p-6 tw-mt-5 tw-max-w-[35rem] sm:tw-w-[calc(66.666%-1rem)] tw-w-[calc(100%-1rem)] tw-text-left tw-rounded-md tw-font-poppins">
                     <div className="tw-relative">
                       <button
                         type="button"
