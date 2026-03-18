@@ -1,4 +1,4 @@
-import { Tab } from "../Tab/Tab";
+import { Tab } from "../../../../all-components/Tab/Tab";
 import ProgressBar from "src/components/all-components/ProgressBar";
 import AllPediaImage from "../AIPanel/AllPediaImage";
 import PropTypes from "prop-types";

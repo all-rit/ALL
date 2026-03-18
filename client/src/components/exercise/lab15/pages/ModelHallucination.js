@@ -2,10 +2,10 @@ import { useMemo, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { BAD_PROMPTS } from "src/constants/lab15/BadPrompts";
 
-import { Tabs } from "src/components/exercise/lab13/components/Tab/Tabs";
-import { Tab } from "src/components/exercise/lab13/components/Tab/Tab";
+import { Tabs } from "src/components/all-components/Tab/Tabs";
+import { Tab } from "src/components/all-components/Tab/Tab";
 
-import AIChatBot from "src/components/exercise/lab13/components/AIChatBot";
+import AIChatBot from "src/components/all-components/AIChatBot";
 import HallucinationModal from "../components/HallucinationModal";
 
 import { useLab15 } from "../Lab15Context";
@@ -56,7 +56,6 @@ const ModelHallucination = () => {
     setPromptsAnswered(newCount);
     if (newCount >= 3) {
       navigate("/Lab15/Exercise/good-prompting-guide");
-      return;
     }
 
     setSelectedPrompt(null);

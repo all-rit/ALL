@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import BlobLoader from "./BlobLoader";
-import Avatar from "./Avatar";
+import BlobLoader from "../exercise/lab13/components/BlobLoader";
+import Avatar from "../exercise/lab13/components/Avatar";
 import { AvatarType } from "src/constants/lab13/AvatarType";
 import HyperLinkImage from "src/assets/images/lab13/HyperLink.png";
-import TypingMessage from "./TypingMessage";
+import TypingMessage from "../exercise/lab13/components/TypingMessage";
 
 /**
  * Chatbot component that displays user-ai messages
