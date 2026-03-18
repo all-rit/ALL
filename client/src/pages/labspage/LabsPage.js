@@ -421,33 +421,39 @@ const LabsPage = (props) => {
                 )}
 
                 <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full xl:tw-w-[80%] tw-max-w-[79rem]">
-                  {Array.from(displayedLabs.entries())
-                    .sort(([a], [b]) => a.localeCompare(b))
-                    .map(([category, labArray]) => (
-                      <div
-                        key={category}
-                        className="tw-flex tw-flex-col tw-mb-4"
-                      >
-                        <p className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
-                          {category}
-                        </p>
-                        <div className="tw-flex tw-flex-wrap">
-                          <div
-                            className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
-                          tw-gap-4 tw-pb-16 tw-pr-3 tw-w-full"
-                          >
-                            {labArray.map((labInfo) =>
-                              renderLabData(
-                                actions,
-                                labInfo,
-                                "",
-                                labInfo.id - 1,
-                              ),
-                            )}
+                  {Array.from(displayedLabs.values()).length === 0 ? (
+                    <p className="tw-text-center tw-w-full tw-my-12 tw-font-poppins">
+                      No labs to display. Try different search options!
+                    </p>
+                  ) : (
+                    Array.from(displayedLabs.entries())
+                      .sort(([a], [b]) => a.localeCompare(b))
+                      .map(([category, labArray]) => (
+                        <div
+                          key={category}
+                          className="tw-flex tw-flex-col tw-mb-4"
+                        >
+                          <p className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
+                            {category}
+                          </p>
+                          <div className="tw-flex tw-flex-wrap">
+                            <div
+                              className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
+                            tw-gap-4 tw-pb-16 tw-pr-3 tw-w-full"
+                            >
+                              {labArray.map((labInfo) =>
+                                renderLabData(
+                                  actions,
+                                  labInfo,
+                                  "",
+                                  labInfo.id - 1,
+                                ),
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                  )}
                 </div>
               </div>
             </div>
