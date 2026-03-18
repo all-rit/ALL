@@ -14,6 +14,7 @@ import {
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
+import UserPfp from "../all-components/UserPfp";
 
 const Header = ({ isImagine }) => {
   const { state, actions } = useMainStateContext();
@@ -186,7 +187,7 @@ const Header = ({ isImagine }) => {
                 className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
                 onClick={toggleProfileCollapse}
               >
-                <img src={state.main.user?.userpfp} />
+                <UserPfp />
               </button>
 
               <Fade in={profileCollapseOpen}>
