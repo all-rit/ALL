@@ -79,8 +79,8 @@ AIPanelRatingModal.propTypes = {
   handleBiasExplanationClose: PropTypes.func.isRequired,
   setToneRating: PropTypes.func.isRequired,
   setConfidenceRating: PropTypes.func.isRequired,
-  toneRating: PropTypes.number.isRequired,
-  confidenceRating: PropTypes.number.isRequired,
+  toneRating: PropTypes.string.isRequired,
+  confidenceRating: PropTypes.string.isRequired,
 };
 
 export default AIPanelRatingModal;

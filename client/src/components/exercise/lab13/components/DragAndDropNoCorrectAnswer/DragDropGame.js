@@ -214,8 +214,8 @@ DragDropGame.propTypes = {
   ),
   initialBank: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      content: PropTypes.string,
     }),
   ),
   correctAssignments: PropTypes.arrayOf(

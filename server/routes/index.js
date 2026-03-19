@@ -56,7 +56,6 @@ const RepairControllerLab12 = require('../controllers/lab12/RepairController');
 
 // LAB 13 Controller
 const ExerciseControllerLab13 = require('../controllers/lab13/ExerciseController');
-const RepairControllerLab13 = require('../controllers/lab13/RepairController');
 // LAB 14 Controller
 const ExerciseControllerLab14 = require('../controllers/lab14/ExerciseController');
 
@@ -206,13 +205,6 @@ router.get('/lab13/exercise/:userID', async function (req, res) {
 });
 router.post('/lab13/exercise/submit', async function (req, res) {
   const id = await ExerciseControllerLab13.postExercise(req);
-  res.send(id);
-});
-router.get('/lab13/repair/:userID/:section', async function (req, res) {
-  res.json(await RepairControllerLab13.getRepair(req));
-});
-router.post('/lab13/repair/submit', async function (req, res) {
-  const id = await RepairControllerLab13.submitChange(req);
   res.send(id);
 });
 {/* Lab 14 Exercise and Repair Controller Calls */ }

@@ -57,7 +57,7 @@ DraggableCard.propTypes = {
   card: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string,
-    content: PropTypes.string.isRequired,
+    content: PropTypes.string,
     body: PropTypes.string,
     color: PropTypes.string,
     isCorrect: PropTypes.bool,

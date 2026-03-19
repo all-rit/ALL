@@ -1,4 +1,4 @@
-const ExerciseService = require('../../services/lab14/ExerciseService');
+const ExerciseService = require('../../services/lab13/ExerciseService');
 /**
  * getExercise(): is a function responsible for retrieving the
  * user id from the query params from the route to the endpoint.

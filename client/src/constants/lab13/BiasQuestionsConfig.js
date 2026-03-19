@@ -54,21 +54,21 @@ export const biasQuestionsData = [
             text: "Yes, localization and translation are essentially the same process. Both involve converting content from one language to another to make it understandable for different audiences. The terms are often used interchangeably in professional settings.",
             isCorrect: false,
             explanation:
-              "The definitive wording makes this claim sound trustworthy, which can encourage truth bias.",
+              "This is false. The definitive wording makes this claim sound trustworthy, which can encourage truth bias.",
             confidence: 95,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Localization and translation are closely related practices within global communication workflows, often used interchangeably across professional contexts.",
             isCorrect: false,
             explanation:
-              "The polished phrasing and professional tone boosts perceived credibility, which can reinforce the halo effect.",
+              "This is false. The polished phrasing and professional tone boosts perceived credibility, which can reinforce the halo effect.",
             confidence: 93,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "In localization theory, translation is considered a subordinate linguistic function, meaning it is functionally equivalent to localization in applied contexts.",
             isCorrect: false,
             explanation:
-              "The technical language and theoretical framing can play into the Dunning-Kruger effect by reducing questioning.",
+              "This is false. The technical language and theoretical framing can play into the Dunning-Kruger effect by reducing questioning.",
             confidence: 98,
           },
         },
@@ -81,21 +81,21 @@ export const biasQuestionsData = [
             text: "No, changing clothing materials is a physical product decision, not localization, which focuses on cultural or linguistic adaptation.",
             isCorrect: true,
             explanation:
-              "The clear, direct explanation feels dependable, which can reinforce truth bias in a justified way.",
+              "Although this is true, the clear, direct explanation feels dependable, which can reinforce truth bias in a justified way.",
             confidence: 86,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "It's technically correct, but it's confusing because people mix this up all the time. Changing clothing materials isn't localization, it's product adaptation. Localization focuses on cultural and linguistic elements, not physical manufacturing changes.",
             isCorrect: true,
             explanation:
-              "The confident structure and clean distinctions enhance trust through presentation which can play into the halo effect.",
+              "Although this is true, the confident structure and clean distinctions enhance trust through presentation which can play into the halo effect.",
             confidence: 90,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Localization frameworks distinguish between cultural adaptation and material optimization, placing climate-driven textile changes outside localization scope.",
             isCorrect: true,
             explanation:
-              "Although the academic tone may seem authoritative, limiting scrutiny, it correctly aligns with the definition, reinforcing the careful trust provided by the Dunning-Kruger effect.",
+              "Although this is true, the academic tone may seem authoritative, limiting scrutiny, it correctly aligns with the definition, reinforcing the careful trust provided by the Dunning-Kruger effect.",
             confidence: 94,
           },
         },
@@ -108,21 +108,21 @@ export const biasQuestionsData = [
             text: "Yes, adjusting how you communicate based on social context can be considered a form of cultural localization.",
             isCorrect: true,
             explanation:
-              "The simple, confident phrasing makes the answer feel intuitively right, which can prompt truth bias.",
+              "Although this is true, the simple, confident phrasing makes the answer feel intuitively right, which can prompt truth bias.",
             confidence: 82,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Adapting communication style to social norms reflects cultural awareness, which aligns with broader definitions of localization.",
             isCorrect: true,
             explanation:
-              'Formal language creates an "expert" impression, which can amplify the halo effect.',
+              'Although this is true, formal language creates an "expert" impression, which can amplify the halo effect.',
             confidence: 88,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Sociolinguistic code-switching is not based on localization theory, which is mostly from translation studies (Venuti, 1995), and applies only to cross-cultural content adaptation.",
             isCorrect: false,
             explanation:
-              "This response sounds academic and authoritative, making the claim hard to challenge which can elicit the Dunning-Kruger effect.",
+              "This is false. The response sounds academic and authoritative, making the claim hard to challenge which can elicit the Dunning-Kruger effect.",
             confidence: 92,
           },
         },
@@ -143,21 +143,21 @@ export const biasQuestionsData = [
             text: "The gene responsible for most forms of color blindness is carried on the X chromosome, which is why the condition is more common in males than females.",
             isCorrect: true,
             explanation:
-              "This clear, factual delivery encourages truth bias, making the statement easy to accept without hesitation.",
+              "Although this is true, the clear, factual delivery encourages truth bias, making the statement easy to accept without hesitation.",
             confidence: 91,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Color blindness is typically inherited through the Y chromosome, a well-established genetic pattern observed in vision science.",
             isCorrect: false,
             explanation:
-              "The scientific-sounding language increases credibility through its style which can trigger the halo effect.",
+              "This is false. The scientific-sounding language increases credibility through its style which can trigger the halo effect.",
             confidence: 89,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "X-linked recessive inheritance patterns explain the higher prevalence of color blindness in males, as identified in genetic ophthalmology research.",
             isCorrect: true,
             explanation:
-              "The technical language signals expertise, which may induce the Dunning-Kruger effect by discouraging doubt.",
+              "Although this is true, the technical language signals expertise, which may induce the Dunning-Kruger effect by discouraging doubt.",
             confidence: 96,
           },
         },
@@ -170,21 +170,21 @@ export const biasQuestionsData = [
             text: "Yes, people with red-green color blindness mainly see only red and green, which limits their overall color perception.",
             isCorrect: false,
             explanation:
-              "Familiar wording makes the statement feel accurate, even though it reinforces a common myth, which can reinforce truth bias.",
+              "This is false. Familiar wording makes the statement feel accurate, even though it reinforces a common myth, which can reinforce truth bias.",
             confidence: 84,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Individuals with red-green color blindness primarily experience a reduced visual palette around red and green hues.",
             isCorrect: false,
             explanation:
-              "The polished wording makes the misconception sound legitimate, which can feed into the halo effect.",
+              "This is false. The polished wording makes the misconception sound legitimate, which can feed into the halo effect.",
             confidence: 89,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Red-green color blindness results in selective chromatic restriction, effectively narrowing visual perception to red-green channels.",
             isCorrect: false,
             explanation:
-              "The academic phrasing may trigger the Dunning-Kruger effect, discouraging readers from questioning the claim.",
+              "This is false. The academic phrasing may trigger the Dunning-Kruger effect, discouraging readers from questioning the claim.",
             confidence: 95,
           },
         },
@@ -197,21 +197,21 @@ export const biasQuestionsData = [
             text: "Yes, color blindness can develop later in life due to eye disease, injury, aging, or certain medications.",
             isCorrect: true,
             explanation:
-              "The specific, concrete explanation feels reliable which can strengthen truth bias.",
+              "Although this is true, the specific, concrete explanation feels reliable which can strengthen truth bias.",
             confidence: 90,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Although many cases are inherited, medical conditions or neurological damage can also lead to acquired color blindness.",
             isCorrect: true,
             explanation:
-              "The calm, professional tone increases trust, which can activate the halo effect.",
+              "Although this is true, the calm, professional tone increases trust, which can activate the halo effect.",
             confidence: 88,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Color blindness is strictly a genetic condition, meaning individuals are born with it and cannot develop it later in life.",
             isCorrect: false,
             explanation:
-              "The definitive tone discourages skepticism which may activate the Dunning-Kruger effect for readers unfamiliar with medical causes.",
+              "This is false. The definitive tone discourages skepticism which may activate the Dunning-Kruger effect for readers unfamiliar with medical causes.",
             confidence: 93,
           },
         },
@@ -232,21 +232,21 @@ export const biasQuestionsData = [
             text: "Yes, dyslexia is mainly caused by vision problems that make letters difficult to see clearly while reading.",
             isCorrect: false,
             explanation:
-              "The confident delivery makes the claim feel reliable, which can encourage truth bias even when it's wrong.",
+              "This is false. The confident delivery makes the claim feel reliable, which can encourage truth bias even when it's wrong.",
             confidence: 89,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Dyslexia is often associated with visual processing challenges that interfere with reading accuracy.",
             isCorrect: false,
             explanation:
-              "The polished, professional tone boosts perceived credibility, which can trigger the halo effect.",
+              "This is false. The polished, professional tone boosts perceived credibility, which can trigger the halo effect.",
             confidence: 86,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Dyslexia originates from impairments in visual-perceptual pathways involved in orthographic recognition.",
             isCorrect: false,
             explanation:
-              "Technical wording signals expertise, which may activate the Dunning-Kruger effect, by reducing questioning.",
+              "This is false. Technical wording signals expertise, which may activate the Dunning-Kruger effect, by reducing questioning.",
             confidence: 97,
           },
         },
@@ -259,21 +259,21 @@ export const biasQuestionsData = [
             text: "Yes, people with dyslexia often see letters and words backward, which explains their reading difficulties.",
             isCorrect: false,
             explanation:
-              "A familiar explanation matches common assumptions, which can promote truth bias.",
+              "This is false. A familiar explanation matches common assumptions, which can promote truth bias.",
             confidence: 88,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Letter reversals are a characteristic feature of dyslexia and contribute to challenges in reading fluency.",
             isCorrect: false,
             explanation:
-              "The structured, authoritative phrasing makes the false response sound valid, which can amplify the halo effect.",
+              "This is false. The structured, authoritative phrasing makes the false response sound valid, which can amplify the halo effect.",
             confidence: 90,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Dyslexia manifests through reversed orthographic encoding during early language acquisition.",
             isCorrect: false,
             explanation:
-              "Complex terminology that implies expertise may activate the Dunning-Kruger effect, causing readers to accept the claim without scrutiny.",
+              "This is false. Complex terminology that implies expertise may activate the Dunning-Kruger effect, causing readers to accept the claim without scrutiny.",
             confidence: 96,
           },
         },
@@ -286,21 +286,21 @@ export const biasQuestionsData = [
             text: "Dyslexia cannot be cured, but with consistent practice and proper educational support, individuals can significantly improve their reading and learning skills.",
             isCorrect: true,
             explanation:
-              "Clear, confident phrasing makes the response easy to accept, which can reinforce truth bias.",
+              "Although this is true, clear, confident phrasing makes the response easy to accept, which can reinforce truth bias.",
             confidence: 87,
           },
           [BIAS_TYPES.HALO_EFFECT]: {
             text: "Advances in educational interventions have made it possible for many individuals with dyslexia to achieve strong reading and academic outcomes.",
             isCorrect: true,
             explanation:
-              "An optimistic professional tone builds trust through presentation which can activate the halo effect.",
+              "Although this is true, an optimistic professional tone builds trust through presentation which can activate the halo effect.",
             confidence: 85,
           },
           [BIAS_TYPES.DUNNING_KRUGER]: {
             text: "Dyslexia is a lifelong neurological learning difference that cannot be cured, but can be effectively supported through structured instruction and accommodations.",
             isCorrect: true,
             explanation:
-              "Although accurate, the formal tone and phrasing may discourage questioning, activating the Dunning-Kruger effect through perceived expertise.",
+              "Although this is true, the formal tone and phrasing may discourage questioning, activating the Dunning-Kruger effect through perceived expertise.",
             confidence: 91,
           },
         },

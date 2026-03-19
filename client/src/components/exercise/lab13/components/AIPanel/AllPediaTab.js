@@ -114,8 +114,8 @@ AllPediaTab.propTypes = {
   requireWikipedia: PropTypes.bool.isRequired,
   currentDisplayTime: PropTypes.number.isRequired,
   currentAnswerData: PropTypes.object.isRequired,
-  currentQuestion: PropTypes.object.isRequired,
-  activeTopic: PropTypes.object.isRequired,
+  currentQuestion: PropTypes.number.isRequired,
+  activeTopic: PropTypes.string.isRequired,
 };
 
 export default AllPediaTab;
