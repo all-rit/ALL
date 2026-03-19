@@ -91,7 +91,7 @@ const NavigationPane = (props) => {
         {/* Table of Contents Block */}
         <div
           className={
-            "tw-flex tw-flex-col tw-flex-1 tw-min-h-0 tw-py-2 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-shadow-md"
+            "tw-flex tw-flex-col tw-flex-1 tw-min-h-0 tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-shadow-md"
           }
         >
           <div className={"tw-flex tw-flex-col tw-gap-y-3 tw-h-full"}>

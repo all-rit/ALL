@@ -28,7 +28,7 @@ const Reinforcement = (props) => {
   }
 
   return (
-    <div className={""}>
+    <div>
       <h1 className={"tw-px-10 tw-title tw-text-left"}>Reinforcement</h1>
       <div className="">
         <h4 className="tw-font-bold tw-text-center p-3">

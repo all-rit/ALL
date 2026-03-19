@@ -51,6 +51,7 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
+
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
 );
@@ -79,6 +80,7 @@ function initializeReactGA() {
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
+  let [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
     actions.login();
@@ -87,6 +89,7 @@ const App = () => {
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
+    setLoaded(true);
   }, []);
   const lab = state.main.lab;
   const body = state.main.body;
@@ -197,38 +200,42 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div
-        className={
-          labInProgress || isImagine ? "" : "overflow-x-hidden min-h-screen"
-        }
-      >
-        <Header isImagine={isImagine} />
-        <div className={`tw-relative ${labInProgress}`}>
-          <div className={`tw-relative tw-grid`}>
-            <Suspense fallback={<Spinner />}>
-              {labInProgress ? (
-                <LabWindow
-                  lab={lab}
-                  title={Sections[lab].fullname}
-                  context={context}
-                  quizCompleted={quizCompleted}
-                  setQuizCompleted={setQuizCompleted}
-                  isImagine={isImagine}
-                  body={body}
-                >
-                  {renderLabs()}
-                </LabWindow>
-              ) : (
-                <div className={"tw-flex tw-row-span-10 tw-text-center"}>
-                  {renderPages()}
-                </div>
-              )}
-            </Suspense>
-          </div>
+      {isLoaded ? (
+        <div
+          className={
+            labInProgress || isImagine ? "" : "overflow-x-hidden min-h-screen"
+          }
+        >
+          <Suspense fallback={<Spinner />}>
+            <Header isImagine={isImagine} />
+            <div className={`tw-relative`}>
+              <div className={`tw-relative tw-grid`}>
+                {labInProgress ? (
+                  <LabWindow
+                    lab={lab}
+                    title={Sections[lab].fullname}
+                    context={context}
+                    quizCompleted={quizCompleted}
+                    setQuizCompleted={setQuizCompleted}
+                    isImagine={isImagine}
+                    body={body}
+                  >
+                    {renderLabs()}
+                  </LabWindow>
+                ) : (
+                  <div className={"tw-flex tw-row-span-10 tw-text-center"}>
+                    {renderPages()}
+                  </div>
+                )}
+              </div>
+            </div>
+            {!labInProgress && !isImagine && <MainFooter />}
+            <ALLSnackbar />
+          </Suspense>
         </div>
-        {!labInProgress && !isImagine && <MainFooter />}
-        <ALLSnackbar />
-      </div>
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };

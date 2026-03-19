@@ -55,7 +55,7 @@ function Quiz(props) {
                           tw-border-solid tw-border-primary-yellow tw-bg-white"
                 onClick={props.lastQuestion}
               >
-                Last Question
+                Previous Question
               </button>
             )}
           </div>
