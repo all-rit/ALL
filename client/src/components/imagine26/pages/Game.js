@@ -21,11 +21,10 @@ const ControlGroupOutcome = () => {
 };
 
 const Analysis = (props) => {
-  const teammateId = props.teammateId;
+  const { teammateId, showVideo, status } = props;
   const [group, setGroup] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
   useEffect(() => {
     const fetchGroup = async () => {
       try {
@@ -44,18 +43,52 @@ const Analysis = (props) => {
   }, []);
 
   const fetchContent = () => {
-    if (loading) return <div className="tw-py-10">Loading results...</div>;
+    console.log(group);
+    if (loading) return <div className="tw-py-10">Loading ..</div>;
 
-    const text = {
+    if (group === "control" || !group) {
+      showVideo();
+    }
+
+    //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
+    const activity = {
       experiential: (
-        <DisplayDeepFake teammateId={teammateId} isExperential={true} />
+        <DisplayDeepFake
+          teammateId={teammateId}
+          isExperential={true}
+          toggleAction={showVideo}
+        />
       ),
       expression: (
-        <DisplayDeepFake teammateId={teammateId} isExperential={false} />
+        <DisplayDeepFake
+          teammateId={teammateId}
+          isExperential={false}
+          toggleAction={showVideo}
+        />
       ),
       control: <ControlGroupOutcome />,
     };
-    return <div>{text[group] || text["control"]}</div>;
+
+    return (
+      <div>
+        <div className="tw-flex tw-flex-col tw-items-center tw-gap-8 tw-w-full">
+          <div className="tw-w-full">
+            {activity[group] || activity["control"]}
+          </div>
+
+          {(status === "groupVideo" || group === "control" || !group) && (
+            <Button
+              className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
+       tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
+              //alert model should pop up and deepfake should be shown
+              onClick={handleNavigation}
+            >
+              Next
+            </Button>
+          )}
+        </div>
+      </div>
+    );
   };
 
   const handleNavigation = async () => {
@@ -71,26 +104,20 @@ const Analysis = (props) => {
 
   return (
     //container aligns everything horizontally
-    <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-flex tw-flex-col tw-items-center tw-gap-5">
-      <div>{fetchContent()}</div>
-      {!loading && (
-        <Button
-          className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
-          tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
-          onClick={handleNavigation}
-        >
-          Next
-        </Button>
-      )}
+    <div className="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+      {fetchContent()}
     </div>
   );
 };
+
 Analysis.propTypes = {
   teammateId: PropTypes.number.isRequired,
+  showVideo: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
 };
 
 const ScorePage = (props) => {
-  const { teammateId } = props;
+  const { onClick } = props;
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
@@ -104,48 +131,51 @@ const ScorePage = (props) => {
   const totalOpponentScore = Math.floor(
     Math.random() * (totalUserScore * 0.8) + totalUserScore * 0.2,
   );
-  const [content, setContent] = useState(
+
+  return (
     <>
-      <h3 className="tw-title text-center">Game Outcome</h3>
-      <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
-        <div className="tw-my-20 tw-body-text tw-mx-auto">
-          <div className="tw-font-bold">
-            Overall Team Score: {userScore + teammateScore}
+      <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
+        <h3 className="tw-title text-center">Game Outcome</h3>
+        <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
+          <div className="tw-my-20 tw-body-text tw-mx-auto">
+            <div className="tw-font-bold">
+              Overall Team Score: {userScore + teammateScore}
+            </div>
+            <div>Your Score: {userScore}</div>
+            <div>Your Teammate Score: {teammateScore}</div>
           </div>
-          <div>Your Score: {userScore}</div>
-          <div>Your Teammate Score: {teammateScore}</div>
+
+          <div className="tw-my-20 tw-body-text tw-mx-auto">
+            <div className="tw-font-bold ">
+              Overall Opponent Score: {totalOpponentScore}
+            </div>
+          </div>
         </div>
 
-        <div className="tw-my-20 tw-body-text tw-mx-auto">
-          <div className="tw-font-bold ">
-            Overall Opponent Score: {totalOpponentScore}
-          </div>
-        </div>
-      </div>
-
-      <Button
-        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
+        <Button
+          className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
-        //alert model should pop up and deepfake should be shown
-        onClick={() => setContent(<Analysis teammateId={teammateId} />)}
-      >
-        End Game and collect your prize
-      </Button>
-    </>,
+          //alert model should pop up and deepfake should be shown
+          onClick={onClick}
+        >
+          End Game
+        </Button>
+      </div>
+    </>
   );
-  return content;
 };
+
 ScorePage.propTypes = {
-  teammateId: PropTypes.number.isRequired,
+  onClick: PropTypes.func,
 };
 
 const Game = () => {
+  const [status, setStatus] = useState("game");
+
   const contentSizing =
-    "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
+    "tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
 
   const iframeRef = useRef(null);
-
-  const [gameActive, setGameActive] = useState(true);
 
   const [seconds, setSeconds] = useState(60);
 
@@ -172,20 +202,21 @@ const Game = () => {
         setSeconds((prevSeconds) => {
           if (prevSeconds <= 1) {
             clearInterval(timer);
-            setGameActive(false);
+            setStatus("scorePage");
             return 0;
           }
 
           return prevSeconds - 1;
         });
-      }, 1000);
+      }, 100);
       return () => clearInterval(timer);
     }
   }, [iframeRef]);
 
   useEffect(() => {
-    const id = Math.floor(Math.random() * 4);
-    setTeammateId(id);
+    //for testing purposes we can change the teammate id to 1 since we have 1 video, when we have all videos we need to uncomment the code below
+    // const id = Math.floor(Math.random() * 4);
+    setTeammateId(1);
   }, []);
 
   return (
@@ -194,31 +225,41 @@ const Game = () => {
       <div
         className={
           contentSizing +
-          (gameActive
-            ? " tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]"
-            : " tw-pt-[7rem]")
+          (status == "game"
+            ? "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]"
+            : "tw-pt-[7rem]")
         }
       >
-        {gameActive ? (
+        {status == "game" && (
           <iframe
             ref={iframeRef}
             src="https://microstudio.io/Imagine2025/galaga/6GZNBHTD/"
             className={contentSizing}
           />
-        ) : (
-          <ScorePage teammateId={teammateId} className={contentSizing} />
         )}
+
+        {status == "scorePage" && (
+          <ScorePage
+            onClick={() => setStatus("analysis")}
+            className={contentSizing}
+          />
+        )}
+
+        {(status === "analysis" || status === "groupVideo") && (
+          <Analysis
+            teammateId={teammateId}
+            status={status}
+            showVideo={() => setStatus("groupVideo")}
+          />
+        )}
+
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
         <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
           <div>{seconds}</div>
         </div>
       </div>
 
-      {gameActive ? (
-        <TeammateVideo teammateId={teammateId} messageShown={false} />
-      ) : (
-        <TeammateVideo teammateId={teammateId} messageShown={true} />
-      )}
+      <TeammateVideo teammateId={teammateId} status={status} />
     </div>
   );
 };

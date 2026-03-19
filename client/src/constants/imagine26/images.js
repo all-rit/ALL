@@ -1,4 +1,4 @@
-//we need to update the images in the folder, for now they are just boiler plate
+//these are the deepfake images of the teammates
 const imagesPath = {
   0: "/img/imagine26/deepfakeGenerations/image0.png",
   1: "../img/imagine26/deepfakeGenerations/image1.png",

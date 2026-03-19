@@ -3,7 +3,7 @@ const db = require('../database');
 const { GoogleGenAI } = require("@google/genai")
 const {Storage} = require('@google-cloud/storage');
 
-//Starting google cloud storage
+//Starting google cloud storage for storing deepfakes
 const storage = new Storage({keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS})
 const bucket_name = 'all_test_deepfake'
 const bucket = storage.bucket(bucket_name);
@@ -439,7 +439,7 @@ const postImagepath = async (imagine,userID,imagepath) =>{
 }
 
 const deepFakeGenerator = async (imagine,userID,base64String,imagePath) =>{
-  
+
   const file = bucket.file(imagePath);
   const ai = new GoogleGenAI({ 
     apiKey: process.env.GEMINI_API_KEY

@@ -6,12 +6,14 @@ import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
 import PropTypes from "prop-types";
 
 const DisplayDeepFake = (props) => {
-  const teammateId = props.teammateId;
-  const isExperential = props.isExperential;
+  const { teammateId, isExperential, toggleAction } = props;
   const [imagePath, setImagePath] = useState("");
   const [modal, setModal] = useState(true);
 
-  const toggle = () => setModal(!modal);
+  const toggle = () => {
+    setModal(!modal);
+    toggleAction();
+  };
 
   useEffect(() => {
     const fetchImagePath = async () => {
@@ -32,10 +34,10 @@ const DisplayDeepFake = (props) => {
 
   return (
     <>
-      <div className="tw-p-4 tw-flex tw-flex-col tw-items-center">
+      <div className="tw-flex tw-flex-col tw-items-center tw-w-full tw-px-6">
         {modal ? (
           <Modal isOpen={modal} toggle={toggle} centered>
-            <ModalHeader className="tw-text-red-600 tw-font-bold">
+            <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold ">
               System Alert
             </ModalHeader>
             <ModalBody className="tw-text-center tw-py-8">
@@ -59,18 +61,22 @@ const DisplayDeepFake = (props) => {
             </ModalFooter>
           </Modal>
         ) : (
-          <div className="tw-flex tw-flex-col tw-items-center tw-gap-4">
-            <ImagineHeader title={"Found footage"}></ImagineHeader>
-            <p className="tw-text-center">
+          <div className="tw-flex tw-flex-col tw-items-center tw-text-center tw-w-full tw-gap-4">
+            <ImagineHeader title={"Found footage"} />
+
+            <p className="tw-text-gray-700 tw-leading-relaxed tw-max-w-md tw-mt-3">
               {isExperential
                 ? "Unfortunately, due to this information, you won't be receiving your prize."
                 : "Unfortunately, due to this information, your teammate lost their prize."}
             </p>
-            <img
-              src={imagePath}
-              alt="Deepfake image"
-              className="tw-rounded-lg tw-shadow-sm"
-            />
+
+            <div className="tw-relative tw-w-full tw-max-w-[400px] tw-mx-auto">
+              <img
+                src={imagePath}
+                alt="Deepfake footage"
+                className="tw-rounded-xl tw-shadow-2xl tw-w-full tw-h-auto tw-object-contain tw-border tw-border-gray-100"
+              />
+            </div>
           </div>
         )}
       </div>
@@ -82,4 +88,5 @@ export default DisplayDeepFake;
 DisplayDeepFake.propTypes = {
   teammateId: PropTypes.number.isRequired,
   isExperential: PropTypes.bool.isRequired,
+  toggleAction: PropTypes.func.isRequired,
 };
