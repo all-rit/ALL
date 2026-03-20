@@ -92,11 +92,11 @@ const LabsPage = (props) => {
     });
   }, []);
 
-  const labsByDifficulty = (labMap, difficulty) => {
+  const labsByDifficulty = (labMap, difficulties) => {
     const filteredMap = new Map();
     for (const [key, value] of labMap.entries()) {
       const filteredArr = value.filter((x) =>
-        difficulty.includes(x.difficulty),
+        difficulties.includes(x.difficulty),
       );
       if (filteredArr.length > 0) {
         filteredMap.set(key, filteredArr);
@@ -128,40 +128,40 @@ const LabsPage = (props) => {
   const [textSearch, setTextSearch] = useState("");
 
   const [showFilter, setShowFilter] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState([]);
-  const [selectedDifficulty, setSelectedDifficulty] = useState([]);
+  const [selectedTopics, setSelectedTopics] = useState([]);
+  const [selectedDifficulties, setSelectedDifficulties] = useState([]);
 
   useEffect(() => {
-    applyFilters(selectedTopic, selectedDifficulty, textSearch);
-  }, [selectedTopic, selectedDifficulty, textSearch]);
+    applyFilters(selectedTopics, selectedDifficulties, textSearch);
+  }, [selectedTopics, selectedDifficulties, textSearch]);
 
   const changeTopic = (value) => {
-    setSelectedTopic((prev) =>
+    setSelectedTopics((prev) =>
       prev.includes(value)
         ? prev.filter((topic) => topic !== value)
         : [...prev, value],
     );
   };
   const changeDifficulty = (value) => {
-    setSelectedDifficulty((prev) =>
+    setSelectedDifficulties((prev) =>
       prev.includes(value)
         ? prev.filter((level) => level !== value)
         : [...prev, value],
     );
   };
   const applyFilters = (
-    topic = selectedTopic,
-    difficulty = selectedDifficulty,
+    topics = selectedTopics,
+    difficulties = selectedDifficulties,
     text = textSearch,
   ) => {
     let filtered = new Map(labInformation);
-    if (topic.length > 0) {
+    if (topics.length > 0) {
       filtered = new Map(
-        Array.from(filtered.entries()).filter(([key]) => topic.includes(key)),
+        Array.from(filtered.entries()).filter(([key]) => topics.includes(key)),
       );
     }
-    if (difficulty.length > 0) {
-      filtered = labsByDifficulty(filtered, difficulty);
+    if (difficulties.length > 0) {
+      filtered = labsByDifficulty(filtered, difficulties);
     }
     if (text.trim() !== "") {
       filtered = labsBySearchPhrase(filtered, text);
@@ -308,8 +308,8 @@ const LabsPage = (props) => {
                       <button
                         type="button"
                         onClick={() => {
-                          setSelectedTopic([]);
-                          setSelectedDifficulty([]);
+                          setSelectedTopics([]);
+                          setSelectedDifficulties([]);
                         }}
                         className="tw-absolute tw-font-bold tw-z-10 tw-top-0 tw-right-0 btn tw-text-black tw-bg-primary-yellow tw-shadow-md focus:tw-bg-secondary-gray hover:tw-bg-secondary-gray hover:tw-shadow-lg text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap tw-border-none"
                       >
@@ -329,7 +329,7 @@ const LabsPage = (props) => {
                                 hover:tw-bg-primary-yellow
                                 tw-z-10
                                 ${
-                                  selectedTopic.includes(key)
+                                  selectedTopics.includes(key)
                                     ? "tw-bg-primary-yellow"
                                     : "tw-bg-white"
                                 }
@@ -340,7 +340,7 @@ const LabsPage = (props) => {
                               id={key}
                               name="topic"
                               value={key}
-                              checked={selectedTopic.includes(key)}
+                              checked={selectedTopics.includes(key)}
                               onChange={() => changeTopic(key)}
                               className="tw-w-0 tw-h-0"
                             />
@@ -366,7 +366,7 @@ const LabsPage = (props) => {
                                 hover:tw-bg-primary-yellow
                                 tw-z-10
                                 ${
-                                  selectedDifficulty.includes(level)
+                                  selectedDifficulties.includes(level)
                                     ? "tw-bg-primary-yellow"
                                     : "tw-bg-white"
                                 }
@@ -377,7 +377,7 @@ const LabsPage = (props) => {
                               id={`difficulty-${level}`}
                               name="difficulty"
                               value={level}
-                              checked={selectedDifficulty.includes(level)}
+                              checked={selectedDifficulties.includes(level)}
                               onChange={() => changeDifficulty(level)}
                               className="tw-w-0 tw-h-0"
                             />
