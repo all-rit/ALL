@@ -16,11 +16,11 @@ class PageLayoutRepair extends Component {
     super(props);
 
     this.state = {
-      h1value: null,
-      ulvalue: null,
-      classvalue: null,
-      fontvalue: null,
-      fontfamilyvalue: null,
+      h1value: props.h1value,
+      ulvalue: props.ulvalue,
+      classvalue: props.classvalue,
+      fontvalue: props.fontvalue,
+      fontfamilyvalue: props.fontfamilyvalue,
       h1error: null,
       ulerror: null,
       classerror: null,
@@ -32,16 +32,6 @@ class PageLayoutRepair extends Component {
     // this.validateRepair = this.validateRepair.bind(this)
   }
 
-  componentWillMount() {
-    const { data } = this.props;
-    this.setState({
-      h1value: data.h1value,
-      ulvalue: data.ulvalue,
-      classvalue: data.classvalue,
-      fontvalue: data.fontvalue,
-      fontfamilyvalue: data.fontfamilyvalue,
-    });
-  }
   validateRepair(e) {
     let error = false;
     Object.keys(this.state).map((name) => {

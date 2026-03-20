@@ -21,10 +21,7 @@ const ExtraNav = () => {
         light
         expand="md"
       >
-        <NavbarBrand
-          className={"tw-title tw-text-[1.25rem]"}
-          href="javascript:void(0);"
-        >
+        <NavbarBrand className={"tw-title tw-text-[1.25rem]"}>
           Accessibility
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />

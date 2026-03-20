@@ -39,7 +39,7 @@ class FormGuidance extends Component {
             </li>
           </ul>
           <p className="lowercontent">
-            Let’s continue on and make the changes. Click <bold>Next</bold>.
+            Let’s continue on and make the changes. Click <strong>Next</strong>.
           </p>
           <div className="tw-flex tw-justify-center">
             <LabButton label={"Next"} onClick={this.handleNav} key="Next" />
