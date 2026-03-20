@@ -317,31 +317,10 @@ const LabsPage = (props) => {
                       </button>
                       <h2 className="tw-text-lg tw-font-bold tw-py-4">Topic</h2>
                       <div className="tw-grid tw-grid-cols-2 tw-gap-6">
-                        {[
-                          {
-                            id: "accessibility",
-                            label: "Accessibility",
-                            value: "Accessibility",
-                          },
-                          {
-                            id: "ai_ml",
-                            label: "AI / Machine Learning",
-                            value: "AI",
-                          },
-                          {
-                            id: "quantum",
-                            label: "Quantum",
-                            value: "Quantum Computing",
-                          },
-                          {
-                            id: "tutorial",
-                            label: "Tutorial",
-                            value: "Tutorials",
-                          },
-                        ].map((option) => (
+                        {Array.from(labInformation.keys()).map((key) => (
                           <label
-                            key={option.id}
-                            htmlFor={option.id}
+                            key={key}
+                            htmlFor={key}
                             className={`
                                 tw-flex tw-items-center tw-justify-center
                                 focus-within:tw-border-black
@@ -350,7 +329,7 @@ const LabsPage = (props) => {
                                 hover:tw-bg-primary-yellow
                                 tw-z-10
                                 ${
-                                  selectedTopic.includes(option.value)
+                                  selectedTopic.includes(key)
                                     ? "tw-bg-primary-yellow"
                                     : "tw-bg-white"
                                 }
@@ -358,14 +337,14 @@ const LabsPage = (props) => {
                           >
                             <input
                               type="checkbox"
-                              id={option.id}
+                              id={key}
                               name="topic"
-                              value={option.value}
-                              checked={selectedTopic.includes(option.value)}
-                              onChange={() => changeTopic(option.value)}
+                              value={key}
+                              checked={selectedTopic.includes(key)}
+                              onChange={() => changeTopic(key)}
                               className="tw-w-0 tw-h-0"
                             />
-                            {option.label}
+                            {key}
                           </label>
                         ))}
                       </div>
