@@ -11,21 +11,18 @@ class Repair extends Component {
     super(props);
 
     this.state = {
-      cowAltValue: null,
-      carAltValue: null,
-      burgerAltValue: null,
-      catAltValue: null,
+      cowAltValue: props.cowAltValue,
+      carAltValue: props.carAltValue,
+      burgerAltValue: props.burgerAltValue,
+      catAltValue: props.catAltValue,
       repairError: false,
     };
   }
 
-  componentWillMount() {
+  // ComponentWilMount is deprecated
+  componentDidMount() {
     const { data } = this.props;
     this.setState({
-      cowAltValue: data.cowAltValue,
-      carAltValue: data.carAltValue,
-      burgerAltValue: data.burgerAltValue,
-      catAltValue: data.catAltValue,
       repairError: data.repairError,
     });
   }
@@ -109,6 +106,7 @@ class Repair extends Component {
 
     if (!visible) return null;
 
+    // Removed redundent ___Click() calls from spans
     return (
       <div className="code_editor">
         <div className="code_editor__content">
@@ -185,9 +183,6 @@ class Repair extends Component {
               <span>&nbsp;</span>
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
-              <span className="code_editor__line--gold">
-                {() => CatClick() /* eslint-disable-line no-undef */}
-              </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
               <span className="code_editor__line--green">alt</span>
@@ -237,9 +232,6 @@ class Repair extends Component {
               <span>&nbsp;</span>
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
-              <span className="code_editor__line--gold">
-                {() => CarClick() /* eslint-disable-line no-undef */}
-              </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
               <span className="code_editor__line--green">alt</span>
@@ -301,9 +293,6 @@ class Repair extends Component {
               <span>&nbsp;</span>
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
-              <span className="code_editor__line--gold">
-                {() => BurgerClick() /* eslint-disable-line no-undef */}
-              </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
               <span className="code_editor__line--green">alt</span>
@@ -353,9 +342,6 @@ class Repair extends Component {
               <span>&nbsp;</span>
               <span className="code_editor__line--green">onClick</span>
               <span className="code_editor__line--white">="</span>
-              <span className="code_editor__line--gold">
-                {() => CowClick() /* eslint-disable-line no-undef */}
-              </span>
               <span className="code_editor__line--white">"</span>
               <span>&nbsp;</span>
               <span className="code_editor__line--green">alt</span>
