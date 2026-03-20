@@ -8,7 +8,7 @@ class AppInstructions extends Component {
     if (!visible) return null;
 
     return (
-      <p className="tw-body-text">
+      <div className="tw-body-text">
         <b>Goal:</b> Find the box with the treasure.
         <ul className="tw-body-text">
           <li className={"tw-py-6 "}>Opening the hint box costs 25 points.</li>
@@ -17,7 +17,7 @@ class AppInstructions extends Component {
             get.
           </li>
         </ul>
-      </p>
+      </div>
     );
   }
 }
