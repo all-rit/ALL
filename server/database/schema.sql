@@ -3700,7 +3700,7 @@ e'[
    "LO2: Create design strategies that promote critical thinking, such as certainty indicators and disclaimers about AI limitations (Synthesis)",
    "LO3: Identify common hallucination patterns in generative AI, including false citations and misleading self-references (Application)",
    "LO4: Experience how confident language, polished grammar, and proximity to credible sources can lead to overestimation of AI accuracy (Comprehension)"
-]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 
+]', 'Emma Schmitt, Jack DeFeo, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 
 'In this lab, you will explore what cognitive bias is and 
 how it influences trust in AI systems. You will evaluate AI 
 responses, compare them with search results, and reflect on 
@@ -3961,7 +3961,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
  }
 ]', 1, 'coming soon', 'coming soon', true), 
 
-(14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+(14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', 'This lab introduces the concepts of Quantum Computing through the lens of cryptography. Participants will learn about different ways to encrypt messages, and the algorithms used to decrypt them. Then, the lab explores the difference in time and efficiency between breaking these ciphers with both Classical and Quantum computers.',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
