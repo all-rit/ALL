@@ -1,7 +1,5 @@
-/* eslint-disable max-len */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import CatClickNavigate from "../../helpers/CatClickNavigate";
 import { navigate } from "@reach/router";

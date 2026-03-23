@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Typography from "@mui/material/Typography";
 import CheckCircleIcon from "@mui/material/SvgIcon/";

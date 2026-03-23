@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const quizQuestionsLab12 = [
   {
     question: "What does gender refer to?",

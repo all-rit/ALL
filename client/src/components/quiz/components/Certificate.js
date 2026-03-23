@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../../reducers/lab1/AppReducer";

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useEffect, useState } from "react";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
@@ -141,7 +140,7 @@ const CodeChangeBlocks = () => {
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
     Prism.highlightAll();
-    if (window.location.state.role !== undefined) {
+    if (window.location.state?.role !== undefined) {
       const el0 = document.getElementById("first");
       el0.value = window.location.state.role;
       doEvent(el0, "input");

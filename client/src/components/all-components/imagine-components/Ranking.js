@@ -54,43 +54,80 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
 };
 
 const RankingQuestion = (props) => {
-  //Both are used in order to ensure mutual exculivity between a value and it's key
+  //Both are used in order to ensure mutual exclusivity between a value and its key
   //These are answers in {option: ranking} eg: {"Option11": 2}
   const [selectedAnswers, setSelectedAnswers] = useState({});
   //These are the answers in the inverted order {ranking: option} eg {2: "Option1"}
   const [availableAnswers, setAvailableAnswers] = useState({});
 
-  //sets the base value of each hashmap. for selcted answers 0 is the defalut value, and for available answers "" is the default
+  // Work with a local copy of options to avoid mutating props.options directly
+  const [displayOptions, setDisplayOptions] = useState([...props.options]);
+
+  // Shuffle displayOptions on mount unless disabled
+  useEffect(() => {
+    if (props.disableShuffle) {
+      setDisplayOptions([...props.options]);
+      return;
+    }
+    const arr = [...props.options];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    setDisplayOptions(arr);
+  }, [props.options]);
+
+  // sets the base value of each hashmap. for selected answers 0 is the default value, and for available answers "" is the default
+  // If props.initialSelectedAnswers is provided, use it to pre-populate both maps
   useEffect(() => {
     const selectedOptions = {};
     const availableOptions = {};
-    for (let i = 0; i < props.options.length; i++) {
-      availableOptions[i + 1] = "";
-      selectedOptions[props.options[i]] = 0;
+
+    for (let i = 0; i < displayOptions.length; i++) {
+      const opt = displayOptions[i];
+      const initialVal = props.initialSelectedAnswers?.[opt] ?? 0;
+      selectedOptions[opt] = initialVal;
     }
+    for (let i = 0; i < displayOptions.length; i++) {
+      const rank = i + 1;
+      // find which option (if any) is assigned to this rank from initialSelectedAnswers
+      let assigned = "";
+      if (props.initialSelectedAnswers) {
+        for (const [k, v] of Object.entries(props.initialSelectedAnswers)) {
+          if (v === rank) {
+            assigned = k;
+            break;
+          }
+        }
+      }
+      availableOptions[rank] = assigned;
+    }
+
     setSelectedAnswers(selectedOptions);
     setAvailableAnswers(availableOptions);
-  }, [props.options.length]);
+  }, [displayOptions, props.initialSelectedAnswers]);
 
-  //anytime selected answers are updated, notify the registered observer
+  // anytime selected answers are updated, notify the registered observer
   useEffect(() => {
     props.updatedSelectedAnswers?.(selectedAnswers);
   }, [selectedAnswers]);
 
-  //handles selection to ensure mutal exclusivity
+  // handles selection to ensure mutual exclusivity
   const handleSelection = (rankingNumber, option) => {
     const prevSelectedAnswer = selectedAnswers[option];
     const prevAvailableAnswer = availableAnswers[rankingNumber];
 
-    //if current ranking is already taken, remove is
-    if (prevAvailableAnswer != 0) {
+    // if current ranking is already taken, remove it
+    if (prevAvailableAnswer && prevAvailableAnswer !== "") {
       setSelectedAnswers((prevState) => ({
         ...prevState,
         [prevAvailableAnswer]: 0,
       }));
     }
-    //if current option is already taken, remove it
-    if (prevSelectedAnswer != "") {
+    // if current option is already taken, remove it
+    if (prevSelectedAnswer && prevSelectedAnswer !== 0) {
       setAvailableAnswers((prevState) => ({
         ...prevState,
         [prevSelectedAnswer]: "",
@@ -106,24 +143,14 @@ const RankingQuestion = (props) => {
     }));
   };
 
-  useEffect(() => {
-    for (let i = props.options.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = props.options[i];
-      props.options[i] = props.options[j];
-      props.options[j] = temp;
-    }
-    return;
-  }, []);
-
   return (
     <Form>
       <FormGroup className="tw-grid tw-grid-cols-1 tw-gap-10 tw-max-w-[25%] tw-mx-auto tw-text-left">
-        {props.options.map((option) => (
+        {displayOptions.map((option) => (
           <div key={option}>
             {RankingEntry(
               option,
-              props.options.length,
+              displayOptions.length,
               handleSelection,
               selectedAnswers[option],
             )}
@@ -137,6 +164,9 @@ const RankingQuestion = (props) => {
 RankingQuestion.propTypes = {
   options: PropTypes.array.isRequired,
   updatedSelectedAnswers: PropTypes.func,
+  initialSelectedAnswers: PropTypes.object,
+  // when true, do not shuffle options on mount
+  disableShuffle: PropTypes.bool,
 };
 
 export default RankingQuestion;

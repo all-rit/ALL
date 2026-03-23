@@ -1,5 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-tabs */
 const db = require('../../database');
 
 exports.submitChangeButton = (data) => {

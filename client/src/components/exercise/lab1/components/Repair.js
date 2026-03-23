@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
 import { Panel as ColorPickerPanel } from "rc-color-picker";

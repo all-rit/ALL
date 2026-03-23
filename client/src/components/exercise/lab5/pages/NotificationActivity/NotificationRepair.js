@@ -1,9 +1,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import RepairService from "../../../../../services/lab5/RepairService";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";

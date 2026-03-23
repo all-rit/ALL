@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { navigate } from "@reach/router";

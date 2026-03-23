@@ -51,6 +51,7 @@ const MemberDisplay = (props) => {
         setLabCredits(memberLabs);
       }
     } catch (error) {
+      // eslint-disable-line no-unused-vars
       setLabCredits(["No lab credits at this time."]);
     }
   };
@@ -137,7 +138,7 @@ const MemberDisplay = (props) => {
                 })}
               </div>
             </div>
-            {currentMember.favoritelab && (
+            {currentMember.favoritelab !== null ? (
               <div id="member-favorite-lab">
                 <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Favorite Lab
@@ -146,6 +147,8 @@ const MemberDisplay = (props) => {
                   {"Lab " + currentMember.favoritelab + ": " + currentFavorite}
                 </p>
               </div>
+            ) : (
+              ""
             )}
             {currentMember.labcredits && (
               <div id="member-lab-credits">

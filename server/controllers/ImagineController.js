@@ -1,6 +1,6 @@
 const ImagineService = require('../services/ImagineService');
 
-const submitStudy = async (req, res) => {
+const submitStudy = async (req, _res) => {
   try {
     const {userID, study, year} = req.body;
     const result = await ImagineService.submitStudy({
@@ -16,7 +16,7 @@ const submitStudy = async (req, res) => {
   }
 };
 
-const newID = async (req, res) => {
+const newID = async (req, _res) => {
   try {
     const {userID, year} = req.body;
     const result = await ImagineService.newID({
@@ -31,7 +31,7 @@ const newID = async (req, res) => {
   }
 };
 
-const preSurvey = async (req, res) => {
+const preSurvey = async (req, _res) => {
   const {userID, preSurvey, year} = req.body;
 
   try {
@@ -49,7 +49,7 @@ const preSurvey = async (req, res) => {
   };
 };
 
-const postSurvey = async (req, res) => {
+const postSurvey = async (req, _res) => {
   const {userID, postSurvey, year} = req.body;
   try {
     const respostSurvey = await ImagineService.postSurvey({
@@ -65,7 +65,7 @@ const postSurvey = async (req, res) => {
   };
 };
 
-const getUsers = async (req, res) => {
+const getUsers = async (_req, _res) => {
   try {
     const users = await ImagineService.getUsers();
     return users;
@@ -74,7 +74,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-const getGroup = async (req, res) => {
+const getGroup = async (req, _res) => {
   try {
     const {year, userID} = req.params;
     const group = await ImagineService.getGroup(userID, year);
@@ -84,7 +84,7 @@ const getGroup = async (req, res) => {
   }
 };
 
-const getTeammate = async (req, res) => {
+const getTeammate = async (req, _res) => {
   try {
     const {year, userID} = req.params;
     const teammate = await ImagineService.getTeammate(userID, year);
@@ -94,7 +94,7 @@ const getTeammate = async (req, res) => {
   }
 };
 
-const getUserByID = async (req, res) => {
+const getUserByID = async (req, _res) => {
   // const { userID, avatar, year } = req.body;
   try {
     const {userID, year} = req.params;
@@ -109,7 +109,7 @@ const getUserByID = async (req, res) => {
 };
 
 
-const readMoreCount = async (req, res) => {
+const readMoreCount = async (req, _res) => {
   const {userID, readMoreCount, year} = req.body;
   try {
     const result = await ImagineService.readMoreCount({
@@ -124,7 +124,7 @@ const readMoreCount = async (req, res) => {
 };
 
 
-const readMoreTimeElapsed = async (req, res) => {
+const readMoreTimeElapsed = async (req, _res) => {
   const {userID, readMoreTimeElapsed, year} = req.body;
   try {
     const result = await ImagineService.readMoreTimeElapsed({
@@ -138,7 +138,7 @@ const readMoreTimeElapsed = async (req, res) => {
   };
 };
 
-const readingSectionPagePosition = async (req, res) => {
+const readingSectionPagePosition = async (req, _res) => {
   const {userID, readingSectionPagePosition, year} = req.body;
   try {
     const result = await
@@ -153,7 +153,7 @@ const readingSectionPagePosition = async (req, res) => {
   };
 };
 
-const postTeammateAvatar = async (req, res) => {
+const postTeammateAvatar = async (req, _res) => {
   const {userID, teammateAvatar, year} = req.body;
   try {
     const avatarCreated = await ImagineService.postTeammateAvatar({
@@ -169,7 +169,7 @@ const postTeammateAvatar = async (req, res) => {
   };
 };
 
-const postOpponentAvatar = async (req, res) => {
+const postOpponentAvatar = async (req, _res) => {
   const {userID, opponentAvatar, year} = req.body;
   try {
     const avatarCreated = await ImagineService.postOpponentAvatar({
@@ -185,7 +185,7 @@ const postOpponentAvatar = async (req, res) => {
   };
 };
 
-const postUserAvatar = async (req, res) => {
+const postUserAvatar = async (req, _res) => {
   const {userID, avatar, year} = req.body;
   try {
     const avatarCreated = await ImagineService.postUserAvatar({
@@ -212,7 +212,6 @@ module.exports = {
   submitStudy,
   postUserAvatar,
   newID,
-  submitStudy,
   postTeammateAvatar,
   postOpponentAvatar,
   getGroup,

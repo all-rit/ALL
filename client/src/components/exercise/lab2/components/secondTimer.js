@@ -1,6 +1,4 @@
-/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Score from "./score";
 import Instructions from "../Instructions/instructions";
@@ -124,7 +122,6 @@ class SecondTimer extends Component {
 
     // turns the data found into an object so it can be passed to the backend
     // after it is converted, the system sends the info to the backend and then
-    // eslint-disable-next-line max-len
     // will record the results from the past five exercises in the state of the exercise
     const recordData = async () => {
       const score = this.score;

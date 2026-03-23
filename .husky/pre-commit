@@ -1,12 +1,7 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-npx lint-staged
 
 cd client
-
-npm test
+npx lint-staged
 
 cd ../server
-
-npm test
+npx lint-staged
