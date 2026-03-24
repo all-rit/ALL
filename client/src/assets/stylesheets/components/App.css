@@ -1682,6 +1682,10 @@ ul.social-buttons li a:hover {
   background-color: #fed136;
 }
 
+.responsive-button {
+  display: block;
+}
+
 @media (min-width: 768px) {
   section {
     padding: 150px 0;
@@ -1987,7 +1991,6 @@ header.masthead .intro-text .intro-heading {
 
 body {
   background-color: white;
-  overflow-x: hidden;
   font-family:
     "Roboto Slab",
     -apple-system,

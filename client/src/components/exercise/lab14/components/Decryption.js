@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 
 import { Bar } from "react-chartjs-2";
 import OutputBox from "./OutputBox";
+import { BarElement, CategoryScale, Chart, LinearScale } from "chart.js";
+
+Chart.register(BarElement, CategoryScale, LinearScale);
 
 const Decryption = ({
   encryptedMessage,
@@ -24,6 +27,7 @@ const Decryption = ({
         minBarLength: 3,
         backgroundColor: ["#face35", "#0d28bc"],
         borderWidth: 1,
+        yAxisID: "y",
       },
     ],
   };
@@ -36,21 +40,23 @@ const Decryption = ({
       fontColor: "#212529",
     },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            min: 0,
-            max: Math.max(25, classicAttempts),
-          },
-        },
-      ],
+      y: {
+        min: 0,
+        max: Math.max(25, classicAttempts),
+      },
     },
   };
 
   const handleDecrypt = () => {
     decryptionFunction();
     setDecrypted(true);
+  };
+
+  const formatNumber = (num) => {
+    if (Math.abs(num) >= 1e12) {
+      return num.toExponential(2);
+    }
+    return num.toLocaleString();
   };
 
   return (
@@ -104,9 +110,10 @@ const Decryption = ({
 
           {/* Summary section */}
           <p className="tw-text-center tw-max-w-2xl tw-text-lg">
-            In this example, a classical computer took {classicAttempts}{" "}
-            attempt(s) to decrypt the message, while a quantum computer only
-            took {quantumAttempts} attempt(s)!
+            In this example, a classical computer took{" "}
+            {formatNumber(classicAttempts)} attempt(s) to decrypt the message,
+            while a quantum computer only took {formatNumber(quantumAttempts)}{" "}
+            attempt(s)!
           </p>
 
           {/* Spacer block */}
@@ -126,7 +133,9 @@ const Decryption = ({
           <div className="tw-flex tw-justify-center tw-items-center">
             <p className="tw-text-center tw-max-w-2xl tw-text-lg">
               In this example, a quantum computer was{" "}
-              {Math.round((classicAttempts / quantumAttempts) * 100) / 100}{" "}
+              {formatNumber(
+                Math.round((classicAttempts / quantumAttempts) * 100) / 100,
+              )}{" "}
               times faster than a classical computer!
             </p>
           </div>

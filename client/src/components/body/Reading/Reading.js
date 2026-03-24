@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import useScroll from "../../../use-hooks/useScroll";
 import StudyList from "./studylist";
 import NonBulletList from "./NonBulletList";
@@ -16,10 +17,24 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 
+const PIE_WINDOW_HEIGHT_PERCENTAGE = 0.7;
+const PIE_WINDOW_RESIZE_WIDTH = 610;
+const MAX_PIE_LABEL_LENGTH = 25;
+const PX_SPACE_LEGEND_CHART = 50;
+const PIE_SIZE = 300;
+
+Chart.register(ArcElement, Tooltip, Legend);
+
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
   const [readingData, setReadingData] = useState("");
   const [modalOpen, setModalOpen] = useState(true);
+  const [mobileView, setMobileView] = useState(false);
+  const [pieHeight, setPieHeight] = useState(
+    window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE,
+  );
+  const [originalPieLabels, setOriginalPieLabels] = useState([]);
+  const [mobileLabelWrap, setMobileLabelWrap] = useState(false);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
@@ -27,6 +42,86 @@ const Reading = (props) => {
 
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+  const mobileWrapOptions = {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          padding: 28,
+          textAlign: "left",
+        },
+        position: "top",
+        align: "start",
+      },
+      title: {
+        position: "bottom",
+      },
+      tooltip: {
+        callbacks: {
+          title: (ctx) => {
+            return ctx.label;
+          },
+
+          label: (ctx) => {
+            return ctx.parsed;
+          },
+        },
+      },
+    },
+  };
+
+  const mobileNoWrapOptions = {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+        align: "center",
+      },
+      tooltip: {
+        callbacks: {
+          title: (ctx) => {
+            return ctx.label;
+          },
+
+          label: (ctx) => {
+            return ctx.parsed;
+          },
+        },
+      },
+    },
+  };
+
+  const largeViewPortOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: (ctx) => {
+            return ctx.label;
+          },
+
+          label: (ctx) => {
+            return ctx.parsed;
+          },
+        },
+      },
+    },
+  };
+
+  const mobileLegendWrap = {
+    id: "mobileLegendWrap",
+    afterInit(chart) {
+      const smallOriginalFit = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        if (smallOriginalFit) {
+          smallOriginalFit.call(this);
+        }
+        return (this.height += PX_SPACE_LEGEND_CHART);
+      };
+    },
   };
 
   useScroll();
@@ -43,6 +138,77 @@ const Reading = (props) => {
     }
   };
 
+  function labelFlip() {
+    if (readingData.piechart) {
+      if (!mobileView) {
+        let newReadingData = readingData;
+        newReadingData.piechart.data.labels = labelChecker(
+          newReadingData.piechart.data.labels,
+        );
+        setReadingData(newReadingData);
+      } else {
+        let newReadingData = readingData;
+        newReadingData.piechart.data.labels = originalPieLabels;
+        setReadingData(newReadingData);
+      }
+    }
+  }
+
+  function labelChecker(labels) {
+    const labelsForReturn = [];
+    for (let label of labels) {
+      if (label.length > MAX_PIE_LABEL_LENGTH) {
+        setMobileLabelWrap(true);
+        const spaces = [];
+        for (let i = MAX_PIE_LABEL_LENGTH; i < label.length; i++) {
+          if (label[i] == " ") {
+            spaces.push(i);
+            i += MAX_PIE_LABEL_LENGTH;
+          } else {
+            let cont = true;
+            while (cont) {
+              --i;
+              if (label[i] == " ") {
+                spaces.push(i);
+                i += MAX_PIE_LABEL_LENGTH;
+                cont = false;
+              }
+            }
+          }
+        }
+        const newLabel = [];
+        for (let j = 0; j <= spaces.length; j++) {
+          if (j == 0) {
+            newLabel.push(label.slice(0, spaces[j]).trim());
+          } else if (j == spaces.length) {
+            newLabel.push(label.slice(spaces[j - 1]).trim());
+          } else {
+            let t = j - 1;
+            newLabel.push(label.slice(spaces[t], spaces[j]).trim());
+          }
+        }
+        labelsForReturn.push(newLabel);
+      } else {
+        labelsForReturn.push(label);
+      }
+    }
+    return labelsForReturn;
+  }
+
+  useEffect(() => {
+    const windowResizeEvent = () => {
+      if (window.innerWidth > PIE_WINDOW_RESIZE_WIDTH) {
+        setMobileView(false);
+      } else {
+        setMobileView(true);
+      }
+      setPieHeight(window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE);
+    };
+    window.addEventListener("resize", windowResizeEvent);
+    windowResizeEvent();
+    return () => window.removeEventListener("resize", windowResizeEvent);
+  });
+
   useEffect(() => {
     const readingAnalytics = async () => {
       await UserLabService.complete_reading(labID);
@@ -50,6 +216,14 @@ const Reading = (props) => {
         await UserLabService.user_complete_reading(user.userid, labID);
       }
       LabService.getLabReading(labID).then((data) => {
+        if (data[0].reading.piechart) {
+          setOriginalPieLabels(data[0].reading.piechart.data.labels);
+          if (window.innerWidth < PIE_WINDOW_RESIZE_WIDTH) {
+            data[0].reading.piechart.data.labels = labelChecker(
+              data[0].reading.piechart.data.labels,
+            );
+          }
+        }
         setReadingData(data[0].reading);
       });
 
@@ -66,14 +240,6 @@ const Reading = (props) => {
               positionPercentage: scrollPositionPercentage,
             },
           ]);
-          console.log(
-            "Scroll position percentage: " +
-              JSON.stringify(pagePosition) +
-              "\n" +
-              "at " +
-              seconds +
-              " seconds",
-          );
         }, 1000);
 
         return () => {
@@ -102,6 +268,10 @@ const Reading = (props) => {
     scrollPositionPercentage,
   ]);
 
+  useEffect(() => {
+    labelFlip();
+  }, [mobileView]);
+
   if (!readingData) {
     return (
       <div className="landingpage__row">
@@ -114,6 +284,10 @@ const Reading = (props) => {
     console.log("Scroll position percentage: " + JSON.stringify(pagePosition));
     setSaveData(true);
     navigate("/Imagine2023/PostSurvey");
+  };
+
+  const hasPiechartInBody = () => {
+    return readingData?.body?.some((item) => item.type === "piechart");
   };
 
   return (
@@ -135,34 +309,68 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {readingData?.piechart && (
+          {!hasPiechartInBody() && readingData?.piechart?.header && (
             <>
-              <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
-              <div className="flex tw-body-text">
-                <Pie
-                  data={readingData?.piechart.data}
-                  height={!isImagine && 100}
-                  options={isImagine && { maintainAspectRatio: false }}
-                />
-              </div>
+              {mobileView ? (
+                <>
+                  <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+                  <div className="flex tw-body-text">
+                    {readingData.piechart && (
+                      <Pie
+                        className="tw-w-auto"
+                        data={readingData?.piechart?.data}
+                        options={
+                          mobileLabelWrap
+                            ? mobileWrapOptions
+                            : mobileNoWrapOptions
+                        }
+                        height={!isImagine && pieHeight}
+                        plugins={mobileLabelWrap ? [mobileLegendWrap] : []}
+                      />
+                    )}
+                  </div>
+                  {readingData?.piechart?.caption !== "" &&
+                    readingData?.piechart?.caption.map((data, index) => {
+                      return (
+                        <div
+                          key={index}
+                          id={"caption"}
+                          className={
+                            "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                          }
+                        >
+                          {data}
+                        </div>
+                      );
+                    })}
+                </>
+              ) : (
+                <>
+                  <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+                  <div className="flex tw-body-text">
+                    <Pie
+                      data={readingData?.piechart.data}
+                      options={largeViewPortOptions}
+                      height={!isImagine && PIE_SIZE}
+                    />
+                  </div>
+                  {readingData?.piechart?.caption !== "" &&
+                    readingData?.piechart?.caption.map((data, index) => {
+                      return (
+                        <div
+                          key={index}
+                          id={"caption"}
+                          className={
+                            "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                          }
+                        >
+                          {data}
+                        </div>
+                      );
+                    })}
+                </>
+              )}
             </>
-          )}
-          {readingData?.piechart?.caption !== "" ? (
-            readingData?.piechart?.caption.map((data, index) => {
-              return (
-                <div
-                  key={index}
-                  id={"caption"}
-                  className={
-                    "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
-                  }
-                >
-                  {data}
-                </div>
-              );
-            })
-          ) : (
-            <></>
           )}
 
           {readingData?.body !== "" ? (
@@ -199,6 +407,26 @@ const Reading = (props) => {
                   )}
                   {data.type === "image" && <Image data={data.content} />}
                   {data.type === "links" && <Links data={data.content} />}
+                  {data.type === "piechart" && data.content && (
+                    <>
+                      <div className="tw-w-full tw-flex tw-justify-center">
+                        <div className="flex tw-body-text">
+                          <Pie
+                            data={data.content.data}
+                            height={!isImagine && 100}
+                            options={
+                              isImagine && { maintainAspectRatio: false }
+                            }
+                          />
+                        </div>
+                      </div>
+                      {data.content.caption && (
+                        <div className="tw-body-text tw-text-[#666] tw-text-sm tw-text-center">
+                          {data.content.caption}
+                        </div>
+                      )}
+                    </>
+                  )}
                 </Fragment>
               );
             })

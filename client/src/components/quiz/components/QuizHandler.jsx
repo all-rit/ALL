@@ -23,8 +23,8 @@ const QuizHandler = (props) => {
   useEffect(() => {
     setCurrentLab(props.labId);
     if (!props.isFinalQuiz) {
-      const quiz = props.quizQuestions;
-      const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
+      const quiz = props.questions;
+      const quizAnswers = props.questions[currentQuestionCursor].answers;
       props.setQuestions(quiz);
       setAnswerOption(quizAnswers);
     } else {
@@ -298,7 +298,7 @@ QuizHandler.propTypes = {
   setSelectedAnswers: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
   setQuestions: PropTypes.func.isRequired,
-  result: PropTypes.number.isRequired,
-  setResult: PropTypes.func.isRequired,
+  result: PropTypes.number,
+  setResult: PropTypes.func,
 };
 export default QuizHandler;

@@ -9,6 +9,7 @@
 html {
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
 }
 
 ul {
@@ -2424,7 +2425,6 @@ header.masthead {
 
 body {
   background-color: white;
-  overflow-x: hidden;
   font-family:
     "Roboto Slab",
     -apple-system,

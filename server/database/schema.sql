@@ -700,10 +700,10 @@ VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessibl
 ]
 ', 3, 'coming soon', 'coming soon', true),
        (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
-            that is accessible to users with hearing impairments.
+            that is accessible to users with hearing loss.
             You will learn how organizations like the National Association of the Deaf (NAD)
-            fought for easier access for hearing impaired individuals,
-            increase your understanding through an interactive module about hearing impairments,
+            fought for easier access for deaf/hard of hearing individuals,
+            increase your understanding through an interactive module about hearing loss,
             view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
     "piechart":
        {"header":"Approximate Deaf and Hard of Hearing Population in the United States",
@@ -3460,7 +3460,9 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', 2, 'coming soon', 'coming soon', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
+', 2, 'coming soon', 'coming soon', true), 
+
+(12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
 e'[
    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
@@ -3690,7 +3692,276 @@ e'[
    ],
    "multiChoice": false
  }
-]', 2, 'coming soon', 'coming soon', true), (14, 'Quantum Cryptography', 'Quantum', 'Quantum Computing', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', 'This lab introduces the concepts of Quantum Computing through the lens of cryptography. Participants will learn about different ways to encrypt messages, and the algorithms used to decrypt them. Then, the lab explores the difference in time and efficiency between breaking these ciphers with both Classical and Quantum computers.',
+]', 2, 'coming soon', 'coming soon', true),
+
+(13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artifical Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
+e'[
+   "LO1: Recognize how cognitive biases such as the Halo Effect, Authority Bias, and Truth Bias influence trust in AI-generated content (Knowledge)",
+   "LO2: Create design strategies that promote critical thinking, such as certainty indicators and disclaimers about AI limitations (Synthesis)",
+   "LO3: Identify common hallucination patterns in generative AI, including false citations and misleading self-references (Application)",
+   "LO4: Experience how confident language, polished grammar, and proximity to credible sources can lead to overestimation of AI accuracy (Comprehension)"
+]', 'Emma Schmitt, Jack DeFeo, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 
+'In this lab, you will explore what cognitive bias is and 
+how it influences trust in AI systems. You will evaluate AI 
+responses, compare them with search results, and reflect on 
+your own decision-making process. Afterwards, you will spot 
+bias mitigation features in real-world AI platforms and take 
+a quiz to test your knowledge. Click "Next" to start!', e'{
+  "description": {
+    "header":"",
+    "content":""
+  },
+  "body":[
+    {
+      "header":"Introduction",
+      "type":"",
+      "content":["AI systems are built on logic, data, and probability, yet the humans using them are not always logical. In psychology, this gap between logic and decision making is explained by cognitive bias."]
+    },
+    {
+      "header":"What is Cognitive Bias?",
+      "type":"",
+      "content":["Cognitive bias is a systematic pattern that causes people to deviate from fully rational thought, affecting how we process information, perceive others, and make decisions. Instead of carefully analyzing every fact, we rely on what feels familiar or intuitive to save time and effort, but this can lead to errors in reasoning."]
+    },
+    {
+        "header": "",
+        "type": "image",
+        "content" : {
+            "image":"/what-is-cognitive-bias-image.png",
+            "alt":"Split brain diagram showing two pathways of thinking: Rational Analysis (left, dark blue) with gears and magnifying glasses representing slow analytical thought, and Mental Shortcuts (right, orange) with lightning bolts and arrows representing fast intuitive thought",
+            "sub_caption":"",
+            "caption":"The brain uses two pathways: slow, analytical thinking (left) and fast, intuitive shortcuts (right). Cognitive biases arise when shortcuts lead to errors."
+        }
+    },
+    {
+      "header":"When Cognitive Bias Meets Technology",
+      "type":"",
+      "content":["As humans interact more with artificial intelligence (AI), cognitive biases are appearing in new forms. Generative AIs like ChatGPT, Gemini, or Claude are built to sound confident, fluent, and human-like, creating an impression of expertise. The polished tone can reduce usual skepticism, making users more likely to accept information without question, even when it may be inaccurate."]
+    },
+    {
+      "header": "How Often People Trust or Check AI Answers",
+      "type": "piechart",
+      "caption": [""],
+      "content": {
+        "data": {
+          "labels": ["Skeptical of AI Outputs", "Always verify AI answers", "Other"],
+          "datasets": [{
+            "label": "AI Trust Behavior",
+            "borderColor": "black",
+            "backgroundColor": ["#9587df", "#ffccab", "#b6e8ce"],
+            "data": [82, 8, 10],
+            "borderWidth": "1"
+          }]
+        }
+      }
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["Most people claim to be skeptical of AI, but only a small number actually fact check what it says. "]
+    },
+		{
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"The AI Trust Gap Research Study",
+					"link":"https://explodingtopics.com/blog/ai-trust-gap-research"
+				}
+			]
+		},
+    {
+      "header":"Mata V. Avianca",
+      "type":"",
+      "content": ["In the case of Mata V. Avianca (2023), experienced lawyers fell victim to cognitive bias when relying on generative AI output. Attorneys Steven A. Schwartz and Peter LoDuca used ChatGPT to help prepare a legal filing for a passenger, Roberto Mata, who claimed injury on an Avianca flight. The AI confidently produced realistic legal citations and reasoning, but every case it cited wasn\'t real. When questioned by Avianca\'s lawyers and the court on the location of the cited legal cases, Mata\'s lawyers continued to defend the fake citations because ChatGPT assured them the cases \'indeed exist\' and \'can be found in reputable legal databases such as LexisNexis and Westlaw.\' The court later sanctioned them making this one of the first high profile examples of cognitive bias in human-AI interactions! This case shows how polished tone, confident phrasing, and the perceived expertise of the AI can create a halo of trust, even making skilled professionals overrely on it and overlook errors."]
+    },
+    {
+      "header": "What Can We Do About It: AI Literacy",
+      "type": "",
+      "content": ["So why does AI seem so convincing, even when it\'s wrong? The reason lies in how AI systems are built: they’re designed to sound smart. Developers craft their tone, structure, and human-like phrasing to make interactions natural and engaging, which can unconsciously influence our  perception."]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["This is why AI literacy matters. AI literacy is the skill of using AI thoughtfully by understanding how it works, recognizing its limits, and knowing when you should question its responses instead of accepting output at face value. Here are a few small powerful habits:"]
+    },
+    {
+      "header": "",
+      "type": "study__list",
+      "content": ["Ask for citations", 
+                  "Cross-check the answer against trusted sources", 
+                  "Remember that AI’s format doesn’t guarantee accuracy"]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": ["As AI becomes heavily integrated in our daily lives, practicing these habits will help you protect your own reasoning."]
+    },
+    {
+      "header": "",
+      "type": "",
+      "content": [""]
+    }
+  ],
+  "footer":{
+    "links":[
+      {
+        "name": "Mata v. Avianca Case",
+        "link": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/"
+      },
+      {
+        "name": "Understanding Cognitive Bias",
+        "link": "https://www.simplypsychology.org/cognitive-bias.html"
+      },
+      {
+        "name": "Global Views on AI",
+        "link": "https://www.pewresearch.org/global/2025/10/15/how-people-around-the-world-view-ai/"
+      },
+      {
+        "name": "Exploding Topics: AI Trust Gap Report",
+        "link": "https://explodingtopics.com/blog/ai-trust-gap-research"
+      },
+      {
+        "name": "AI Makes You Smarter But None the Wiser",
+        "link": "https://www.sciencedirect.com/science/article/abs/pii/S0747563225002262?via%3Dihub"
+      },
+      {
+        "name": "AI Dependence and Literacy",
+        "link": "https://www.tandfonline.com/doi/full/10.1080/10447318.2025.2544006"
+      }
+    ]
+  }
+}',
+'[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
+ {
+   "question": "Which cognitive bias best describes this scenario? Bob is a student who used ChatGPT to do his math homework. He argues with his teacher about his homework that he got a 0 on. He believes that his math skills are strong enough to not check the answers of ChatGPT because they \"look right\". His teacher continued to give him a 0.",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "Truth Bias"
+     },
+     {
+       "val": 0,
+       "type": "1",
+       "content": "Halo Effect"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Authority Bias"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "Dunning-Kruger Effect",
+       "explanation": "The Dunning-Kruger Effect is a cognitive bias in which people overestimate their ability in a task. In this case, Bob overestimates his math skills and trusts the AI without verification."
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "Which one describes the Halo Effect?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "Generative AI giving a wrong answer"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "Generative AI using \"✅\" in its responses",
+       "explanation": "The Halo Effect is a cognitive bias in which our overall impression of a person, company, brand, or product is influenced by how we feel and think about their character or properties. In this case, the use of \"✅\" gives the impression that the answer is correct, even if it is not."
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Believing that Generative AI is correct because it is an online resource"
+     },
+     {
+       "val": 0,
+       "type": "3",
+       "content": "A lack of knowledge in the topic leading to believing that Generative AI is correct"
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "True or False: Since Generative AI has access to lots of information and is trained on a vast dataset, it can always be trusted.",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "True"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "False",
+       "explanation": "Generative AI can produce incorrect or misleading information, so it should not always be trusted without verification."
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "Which of the following can users use to check the validity of Generative AI responses?",
+   "answers": [
+     {
+       "val": 1,
+       "type": "0",
+       "content": "Disclaimers",
+       "explanation": "Many Generative AI tools include disclaimers that the information provided may not be accurate or up-to-date."
+     },
+     {
+       "val": 0,
+       "type": "1",
+       "content": "The tone of the response"
+     },
+     {
+       "val": 1,
+       "type": "2",
+       "content": "Confidence Scores",
+       "explanation": "Generative AI tools can provide confidence scores indicating how certain the model is about its response."
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "A separate search of the question",
+       "explanation": "Users should verify the information provided by Generative AI through independent research or trusted sources."
+     }
+   ],
+   "multiChoice": true
+ },
+ {
+   "question": "Which of these is cognitive bias NOT based on?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "Intuition"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "Facts",
+       "explanation": "Cognitive biases are systematic patterns of deviation from norm or rationality in judgment, often based on intuition rather than objective facts."
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Familiarity"
+     },
+     {
+       "val": 0,
+       "type": "3",
+       "content": "Quick Conclusions"
+     }
+   ],
+   "multiChoice": false
+ }
+]', 1, 'coming soon', 'coming soon', true), 
+
+(14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', 'This lab introduces the concepts of Quantum Computing through the lens of cryptography. Participants will learn about different ways to encrypt messages, and the algorithms used to decrypt them. Then, the lab explores the difference in time and efficiency between breaking these ciphers with both Classical and Quantum computers.',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
@@ -3997,17 +4268,18 @@ VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://
 (27, 'Kristen', 'Fang', 'Engineer', '/Kristen_Fang.jpg', '[{"link":"https://www.linkedin.com/in/kristenfang/","network":"linkedin"}]', null, '2024-Present', true, null, 3, '{0}'),
 (28, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/melissa-burisky-7b24bb230/"}]', null, '2024-2025', false, 'Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', 0, '{0}'),
 (29, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/michael-dibiase-8765632b8/"}]', null, '2024-2025', false, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 12, '{0,12}'),
-(30, 'Jack', 'DeFeo', 'AI Hallucination Team Lead, Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2024-Present', true, null, null, null),
-(31, 'Jack', 'Barter', 'Maintenance Team Lead, Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2024-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
-(32, 'Ursula', 'Parker', 'Project Manager, Imagine Team Lead', '/Ursula_Parker.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2024-Present', true, null, null, null),
-(33, 'Emma', 'Schmitt', 'AI Bias Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2024-Present', true, null, null, null),
-(34, 'Warner', 'Harper', 'Engineer, Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2024-Present', true, null, null, null),
-(35, 'Juidane', 'Thomas', 'Outreach Team Lead', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
-(36, 'William', 'Herrick', 'AI Deepfake Team Lead, Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, '{14}'),
-(37, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, '{14}'),
-(38, 'Darlyn', 'Gomez', 'Engineer', '/Darlyn_Gomez.jpg', '[{"link" : "https://www.linkedin.com/in/darlyn-gomez/"}]', null, '2025-Present', true, null, null, null),
-(39, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
-(40, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', null, null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);
+(30, 'Elaina', 'Trapatsos', 'Engineer, Outreach', '/Elaina_Trapatsos.jpg', '[{"link" : "https://www.linkedin.com/in/elaina-trapatsos/"}]', null, '2024-Present', true, 'Computer Science Student at Rochester Institute of Technology', null, null),
+(31, 'Ursula', 'Parker', 'Project Manager, Imagine Team Lead', '/Ursula_Parker.jpg', '[{"link" : "https://www.linkedin.com/in/ursula-parker/"}]', null, '2025-Present', true, null, null, null),
+(32, 'Jack', 'DeFeo', 'AI Hallucination Team Lead, Engineer', '/Jack_DeFeo.jpg', '[{"link" : "https://www.linkedin.com/in/conner-jack-defeo/"}]', null, '2025-Present', true, null, null, null),
+(33, 'Jack', 'Barter', 'Maintenance Team Lead, Engineer', '/Jack_Barter.jpg', '[{"link" : "https://www.linkedin.com/in/jackbarter/"}]', null, '2025-Present', true, 'Jack Barter is a third-year Software Engineering BS/MS student who joined ALL in the Spring of 2025. Jack enjoys working in backend architecture and building full-stack applications in his engineering roles. Lastly, Jack is also pursuing a minor in Criminal Justice where he also has experience in Public Safety working as security.', 0, '{0}'),
+(34, 'Emma', 'Schmitt', 'AI Bias Team Lead, Outreach', '/Emma_Schmitt.jpg', '[{"link" : "https://www.linkedin.com/in/emmakschmitt/"}]', null, '2025-Present', true, null, null, null),
+(35, 'Warner', 'Harper', 'Engineer, Outreach Team Lead', '/Warner_Harper.jpg', '[{"link" : "https://www.linkedin.com/in/warner-harper/"}]', null, '2025-Present', true, null, null, null),
+(36, 'Juidane', 'Thomas', 'Outreach Team Lead', '/Judiane_Thomas.jpg', '[{"link" : "www.linkedin.com/in/juidane-t-b90857299"}]', null, '2025-Present', true, null, null, null),
+(37, 'William', 'Herrick', 'AI Deepfake Team Lead, Engineer', '/Will_Herrick.jpg', '[{"link" : "https://www.linkedin.com/in/william-herrick/"}]', null, '2025-Present', true, 'Third year Software Engineering BS student and developer at ALL, Competitive Director for RIT Esports', null, '{14}'),
+(38, 'Vivian', 'Hernandez', 'Engineer', '/Vivian_Hernandez.jpg', '[{"link" : "https://www.linkedin.com/in/vivian-ahernandez"}]', null, '2025-Present', true, null, null, '{14}'),
+(39, 'Darlyn', 'Gomez', 'Engineer', '/Darlyn_Gomez.jpg', '[{"link" : "https://www.linkedin.com/in/darlyn-gomez/"}]', null, '2025-Present', true, null, null, null),
+(40, 'Luther B.', 'Roxo', 'Outreach', '/Luther_Roxo.png', '[{"link" : "https://www.linkedin.com/in/roxo"}]', null, '2025-Present', true, 'Outreach Officer at the Accessible Learning Labs, Game Development and Design transfer student at the Rochester Institute of Technology, and a freelance digital artist!', 6, null),
+(41, 'Gabby', 'Addotey', 'Outreach', '/Gabby_Addotey.png', '[{"link" : "https://www.linkedin.com/in/gabrielle-addotey-04993b300/"}]', null, '2025-Present', true, 'Fun fact: I am on the club soccer team!', null, null);
 
 INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
 (2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),

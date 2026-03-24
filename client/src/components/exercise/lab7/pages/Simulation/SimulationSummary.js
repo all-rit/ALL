@@ -87,13 +87,13 @@ const SimulationSummary = () => {
 };
 
 SimulationSummary.propTypes = {
-  score: PropTypes.number.isRequired,
-  intrusions: PropTypes.number.isRequired,
-  protect: PropTypes.number.isRequired,
-  incorrect: PropTypes.number.isRequired,
-  results: PropTypes.array.isRequired,
-  changesApplied: PropTypes.bool.isRequired,
-  redirectURL: PropTypes.string.isRequired,
+  score: PropTypes.number,
+  intrusions: PropTypes.number,
+  protect: PropTypes.number,
+  incorrect: PropTypes.number,
+  results: PropTypes.array,
+  changesApplied: PropTypes.bool,
+  redirectURL: PropTypes.string,
 };
 
 export default SimulationSummary;
