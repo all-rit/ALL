@@ -51,7 +51,7 @@ const ModelRepair = () => {
           />
         </div>
       </div>
-      <div>
+      <div className="tw-mt-5">
         <button onClick={() => navigate("/Lab15/Exercise/model-with-grades")}>
           Next
         </button>

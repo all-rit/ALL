@@ -118,11 +118,14 @@ const PromptViewer = ({
   }, [justLockedKey]);
 
   return (
-    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-secondary-gray tw-px-7 tw-py-6 tw-shadow-md tw-shadow-black/30">
+    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-s-darkGray tw-px-7 tw-py-6 tw-shadow-md tw-shadow-black/30">
       <style dangerouslySetInnerHTML={{ __html: KEYFRAME_CSS }} />
-      <div className="tw-text-base tw-font-bold  tw-text-darkGray tw-uppercase tw-tracking-wider tw-mb-4 tw-pb-2.5 tw-border-b-2 tw-border-darkGray">
+      <div className="tw-text-lg tw-text-left tw-font-bold tw-text-darkGray tw-uppercase tw-tracking-wider">
         Prompt
       </div>
+
+      {/* Divider */}
+      <hr className="border-2 tw-border-black"></hr>
 
       <p className="tw-text-sm tw-text-left tw-leading-[2.4] tw-italic">
         {sections.map((section, index) => {
