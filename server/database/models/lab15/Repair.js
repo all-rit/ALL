@@ -1,5 +1,4 @@
-const FORM_REPAIR = 'FormRepair';
-const DATABASE_REPAIR = 'DatabaseRepair';
+const MODEL_REPAIR = 'ModelRepair';
 module.exports = (sequelize, DataTypes) => {
   const IdentityRepair = sequelize.define('RepairLab15',
       {
@@ -15,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         section: {
           type:
             DataTypes.ENUM(
-                FORM_REPAIR,
-                DATABASE_REPAIR,
+                MODEL_REPAIR,
             ),
         },
         repair: {

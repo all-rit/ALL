@@ -1,7 +1,7 @@
 import { navigate } from "@reach/router";
 import React, { useState } from "react";
 import PromptViewer, { GCSE_SECTIONS } from "../components/PromptViewer";
-import LabButton from "src/components/all-components/LabButton";
+import LabButton from "../../../all-components/LabButton";
 
 const ModelRepair = () => {
   const [sectionValues] = useState({
