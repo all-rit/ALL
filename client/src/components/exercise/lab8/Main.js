@@ -19,7 +19,7 @@ const Main = () => {
   );
 
   return (
-    <div className="tw-overflow-y-scroll">
+    <div>
       <ExerciseStateContext.Provider
         value={{
           repairState,

@@ -28,14 +28,14 @@ const Reinforcement = (props) => {
   }
 
   return (
-    <div className={"tw-overflow-y-scroll"}>
+    <div>
       <h1 className={"tw-px-10 tw-title tw-text-left"}>Reinforcement</h1>
       <div className="">
         <h4 className="tw-font-bold tw-text-center p-3">
           Here is some supplemental material to reinforce the topic.
         </h4>
       </div>
-      <div className={"tw-overflow-y-scroll tw-overflow-x-hidden"}>
+      <div className={"tw-overflow-x-hidden"}>
         {reinforcement.map((data, index) => {
           return (
             <div key={index}>
