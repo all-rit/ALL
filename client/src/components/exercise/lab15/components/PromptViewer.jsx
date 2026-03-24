@@ -46,7 +46,7 @@ const KEYFRAME_CSS = `
 const SECTION_STATE_STYLES = {
   // Not reached yet
   empty:
-    "tw-bg-secondary-gray tw-outline tw-outline-1 tw-outline-labGray [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-bg-labGray tw-transition-all tw-duration-300 italic tw-px-10",
+    "tw-bg-secondary-gray tw-outline tw-outline-1 tw-outline-labGray [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-bg-labGray tw-transition-all tw-duration-300 tw-italic",
   // Currently being answered
   active:
     "tw-bg-labYellow tw-outline tw-outline-1 tw-outline-darkLine [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-transition-all tw-duration-300 tw-not-italic",
@@ -118,14 +118,14 @@ const PromptViewer = ({
   }, [justLockedKey]);
 
   return (
-    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-s-darkGray tw-px-7 tw-py-6 tw-shadow-md tw-shadow-black/30">
+    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-darkGray tw-px-7 tw-py-6 tw-shadow-md tw-shadow-black/30">
       <style dangerouslySetInnerHTML={{ __html: KEYFRAME_CSS }} />
       <div className="tw-text-lg tw-text-left tw-font-bold tw-text-darkGray tw-uppercase tw-tracking-wider">
         Prompt
       </div>
 
       {/* Divider */}
-      <hr className="border-2 tw-border-black"></hr>
+      <hr className="tw-border-2 tw-border-black"></hr>
 
       <p className="tw-text-sm tw-text-left tw-leading-[2.4] tw-italic">
         {sections.map((section, index) => {

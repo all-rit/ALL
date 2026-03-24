@@ -1,6 +1,7 @@
 import { navigate } from "@reach/router";
 import React, { useState } from "react";
 import PromptViewer, { GCSE_SECTIONS } from "../components/PromptViewer";
+import LabButton from "src/components/all-components/LabButton";
 
 const ModelRepair = () => {
   const [sectionValues] = useState({
@@ -52,9 +53,10 @@ const ModelRepair = () => {
         </div>
       </div>
       <div className="tw-mt-5">
-        <button onClick={() => navigate("/Lab15/Exercise/model-with-grades")}>
-          Next
-        </button>
+        <LabButton
+          label="Next"
+          onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
+        />
       </div>
     </div>
   );
