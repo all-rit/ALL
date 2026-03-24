@@ -5,6 +5,7 @@ import GoogleLogin from "../../../assets/images/google_buttons/Google_Sign_In.sv
 import Avatar from "avataaars";
 import { AvatarData } from "../../body/login/AvatarData";
 import useMainStateContext from "../../../reducers/MainContext";
+import PropTypes from "prop-types";
 
 const LoginButton = (props) => {
   const { enabled } = props;
@@ -14,6 +15,7 @@ const LoginButton = (props) => {
 
   const developmentLogin = (userId) => {
     actions.developmentLogin(userId);
+    props.closeModal();
   };
 
   const devLogin = () => {
@@ -29,7 +31,7 @@ const LoginButton = (props) => {
                 onClick={() => developmentLogin(data.id)}
                 key={index}
                 className={
-                  "tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-cursor-pointer hover:tw-font-bold"
+                  "tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-cursor-pointer"
                 }
               >
                 <Avatar
@@ -81,6 +83,10 @@ const LoginButton = (props) => {
   }
 
   return <div className="google__button google__button--disabled" />;
+};
+
+LoginButton.propTypes = {
+  closeModal: PropTypes.function,
 };
 
 export default LoginButton;

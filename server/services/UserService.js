@@ -171,12 +171,12 @@ const getUser = (userid) => {
       userid: userid,
     },
   })
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  .then((user) => {
+    return user;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 };
 
 module.exports = {

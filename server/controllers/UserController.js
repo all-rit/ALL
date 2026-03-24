@@ -77,7 +77,7 @@ const developmentLogin = async (req, res) => {
     req.session.save();
     res.json(user);
   } catch (e) {
-    console.error('Development Login failed!');
+    console.error('Development Login failed! ', e);
   }
 };
 
@@ -88,7 +88,7 @@ const storeURL = (req, res) => {
 
 // Logging out will clear sessions
 const logout = (req, res, next) => {
-  // eslint-disable-next-line max-len
+   
   const redirect = process.env.ENVIRONMENT === 'dev' ? process.env.CLIENT_URL + '/' : req.session.url;
   req.logout({keepSessionInfo: true}, (error) => {
     if (error) next(error);
