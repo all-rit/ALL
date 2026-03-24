@@ -17,8 +17,8 @@ const ModelRepair = () => {
   const activeKey = activeSection?.key ?? null;
 
   return (
-    <div className="tw-flex tw-flex-col tw-w-full tw-h-full">
-      <div>
+    <div className="tw-flex tw-flex-col tw-w-full tw-h-full tw-min-h-0 tw-overflow-hidden">
+      <div className="tw-px-6 tw-pt-6 tw-pb-4 tw-shrink-0 md:tw-px-0 md:tw-pt-0 md:tw-pb-0">
         <h1 className="tw-title tw-text-left">Exercise Start</h1>
         <p className="tw-body-text tw-text-left tw-py-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -26,7 +26,7 @@ const ModelRepair = () => {
           minim veniam.
         </p>
       </div>
-      <div className="tw-flex tw-flex-row tw-w-full tw-h-full tw-min-h-0 tw-overflow-hidden">
+      <div className="tw-flex tw-flex-col md:tw-flex-row tw-flex-1 tw-min-h-0 tw-overflow-hidden">
         {/* Left Panel */}
         <div className="tw-flex-1 tw-overflow-y-auto tw-p-6">
           <div className="tw-border-solid tw-border-b-labGray tw-p-4">
@@ -37,7 +37,7 @@ const ModelRepair = () => {
         {/* Divider */}
         <div
           aria-hidden="true"
-          className="tw-w-px tw-self-stretch tw-bg-bgdark tw-shrink-0"
+          className="tw-h-px md:tw-h-auto md:tw-w-px tw-w-full tw-bg-bgdark tw-shrink-0"
         />
 
         {/* Right Panel */}
