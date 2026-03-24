@@ -700,10 +700,10 @@ VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessibl
 ]
 ', 3, 'coming soon', 'coming soon', true),
        (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
-            that is accessible to users with hearing impairments.
+            that is accessible to users with hearing loss.
             You will learn how organizations like the National Association of the Deaf (NAD)
-            fought for easier access for hearing impaired individuals,
-            increase your understanding through an interactive module about hearing impairments,
+            fought for easier access for deaf/hard of hearing individuals,
+            increase your understanding through an interactive module about hearing loss,
             view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
     "piechart":
        {"header":"Approximate Deaf and Hard of Hearing Population in the United States",
