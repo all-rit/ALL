@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 // Define what sections exist within the prompt viewer
@@ -13,46 +13,118 @@ export const GCSE_SECTIONS = [
     number: 2,
     key: "context",
     label: "Context",
-    placeholder: "",
+    placeholder: "Add the background context the AI needs...",
   },
   {
     number: 3,
     key: "sources",
     label: "Sources",
-    placeholder: "",
+    placeholder: "Specify any sources to reference (optional)...",
   },
   {
     number: 4,
     key: "expectations",
     label: "Expectations",
-    placeholder: "",
+    placeholder: "Describe the format, length, or tone of the output...",
   },
 ];
 
+const KEYFRAME_CSS = `
+  @keyframes pv-fadeSlideIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pv-lockPop {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.04); }
+    100% { transform: scale(1); }
+  }
+  .pv-fade-in  { animation: pv-fadeSlideIn 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+  .pv-lock-pop { animation: pv-lockPop 0.38s ease both; }
+`;
+
 const SECTION_STATE_STYLES = {
   // Not reached yet
-  empty: "tw-bg-secondary-gray tw-border-dashed tw-bg-labGr italic",
-
+  empty:
+    "tw-bg-secondary-gray tw-outline tw-outline-1 tw-outline-labGray [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-bg-labGray tw-transition-all tw-duration-300 italic tw-px-10",
   // Currently being answered
-  active: "tw-bg-labYellow tw-border-darkLine tw-not-italic",
-
+  active:
+    "tw-bg-labYellow tw-outline tw-outline-1 tw-outline-darkLine [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-transition-all tw-duration-300 tw-not-italic",
   // Submitted and locked into prompt viewer
-  locked: "tw-bg-success tw-border-hoverSuccess tw-not-italic",
+  locked:
+    "tw-bg-success tw-outline tw-outline-1 tw-outline-hoverSuccess [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-transition-all tw-duration-300 tw-not-italic",
 };
 
 const PromptViewer = ({
-  sections = GCSE_SECTIONS,
-  values = {},
-  activeKey = "goal",
-  lockedKeys = [],
+  sections,
+  values,
+  activeKey,
+  lockedKeys,
+  justLockedKey,
 }) => {
+  // Animation class states
+  const [goalAnimClass, setGoalAnimClass] = useState("");
+  const [contextAnimClass, setContextAnimClass] = useState("");
+  const [sourcesAnimClass, setSourcesAnimClass] = useState("");
+  const [expectationsAnimClass, setExpectationsAnimClass] = useState("");
+
+  const animClasses = {
+    goal: goalAnimClass,
+    context: contextAnimClass,
+    sources: sourcesAnimClass,
+    expectations: expectationsAnimClass,
+  };
+
+  const animSetters = useRef({
+    goal: setGoalAnimClass,
+    context: setContextAnimClass,
+    sources: setSourcesAnimClass,
+    expectations: setExpectationsAnimClass,
+  });
+
+  const prevValues = useRef({
+    goal: null,
+    context: null,
+    sources: null,
+    expectations: null,
+  });
+
+  useEffect(() => {
+    GCSE_SECTIONS.forEach((section) => {
+      const newValue = values[section.key];
+      const oldValue = prevValues.current[section.key];
+
+      if (newValue && newValue !== oldValue) {
+        const setAnim = animSetters.current[section.key];
+
+        setAnim("pv-fade-in");
+        const timer = setTimeout(() => setAnim(""), 400);
+
+        prevValues.current[section.key] = newValue;
+        return () => clearTimeout(timer);
+      }
+    });
+  }, [values]);
+
+  useEffect(() => {
+    if (!justLockedKey) return;
+
+    const setAnim = animSetters.current[justLockedKey];
+    if (!setAnim) return;
+
+    setAnim("pv-lock-pop");
+    const timer = setTimeout(() => setAnim(""), 450);
+    return () => clearTimeout(timer);
+  }, [justLockedKey]);
+
   return (
-    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-secondary-gray tw-shadow-sm tw-px-7 tw-py-6">
+    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-secondary-gray tw-px-7 tw-py-6 tw-shadow-md tw-shadow-black/30">
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAME_CSS }} />
       <div className="tw-text-base tw-font-bold  tw-text-darkGray tw-uppercase tw-tracking-wider tw-mb-4 tw-pb-2.5 tw-border-b-2 tw-border-darkGray">
         Prompt
       </div>
 
-      <p className="tw-text-sm tw-leading-[2.4] tw-italic">
+      <p className="tw-text-sm tw-text-left tw-leading-[2.4] tw-italic">
         {sections.map((section, index) => {
           const currentValue = values[section.key];
           const isLocked = lockedKeys.includes(section.key);
@@ -71,12 +143,12 @@ const PromptViewer = ({
 
           return (
             <span key={section.key}>
-              <span className="tw-inline-flex tw-items-center tw-justify-center tw-w-5 tw-h-5 tw-rounded-full tw-border-darkLine tw-text-[10px] tw-font-bold tw-mx-1.5 tw-align-middle tw-flex-shrink-0">
+              <span className="tw-inline-flex tw-items-center tw-justify-center tw-w-5 tw-h-5 tw-rounded-full tw-border-solid tw-border-darkLine tw-text-[10px] tw-font-bold tw-mx-1.5 tw-align-middle tw-flex-shrink-0">
                 {section.number}
               </span>
 
               <span
-                className={`tw-inline tw-rounded-md tw-px-2 tw-py-0.5 tw-mx-0.5 tw-leading-relaxed ${variantClass}`}
+                className={`tw-inline tw-text-left tw-rounded-md tw-px-2 tw-py-0.5 tw-mx-0.5 tw-leading-relaxed ${variantClass} ${animClasses[section.key]}`}
               >
                 {displayText}
               </span>
@@ -103,10 +175,13 @@ PromptViewer.propTypes = {
       placeholder: PropTypes.string.isRequired,
     }),
   ).isRequired,
-
   values: PropTypes.objectOf(PropTypes.string).isRequired,
   activeKey: PropTypes.string.isRequired,
   lockedKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  justLockedKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.oneOf([null]),
+  ]),
 };
 
 PromptViewer.defaultProps = {
@@ -114,6 +189,7 @@ PromptViewer.defaultProps = {
   values: {},
   activeKey: "goal",
   lockedKeys: [],
+  justLockedKey: null,
 };
 
 export default PromptViewer;
