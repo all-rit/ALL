@@ -9,7 +9,6 @@ const auth = require('./auth');
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
-const path = require('path')
 
 const app = express();
 const port = process.env.PORT || 5005;
@@ -60,8 +59,7 @@ app.use(
 
 app.use(require("./routes"));
 
-//serve static files
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 let server;
 

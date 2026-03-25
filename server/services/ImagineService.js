@@ -59,7 +59,7 @@ const preSurvey = async (data) => {
       } else if (year == 25) {
         section = await determineSection2025();
       } else if (year == 26) {
-        section = await determineSection2025(preSurvey, year);
+        section = await determineSection2025();
       } else {
         console.log("invalid year");
       }
