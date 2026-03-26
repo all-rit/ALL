@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
+import Chrome from "@uiw/react-color-chrome";
 import RepairService from "../../../../services/lab1/RepairService";
 import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
@@ -435,7 +435,7 @@ class Repair extends Component {
                 />
                 {availableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
-                    <ColorPickerPanel
+                    <Chrome
                       enableAlpha={false}
                       color={this.state.availableBackgroundColor}
                       onChange={this.changeAvailableBackgroundColorHandler.bind(
@@ -478,7 +478,7 @@ class Repair extends Component {
                 />
                 {unavailableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
-                    <ColorPickerPanel
+                    <Chrome
                       enableAlpha={false}
                       color={this.state.unavailableBackgroundColor}
                       onChange={this.changeUnavailableBackgroundColorHandler.bind(
