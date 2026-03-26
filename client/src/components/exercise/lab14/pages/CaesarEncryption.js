@@ -1,9 +1,9 @@
-import { React, useContext, useState, useEffect } from "react";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
-import ExerciseStateContext from "../Lab14Context";
-import Encryption from "../components/Encryption";
-import LabButton from "../../../all-components/LabButton";
+import { React, useContext, useState, useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ExerciseStateContext from '../Lab14Context';
+import Encryption from '../components/Encryption';
+import LabButton from '../../../all-components/LabButton';
 
 const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
   const [validInput, setValidInput] = useState(null);
@@ -35,7 +35,7 @@ const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
         }}
       />
       <p
-        className={`tw-mt-4 ${validInput !== false ? "tw-hidden" : "tw-visible"}`}
+        className={`tw-mt-4 ${validInput !== false ? 'tw-hidden' : 'tw-visible'}`}
       >
         Error: Make sure the shift value is not 0 to continue.
       </p>
@@ -66,7 +66,7 @@ const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
         className="tw-absolute tw--top-8 tw-bg-black tw-text-white tw-text-xs tw-px-2 tw-py-1 tw-rounded"
         style={{
           left: `calc(${(shiftValue / 25) * 100}% - 12px)`,
-          pointerEvents: "none",
+          pointerEvents: 'none',
         }}
       >
         {shiftValue}
@@ -91,8 +91,8 @@ const CaesarEncryption = () => {
   } = useContext(ExerciseStateContext);
 
   useEffect(() => {
-    setCaesarBaseMessage("");
-    setCaesarEncryptedMessage("");
+    setCaesarBaseMessage('');
+    setCaesarEncryptedMessage('');
     setCaesarShiftAmount(0);
   }, []);
 
@@ -101,21 +101,21 @@ const CaesarEncryption = () => {
   const fillPercent = (shiftValue / 25) * 100;
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/CaesarDecryption");
+    navigate('/Lab14/Exercise/CaesarDecryption');
   };
 
   const encrypt = () => {
-    let encryptedString = "";
+    let encryptedString = '';
     for (let i = 0; i < caesarBaseMessage.length; i++) {
       let char = caesarBaseMessage[i];
 
-      if (char >= "A" && char <= "Z") {
+      if (char >= 'A' && char <= 'Z') {
         // Uppercase
         let code = char.charCodeAt(0) - 65;
         let shifted = (code + shiftValue) % 26;
         shifted = (shifted + 26) % 26;
         encryptedString += String.fromCharCode(shifted + 65);
-      } else if (char >= "a" && char <= "z") {
+      } else if (char >= 'a' && char <= 'z') {
         // Lowercase
         let code = char.charCodeAt(0) - 97;
         let shifted = (code + shiftValue) % 26;
@@ -156,7 +156,7 @@ const CaesarEncryption = () => {
       <LabButton
         disabled={!encrypted}
         onClick={handleContinue}
-        label={"Next"}
+        label={'Next'}
       />
     </div>
   );

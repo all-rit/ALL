@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Popup from "../../../../all-components/Popup";
-import { navigate } from "@reach/router";
-import Code from "../../components/Code";
-import { LOCKED_FILE, OPEN_FILE } from "../../../../../constants/lab7";
-import { evaluate } from "mathjs";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import { MathComponent } from "mathjax-react";
-import useMainStateContext from "src/reducers/MainContext";
-import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
+import React, { useEffect, useState } from 'react';
+import Popup from '../../../../all-components/Popup';
+import { navigate } from 'react-router-dom';
+import Code from '../../components/Code';
+import { LOCKED_FILE, OPEN_FILE } from '../../../../../constants/lab7';
+import { evaluate } from 'mathjs';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import { MathComponent } from 'better-react-mathjax';
+import useMainStateContext from 'src/reducers/MainContext';
+import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
 
 /**
  * Represents the component for repairing the AI code.
@@ -42,7 +42,7 @@ const AICodeRepair = () => {
    */
   const reset = () => {
     actions.resetRepair();
-    actions.updatePopup("");
+    actions.updatePopup('');
   };
 
   /**
@@ -51,7 +51,7 @@ const AICodeRepair = () => {
   const handleNav = () => {
     actions.updateMakeDecision(updateMakeDecision);
     actions.reset();
-    navigate("/Lab7/Exercise/ImprovedAISimulation");
+    navigate('/Lab7/Exercise/ImprovedAISimulation');
   };
 
   /**
@@ -70,7 +70,7 @@ const AICodeRepair = () => {
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"}> Repair </h1>
+      <h1 className={'tw-title tw-text-left'}> Repair </h1>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
           <p className="tw-body-text tw-my-6">
@@ -92,7 +92,7 @@ const AICodeRepair = () => {
           />
         </div>
         <p className="tw-body-text tw-my-6">
-          Click the &lsquo;<span className={"tw-font-bold"}>Repair</span>
+          Click the &lsquo;<span className={'tw-font-bold'}>Repair</span>
           &lsquo; button to view and edit the code of the autonomous system.
         </p>
       </div>
@@ -118,7 +118,7 @@ const AICodeRepair = () => {
       </button>
       {state.repairVisible && (
         <div
-          className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+          className={`${repairVisible ? 'tw-opacity-100' : 'tw-opacity-0'} tw-transition-opacity tw-duration-500 tw-ease-in`}
         >
           <Code handleCloseRepair={handleCloseRepair} />
         </div>

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../../all-components/LabButton";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../../all-components/LabButton';
 
 const NegativeReasoning = () => {
   const { actions } = useMainStateContext();
@@ -12,12 +12,12 @@ const NegativeReasoning = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate("/Lab6/Exercise/AIAnalysisQuestions");
+    navigate('/Lab6/Exercise/AIAnalysisQuestions');
   };
 
   return (
     <div className="center-div">
-      <div className={"tw-flex"}>
+      <div className={'tw-flex'}>
         <h2 className="tw-title tw-text-left tw-my-6">Decision:</h2>
         <h2 className="tw-title tw-text-left tw-my-6 tw-px-2 tw-text-brightRed">
           Not Chosen
@@ -31,7 +31,7 @@ const NegativeReasoning = () => {
         decisions.
       </div>
 
-      <LabButton label={"Continue"} onClick={handleContinue} key="confirm" />
+      <LabButton label={'Continue'} onClick={handleContinue} key="confirm" />
     </div>
   );
 };

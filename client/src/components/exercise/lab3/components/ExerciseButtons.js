@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { Component, Fragment } from "react";
-import { navigate } from "@reach/router";
+import React, { Component, Fragment } from 'react';
+import { navigate } from 'react-router-dom';
 
 class ExerciseButtons extends Component {
   render() {
     const { openRepairHandler, endEnabled } = this.props;
-    const startMessage = "Play";
+    const startMessage = 'Play';
     const repairButton = (
       <button
         className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
@@ -18,7 +18,7 @@ class ExerciseButtons extends Component {
     const startButton = (
       <button
         className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        onClick={() => navigate("/Lab3/Exercise/UserUpdatedExercise")}
+        onClick={() => navigate('/Lab3/Exercise/UserUpdatedExercise')}
         key="start"
         disabled={this.props.disabled}
       >
@@ -28,7 +28,7 @@ class ExerciseButtons extends Component {
     const endButton = (
       <button
         className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        onClick={() => navigate("/Lab3/Exercise/BeginnerExerciseConclusion")}
+        onClick={() => navigate('/Lab3/Exercise/BeginnerExerciseConclusion')}
         key="start"
         disabled={this.props.disabled}
       >

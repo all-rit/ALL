@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { default as Quiz } from "../../../../quiz/components/QuizHandler";
-import { EXERCISE_IDLE } from "src/constants/index";
-import { navigate } from "@reach/router";
-import { MathComponent } from "mathjax-react";
-import ExerciseService from "../../../../../services/lab7/ExerciseService";
-import useMainStateContext from "src/reducers/MainContext";
-import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { default as Quiz } from '../../../../quiz/components/QuizHandler';
+import { EXERCISE_IDLE } from 'src/constants/index';
+import { navigate } from 'react-router-dom';
+import { MathComponent } from 'better-react-mathjax';
+import ExerciseService from '../../../../../services/lab7/ExerciseService';
+import useMainStateContext from 'src/reducers/MainContext';
+import alterationQuizQuestions from 'src/constants/lab7/alterationQuestions';
 
 /**
  * Renders the Alteration Quiz component.
@@ -23,12 +23,12 @@ const AlterationQuiz = () => {
 
   useEffect(() => {
     if (mainState.state === EXERCISE_IDLE)
-      setTimeout(() => navigate("/Lab7/Exercise/AlterationStart"));
+      setTimeout(() => navigate('/Lab7/Exercise/AlterationStart'));
   }, [mainState.state]);
 
   const handleContinue = () => {
     mainActions.updateUserState(EXERCISE_IDLE);
-    navigate("/Lab7/Exercise/ExerciseEnd");
+    navigate('/Lab7/Exercise/ExerciseEnd');
   };
 
   const handleSubmitData = (output, userId) => {
@@ -40,11 +40,11 @@ const AlterationQuiz = () => {
   return (
     <div className="center-div">
       <p className="tw-title tw-text-left tw-p-3">Alteration Quiz</p>
-      <p className={"playthrough__sentence"}>
+      <p className={'playthrough__sentence'}>
         How does the <b>new utility equation</b> impact the autonomous system
         compared to the <b>original utility equation</b>?
       </p>
-      <div className={"tw-flex tw-flex-col playthrough__sentence"}>
+      <div className={'tw-flex tw-flex-col playthrough__sentence'}>
         <MathComponent
           tex={String.raw`Original\;Utility\;Equation=\frac{Reward\;Value}{Cost\;Value}`}
         />

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
 import AnswerOption from "./AnswerOption";
-import { MathComponent } from "mathjax-react";
+import { MathComponent } from "better-react-mathjax"
 
 const formulateEquation = (equation) => {
   return (

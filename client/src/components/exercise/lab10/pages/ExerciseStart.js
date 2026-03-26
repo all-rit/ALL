@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_IDLE } from "../../../../constants/lab10";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import { connect } from "react-redux";
-import LabButton from "../../../all-components/LabButton";
+import React, { Fragment, useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_IDLE } from '../../../../constants/lab10';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import { connect } from 'react-redux';
+import LabButton from '../../../all-components/LabButton';
 
 const ExerciseStart = (props) => {
   /**
@@ -19,14 +19,14 @@ const ExerciseStart = (props) => {
    * Redirect the user to the following page
    */
   const handleStart = () => {
-    return navigate("/Lab10/Exercise/BuildingAI");
+    return navigate('/Lab10/Exercise/BuildingAI');
   };
 
   return (
     <Fragment>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
-          <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+          <h1 className={'tw-title tw-text-left'}>Exercise Start</h1>
           <p className="tw-body-text tw-my-6">
             In this exercise, the user will experience how a neural network
             based AI is trained and implemented. Through a simple game where the
@@ -36,7 +36,7 @@ const ExerciseStart = (props) => {
             AI to eliminate bias.
           </p>
         </div>
-        <LabButton onClick={handleStart} key="start" label={"Start"} />
+        <LabButton onClick={handleStart} key="start" label={'Start'} />
       </div>
     </Fragment>
   );

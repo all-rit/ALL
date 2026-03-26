@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import QuestionsHandler from "../../components/QuestionsHandler";
-import ExerciseService from "../../../../../services/lab6/ExerciseService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import QuestionsHandler from '../../components/QuestionsHandler';
+import ExerciseService from '../../../../../services/lab6/ExerciseService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 function QualificationQuestions() {
   const { actions } = useMainStateContext();
@@ -14,131 +14,131 @@ function QualificationQuestions() {
 
   const handleContinue = (answers) => {
     ExerciseService.submitQualQuestions(answers);
-    navigate("/Lab6/Exercise/AnalyzeData");
+    navigate('/Lab6/Exercise/AnalyzeData');
   };
 
   const qualQuestionsData = [
     {
-      question: "What gender do you identify as?",
+      question: 'What gender do you identify as?',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "Male",
+          type: '0',
+          content: 'Male',
         },
         {
           val: 0,
-          type: "1",
-          content: "Female",
+          type: '1',
+          content: 'Female',
         },
         {
           val: 0,
-          type: "2",
-          content: "Non-binary",
+          type: '2',
+          content: 'Non-binary',
         },
         {
           val: 0,
-          type: "3",
-          content: "Prefer not to say",
+          type: '3',
+          content: 'Prefer not to say',
         },
       ],
       multiChoice: false,
     },
     {
-      question: "How many years of experience do you have?",
+      question: 'How many years of experience do you have?',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "0",
+          type: '0',
+          content: '0',
         },
         {
           val: 0,
-          type: "1",
-          content: "1-4",
+          type: '1',
+          content: '1-4',
         },
         {
           val: 0,
-          type: "2",
-          content: "5-10",
+          type: '2',
+          content: '5-10',
         },
         {
           val: 0,
-          type: "3",
-          content: "10+",
+          type: '3',
+          content: '10+',
         },
       ],
       multiChoice: false,
     },
     {
-      question: "What is your availability?",
+      question: 'What is your availability?',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "Full-time",
+          type: '0',
+          content: 'Full-time',
         },
         {
           val: 0,
-          type: "1",
-          content: "Part-time",
+          type: '1',
+          content: 'Part-time',
         },
       ],
       multiChoice: false,
     },
     {
-      question: "What is your expected hourly wage?",
+      question: 'What is your expected hourly wage?',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "$15-$20/hr",
+          type: '0',
+          content: '$15-$20/hr',
         },
         {
           val: 0,
-          type: "1",
-          content: "$21-$25/hr",
+          type: '1',
+          content: '$21-$25/hr',
         },
         {
           val: 0,
-          type: "2",
-          content: "$26-$30/hr",
+          type: '2',
+          content: '$26-$30/hr',
         },
         {
           val: 0,
-          type: "3",
-          content: "$31-$35/hr",
+          type: '3',
+          content: '$31-$35/hr',
         },
       ],
       multiChoice: false,
     },
     {
-      question: "What is your age?",
+      question: 'What is your age?',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "<18",
+          type: '0',
+          content: '<18',
         },
         {
           val: 0,
-          type: "1",
-          content: "18-25",
+          type: '1',
+          content: '18-25',
         },
         {
           val: 0,
-          type: "2",
-          content: "26-45",
+          type: '2',
+          content: '26-45',
         },
         {
           val: 0,
-          type: "3",
-          content: "46-64",
+          type: '3',
+          content: '46-64',
         },
         {
           val: 0,
-          type: "4",
-          content: "65+",
+          type: '4',
+          content: '65+',
         },
       ],
       multiChoice: false,

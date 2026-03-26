@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import LabButton from "../../../all-components/LabButton";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import LabButton from '../../../all-components/LabButton';
 
 class CatClickNavigate extends Component {
   constructor(props) {
@@ -27,16 +27,16 @@ class CatClickNavigate extends Component {
     };
 
     return (
-      <div id={"catClickMessage"}>
+      <div id={'catClickMessage'}>
         <p
-          className={"tw-body-text tw-text-white tw-text-center"}
+          className={'tw-body-text tw-text-white tw-text-center'}
           aria-label={
             "Cat clicked! Please click the 'next' button to continue."
           }
           onFocus={(e) =>
             textToSpeech(
               e,
-              "Cat clicked! Please click the next button to continue.",
+              'Cat clicked! Please click the next button to continue.',
             )
           }
         >
@@ -45,8 +45,8 @@ class CatClickNavigate extends Component {
         <br />
         <LabButton
           onClick={CatClickNavigate.handleOnclick}
-          onFocus={(e) => textToSpeech(e, "Next")}
-          label={"Next"}
+          onFocus={(e) => textToSpeech(e, 'Next')}
+          label={'Next'}
         />
       </div>
     );

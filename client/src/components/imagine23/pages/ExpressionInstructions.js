@@ -1,10 +1,10 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import useScroll from "../../../use-hooks/useScroll";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import useScroll from '../../../use-hooks/useScroll';
 
 const ExpressionInstructions = () => {
   const handleNext = () => {
-    navigate("/Imagine2023/ExpressionInstructions");
+    navigate('/Imagine2023/ExpressionInstructions');
   };
   useScroll();
   return (

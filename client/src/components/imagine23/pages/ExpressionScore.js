@@ -1,10 +1,10 @@
-import React from "react";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
+import React from 'react';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ExpressionScore = (props) => {
   const handleNext = () => {
-    navigate("/Imagine2023/Reading");
+    navigate('/Imagine2023/Reading');
   };
 
   return (

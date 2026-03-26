@@ -1,10 +1,10 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import useScroll from "../../../use-hooks/useScroll";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import useScroll from '../../../use-hooks/useScroll';
 
 const LandingPage = () => {
   const handleNext = () => {
-    navigate("/Imagine2023/ExperientialInstructions");
+    navigate('/Imagine2023/ExperientialInstructions');
   };
   useScroll();
   return (

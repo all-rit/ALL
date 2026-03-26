@@ -1,10 +1,10 @@
 // Post Correct Newsletter (Page #5)
 
-import { navigate } from "@reach/router";
-import React from "react";
-import { useEffect } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import { useEffect } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import { ExerciseService } from '../../../../../services/lab12/ExerciseService';
 
 const PostCorrectNewsletter = () => {
   const { state } = useMainStateContext();
@@ -29,7 +29,7 @@ const PostCorrectNewsletter = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}> Explanation </h1>
+      <h1 className={'tw-title tw-text-left'}> Explanation </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           This time the alumni newsletter uses your preferred name, even years

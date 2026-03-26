@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import QuestionsHandler from "../../components/QuestionsHandler";
-import ExerciseService from "../../../../../services/lab6/ExerciseService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import QuestionsHandler from '../../components/QuestionsHandler';
+import ExerciseService from '../../../../../services/lab6/ExerciseService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 const AIReasoningQuestions = () => {
   const { actions } = useMainStateContext();
@@ -14,37 +14,37 @@ const AIReasoningQuestions = () => {
 
   const handleContinue = (answers) => {
     ExerciseService.submitAIReasoningQuestion(Array.from(answers[0]));
-    navigate("/Lab6/Exercise/AIReasoning");
+    navigate('/Lab6/Exercise/AIReasoning');
   };
   const aiReasoningData = [
     {
       question:
-        "Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?",
+        'Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "Gender",
+          type: '0',
+          content: 'Gender',
         },
         {
           val: 0,
-          type: "1",
-          content: "Years of experience",
+          type: '1',
+          content: 'Years of experience',
         },
         {
           val: 0,
-          type: "2",
-          content: "Availability",
+          type: '2',
+          content: 'Availability',
         },
         {
           val: 0,
-          type: "3",
-          content: "Expected Pay",
+          type: '3',
+          content: 'Expected Pay',
         },
         {
           val: 0,
-          type: "4",
-          content: "Age",
+          type: '4',
+          content: 'Age',
         },
       ],
       multiChoice: true,

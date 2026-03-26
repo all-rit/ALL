@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button } from "reactstrap";
-import ImagineService from "src/services/ImagineService";
-import TeammateVideo from "../components/TeammateVideo";
-import { navigate } from "@reach/router";
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from 'reactstrap';
+import ImagineService from 'src/services/ImagineService';
+import TeammateVideo from '../components/TeammateVideo';
+import { navigate } from 'react-router-dom';
 
 const Analysis = () => {
   const [content, setContent] = useState(null);
 
   const handleNavigation = async () => {
-    const isUnderAge = sessionStorage.getItem("isUnderAge");
+    const isUnderAge = sessionStorage.getItem('isUnderAge');
     console.log(isUnderAge);
-    if (isUnderAge === "true") {
-      navigate("/Imagine2025/Done");
+    if (isUnderAge === 'true') {
+      navigate('/Imagine2025/Done');
     } else {
-      navigate("/Imagine2025/PostSurvey");
+      navigate('/Imagine2025/PostSurvey');
     }
   };
 
@@ -22,34 +22,34 @@ const Analysis = () => {
     const fetchContent = async () => {
       //yoink that user data
       const user = await ImagineService.getUserByID(
-        sessionStorage.getItem("userID"),
+        sessionStorage.getItem('userID'),
         25,
       );
 
       //pastel yellow and blue annoyingly are stored in their key forms and need to be re-converted to a readable form
       const colorMap = {
-        Gray02: "Gray",
-        Black: "Black",
-        Blue03: "Blue",
+        Gray02: 'Gray',
+        Black: 'Black',
+        Blue03: 'Blue',
       };
 
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const text = {
         experiential:
-          "Parsing error #343: Cannot Process Player User's \"" +
+          'Parsing error #343: Cannot Process Player User\'s "' +
           colorMap[user.avatar.clotheColor].toLowerCase() +
           '" shirt. Your points cannot be added due to error. Your team has been disqualified.',
         expression:
-          "Parsing error #343: Cannot Process Teammate User's  \"" +
+          'Parsing error #343: Cannot Process Teammate User\'s  "' +
           colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
-          "\" shirt. Your teammate's points cannot be added due to error. Your team has been disqualified.",
+          '" shirt. Your teammate\'s points cannot be added due to error. Your team has been disqualified.',
         control:
-          "Congrats on winning! You may collect a prize after completing  the post survery for being so awesome sauce.",
+          'Congrats on winning! You may collect a prize after completing  the post survery for being so awesome sauce.',
       };
 
       setContent(
         <p className="tw-body-text tw-my-24">
-          {text[user.section] || text["control"]}
+          {text[user.section] || text['control']}
         </p>,
       );
     };
@@ -130,7 +130,7 @@ const ScorePage = () => {
 
 const Game = () => {
   const contentSizing =
-    "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
+    'tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]';
 
   const iframeRef = useRef(null);
 
@@ -148,9 +148,9 @@ const Game = () => {
         iframe.focus();
       };
 
-      iframe.addEventListener("load", focusIframe);
+      iframe.addEventListener('load', focusIframe);
 
-      return () => iframe.removeEventListener("load", focusIframe);
+      return () => iframe.removeEventListener('load', focusIframe);
     }
   }, []);
 
@@ -175,7 +175,7 @@ const Game = () => {
   useEffect(() => {
     const fetchTeammateID = async () => {
       const id = await ImagineService.getTeammate(
-        sessionStorage.getItem("userID"),
+        sessionStorage.getItem('userID'),
         25,
       );
       setTeammateId(id);
@@ -190,8 +190,8 @@ const Game = () => {
         className={
           contentSizing +
           (gameActive
-            ? " tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]"
-            : " tw-pt-[7rem]")
+            ? ' tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]'
+            : ' tw-pt-[7rem]')
         }
       >
         {gameActive ? (

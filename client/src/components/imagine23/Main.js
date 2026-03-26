@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { navigate, Router } from "@reach/router";
-import { bindActionCreators } from "redux";
-import LandingPage from "./pages/landingPage";
-import MainInstructions from "./pages/mainInstructions";
-import Reading from "../body/Reading/Reading";
-import { default as ExerciseLab2 } from "../exercise/lab2/Main";
-import ExpressionStart from "./pages/ExpressionStart";
-import ExpressionExercise from "./pages/ExpressionExercise";
-import ExpressionExercise2 from "./pages/ExpressionExercise2";
-import ExpressionScore from "./pages/ExpressionScore";
-import ExerciseEnd from "./pages/ExerciseEnd";
-import UpdateID from "./pages/UpdateID";
-import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
-import ExpressionInstructions from "./pages/ExpressionInstructions";
-import Survey from "../all-components/imagine-components/SurveyHandlerComp";
-import { resetSystem } from "../../reducers/lab2/actions";
-const { nanoid } = require("nanoid");
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { navigate, Router } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import LandingPage from './pages/landingPage';
+import MainInstructions from './pages/mainInstructions';
+import Reading from '../body/Reading/Reading';
+import { default as ExerciseLab2 } from '../exercise/lab2/Main';
+import ExpressionStart from './pages/ExpressionStart';
+import ExpressionExercise from './pages/ExpressionExercise';
+import ExpressionExercise2 from './pages/ExpressionExercise2';
+import ExpressionScore from './pages/ExpressionScore';
+import ExerciseEnd from './pages/ExerciseEnd';
+import UpdateID from './pages/UpdateID';
+import ExpressionMainInstructions from './pages/ExpressionMainInstructions';
+import ExpressionInstructions from './pages/ExpressionInstructions';
+import Survey from '../all-components/imagine-components/SurveyHandlerComp';
+import { resetSystem } from '../../reducers/lab2/actions';
+const { nanoid } = require('nanoid');
 
-import { PropTypes } from "prop-types";
-import useMainStateContext from "../../reducers/MainContext";
+import { PropTypes } from 'prop-types';
+import useMainStateContext from '../../reducers/MainContext';
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -47,9 +47,9 @@ const Main = (props) => {
     setIsExperiential(isExperiential);
 
     if (isExperiential) {
-      navigate("/Imagine2023/ExperientialStart");
+      navigate('/Imagine2023/ExperientialStart');
     } else {
-      navigate("/Imagine2023/ExpressionStart");
+      navigate('/Imagine2023/ExpressionStart');
     }
   }
 
@@ -68,34 +68,34 @@ const Main = (props) => {
 
   return (
     <div className=" tw-min-h-[40rem] tw-mt-[10%]">
-      <div className={"tw-relative"}>
+      <div className={'tw-relative'}>
         <div className="tw-bg-primary-blue tw-absolute tw-right-14  tw-top-[-2rem] tw-z-1 tw-border-0 tw-rounded-xl tw-shadow-lg">
           {/* change font size */}
           <h2 className=" text-uppercase tw-title tw-p-6 tw-text-white">
-            {"ID: " + userID}
+            {'ID: ' + userID}
           </h2>
         </div>
       </div>
-      <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
+      <div className={'tw-flex tw-h-full tw-w-full tw-mt-[10%]'}>
         <div
           className={
-            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[40rem] tw-gap-y-6 tw-pl-6"
+            'tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[40rem] tw-gap-y-6 tw-pl-6'
           }
         >
           <div
             className={
-              "tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
+              'tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow'
             }
           />
           <div
             className={
-              "tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
+              'tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow'
             }
           />
         </div>
         <div
           className={
-            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[80%] shadow tw-rounded-xl tw-p-6"
+            'tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[80%] shadow tw-rounded-xl tw-p-6'
           }
         >
           <Router className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center">

@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import { LAB_ID } from "../../../../../constants/lab6";
-import GridApplicants from "../../components/GridApplicants";
-import { useState } from "react";
-import RepairService from "../../../../../services/lab6/RepairService";
-import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import ExerciseService from "../../../../../services/lab6/ExerciseService";
-import UserLabService from "../../../../../services/UserLabService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../../all-components/LabButton";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { LAB_ID } from '../../../../../constants/lab6';
+import GridApplicants from '../../components/GridApplicants';
+import { useState } from 'react';
+import RepairService from '../../../../../services/lab6/RepairService';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import ExerciseService from '../../../../../services/lab6/ExerciseService';
+import UserLabService from '../../../../../services/UserLabService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../../all-components/LabButton';
 
 const FixedHiringCandidate = () => {
   const { actions, state } = useMainStateContext();
@@ -33,7 +33,7 @@ const FixedHiringCandidate = () => {
       if (state.main.user?.firstname !== null && state.main.user !== null) {
         UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
       }
-      navigate("/Lab6/Exercise/ExerciseEnd");
+      navigate('/Lab6/Exercise/ExerciseEnd');
     } else {
       setRoundOfApplicants(roundCount + 1);
       setModalActive(!isModalActive);
@@ -55,7 +55,7 @@ const FixedHiringCandidate = () => {
     setRoundOfApplicants(0);
     RepairService.getUserRepair(state.main.user?.userid).then((data) => {
       if (data === null) {
-        navigate("/Lab6/Exercise/AIRepair");
+        navigate('/Lab6/Exercise/AIRepair');
       } else {
         setUserData(data);
       }
@@ -66,7 +66,7 @@ const FixedHiringCandidate = () => {
     if (numInput === 4) {
       let nonRecommendedCount = 0;
       selection.map((answer) => {
-        if (answer.ai === "No") {
+        if (answer.ai === 'No') {
           nonRecommendedCount++;
         }
       });
@@ -85,7 +85,7 @@ const FixedHiringCandidate = () => {
               LAB_ID,
             );
           }
-          navigate("/Lab6/Exercise/ExerciseEnd");
+          navigate('/Lab6/Exercise/ExerciseEnd');
         } else {
           let roundCount = roundOfApplicants;
           setRoundOfApplicants(roundCount + 1);
@@ -115,7 +115,7 @@ const FixedHiringCandidate = () => {
       >
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
-            <p className={"tw-body-text"}>
+            <p className={'tw-body-text'}>
               Are you sure you wish to select these candidates? The AI advises
               against one or more of them.
             </p>
@@ -124,7 +124,7 @@ const FixedHiringCandidate = () => {
         <ModalFooter>
           <Button className="btn-primary" onClick={handleYes}>
             Yes - Submit Selection
-          </Button>{" "}
+          </Button>{' '}
           <Button className="btn-second" onClick={handleNo}>
             No - Back to Selection
           </Button>
@@ -183,7 +183,7 @@ const FixedHiringCandidate = () => {
         <LabButton
           onClick={handleContinue}
           key="confirm"
-          label={roundOfApplicants < 3 ? "Confirm" : "Confirm - Continue"}
+          label={roundOfApplicants < 3 ? 'Confirm' : 'Confirm - Continue'}
         />
       )}
     </div>

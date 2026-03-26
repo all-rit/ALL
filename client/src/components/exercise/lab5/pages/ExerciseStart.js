@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_IDLE } from "../../../../constants/lab5";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_IDLE } from '../../../../constants/lab5';
 
 class ExerciseStart extends Component {
   componentDidMount() {
@@ -11,14 +11,14 @@ class ExerciseStart extends Component {
   }
 
   handleStart() {
-    navigate("/Lab5/Exercise/DyslexiaAccessible");
+    navigate('/Lab5/Exercise/DyslexiaAccessible');
   }
 
   render() {
     // const { user, state, plays } = this.props;
     return (
       <div className="tw-p-6">
-        <h2 className={"tw-title tw-text-left tw-my-6"}> Exercise Start </h2>
+        <h2 className={'tw-title tw-text-left tw-my-6'}> Exercise Start </h2>
         <div className="tw-body-text tw-text-left tw-my-6">
           We will explore a series of cognitive antipatterns that especially
           challenge cognitively impaired individuals. After each antipattern we

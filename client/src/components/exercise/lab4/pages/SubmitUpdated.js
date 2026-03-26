@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef, Fragment } from "react";
-import Button from "@mui/material/Button";
-import AppInstructions from "../components/AppInstructions";
-import { navigate } from "@reach/router";
-import { PageService } from "../../../../services/PageService";
-import { LAB_ID } from "../../../../constants/lab4";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
+import React, { useState, useEffect, useRef, Fragment } from 'react';
+import Button from '@mui/material/Button';
+import AppInstructions from '../components/AppInstructions';
+import { navigate } from 'react-router-dom';
+import { PageService } from '../../../../services/PageService';
+import { LAB_ID } from '../../../../constants/lab4';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
 
 const SubmitUpdated = () => {
   const { actions } = useMainStateContext();
@@ -19,13 +19,13 @@ const SubmitUpdated = () => {
 
   const [state, setState] = useState({
     secondsElapsed: 0,
-    marginRight: style.marginRight + "px",
-    marginLeft: style.marginLeft + "px",
-    width: style.width + "px",
-    height: style.height + "px",
-    fontSize: style.fontSize + "px",
-    top: "px",
-    left: "px",
+    marginRight: style.marginRight + 'px',
+    marginLeft: style.marginLeft + 'px',
+    width: style.width + 'px',
+    height: style.height + 'px',
+    fontSize: style.fontSize + 'px',
+    top: 'px',
+    left: 'px',
   });
 
   const myDiv = useRef(null);
@@ -37,8 +37,8 @@ const SubmitUpdated = () => {
     const top = distY / 2 < 300 ? distY / 5 : 300;
     setState((prevState) => ({
       ...prevState,
-      right: right + "px",
-      top: top + "px",
+      right: right + 'px',
+      top: top + 'px',
     }));
   };
 
@@ -51,9 +51,9 @@ const SubmitUpdated = () => {
   };
 
   const handleSubmit = () => {
-    const name = "SubmitUpdated";
+    const name = 'SubmitUpdated';
     PageService.createPage(name, state.secondsElapsed, LAB_ID);
-    navigate("/Lab4/Exercise/FormSkipToMainBroken");
+    navigate('/Lab4/Exercise/FormSkipToMainBroken');
   };
 
   useEffect(() => {
@@ -61,8 +61,8 @@ const SubmitUpdated = () => {
     if (window.location.state !== undefined) {
       setState((prevState) => ({
         ...prevState,
-        width: window.location.state.width + "px",
-        height: window.location.state.height + "px",
+        width: window.location.state.width + 'px',
+        height: window.location.state.height + 'px',
       }));
     }
     const interval = setInterval(
@@ -79,18 +79,18 @@ const SubmitUpdated = () => {
     };
   }, []);
 
-  const instructions = "Click the start button.";
+  const instructions = 'Click the start button.';
   return (
     <Fragment>
       <div>
         <AppInstructions instructions={instructions} />
         <div
           style={{
-            width: "200px",
-            height: "200px",
-            margin: "auto",
-            paddingTop: "30px",
-            position: "relative",
+            width: '200px',
+            height: '200px',
+            margin: 'auto',
+            paddingTop: '30px',
+            position: 'relative',
           }}
           onMouseMove={(e) => wiggle(e)}
         >
@@ -98,8 +98,8 @@ const SubmitUpdated = () => {
             ref={myDiv}
             href="#"
             onClick={handleSubmit}
-            variant={"contained"}
-            color={"primary"}
+            variant={'contained'}
+            color={'primary'}
             style={state}
           >
             Start

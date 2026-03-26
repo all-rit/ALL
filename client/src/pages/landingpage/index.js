@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { navigate } from "@reach/router";
-import LabGeneration from "../../components/body/lab/LabGeneration";
-import GettingInvolved from "../../components/all-components/GettingInvolved";
-import DevPartners from "./DevPartners";
-import Carousel from "src/components/all-components/ParticipatingSchools";
-import Girl3 from "../../assets/images/stockImages/Girl3.png";
-import Girl2 from "../../assets/images/stockImages/Girl2.png";
-import ALLButton from "../../components/all-components/ALLButton";
-import labService from "src/services/LabService";
-import useMainStateContext from "src/reducers/MainContext";
-import YellowBlockSection from "../../components/all-components/YellowBlockSection";
-import LandingSection from "../../components/all-components/LandingSection";
+import React, { useEffect, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import LabGeneration from '../../components/body/lab/LabGeneration';
+import GettingInvolved from '../../components/all-components/GettingInvolved';
+import DevPartners from './DevPartners';
+import Carousel from 'src/components/all-components/ParticipatingSchools';
+import Girl3 from '../../assets/images/stockImages/Girl3.png';
+import Girl2 from '../../assets/images/stockImages/Girl2.png';
+import ALLButton from '../../components/all-components/ALLButton';
+import labService from 'src/services/LabService';
+import useMainStateContext from 'src/reducers/MainContext';
+import YellowBlockSection from '../../components/all-components/YellowBlockSection';
+import LandingSection from '../../components/all-components/LandingSection';
 import {
   ABOUT_US_BODY,
   ABOUT_US_TITLE,
@@ -18,18 +18,18 @@ import {
   ARE_YOU_AN_EDUCATOR_TITLE,
   WELCOME_TO_ALL_BODY,
   WELCOME_TO_ALL_TITLE,
-} from "../../constants/sections";
+} from '../../constants/sections';
 
 const Home = () => {
   const { actions } = useMainStateContext();
   const handleNavEducators = () => {
-    navigate("/EducatorResources");
+    navigate('/EducatorResources');
   };
   const handleNavGroups = () => {
-    navigate("/Profile");
+    navigate('/Profile');
   };
   const handleNavLabs = () => {
-    navigate("/Labs");
+    navigate('/Labs');
   };
 
   const [featuredLabs, setFeaturedLabs] = useState([]);
@@ -40,9 +40,9 @@ const Home = () => {
     let lab14;
 
     allLabs.map((lab) => {
-      if (lab.labShortName == "Identity") {
+      if (lab.labShortName == 'Identity') {
         lab12 = lab;
-      } else if (lab.labShortName == "Quantum") {
+      } else if (lab.labShortName == 'Quantum') {
         lab14 = lab;
       }
     });
@@ -89,12 +89,12 @@ const Home = () => {
               </div>
               <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-4 tw-mt-6">
                 <ALLButton
-                  label={"Join a Group"}
+                  label={'Join a Group'}
                   onClick={handleNavGroups}
                   className="tw-mb-6"
                 ></ALLButton>
                 <ALLButton
-                  label={"Explore Labs"}
+                  label={'Explore Labs'}
                   onClick={handleNavLabs}
                 ></ALLButton>
               </div>
@@ -105,7 +105,7 @@ const Home = () => {
             <LabGeneration
               actions={actions}
               labids={featuredLabs}
-              progressState={"FEATURED_LABS"}
+              progressState={'FEATURED_LABS'}
             />
           </div>
         </div>
@@ -118,7 +118,7 @@ const Home = () => {
         body={ARE_YOU_AN_EDUCATOR_BODY}
         img={Girl3}
         hasButton={true}
-        buttonLabel={"Educator Resources"}
+        buttonLabel={'Educator Resources'}
         onClick={handleNavEducators}
         shrinkImg={true}
       />

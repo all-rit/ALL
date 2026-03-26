@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
-import "./secondaryInstructions.css";
-import { navigate } from "@reach/router";
-import LabButton from "../../../all-components/LabButton";
+import React from 'react';
+import './secondaryInstructions.css';
+import { navigate } from 'react-router-dom';
+import LabButton from '../../../all-components/LabButton';
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -18,10 +18,10 @@ const SecondInstructions = ({
 }) => {
   const alreadyCalled = false;
   if (!alreadyCalled) {
-    selectOption("Protanopia");
+    selectOption('Protanopia');
   }
 
-  if (background !== "white") {
+  if (background !== 'white') {
     toWhiteBackground();
   }
 
@@ -29,15 +29,15 @@ const SecondInstructions = ({
     if (!isImagineExpression) {
       closePage();
     } else {
-      navigate("/Imagine2023/ExpressionExerciseStart");
+      navigate('/Imagine2023/ExpressionExerciseStart');
     }
   };
 
   return (
     <div className=" tw-flex tw-flex-col tw-p-6 tw-text-justify tw-justify-between">
       <p className="tw-title tw-p-0">Round 1 Complete</p>
-      <ul className={"tw-font-calibri tw-font-normal tw-body-text"}>
-        <li className={"tw-py-3"}>
+      <ul className={'tw-font-calibri tw-font-normal tw-body-text'}>
+        <li className={'tw-py-3'}>
           As you can see, this exercise isn't too difficult. However, to a user
           with a <em>color vision deficiency</em>, it is.
         </li>
@@ -47,18 +47,18 @@ const SecondInstructions = ({
           color spectrum. These are quite common, especially in men, across the
           world.
         </li>
-        <li className={"tw-py-3"}>
+        <li className={'tw-py-3'}>
           An app, like this one, would be impossible for someone with a color
           vision deficiency to use properly. To simulate this, we have added the
           ability to simulate what an individual with this deficiency would see.
         </li>
-        <h2 className={"tw-title"}>Did you know?</h2>
+        <h2 className={'tw-title'}>Did you know?</h2>
         <br />
         <li
           className={
-            "tw-font-calibri tw-font-normal tw-body-text tw-text-justify"
+            'tw-font-calibri tw-font-normal tw-body-text tw-text-justify'
           }
-          style={{ listStyleType: "none" }}
+          style={{ listStyleType: 'none' }}
         >
           There are three main color vision deficiencies: Protanopia (Red
           blindness), Deuteranopia (Green blindness), and Tritanopia (Blue

@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from "react";
-import RepairService from "../../../../../services/lab5/RepairService";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-import Popup from "../../../../all-components/Popup";
-import { navigate } from "@reach/router";
-import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
-import LabButton from "../../../../all-components/LabButton";
+import React, { Component } from 'react';
+import RepairService from '../../../../../services/lab5/RepairService';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
+import Popup from '../../../../all-components/Popup';
+import { navigate } from 'react-router-dom';
+import RepairUpdateButton from '../../../../all-components/RepairUpdateButton';
+import LabButton from '../../../../all-components/LabButton';
 
 class FormRepair extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class FormRepair extends Component {
       successNotificationerror: null,
       borderColorerror: null,
       repairerror: true,
-      componentName: "FormRepair",
+      componentName: 'FormRepair',
     };
   }
 
@@ -37,7 +37,7 @@ class FormRepair extends Component {
     let error = false;
     Object.keys(this.state).map((name) => {
       switch (name) {
-        case "errorNotification":
+        case 'errorNotification':
           console.log(this.state[name]);
           if (
             this.state[name] !== '"Please enter in format: YYYY-MM-DD"' &&
@@ -52,19 +52,19 @@ class FormRepair extends Component {
             this.setState({ errorNotificationerror: null });
           }
           break;
-        case "successNotification":
+        case 'successNotification':
           if (this.state[name] === null) {
             error = true;
-            this.setState({ successNotificationerror: "Must not be empty" });
-          } else if (this.state[name].trim() === "") {
+            this.setState({ successNotificationerror: 'Must not be empty' });
+          } else if (this.state[name].trim() === '') {
             error = true;
-            this.setState({ successNotificationerror: "Must not be empty" });
+            this.setState({ successNotificationerror: 'Must not be empty' });
           } else {
             this.setState({ successNotificationerror: null });
           }
           break;
-        case "borderColor":
-          if (this.state[name] !== "red") {
+        case 'borderColor':
+          if (this.state[name] !== 'red') {
             error = true;
             this.setState({ borderColorerror: "Must enter 'red'" });
           } else {
@@ -92,9 +92,9 @@ class FormRepair extends Component {
       });
       // Submit a repair entry in the database.
       RepairService.submitRepair(this.state.componentName, repair);
-      handlers.updatePopup("The repairs have been made.");
+      handlers.updatePopup('The repairs have been made.');
     } else {
-      handlers.updatePopup("Errors in Repair. Please fix");
+      handlers.updatePopup('Errors in Repair. Please fix');
     }
 
     // Update the state and close the repair.
@@ -106,7 +106,7 @@ class FormRepair extends Component {
     handlers.closeRepair();
 
     setTimeout(() => {
-      handlers.updatePopup("");
+      handlers.updatePopup('');
     }, 6000);
   }
 
@@ -120,14 +120,14 @@ class FormRepair extends Component {
   }
 
   handleNav() {
-    navigate("/Lab5/Exercise/FormAccessible");
+    navigate('/Lab5/Exercise/FormAccessible');
   }
 
   render() {
     const { visible, handlers, state, data, actions } = this.props;
     return (
-      <div className={"tw-my-6"}>
-        <h2 className={"tw-title tw-text-left tw-mb-6"}> Form Repair </h2>
+      <div className={'tw-my-6'}>
+        <h2 className={'tw-title tw-text-left tw-mb-6'}> Form Repair </h2>
         <p className="tw-body-text tw-text-left">
           Let's improve the form feedback. We will be adding an error
           notification under the 'Today's Date' question along with a success
@@ -142,14 +142,14 @@ class FormRepair extends Component {
           error={this.state.repairerror}
         />
 
-        <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+        <div className={'tw-flex tw-justify-center tw-gap-x-3'}>
           <LabButton
-            label={"Repair"}
+            label={'Repair'}
             onClick={handlers.openRepair}
             key="repair"
           />
           <LabButton
-            label={"Next"}
+            label={'Next'}
             onClick={this.handleNav}
             key="Next"
             disabled={this.state.repairerror}
@@ -441,8 +441,8 @@ class FormRepair extends Component {
                       title="Enter: 1 for Yes and 0 for No"
                       className={
                         this.state.errorNotificationerror
-                          ? "form-error-input"
-                          : ""
+                          ? 'form-error-input'
+                          : ''
                       }
                     />
                   </span>
@@ -529,8 +529,8 @@ class FormRepair extends Component {
                       title="Enter: Successful Submission"
                       className={
                         this.state.successNotificationerror
-                          ? "form-error-input"
-                          : ""
+                          ? 'form-error-input'
+                          : ''
                       }
                     />
                   </span>
@@ -660,7 +660,7 @@ class FormRepair extends Component {
                         onChange={this.changeHandler.bind(this)}
                         title={`must enter red`}
                         className={
-                          this.state.borderColorerror ? "form-error-input" : ""
+                          this.state.borderColorerror ? 'form-error-input' : ''
                         }
                       />
                     </span>

@@ -1,9 +1,9 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import { useEffect } from "react";
-import { REPAIR, EXERCISE_STATES } from "../../../../../constants/lab11";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import { useEffect } from 'react';
+import { REPAIR, EXERCISE_STATES } from '../../../../../constants/lab11';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 const FogIndexFormulaComplexWords = () => {
   const { actions } = useMainStateContext();
@@ -20,7 +20,7 @@ const FogIndexFormulaComplexWords = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}> Fog Index in Complex Words </h1>
+      <h1 className={'tw-title tw-text-left'}> Fog Index in Complex Words </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           Great work, the Fog Index widget now displays the correct number of

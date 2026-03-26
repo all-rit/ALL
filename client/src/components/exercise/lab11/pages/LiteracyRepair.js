@@ -1,13 +1,13 @@
 // library imports
-import React, { useEffect } from "react";
-import { Router } from "@reach/router";
+import React, { useEffect } from 'react';
+import { Router } from 'react-router-dom';
 // component imports
-import WordCountRepair from "./Repairs/WordCountRepair";
-import SentenceCountRepair from "./Repairs/SentenceCountRepair";
-import ComplexWordCountRepair from "./Repairs/ComplexWordCountRepair";
-import { EXERCISE_STATES } from "../../../../constants/lab11";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import WordCountRepair from './Repairs/WordCountRepair';
+import SentenceCountRepair from './Repairs/SentenceCountRepair';
+import ComplexWordCountRepair from './Repairs/ComplexWordCountRepair';
+import { EXERCISE_STATES } from '../../../../constants/lab11';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * LiteracyRepair is a Route wrapper component that is responsible for declaring the

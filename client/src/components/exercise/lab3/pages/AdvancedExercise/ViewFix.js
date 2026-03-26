@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
-import { PageService } from "../../../../../services/PageService";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_PLAYING, LAB_ID } from '../../../../../constants/lab3/index';
+import { PageService } from '../../../../../services/PageService';
 class ViewFix extends Component {
   constructor(props) {
     super(props);
     ViewFix.navOnClick = ViewFix.navOnClick.bind(this);
     this.state = {
-      aria1: "Ok button",
-      aria2: "Cancel button",
-      render: "",
+      aria1: 'Ok button',
+      aria2: 'Cancel button',
+      render: '',
       secondsElapsed: 0,
     };
   }
@@ -19,9 +19,9 @@ class ViewFix extends Component {
   }
 
   static navOnClick() {
-    const name = "ViewFix";
+    const name = 'ViewFix';
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate("/Lab3/Exercise/ProblemFix");
+    navigate('/Lab3/Exercise/ProblemFix');
   }
 
   componentDidMount() {
@@ -29,8 +29,8 @@ class ViewFix extends Component {
     actions.updateState(EXERCISE_PLAYING);
     if (window.location.state) {
       this.setState({
-        aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ""),
-        aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, ""),
+        aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ''),
+        aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, ''),
       });
     }
     this.interval = setInterval(
@@ -48,31 +48,31 @@ class ViewFix extends Component {
     };
 
     return (
-      <div className={"tw-p-10"}>
+      <div className={'tw-p-10'}>
         <h2
-          className={"tw-title tw-text-left"}
-          aria-label={"Title"}
-          onFocus={(e) => textToSpeech(e, "Test Fix")}
+          className={'tw-title tw-text-left'}
+          aria-label={'Title'}
+          onFocus={(e) => textToSpeech(e, 'Test Fix')}
         >
           Test Repair
         </h2>
         <br />
         <p
-          className={"tw-body-text tw-font-medium tw-text-left"}
-          aria-label={"Subtitle Instructions"}
-          onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
+          className={'tw-body-text tw-font-medium tw-text-left'}
+          aria-label={'Subtitle Instructions'}
+          onFocus={(e) => textToSpeech(e, 'Is your page now more accessible?')}
         >
           Is your page now more accessible?
         </p>
         <br />
         <p
-          className={"tw-body-text tw-font-medium tw-text-left"}
-          aria-label={"Body Instructions"}
+          className={'tw-body-text tw-font-medium tw-text-left'}
+          aria-label={'Body Instructions'}
           onFocus={(e) =>
             textToSpeech(
               e,
-              "If you have updated the buttons with the appropriate " +
-                "aria-labels then you have succeeded. They can now be effectively described by screenreaders.",
+              'If you have updated the buttons with the appropriate ' +
+                'aria-labels then you have succeeded. They can now be effectively described by screenreaders.',
             )
           }
         >
@@ -83,12 +83,12 @@ class ViewFix extends Component {
         <br />
         <div
           className={
-            "tw-flex tw-flex-row tw-gap-x-4 tw-w-full tw-justify-center"
+            'tw-flex tw-flex-row tw-gap-x-4 tw-w-full tw-justify-center'
           }
         >
           <button
             className={
-              "btn btn-md tw-w-[15%] tw-shadow-md tw-bg-primary-blue tw-text-white hover:tw-shadow-lg"
+              'btn btn-md tw-w-[15%] tw-shadow-md tw-bg-primary-blue tw-text-white hover:tw-shadow-lg'
             }
             aria-label={this.state.aria1}
             onFocus={(e) => textToSpeech(e, this.state.aria1)}
@@ -97,7 +97,7 @@ class ViewFix extends Component {
           </button>
           <button
             className={
-              "btn btn-md tw-w-[15%] tw-shadow-md tw-bg-primary-blue tw-text-white hover:tw-shadow-lg"
+              'btn btn-md tw-w-[15%] tw-shadow-md tw-bg-primary-blue tw-text-white hover:tw-shadow-lg'
             }
             aria-label={this.state.aria2}
             onFocus={(e) => textToSpeech(e, this.state.aria2)}
@@ -109,10 +109,10 @@ class ViewFix extends Component {
         <br />
         <button
           className={
-            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            'btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg'
           }
           onClick={ViewFix.navOnClick}
-          onFocus={(e) => textToSpeech(e, "Next")}
+          onFocus={(e) => textToSpeech(e, 'Next')}
         >
           Next
         </button>

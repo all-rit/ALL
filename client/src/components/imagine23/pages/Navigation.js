@@ -1,15 +1,15 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import PropTypes from "prop-types";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Navigation = (props) => {
   const handleExpression = () => {
     props.setIsExperiential(false);
-    navigate("/Imagine2023/ExpressionStart");
+    navigate('/Imagine2023/ExpressionStart');
   };
   const handleExperiential = () => {
     props.setIsExperiential(true);
-    navigate("/Imagine2023/ExperientialStart");
+    navigate('/Imagine2023/ExperientialStart');
   };
 
   return (

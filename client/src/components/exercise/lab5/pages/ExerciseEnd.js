@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import UserLabService from "../../../../services/UserLabService";
-import { LAB_ID } from "../../../../constants/lab5";
-import { Forum, EmojiObjects, Timer } from "@mui/icons-material";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import UserLabService from '../../../../services/UserLabService';
+import { LAB_ID } from '../../../../constants/lab5';
+import { Forum, EmojiObjects, Timer } from '@mui/icons-material';
 
 class ExerciseEnd extends Component {
   handleHome() {
-    navigate("/Lab5/Exercise/ExerciseStart");
+    navigate('/Lab5/Exercise/ExerciseStart');
   }
 
   componentDidMount() {
@@ -21,7 +21,7 @@ class ExerciseEnd extends Component {
     // const { user, state, plays } = this.props;
     return (
       <div>
-        <h2 className={"tw-title tw-text-left tw-px-5"}>Exercise Complete</h2>
+        <h2 className={'tw-title tw-text-left tw-px-5'}>Exercise Complete</h2>
         <div className="center-div">
           <div className="cognitive_instructions tw-body-text">
             <div>
@@ -53,9 +53,9 @@ class ExerciseEnd extends Component {
             </div>
           </div>
           <h4 className="tw-sub-title">
-            To start the exercise again, clicked the{" "}
+            To start the exercise again, clicked the{' '}
             <strong>Return to Exercise Start</strong> button below. To move on
-            to the reinforcement section, scroll to down and click the{" "}
+            to the reinforcement section, scroll to down and click the{' '}
             <strong>Next</strong> button.
           </h4>
           <button

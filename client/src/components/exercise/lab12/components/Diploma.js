@@ -1,17 +1,17 @@
-import { React, useContext, useEffect, useState } from "react";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
-import SealImage from "../../../../assets/images/lab12/diploma_seal.png";
-import "../../../../assets/stylesheets/components/Diploma.css";
-import useMainStateContext from "src/reducers/MainContext";
-import ExerciseStateContext from "../Lab12Context";
-import { ExerciseService } from "../../../../services/lab12/ExerciseService";
+import { React, useContext, useEffect, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import SealImage from '../../../../assets/images/lab12/diploma_seal.png';
+import '../../../../assets/stylesheets/components/Diploma.css';
+import useMainStateContext from 'src/reducers/MainContext';
+import ExerciseStateContext from '../Lab12Context';
+import { ExerciseService } from '../../../../services/lab12/ExerciseService';
 
 const Diploma = () => {
   const { state } = useMainStateContext();
   const [nextPage, setNextPage] = useState(`/Lab12/Exercise/AlumniNewsletter`);
   const [buttonLabel, setButtonLabel] = useState(
-    "Continue to Alumni Newsletter",
+    'Continue to Alumni Newsletter',
   );
   const [isRepairComplete, setIsRepairComplete] = useState(false);
 
@@ -23,8 +23,8 @@ const Diploma = () => {
       currentExercise.isFormRepairComplete &&
       !currentExercise.isDatabaseRepairComplete
     ) {
-      setButtonLabel("Continue");
-      setNextPage("/Lab12/Exercise/PreDbRepair");
+      setButtonLabel('Continue');
+      setNextPage('/Lab12/Exercise/PreDbRepair');
     }
     setIsRepairComplete(
       currentExercise.isFormRepairComplete &&
@@ -53,7 +53,7 @@ const Diploma = () => {
           className="fancy-text tw-text-3xl tw-leading-none"
           data-testid="collegeName"
         >
-          Upon the recommendation of the President and Faculty of the{" "}
+          Upon the recommendation of the President and Faculty of the{' '}
           <span className="tw-font-diploma tw-leading-none">{college}</span> and
           by the Board of Trustees has conferred upon
         </p>

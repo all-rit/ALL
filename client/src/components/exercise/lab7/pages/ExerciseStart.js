@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { Fragment } from 'react';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * Renders the ExerciseStart component.
@@ -15,13 +15,13 @@ const ExerciseStart = () => {
 
   const handleStart = () => {
     actions.updateUserState(EXERCISE_PLAYING);
-    navigate("/Lab7/Exercise/AISimulation");
+    navigate('/Lab7/Exercise/AISimulation');
   };
 
   return (
     <Fragment>
       <div className="center-div">
-        <h2 className={"tw-title tw-text-left"}> Exercise Start</h2>
+        <h2 className={'tw-title tw-text-left'}> Exercise Start</h2>
         <div className="guidance margin-bottom-2">
           <p className="playthrough__sentence">
             In this exercise, you will be watching simulation of an autonomous
@@ -33,7 +33,7 @@ const ExerciseStart = () => {
             <li>
               <b>Five files</b> will be displayed on the screen, each of which
               will have the following:
-              <ul className={"tw-space-y-1.5"}>
+              <ul className={'tw-space-y-1.5'}>
                 <li>A file name</li>
                 <li>Sensitive or nonsensitive content</li>
                 <li>
@@ -45,40 +45,40 @@ const ExerciseStart = () => {
             </li>
             <li>
               The simulation will consist of <b>ten rounds</b>
-              <ul className={"tw-space-y-1.5"}>
+              <ul className={'tw-space-y-1.5'}>
                 <li>
                   For each round, a <b>threat level</b> will be detected in the
                   system
                 </li>
                 <li>
-                  The system will restrict file access based on the{" "}
-                  <b>threat level</b> and the{" "}
+                  The system will restrict file access based on the{' '}
+                  <b>threat level</b> and the{' '}
                   <b>file&lsquo;s sensitivity level</b>:
                 </li>
-                <div className={"tw-py-3"}>
-                  <table className={"tw-border-solid"}>
-                    <thead className={"tw-border-solid"}>
+                <div className={'tw-py-3'}>
+                  <table className={'tw-border-solid'}>
+                    <thead className={'tw-border-solid'}>
                       <tr>
-                        <th className={"tw-px-16"}>Threat Level</th>
-                        <th className={"tw-px-16"}>Restricted Files</th>
+                        <th className={'tw-px-16'}>Threat Level</th>
+                        <th className={'tw-px-16'}>Restricted Files</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td className={"tw-text-center"}>High</td>
-                        <td className={"tw-text-center"}>
+                        <td className={'tw-text-center'}>High</td>
+                        <td className={'tw-text-center'}>
                           Sensitivity Levels 4 and 5
                         </td>
                       </tr>
                       <tr>
-                        <td className={"tw-text-center"}>Medium</td>
-                        <td className={"tw-text-center"}>
+                        <td className={'tw-text-center'}>Medium</td>
+                        <td className={'tw-text-center'}>
                           Sensitivity Levels 2 and 3
                         </td>
                       </tr>
                       <tr>
-                        <td className={"tw-text-center"}>Low</td>
-                        <td className={"tw-text-center"}>
+                        <td className={'tw-text-center'}>Low</td>
+                        <td className={'tw-text-center'}>
                           Sensitivity Level 1
                         </td>
                       </tr>
@@ -88,14 +88,14 @@ const ExerciseStart = () => {
                 <li>
                   The simulation will notify you of whether the autonomous
                   system made the correct restriction for each file by
-                  displaying <b>&quot;AI Correct&quot;</b> or{" "}
+                  displaying <b>&quot;AI Correct&quot;</b> or{' '}
                   <b>&quot;AI Incorrect&quot;</b>.
                 </li>
                 <li>
                   The autonomous system&apos;s mistakes can be categorized into
                   two types:
                 </li>
-                <ul className={"tw-py-1.5"}>
+                <ul className={'tw-py-1.5'}>
                   <li>
                     An <b>intrusion</b> occurs when a file is accessed when it
                     should have been restricted.
@@ -122,7 +122,7 @@ const ExerciseStart = () => {
         </p>
 
         <p className="playthrough__sentence">
-          Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
+          Click the &apos;<span className={'tw-font-bold'}>Start</span>&apos;
           button to move on to the simulation!
         </p>
         <button

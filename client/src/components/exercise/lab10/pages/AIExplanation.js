@@ -1,15 +1,15 @@
-import React, { Fragment, useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { navigate } from "@reach/router";
-import AIExplanationCodeBlock from "../components/code/AIExplanationCodeBlock";
-import useScroll from "../../../../use-hooks/useScroll";
-import ExerciseService from "../../../../services/lab10/ExerciseService";
-import { twMerge } from "tailwind-merge";
-import _ from "lodash";
-import { EXERCISE_PLAYING } from "../../../../constants/lab10";
+import React, { Fragment, useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { navigate } from 'react-router-dom';
+import AIExplanationCodeBlock from '../components/code/AIExplanationCodeBlock';
+import useScroll from '../../../../use-hooks/useScroll';
+import ExerciseService from '../../../../services/lab10/ExerciseService';
+import { twMerge } from 'tailwind-merge';
+import _ from 'lodash';
+import { EXERCISE_PLAYING } from '../../../../constants/lab10';
 
 const AIExplanation = (props) => {
   useScroll();
@@ -54,20 +54,20 @@ const AIExplanation = (props) => {
    * Redirect the user to the following page
    */
   const handleNav = () => {
-    return navigate("/Lab10/Exercise/SecondTrainingAI");
+    return navigate('/Lab10/Exercise/SecondTrainingAI');
   };
 
   return (
     <div>
       <Fragment>
-        <div className={"center-div"}>
-          <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Explanation</h1>
-          <div className={"guidance margin-bottom-2"}>
-            <p className={"tw-body-text tw-text-left"}>
+        <div className={'center-div'}>
+          <h1 className={'tw-title tw-text-left tw-pb-6'}> AI Explanation</h1>
+          <div className={'guidance margin-bottom-2'}>
+            <p className={'tw-body-text tw-text-left'}>
               Did you notice something different about how the AI responded
               during the simulation?
             </p>
-            <p className={"tw-body-text tw-text-left tw-py-6"}>
+            <p className={'tw-body-text tw-text-left tw-py-6'}>
               Whenever there was an empty hole, the AI knew to move towards it
               to make sure it does not get hit by any of the falling shapes. On
               the other hand, when the AI was unable to find an empty hole, it
@@ -76,19 +76,19 @@ const AIExplanation = (props) => {
               game, the AI avoided the color that <strong>you</strong> most
               frequently hit.
             </p>
-            <p className={"tw-body-text tw-text-left"}>
+            <p className={'tw-body-text tw-text-left'}>
               Below is <strong>your</strong> generated data that the AI utilized
               for the simulation.
             </p>
           </div>
-          <div className={"tw-flex tw-items-center tw-justify-center tw-mb-6"}>
-            <p className={"playthrough__sentence tw-my-0 tw-font-bold"}>
+          <div className={'tw-flex tw-items-center tw-justify-center tw-mb-6'}>
+            <p className={'playthrough__sentence tw-my-0 tw-font-bold'}>
               Heaviest Color / Most Frequently Hit :
             </p>
-            <div className={"tw-ml-3"}>
+            <div className={'tw-ml-3'}>
               <div
                 className={twMerge(
-                  "tw-border-black tw-border-solid tw-border-[2px] tw-w-9 tw-h-9 tw-rounded",
+                  'tw-border-black tw-border-solid tw-border-[2px] tw-w-9 tw-h-9 tw-rounded',
                   !_.isEmpty(keys) && keys[0],
                 )}
               />
@@ -97,7 +97,7 @@ const AIExplanation = (props) => {
         </div>
       </Fragment>
       <AIExplanationCodeBlock />
-      <div className={"tw-mt-6 tw-flex tw-justify-end"}>
+      <div className={'tw-mt-6 tw-flex tw-justify-end'}>
         <button
           className="btn btn-primary text-black btn-xl text-uppercase"
           onClick={handleNav}

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../../../reducers/MainReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseReducer";
-import AppInstructions from "../components/AppInstructions";
-import { navigate } from "@reach/router";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions as mainActions } from '../../../../reducers/MainReducer';
+import { actions as exerciseActions } from '../../../../reducers/lab5/ExerciseReducer';
+import AppInstructions from '../components/AppInstructions';
+import { navigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,21 +23,21 @@ const mapDispatchToProps = (dispatch) => {
 
 class ExerciseStart extends Component {
   handleSubmit() {
-    navigate("/Lab3/Exercise/BeginnerExercise");
+    navigate('/Lab3/Exercise/BeginnerExercise');
   }
   handleSubmitAdv() {
-    navigate("/Lab3/Exercise/AdvancedExercise");
+    navigate('/Lab3/Exercise/AdvancedExercise');
   }
   render() {
     return (
       <Fragment>
         <div className="center-div">
-          <h2 className={"tw-title"}> Select Exercise Difficulty</h2>
+          <h2 className={'tw-title'}> Select Exercise Difficulty</h2>
           <AppInstructions />
           <button
             onClick={this.handleSubmit}
             className={
-              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
+              'btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow'
             }
           >
             Beginner Exercise
@@ -45,7 +45,7 @@ class ExerciseStart extends Component {
           <button
             onClick={this.handleSubmitAdv}
             className={
-              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
+              'btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow'
             }
           >
             Advanced Exercise

@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import useScroll from "../../../../use-hooks/useScroll";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import useScroll from '../../../../use-hooks/useScroll';
+import { bindActionCreators } from 'redux';
+import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
   EXERCISE_PLAYING,
   SIMULATION_ENDED,
   SIMULATION_IDLE,
   SIMULATION_STARTED,
-} from "../../../../constants/lab10";
-import Simulation from "../components/Simulation";
-import { navigate } from "@reach/router";
+} from '../../../../constants/lab10';
+import Simulation from '../components/Simulation';
+import { navigate } from 'react-router-dom';
 
 const SecondTrainingAI = (props) => {
   useScroll();
@@ -46,28 +46,28 @@ const SecondTrainingAI = (props) => {
    * Redirect the user to the following page
    */
   const handleContinue = () => {
-    return navigate("/Lab10/Exercise/GeneratedData");
+    return navigate('/Lab10/Exercise/GeneratedData');
   };
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Training Part 2</h1>
+      <h1 className={'tw-title tw-text-left tw-pb-6'}> AI Training Part 2</h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <p className={"tw-body-text tw-text-left"}>
+          <p className={'tw-body-text tw-text-left'}>
             Clearly, the AI had a bias towards a specific color. While the
             context of the bias is within a simulation game, unwanted bias can
             be problematic because it can lead to unfair discrimination in a
             system, resulting in the reduction of trust towards AI.
           </p>
-          <p className={"tw-body-text tw-text-left tw-py-6"}>
+          <p className={'tw-body-text tw-text-left tw-py-6'}>
             Attempt to eliminate this bias by establishing an equal distribution
             of weights among the colored shapes. In other words, ensure all
             colored shapes are hit an equal number of times. This will
             inherently eliminate the bias.
           </p>
           <div>
-            <p className={"tw-text-xl tw-font-bold"}>
+            <p className={'tw-text-xl tw-font-bold'}>
               Objective: Click <i>Start</i> to commence the training exercise.
             </p>
           </div>
@@ -76,7 +76,7 @@ const SecondTrainingAI = (props) => {
       {props.simulationStatus === SIMULATION_STARTED && (
         <div>
           <div>
-            <p className={"tw-text-xl tw-font-bold"}>
+            <p className={'tw-text-xl tw-font-bold'}>
               Objective: Eliminate bias by hitting all colored shapes an equal
               number of times.
             </p>
@@ -86,7 +86,7 @@ const SecondTrainingAI = (props) => {
       {props.simulationStatus === SIMULATION_ENDED && (
         <div>
           <div>
-            <p className={"tw-text-xl tw-font-bold"}>
+            <p className={'tw-text-xl tw-font-bold'}>
               Objective: Proceed to the next part of this exercise.
             </p>
           </div>
@@ -94,7 +94,7 @@ const SecondTrainingAI = (props) => {
       )}
       <Simulation />
       {props.simulationStatus === SIMULATION_ENDED && (
-        <div className={"tw-mt-6 tw-flex tw-justify-end"}>
+        <div className={'tw-mt-6 tw-flex tw-justify-end'}>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase"
             onClick={handleContinue}

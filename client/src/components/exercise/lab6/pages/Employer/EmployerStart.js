@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../../all-components/LabButton";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../../all-components/LabButton';
 
 const EmployerStart = () => {
   const { actions } = useMainStateContext();
@@ -12,7 +12,7 @@ const EmployerStart = () => {
   }, []);
 
   const handleStart = () => {
-    navigate("/Lab6/Exercise/FavorableHiringCandidate");
+    navigate('/Lab6/Exercise/FavorableHiringCandidate');
   };
 
   return (
@@ -28,7 +28,7 @@ const EmployerStart = () => {
       <div className="tw-body-text tw-text-left tw-my-6">
         Click the “Continue” button to begin the second half of this exercise!
       </div>
-      <LabButton label={"Continue"} onClick={handleStart} />
+      <LabButton label={'Continue'} onClick={handleStart} />
     </div>
   );
 };

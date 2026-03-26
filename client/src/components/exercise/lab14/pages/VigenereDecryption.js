@@ -1,8 +1,8 @@
-import { React, useState, useContext, useEffect } from "react";
-import { navigate } from "@reach/router";
-import ExerciseStateContext from "../Lab14Context";
-import Decryption from "../components/Decryption";
-import LabButton from "../../../all-components/LabButton";
+import { React, useState, useContext, useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import ExerciseStateContext from '../Lab14Context';
+import Decryption from '../components/Decryption';
+import LabButton from '../../../all-components/LabButton';
 
 const VigenereDecryption = () => {
   const [classicAttempts, setClassicAttempts] = useState(0);
@@ -14,17 +14,17 @@ const VigenereDecryption = () => {
     useContext(ExerciseStateContext);
 
   useEffect(() => {
-    if (vigenereEncryptedMessage === "") {
+    if (vigenereEncryptedMessage === '') {
       handleReturn();
     }
   }, []);
 
   const handleReturn = () => {
-    navigate("/Lab14/Exercise/VigenereEncryption");
+    navigate('/Lab14/Exercise/VigenereEncryption');
   };
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/RSAIntro");
+    navigate('/Lab14/Exercise/RSAIntro');
   };
 
   const encode = (baseMessage, shiftValue) => {
@@ -34,16 +34,16 @@ const VigenereDecryption = () => {
       return baseMessage;
     }
 
-    let encryptedString = "";
+    let encryptedString = '';
     for (let i = 0; i < baseMessage.length; i++) {
       let char = baseMessage[i];
 
-      if (char >= "A" && char <= "Z") {
+      if (char >= 'A' && char <= 'Z') {
         // Uppercase
         let code = char.charCodeAt(0) - 65;
         let shifted = (code + shiftValue) % 26;
         encryptedString += String.fromCharCode(shifted + 65);
-      } else if (char >= "a" && char <= "z") {
+      } else if (char >= 'a' && char <= 'z') {
         // Lowercase
         let code = char.charCodeAt(0) - 97;
         let shifted = (code + shiftValue) % 26;
@@ -83,7 +83,7 @@ const VigenereDecryption = () => {
     }
     classicArray.push({
       text: `+ ${classicAttempts - MAX_CLASSIC_ATTEMPTS} more`,
-      binary: ["0"],
+      binary: ['0'],
     });
     setClassicBoxElements(classicArray);
     setClassicAttempts(classicAttempts);
@@ -105,7 +105,7 @@ const VigenereDecryption = () => {
     }
     quantumArray.push({
       text: `+ ${quantumAttempts - MAX_QUANTUM_ATTEMPTS} more`,
-      binary: ["0"],
+      binary: ['0'],
     });
     setQuantumBoxElements(quantumArray);
     setQuantumAttempts(quantumAttempts);
@@ -145,8 +145,8 @@ const VigenereDecryption = () => {
         quantumBoxElements={quantumBoxElements}
       >
         <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
-          <LabButton onClick={handleReturn} label={"Re-do Encryption"} />
-          <LabButton onClick={handleContinue} label={"Next"} />
+          <LabButton onClick={handleReturn} label={'Re-do Encryption'} />
+          <LabButton onClick={handleContinue} label={'Next'} />
         </div>
       </Decryption>
     </div>

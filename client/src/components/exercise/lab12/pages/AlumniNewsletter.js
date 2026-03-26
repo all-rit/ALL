@@ -1,10 +1,10 @@
-import { React, useContext, useEffect, useState } from "react";
-import InformationLetterEmail from "../../../all-components/InformationLetterEmail";
-import { ALUMNI_NEWSLETTER_CONTENT } from "src/constants/lab12/index";
-import ExerciseStateContext from "../Lab12Context";
-import { navigate } from "@reach/router";
-import { ExerciseService } from "../../../../services/lab12/ExerciseService";
-import useMainStateContext from "../../../../reducers/MainContext";
+import { React, useContext, useEffect, useState } from 'react';
+import InformationLetterEmail from '../../../all-components/InformationLetterEmail';
+import { ALUMNI_NEWSLETTER_CONTENT } from 'src/constants/lab12/index';
+import ExerciseStateContext from '../Lab12Context';
+import { navigate } from 'react-router-dom';
+import { ExerciseService } from '../../../../services/lab12/ExerciseService';
+import useMainStateContext from '../../../../reducers/MainContext';
 
 const AlumniNewsletter = () => {
   const { firstName, lastName, preferredName } =
@@ -31,16 +31,16 @@ const AlumniNewsletter = () => {
     }
   };
 
-  let alumniName = "";
+  let alumniName = '';
   let handleContinue;
 
   if (isRepairComplete) {
-    alumniName = preferredName + " " + lastName;
+    alumniName = preferredName + ' ' + lastName;
     handleContinue = () => {
       navigate(`/Lab12/Exercise/PostCorrectNewsletter`);
     };
   } else {
-    alumniName = firstName + " " + lastName;
+    alumniName = firstName + ' ' + lastName;
     handleContinue = () => {
       navigate(`/Lab12/Exercise/PostWrongNewsletter`);
     };

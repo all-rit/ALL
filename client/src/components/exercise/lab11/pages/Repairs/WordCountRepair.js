@@ -1,12 +1,12 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import Repair from "../../../../body/Repair/Repair";
-import { EXERCISE_PATH, EXERCISE_STATES } from "../../../../../constants/lab11";
-import { navigate } from "@reach/router";
-import { WORD_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
-import useDataService from "../../hooks/useDataService";
-import WordCountRepairImplementation from "../RepairImpls/WordCountRepairImplementation";
-import FogIndexCalculationData from "../../../../../constants/lab11/FogIndexCalculationData";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import Repair from '../../../../body/Repair/Repair';
+import { EXERCISE_PATH, EXERCISE_STATES } from '../../../../../constants/lab11';
+import { navigate } from 'react-router-dom';
+import { WORD_COUNT_REPAIR_HEADING } from '../../../../../constants/lab11';
+import useDataService from '../../hooks/useDataService';
+import WordCountRepairImplementation from '../RepairImpls/WordCountRepairImplementation';
+import FogIndexCalculationData from '../../../../../constants/lab11/FogIndexCalculationData';
 /**
  * WordCountRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -28,12 +28,12 @@ const WordCountRepair = (props) => {
       functions={functions}
       headingText={WORD_COUNT_REPAIR_HEADING}
       repairText={[
-        "In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.",
+        'In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.',
       ]}
       files={[
         {
           fileId: 0,
-          fileName: "FogIndexCalcuation.js",
+          fileName: 'FogIndexCalcuation.js',
           implementation: WordCountRepairImplementation,
         },
       ]}

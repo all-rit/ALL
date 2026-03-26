@@ -1,12 +1,12 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import { useEffect, useState } from "react";
-import GridApplicants from "../../components/GridApplicants";
-import { Modal, ModalBody, ModalFooter, Button } from "reactstrap";
-import ExerciseService from "../../../../../services/lab6/ExerciseService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../../all-components/LabButton";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import { useEffect, useState } from 'react';
+import GridApplicants from '../../components/GridApplicants';
+import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
+import ExerciseService from '../../../../../services/lab6/ExerciseService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../../all-components/LabButton';
 
 const HiringCandidate = () => {
   const { actions } = useMainStateContext();
@@ -33,7 +33,7 @@ const HiringCandidate = () => {
     setAnswers(answers);
     if (roundOfApplicants > 2) {
       ExerciseService.submitHiredCanidates(answers);
-      navigate("/Lab6/Exercise/AIReasoningQuestions");
+      navigate('/Lab6/Exercise/AIReasoningQuestions');
     } else {
       setRoundOfApplicants(roundCount + 1);
       setModalActive(!isModalActive);
@@ -51,7 +51,7 @@ const HiringCandidate = () => {
     if (numInput === 4) {
       let nonRecommendedCount = 0;
       selection.map((answer) => {
-        if (answer.ai === "No") {
+        if (answer.ai === 'No') {
           nonRecommendedCount++;
         }
       });
@@ -63,7 +63,7 @@ const HiringCandidate = () => {
         setAnswers(answers);
         if (roundOfApplicants > 2) {
           ExerciseService.submitHiredCanidates(answers);
-          navigate("/Lab6/Exercise/AIReasoningQuestions");
+          navigate('/Lab6/Exercise/AIReasoningQuestions');
         } else {
           let roundCount = roundOfApplicants;
           setRoundOfApplicants(roundCount + 1);
@@ -100,7 +100,7 @@ const HiringCandidate = () => {
         <ModalFooter>
           <Button className="btn-primary" onClick={handleYes}>
             Yes - Submit Selection
-          </Button>{" "}
+          </Button>{' '}
           <Button className="btn-second" onClick={handleNo}>
             No - Back to Selection
           </Button>
@@ -150,7 +150,7 @@ const HiringCandidate = () => {
       {numInput === 4 && (
         <LabButton
           onClick={handleContinue}
-          label={roundOfApplicants < 3 ? "Confirm" : "Confirm Selections"}
+          label={roundOfApplicants < 3 ? 'Confirm' : 'Confirm Selections'}
         />
       )}
     </div>

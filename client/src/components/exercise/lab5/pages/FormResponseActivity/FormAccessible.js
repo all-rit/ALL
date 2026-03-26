@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-import Form from "../../components/Form";
-import { navigate } from "@reach/router";
+import React, { Component } from 'react';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
+import Form from '../../components/Form';
+import { navigate } from 'react-router-dom';
 
 class FormAccessible extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showNext: false,
-      componentName: "FormAccessible",
+      componentName: 'FormAccessible',
     };
   }
   showNext = () => {
     this.setState({ showNext: true });
   };
   handleNav() {
-    navigate("/Lab5/Exercise/ExerciseEnd");
+    navigate('/Lab5/Exercise/ExerciseEnd');
   }
   render() {
     const { actions, state } = this.props;
@@ -24,7 +24,7 @@ class FormAccessible extends Component {
       <div className="mb-5">
         <div className="cognitive_instructions">Complete the form below</div>
         <Form
-          url={"/FormGuidance"}
+          url={'/FormGuidance'}
           showNext={this.showNext}
           errorNotification={state.repair5.errorNotification}
           successNotification={state.repair5.successNotification}

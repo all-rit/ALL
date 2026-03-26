@@ -1,8 +1,8 @@
-import { React, useState, useContext, useEffect } from "react";
-import { navigate } from "@reach/router";
-import ExerciseStateContext from "../Lab14Context";
-import Decryption from "../components/Decryption";
-import LabButton from "../../../all-components/LabButton";
+import { React, useState, useContext, useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import ExerciseStateContext from '../Lab14Context';
+import Decryption from '../components/Decryption';
+import LabButton from '../../../all-components/LabButton';
 
 const RSADecryption = () => {
   const [classicAttempts, setClassicAttempts] = useState(0);
@@ -14,17 +14,17 @@ const RSADecryption = () => {
     useContext(ExerciseStateContext);
 
   useEffect(() => {
-    if (rsaEncryptedMessage === "") {
+    if (rsaEncryptedMessage === '') {
       handleReturn();
     }
   }, []);
 
   const handleReturn = () => {
-    navigate("/Lab14/Exercise/RSAEncryption");
+    navigate('/Lab14/Exercise/RSAEncryption');
   };
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/Conclusion");
+    navigate('/Lab14/Exercise/Conclusion');
   };
 
   const formatNumber = (num) => {
@@ -101,8 +101,8 @@ const RSADecryption = () => {
             current technology.
           </p>
           <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
-            <LabButton onClick={handleReturn} label={"Re-do Encryption"} />
-            <LabButton onClick={handleContinue} label={"Next"} />
+            <LabButton onClick={handleReturn} label={'Re-do Encryption'} />
+            <LabButton onClick={handleContinue} label={'Next'} />
           </div>
         </>
       </Decryption>

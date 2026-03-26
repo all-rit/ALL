@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Prism from "prismjs";
-import { navigate } from "@reach/router";
-import Snackbar from "@mui/material/Snackbar";
-import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@mui/material/colors";
-import SnackbarContent from "@mui/material/SnackbarContent";
-import clsx from "clsx";
-import IconButton from "@mui/material/IconButton";
-import WarningIcon from "@mui/icons-material/Warning";
-import ErrorIcon from "@mui/icons-material/Error";
-import InfoIcon from "@mui/icons-material/Info";
-import CloseIcon from "@mui/icons-material/Close";
-import PropTypes from "prop-types";
-import Typography from "@mui/material/Typography";
-import RepairService from "../../../../services/lab4/RepairService";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
-import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
+import React, { useEffect, useState } from 'react';
+import Prism from 'prismjs';
+import { navigate } from 'react-router-dom';
+import Snackbar from '@mui/material/Snackbar';
+import CheckCircleIcon from '@mui/material/SvgIcon/SvgIcon';
+import { amber, green, red, yellow } from '@mui/material/colors';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import clsx from 'clsx';
+import IconButton from '@mui/material/IconButton';
+import WarningIcon from '@mui/icons-material/Warning';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from '@mui/icons-material/Close';
+import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import RepairService from '../../../../services/lab4/RepairService';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
+import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -46,13 +46,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
     },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-  const messageStyle = { marginLeft: "10px" };
+  const messageStyle = { marginLeft: '10px' };
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -64,8 +64,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={"body2"} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
+          <Typography variant={'body2'} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
             {message}
           </Typography>
         </span>
@@ -90,44 +90,44 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
+  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 const CodeChangeBlocks = () => {
   const { actions } = useMainStateContext();
 
-  const [textValue, setTextValue] = useState("");
+  const [textValue, setTextValue] = useState('');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState(
-    "Please type code before updating code!",
+    'Please type code before updating code!',
   );
 
   const handleChange = (event) => {
     setTextValue(event.target.value);
-    console.log("handled change value: " + textValue);
+    console.log('handled change value: ' + textValue);
     Prism.highlightAll();
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
 
     setSnackBarOpen(false);
-    console.log("SnackBar Closed");
+    console.log('SnackBar Closed');
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (textValue === "" || textValue === null) {
-      setMessage("Please type code before updating code!");
+    if (textValue === '' || textValue === null) {
+      setMessage('Please type code before updating code!');
       setSnackBarOpen(true);
     } else {
       window.location.state = {
         role: textValue,
       };
       RepairService.submitRepairSkip(textValue);
-      navigate("/Lab4/Exercise/FormSkipToMainFixed");
+      navigate('/Lab4/Exercise/FormSkipToMainFixed');
     }
     Prism.highlightAll();
   };
@@ -141,15 +141,15 @@ const CodeChangeBlocks = () => {
     actions.updateUserState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (window.location.state?.role !== undefined) {
-      const el0 = document.getElementById("first");
+      const el0 = document.getElementById('first');
       el0.value = window.location.state.role;
-      doEvent(el0, "input");
+      doEvent(el0, 'input');
     }
   }, []);
 
   return (
     <div>
-      <div className={"tw-p-3"}>
+      <div className={'tw-p-3'}>
         <h2 className="tw-title tw-text-left tw-pb-3">Repair</h2>
         <p className="tw-body-text tw-text-left">
           The intent of this code repair is to allow people who navigate
@@ -159,18 +159,18 @@ const CodeChangeBlocks = () => {
           frames.
         </p>
       </div>
-      <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-        <div className={"tw-rounded-lg"}>
+      <form onSubmit={handleSubmit} noValidate autoComplete={'off'}>
+        <div className={'tw-rounded-lg'}>
           <pre>
             <code className="language-html">
               {`/* add the following in the input: <a className="skip-main" href="#main">Skip to main content</a> */
 `}
             </code>
             <input
-              type={"text"}
+              type={'text'}
               id="first"
-              className={"tw-bg-[#333] tw-text-primary-yellow"}
-              style={{ width: "600px" }}
+              className={'tw-bg-[#333] tw-text-primary-yellow'}
+              style={{ width: '600px' }}
               value={textValue}
               placeholder=""
               onChange={handleChange}
@@ -197,8 +197,8 @@ const CodeChangeBlocks = () => {
       </form>
       <Snackbar
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
         open={snackBarOpen}
         autoHideDuration={6000}

@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import Typography from "@mui/material/Typography";
-import CheckCircleIcon from "@mui/material/SvgIcon/";
-import { amber, green, red, yellow } from "@mui/material/colors";
-import SnackbarContent from "@mui/material/SnackbarContent";
-import clsx from "clsx";
-import IconButton from "@mui/material/IconButton";
-import PropTypes from "prop-types";
-import WarningIcon from "@mui/icons-material/Warning";
-import ErrorIcon from "@mui/icons-material/Error";
-import InfoIcon from "@mui/icons-material/Info";
-import CloseIcon from "@mui/icons-material/Close";
-import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import React, { Component } from 'react';
+import Typography from '@mui/material/Typography';
+import CheckCircleIcon from '@mui/material/SvgIcon/';
+import { amber, green, red, yellow } from '@mui/material/colors';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import clsx from 'clsx';
+import IconButton from '@mui/material/IconButton';
+import PropTypes from 'prop-types';
+import WarningIcon from '@mui/icons-material/Warning';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from '@mui/icons-material/Close';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_PLAYING } from '../../../../../constants/lab3/index';
 const variantIcon = {
   success: CheckCircleIcon,
   warning: WarningIcon,
@@ -41,13 +41,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
     },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-  const messageStyle = { marginLeft: "10px" };
+  const messageStyle = { marginLeft: '10px' };
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -55,12 +55,12 @@ function MySnackbarContentWrapper(props) {
       message={
         <span id="client-snackbar" className={classes.message} color={amber}>
           <Typography
-            variant={"body2"}
+            variant={'body2'}
             style={messageStyle}
             aria-label={message}
             gutterBottom
           >
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
             {message}
           </Typography>
         </span>
@@ -85,11 +85,11 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
+  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 class ProblemExplanation extends Component {
   handleSubmit() {
-    navigate("/Lab3/Exercise/ProblemFix");
+    navigate('/Lab3/Exercise/ProblemFix');
   }
   componentDidMount() {
     const { actions } = this.props;
@@ -106,31 +106,31 @@ class ProblemExplanation extends Component {
     return (
       <div>
         <h2
-          className={"tw-title tw-text-left"}
-          aria-label={"Problem Explanation"}
-          onFocus={(e) => textToSpeech(e, "Problem Explanation")}
+          className={'tw-title tw-text-left'}
+          aria-label={'Problem Explanation'}
+          onFocus={(e) => textToSpeech(e, 'Problem Explanation')}
         >
           Problem Explanation
         </h2>
 
         <br></br>
         <p
-          className={"tw-body-text tw-font-medium tw-text-left"}
-          aria-label={"Subtitle Instructions"}
+          className={'tw-body-text tw-font-medium tw-text-left'}
+          aria-label={'Subtitle Instructions'}
           onFocus={(e) =>
-            textToSpeech(e, "How do we make the page more accessible?")
+            textToSpeech(e, 'How do we make the page more accessible?')
           }
         >
           How do we make the page more accessible?
         </p>
         <br />
         <p
-          className={"tw-body-text tw-font-medium tw-text-left"}
-          aria-label={"Body Instructions"}
+          className={'tw-body-text tw-font-medium tw-text-left'}
+          aria-label={'Body Instructions'}
           onFocus={(e) =>
             textToSpeech(
               e,
-              "The problem with the page is that we do not have the required ARIA attributes that make the buttons accessible. They cannot be effectively described by the screenreaders. Specifically, we do not have the aria-label attribute that screenreaders can make use of to read text effectively.",
+              'The problem with the page is that we do not have the required ARIA attributes that make the buttons accessible. They cannot be effectively described by the screenreaders. Specifically, we do not have the aria-label attribute that screenreaders can make use of to read text effectively.',
             )
           }
         >
@@ -142,28 +142,28 @@ class ProblemExplanation extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-text tw-font-medium tw-text-left"}
-          aria-label={"Aria Label definition"}
+          className={'tw-body-text tw-font-medium tw-text-left'}
+          aria-label={'Aria Label definition'}
           onFocus={(e) =>
             textToSpeech(
               e,
-              "As per developer.mozilla.org " +
-                "The aria-label attribute is used to define a string " +
-                "that labels the current element. Use it in cases where a text label is not visible on the screen. " +
-                "If there is visible text labeling the element, use aria-labelled by instead. This attribute can be " +
-                "used with any typical HTML element; it is not limited to elements that have an ARIA role assigned.",
+              'As per developer.mozilla.org ' +
+                'The aria-label attribute is used to define a string ' +
+                'that labels the current element. Use it in cases where a text label is not visible on the screen. ' +
+                'If there is visible text labeling the element, use aria-labelled by instead. This attribute can be ' +
+                'used with any typical HTML element; it is not limited to elements that have an ARIA role assigned.',
             )
           }
         >
-          As per{" "}
+          As per{' '}
           <a
             target="_blank"
             className={
-              "tw-body-text tw-font-medium tw-text-left tw-text-primary-blue"
+              'tw-body-text tw-font-medium tw-text-left tw-text-primary-blue'
             }
             href={
-              "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/" +
-              "ARIA_Techniques/Using_the_aria-label_attribute"
+              'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/' +
+              'ARIA_Techniques/Using_the_aria-label_attribute'
             }
             rel="noreferrer"
           >
@@ -183,9 +183,9 @@ class ProblemExplanation extends Component {
         <button
           onClick={this.handleSubmit}
           className={
-            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            'btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg'
           }
-          onFocus={(e) => textToSpeech(e, "Next")}
+          onFocus={(e) => textToSpeech(e, 'Next')}
         >
           Next
         </button>

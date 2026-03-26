@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { Router } from "@reach/router";
+import React, { useState } from 'react';
+import { Router } from 'react-router-dom';
 
-import { EXERCISE_STATES } from "../../../constants/lab14";
-import ExerciseStateContext from "./Lab14Context";
+import { EXERCISE_STATES } from '../../../constants/lab14';
+import ExerciseStateContext from './Lab14Context';
 
 // lab imported dependencies;
-import ExerciseIntro from "./pages/ExerciseIntro";
-import Superposition from "./pages/Superposition";
-import Entanglement from "./pages/Entanglement";
-import ExerciseTransition from "./pages/ExerciseTransition";
-import CaesarIntro from "./pages/CaesarIntro";
-import CaesarEncryption from "./pages/CaesarEncryption";
-import CaesarDecryption from "./pages/CaesarDecryption";
-import VigenereIntro from "./pages/VigenereIntro";
-import VigenereEncryption from "./pages/VigenereEncryption";
-import VigenereDecryption from "./pages/VigenereDecryption";
-import RSAIntro from "./pages/RSAIntro";
-import RSAEncryption from "./pages/RSAEncryption";
-import RSADecryption from "./pages/RSADecryption";
-import Conclusion from "./pages/Conclusion";
+import ExerciseIntro from './pages/ExerciseIntro';
+import Superposition from './pages/Superposition';
+import Entanglement from './pages/Entanglement';
+import ExerciseTransition from './pages/ExerciseTransition';
+import CaesarIntro from './pages/CaesarIntro';
+import CaesarEncryption from './pages/CaesarEncryption';
+import CaesarDecryption from './pages/CaesarDecryption';
+import VigenereIntro from './pages/VigenereIntro';
+import VigenereEncryption from './pages/VigenereEncryption';
+import VigenereDecryption from './pages/VigenereDecryption';
+import RSAIntro from './pages/RSAIntro';
+import RSAEncryption from './pages/RSAEncryption';
+import RSADecryption from './pages/RSADecryption';
+import Conclusion from './pages/Conclusion';
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -30,14 +30,14 @@ const Main = () => {
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
 
-  const [caesarBaseMessage, setCaesarBaseMessage] = useState("");
-  const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState("");
+  const [caesarBaseMessage, setCaesarBaseMessage] = useState('');
+  const [caesarEncryptedMessage, setCaesarEncryptedMessage] = useState('');
   const [caesarShiftAmount, setCaesarShiftAmount] = useState(0);
-  const [vigenereBaseMessage, setVigenereBaseMessage] = useState("");
-  const [vigenereKey, setVigenereKey] = useState("");
-  const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState("");
-  const [rsaBaseMessage, setRsaBaseMessage] = useState("");
-  const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState("");
+  const [vigenereBaseMessage, setVigenereBaseMessage] = useState('');
+  const [vigenereKey, setVigenereKey] = useState('');
+  const [vigenereEncryptedMessage, setVigenereEncryptedMessage] = useState('');
+  const [rsaBaseMessage, setRsaBaseMessage] = useState('');
+  const [rsaEncryptedMessage, setRsaEncryptedMessage] = useState('');
   const [rsaShiftValue, setRsaShiftValue] = useState(1024);
 
   return (

@@ -1,16 +1,16 @@
 // Exercise Instructions (Page #1)
 
-import React from "react";
-import { navigate } from "@reach/router";
+import React from 'react';
+import { navigate } from 'react-router-dom';
 
 const PreDbRepair = () => {
   const handleContinue = () => {
-    navigate("/Lab12/Exercise/DatabaseRepair");
+    navigate('/Lab12/Exercise/DatabaseRepair');
   };
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}> Explanation </h1>
+      <h1 className={'tw-title tw-text-left'}> Explanation </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           Hm, that doesnt look right. The diploma hasnt changed even though we

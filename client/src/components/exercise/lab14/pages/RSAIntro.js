@@ -1,14 +1,14 @@
-import React from "react";
-import { navigate } from "@reach/router";
+import React from 'react';
+import { navigate } from 'react-router-dom';
 
 const RSAIntro = () => {
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/RSAEncryption");
+    navigate('/Lab14/Exercise/RSAEncryption');
   };
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}>The RSA Encryption Algorithm</h1>
+      <h1 className={'tw-title tw-text-left'}>The RSA Encryption Algorithm</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-4">
           Rivest-Shamir-Adleman, also known as RSA, is a well-known public-key

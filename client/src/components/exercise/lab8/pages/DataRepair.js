@@ -1,13 +1,13 @@
-import { navigate } from "@reach/router";
-import React, { useState, useEffect, useContext } from "react";
-import Popup from "../../../all-components/Popup";
-import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
-import ExerciseService from "../../../../services/lab8/ExerciseService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
-import LabButton from "../../../all-components/LabButton";
-import ExerciseStateContext from "../Lab8Context";
+import { navigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import Popup from '../../../all-components/Popup';
+import { CHAT_MESSAGES } from '../../../../constants/lab8/messages';
+import ExerciseService from '../../../../services/lab8/ExerciseService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
+import LabButton from '../../../all-components/LabButton';
+import ExerciseStateContext from '../Lab8Context';
 
 // the only acceptable values that a user can enter
 // for their repairs
@@ -41,7 +41,7 @@ const DataRepair = () => {
     */
   const [repairOpen, setRepairOpen] = useState(false);
   const [userError, setUserError] = useState(true);
-  const [popUpMessage, setPopUpMessage] = useState("");
+  const [popUpMessage, setPopUpMessage] = useState('');
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setCurrentMessages((prevState) =>
@@ -91,13 +91,13 @@ const DataRepair = () => {
     if (!error) {
       setRepairOpen(false);
       setUserError(false);
-      popUpHandler("Repair successful!");
+      popUpHandler('Repair successful!');
       setRepairState(true);
       setIsCorrect(validateCorrectAI());
     } else {
       setUserError(true);
       popUpHandler(
-        "There are errors in your repair. Please correct the errors.",
+        'There are errors in your repair. Please correct the errors.',
       );
     }
     setMessageError(localMessageError);
@@ -188,32 +188,32 @@ const DataRepair = () => {
       setPolaritiesCorrect(false);
     }
     await postExerciseChange(body);
-    navigate("/Lab8/Exercise/BiasedSimulation");
+    navigate('/Lab8/Exercise/BiasedSimulation');
   };
 
   return (
-    <div className={"tw-p-6"}>
-      <h1 className={"tw-title tw-text-left tw-my-6"}> Repair </h1>
+    <div className={'tw-p-6'}>
+      <h1 className={'tw-title tw-text-left tw-my-6'}> Repair </h1>
       <p className="tw-body-text">
         {/* instructions for the user */}
         Repair the dataset by assigning the correct polarity to each message.
         Each message should be assigned a sentiment score of either 0, 1, or 2.
       </p>
-      <p className={"tw-body-text tw-mb-3"}>
+      <p className={'tw-body-text tw-mb-3'}>
         Click &lsquo;Repair&rsquo; to make the appropriate changes.
       </p>
       <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
-      <div className={"tw-flex tw-gap-x-3 tw-justify-center tw-w-full"}>
+      <div className={'tw-flex tw-gap-x-3 tw-justify-center tw-w-full'}>
         <LabButton
           onClick={() => handleRepair()}
-          key={"repair"}
-          label={"Repair"}
+          key={'repair'}
+          label={'Repair'}
         />
         <LabButton
           onClick={handleContinue}
-          key={"Next"}
+          key={'Next'}
           disabled={userError}
-          label={"Next"}
+          label={'Next'}
         />
       </div>
       {/* only display the repair section if it should be open */}
@@ -261,7 +261,7 @@ const DataRepair = () => {
                 <span className="code_editor__const">const </span>
                 <span className="code_editor__json">messages </span>
                 <span>= </span>
-                <span className="code_editor__class">{"{"}</span>
+                <span className="code_editor__class">{'{'}</span>
               </div>
 
               {/* 6 messages total to repair */}
@@ -280,7 +280,7 @@ const DataRepair = () => {
                     {/* message */}
                     <span className="code_editor__json_property_key">
                       &quot;message&quot;
-                    </span>{" "}
+                    </span>{' '}
                     :&nbsp;
                     <span className="code_editor__json_property_value">
                       &quot;{message.content}&quot;
@@ -294,7 +294,7 @@ const DataRepair = () => {
                       <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                       <span className="code_editor__json_property_key">
                         &quot;ai_sentiment_score&quot;
-                      </span>{" "}
+                      </span>{' '}
                       :&nbsp;
                       <span>
                         <input
@@ -310,7 +310,7 @@ const DataRepair = () => {
                           }}
                           title={message.ai_polarity}
                           className={
-                            messageError[index] ? "form-error-input" : ""
+                            messageError[index] ? 'form-error-input' : ''
                           }
                         />
                       </span>
@@ -321,7 +321,7 @@ const DataRepair = () => {
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span className="form-error">
                           &nbsp;&nbsp;&nbsp;&nbsp;
-                          {"Please enter either 0, 1, or 2."}
+                          {'Please enter either 0, 1, or 2.'}
                         </span>
                       </div>
                     )}
@@ -333,7 +333,7 @@ const DataRepair = () => {
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span className="form-error">
                           &nbsp;&nbsp;&nbsp;&nbsp;
-                          {"Hint: try entering " + message.intended_polarity}
+                          {'Hint: try entering ' + message.intended_polarity}
                         </span>
                       </div>
                     )}
@@ -347,8 +347,8 @@ const DataRepair = () => {
 
               {/* closing - end object */}
               <div className="code_editor__line">
-                <span className="code_editor__class">{"}"}</span>
-                <span>{";"}</span>
+                <span className="code_editor__class">{'}'}</span>
+                <span>{';'}</span>
               </div>
             </div>
           </div>

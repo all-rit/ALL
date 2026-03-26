@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import Button from "@mui/material/Button";
-import { navigate } from "@reach/router";
-import { PageService } from "../../../../services/PageService";
-import { LAB_ID } from "../../../../constants/lab4";
-import AppInstructions from "../components/AppInstructions";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
+import React, { useState, useEffect, useRef } from 'react';
+import Button from '@mui/material/Button';
+import { navigate } from 'react-router-dom';
+import { PageService } from '../../../../services/PageService';
+import { LAB_ID } from '../../../../constants/lab4';
+import AppInstructions from '../components/AppInstructions';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
 
 const SmallTarget = () => {
   const { actions } = useMainStateContext();
@@ -20,21 +20,21 @@ const SmallTarget = () => {
 
   const [state, setState] = useState({
     secondsElapsed: 0,
-    marginRight: style.marginRight + "px",
-    marginLeft: style.marginLeft + "px",
-    width: style.width + "px",
-    height: style.height + "px",
-    fontSize: style.fontSize + "px",
-    top: "px",
-    left: "px",
+    marginRight: style.marginRight + 'px',
+    marginLeft: style.marginLeft + 'px',
+    width: style.width + 'px',
+    height: style.height + 'px',
+    fontSize: style.fontSize + 'px',
+    top: 'px',
+    left: 'px',
   });
 
   const myDiv = useRef(null);
 
   const handleSubmit = () => {
-    const name = "SmallTarget";
+    const name = 'SmallTarget';
     PageService.createPage(name, state.secondsElapsed, LAB_ID);
-    navigate("/Lab4/Exercise/TargetGuideline");
+    navigate('/Lab4/Exercise/TargetGuideline');
   };
 
   const wiggle = (e) => {
@@ -44,8 +44,8 @@ const SmallTarget = () => {
     const top = distY / 2 < 300 ? distY / 5 : 300;
     setState((prevState) => ({
       ...prevState,
-      right: right + "px",
-      top: top + "px",
+      right: right + 'px',
+      top: top + 'px',
     }));
   };
 
@@ -73,18 +73,18 @@ const SmallTarget = () => {
     };
   }, []);
 
-  const instructions = "Click the start button.";
+  const instructions = 'Click the start button.';
   return (
-    <div className={"tw-p-10"}>
-      <h2 className={"tw-title tw-text-left"}> Exercise </h2>
+    <div className={'tw-p-10'}>
+      <h2 className={'tw-title tw-text-left'}> Exercise </h2>
       <AppInstructions instructions={instructions} />
       <div
         style={{
-          width: "300px",
-          height: "300px",
-          margin: "auto",
-          paddingTop: "50px",
-          position: "relative",
+          width: '300px',
+          height: '300px',
+          margin: 'auto',
+          paddingTop: '50px',
+          position: 'relative',
         }}
         onMouseMove={(e) => wiggle(e)}
       >
@@ -92,8 +92,8 @@ const SmallTarget = () => {
           ref={myDiv}
           href="#"
           onClick={handleSubmit}
-          variant={"contained"}
-          color={"primary"}
+          variant={'contained'}
+          color={'primary'}
           style={state}
         >
           Start

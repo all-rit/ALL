@@ -1,11 +1,11 @@
-import React from "react";
-import Circle from "../../all-components/imagine-components/circle";
-import { navigate } from "@reach/router";
-import "./landingpage.css";
+import React from 'react';
+import Circle from '../../all-components/imagine-components/circle';
+import { navigate } from 'react-router-dom';
+import './landingpage.css';
 
 const ExpressionMainInstructions = () => {
   const handleNext = () => {
-    navigate("/Imagine2023/ExpressionActivity");
+    navigate('/Imagine2023/ExpressionActivity');
   };
   return (
     <div className="mainInstructionsContainer">
@@ -18,7 +18,7 @@ const ExpressionMainInstructions = () => {
         same size as this one:
       </p>
       <div className="center">
-        <Circle color={"blue"} clickable={false} />
+        <Circle color={'blue'} clickable={false} />
       </div>
       <ul className="study__list">
         <li className="playthrough__sentence__imagine">
@@ -29,7 +29,7 @@ const ExpressionMainInstructions = () => {
           The circle will be 1 of 3 colors.
         </li>
         <li className="playthrough__sentence__imagine">
-          The color you need to click will appear in the{" "}
+          The color you need to click will appear in the{' '}
           <strong>bottom left</strong> corner of the screen.
         </li>
         <li className="playthrough__sentence__imagine">
@@ -37,8 +37,8 @@ const ExpressionMainInstructions = () => {
           the <strong>bottom right</strong> of the screen.
         </li>
         <li className="playthrough__sentence__imagine">
-          You will gain or lose points based on if you clicked the{" "}
-          <strong>correct or incorrect</strong> circle and based on{" "}
+          You will gain or lose points based on if you clicked the{' '}
+          <strong>correct or incorrect</strong> circle and based on{' '}
           <strong>how fast you clicked</strong> the correct colored circle. So
           click as fast as you possibly can!
         </li>

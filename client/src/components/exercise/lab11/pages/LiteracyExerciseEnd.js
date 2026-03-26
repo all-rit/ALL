@@ -1,10 +1,10 @@
-import { navigate } from "@reach/router";
-import React, { useEffect } from "react";
+import { navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
-import { LAB_ID } from "../../../../constants/lab11";
-import UserLabService from "../../../../services/UserLabService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import { LAB_ID } from '../../../../constants/lab11';
+import UserLabService from '../../../../services/UserLabService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from 'src/constants/index';
 
 const LiteracyExerciseEnd = () => {
   const { actions, state } = useMainStateContext();
@@ -15,7 +15,7 @@ const LiteracyExerciseEnd = () => {
     if (state.main.user?.firstname !== null && state.main.user !== null) {
       UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
     }
-    navigate("/Lab11/Reinforcement");
+    navigate('/Lab11/Reinforcement');
   };
 
   useEffect(() => {
@@ -23,12 +23,12 @@ const LiteracyExerciseEnd = () => {
   }, []);
 
   const handleTryAgain = () => {
-    navigate("/Lab11/Exercise/InformationLetterFogIndexFormula");
+    navigate('/Lab11/Exercise/InformationLetterFogIndexFormula');
   };
 
   return (
     <div className="center-div">
-      <h3 className={"tw-title tw-text-left"}>Exercise Complete</h3>
+      <h3 className={'tw-title tw-text-left'}>Exercise Complete</h3>
       <p className="tw-body-text tw-py-6">
         In conclusion, the Fog Index is a useful tool to determine the
         readability of text. Remember to consider your audience and the best

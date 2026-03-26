@@ -1,10 +1,10 @@
-import { React } from "react";
-import { navigate } from "@reach/router";
-import LabButton from "src/components/all-components/LabButton";
+import { React } from 'react';
+import { navigate } from 'react-router-dom';
+import LabButton from 'src/components/all-components/LabButton';
 
 const IDEIntroduction = () => {
   const handleContinue = () => {
-    navigate("/Lab13/Exercise/IDEExercise");
+    navigate('/Lab13/Exercise/IDEExercise');
   };
 
   return (
@@ -45,7 +45,7 @@ const IDEIntroduction = () => {
         <p className="tw-pl-6">
           <span className="tw-font-semibold tw-bg-primary-yellow tw-px-1 tw-rounded-sm">
             <strong>Confidence Scores:</strong>
-          </span>{" "}
+          </span>{' '}
           Show how certain the AI is about its response instead of presenting it
           as absolute truth.
         </p>
@@ -53,14 +53,14 @@ const IDEIntroduction = () => {
         <p className="tw-pl-6">
           <span className="tw-font-semibold tw-bg-primary-yellow tw-px-1 tw-rounded-sm">
             <strong>Citations:</strong>
-          </span>{" "}
+          </span>{' '}
           Provide traceable sources so users can verify claims.
         </p>
 
         <p className="tw-pl-6">
           <span className="tw-font-semibold tw-bg-primary-yellow tw-px-1 tw-rounded-sm">
             <strong>Disclaimer Messages:</strong>
-          </span>{" "}
+          </span>{' '}
           Remind users that AI outputs may be incorrect or incomplete.
         </p>
 

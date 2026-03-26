@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import ExerciseStateContext from "../Lab12Context";
-import { navigate } from "@reach/router";
-import { ExerciseService } from "../../../../services/lab12/ExerciseService";
+import React, { useState, useEffect, useContext } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import ExerciseStateContext from '../Lab12Context';
+import { navigate } from 'react-router-dom';
+import { ExerciseService } from '../../../../services/lab12/ExerciseService';
 import {
   Button,
   ButtonDropdown,
@@ -13,7 +13,7 @@ import {
   FormGroup,
   Input,
   Label,
-} from "reactstrap";
+} from 'reactstrap';
 
 const GradApplication = () => {
   const { state } = useMainStateContext();
@@ -27,12 +27,12 @@ const GradApplication = () => {
       });
       setIsRepairComplete(currentExercise.isFormRepairComplete);
     } catch (error) {
-      console.error("Could not fetch exercise: ", error);
+      console.error('Could not fetch exercise: ', error);
     }
   };
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropdownLabel, setDropdownLabel] = useState("Select Pronouns");
+  const [dropdownLabel, setDropdownLabel] = useState('Select Pronouns');
 
   const setPronounsAndDropdownLabel = (pronouns) => {
     setPronouns(pronouns);
@@ -63,7 +63,7 @@ const GradApplication = () => {
   const [formErrors, setFormErrors] = useState([]);
 
   const validateInput = (formData) => {
-    const errors = formData.map((input) => input === "");
+    const errors = formData.map((input) => input === '');
     const hasError = errors.some((error) => error);
     setFormErrors(errors);
     return hasError;
@@ -89,7 +89,7 @@ const GradApplication = () => {
     if (!error) {
       navigate(`/Lab12/Exercise/PreWrongDiploma`); // If no errors, submit
     } else {
-      console.log("Form contains errors.");
+      console.log('Form contains errors.');
     }
   };
 
@@ -102,7 +102,7 @@ const GradApplication = () => {
           </h1>
           <div className="tw-text-left tw-p-6">
             <h2 className="tw-text-xl tw-font-semibold tw-mb-1.5">
-              Personal Information:{" "}
+              Personal Information:{' '}
             </h2>
             <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
               <Label htmlFor="firstName" className="tw-pr-8 tw-mb-0">
@@ -190,27 +190,27 @@ const GradApplication = () => {
                     toggle={() => setDropdownOpen(!dropdownOpen)}
                     isOpen={dropdownOpen}
                   >
-                    <DropdownToggle color={"secondary"} caret>
+                    <DropdownToggle color={'secondary'} caret>
                       {dropdownLabel}
                     </DropdownToggle>
                     <DropdownMenu>
                       <DropdownItem
-                        onClick={() => setPronounsAndDropdownLabel("He/Him")}
+                        onClick={() => setPronounsAndDropdownLabel('He/Him')}
                       >
-                        {" "}
-                        He/Him{" "}
+                        {' '}
+                        He/Him{' '}
                       </DropdownItem>
                       <DropdownItem
-                        onClick={() => setPronounsAndDropdownLabel("She/Her")}
+                        onClick={() => setPronounsAndDropdownLabel('She/Her')}
                       >
-                        {" "}
-                        She/Her{" "}
+                        {' '}
+                        She/Her{' '}
                       </DropdownItem>
                       <DropdownItem
-                        onClick={() => setPronounsAndDropdownLabel("They/Them")}
+                        onClick={() => setPronounsAndDropdownLabel('They/Them')}
                       >
-                        {" "}
-                        They/Them{" "}
+                        {' '}
+                        They/Them{' '}
                       </DropdownItem>
                     </DropdownMenu>
                   </ButtonDropdown>
@@ -226,7 +226,7 @@ const GradApplication = () => {
               </FormGroup>
             )}
             <h3 className="tw-mt-14 tw-text-xl tw-font-semibold tw-mb-1.5">
-              Academic Information:{" "}
+              Academic Information:{' '}
             </h3>
             <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
               <Label className="tw-pr-8 tw-mb-0">College:</Label>

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
-import LabButton from "../../../../all-components/LabButton";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
+import LabButton from '../../../../all-components/LabButton';
 
 const ExerciseStart = () => {
   const { actions } = useMainStateContext();
@@ -13,7 +13,7 @@ const ExerciseStart = () => {
 
   const handleStart = () => {
     actions.updateUserState(EXERCISE_PLAYING);
-    navigate("/Lab6/Exercise/AvatarSelection");
+    navigate('/Lab6/Exercise/AvatarSelection');
   };
 
   return (
@@ -29,7 +29,7 @@ const ExerciseStart = () => {
       <div className="tw-body-text tw-text-left tw-my-6">
         Click the “Start” button to begin this exercise!
       </div>
-      <LabButton label={"Start"} onClick={handleStart} />
+      <LabButton label={'Start'} onClick={handleStart} />
     </div>
   );
 };

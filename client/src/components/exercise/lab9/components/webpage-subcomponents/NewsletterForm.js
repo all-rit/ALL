@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_STATES } from "../../../../../constants/lab9";
-import PropTypes from "prop-types";
-import { REPAIR } from "src/constants/lab9/index";
+import React, { useState } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_STATES } from '../../../../../constants/lab9';
+import PropTypes from 'prop-types';
+import { REPAIR } from 'src/constants/lab9/index';
 
 /**
  * NewsletterForm is a sub-component of the main Webpage component.
@@ -45,7 +45,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
             )}
           </div>
           <div className="tw-text-[#260D0D] tw-text-justify tw-text-2xl tw-font-light tw-max-w-[711px] tw-ml-2 tw-mt-6 tw-max-md:tw-max-w-full">
-            {" "}
+            {' '}
             Welcome to another edition of your weekly newsletter, your go-to
             source for the latest updates, events, and highlights from our
             vibrant campus community. As we settle into the rhythm of the
@@ -54,7 +54,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
           </div>
           {/* will want a button around this section that leads to the address form repair */}
           {isAddressRepaired ? (
-            <div className={"tw-w-full tw-mt-5 tw-p-4 tw-pb-10"}>
+            <div className={'tw-w-full tw-mt-5 tw-p-4 tw-pb-10'}>
               <div className="tw-flex tw-items-start tw-justify-between tw-h-1/4 tw-gap-2.5">
                 <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-mt-0">
                   Street Address
@@ -81,7 +81,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
                   <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-my-auto">
                     Emirate
                   </div>
-                  <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{" "}
+                  <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{' '}
                 </div>
               </div>
 
@@ -94,8 +94,8 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
                 </div>
                 <div className="tw-text-[#260D0D] tw-rounded-md tw-bg-labGreen tw-justify-center tw-align-middle tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-w-1/4 tw-h-10 tw-border-[3px] tw-border-solid">
                   <p className="tw-font-medium tw-text-lg tw-text-bgwhite ">
-                    {" "}
-                    Sign Up{" "}
+                    {' '}
+                    Sign Up{' '}
                   </p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
             <div
               onClick={() => handleNav(EXERCISE_STATES.REPAIR_ADDRESS_FORM)}
               className={
-                "tw-w-full hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-animate-reduced-bounce tw-cursor-pointer tw-rounded-xl tw-mt-5 tw-border-solid tw-p-4 tw-pb-10"
+                'tw-w-full hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-animate-reduced-bounce tw-cursor-pointer tw-rounded-xl tw-mt-5 tw-border-solid tw-p-4 tw-pb-10'
               }
             >
               <div className="tw-flex tw-items-start tw-justify-between tw-h-1/4 tw-gap-2.5">
@@ -133,7 +133,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
                   <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-my-auto">
                     Zip
                   </div>
-                  <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{" "}
+                  <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{' '}
                 </div>
               </div>
 
@@ -146,8 +146,8 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
                 </div>
                 <div className="tw-text-[#260D0D] tw-rounded-md tw-bg-labGreen tw-justify-center tw-align-middle tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-w-1/4 tw-h-10 tw-border-[3px] tw-border-solid">
                   <p className="tw-font-medium tw-text-lg tw-text-bgwhite ">
-                    {" "}
-                    Sign Up{" "}
+                    {' '}
+                    Sign Up{' '}
                   </p>
                 </div>
               </div>

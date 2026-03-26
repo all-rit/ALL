@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import ReactPlayer from "react-player";
-import { navigate } from "@reach/router";
-import ImagineService from "../../../services/ImagineService";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player';
+import { navigate } from 'react-router-dom';
+import ImagineService from '../../../services/ImagineService';
+import PropTypes from 'prop-types';
 
 const ExpressionExercise2 = (props) => {
   const { setCount, count, userID, year } = props;
@@ -28,7 +28,7 @@ const ExpressionExercise2 = (props) => {
   const handleNext = async () => {
     const body = { userID: userID, study: timeStamps, year: year };
     await ImagineService.postStudy(body);
-    navigate("/Imagine2023/ExpressionScore");
+    navigate('/Imagine2023/ExpressionScore');
   };
 
   return (

@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions as appActions } from "../../reducers/lab1/AppReducer";
-import { actions as mainActions } from "../../reducers/MainReducer";
-import LabService from "../../services/LabService";
-import Lab from "../../components/body/lab/Lab";
-import useMainStateContext from "../../reducers/MainContext";
-import { navigate } from "@reach/router";
-import BrandedALLModal from "../../components/all-components/BrandedALLModal";
-import LoginBody from "../../components/body/login/LoginBody";
-import GettingInvolved from "../../components/all-components/GettingInvolved";
-import PropTypes from "prop-types";
-import Student from "../../assets/images/stockImages/LookingAtComputer.png";
-import Girl from "../../assets/images/stockImages/Girl1.png";
-import LandingSection from "../../components/all-components/LandingSection";
-import UserService from "../../services/UserService";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions as appActions } from '../../reducers/lab1/AppReducer';
+import { actions as mainActions } from '../../reducers/MainReducer';
+import LabService from '../../services/LabService';
+import Lab from '../../components/body/lab/Lab';
+import useMainStateContext from '../../reducers/MainContext';
+import { navigate } from 'react-router-dom';
+import BrandedALLModal from '../../components/all-components/BrandedALLModal';
+import LoginBody from '../../components/body/login/LoginBody';
+import GettingInvolved from '../../components/all-components/GettingInvolved';
+import PropTypes from 'prop-types';
+import Student from '../../assets/images/stockImages/LookingAtComputer.png';
+import Girl from '../../assets/images/stockImages/Girl1.png';
+import LandingSection from '../../components/all-components/LandingSection';
+import UserService from '../../services/UserService';
 import {
   EXPLORE_LABS_BODY,
   EXPLORE_LABS_TITLE,
   VIEW_PROGRESS_BODY,
   VIEW_PROGRESS_TITLE,
-} from "../../constants/sections";
-import LabGeneration from "../../components/body/lab/LabGeneration";
+} from '../../constants/sections';
+import LabGeneration from '../../components/body/lab/LabGeneration';
 
 const mapStateToProps = (state) => {
   return {
@@ -51,7 +51,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
     <Lab
       progressState={progressState}
       key={index}
-      alt={labName + " Thumbnail"}
+      alt={labName + ' Thumbnail'}
       lab={id}
       name={labName}
       bio={shortDescription}
@@ -107,7 +107,7 @@ const LabsPage = (props) => {
 
   const labsBySearchPhrase = (labMap, phrase) => {
     const filteredMap = new Map();
-    if (phrase.isEmpty || phrase === "") return labMap;
+    if (phrase.isEmpty || phrase === '') return labMap;
     for (const [key, value] of labMap.entries()) {
       const filteredArr = value.filter((x) =>
         x.labName
@@ -125,7 +125,7 @@ const LabsPage = (props) => {
   };
 
   const [displayedLabs, setDisplayedLabs] = useState(new Map());
-  const [textSearch, setTextSearch] = useState("");
+  const [textSearch, setTextSearch] = useState('');
 
   const [showFilter, setShowFilter] = useState(false);
   const [selectedTopics, setSelectedTopics] = useState([]);
@@ -163,7 +163,7 @@ const LabsPage = (props) => {
     if (difficulties.length > 0) {
       filtered = labsByDifficulty(filtered, difficulties);
     }
-    if (text.trim() !== "") {
+    if (text.trim() !== '') {
       filtered = labsBySearchPhrase(filtered, text);
     }
     setDisplayedLabs(filtered);
@@ -209,7 +209,7 @@ const LabsPage = (props) => {
   const signInModal = () => {
     return (
       <BrandedALLModal
-        direction={"row"}
+        direction={'row'}
         isOpen={signInModalOpen}
         toggle={toggleSignIn}
       >
@@ -222,12 +222,12 @@ const LabsPage = (props) => {
     if (!loggedIn) {
       toggleSignIn();
     } else {
-      navigate("/Profile");
+      navigate('/Profile');
     }
   };
 
   return (
-    <div className={"tw-w-lvw"}>
+    <div className={'tw-w-lvw'}>
       <LandingSection
         title={EXPLORE_LABS_TITLE}
         body={EXPLORE_LABS_BODY}
@@ -245,20 +245,20 @@ const LabsPage = (props) => {
                               tw-flex-wrap tw-px-12"
               >
                 {loggedIn && (
-                  <div className={"tw-w-full"}>
+                  <div className={'tw-w-full'}>
                     <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                       My Labs
                     </h1>
-                    <div className={"tw-my-6 tw-p-4 tw-min-h-[20rem]"}>
+                    <div className={'tw-my-6 tw-p-4 tw-min-h-[20rem]'}>
                       {myLabs.length > 0 ? (
                         <LabGeneration
                           actions={actions}
                           labids={myLabs}
-                          progressState={"MY_LABS"}
+                          progressState={'MY_LABS'}
                         />
                       ) : (
-                        <p className={"xs:tw-col-span-3"}>
-                          {" "}
+                        <p className={'xs:tw-col-span-3'}>
+                          {' '}
                           No labs assigned yet!
                         </p>
                       )}
@@ -330,8 +330,8 @@ const LabsPage = (props) => {
                                 tw-z-10
                                 ${
                                   selectedTopics.includes(key)
-                                    ? "tw-bg-primary-yellow"
-                                    : "tw-bg-white"
+                                    ? 'tw-bg-primary-yellow'
+                                    : 'tw-bg-white'
                                 }
                             `}
                           >
@@ -367,8 +367,8 @@ const LabsPage = (props) => {
                                 tw-z-10
                                 ${
                                   selectedDifficulties.includes(level)
-                                    ? "tw-bg-primary-yellow"
-                                    : "tw-bg-white"
+                                    ? 'tw-bg-primary-yellow'
+                                    : 'tw-bg-white'
                                 }
                             `}
                           >
@@ -424,7 +424,7 @@ const LabsPage = (props) => {
                                 renderLabData(
                                   actions,
                                   labInfo,
-                                  "",
+                                  '',
                                   labInfo.id - 1,
                                 ),
                               )}
@@ -444,7 +444,7 @@ const LabsPage = (props) => {
         body={VIEW_PROGRESS_BODY}
         img={Girl}
         hasButton={true}
-        buttonLabel={"Your Account"}
+        buttonLabel={'Your Account'}
         onClick={handleNav}
         shrinkImg={true}
       />

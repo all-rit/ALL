@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { navigate } from "@reach/router";
-import Prism from "prismjs";
-import { Snackbar } from "@mui/material";
-import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@mui/material/colors";
-import SnackbarContent from "@mui/material/SnackbarContent";
-import clsx from "clsx";
-import IconButton from "@mui/material/IconButton";
-import WarningIcon from "@mui/icons-material/Warning";
-import ErrorIcon from "@mui/icons-material/Error";
-import InfoIcon from "@mui/icons-material/Info";
-import CloseIcon from "@mui/icons-material/Close";
-import PropTypes from "prop-types";
-import Typography from "@mui/material/Typography";
-import RepairService from "../../../../services/lab4/RepairService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
+import React, { useEffect, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import Prism from 'prismjs';
+import { Snackbar } from '@mui/material';
+import CheckCircleIcon from '@mui/material/SvgIcon/SvgIcon';
+import { amber, green, red, yellow } from '@mui/material/colors';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import clsx from 'clsx';
+import IconButton from '@mui/material/IconButton';
+import WarningIcon from '@mui/icons-material/Warning';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from '@mui/icons-material/Close';
+import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import RepairService from '../../../../services/lab4/RepairService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -50,13 +50,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
     },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-  const messageStyle = { marginLeft: "10px" };
+  const messageStyle = { marginLeft: '10px' };
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -68,8 +68,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={"body2"} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
+          <Typography variant={'body2'} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
             {message}
           </Typography>
         </span>
@@ -94,17 +94,17 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
+  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 const CodeChangeTarget = () => {
   const { actions } = useMainStateContext();
 
   const [state, setState] = useState({
-    textValue: "",
-    textValue1: "",
+    textValue: '',
+    textValue1: '',
     snackBarOpen: false,
-    message: "Please type code before updating code!",
+    message: 'Please type code before updating code!',
   });
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const CodeChangeTarget = () => {
         textValue: window.location.state.width,
         textValue1: window.location.state.height,
         snackBarOpen: false,
-        message: "Please type code before updating code!",
+        message: 'Please type code before updating code!',
       });
       window.location.state = {
         width: window.location.state.width,
@@ -131,12 +131,12 @@ const CodeChangeTarget = () => {
       window.location.state.height !== undefined &&
       window.location.state.width !== undefined
     ) {
-      const el0 = document.getElementById("first");
+      const el0 = document.getElementById('first');
       el0.value = window.location.state.width;
-      doEvent(el0, "input");
-      const el1 = document.getElementById("second");
+      doEvent(el0, 'input');
+      const el1 = document.getElementById('second');
       el1.value = window.location.state.height;
-      doEvent(el1, "input");
+      doEvent(el1, 'input');
     }
   }, []);
 
@@ -151,7 +151,7 @@ const CodeChangeTarget = () => {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
 
@@ -160,12 +160,12 @@ const CodeChangeTarget = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Width updated as: " + state.textValue);
-    console.log("Height updated as: " + state.textValue1);
-    if (state.textValue === "" || state.textValue1 === "") {
+    console.log('Width updated as: ' + state.textValue);
+    console.log('Height updated as: ' + state.textValue1);
+    if (state.textValue === '' || state.textValue1 === '') {
       setState({
         ...state,
-        message: "Please type code before updating code!",
+        message: 'Please type code before updating code!',
         snackBarOpen: true,
       });
     } else if (
@@ -174,7 +174,7 @@ const CodeChangeTarget = () => {
     ) {
       setState({
         ...state,
-        message: "Please enter value greater than or equal to " + minMax.min,
+        message: 'Please enter value greater than or equal to ' + minMax.min,
         snackBarOpen: true,
       });
     } else if (
@@ -183,7 +183,7 @@ const CodeChangeTarget = () => {
     ) {
       setState({
         ...state,
-        message: "Please enter value less than or equal to " + minMax.max,
+        message: 'Please enter value less than or equal to ' + minMax.max,
         snackBarOpen: true,
       });
     } else if (
@@ -192,7 +192,7 @@ const CodeChangeTarget = () => {
     ) {
       setState({
         ...state,
-        message: "Please enter numeric value",
+        message: 'Please enter numeric value',
         snackBarOpen: true,
       });
     } else {
@@ -201,7 +201,7 @@ const CodeChangeTarget = () => {
         height: state.textValue1,
       };
       RepairService.submitRepairButton(state.textValue1, state.textValue);
-      navigate("/Lab4/Exercise/SubmitUpdated");
+      navigate('/Lab4/Exercise/SubmitUpdated');
     }
     Prism.highlightAll();
   };
@@ -213,7 +213,7 @@ const CodeChangeTarget = () => {
 
   return (
     <div>
-      <div className={"tw-p-4"}>
+      <div className={'tw-p-4'}>
         <h2 className="tw-title tw-text-left">Repair</h2>
         <p className="tw-body-text tw-font-medium tw-text-left">
           The intent of this code repair is to ensure that target sizes are
@@ -223,8 +223,8 @@ const CodeChangeTarget = () => {
           target.
         </p>
       </div>
-      <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-        <div className={"code_editor__content"}>
+      <form onSubmit={handleSubmit} noValidate autoComplete={'off'}>
+        <div className={'code_editor__content'}>
           <pre>
             <code className="language-css">
               {`
@@ -232,29 +232,29 @@ const CodeChangeTarget = () => {
   marginRight: 10px;
   marginLeft: 10px;
   min-width: `}
-            </code>{" "}
+            </code>{' '}
             <input
-              type={"text"}
+              type={'text'}
               id="first"
               value={state.textValue}
               placeholder="20"
               onChange={handleChange}
-              aria-label={"Please set min width to 40px"}
+              aria-label={'Please set min width to 40px'}
               className={
-                "tw-bg-[#333] tw-rounded-md tw-text-primary-yellow tw-px-3"
+                'tw-bg-[#333] tw-rounded-md tw-text-primary-yellow tw-px-3'
               }
             />
             <code className="language-css">{` px; /*Set to at least 44px*/
-  min-height:`}</code>{" "}
+  min-height:`}</code>{' '}
             <input
-              type={"text"}
+              type={'text'}
               id="second"
               value={state.textValue1}
               placeholder="17"
               onChange={handleChange1}
-              aria-label={"Please set min height to 40px"}
+              aria-label={'Please set min height to 40px'}
               className={
-                "tw-bg-[#333] tw-rounded-md tw-text-primary-yellow tw-px-3"
+                'tw-bg-[#333] tw-rounded-md tw-text-primary-yellow tw-px-3'
               }
             />
             <code className="language-css">
@@ -271,8 +271,8 @@ const CodeChangeTarget = () => {
       </form>
       <Snackbar
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
         open={state.snackBarOpen}
         autoHideDuration={6000}

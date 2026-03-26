@@ -1,8 +1,8 @@
-import { React, useEffect } from "react";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
-import { navigate } from "@reach/router";
-import { ExerciseService } from "src/services/lab13/ExerciseService";
+import { React, useEffect } from 'react';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
+import { navigate } from 'react-router-dom';
+import { ExerciseService } from 'src/services/lab13/ExerciseService';
 
 const ExerciseIntroduction = () => {
   const { state, actions } = useMainStateContext();
@@ -22,12 +22,12 @@ const ExerciseIntroduction = () => {
 
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab13/Exercise/ConfidenceRanking");
+    navigate('/Lab13/Exercise/ConfidenceRanking');
   };
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+      <h1 className={'tw-title tw-text-left'}>Exercise Start</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           You are a student at ALL university who is doing their psychology

@@ -1,8 +1,8 @@
-import { navigate } from "@reach/router";
-import React, { useEffect } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../all-components/LabButton";
+import { navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../all-components/LabButton';
 
 const SentimentAnalysisInfo = () => {
   const { actions } = useMainStateContext();
@@ -13,7 +13,7 @@ const SentimentAnalysisInfo = () => {
 
   const handleContinue = () => {
     // navigate to the repair section
-    navigate("/Lab8/Exercise/DataRepair");
+    navigate('/Lab8/Exercise/DataRepair');
   };
 
   return (
@@ -52,7 +52,7 @@ const SentimentAnalysisInfo = () => {
         </div>
       </div>
 
-      <LabButton onClick={handleContinue} key="continue" label={"Continue"} />
+      <LabButton onClick={handleContinue} key="continue" label={'Continue'} />
     </div>
   );
 };

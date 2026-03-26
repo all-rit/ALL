@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../../all-components/LabButton";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../../all-components/LabButton';
 
 const AIReasoning = () => {
   const { actions } = useMainStateContext();
@@ -12,7 +12,7 @@ const AIReasoning = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate("/Lab6/Exercise/AIRepair");
+    navigate('/Lab6/Exercise/AIRepair');
   };
 
   return (
@@ -26,11 +26,11 @@ const AIReasoning = () => {
         the people were wearing in the pictures.
       </div>
       <div className="tw-body-text tw-text-left tw-my-6">
-        {" "}
+        {' '}
         Click the &quot;Continue&quot; button to proceed to the repair section
         to repair the AI!
       </div>
-      <LabButton onClick={handleContinue} label={"Continue to Repair"} />
+      <LabButton onClick={handleContinue} label={'Continue to Repair'} />
     </div>
   );
 };

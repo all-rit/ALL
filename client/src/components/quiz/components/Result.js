@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-key */
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import GreenCheck from "../../../assets/images/GreenCheck.webp";
-import RedX from "../../../assets/images/RedX.png";
-import { navigate } from "@reach/router";
-import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import Certificate from "./Certificate";
-import ViewCertificateButton from "../../exercise/lab1/components/ViewCertificateButton";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import GreenCheck from '../../../assets/images/GreenCheck.webp';
+import RedX from '../../../assets/images/RedX.png';
+import { navigate } from 'react-router-dom';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import Certificate from './Certificate';
+import ViewCertificateButton from '../../exercise/lab1/components/ViewCertificateButton';
 
 function Result(props) {
   const [detailsOpen, setDetailsOpen] = useState({});
@@ -65,21 +65,21 @@ function Result(props) {
         <a
           key={index}
           onClick={() => openDetails(index + 1)}
-          className={`tw-rounded-lg tw-shadow-md tw-body-text tw-my-2 tw-w-10/12 tw-flex tw-flex-col tw-cursor-pointer tw-border-solid tw-border-[0.5px] tw-border-[#eee] ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white"}`}
+          className={`tw-rounded-lg tw-shadow-md tw-body-text tw-my-2 tw-w-10/12 tw-flex tw-flex-col tw-cursor-pointer tw-border-solid tw-border-[0.5px] tw-border-[#eee] ${detailsOpen === index + 1 && 'tw-bg-primary-blue tw-text-white'}`}
         >
           <div
-            className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-body-text"}
+            className={'tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-body-text'}
           >
             Question {index + 1}
           </div>
           <div
             className={
-              "tw-flex tw-flex-row tw-justify-between tw-pb-3 tw-px-3 tw-items-center"
+              'tw-flex tw-flex-row tw-justify-between tw-pb-3 tw-px-3 tw-items-center'
             }
           >
             <div
               className={
-                "tw-text-center tw-w-full tw-body-text tw-leading-snug tw-flex tw-flex-col tw-px-5"
+                'tw-text-center tw-w-full tw-body-text tw-leading-snug tw-flex tw-flex-col tw-px-5'
               }
             >
               {renderTableSelectedAnswersData(
@@ -87,9 +87,9 @@ function Result(props) {
                 answers,
               )}
             </div>
-            <div className={"tw-min-w-[1rem] tw-max-w-[2rem]"}>
+            <div className={'tw-min-w-[1rem] tw-max-w-[2rem]'}>
               {isCorrect ? (
-                <img src={GreenCheck} alt={"Correct"} />
+                <img src={GreenCheck} alt={'Correct'} />
               ) : (
                 <img src={RedX} alt="Incorrect" />
               )}
@@ -98,7 +98,7 @@ function Result(props) {
           {detailsOpen === index + 1 && (
             <div
               className={
-                "tw-px-3 tw-pb-3 tw-bg-primary-blue tw-text-white tw-z-10 tw-shadow-lg tw-rounded-b-lg"
+                'tw-px-3 tw-pb-3 tw-bg-primary-blue tw-text-white tw-z-10 tw-shadow-lg tw-rounded-b-lg'
               }
             >
               {renderTableAnswersData(answers)}
@@ -113,36 +113,36 @@ function Result(props) {
     return (
       <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
-          if (answer["val"] === 1) {
+          if (answer['val'] === 1) {
             return (
               <div key={index}>
                 <div
                   className={
-                    "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top tw-items-center"
+                    'tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top tw-items-center'
                   }
                 >
-                  <p className={"tw-font-bold tw-text-nowrap tw-body-text"}>
+                  <p className={'tw-font-bold tw-text-nowrap tw-body-text'}>
                     Correct Answer:&nbsp;
                   </p>
-                  <p className={"tw-leading-snug tw-body-text"}>
-                    {answer["content"]}
+                  <p className={'tw-leading-snug tw-body-text'}>
+                    {answer['content']}
                   </p>
                 </div>
-                <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
-                  <p className={"tw-font-bold tw-leading-snug tw-body-text"}>
+                <div className={'tw-flex tw-flex-row tw-px-3 tw-text-left'}>
+                  <p className={'tw-font-bold tw-leading-snug tw-body-text'}>
                     Explanation:&nbsp;
                   </p>
-                  <p className={"tw-leading-snug tw-body-text"}>
-                    {answer["explanation"]}
+                  <p className={'tw-leading-snug tw-body-text'}>
+                    {answer['explanation']}
                   </p>
                 </div>
-                {answer["source"] && (
-                  <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
-                    <p className={"tw-font-bold tw-leading-snug tw-body-text"}>
+                {answer['source'] && (
+                  <div className={'tw-flex tw-flex-row tw-px-3 tw-text-left'}>
+                    <p className={'tw-font-bold tw-leading-snug tw-body-text'}>
                       Source:&nbsp;
                     </p>
-                    <p className={"tw-leading-snug tw-body-text"}>
-                      {answer["source"]}
+                    <p className={'tw-leading-snug tw-body-text'}>
+                      {answer['source']}
                     </p>
                   </div>
                 )}
@@ -162,7 +162,7 @@ function Result(props) {
         const questionNumber = parseInt(answer) + 1;
         return (
           <ul>
-            <div key={questionNumber}>{answers[answer]["content"]}</div>
+            <div key={questionNumber}>{answers[answer]['content']}</div>
           </ul>
         );
       });
@@ -171,7 +171,7 @@ function Result(props) {
       return (
         <ul>
           <div key={questionNumber}>
-            {answers[selectedAnswers.type]["content"]}
+            {answers[selectedAnswers.type]['content']}
           </div>
         </ul>
       );
@@ -179,14 +179,14 @@ function Result(props) {
   }
 
   const handleImagineSurvey = () => {
-    navigate("/Imagine/PostSurvey");
+    navigate('/Imagine/PostSurvey');
   };
 
   return (
     <div className="tw-flex tw-flex-col tw-align-middle tw-py-6">
-      <div className={"tw-flex tw-justify-center tw-flex-col tw-items-center"}>
+      <div className={'tw-flex tw-justify-center tw-flex-col tw-items-center'}>
         <div className="tw-justify-between tw-items-center tw-flex tw-py-6 tw-w-3/4">
-          <p className={"tw-rounded-lg tw-text-center tw-title"}>
+          <p className={'tw-rounded-lg tw-text-center tw-title'}>
             Score: {props.quizResult}
           </p>
           <ViewCertificateButton
@@ -208,7 +208,7 @@ function Result(props) {
             </button>
           )}
         </div>
-        <Modal isOpen={viewCertificate} className={"tw-mx-[10%]"}>
+        <Modal isOpen={viewCertificate} className={'tw-mx-[10%]'}>
           <ModalBody>
             <Certificate
               quizResult={props.quizResult}

@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
 
 const BypassBlocksGuideline = () => {
   const { actions } = useMainStateContext();
 
   const handleSubmit = () => {
-    navigate("/Lab4/Exercise/CodeChangeBlocks");
+    navigate('/Lab4/Exercise/CodeChangeBlocks');
   };
 
   useEffect(() => {
@@ -15,13 +15,13 @@ const BypassBlocksGuideline = () => {
   }, []);
 
   return (
-    <div className={"tw-p-10"}>
+    <div className={'tw-p-10'}>
       <h2 className="tw-title tw-text-left">Was That Difficult?</h2>
       <br />
       <p className="tw-body-text tw-font-medium tw-text-left">
         People with mobile dexterity disabilities sometimes use a keyboard to
         navigate the page. This can be cumbersome if there is no way to skip to
-        the main section. Software should follow the{" "}
+        the main section. Software should follow the{' '}
         <a
           href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html"
           target="_blank"

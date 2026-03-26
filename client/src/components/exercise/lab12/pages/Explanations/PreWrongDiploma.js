@@ -1,10 +1,10 @@
 // Pre Wrong Diploma (Page #2)
 
-import { navigate } from "@reach/router";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
+import { navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import { ExerciseService } from '../../../../../services/lab12/ExerciseService';
 
 const PreWrongDiploma = () => {
   const { state } = useMainStateContext();
@@ -18,7 +18,7 @@ const PreWrongDiploma = () => {
       });
       setIsRepairComplete(currentExercise.isFormRepairComplete);
     } catch (error) {
-      console.error("Could not fetch exercise: ", error);
+      console.error('Could not fetch exercise: ', error);
     }
   };
 
@@ -32,7 +32,7 @@ const PreWrongDiploma = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}> Congratulations! </h1>
+      <h1 className={'tw-title tw-text-left'}> Congratulations! </h1>
       <div className="guidance margin-bottom-2">
         {isRepairComplete ? (
           <p className="tw-body-text tw-py-6">

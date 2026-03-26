@@ -1,8 +1,8 @@
-import { navigate } from "@reach/router";
-import React, { useEffect } from "react";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
-import LabButton from "../../../all-components/LabButton";
+import { navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
+import LabButton from '../../../all-components/LabButton';
 
 const BiasDiscovery = () => {
   const { actions } = useMainStateContext();
@@ -12,7 +12,7 @@ const BiasDiscovery = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate("/Lab8/Exercise/SentimentAnalysisInfo");
+    navigate('/Lab8/Exercise/SentimentAnalysisInfo');
   };
 
   return (
@@ -21,7 +21,7 @@ const BiasDiscovery = () => {
         <h2 className="tw-title tw-text-left tw-my-6">Did You Notice?</h2>
 
         <div className="tw-body-text">
-          You may have noticed that some chat messages appeared to be{" "}
+          You may have noticed that some chat messages appeared to be{' '}
           <b>appropriate</b>, but the AI thought they were inappropriate and
           recommended them to be <b>removed</b>! The AI was trained on a set of
           data that contained both appropriate and inappropriate messages, so
@@ -36,7 +36,7 @@ const BiasDiscovery = () => {
             href="https://developers.google.com/machine-learning/crash-course/fairness/types-of-bias"
             rel="noreferrer"
             target="_blank"
-            className={"tw-text-primary-blue tw-underline"}
+            className={'tw-text-primary-blue tw-underline'}
           >
             Fairness: Types of Bias
           </a>
@@ -56,7 +56,7 @@ const BiasDiscovery = () => {
         for sentiment analysis, click &quot;
         <b>Continue</b>&quot;.
       </div>
-      <LabButton onClick={handleContinue} key="continue" label={"Continue"} />
+      <LabButton onClick={handleContinue} key="continue" label={'Continue'} />
     </div>
   );
 };

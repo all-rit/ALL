@@ -1,16 +1,16 @@
-import React from "react";
-import { navigate } from "@reach/router";
-import TrainingAICodeBlock from "../components/code/TrainingAICodeBlock";
-import Popup from "src/components/all-components/Popup";
-import { bindActionCreators } from "redux";
+import React from 'react';
+import { navigate } from 'react-router-dom';
+import TrainingAICodeBlock from '../components/code/TrainingAICodeBlock';
+import Popup from 'src/components/all-components/Popup';
+import { bindActionCreators } from 'redux';
 import {
   actions as repairActions,
   initialState,
-} from "../../../../reducers/lab10/RepairReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import LabButton from "../../../all-components/LabButton";
+} from '../../../../reducers/lab10/RepairReducer';
+import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import LabButton from '../../../all-components/LabButton';
 
 const TrainingAIRepair = (props) => {
   const { actions, repairError, timeValue, popupMessage, repairVisible } =
@@ -27,26 +27,26 @@ const TrainingAIRepair = (props) => {
    * Redirect the user to the following page
    */
   const handleNav = () => {
-    return navigate("/Lab10/Exercise/UpdatedTrainingAI");
+    return navigate('/Lab10/Exercise/UpdatedTrainingAI');
   };
 
   return (
     <div>
-      <div className={"center-div"}>
-        <h1 className={"tw-title tw-text-left tw-pb-6"}>
-          {" "}
-          Training AI Repair{" "}
+      <div className={'center-div'}>
+        <h1 className={'tw-title tw-text-left tw-pb-6'}>
+          {' '}
+          Training AI Repair{' '}
         </h1>
-        <div className={"guidance margin-bottom-2"}>
-          <p className={"tw-body-text tw-text-left"}>
+        <div className={'guidance margin-bottom-2'}>
+          <p className={'tw-body-text tw-text-left'}>
             That was very quick! The duration of the simulation needs to be
             increased to allow the neural network to collect more data to
             improve its decision-making. Let&apos;s increase the duration of the
             simulation to collect more data points.
           </p>
-          <p className={"tw-body-text tw-text-leftt tw-py-6"}>
+          <p className={'tw-body-text tw-text-leftt tw-py-6'}>
             Click the &lsquo;
-            <span className={"tw-font-bold"}>Repair</span>
+            <span className={'tw-font-bold'}>Repair</span>
             &lsquo; button to view and edit the code. Update the simulation to
             run between 60 - 120 seconds.
           </p>
@@ -57,11 +57,11 @@ const TrainingAIRepair = (props) => {
         handler={actions.updatePopup}
         error={repairError}
       />
-      <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
-        <LabButton label={"Repair"} onClick={actions.openRepair} key="repair" />
+      <div className={'tw-flex tw-justify-center tw-gap-x-3'}>
+        <LabButton label={'Repair'} onClick={actions.openRepair} key="repair" />
 
         <LabButton
-          label={"Next"}
+          label={'Next'}
           key="Next"
           onClick={handleNav}
           disabled={handleNext()}

@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { navigate, Router } from "@reach/router";
-import UpdateId from "./UpdateId";
-import Done from "./Done";
-import AvatarSelectionPage from "./pages/AvatarSelectionPage";
-import ImagineService from "src/services/ImagineService";
-import useMainStateContext from "src/reducers/MainContext";
-import Survey from "../all-components/imagine-components/SurveyHandlerComp";
+import React, { useEffect, useState } from 'react';
+import { navigate, Router } from 'react-router-dom';
+import UpdateId from './UpdateId';
+import Done from './Done';
+import AvatarSelectionPage from './pages/AvatarSelectionPage';
+import ImagineService from 'src/services/ImagineService';
+import useMainStateContext from 'src/reducers/MainContext';
+import Survey from '../all-components/imagine-components/SurveyHandlerComp';
 import {
   avatarSelections,
   opponentAvatars,
   teammateAvatars,
-} from "src/constants/imagine25/Avatar";
-import GalagaInstructions from "./pages/GalagaInstruction";
-import Galaga from "./pages/Game";
-import "./main.css";
-import AvatarCreationPage from "./pages/AvatarCreationPage";
+} from 'src/constants/imagine25/Avatar';
+import GalagaInstructions from './pages/GalagaInstruction';
+import Galaga from './pages/Game';
+import './main.css';
+import AvatarCreationPage from './pages/AvatarCreationPage';
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -33,7 +33,7 @@ shuffleArray(teammateAvatars);
 shuffleArray(opponentAvatars);
 
 const Main = () => {
-  const userID = sessionStorage.getItem("userID");
+  const userID = sessionStorage.getItem('userID');
 
   const [canContinue, setCanContinue] = useState(true);
 
@@ -59,10 +59,10 @@ const Main = () => {
   changes are held persitently throughout
   page navigation*/
   const [userAvatar, setUserAvatar] = useState({
-    hairStyle: "Default",
-    hairColor: "Default",
-    clotheColor: "Default",
-    skinColor: "Default",
+    hairStyle: 'Default',
+    hairColor: 'Default',
+    clotheColor: 'Default',
+    skinColor: 'Default',
   });
 
   const [teammateAvatarSelected, setTeammateAvatarSelected] = useState();
@@ -71,10 +71,10 @@ const Main = () => {
   //After each iteration, clear the use-states
   const clearInstance = () => {
     setUserAvatar({
-      hairStyle: "Default",
-      hairColor: "Default",
-      clotheColor: "Default",
-      skinColor: "Default",
+      hairStyle: 'Default',
+      hairColor: 'Default',
+      clotheColor: 'Default',
+      skinColor: 'Default',
     });
     setTeammateAvatarSelected(null);
     setOpponentAvatarSelected(null);
@@ -99,44 +99,44 @@ const Main = () => {
 
   return (
     <>
-      <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
+      <div className={'tw-flex tw-h-full tw-w-full tw-mt-[10%]'}>
         <div
           className={
-            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[45rem] tw-gap-y-6 tw-pl-6 tw-absolute tw-top-0"
+            'tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[45rem] tw-gap-y-6 tw-pl-6 tw-absolute tw-top-0'
           }
         >
           <div
             className={
-              "tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
+              'tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow'
             }
           />
 
           <div
             className={
-              "tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
+              'tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow'
             }
           />
         </div>
         <div
           className={
-            "tw-absolute tw-z-10 tw-top-[-4rem] tw-bg-white tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]"
+            'tw-absolute tw-z-10 tw-top-[-4rem] tw-bg-white tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]'
           }
         >
           <Router
             className={
-              "tw-flex tw-h-full tw-w-full tw-overflow-y-scroll tw-flex-col tw-justify-center"
+              'tw-flex tw-h-full tw-w-full tw-overflow-y-scroll tw-flex-col tw-justify-center'
             }
           >
-            <UpdateId default path={"/"} canContinue={canContinue} />
+            <UpdateId default path={'/'} canContinue={canContinue} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}
-              type={"pre"}
+              type={'pre'}
               year={year}
-              userID={userID || ""}
+              userID={userID || ''}
             />
             <AvatarCreationPage
-              path={"/AvatarCreation"}
+              path={'/AvatarCreation'}
               userAvatar={userAvatar}
               setUserAvatar={setUserAvatar}
               AvatarSelections={avatarSelections}
@@ -144,40 +144,40 @@ const Main = () => {
             <AvatarSelectionPage
               avatars={teammateAvatars}
               imagineService={ImagineService.postTeammateSelection}
-              title={"Teammate"}
-              nextNavigation={() => navigate("/Imagine2025/OpponentSelection")}
-              prevNavigation={() => navigate("/Imagine2025/AvatarCreation")}
+              title={'Teammate'}
+              nextNavigation={() => navigate('/Imagine2025/OpponentSelection')}
+              prevNavigation={() => navigate('/Imagine2025/AvatarCreation')}
               avatarSelected={teammateAvatarSelected}
               setAvatarSelected={setTeammateAvatarSelected}
-              path={"/TeammateSelection"}
+              path={'/TeammateSelection'}
             />
             <AvatarSelectionPage
               avatars={opponentAvatars}
               imagineService={ImagineService.postOpponentSelection}
-              title={"Opponent"}
-              nextNavigation={() => navigate("/Imagine2025/GalagaInstructions")}
-              prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
+              title={'Opponent'}
+              nextNavigation={() => navigate('/Imagine2025/GalagaInstructions')}
+              prevNavigation={() => navigate('/Imagine2025/TeammateSelection')}
               avatarSelected={opponentAvatarSelected}
               setAvatarSelected={setOpponentAvatarSelected}
-              path={"/OpponentSelection"}
+              path={'/OpponentSelection'}
             />
-            <GalagaInstructions path={"/GalagaInstructions"} />
-            <Galaga path={"/Galaga"} />
+            <GalagaInstructions path={'/GalagaInstructions'} />
+            <Galaga path={'/Galaga'} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}
-              type={"pre"}
+              type={'pre'}
               year={year}
-              userID={userID || ""}
+              userID={userID || ''}
             />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PostSurvey`}
-              type={"post"}
+              type={'post'}
               year={year}
-              userID={userID || ""}
+              userID={userID || ''}
             />
-            <Done path={"/Done"} resetInstance={clearInstance} />
+            <Done path={'/Done'} resetInstance={clearInstance} />
           </Router>
           <div className="tw-body-text tw-text-[2rem] tw-absolute tw-right-[-9rem] tw-top-5">
             User Id: {userNumber}

@@ -1,16 +1,16 @@
-import { navigate } from "@reach/router";
-import React, { useEffect, useState } from "react";
-import RepairService from "../../../../../services/lab6/RepairService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import RepairService from '../../../../../services/lab6/RepairService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 import {
   ERROR,
   REPAIR_ERROR,
   REPAIR_SUCCESS,
   SUCCESS,
-} from "../../../../../constants/notifications";
-import LabButton from "../../../../all-components/LabButton";
-import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
+} from '../../../../../constants/notifications';
+import LabButton from '../../../../all-components/LabButton';
+import RepairUpdateButton from '../../../../all-components/RepairUpdateButton';
 
 const AIRepair = () => {
   const { actions, state } = useMainStateContext();
@@ -103,18 +103,18 @@ const AIRepair = () => {
   };
 
   const handleContine = () => {
-    navigate("/Lab6/Exercise/FixedHiringCandidate");
+    navigate('/Lab6/Exercise/FixedHiringCandidate');
   };
 
   return (
     <div>
       <h2
         className={
-          "tw-title tw-font-bold tw-text-[2.5rem] tw-text-left tw-my-6"
+          'tw-title tw-font-bold tw-text-[2.5rem] tw-text-left tw-my-6'
         }
       >
-        {" "}
-        Repair{" "}
+        {' '}
+        Repair{' '}
       </h2>
       <div className="tw-body-text tw-text-left tw-my-6">
         Let&apos;s adjust the AI&apos;s configuration to allow for a fair hiring
@@ -123,19 +123,19 @@ const AIRepair = () => {
         <br />
         Click &rsquo;Repair&rsquo; to make the appropriate changes.
       </div>
-      <div className={"tw-flex tw-gap-x-3 tw-justify-center"}>
-        <LabButton onClick={handleOpenRepair} key="repair" label={"Repair"} />
+      <div className={'tw-flex tw-gap-x-3 tw-justify-center'}>
+        <LabButton onClick={handleOpenRepair} key="repair" label={'Repair'} />
         <LabButton
           onClick={handleContine}
           key="Next"
           disabled={userError}
-          label={"Next"}
+          label={'Next'}
         />
       </div>
 
       {repairOpen && (
         <div
-          className={`code_editor ${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+          className={`code_editor ${repairVisible ? 'tw-opacity-100' : 'tw-opacity-0'} tw-transition-opacity tw-duration-500 tw-ease-in`}
         >
           <div className="code_editor__content">
             <div className="code_editor__files">
@@ -177,7 +177,7 @@ const AIRepair = () => {
                 <div className="code_editor__line">
                   <span className="form-error">
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    {"Weighted values must add up to 20"}
+                    {'Weighted values must add up to 20'}
                   </span>
                 </div>
               )}
@@ -185,7 +185,7 @@ const AIRepair = () => {
                 <span className="code_editor__const">const </span>
                 <span className="code_editor__json">hiringAIConfig </span>
                 <span>= </span>
-                <span className="code_editor__class">{"{"}</span>
+                <span className="code_editor__class">{'{'}</span>
               </div>
               <div className="code_editor__form">
                 <div className="code_editor__line">
@@ -207,14 +207,14 @@ const AIRepair = () => {
                         setGenderValue(e.target.value);
                       }}
                       title={`gender weight`}
-                      className={genderValueError ? "form-error-input" : ""}
+                      className={genderValueError ? 'form-error-input' : ''}
                     />
                   </span>
                   {genderValueError && (
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"genderWeight must be 0 to be fair"}
+                        {'genderWeight must be 0 to be fair'}
                       </span>
                     </div>
                   )}
@@ -240,14 +240,14 @@ const AIRepair = () => {
                         setAppearanceValue(e.target.value);
                       }}
                       title={`appearance weight`}
-                      className={appearanceValueError ? "form-error-input" : ""}
+                      className={appearanceValueError ? 'form-error-input' : ''}
                     />
                   </span>
                   {appearanceValueError && (
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"appearanceWeight must be 0 to be fair"}
+                        {'appearanceWeight must be 0 to be fair'}
                       </span>
                     </div>
                   )}
@@ -273,14 +273,14 @@ const AIRepair = () => {
                         setExperienceValue(e.target.value);
                       }}
                       title={`experience weight`}
-                      className={experienceValueError ? "form-error-input" : ""}
+                      className={experienceValueError ? 'form-error-input' : ''}
                     />
                   </span>
                   {experienceValueError && (
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"experienceWeight must be greater than 0"}
+                        {'experienceWeight must be greater than 0'}
                       </span>
                     </div>
                   )}
@@ -307,7 +307,7 @@ const AIRepair = () => {
                       }}
                       title={`availability weight`}
                       className={
-                        availabilityValueError ? "form-error-input" : ""
+                        availabilityValueError ? 'form-error-input' : ''
                       }
                     />
                   </span>
@@ -315,7 +315,7 @@ const AIRepair = () => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"availabilityWeight must be greater than 0"}
+                        {'availabilityWeight must be greater than 0'}
                       </span>
                     </div>
                   )}
@@ -341,22 +341,22 @@ const AIRepair = () => {
                         setPayValue(e.target.value);
                       }}
                       title={`expected pay weight`}
-                      className={payValueError ? "form-error-input" : ""}
+                      className={payValueError ? 'form-error-input' : ''}
                     />
                   </span>
                   {payValueError && (
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"expectedpayWeight must be greater than 0"}
+                        {'expectedpayWeight must be greater than 0'}
                       </span>
                     </div>
                   )}
                 </div>
               </div>
               <div className="code_editor__line">
-                <span className="code_editor__class">{"}"}</span>
-                <span>{";"}</span>
+                <span className="code_editor__class">{'}'}</span>
+                <span>{';'}</span>
               </div>
             </div>
           </div>

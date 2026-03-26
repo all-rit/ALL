@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_PLAYING } from '../../../../../constants/lab3/index';
 
 class AdvancedExercise extends Component {
   handleSubmit() {
-    navigate("/Lab3/Exercise/AdvancedInstructions");
+    navigate('/Lab3/Exercise/AdvancedInstructions');
   }
   componentDidMount() {
     const { actions } = this.props;
@@ -13,12 +13,12 @@ class AdvancedExercise extends Component {
   }
   render() {
     return (
-      <div className={"tw-p-10"}>
-        <h2 className={"tw-title tw-text-left"}>Advanced Exercise</h2>
+      <div className={'tw-p-10'}>
+        <h2 className={'tw-title tw-text-left'}>Advanced Exercise</h2>
         <br />
         <p
-          className={"tw-body-text tw-font-medium tw-text-left"}
-          aria-label={"instructions"}
+          className={'tw-body-text tw-font-medium tw-text-left'}
+          aria-label={'instructions'}
         >
           The learning objective of this lab is for students to learn and apply
           the Understandable accessibility principle. The exercise consists of
@@ -27,9 +27,9 @@ class AdvancedExercise extends Component {
         <br />
         <button
           onClick={this.handleSubmit}
-          aria-label={"Start Exercise"}
+          aria-label={'Start Exercise'}
           className={
-            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            'btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow hover:tw-shadow-lg'
           }
         >
           Start Exercise

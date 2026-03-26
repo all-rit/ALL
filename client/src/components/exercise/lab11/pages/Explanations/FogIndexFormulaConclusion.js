@@ -1,8 +1,8 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import { useEffect } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import { useEffect } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 const FogIndexFormulaConclusion = () => {
   const { actions } = useMainStateContext();
@@ -17,7 +17,7 @@ const FogIndexFormulaConclusion = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}> Repairs Complete </h1>
+      <h1 className={'tw-title tw-text-left'}> Repairs Complete </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6 ">
           Great work, you implemented all 3 parts of the Fog Index formula, and

@@ -1,11 +1,11 @@
-import { React } from "react";
-import { navigate } from "@reach/router";
-import { useState } from "react";
-import Qubit from "src/components/exercise/lab14/components/Qubit.js";
+import { React } from 'react';
+import { navigate } from 'react-router-dom';
+import { useState } from 'react';
+import Qubit from 'src/components/exercise/lab14/components/Qubit.js';
 
 const Superposition = () => {
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/Entanglement");
+    navigate('/Lab14/Exercise/Entanglement');
   };
 
   const Bit = () => {
@@ -25,25 +25,25 @@ const Superposition = () => {
         onMouseLeave={handleMouseLeave}
         className="hover:tw-cursor-pointer"
         style={{
-          backgroundColor: isHovering ? "#ffc334" : "#0d28bc",
-          color: isHovering ? "black" : "white",
-          width: "100px",
-          height: "100px",
-          borderRadius: "50%",
-          border: "1px solid black",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          backgroundColor: isHovering ? '#ffc334' : '#0d28bc',
+          color: isHovering ? 'black' : 'white',
+          width: '100px',
+          height: '100px',
+          borderRadius: '50%',
+          border: '1px solid black',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        {isHovering ? "1" : "0"}
+        {isHovering ? '1' : '0'}
       </div>
     );
   };
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"}>Superposition</h1>
+      <h1 className={'tw-title tw-text-left'}>Superposition</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           Superposition is an important idea in quantum computing that helps
@@ -53,7 +53,7 @@ const Superposition = () => {
           once, which can make certain types of problems easier to solve.
         </p>
       </div>
-      <h2 className={"tw-subtitle tw-text-center"}>Classic Computer</h2>
+      <h2 className={'tw-subtitle tw-text-center'}>Classic Computer</h2>
       <div className="tw-flex-row tw-flex-wrap tw-flex tw-gap-x-10 tw-mb-8 tw-justify-evenly tw-items-center">
         <p className="tw-body-text tw-text-left tw-py-6 tw-justify-start tw-max-w-[500px]">
           Classical computers use units of information called <i>bits</i>. A bit
@@ -67,10 +67,10 @@ const Superposition = () => {
           <Bit></Bit>
         </div>
       </div>
-      <h2 className={"tw-subtitle tw-text-center"}>Quantum Computer</h2>
+      <h2 className={'tw-subtitle tw-text-center'}>Quantum Computer</h2>
       <div className="tw-flex-row tw-flex-wrap tw-flex tw-gap-x-10 tw-mb-8 tw-justify-evenly tw-items-center">
         <p className="tw-body-text tw-text-left tw-py-6 tw-justify-start tw-max-w-[625px]">
-          While Classical computers use <i>bits</i>, Quantum computers use{" "}
+          While Classical computers use <i>bits</i>, Quantum computers use{' '}
           <i>qubits</i>. Qubits harness the power of superposition to hold the
           values of 0 and 1 simultaneously. However, when a qubit is measured
           for long enough, it collapses into a single value, either 0 or 1. Try

@@ -1,13 +1,13 @@
-import { navigate } from "@reach/router";
-import React, { useEffect } from "react";
-const { nanoid } = require("nanoid");
-import { PropTypes } from "prop-types";
+import { navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+const { nanoid } = require('nanoid');
+import { PropTypes } from 'prop-types';
 
 const UpdateID = (props) => {
   const { setUserID, user, actions } = props;
 
   const handleNext = () => {
-    navigate("/Imagine2023/PreSurvey");
+    navigate('/Imagine2023/PreSurvey');
   };
 
   useEffect(() => {

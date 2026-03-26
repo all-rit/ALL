@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import ExerciseService from "../../../../services/lab5/ExerciseService";
-import { navigate } from "@reach/router";
+import React, { Component } from 'react';
+import ExerciseService from '../../../../services/lab5/ExerciseService';
+import { navigate } from 'react-router-dom';
 
 class KnowledgeTest extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class KnowledgeTest extends Component {
     return this.state.options[selected] === 1;
   }
   handleSelection(event) {
-    const value = event.target.getAttribute("value");
+    const value = event.target.getAttribute('value');
     if (this.state.currentSelection === null) {
       this.setState(
         { currentSelection: value, correct: this.isCorrectChoice(value) },
@@ -49,7 +49,7 @@ class KnowledgeTest extends Component {
     return (
       <div className="knowledgeTest">
         <div className="question">{this.state.question}</div>
-        <div className={"options"}>
+        <div className={'options'}>
           {Object.keys(this.state.options).map((option, index) => (
             <button
               key={index}
@@ -57,11 +57,11 @@ class KnowledgeTest extends Component {
               value={option}
               className={`option + ${
                 option === this.state.currentSelection && !this.state.correct
-                  ? "incorrect"
-                  : "" + option === this.state.currentSelection &&
+                  ? 'incorrect'
+                  : '' + option === this.state.currentSelection &&
                       this.state.correct
-                    ? "correct"
-                    : ""
+                    ? 'correct'
+                    : ''
               }`}
             >
               {option}
@@ -72,10 +72,10 @@ class KnowledgeTest extends Component {
           <div className="result">
             <div className="text">
               {this.state.correct
-                ? "Good Job! "
+                ? 'Good Job! '
                 : "Incorrect! Correct Response was: '" +
                   this.getCorrectChoice() +
-                  "'. "}{" "}
+                  "'. "}{' '}
               Select 'Next' To Move On
             </div>
             <button

@@ -1,8 +1,8 @@
-import { React, useState, useContext, useEffect } from "react";
-import { navigate } from "@reach/router";
-import ExerciseStateContext from "../Lab14Context";
-import Decryption from "../components/Decryption";
-import LabButton from "../../../all-components/LabButton";
+import { React, useState, useContext, useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import ExerciseStateContext from '../Lab14Context';
+import Decryption from '../components/Decryption';
+import LabButton from '../../../all-components/LabButton';
 
 const CaesarDecryption = () => {
   const [classicAttempts, setClassicAttempts] = useState(0);
@@ -14,17 +14,17 @@ const CaesarDecryption = () => {
     useContext(ExerciseStateContext);
 
   useEffect(() => {
-    if (caesarEncryptedMessage === "") {
+    if (caesarEncryptedMessage === '') {
       handleReturn();
     }
   }, []);
 
   const handleReturn = () => {
-    navigate("/Lab14/Exercise/CaesarEncryption");
+    navigate('/Lab14/Exercise/CaesarEncryption');
   };
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/VigenereIntro");
+    navigate('/Lab14/Exercise/VigenereIntro');
   };
 
   const encrypt = (baseMessage, shiftValue) => {
@@ -34,16 +34,16 @@ const CaesarDecryption = () => {
       return baseMessage;
     }
 
-    let encryptedString = "";
+    let encryptedString = '';
     for (let i = 0; i < baseMessage.length; i++) {
       let char = baseMessage[i];
 
-      if (char >= "A" && char <= "Z") {
+      if (char >= 'A' && char <= 'Z') {
         // Uppercase
         let code = char.charCodeAt(0) - 65;
         let shifted = (code + shiftValue) % 26;
         encryptedString += String.fromCharCode(shifted + 65);
-      } else if (char >= "a" && char <= "z") {
+      } else if (char >= 'a' && char <= 'z') {
         // Lowercase
         let code = char.charCodeAt(0) - 97;
         let shifted = (code + shiftValue) % 26;
@@ -127,8 +127,8 @@ const CaesarDecryption = () => {
         quantumBoxElements={quantumBoxElements}
       >
         <div className="tw-mt-10 tw-flex tw-justify-center tw-gap-16">
-          <LabButton onClick={handleReturn} label={"Re-do Encryption"} />
-          <LabButton onClick={handleContinue} label={"Next"} />
+          <LabButton onClick={handleReturn} label={'Re-do Encryption'} />
+          <LabButton onClick={handleContinue} label={'Next'} />
         </div>
       </Decryption>
     </div>

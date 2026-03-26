@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import useMainStateContext from "src/reducers/MainContext";
-import Logo from "../../assets/images/logos/ALL_Logo.svg";
-import { navigate } from "@reach/router";
-import MenuIcon from "@mui/icons-material/Menu";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Fade from "@mui/material/Fade";
-import BrandedALLModal from "../all-components/BrandedALLModal";
-import LoginBody from "../body/login/LoginBody";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import useMainStateContext from 'src/reducers/MainContext';
+import Logo from '../../assets/images/logos/ALL_Logo.svg';
+import { navigate } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Fade from '@mui/material/Fade';
+import BrandedALLModal from '../all-components/BrandedALLModal';
+import LoginBody from '../body/login/LoginBody';
 import {
   ERROR,
   LOGOUT_ERROR,
   LOGOUT_SUCCESS,
   SUCCESS,
-} from "../../constants/notifications";
-import UserPfp from "../all-components/UserPfp";
+} from '../../constants/notifications';
+import UserPfp from '../all-components/UserPfp';
 
 const Header = ({ isImagine }) => {
   const { state, actions } = useMainStateContext();
@@ -138,16 +138,16 @@ const Header = ({ isImagine }) => {
 
   return (
     <div
-      className={`tw-h-[5rem] tw-my-0 ${isImagine ? "tw-h-[8rem] tw-mb-[0.5rem]" : ""}`}
+      className={`tw-h-[5rem] tw-my-0 ${isImagine ? 'tw-h-[8rem] tw-mb-[0.5rem]' : ''}`}
     >
       {/* Shadow & Positioning*/}
       <div
         className={`tw-flex tw-bg-white tw-z-30 tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-shadow-lg tw-pl-5 lg:tw-pl-12`}
       >
         {/* Logo */}
-        <a onClick={() => !isImagine && navigate("/")}>
+        <a onClick={() => !isImagine && navigate('/')}>
           <img
-            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[5rem]`}
+            className={`${!isImagine && 'tw-cursor-pointer'} tw-max-h-[5rem]`}
             src={Logo}
             alt="Accessible Learning Labs"
           />
@@ -201,7 +201,7 @@ const Header = ({ isImagine }) => {
 
         {/* Sign In Modal */}
         <BrandedALLModal
-          direction={"row"}
+          direction={'row'}
           isOpen={showSignIn}
           toggle={toggleSignInShown}
         >

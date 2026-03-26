@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-import Notification from "../../components/Notification";
-import { AccessibleRepairMessage } from "../../../../../constants/lab5";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
+import Notification from '../../components/Notification';
+import { AccessibleRepairMessage } from '../../../../../constants/lab5';
 
 class NotificationAccessibleRepair extends Component {
   constructor(props) {
     super(props);
-    this.state = { componentName: "NotificationAccessibleRepair" };
+    this.state = { componentName: 'NotificationAccessibleRepair' };
   }
   handleNav() {
-    navigate("/Lab5/Exercise/NotificationAccessibleRepairKnowledgeCheck");
+    navigate('/Lab5/Exercise/NotificationAccessibleRepairKnowledgeCheck');
   }
   render() {
     const { actions, state } = this.props;

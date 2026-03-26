@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import useMainStateContext from "../../../reducers/MainContext";
-import { navigate, Router } from "@reach/router";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import useMainStateContext from '../../../reducers/MainContext';
+import { navigate, Router } from 'react-router-dom';
 // import SelectExercise from "./SelectExercise";
-import Lab0Context from "./Lab0Context";
+import Lab0Context from './Lab0Context';
 
-import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/ExperientialIntroduction";
-import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
-import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
-import DesignLabIntroduction from "./DesignLabSection/LabIdeaActivity/DesignLabIntroduction";
-import DesignNewCategory from "./DesignLabSection/LabIdeaActivity/DesignNewCategory";
-import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSortNewCategory";
-import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
-import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/WireframeFirstGlance";
-import WireframeReinforceQuiz from "./DesignLabSection/WireframingActivity/WireframeReinforceQuiz";
-import WireframeExercise from "./DesignLabSection/WireframingActivity/WireframeExercise";
-import WireframeComponents from "./DesignLabSection/WireframingActivity/WireframeComponents";
+import ExperientialIntroduction from './DesignLabSection/ExperientialActivity/ExperientialIntroduction';
+import CreateExperientialExercise from './DesignLabSection/ExperientialActivity/CreateExperientialExercise';
+import DesignLabDecision from './DesignLabSection/ExperientialActivity/DesignLabDecision';
+import DesignLabIntroduction from './DesignLabSection/LabIdeaActivity/DesignLabIntroduction';
+import DesignNewCategory from './DesignLabSection/LabIdeaActivity/DesignNewCategory';
+import DesignSortNewCategory from './DesignLabSection/LabIdeaActivity/DesignSortNewCategory';
+import WireframeIntro from './DesignLabSection/WireframingActivity/WireframeIntro';
+import WireframeFirstGlance from './DesignLabSection/WireframingActivity/WireframeFirstGlance';
+import WireframeReinforceQuiz from './DesignLabSection/WireframingActivity/WireframeReinforceQuiz';
+import WireframeExercise from './DesignLabSection/WireframingActivity/WireframeExercise';
+import WireframeComponents from './DesignLabSection/WireframingActivity/WireframeComponents';
 import {
   SECTION_STATUSES,
   SECTIONS,
   ROUTES,
-} from "../../../constants/lab0/index";
-import { EXERCISE_PLAYING } from "../../../constants/index";
-import ProgressService from "src/services/lab0/ProgressService";
-import StartExercise from "./StartExercise";
-import { LabIntroduction } from "./pages/intro";
+} from '../../../constants/lab0/index';
+import { EXERCISE_PLAYING } from '../../../constants/index';
+import ProgressService from 'src/services/lab0/ProgressService';
+import StartExercise from './StartExercise';
+import { LabIntroduction } from './pages/intro';
 import {
   LabDataRepair,
   SchemaDesignRepair,
@@ -36,7 +36,7 @@ import {
   SchemaDesign,
   ServiceController,
   Routing,
-} from "./pages/backend";
+} from './pages/backend';
 import {
   FrontendIntroduction,
   Boilerplate,
@@ -46,12 +46,12 @@ import {
   CoreLabPagesRepair,
   ComponentLibrary,
   FrontendTipsTricks,
-} from "./pages/frontend";
-import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
-import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
-import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
-import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
-import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
+} from './pages/frontend';
+import ScrumIntroduction from './DesignLabSection/ScrumActivity/ScrumIntroduction';
+import ScrumBoardActivity from './DesignLabSection/ScrumActivity/ScrumBoardActivity';
+import ScrumVelocityReading from './DesignLabSection/ScrumActivity/ScrumVelocityReading';
+import ScrumVelocityActivity from './DesignLabSection/ScrumActivity/ScrumVelocityActivity';
+import DesignLabEnd from './DesignLabSection/ScrumActivity/DesignLabEnd';
 // import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
@@ -78,14 +78,14 @@ const Main = (props) => {
       );
     }
 
-    if (route === "/") {
+    if (route === '/') {
       navigate(`/Lab0/Exercise`);
     } else {
       navigate(`/Lab0/Exercise/${route}`);
     }
   };
 
-  const [newCategoryName, setNewCategoryName] = useState("");
+  const [newCategoryName, setNewCategoryName] = useState('');
   const [newLabTopics, setNewLabTopics] = useState([]);
 
   return (
@@ -101,9 +101,9 @@ const Main = (props) => {
           setNewLabTopics,
         }}
       >
-        <Router className={"tw-p-3"}>
-          <StartExercise default path={"/*"} />
-          <StartExercise path={"/Continue"} verb="Continue" />
+        <Router className={'tw-p-3'}>
+          <StartExercise default path={'/*'} />
+          <StartExercise path={'/Continue'} verb="Continue" />
 
           {/* Design Lab Pages */}
           <DesignLabIntroduction path={ROUTES.SECTION_LAB_IDEATION} />

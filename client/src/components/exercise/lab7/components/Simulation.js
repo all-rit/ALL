@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import UserLabService from "../../../../services/UserLabService";
-import "../../../../assets/stylesheets/components/Simulation.scss";
+import React, { useEffect, useState } from 'react';
+import UserLabService from '../../../../services/UserLabService';
+import '../../../../assets/stylesheets/components/Simulation.scss';
 
 import {
   AI_CORRECT,
@@ -19,15 +19,15 @@ import {
   SCORE_MAP,
   THREAT_LEVEL_TEXT,
   THREAT_MAX,
-} from "../../../../constants/lab7";
-import { navigate } from "@reach/router";
-import { generateList } from "./data/files";
-import File from "./File";
-import RepairService from "../../../../services/lab7/RepairService";
-import MessageModal from "./MessageModal";
-import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+} from '../../../../constants/lab7';
+import { navigate } from 'react-router-dom';
+import { generateList } from './data/files';
+import File from './File';
+import RepairService from '../../../../services/lab7/RepairService';
+import MessageModal from './MessageModal';
+import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * Represents a simulation component.
@@ -99,7 +99,7 @@ const Simulation = () => {
       }
       if (state.repairId !== null)
         RepairService.updateReport(state.repairId, formatReport());
-      navigate("/Lab7/Exercise/SimulationSummary");
+      navigate('/Lab7/Exercise/SimulationSummary');
     }
   };
 
@@ -279,11 +279,11 @@ const Simulation = () => {
   };
 
   return (
-    <div className={"tw-w-full"}>
+    <div className={'tw-w-full'}>
       <MessageModal />
       <div className="">
         {/* Header */}
-        <div className={"tw-flex tw-justify-between tw-title"}>
+        <div className={'tw-flex tw-justify-between tw-title'}>
           {/* Round Tracker */}
           <div>
             <h4 className="tw-font-bold">
@@ -291,14 +291,14 @@ const Simulation = () => {
             </h4>
           </div>
           {/* Status Report */}
-          <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
-            <ul className={"tw-text-left tw-font-bold"}>
+          <div className={'tw-flex tw-text-xl tw-m-[20px]'}>
+            <ul className={'tw-text-left tw-font-bold'}>
               <li>Intrusions:</li>
               <li>Protected (TP):</li>
               <li>Incorrect (FP):</li>
               <li>Total Score:</li>
             </ul>
-            <ul className={"tw-text-right tw-ml-6"}>
+            <ul className={'tw-text-right tw-ml-6'}>
               <li>{intrusions}</li>
               <li>{protectedNum}</li>
               <li>{incorrect}</li>
@@ -307,17 +307,17 @@ const Simulation = () => {
           </div>
         </div>
         {/* Body */}
-        <div className={"tw-w-1/2"}>
+        <div className={'tw-w-1/2'}>
           {/* Threat Message */}
           <div
-            className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
+            className={'tw-flex tw-items-center tw-justify-center tw-w-full'}
           >
-            <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
+            <h1 className={'tw-font-bold tw-absolute tw-m-0 -tw-mt-16'}>
               {THREAT_LEVEL_TEXT[state.threatLvl]} threat detected!
             </h1>
           </div>
           {/* File Display */}
-          <div className={"tw-flex tw-justify-around tw-mt-16"}>
+          <div className={'tw-flex tw-justify-around tw-mt-16'}>
             {files.map((file, index) => (
               <File key={index} data={file} />
             ))}

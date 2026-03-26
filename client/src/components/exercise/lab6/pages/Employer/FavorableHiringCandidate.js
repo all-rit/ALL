@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { navigate } from "@reach/router";
-import LongHorizontalLine from "../../../../../common/HorizontalLine/LongHorizontalLine";
-import Recomendation from "../../components/Recomendation";
-import Decision from "../../components/Decision";
-import useScroll from "../../../../../use-hooks/useScroll";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import LongHorizontalLine from '../../../../../common/HorizontalLine/LongHorizontalLine';
+import Recomendation from '../../components/Recomendation';
+import Decision from '../../components/Decision';
+import useScroll from '../../../../../use-hooks/useScroll';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 const FavorableHiringCandidate = () => {
   const { actions } = useMainStateContext();
@@ -20,7 +20,7 @@ const FavorableHiringCandidate = () => {
   }, []);
 
   const handleStart = () => {
-    navigate("/Lab6/Exercise/HiringCandidate");
+    navigate('/Lab6/Exercise/HiringCandidate');
   };
 
   return (

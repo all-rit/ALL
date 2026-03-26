@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import Timer from "../../components/Timer";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-import { time } from "../../../../../constants/lab5";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import Timer from '../../components/Timer';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
+import { time } from '../../../../../constants/lab5';
 class DementiaInaccessible extends Component {
   constructor(props) {
     super(props);
-    this.state = { timerDone: false, componentName: "DementiaInaccessible" };
+    this.state = { timerDone: false, componentName: 'DementiaInaccessible' };
   }
   handleNav() {
-    navigate("/Lab5/Exercise/DementiaInaccessibleKnowledgeCheck");
+    navigate('/Lab5/Exercise/DementiaInaccessibleKnowledgeCheck');
   }
   timerDone() {
     this.setState({ timerDone: true });

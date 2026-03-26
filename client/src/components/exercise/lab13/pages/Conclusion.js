@@ -1,16 +1,16 @@
-import { React } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import UserLabService from "../../../../services/UserLabService";
-import { EXERCISE_IDLE } from "src/constants/index";
-import { LAB_ID } from "../../../../constants/lab13";
-import { navigate } from "@reach/router";
+import { React } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import UserLabService from '../../../../services/UserLabService';
+import { EXERCISE_IDLE } from 'src/constants/index';
+import { LAB_ID } from '../../../../constants/lab13';
+import { navigate } from 'react-router-dom';
 
 const Conclusion = () => {
   const { actions, state } = useMainStateContext();
 
   const handleFinish = async () => {
     actions.updateUserState(EXERCISE_IDLE);
-    await navigate("/Lab13/Reinforcement");
+    await navigate('/Lab13/Reinforcement');
     await UserLabService.complete_exercise(LAB_ID);
     if (state.main.user?.firstname !== null && state.main.user !== null) {
       await UserLabService.user_complete_exercise(
@@ -49,7 +49,7 @@ const Conclusion = () => {
       <p className="tw-text-left tw-pt-2">
         AI can generate fluent and confident responses, but it
         <em> does not</em> understand, reason, or take responsibility. That
-        responsibility lies with the user. The most important safeguard is{" "}
+        responsibility lies with the user. The most important safeguard is{' '}
         <strong>AI literacy</strong>, the ability to recognize bias, question
         outputs, and engage with AI thoughtfully!
       </p>

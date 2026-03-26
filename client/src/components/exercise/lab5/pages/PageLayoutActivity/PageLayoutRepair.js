@@ -2,14 +2,14 @@
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import RepairService from "../../../../../services/lab5/RepairService";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-import Popup from "../../../../all-components/Popup";
-import { navigate } from "@reach/router";
-import { minFont, maxFont } from "../../../../../constants/lab5";
-import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
-import LabButton from "../../../../all-components/LabButton";
+import React, { Component } from 'react';
+import RepairService from '../../../../../services/lab5/RepairService';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
+import Popup from '../../../../all-components/Popup';
+import { navigate } from 'react-router-dom';
+import { minFont, maxFont } from '../../../../../constants/lab5';
+import RepairUpdateButton from '../../../../all-components/RepairUpdateButton';
+import LabButton from '../../../../all-components/LabButton';
 
 class PageLayoutRepair extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class PageLayoutRepair extends Component {
       fonterror: null,
       fontfamilyerror: null,
       repairerror: true,
-      componentName: "PageLayoutRepair",
+      componentName: 'PageLayoutRepair',
     };
     // this.validateRepair = this.validateRepair.bind(this)
   }
@@ -46,23 +46,23 @@ class PageLayoutRepair extends Component {
     let error = false;
     Object.keys(this.state).map((name) => {
       switch (name) {
-        case "h1value":
-          if (this.state[name] !== "h1") {
+        case 'h1value':
+          if (this.state[name] !== 'h1') {
             error = true;
             this.setState({ h1error: "Must be 'h1'" });
           } else {
             this.setState({ h1error: null });
           }
           break;
-        case "ulvalue":
-          if (this.state[name] !== "ul") {
+        case 'ulvalue':
+          if (this.state[name] !== 'ul') {
             error = true;
             this.setState({ ulerror: "Must be 'ul'" });
           } else {
             this.setState({ ulerror: null });
           }
           break;
-        case "classvalue":
+        case 'classvalue':
           if (this.state[name] !== '"body"' && this.state[name] !== "'body'") {
             error = true;
             this.setState({ classerror: 'Must enter "body"' });
@@ -70,7 +70,7 @@ class PageLayoutRepair extends Component {
             this.setState({ classerror: null });
           }
           break;
-        case "fontvalue":
+        case 'fontvalue':
           const fontsize = parseInt(this.state[name]);
           if (fontsize > maxFont || fontsize < minFont || isNaN(fontsize)) {
             error = true;
@@ -81,8 +81,8 @@ class PageLayoutRepair extends Component {
             this.setState({ fonterror: null });
           }
           break;
-        case "fontfamilyvalue":
-          if (this.state[name] !== "roboto" && this.state[name] !== "arial") {
+        case 'fontfamilyvalue':
+          if (this.state[name] !== 'roboto' && this.state[name] !== 'arial') {
             error = true;
             this.setState({ fontfamilyerror: "Must be 'arial' or 'roboto'" });
           } else {
@@ -113,9 +113,9 @@ class PageLayoutRepair extends Component {
       });
       // Submit a repair entry in the database.
       RepairService.submitRepair(this.state.componentName, repair);
-      handlers.updatePopup("The repairs have been made.");
+      handlers.updatePopup('The repairs have been made.');
     } else {
-      handlers.updatePopup("Errors in Repair. Please fix");
+      handlers.updatePopup('Errors in Repair. Please fix');
     }
     // Update the state and close the repair.
     handlers.updateRepairPageLayout(
@@ -127,7 +127,7 @@ class PageLayoutRepair extends Component {
     );
     handlers.closeRepair();
     setTimeout(() => {
-      handlers.updatePopup("");
+      handlers.updatePopup('');
     }, 6000);
   }
 
@@ -140,14 +140,14 @@ class PageLayoutRepair extends Component {
   }
 
   handleNav() {
-    navigate("/Lab5/Exercise/DementiaAccessible");
+    navigate('/Lab5/Exercise/DementiaAccessible');
   }
 
   render() {
     const { visible, handlers, state, data, actions } = this.props;
     return (
       <div>
-        <h2 className={"tw-title tw-text-left"}> Page Layout Repair </h2>
+        <h2 className={'tw-title tw-text-left'}> Page Layout Repair </h2>
         <div className="tw-body-text tw-my-6 tw-text-left">
           Let's optimize the page layout and font to allow for easier reading.
           Click <strong>'Repair'</strong> to make the appropriate changes.
@@ -157,17 +157,17 @@ class PageLayoutRepair extends Component {
           handler={actions.updatePopup}
           error={this.state.repairerror}
         />
-        <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+        <div className={'tw-flex tw-justify-center tw-gap-x-3'}>
           <LabButton
             onClick={handlers.openRepair}
-            key={"repair"}
-            label={"Repair"}
+            key={'repair'}
+            label={'Repair'}
           />
           <LabButton
             onClick={this.handleNav}
-            key={"Next"}
+            key={'Next'}
             disabled={this.state.repairerror}
-            label={"Next"}
+            label={'Next'}
           />
         </div>
         {visible && (
@@ -249,7 +249,7 @@ class PageLayoutRepair extends Component {
                       name="h1value"
                       type="text"
                       className={`htmlinput ${
-                        this.state.h1error ? "form-error-input" : ""
+                        this.state.h1error ? 'form-error-input' : ''
                       }`}
                       defaultValue={data.h1value}
                       onChange={this.changeHandler.bind(this)}
@@ -259,8 +259,8 @@ class PageLayoutRepair extends Component {
                   </span>
                   <span className="code_editor__line--darkblue">&#62;</span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    3.0 Dementia{" "}
+                    {' '}
+                    3.0 Dementia{' '}
                   </span>
                   <span className="code_editor__line--darkblue">&#60;</span>
                   <span className="code_editor__line--darkblue">
@@ -282,8 +282,8 @@ class PageLayoutRepair extends Component {
                   <span className="code_editor__line--darkblue">p</span>
                   <span className="code_editor__line--darkblue">&#62;</span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    Some of the symptoms of dementia include:{" "}
+                    {' '}
+                    Some of the symptoms of dementia include:{' '}
                   </span>
                   <span className="code_editor__line--darkblue">&#60;</span>
                   <span className="code_editor__line--darkblue">/p</span>
@@ -295,8 +295,8 @@ class PageLayoutRepair extends Component {
                   <span className="code_editor__line--darkblue">h2</span>
                   <span className="code_editor__line--darkblue">&#62;</span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    3.0.1 Symptoms{" "}
+                    {' '}
+                    3.0.1 Symptoms{' '}
                   </span>
                   <span className="code_editor__line--darkblue">&#60;</span>
                   <span className="code_editor__line--darkblue">/h2</span>
@@ -322,7 +322,7 @@ class PageLayoutRepair extends Component {
                       onChange={this.changeHandler.bind(this)}
                       title="must enter body"
                       className={
-                        this.state.classerror ? "form-error-input" : ""
+                        this.state.classerror ? 'form-error-input' : ''
                       }
                     />
                   </span>
@@ -350,7 +350,7 @@ class PageLayoutRepair extends Component {
                       name="ulvalue"
                       type="text"
                       className={`htmlinput ${
-                        this.state.ulerror ? "form-error-input" : ""
+                        this.state.ulerror ? 'form-error-input' : ''
                       }`}
                       defaultValue={data.ulvalue}
                       onChange={this.changeHandler.bind(this)}
@@ -375,8 +375,8 @@ class PageLayoutRepair extends Component {
                     &#60;li&#62;
                   </span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    Difficulty remembering{" "}
+                    {' '}
+                    Difficulty remembering{' '}
                   </span>
                   <span className="code_editor__line--darkblue">
                     &#60;/li&#62;
@@ -390,8 +390,8 @@ class PageLayoutRepair extends Component {
                     &#60;li&#62;
                   </span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    Difficulty organizing thoughts{" "}
+                    {' '}
+                    Difficulty organizing thoughts{' '}
                   </span>
                   <span className="code_editor__line--darkblue">
                     &#60;/li&#62;
@@ -405,8 +405,8 @@ class PageLayoutRepair extends Component {
                     &#60;li&#62;
                   </span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    Difficulty working within time limits{" "}
+                    {' '}
+                    Difficulty working within time limits{' '}
                   </span>
                   <span className="code_editor__line--darkblue">
                     &#60;/li&#62;
@@ -420,8 +420,8 @@ class PageLayoutRepair extends Component {
                     &#60;li&#62;
                   </span>
                   <span className="code_editor__line--white">
-                    {" "}
-                    Visual processing difficulty{" "}
+                    {' '}
+                    Visual processing difficulty{' '}
                   </span>
                   <span className="code_editor__line--darkblue">
                     &#60;/li&#62;
@@ -505,7 +505,7 @@ class PageLayoutRepair extends Component {
                         onChange={this.changeHandler.bind(this)}
                         title={`must enter between ${minFont}px and ${maxFont}px`}
                         className={
-                          this.state.fonterror ? "form-error-input" : ""
+                          this.state.fonterror ? 'form-error-input' : ''
                         }
                       />
                     </span>
@@ -536,7 +536,7 @@ class PageLayoutRepair extends Component {
                         onChange={this.changeHandler.bind(this)}
                         title="must enter arial or roboto"
                         className={
-                          this.state.fontfamilyerror ? "form-error-input" : ""
+                          this.state.fontfamilyerror ? 'form-error-input' : ''
                         }
                       />
                     </span>

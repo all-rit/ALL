@@ -1,13 +1,13 @@
-import { React, useState } from "react";
-import { PropTypes } from "prop-types";
-import Survey from "./Survey";
-import { navigate } from "@reach/router";
-import PreSurveyQuestions23 from "../../imagine23/data/preSurveyQuestions";
-import PostSurveyQuestions23 from "../../imagine23/data/postSurveyQuestions";
-import ImagineService from "../../../services/ImagineService";
-import Spinner from "../../../common/Spinner/Spinner";
-import PreSurveyQuestions25 from "../../../constants/imagine25/preSurveyQuestions";
-import PostSurveyQuestions25 from "../../../constants/imagine25/postSurveyQuestions";
+import { React, useState } from 'react';
+import { PropTypes } from 'prop-types';
+import Survey from './Survey';
+import { navigate } from 'react-router-dom';
+import PreSurveyQuestions23 from '../../imagine23/data/preSurveyQuestions';
+import PostSurveyQuestions23 from '../../imagine23/data/postSurveyQuestions';
+import ImagineService from '../../../services/ImagineService';
+import Spinner from '../../../common/Spinner/Spinner';
+import PreSurveyQuestions25 from '../../../constants/imagine25/preSurveyQuestions';
+import PostSurveyQuestions25 from '../../../constants/imagine25/postSurveyQuestions';
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
@@ -16,7 +16,7 @@ import PostSurveyQuestions25 from "../../../constants/imagine25/postSurveyQuesti
  */
 function assignQuizQuestions(surveyType, year) {
   switch (surveyType) {
-    case "pre":
+    case 'pre':
       if (year == 23) {
         return PreSurveyQuestions23;
       } else if (year == 25) {
@@ -25,7 +25,7 @@ function assignQuizQuestions(surveyType, year) {
         return;
       }
 
-    case "post":
+    case 'post':
       if (year == 23) {
         return PostSurveyQuestions23;
       } else if (year == 25) {
@@ -36,12 +36,12 @@ function assignQuizQuestions(surveyType, year) {
     default:
       return [
         {
-          question: "Default",
+          question: 'Default',
           answers: [
             {
               val: 0,
-              type: "0",
-              content: "Default",
+              type: '0',
+              content: 'Default',
             },
           ],
           multiChoice: false,
@@ -91,16 +91,16 @@ const SurveyHandler = (props) => {
   async function onComplete(surveyType) {
     try {
       setSurveyComplete(true);
-      if (surveyType === "pre") {
+      if (surveyType === 'pre') {
         // will need to be changed with next logic story
         const response = await activitySelector();
 
         return response;
         // This will handle navigation
-      } else if (surveyType === "post") {
+      } else if (surveyType === 'post') {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
 
-        navigate("/Imagine2025/Done");
+        navigate('/Imagine2025/Done');
       }
     } catch (error) {
       console.error(error);
@@ -118,32 +118,32 @@ const SurveyHandler = (props) => {
         selectedAnswers,
         year,
       );
-      const section = (await response.text()).replace(/['"]+/g, "");
+      const section = (await response.text()).replace(/['"]+/g, '');
 
-      if (section === "experiential" || section === "control") {
-        navigate("/Imagine2023/ExperientialStart");
+      if (section === 'experiential' || section === 'control') {
+        navigate('/Imagine2023/ExperientialStart');
       } else if (
-        section === "discomfortCountNonPOC" ||
-        section === "discomfortCountPOC"
+        section === 'discomfortCountNonPOC' ||
+        section === 'discomfortCountPOC'
       ) {
-        navigate("/Imagine2023/ExpressionStart");
+        navigate('/Imagine2023/ExpressionStart');
       } else {
         console.log(section);
-        console.error("Navigating to None");
+        console.error('Navigating to None');
       }
     } else if (year == 25) {
-      sessionStorage.setItem("isUnderAge", isUnderAge);
+      sessionStorage.setItem('isUnderAge', isUnderAge);
 
       if (isUnderAge) {
         //will be changed to point to avatarCreation when merged
-        navigate("/Imagine2025/AvatarCreation");
+        navigate('/Imagine2025/AvatarCreation');
       } else {
         await ImagineService.preSurvey(props.userID, selectedAnswers, year);
         //will be changed to point to avatarCreation when merged
-        navigate("/Imagine2025/AvatarCreation");
+        navigate('/Imagine2025/AvatarCreation');
       }
     } else {
-      console.error("invalid year");
+      console.error('invalid year');
     }
   }
   /**
@@ -158,17 +158,17 @@ const SurveyHandler = (props) => {
     const answerValue = e.target.value;
     //If answer is likert, then the answer will be from 1-10, and we do not care about the questions content
     const answer =
-      questions[currentQuestionCursor].type == "likert"
+      questions[currentQuestionCursor].type == 'likert'
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
-    setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
+    setIsUnderAge(answer == 'Under 18 years old' && props.year == 25);
 
     setSelectedAnswers((prevAnswers) => {
       // Removes the "Under 18 years old" option from the selected answers
       // if another option is chosen after selecting it first.
 
       let updatedAnswers = prevAnswers.filter(
-        (a) => a.answer !== "Under 18 years old",
+        (a) => a.answer !== 'Under 18 years old',
       );
       return [
         ...updatedAnswers,
@@ -194,7 +194,7 @@ const SurveyHandler = (props) => {
     let tempAnswers = selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
-    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
+    if (typeof tempAnswers[currentQuestionCursor] !== 'undefined') {
       // copies over the set
       storageSet = new Set(tempAnswers[currentQuestionCursor].answer);
       // checks to see if the set has the value in it
@@ -240,7 +240,7 @@ const SurveyHandler = (props) => {
     <>
       {!surveyComplete ? (
         <Survey
-          answer={""}
+          answer={''}
           answerOptions={answerOption}
           question={questions[currentQuestionCursor].question}
           questionId={currentQuestionCursor + 1}

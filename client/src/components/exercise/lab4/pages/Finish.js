@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import { LAB_ID } from "../../../../constants/lab4";
-import UserLabService from "../../../../services/UserLabService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_IDLE } from "src/constants/index";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { LAB_ID } from '../../../../constants/lab4';
+import UserLabService from '../../../../services/UserLabService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_IDLE } from 'src/constants/index';
 
 const Finish = () => {
   const { actions, state } = useMainStateContext();
 
   const handleSubmit = () => {
-    navigate("/Lab4/Exercise");
+    navigate('/Lab4/Exercise');
   };
 
   useEffect(() => {
@@ -21,16 +21,16 @@ const Finish = () => {
   }, []);
 
   return (
-    <div className={"tw-p-6"}>
-      <h2 className={"tw-title tw-text-left tw-my-6"}> Exercise Complete</h2>
+    <div className={'tw-p-6'}>
+      <h2 className={'tw-title tw-text-left tw-my-6'}> Exercise Complete</h2>
       <p className="tw-body-text tw-text-left">
         Congratulations! You have successfully completed the Dexterity Exercise!
       </p>
       <br />
       <p className="tw-body-text tw-text-left">
-        If you would like to start the exercise from the beginning, click the{" "}
+        If you would like to start the exercise from the beginning, click the{' '}
         <strong>Return to Exercise Start</strong> button below. To move on to
-        the reinforcement section scroll down and click the{" "}
+        the reinforcement section scroll down and click the{' '}
         <strong>Next</strong> button.
       </p>
       <button

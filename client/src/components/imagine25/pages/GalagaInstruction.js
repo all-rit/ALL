@@ -1,7 +1,7 @@
-import React from "react";
-import { Frame } from "../components/Frame";
-import { navigate } from "@reach/router";
-import ImagineHeader from "../components/ImagineHeader";
+import React from 'react';
+import { Frame } from '../components/Frame';
+import { navigate } from 'react-router-dom';
+import ImagineHeader from '../components/ImagineHeader';
 
 const GalagaInstructions = () => {
   // const fontSize = "xs:tw-text-md xl:tw-text-xl";
@@ -22,8 +22,8 @@ const GalagaInstructions = () => {
             shoot! Avoid enemy ships or lose points!
           </p>
         </div>,
-        () => navigate("/Imagine2025/Galaga"),
-        () => navigate("/Imagine2025/OpponentSelection"),
+        () => navigate('/Imagine2025/Galaga'),
+        () => navigate('/Imagine2025/OpponentSelection'),
       )}
     </>
   );

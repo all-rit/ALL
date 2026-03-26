@@ -1,12 +1,12 @@
-import { React } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
-import { navigate } from "@reach/router";
+import { React } from 'react';
+import { startExercise } from 'src/reducers/lab2/actions';
+import { navigate } from 'react-router-dom';
 
 const ShorsAlgorithm = () => {
   const handleContinue = () => {
     startExercise();
     // TODO: Update this to next Page
-    navigate("/Lab14/Exercise/Conclusion");
+    navigate('/Lab14/Exercise/Conclusion');
   };
 
   return (

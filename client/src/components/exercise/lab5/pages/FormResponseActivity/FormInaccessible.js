@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-import Form from "../../components/Form";
-import { navigate } from "@reach/router";
+import React, { Component } from 'react';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
+import Form from '../../components/Form';
+import { navigate } from 'react-router-dom';
 
 class FormInaccessible extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showNext: false,
-      componentName: "FormInaccessible",
+      componentName: 'FormInaccessible',
     };
   }
   showNext = () => {
     this.setState({ showNext: true });
   };
   handleNav() {
-    navigate("/Lab5/Exercise/FormGuidance");
+    navigate('/Lab5/Exercise/FormGuidance');
   }
   render() {
     // eslint-disable-next-line react/prop-types
@@ -23,7 +23,7 @@ class FormInaccessible extends Component {
     return (
       <div className="mb-5">
         <div className="cognitive_instructions">Complete the form below</div>
-        <Form url={"/FormGuidance"} showNext={this.showNext} />
+        <Form url={'/FormGuidance'} showNext={this.showNext} />
         {this.state.showNext && (
           <div className="flex float-right">
             <button

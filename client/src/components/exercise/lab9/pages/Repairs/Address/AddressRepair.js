@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { PropTypes } from "prop-types";
-import Repair from "../../../../../body/Repair/Repair";
-import { EXERCISE_STATES, HEADINGS } from "../../../../../../constants/lab9";
-import useDataService from "../../../hooks/useDataService";
-import { navigate } from "@reach/router";
-import { AddressRepairData } from "../../../../../../constants/lab9/AddressRepairData";
-import AddressRepairCodeBlock from "./AddressRepairCodeBlock";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect } from 'react';
+import { PropTypes } from 'prop-types';
+import Repair from '../../../../../body/Repair/Repair';
+import { EXERCISE_STATES, HEADINGS } from '../../../../../../constants/lab9';
+import useDataService from '../../../hooks/useDataService';
+import { navigate } from 'react-router-dom';
+import { AddressRepairData } from '../../../../../../constants/lab9/AddressRepairData';
+import AddressRepairCodeBlock from './AddressRepairCodeBlock';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
@@ -39,12 +39,12 @@ const AddressRepair = ({ user }) => {
       files={[
         {
           fileId: 0,
-          fileName: "AddressFormat.js",
+          fileName: 'AddressFormat.js',
           implementation: AddressRepairCodeBlock,
         },
       ]}
       navigateNext={() => {
-        navigate("/Lab9/Exercise/page");
+        navigate('/Lab9/Exercise/page');
       }}
     />
   );

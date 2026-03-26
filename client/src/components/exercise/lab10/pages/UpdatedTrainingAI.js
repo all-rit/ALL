@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Simulation from "../components/Simulation";
+import React, { useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Simulation from '../components/Simulation';
 import {
   EXERCISE_PLAYING,
   SIMULATION_ENDED,
   SIMULATION_IDLE,
   SIMULATION_STARTED,
-} from "../../../../constants/lab10";
-import useScroll from "../../../../use-hooks/useScroll";
-import { navigate } from "@reach/router";
+} from '../../../../constants/lab10';
+import useScroll from '../../../../use-hooks/useScroll';
+import { navigate } from 'react-router-dom';
 
 const UpdatedTrainingAI = (props) => {
   useScroll();
@@ -44,20 +44,20 @@ const UpdatedTrainingAI = (props) => {
    * Redirect the user to the following page
    */
   const handleContinue = () => {
-    return navigate("/Lab10/Exercise/AISimulation");
+    return navigate('/Lab10/Exercise/AISimulation');
   };
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Training </h1>
+      <h1 className={'tw-title tw-text-left tw-pb-6'}> AI Training </h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <p className={"tw-body-text tw-pb-6"}>
+          <p className={'tw-body-text tw-pb-6'}>
             With the updated duration time, re-run the simulation and collect
             more data for the neural network.
           </p>
           <div>
-            <p className={"tw-text-xl tw-font-bold"}>
+            <p className={'tw-text-xl tw-font-bold'}>
               Objective: Click <i>Start</i> to commence the training exercise.
             </p>
           </div>
@@ -66,7 +66,7 @@ const UpdatedTrainingAI = (props) => {
       {props.simulationStatus === SIMULATION_STARTED && (
         <div>
           <div>
-            <p className={"tw-text-xl tw-font-bold"}>
+            <p className={'tw-text-xl tw-font-bold'}>
               Objective: Avoid the falling shapes.
             </p>
           </div>
@@ -75,7 +75,7 @@ const UpdatedTrainingAI = (props) => {
       {props.simulationStatus === SIMULATION_ENDED && (
         <div>
           <div>
-            <p className={"tw-text-xl tw-font-bold"}>
+            <p className={'tw-text-xl tw-font-bold'}>
               Objective: Proceed to the next part of this exercise.
             </p>
           </div>
@@ -83,7 +83,7 @@ const UpdatedTrainingAI = (props) => {
       )}
       <Simulation />
       {props.simulationStatus === SIMULATION_ENDED && (
-        <div className={"tw-mt-6 tw-flex tw-justify-end"}>
+        <div className={'tw-mt-6 tw-flex tw-justify-end'}>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase"
             onClick={handleContinue}

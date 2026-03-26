@@ -1,21 +1,21 @@
-import React, { Fragment, useEffect, useState } from "react";
-import UserLabService from "../../../services/UserLabService";
-import LabService from "../../../services/LabService";
-import { Pie } from "react-chartjs-2";
-import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
-import useScroll from "../../../use-hooks/useScroll";
-import StudyList from "./studylist";
-import NonBulletList from "./NonBulletList";
-import Image from "./Image";
-import Spinner from "../../../common/Spinner/Spinner";
-import LinkFooter from "./LinkFooter";
-import Links from "./Links";
-import OrderedList from "./OrderedList";
-import ReadMoreButton from "../../all-components/imagine-components/LearnMoreButton";
-import ImagineService from "src/services/ImagineService";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
+import React, { Fragment, useEffect, useState } from 'react';
+import UserLabService from '../../../services/UserLabService';
+import LabService from '../../../services/LabService';
+import { Pie } from 'react-chartjs-2';
+import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
+import useScroll from '../../../use-hooks/useScroll';
+import StudyList from './studylist';
+import NonBulletList from './NonBulletList';
+import Image from './Image';
+import Spinner from '../../../common/Spinner/Spinner';
+import LinkFooter from './LinkFooter';
+import Links from './Links';
+import OrderedList from './OrderedList';
+import ReadMoreButton from '../../all-components/imagine-components/LearnMoreButton';
+import ImagineService from 'src/services/ImagineService';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PIE_WINDOW_HEIGHT_PERCENTAGE = 0.7;
 const PIE_WINDOW_RESIZE_WIDTH = 610;
@@ -27,7 +27,7 @@ Chart.register(ArcElement, Tooltip, Legend);
 
 const Reading = (props) => {
   const { user, labID, isImagine, userID, year } = props;
-  const [readingData, setReadingData] = useState("");
+  const [readingData, setReadingData] = useState('');
   const [modalOpen, setModalOpen] = useState(true);
   const [mobileView, setMobileView] = useState(false);
   const [pieHeight, setPieHeight] = useState(
@@ -50,13 +50,13 @@ const Reading = (props) => {
       legend: {
         labels: {
           padding: 28,
-          textAlign: "left",
+          textAlign: 'left',
         },
-        position: "top",
-        align: "start",
+        position: 'top',
+        align: 'start',
       },
       title: {
-        position: "bottom",
+        position: 'bottom',
       },
       tooltip: {
         callbacks: {
@@ -76,8 +76,8 @@ const Reading = (props) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top",
-        align: "center",
+        position: 'top',
+        align: 'center',
       },
       tooltip: {
         callbacks: {
@@ -112,7 +112,7 @@ const Reading = (props) => {
   };
 
   const mobileLegendWrap = {
-    id: "mobileLegendWrap",
+    id: 'mobileLegendWrap',
     afterInit(chart) {
       const smallOriginalFit = chart.legend.fit;
       chart.legend.fit = function fit() {
@@ -161,14 +161,14 @@ const Reading = (props) => {
         setMobileLabelWrap(true);
         const spaces = [];
         for (let i = MAX_PIE_LABEL_LENGTH; i < label.length; i++) {
-          if (label[i] == " ") {
+          if (label[i] == ' ') {
             spaces.push(i);
             i += MAX_PIE_LABEL_LENGTH;
           } else {
             let cont = true;
             while (cont) {
               --i;
-              if (label[i] == " ") {
+              if (label[i] == ' ') {
                 spaces.push(i);
                 i += MAX_PIE_LABEL_LENGTH;
                 cont = false;
@@ -204,9 +204,9 @@ const Reading = (props) => {
       }
       setPieHeight(window.innerHeight * PIE_WINDOW_HEIGHT_PERCENTAGE);
     };
-    window.addEventListener("resize", windowResizeEvent);
+    window.addEventListener('resize', windowResizeEvent);
     windowResizeEvent();
-    return () => window.removeEventListener("resize", windowResizeEvent);
+    return () => window.removeEventListener('resize', windowResizeEvent);
   });
 
   useEffect(() => {
@@ -281,32 +281,32 @@ const Reading = (props) => {
   }
 
   const handleNext = () => {
-    console.log("Scroll position percentage: " + JSON.stringify(pagePosition));
+    console.log('Scroll position percentage: ' + JSON.stringify(pagePosition));
     setSaveData(true);
-    navigate("/Imagine2023/PostSurvey");
+    navigate('/Imagine2023/PostSurvey');
   };
 
   const hasPiechartInBody = () => {
-    return readingData?.body?.some((item) => item.type === "piechart");
+    return readingData?.body?.some((item) => item.type === 'piechart');
   };
 
   return (
     <div
-      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center"}
+      className={'tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center'}
     >
       <h2
         className={
-          "tw-title tw-text-left tw-bg-white tw-w-[100%] tw-px-10 tw-text-[2.5rem]"
+          'tw-title tw-text-left tw-bg-white tw-w-[100%] tw-px-10 tw-text-[2.5rem]'
         }
       >
         Reading
       </h2>
       <div className="tw-w-full">
         <div className="study tw-bg-white p-5 tw-rounded-lg">
-          {readingData?.description !== "" ? (
+          {readingData?.description !== '' ? (
             <>
-              <h3 className={"tw-title"}>{readingData?.description.header}</h3>
-              <p className={"tw-body-text"}>
+              <h3 className={'tw-title'}>{readingData?.description.header}</h3>
+              <p className={'tw-body-text'}>
                 {readingData?.description.content}
               </p>
             </>
@@ -317,7 +317,7 @@ const Reading = (props) => {
             <>
               {mobileView ? (
                 <>
-                  <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+                  <h3 className={'tw-title'}>{readingData?.piechart.header}</h3>
                   <div className="flex tw-body-text">
                     {readingData.piechart && (
                       <Pie
@@ -333,14 +333,14 @@ const Reading = (props) => {
                       />
                     )}
                   </div>
-                  {readingData?.piechart?.caption !== "" &&
+                  {readingData?.piechart?.caption !== '' &&
                     readingData?.piechart?.caption.map((data, index) => {
                       return (
                         <div
                           key={index}
-                          id={"caption"}
+                          id={'caption'}
                           className={
-                            "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                            'tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center'
                           }
                         >
                           {data}
@@ -350,7 +350,7 @@ const Reading = (props) => {
                 </>
               ) : (
                 <>
-                  <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+                  <h3 className={'tw-title'}>{readingData?.piechart.header}</h3>
                   <div className="flex tw-body-text">
                     <Pie
                       data={readingData?.piechart.data}
@@ -358,14 +358,14 @@ const Reading = (props) => {
                       height={!isImagine && PIE_SIZE}
                     />
                   </div>
-                  {readingData?.piechart?.caption !== "" &&
+                  {readingData?.piechart?.caption !== '' &&
                     readingData?.piechart?.caption.map((data, index) => {
                       return (
                         <div
                           key={index}
-                          id={"caption"}
+                          id={'caption'}
                           className={
-                            "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                            'tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center'
                           }
                         >
                           {data}
@@ -377,22 +377,22 @@ const Reading = (props) => {
             </>
           )}
 
-          {readingData?.body !== "" ? (
+          {readingData?.body !== '' ? (
             readingData?.body.map((data, index) => {
               return (
                 <Fragment key={index}>
-                  {data.header !== "" && (
-                    <h3 className={"tw-title tw-text-left tw-leading-snug"}>
+                  {data.header !== '' && (
+                    <h3 className={'tw-title tw-text-left tw-leading-snug'}>
                       {data.header}
                     </h3>
                   )}
-                  {data.type === "" && (
+                  {data.type === '' && (
                     <>
                       {data.content.map((content, index) => {
                         return (
                           <p
                             key={index}
-                            className={"tw-body-text tw-leading-snug"}
+                            className={'tw-body-text tw-leading-snug'}
                           >
                             {content}
                           </p>
@@ -400,18 +400,18 @@ const Reading = (props) => {
                       })}
                     </>
                   )}
-                  {data.type === "study__list" && (
+                  {data.type === 'study__list' && (
                     <StudyList data={data.content} />
                   )}
-                  {data.type === "ordered-list" && (
+                  {data.type === 'ordered-list' && (
                     <OrderedList data={data.content} />
                   )}
-                  {data.type === "non-bullet-list" && (
+                  {data.type === 'non-bullet-list' && (
                     <NonBulletList data={data.content} isImagine={isImagine} />
                   )}
-                  {data.type === "image" && <Image data={data.content} />}
-                  {data.type === "links" && <Links data={data.content} />}
-                  {data.type === "piechart" && data.content && (
+                  {data.type === 'image' && <Image data={data.content} />}
+                  {data.type === 'links' && <Links data={data.content} />}
+                  {data.type === 'piechart' && data.content && (
                     <>
                       <div className="tw-w-full tw-flex tw-justify-center">
                         <div className="flex tw-body-text">
@@ -437,7 +437,7 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {readingData?.footer !== "" ? (
+          {readingData?.footer !== '' ? (
             <LinkFooter data={readingData?.footer.links} />
           ) : (
             <></>
@@ -456,7 +456,7 @@ const Reading = (props) => {
           <></>
         )}
       </div>
-      {isImagine && readingData?.footer !== "" && (
+      {isImagine && readingData?.footer !== '' && (
         <div>
           <ReadMoreButton
             userID={userID}

@@ -8,6 +8,7 @@ import reducers from "./reducers";
 import * as serviceWorker from "./serviceWorker";
 import ReactGA from "react-ga";
 import { MainContextProvider } from "./reducers/MainContext";
+import { BrowserRouter } from "react-router-dom";
 
 if (process.env.NODE_ENV === "production") {
   const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
@@ -26,7 +27,9 @@ const root = createRoot(container);
 root.render(
   <Provider store={store}>
     <MainContextProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </MainContextProvider>
   </Provider>,
 );

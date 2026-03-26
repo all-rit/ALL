@@ -1,18 +1,18 @@
-import React, { Fragment } from "react";
-import { navigate } from "@reach/router";
+import React, { Fragment } from 'react';
+import { navigate } from 'react-router-dom';
 
 const ExerciseEnd = () => {
   /**
    * Redirect the user to the following page
    */
   const handleHome = () => {
-    return navigate("/Lab10/Exercise");
+    return navigate('/Lab10/Exercise');
   };
 
   return (
     <Fragment>
       <div className="center-div">
-        <h1 className={"tw-title tw-text-left tw-pb-6"}> Exercise Complete </h1>
+        <h1 className={'tw-title tw-text-left tw-pb-6'}> Exercise Complete </h1>
         <h4 className="tw-body-text tw-text-left ">
           Congratulations! You have successfully completed the Machine Learning
           Exercise!

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import uni from "../../../../assets/images/lab9/uni.jpeg";
-import logo from "../../../../assets/images/lab9/logo.png";
-import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
-import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
-import PropTypes from "prop-types";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import uni from '../../../../assets/images/lab9/uni.jpeg';
+import logo from '../../../../assets/images/lab9/logo.png';
+import WebpageHeader from './webpage-subcomponents/WebpageHeader';
+import WebpageSidebar from './webpage-subcomponents/WebpageSidebar';
+import PropTypes from 'prop-types';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * FacadeWebpage is a static component used to display
@@ -23,7 +23,7 @@ const FacadeWebpage = () => {
   }, []);
 
   const handleNext = () => {
-    navigate("/Lab9/Exercise/Discovery");
+    navigate('/Lab9/Exercise/Discovery');
   };
 
   return (
@@ -94,7 +94,7 @@ const FacadeWebpage = () => {
                           </div>
                         </div>
                         <div className="tw-text-[#260D0D] tw-text-justify tw-text-2xl tw-font-light tw-max-w-[711px] tw-ml-2 tw-mt-6 tw-max-md:tw-max-w-full">
-                          {" "}
+                          {' '}
                           Welcome to another edition of your weekly newsletter,
                           your go-to source for the latest updates, events, and
                           highlights from our vibrant campus community. As we
@@ -102,7 +102,7 @@ const FacadeWebpage = () => {
                           we&apos;re excited to keep you informed and engaged
                           with all that&apos;s happening here at ALL University.
                         </div>
-                        <div className={"tw-w-full tw-mt-5 tw-p-4 tw-pb-10"}>
+                        <div className={'tw-w-full tw-mt-5 tw-p-4 tw-pb-10'}>
                           <div className="tw-flex tw-items-start tw-justify-between tw-h-1/4 tw-gap-2.5">
                             <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-mt-0">
                               Address
@@ -129,7 +129,7 @@ const FacadeWebpage = () => {
                               <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-my-auto">
                                 Zip
                               </div>
-                              <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{" "}
+                              <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{' '}
                             </div>
                           </div>
 
@@ -142,8 +142,8 @@ const FacadeWebpage = () => {
                             </div>
                             <div className="tw-text-[#260D0D] tw-rounded-md tw-bg-labGreen tw-justify-center tw-align-middle tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-w-1/4 tw-h-10 tw-border-[3px] tw-border-solid">
                               <p className="tw-font-medium tw-text-lg tw-text-bgwhite ">
-                                {" "}
-                                Sign Up{" "}
+                                {' '}
+                                Sign Up{' '}
                               </p>
                             </div>
                           </div>

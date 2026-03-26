@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import PropTypes from "prop-types";
-import { PageService } from "../../../../services/PageService";
-import { navigate } from "@reach/router";
-import { LAB_ID } from "../../../../constants/lab4";
-import TooltipWithTab from "../helpers/tooltip";
+import React, { useState, useEffect } from 'react';
+import { Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PropTypes from 'prop-types';
+import { PageService } from '../../../../services/PageService';
+import { navigate } from 'react-router-dom';
+import { LAB_ID } from '../../../../constants/lab4';
+import TooltipWithTab from '../helpers/tooltip';
 
 const FormComp = (props) => {
   const [state, setState] = useState({
     secondsElapsed: 0,
-    animal: "",
-    color: "",
-    candy: "",
-    city: "",
+    animal: '',
+    color: '',
+    candy: '',
+    city: '',
     show: false,
-    alert: "Fill Out Form Completely",
+    alert: 'Fill Out Form Completely',
     submitted: false,
   });
 
@@ -42,7 +42,7 @@ const FormComp = (props) => {
 
   const focusElem = (e) => {
     e.target.blur();
-    props.parentCallback("error");
+    props.parentCallback('error');
   };
 
   const handleSubmit = (e) => {
@@ -56,18 +56,18 @@ const FormComp = (props) => {
     setState({ ...state, submitted: true });
     if (props.rule) {
       if (
-        state.animal === "" ||
-        state.city === "" ||
-        state.candy === "" ||
-        state.color === ""
+        state.animal === '' ||
+        state.city === '' ||
+        state.candy === '' ||
+        state.color === ''
       ) {
-        setState({ ...state, show: true, alert: "Fill Out Form Completely" });
+        setState({ ...state, show: true, alert: 'Fill Out Form Completely' });
       } else if (
-        state.animal === "" ||
-        state.city === "" ||
-        state.color !== "violet" ||
-        state.candy === "" ||
-        state.color === ""
+        state.animal === '' ||
+        state.city === '' ||
+        state.color !== 'violet' ||
+        state.candy === '' ||
+        state.color === ''
       ) {
         setState({
           ...state,
@@ -79,10 +79,10 @@ const FormComp = (props) => {
       }
     } else {
       if (
-        state.animal === "" ||
-        state.city === "" ||
-        state.candy === "" ||
-        state.color === ""
+        state.animal === '' ||
+        state.city === '' ||
+        state.candy === '' ||
+        state.color === ''
       ) {
         setState({ ...state, show: true });
       } else {
@@ -96,7 +96,7 @@ const FormComp = (props) => {
       <div onClick={(e) => focusElem(e)}>
         <Form>
           <FormGroup>
-            <Label className={"tw-flex tw-justify-start"} for="animal">
+            <Label className={'tw-flex tw-justify-start'} for="animal">
               Favorite Animal
             </Label>
             <Input
@@ -109,7 +109,7 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label className={"tw-flex tw-justify-start"} for="color">
+            <Label className={'tw-flex tw-justify-start'} for="color">
               Favorite Color&nbsp;
               {props.showTooltip && (
                 <TooltipWithTab
@@ -128,7 +128,7 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label className={"tw-flex tw-justify-start"} for="candy">
+            <Label className={'tw-flex tw-justify-start'} for="candy">
               Favorite Candy
             </Label>
             <Input
@@ -141,7 +141,7 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label className={"tw-flex tw-justify-start"} for="city">
+            <Label className={'tw-flex tw-justify-start'} for="city">
               Favorite City
             </Label>
             <Input
@@ -164,7 +164,7 @@ const FormComp = (props) => {
               type="submit"
               value="Give Up"
               className="formButtonHelp"
-              style={{ marginLeft: "20px" }}
+              style={{ marginLeft: '20px' }}
               onClick={(e) => handleSubmit(e)}
             />
           )}

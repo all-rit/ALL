@@ -43,7 +43,7 @@ import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
-import { globalHistory, Router } from "@reach/router";
+import { Routes, Route, globalHistory } from "react-router-dom"
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
 import { bindActionCreators } from "redux";
@@ -117,84 +117,74 @@ const App = () => {
   const renderLabs = () => {
     return (
       <div className={"tw-h-full tw-w-full"}>
-        <Router basepath={process.env.PUBLIC_URL}>
-          <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-          <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
-          <Reading
-            path={`/Lab${lab}/Reading`}
-            user={state.main.user}
-            labID={lab}
-            isImagine={isImagine}
-          />
-          <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
-          <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-          <ExerciseLab2
-            path="/Lab2/Exercise"
-            user={state.main.user}
-            isImagine={isImagine}
-          />
-          <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-          <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-          <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-          <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
-          <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
-          <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
-          <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
-          <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
-          <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-          <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
-          <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
-          <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
+        <Routes>
+          <Route path={`/Lab${lab}/`} element={<About user={state.main.user} labID={lab} />} />
+          <Route path={`/Lab${lab}/About`} element={<About user={state.main.user} labID={lab} />} />
 
-          <Reinforcement
-            path={`/Lab${lab}/Reinforcement`}
-            user={state.main.user}
-            labID={lab}
-          />
-          <Quiz
+          <Route path={`/Lab${lab}/Reading`} element={<Reading user={state.main.user} labID={lab} isImagine={isImagine} />} />
+
+          <Route path="/Lab0/Exercise/*" element={<ExerciseLab0 user={state.main.user} />} />
+          <Route path="/Lab1/Exercise" element={<ExerciseLab1 user={state.main.user} />} />
+          <Route path="/Lab2/Exercise" element={<ExerciseLab2 user={state.main.user} isImagine={isImagine} />} />
+          <Route path="/Lab3/Exercise/*" element={<ExerciseLab3 user={state.main.user} />} />
+          <Route path="/Lab4/Exercise/*" element={<ExerciseLab4 user={state.main.user} />} />
+          <Route path="/Lab5/Exercise/*" element={<ExerciseLab5 user={state.main.user} />} />
+          <Route path="/Lab6/Exercise/*" element={<ExerciseLab6 user={state.main.user} />} />
+          <Route path="/Lab7/Exercise/*" element={<ExerciseLab7 user={state.main.user} />} />
+          <Route path="/Lab8/Exercise/*" element={<ExerciseLab8 user={state.main.user} />} />
+          <Route path="/Lab9/Exercise/*" element={<ExerciseLab9 user={state.main.user} />} />
+          <Route path="/Lab10/Exercise/*" element={<ExerciseLab10 user={state.main.user} />} />
+          <Route path="/Lab11/Exercise/*" element={<ExerciseLab11 user={state.main.user} />} />
+          <Route path="/Lab12/Exercise/*" element={<ExerciseLab12 user={state.main.user} />} />
+          <Route path="/Lab13/Exercise/*" element={<ExerciseLab13 user={state.main.user} />} />
+          <Route path="/Lab14/Exercise/*" element={<ExerciseLab14 user={state.main.user} />} />
+
+          <Route path={`/Lab${lab}/Reinforcement`} element={<Reinforcement user={state.main.user} labID={lab} />} />
+          <Route
             path={`/Lab${lab}/Quiz`}
-            labId={lab}
-            user={state.main.user}
-            isFinalQuiz={true}
-            hideCertificate={false}
-            quizCompleted={quizCompleted}
-            setQuizCompleted={setQuizCompleted}
-            selectedAnswers={selectedAnswers}
-            setSelectedAnswers={setSelectedAnswers}
-            questions={questions}
-            setQuestions={setQuestions}
-            result={result}
-            setResult={setResult}
+            element={
+              <Quiz
+                labId={lab}
+                user={state.main.user}
+                isFinalQuiz={true}
+                hideCertificate={false}
+                quizCompleted={quizCompleted}
+                setQuizCompleted={setQuizCompleted}
+                selectedAnswers={selectedAnswers}
+                setSelectedAnswers={setSelectedAnswers}
+                questions={questions}
+                setQuestions={setQuestions}
+                result={result}
+                setResult={setResult}
+              />
+            }
           />
-        </Router>
+        </Routes>
       </div>
     );
   };
 
   const renderPages = () => {
     return (
-      <Router basepath={process.env.PUBLIC_URL}>
-        <AboutUsPage path={"/about-us"} />
-        <LandingPage path="/" />
-        <SiteMap path="/SiteMap" />
-        <Profile path="/Profile" user={state.main.user} />
-        <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
-        <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error actions={actions} default />
+      <Routes>
+        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/SiteMap" element={<SiteMap />} />
+        <Route path="/Profile" element={<Profile user={state.main.user} />} />
+        <Route path="/Labs" element={<LabsPage user={state.main.user} actions={actions} />} />
+        <Route path="/EducatorResources" element={<EducatorResources user={state.main.user} />} />
+        <Route path="*" element={<Error actions={actions} />} />
 
-        <Imagine2023
-          path={"/Imagine2023/*"}
-          user={state.main.user}
-          isImagine={isImagine}
-          actions={actions}
+        <Route
+          path="/Imagine2023/*"
+          element={<Imagine2023 user={state.main.user} isImagine={isImagine} actions={actions} />}
         />
 
-        <Imagine2025
-          path={"/Imagine2025/*"}
-          user={state.main.user}
-          isImagine={isImagine}
+        <Route
+          path="/Imagine2025/*"
+          element={<Imagine2025 user={state.main.user} isImagine={isImagine} />}
         />
-      </Router>
+      </Routes>
     );
   };
 

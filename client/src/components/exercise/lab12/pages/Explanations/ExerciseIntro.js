@@ -1,11 +1,11 @@
 // Exercise Instructions (Page #1)
 
-import React from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { navigate } from "@reach/router";
-import { useEffect } from "react";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
+import React from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import { navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import { ExerciseService } from '../../../../../services/lab12/ExerciseService';
 
 const ExerciseIntro = () => {
   const { actions, state } = useMainStateContext();
@@ -26,12 +26,12 @@ const ExerciseIntro = () => {
   };
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab12/Exercise/GraduationApplication");
+    navigate('/Lab12/Exercise/GraduationApplication');
   };
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+      <h1 className={'tw-title tw-text-left'}>Exercise Start</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           You just graduated from ALL University! Congratulations on completing

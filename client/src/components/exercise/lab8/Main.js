@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Router } from "@reach/router";
+import React, { useState } from 'react';
+import { Router } from 'react-router-dom';
 
-import ExerciseStart from "./pages/ExerciseStart";
-import BiasDiscovery from "./pages/BiasDiscovery";
-import BiasedSimulation from "./pages/BiasedSimulation";
-import SentimentAnalysisInfo from "./pages/SentimentAnalysisInfo";
-import DataRepair from "./pages/DataRepair";
-import Conclusion from "./pages/Conclusion";
-import ExerciseStateContext from "./Lab8Context";
-import { CHAT_MESSAGES } from "../../../constants/lab8";
-import SuccessfulAnalysis from "./pages/SuccessfulAnalysis";
+import ExerciseStart from './pages/ExerciseStart';
+import BiasDiscovery from './pages/BiasDiscovery';
+import BiasedSimulation from './pages/BiasedSimulation';
+import SentimentAnalysisInfo from './pages/SentimentAnalysisInfo';
+import DataRepair from './pages/DataRepair';
+import Conclusion from './pages/Conclusion';
+import ExerciseStateContext from './Lab8Context';
+import { CHAT_MESSAGES } from '../../../constants/lab8';
+import SuccessfulAnalysis from './pages/SuccessfulAnalysis';
 
 const Main = () => {
   const [repairState, setRepairState] = useState(false);
@@ -39,7 +39,7 @@ const Main = () => {
           {/* Phase 2: repair the biased dataset */}
           <DataRepair path="/DataRepair" />
           <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
-          <SuccessfulAnalysis path={"/SuccessfulAnalysis"} />
+          <SuccessfulAnalysis path={'/SuccessfulAnalysis'} />
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>

@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { Router } from "@reach/router";
+import React, { useState } from 'react';
+import { Router } from 'react-router-dom';
 
-import { EXERCISE_STATES } from "../../../constants/lab12";
-import ExerciseStateContext from "./Lab12Context";
-import FormRepair from "./pages/FormRepair";
-import DatabaseRepair from "./pages/DatabaseRepair";
+import { EXERCISE_STATES } from '../../../constants/lab12';
+import ExerciseStateContext from './Lab12Context';
+import FormRepair from './pages/FormRepair';
+import DatabaseRepair from './pages/DatabaseRepair';
 
 // lab imported dependencies;
-import GradApplication from "./components/GradApplication.js";
-import Diploma from "./components/Diploma";
-import AlumniNewsletter from "./pages/AlumniNewsletter";
-import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
-import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
-import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
-import PreCorrectDiploma from "./pages/Explanations/PreCorrectDiploma";
-import PostCorrectNewsletter from "./pages/Explanations/PostCorrectNewsletter";
-import KeyTakeaways from "./pages/Explanations/KeyTakeaways";
-import PreDbRepair from "./pages/Explanations/PreDbRepair";
+import GradApplication from './components/GradApplication.js';
+import Diploma from './components/Diploma';
+import AlumniNewsletter from './pages/AlumniNewsletter';
+import ExerciseIntro from './pages/Explanations/ExerciseIntro';
+import PreWrongDiploma from './pages/Explanations/PreWrongDiploma';
+import PostWrongNewsletter from './pages/Explanations/PostWrongNewsletter';
+import PreCorrectDiploma from './pages/Explanations/PreCorrectDiploma';
+import PostCorrectNewsletter from './pages/Explanations/PostCorrectNewsletter';
+import KeyTakeaways from './pages/Explanations/KeyTakeaways';
+import PreDbRepair from './pages/Explanations/PreDbRepair';
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -27,13 +27,13 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [preferredName, setPreferredName] = useState("");
-  const [pronouns, setPronouns] = useState("");
-  const [college, setCollege] = useState("");
-  const [major, setMajor] = useState("");
-  const [gradTerm, setGradTerm] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [preferredName, setPreferredName] = useState('');
+  const [pronouns, setPronouns] = useState('');
+  const [college, setCollege] = useState('');
+  const [major, setMajor] = useState('');
+  const [gradTerm, setGradTerm] = useState('');
 
   return (
     <div className="bottomSpace tw-p-6">
@@ -59,14 +59,14 @@ const Main = () => {
       >
         <Router className="app">
           <FormRepair path="/FormRepair" />
-          <DatabaseRepair path={"/DatabaseRepair"} />
+          <DatabaseRepair path={'/DatabaseRepair'} />
           <ExerciseIntro default path="/" />
           <GradApplication path="/GraduationApplication" />
           <PreWrongDiploma path="/PreWrongDiploma" />
           <Diploma path="/Diploma" />
           <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
-          <PreDbRepair path={"/PreDbRepair"} />
+          <PreDbRepair path={'/PreDbRepair'} />
           <PreCorrectDiploma path="/PreCorrectDiploma" />
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />

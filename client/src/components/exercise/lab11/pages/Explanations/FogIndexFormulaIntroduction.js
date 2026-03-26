@@ -1,11 +1,11 @@
-import { navigate } from "@reach/router";
-import React from "react";
-import { useEffect } from "react";
-import { REPAIR, EXERCISE_STATES } from "../../../../../constants/lab11";
-import fog_index_formula from "../../../../../assets/images/lab11/fog_index_formula.png";
-import fog_index_reading_levels from "../../../../../assets/images/lab11/fog_index_reading_levels.png";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { navigate } from 'react-router-dom';
+import React from 'react';
+import { useEffect } from 'react';
+import { REPAIR, EXERCISE_STATES } from '../../../../../constants/lab11';
+import fog_index_formula from '../../../../../assets/images/lab11/fog_index_formula.png';
+import fog_index_reading_levels from '../../../../../assets/images/lab11/fog_index_reading_levels.png';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 const FogIndexFormulaIntroduction = () => {
   const { actions } = useMainStateContext();
@@ -39,7 +39,7 @@ const FogIndexFormulaIntroduction = () => {
       <img
         src={fog_index_formula}
         alt="Fog Index formula"
-        className={"tw-w-3/4"}
+        className={'tw-w-3/4'}
       />
 
       <div className="guidance tw-mb-2">
@@ -56,7 +56,7 @@ const FogIndexFormulaIntroduction = () => {
       <img
         src={fog_index_reading_levels}
         alt="Fog indices and corresponding reading levels"
-        className={"tw-w-1/2 tw-pb-2"}
+        className={'tw-w-1/2 tw-pb-2'}
       />
 
       <div>

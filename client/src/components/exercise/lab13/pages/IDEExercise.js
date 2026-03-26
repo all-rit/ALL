@@ -1,10 +1,10 @@
-import React from "react";
-import { useLab13 } from "../Lab13Context";
-import Repair from "src/components/body/Repair/Repair";
-import PropTypes from "prop-types";
-import { startExercise } from "src/reducers/lab2/actions";
-import { navigate } from "@reach/router";
-import IDEExerciseImplementation from "./repairs/IDEExerciseImplementation";
+import React from 'react';
+import { useLab13 } from '../Lab13Context';
+import Repair from 'src/components/body/Repair/Repair';
+import PropTypes from 'prop-types';
+import { startExercise } from 'src/reducers/lab2/actions';
+import { navigate } from 'react-router-dom';
+import IDEExerciseImplementation from './repairs/IDEExerciseImplementation';
 
 const IDEExercise = () => {
   const {
@@ -24,19 +24,19 @@ const IDEExercise = () => {
 
   const handleContinue = () => {
     if (!checkInputValid()) {
-      alert("Please complete all fields correctly before continuing.");
+      alert('Please complete all fields correctly before continuing.');
       return;
     }
 
     // Save IDE settings to context
     const disclaimerValue = exercisePromptsState.find(
-      (i) => i.id === "disclaimer",
+      (i) => i.id === 'disclaimer',
     ).value;
     const confidenceValue = exercisePromptsState.find(
-      (i) => i.id === "confidence",
+      (i) => i.id === 'confidence',
     ).value;
     const citationsValue = exercisePromptsState.find(
-      (i) => i.id === "citations",
+      (i) => i.id === 'citations',
     ).value;
 
     setDisclaimerMessage(disclaimerValue);
@@ -47,7 +47,7 @@ const IDEExercise = () => {
     setTopicIndex(2);
 
     startExercise();
-    navigate("/Lab13/Exercise/AIPanel");
+    navigate('/Lab13/Exercise/AIPanel');
   };
 
   const data = {
@@ -67,14 +67,14 @@ const IDEExercise = () => {
     <Repair
       data={data}
       functions={functions}
-      headingText={"Disclaimers, Confidence Scores and Citations"}
+      headingText={'Disclaimers, Confidence Scores and Citations'}
       repairText={[
-        "Fill in the blanks to add the disclaimers, confidence scores, and citations to the chatbot outputs.",
+        'Fill in the blanks to add the disclaimers, confidence scores, and citations to the chatbot outputs.',
       ]}
       files={[
         {
           fileId: 0,
-          fileName: "ALLIEChatbot.js",
+          fileName: 'ALLIEChatbot.js',
           implementation: IDEExerciseImplementation,
         },
       ]}

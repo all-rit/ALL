@@ -1,7 +1,7 @@
 // Pre Correct Diploma (Page #4)
 
-import { navigate } from "@reach/router";
-import React from "react";
+import { navigate } from 'react-router-dom';
+import React from 'react';
 
 const PreCorrectDiploma = () => {
   const handleContinue = () => {
@@ -10,7 +10,7 @@ const PreCorrectDiploma = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}> Explanation </h1>
+      <h1 className={'tw-title tw-text-left'}> Explanation </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-pt-6">
           This time, after being prompted for your preferred name and pronouns,

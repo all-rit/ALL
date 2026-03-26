@@ -1,16 +1,16 @@
-import useMainStateContext from "../../../../reducers/MainContext";
-import useDataService from "../../lab12/hooks/useDataService";
+import useMainStateContext from '../../../../reducers/MainContext';
+import useDataService from '../../lab12/hooks/useDataService';
 import {
   DATABASE_REPAIR_HEADING,
   EXERCISE_PATH,
   EXERCISE_STATES,
-} from "../../../../constants/lab12";
-import React from "react";
-import Repair from "../../../body/Repair/Repair";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
-import DatabaseRepairImplementation from "./repairs/DatabaseRepairImplementation";
-import IdentityDatabaseData from "../../../../constants/lab12/DatabaseRepair";
+} from '../../../../constants/lab12';
+import React from 'react';
+import Repair from '../../../body/Repair/Repair';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import DatabaseRepairImplementation from './repairs/DatabaseRepairImplementation';
+import IdentityDatabaseData from '../../../../constants/lab12/DatabaseRepair';
 
 /**
  * DatabaseRepair is a component that is responsible for passing logic into the universal
@@ -39,7 +39,7 @@ const DatabaseRepair = () => {
       files={[
         {
           fileId: 0,
-          fileName: "schema.sql",
+          fileName: 'schema.sql',
           implementation: DatabaseRepairImplementation,
         },
       ]}

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { navigate } from "@reach/router";
-import uni from "../../../../assets/images/lab9/uni.jpeg";
-import NewsletterForm from "./webpage-subcomponents/NewsletterForm";
-import WebpageNav from "./webpage-subcomponents/WebpageNav";
-import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
-import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
-import { ExerciseService } from "../../../../services/lab9/ExerciseService";
-import Button from "src/components/all-components/Navigation/Button";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import uni from '../../../../assets/images/lab9/uni.jpeg';
+import NewsletterForm from './webpage-subcomponents/NewsletterForm';
+import WebpageNav from './webpage-subcomponents/WebpageNav';
+import WebpageHeader from './webpage-subcomponents/WebpageHeader';
+import WebpageSidebar from './webpage-subcomponents/WebpageSidebar';
+import { ExerciseService } from '../../../../services/lab9/ExerciseService';
+import Button from 'src/components/all-components/Navigation/Button';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * Webpage is a reusable component used to display
@@ -42,7 +42,7 @@ const Webpage = () => {
         hasViewed: true,
       };
       await ExerciseService.submitExercise(body);
-      navigate("/Lab9/Exercise/Conclusion");
+      navigate('/Lab9/Exercise/Conclusion');
     }
   };
 

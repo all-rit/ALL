@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import Collapsible from "../../components/Collapsible";
-import PropTypes from "prop-types";
-import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_IDLE } from "src/constants/index";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import Collapsible from '../../components/Collapsible';
+import PropTypes from 'prop-types';
+import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_IDLE } from 'src/constants/index';
 
 /**
  * Renders the Simulation Summary component.
@@ -17,7 +17,7 @@ const SimulationSummary = () => {
 
   useEffect(() => {
     if (mainState.userState === EXERCISE_IDLE)
-      setTimeout(() => navigate("/Lab7/Exercise/BadAIExplanation"));
+      setTimeout(() => navigate('/Lab7/Exercise/BadAIExplanation'));
   }, []);
 
   const handleContinue = () => {
@@ -30,41 +30,41 @@ const SimulationSummary = () => {
 
   return (
     <div>
-      <h2 className={"tw-font-bold"}>Simulation Summary</h2>
+      <h2 className={'tw-font-bold'}>Simulation Summary</h2>
       <div>
         <div
           className={
-            "tw-flex tw-items-center tw-justify-center tw-gap-32 tw-py-6 tw-bg-[#EBE8E8] tw-mt-6 tw-shadow-xl"
+            'tw-flex tw-items-center tw-justify-center tw-gap-32 tw-py-6 tw-bg-[#EBE8E8] tw-mt-6 tw-shadow-xl'
           }
         >
           <div>
-            <p className={"tw-font-bold tw-text-2xl"}>
+            <p className={'tw-font-bold tw-text-2xl'}>
               Total Score: {state.score}
             </p>
           </div>
-          <div className={"tw-border-l-0 tw-border-solid tw-h-[125px]"} />
-          <div className={"tw-flex tw-text-left tw-text-2xl"}>
-            <ul className={"tw-text-left tw-font-bold"}>
-              <li className={"tw-text-[#e31c3d]"}>Intrusions:</li>
-              <li className={"tw-text-[#e31c3d]"}>
+          <div className={'tw-border-l-0 tw-border-solid tw-h-[125px]'} />
+          <div className={'tw-flex tw-text-left tw-text-2xl'}>
+            <ul className={'tw-text-left tw-font-bold'}>
+              <li className={'tw-text-[#e31c3d]'}>Intrusions:</li>
+              <li className={'tw-text-[#e31c3d]'}>
                 Incorrect (False Positive):
               </li>
               <li>Protected (True Positive):</li>
             </ul>
-            <ul className={"tw-text-right tw-font-bold tw-ml-6"}>
-              <li className={"tw-text-[#e31c3d]"}>{state.intrusions}</li>
-              <li className={"tw-text-[#e31c3d]"}>{state.incorrect}</li>
+            <ul className={'tw-text-right tw-font-bold tw-ml-6'}>
+              <li className={'tw-text-[#e31c3d]'}>{state.intrusions}</li>
+              <li className={'tw-text-[#e31c3d]'}>{state.incorrect}</li>
               <li>{state.protectedNum}</li>
             </ul>
           </div>
         </div>
-        <div className={"tw-mt-12 tw-space-y-6"}>
+        <div className={'tw-mt-12 tw-space-y-6'}>
           {state.results.map((result, index) => (
             <Collapsible key={index} result={result} index={index} />
           ))}
         </div>
       </div>
-      <div className={"tw-mt-12"}>
+      <div className={'tw-mt-12'}>
         {state.changesApplied && (
           <button
             className="btn btn-second text-black btn-xl text-uppercase leftButton"

@@ -1,11 +1,11 @@
-import { React } from "react";
-import { navigate } from "@reach/router";
-import LabButton from "../../../all-components/LabButton";
-import CaesarImage from "../../../../assets/images/lab14/caesarcipher.png";
+import { React } from 'react';
+import { navigate } from 'react-router-dom';
+import LabButton from '../../../all-components/LabButton';
+import CaesarImage from '../../../../assets/images/lab14/caesarcipher.png';
 
 const CaesarIntro = () => {
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/CaesarEncryption");
+    navigate('/Lab14/Exercise/CaesarEncryption');
   };
 
   return (
@@ -83,7 +83,7 @@ const CaesarIntro = () => {
             While a Classic Computer solves the Caesar Cipher in O(N) time, when
             using Grover&apos; search algorithm, Quantum can search for the
             correct element much faster. Through the use of Quantum Physics, the
-            base-time complexity for Quantum Computers is{" "}
+            base-time complexity for Quantum Computers is{' '}
             <span className="tw-math">O(&radic;N)</span>, meaning the greatest
             amount of elements that need to be searched is 5.
           </p>
@@ -111,7 +111,7 @@ const CaesarIntro = () => {
       </p>
 
       <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Continue"} />
+        <LabButton onClick={handleContinue} label={'Continue'} />
       </div>
     </div>
   );

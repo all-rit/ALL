@@ -1,10 +1,10 @@
-import { React, useContext, useEffect, useState } from "react";
-import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
-import ExerciseStateContext from "../Lab14Context";
-import Encryption from "../components/Encryption";
-import LabButton from "../../../all-components/LabButton";
-import { Input, Label } from "reactstrap";
+import { React, useContext, useEffect, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ExerciseStateContext from '../Lab14Context';
+import Encryption from '../components/Encryption';
+import LabButton from '../../../all-components/LabButton';
+import { Input, Label } from 'reactstrap';
 
 const InputComponent = ({ vigenereKey, setVigenereKey }) => {
   const [validInput, setValidInput] = useState(null);
@@ -13,12 +13,12 @@ const InputComponent = ({ vigenereKey, setVigenereKey }) => {
     const value = e.target.value;
     setVigenereKey(value);
 
-    if (value === "") {
+    if (value === '') {
       setValidInput(false);
       return;
     }
 
-    const filteredValue = value.replace(/[^a-zA-Z]/g, "");
+    const filteredValue = value.replace(/[^a-zA-Z]/g, '');
     setValidInput(filteredValue === value ? true : false);
   };
 
@@ -36,7 +36,7 @@ const InputComponent = ({ vigenereKey, setVigenereKey }) => {
         className="tw-flex tw-items-center tw-justify-start tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
       />
       <p
-        className={`tw-w-[20rem] tw-my-2 ${validInput !== false ? "tw-hidden" : ""}`}
+        className={`tw-w-[20rem] tw-my-2 ${validInput !== false ? 'tw-hidden' : ''}`}
       >
         Error: Remove any special characters or numbers from the input, and make
         sure the input box is not empty.
@@ -61,27 +61,27 @@ const VigenereEncryption = () => {
   } = useContext(ExerciseStateContext);
 
   useEffect(() => {
-    setVigenereBaseMessage("");
-    setVigenereEncryptedMessage("");
-    setVigenereKey("");
+    setVigenereBaseMessage('');
+    setVigenereEncryptedMessage('');
+    setVigenereKey('');
   }, []);
 
   const [encrypted, setEncrypted] = useState(false);
 
   const isValidInput = (str) => {
-    if (str === "") {
+    if (str === '') {
       return false;
     }
     return /^[A-Za-z]+$/.test(str);
   };
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/VigenereDecryption");
+    navigate('/Lab14/Exercise/VigenereDecryption');
   };
 
   const encrypt = () => {
-    const A = "A".charCodeAt(0);
-    const a = "a".charCodeAt(0);
+    const A = 'A'.charCodeAt(0);
+    const a = 'a'.charCodeAt(0);
 
     const keyShifts = [];
     for (let char of vigenereKey) {
@@ -96,7 +96,7 @@ const VigenereEncryption = () => {
       return;
     }
 
-    let result = "";
+    let result = '';
     let keyIndex = 0;
 
     for (let char of vigenereBaseMessage) {
@@ -104,13 +104,13 @@ const VigenereEncryption = () => {
         let shift = keyShifts[keyIndex % keyShifts.length];
 
         // Uppercase Logic
-        if (char >= "A" && char <= "Z") {
+        if (char >= 'A' && char <= 'Z') {
           let originalPos = char.charCodeAt(0) - A;
           let newPos = (originalPos + shift) % 26;
           result += String.fromCharCode(newPos + A);
         }
         // Lowercase Logic
-        else if (char >= "a" && char <= "z") {
+        else if (char >= 'a' && char <= 'z') {
           let originalPos = char.charCodeAt(0) - a;
           let newPos = (originalPos + shift) % 26;
           result += String.fromCharCode(newPos + a);
@@ -153,7 +153,7 @@ const VigenereEncryption = () => {
       <LabButton
         disabled={!encrypted}
         onClick={handleContinue}
-        label={"Next"}
+        label={'Next'}
       />
     </div>
   );

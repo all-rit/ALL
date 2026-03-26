@@ -1,10 +1,10 @@
-import React from "react";
-import useMainStateContext from "src/reducers/MainContext";
+import React from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
 
-import { navigate } from "@reach/router";
-import { useEffect } from "react";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import { ExerciseService } from "../../../../services/lab14/ExerciseService";
+import { navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import { ExerciseService } from '../../../../services/lab14/ExerciseService';
 
 const ExerciseIntro = () => {
   const { actions, state } = useMainStateContext();
@@ -24,7 +24,7 @@ const ExerciseIntro = () => {
 
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab14/Exercise/Superposition");
+    navigate('/Lab14/Exercise/Superposition');
   };
 
   return (

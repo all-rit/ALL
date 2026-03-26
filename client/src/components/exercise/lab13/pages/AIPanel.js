@@ -1,13 +1,13 @@
-import { React, useContext, useMemo, useState, useEffect, useRef } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
-import { navigate } from "@reach/router";
-import { Tabs } from "../components/Tab/Tabs";
-import ExerciseStateContext from "../Lab13Context";
-import { getTopicById } from "src/constants/lab13/BiasQuestionsConfig";
-import { content } from "src/constants/lab13/WikipediaContent";
-import AIPanelRatingModal from "../components/AIPanel/AIPanelRatingModal";
-import AIChatBotTab from "../components/AIPanel/AIChatBotTab";
-import AllPediaTab from "../components/AIPanel/AllPediaTab";
+import { React, useContext, useMemo, useState, useEffect, useRef } from 'react';
+import { startExercise } from 'src/reducers/lab2/actions';
+import { navigate } from 'react-router-dom';
+import { Tabs } from '../components/Tab/Tabs';
+import ExerciseStateContext from '../Lab13Context';
+import { getTopicById } from 'src/constants/lab13/BiasQuestionsConfig';
+import { content } from 'src/constants/lab13/WikipediaContent';
+import AIPanelRatingModal from '../components/AIPanel/AIPanelRatingModal';
+import AIChatBotTab from '../components/AIPanel/AIChatBotTab';
+import AllPediaTab from '../components/AIPanel/AllPediaTab';
 
 const AIPanel = () => {
   const {
@@ -32,12 +32,12 @@ const AIPanel = () => {
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
   const [questionAnswered, setQuestionAnswered] = useState(false);
-  const [activeTab, setActiveTab] = useState("AIChatBot");
+  const [activeTab, setActiveTab] = useState('AIChatBot');
   const [currentDisplayTime, setCurrentDisplayTime] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const phase4IntroAddedRef = useRef(false);
-  const [toneRating, setToneRating] = useState("");
-  const [confidenceRating, setConfidenceRating] = useState("");
+  const [toneRating, setToneRating] = useState('');
+  const [confidenceRating, setConfidenceRating] = useState('');
   const [clickedReviewButtonThisPhase, setClickedReviewButtonThisPhase] =
     useState(false);
 
@@ -116,7 +116,7 @@ const AIPanel = () => {
   useEffect(() => {
     let intervalId;
 
-    if (activeTab === "ALLpedia" && showWikipediaTab) {
+    if (activeTab === 'ALLpedia' && showWikipediaTab) {
       // Mark as visited
 
       setHasVisitedWikipedia(true);
@@ -181,8 +181,8 @@ const AIPanel = () => {
     if (chatMessages.length === 0 && currentTopic) {
       setChatMessages([
         {
-          id: "greeting",
-          sender: "bot",
+          id: 'greeting',
+          sender: 'bot',
           text: `Hi! I'm ALL-IE the AI. What can I help you with?`,
           timestamp: new Date(),
           isNew: true,
@@ -206,7 +206,7 @@ const AIPanel = () => {
 
       // Enusure we're on the least knowledgeable topic
       if (currentTopic.biasPosition !== 2) {
-        console.warn("Phase 4 should be on least topic! Forcing to index 2");
+        console.warn('Phase 4 should be on least topic! Forcing to index 2');
         setTopicIndex(2);
         return;
       }
@@ -218,7 +218,7 @@ const AIPanel = () => {
 
         if (
           lastMessage.text !== phase4IntroText &&
-          !lastMessage.text.includes("implemented your IDE fixes")
+          !lastMessage.text.includes('implemented your IDE fixes')
         ) {
           phase4IntroAddedRef.current = true;
 
@@ -227,8 +227,8 @@ const AIPanel = () => {
             setChatMessages((prev) => [
               ...prev,
               {
-                id: "phase4-intro",
-                sender: "bot",
+                id: 'phase4-intro',
+                sender: 'bot',
                 text: phase4IntroText,
                 timestamp: new Date(),
                 isNew: true,
@@ -265,9 +265,9 @@ const AIPanel = () => {
 
     setTimeout(() => {
       setSelectedBiasData(null);
-      setToneRating("");
-      setConfidenceRating("");
-      setActiveTab("AIChatBot");
+      setToneRating('');
+      setConfidenceRating('');
+      setActiveTab('AIChatBot');
 
       setTimeout(() => {
         setTopicIndex((prevIndex) => {
@@ -278,7 +278,7 @@ const AIPanel = () => {
             setTimeout(() => {
               setQuestionAnswered(false);
               startExercise();
-              navigate("/Lab13/Exercise/IDEIntroduction");
+              navigate('/Lab13/Exercise/IDEIntroduction');
             }, 300);
             return prevIndex;
           }
@@ -288,7 +288,7 @@ const AIPanel = () => {
             setTimeout(() => {
               setQuestionAnswered(false);
               startExercise();
-              navigate("/Lab13/Exercise/Conclusion");
+              navigate('/Lab13/Exercise/Conclusion');
             }, 300);
             return prevIndex;
           }
@@ -311,7 +311,7 @@ const AIPanel = () => {
                 ...prev,
                 {
                   id: `transition-${nextIndex}`,
-                  sender: "bot",
+                  sender: 'bot',
                   text: `Let's continue. Select another prompt.`,
                   timestamp: new Date(),
                   isNew: true,
@@ -338,8 +338,8 @@ const AIPanel = () => {
           <div
             className={
               showRatingModal || showBiasExplanation
-                ? "tw-relative tw-z-10"
-                : ""
+                ? 'tw-relative tw-z-10'
+                : ''
             }
           >
             <Tabs activeTab={activeTab} onTabChange={setActiveTab}>

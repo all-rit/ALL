@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import Repair from "../../../../../body/Repair/Repair";
-import DateFormData from "../../../../../../constants/lab9/DateFormData";
-import { HEADINGS, EXERCISE_STATES } from "../../../../../../constants/lab9";
-import DateFormRepair from "./DateFormRepair";
-import useDataService from "../../../hooks/useDataService";
-import { navigate } from "@reach/router";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Repair from '../../../../../body/Repair/Repair';
+import DateFormData from '../../../../../../constants/lab9/DateFormData';
+import { HEADINGS, EXERCISE_STATES } from '../../../../../../constants/lab9';
+import DateFormRepair from './DateFormRepair';
+import useDataService from '../../../hooks/useDataService';
+import { navigate } from 'react-router-dom';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
 
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
@@ -31,7 +31,7 @@ const DateRepair = (props) => {
   }, []);
 
   const handleNav = () => {
-    navigate("/Lab9/Exercise/page");
+    navigate('/Lab9/Exercise/page');
   };
 
   return (
@@ -40,12 +40,12 @@ const DateRepair = (props) => {
       functions={functions}
       headingText={HEADINGS.REPAIR_DATE_REPAIR_HEADING}
       repairText={[
-        "In this section you will be making changes to the repair data file below",
+        'In this section you will be making changes to the repair data file below',
       ]}
       files={[
         {
           fileId: 0,
-          fileName: "DateFormat.js",
+          fileName: 'DateFormat.js',
           implementation: DateFormRepair,
         },
       ]}

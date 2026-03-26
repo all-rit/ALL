@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
-import Prism from "prismjs";
-import { navigate } from "@reach/router";
+import React, { useEffect, useState } from 'react';
+import Prism from 'prismjs';
+import { navigate } from 'react-router-dom';
 import {
   Paper,
   Snackbar,
   SnackbarContent,
   IconButton,
   Typography,
-} from "@mui/material";
-import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@mui/material/colors";
-import clsx from "clsx";
-import ErrorIcon from "@mui/icons-material/Error";
-import InfoIcon from "@mui/icons-material/Info";
-import CloseIcon from "@mui/icons-material/Close";
-import WarningIcon from "@mui/icons-material/Warning";
-import PropTypes from "prop-types";
-import RepairService from "../../../../services/lab4/RepairService";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
+} from '@mui/material';
+import CheckCircleIcon from '@mui/material/SvgIcon/SvgIcon';
+import { amber, green, red, yellow } from '@mui/material/colors';
+import clsx from 'clsx';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from '@mui/icons-material/Close';
+import WarningIcon from '@mui/icons-material/Warning';
+import PropTypes from 'prop-types';
+import RepairService from '../../../../services/lab4/RepairService';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -49,13 +49,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
     },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-  const messageStyle = { marginLeft: "10px" };
+  const messageStyle = { marginLeft: '10px' };
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -67,8 +67,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={"body2"} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
+          <Typography variant={'body2'} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
             {message}
           </Typography>
         </span>
@@ -93,59 +93,59 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
+  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 const CodeChangeAccessible = () => {
   const { actions } = useMainStateContext();
-  const [textValue, setTextValue] = useState("");
+  const [textValue, setTextValue] = useState('');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState(
-    "Please type code before updating code!",
+    'Please type code before updating code!',
   );
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (window?.location?.state?.hint !== undefined) {
-      const el0 = document.getElementById("first");
+      const el0 = document.getElementById('first');
       el0.value = window?.location?.state?.hint;
-      doEvent(el0, "input");
+      doEvent(el0, 'input');
     }
   }, []);
 
   const handleChange = (event) => {
     setTextValue(event.target.value);
-    console.log("handled change value: " + textValue);
+    console.log('handled change value: ' + textValue);
     Prism.highlightAll();
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setSnackBarOpen(false);
-    console.log("SnackBar Closed");
+    console.log('SnackBar Closed');
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("hint updated as: " + textValue);
-    if (textValue === "") {
-      setMessage("Please type code before updating code!");
+    console.log('hint updated as: ' + textValue);
+    if (textValue === '') {
+      setMessage('Please type code before updating code!');
       setSnackBarOpen(true);
     } else if (parseInt(textValue) !== 0) {
-      setMessage("Please enter value 0");
+      setMessage('Please enter value 0');
       setSnackBarOpen(true);
     } else if (!/^\d+$/.test(textValue)) {
-      setMessage("Please enter numeric value");
+      setMessage('Please enter numeric value');
       setSnackBarOpen(true);
     } else {
       window.location.state = {
         hint: textValue,
       };
       RepairService.submitRepairHint(textValue);
-      navigate("/Lab4/Exercise/FormHintAccessible");
+      navigate('/Lab4/Exercise/FormHintAccessible');
     }
     Prism.highlightAll();
   };
@@ -156,13 +156,13 @@ const CodeChangeAccessible = () => {
   };
 
   const paperStyle = {
-    marginLeft: "10px",
-    marginRight: "10px",
-    marginTop: "20px",
+    marginLeft: '10px',
+    marginRight: '10px',
+    marginTop: '20px',
   };
   return (
-    <div className={"code_editor"}>
-      <div className={"tw-p-4"}>
+    <div className={'code_editor'}>
+      <div className={'tw-p-4'}>
         <h2 className="tw-title tw-text-left tw-my-6">Repair</h2>
         <p className="tw-body-text tw-text-left">
           The intent of this code repair is to ensure that, wherever possible,
@@ -179,7 +179,7 @@ const CodeChangeAccessible = () => {
           should be focusable in sequential keyboard navigation.
         </p>
       </div>
-      <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
+      <form onSubmit={handleSubmit} noValidate autoComplete={'off'}>
         <Paper style={paperStyle}>
           <pre>
             <code className="language-html">
@@ -195,13 +195,13 @@ const CodeChangeAccessible = () => {
           <span tabindex= `}
             </code>
             <input
-              type={"text"}
+              type={'text'}
               id="first"
               value={textValue}
               placeholder=""
               onChange={handleChange}
               aria-label={
-                "set tab-index to 0 so tooltip can be keyboard accessible"
+                'set tab-index to 0 so tooltip can be keyboard accessible'
               }
             />
             <code className="language-html">
@@ -228,8 +228,8 @@ const CodeChangeAccessible = () => {
       </form>
       <Snackbar
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
         open={snackBarOpen}
         autoHideDuration={6000}

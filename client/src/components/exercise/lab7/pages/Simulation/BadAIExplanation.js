@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
 
 /**
  * Renders the component that explains the behavior of a bad AI in file access management.
@@ -19,12 +19,12 @@ const BadAIExplanation = () => {
 
   const handleStart = () => {
     actions.updateUserState(EXERCISE_PLAYING);
-    navigate("/Lab7/Exercise/AICodeRepair");
+    navigate('/Lab7/Exercise/AICodeRepair');
   };
 
   return (
     <div>
-      <h2 className={"tw-title tw-text-left"}> Simulation Explanation</h2>
+      <h2 className={'tw-title tw-text-left'}> Simulation Explanation</h2>
       <p className="tw-body-text tw-text-left tw-my-6">
         As you can see, the AI made many mistakes when it came to managing file
         access when threats were detected in the system.

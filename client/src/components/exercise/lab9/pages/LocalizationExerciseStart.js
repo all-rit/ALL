@@ -1,9 +1,9 @@
-import { navigate } from "@reach/router";
-import React, { useEffect } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
-import PropTypes from "prop-types";
-import LabButton from "../../../all-components/LabButton";
+import { navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from 'src/constants/index';
+import PropTypes from 'prop-types';
+import LabButton from '../../../all-components/LabButton';
 
 const ExerciseStart = () => {
   const { actions } = useMainStateContext();
@@ -15,14 +15,14 @@ const ExerciseStart = () => {
   const handleStart = () => {
     actions.updateUserState(EXERCISE_PLAYING);
     // navigate to the static faux webpage
-    navigate("/Lab9/Exercise/InitialPage");
+    navigate('/Lab9/Exercise/InitialPage');
   };
 
   return (
     <>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
-          <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+          <h1 className={'tw-title tw-text-left'}>Exercise Start</h1>
           <p className="tw-body-text tw-my-6">
             Welcome to ALL University! ALL University’s primary campus is
             located in the US, but there are also several satellite campuses
@@ -44,10 +44,10 @@ const ExerciseStart = () => {
         </div>
       </div>
       <p className="tw-body-text tw-mb-6">
-        Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
+        Click the &apos;<span className={'tw-font-bold'}>Start</span>&apos;
         button to begin!
       </p>
-      <LabButton onClick={handleStart} key="start" label={"Start"} />
+      <LabButton onClick={handleStart} key="start" label={'Start'} />
     </>
   );
 };

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { startExercise } from "src/reducers/lab2/actions";
-import { navigate } from "@reach/router";
-import DragDropGame from "../components/DragAndDropNoCorrectAnswer/DragDropGame";
-import ExerciseStateContext from "../Lab13Context";
-import { initialColumns, initialBank } from "src/constants/lab13/RankingConfig";
-import DragIndicatorRoundedIcon from "@mui/icons-material/DragIndicatorRounded";
+import React, { useState, useEffect, useContext } from 'react';
+import { startExercise } from 'src/reducers/lab2/actions';
+import { navigate } from 'react-router-dom';
+import DragDropGame from '../components/DragAndDropNoCorrectAnswer/DragDropGame';
+import ExerciseStateContext from '../Lab13Context';
+import { initialColumns, initialBank } from 'src/constants/lab13/RankingConfig';
+import DragIndicatorRoundedIcon from '@mui/icons-material/DragIndicatorRounded';
 
 const ConfidenceRanking = () => {
   const {
@@ -59,17 +59,17 @@ const ConfidenceRanking = () => {
   const handleContinue = () => {
     if (!success) {
       alert(
-        "Please complete ranking your knowledge of all topics before continuing",
+        'Please complete ranking your knowledge of all topics before continuing',
       );
       return;
     }
     startExercise();
-    navigate("/Lab13/Exercise/AIPanel");
+    navigate('/Lab13/Exercise/AIPanel');
   };
 
   return (
     <div className="tw-bg-center">
-      <h1 className={"tw-title tw-text-left"}>Confidence Ranking Page</h1>
+      <h1 className={'tw-title tw-text-left'}>Confidence Ranking Page</h1>
       <p className="tw-body-text tw-text-left tw-py-6">
         Drag and Drop each of the three topics, Dyslexia, Color Blindness, and
         Localization from your most familiar to least familiar.
@@ -82,7 +82,7 @@ const ConfidenceRanking = () => {
         colHeaderStyle="tw-m-1 tw-text-center tw-body-text tw-text-black"
         bankStyle="tw-flex tw-flex-col tw-gap-3 tw-w-full tw-p-3 tw-rounded-lg tw-bg-[#0144D5] tw-items-center tw-justify-center tw-h-full"
         bankCardStyle="tw-text-left tw-p-2 tw-w-[15rem] tw-h-[3.5rem] tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-text-black tw-text-sm tw-bg-white"
-        msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
+        msgStyle={`${!success ? 'tw-bg-error' : 'tw-bg-success'} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
         cols={cols}
         setCols={setCols}
         initialBank={bank}

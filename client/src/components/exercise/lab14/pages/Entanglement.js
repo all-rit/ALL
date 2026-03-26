@@ -1,29 +1,29 @@
-import { React, useState } from "react";
-import { navigate } from "@reach/router";
-import EntanglementQubit from "src/components/exercise/lab14/components/EntaglementQubit.js";
+import { React, useState } from 'react';
+import { navigate } from 'react-router-dom';
+import EntanglementQubit from 'src/components/exercise/lab14/components/EntaglementQubit.js';
 
 const Entanglement = () => {
-  const [text, setText] = useState("");
-  const [bgColor, setBgColor] = useState("qubit");
-  const [fontColor, setFontColor] = useState("white");
+  const [text, setText] = useState('');
+  const [bgColor, setBgColor] = useState('qubit');
+  const [fontColor, setFontColor] = useState('white');
   const [time, setTime] = useState(0);
-  const [altColor, setAltColor] = useState("qubit");
-  const [altText, setAltText] = useState("");
-  const [altFontColor, setAltFontColor] = useState("white");
+  const [altColor, setAltColor] = useState('qubit');
+  const [altText, setAltText] = useState('');
+  const [altFontColor, setAltFontColor] = useState('white');
   const [resetVisible, setResetVisible] = useState(false);
 
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/Transition");
+    navigate('/Lab14/Exercise/Transition');
   };
 
   const resetQubits = () => {
-    setBgColor("qubit");
-    setFontColor("white");
-    setText("");
+    setBgColor('qubit');
+    setFontColor('white');
+    setText('');
     setTime(0);
-    setAltColor("qubit");
-    setAltText("");
-    setAltFontColor("white");
+    setAltColor('qubit');
+    setAltText('');
+    setAltFontColor('white');
     setResetVisible(false);
   };
 
@@ -32,26 +32,26 @@ const Entanglement = () => {
     const rng = Math.floor(Math.random() * 2);
 
     if (rng == 0) {
-      setBgColor("labBlue");
-      setAltColor("labYellow");
-      setText("0");
-      setAltText("1");
-      setAltFontColor("black");
+      setBgColor('labBlue');
+      setAltColor('labYellow');
+      setText('0');
+      setAltText('1');
+      setAltFontColor('black');
       setTime(0);
       setResetVisible(true);
     } else {
-      setBgColor("labYellow");
-      setAltColor("labBlue");
-      setFontColor("black");
-      setText("1");
-      setAltText("0");
+      setBgColor('labYellow');
+      setAltColor('labBlue');
+      setFontColor('black');
+      setText('1');
+      setAltText('0');
       setResetVisible(true);
     }
   };
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"}>Entanglement</h1>
+      <h1 className={'tw-title tw-text-left'}>Entanglement</h1>
       <p className="tw-body-text tw-text-left tw-py-4">
         Entanglement is another important idea in quantum computing, much like
         superposition. When two qubits become entangled, their states become
@@ -71,7 +71,7 @@ const Entanglement = () => {
         <div className="tw-flex tw-flex-row tw-w-1/2 tw-py-10">
           <EntanglementQubit
             colorChange={colorChange}
-            text={text ? text : "Qubit"}
+            text={text ? text : 'Qubit'}
             bgColor={bgColor}
             fontColor={fontColor}
             time={time}
@@ -79,7 +79,7 @@ const Entanglement = () => {
           <div className="tw-flex-grow tw-border-b-7 tw-border-dashed tw-border-labGray tw-w-1/2 tw-my-12 tw-h-0"></div>
           <EntanglementQubit
             colorChange={colorChange}
-            text={altText ? altText : "Qubit"}
+            text={altText ? altText : 'Qubit'}
             bgColor={altColor}
             fontColor={altFontColor}
           ></EntanglementQubit>
@@ -87,7 +87,7 @@ const Entanglement = () => {
       </div>
       <div id="reset" className="tw-flex tw-justify-center">
         <button
-          className={`btn tw-bg-labGray tw-text-white text-black btn-xl text-uppercase ${resetVisible ? "tw-visible" : "tw-invisible"}`}
+          className={`btn tw-bg-labGray tw-text-white text-black btn-xl text-uppercase ${resetVisible ? 'tw-visible' : 'tw-invisible'}`}
           onClick={resetQubits}
           key="start"
         >

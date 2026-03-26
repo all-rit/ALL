@@ -1,14 +1,14 @@
-import React from "react";
-import { navigate } from "@reach/router";
+import React from 'react';
+import { navigate } from 'react-router-dom';
 
 const ExerciseTransition = () => {
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/CaesarIntro");
+    navigate('/Lab14/Exercise/CaesarIntro');
   };
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title tw-text-left"}>Activity Start</h1>
+      <h1 className={'tw-title tw-text-left'}>Activity Start</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-4">
           Now that you have reviewed the basics of quantum computing, you will

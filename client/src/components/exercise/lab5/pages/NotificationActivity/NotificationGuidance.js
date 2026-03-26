@@ -1,25 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../../all-components/PageServiceTimer";
+import React, { Component } from 'react';
+import { navigate } from 'react-router-dom';
+import PageServiceTimer from '../../../../all-components/PageServiceTimer';
 
 class NotificationGuidance extends Component {
   constructor(props) {
     super(props);
-    this.state = { componentName: "NotificationGuidance" };
+    this.state = { componentName: 'NotificationGuidance' };
   }
   handleNav() {
-    navigate("/Lab5/Exercise/NotificationRepair");
+    navigate('/Lab5/Exercise/NotificationRepair');
   }
 
   render() {
     const { actions } = this.props;
     return (
       <div className="tw-my-6 tw-body-text">
-        <h2 className={"tw-title tw-text-left tw-mb-6"}>
-          {" "}
-          Inaccessible Notification{" "}
+        <h2 className={'tw-title tw-text-left tw-mb-6'}>
+          {' '}
+          Inaccessible Notification{' '}
         </h2>
         <div className="center-div">
           <div className="guidance">

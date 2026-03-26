@@ -1,9 +1,9 @@
-import { navigate } from "@reach/router";
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import LabButton from "../../../all-components/LabButton";
+import { navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import LabButton from '../../../all-components/LabButton';
 
 const Discovery = () => {
   const { actions } = useMainStateContext();
@@ -14,7 +14,7 @@ const Discovery = () => {
 
   const handleNext = () => {
     // navigate to the webpage
-    navigate("/Lab9/Exercise/page");
+    navigate('/Lab9/Exercise/page');
   };
 
   return (
@@ -47,7 +47,7 @@ const Discovery = () => {
         the website that isn&#39;t localized and repair that section. Click
         &#34;Continue&#34; to begin!
       </div>
-      <LabButton onClick={handleNext} key="continue" label={"Continue"} />
+      <LabButton onClick={handleNext} key="continue" label={'Continue'} />
     </>
   );
 };

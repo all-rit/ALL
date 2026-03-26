@@ -1,12 +1,12 @@
-import { React } from "react";
-import { navigate } from "@reach/router";
-import LabButton from "../../../all-components/LabButton";
-import VigenereImage from "../../../../assets/images/lab14/vigenerecipher.jpg";
-import VigenereGraph from "../../../../assets/images/lab14/vigeneregraph.png";
+import { React } from 'react';
+import { navigate } from 'react-router-dom';
+import LabButton from '../../../all-components/LabButton';
+import VigenereImage from '../../../../assets/images/lab14/vigenerecipher.jpg';
+import VigenereGraph from '../../../../assets/images/lab14/vigeneregraph.png';
 
 const VigenereIntro = () => {
   const handleContinue = () => {
-    navigate("/Lab14/Exercise/VigenereEncryption");
+    navigate('/Lab14/Exercise/VigenereEncryption');
   };
 
   return (
@@ -24,7 +24,7 @@ const VigenereIntro = () => {
         <div className="lg:tw-max-w-[600px] lg:tw-min-w-[300px]">
           <p className="tw-body-text tw-text-left tw-py-4">
             This cipher works by shifting each letter in a plaintext message by
-            a different Caesar Cipher, where the shift value of <i>that</i>{" "}
+            a different Caesar Cipher, where the shift value of <i>that</i>{' '}
             Caesar Cipher is the value of a letter in a base key message. For
             example, let&apos;s say we wanted to encrypt the word <i>quantum</i>
             , and we chose the key for this encryption to be <i>cryptography</i>
@@ -33,24 +33,24 @@ const VigenereIntro = () => {
           <div className="tw-flex tw-flex-col tw-gap-2 tw-w-full tw-px-8 tw-mb-4">
             <p className="tw-text-left">
               1. Start with the first character of the message. We shift this
-              letter <i>q</i> by the value of the first character of the key{" "}
+              letter <i>q</i> by the value of the first character of the key{' '}
               <i>c</i>. Shifting <i>q</i> by 2 (the letter <i>a</i> is valued at
               0 instead of 1) gives us <i>s</i>.
             </p>
             <p className="tw-text-left">
-              2. Repeat for the second character. We shift the letter <i>u</i>{" "}
+              2. Repeat for the second character. We shift the letter <i>u</i>{' '}
               by <i>r</i>, yielding <i>l</i>.
             </p>
             <p className="tw-text-left">
-              3. Repeat for all possible characters in the message! The message{" "}
-              <i>quantum</i> encrypted with key <i>cryptography</i> yields{" "}
+              3. Repeat for all possible characters in the message! The message{' '}
+              <i>quantum</i> encrypted with key <i>cryptography</i> yields{' '}
               <i>slycmis</i>.
             </p>
             <p className="tw-text-left">
               4. If your key is shorter in length than your message, you may
               restart at the beginning of the key after using all the letters.
-              For example, if the message is <i>accessible</i>, and the key is{" "}
-              <i>lab</i>, the key is repeated for the length of the message:{" "}
+              For example, if the message is <i>accessible</i>, and the key is{' '}
+              <i>lab</i>, the key is repeated for the length of the message:{' '}
               <i>lablablabl</i>.
             </p>
           </div>
@@ -67,18 +67,18 @@ const VigenereIntro = () => {
             E<sub>i</sub> = (L<sub>i</sub> + K<sub>i</sub>) % 26
           </p>
           <p className="tw-body-text tw-text-center">
-            Where{" "}
+            Where{' '}
             <strong>
               L<sub>i</sub>
-            </strong>{" "}
-            is the encrypted letter,{" "}
+            </strong>{' '}
+            is the encrypted letter,{' '}
             <strong>
               P<sub>i</sub>
-            </strong>{" "}
-            is your message&apos;s letter, and{" "}
+            </strong>{' '}
+            is your message&apos;s letter, and{' '}
             <strong>
               K<sub>i</sub>
-            </strong>{" "}
+            </strong>{' '}
             is the key&apos;s letter.
           </p>
         </div>
@@ -118,7 +118,7 @@ const VigenereIntro = () => {
             every possible key of every possible length. Since there are 26
             letters in the English alphabet, and the amount of checks required
             grows exponentially with the length of the key, the base-time
-            complexity of a brute-force attack would be O(26<sup>k</sup>), where{" "}
+            complexity of a brute-force attack would be O(26<sup>k</sup>), where{' '}
             <i>k</i> is the length of the key.
           </p>
           <p className="tw-body-text tw-text-left">
@@ -164,7 +164,7 @@ const VigenereIntro = () => {
       </p>
 
       <div className="tw-mt-10">
-        <LabButton onClick={handleContinue} label={"Continue"} />
+        <LabButton onClick={handleContinue} label={'Continue'} />
       </div>
     </div>
   );

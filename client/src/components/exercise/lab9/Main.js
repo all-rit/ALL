@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Router } from "@reach/router";
+import React, { useState } from 'react';
+import { Router } from 'react-router-dom';
 // lab imported dependencies;
-import LocalizationRepair from "../lab9/pages/LocalizationRepair";
-import { REPAIR, EXERCISE_STATES } from "../../../constants/lab9";
-import GameStateContext from "./Lab9Context";
-import DynamicWebpage from "./components/DynamicWebpage";
-import LocalizationExerciseStart from "./pages/LocalizationExerciseStart";
-import LocalizationDiscovery from "./pages/LocalizationDiscovery";
-import LocalizationExerciseEnd from "./pages/LocalizationExerciseEnd";
-import StaticWebpage from "./components/StaticWebpage";
+import LocalizationRepair from '../lab9/pages/LocalizationRepair';
+import { REPAIR, EXERCISE_STATES } from '../../../constants/lab9';
+import GameStateContext from './Lab9Context';
+import DynamicWebpage from './components/DynamicWebpage';
+import LocalizationExerciseStart from './pages/LocalizationExerciseStart';
+import LocalizationDiscovery from './pages/LocalizationDiscovery';
+import LocalizationExerciseEnd from './pages/LocalizationExerciseEnd';
+import StaticWebpage from './components/StaticWebpage';
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -25,7 +25,7 @@ const Main = () => {
           <LocalizationExerciseStart path="/*" />
           <StaticWebpage path="/InitialPage" />
           <LocalizationDiscovery path="/Discovery" />
-          <DynamicWebpage path={"/page"} />
+          <DynamicWebpage path={'/page'} />
           <LocalizationRepair path={`${REPAIR}/*`} />
           <LocalizationExerciseEnd path="/Conclusion" />
         </Router>

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { navigate } from "@reach/router";
-import { MathComponent } from "mathjax-react";
-import { EXERCISE_PLAYING } from "src/constants/index";
-import useMainStateContext from "src/reducers/MainContext";
+import React, { useEffect } from 'react';
+import { navigate } from 'react-router-dom';
+import { MathComponent } from 'better-react-mathjax';
+import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
 
 /**
  * Renders the start page for the Alteration activity.
@@ -18,7 +18,7 @@ const AlterationStart = () => {
   }, []);
 
   const handleStart = () => {
-    navigate("/Lab7/Exercise/AlterationQuiz");
+    navigate('/Lab7/Exercise/AlterationQuiz');
   };
 
   return (

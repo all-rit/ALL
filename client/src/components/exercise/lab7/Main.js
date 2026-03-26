@@ -1,17 +1,17 @@
-import React from "react";
-import { Router } from "@reach/router";
-import "../../../assets/stylesheets/main.scss";
+import React from 'react';
+import { Router } from 'react-router-dom';
+import '../../../assets/stylesheets/main.scss';
 
-import ExerciseStart from "./pages/ExerciseStart";
-import AISimulation from "./pages/Simulation/AISimulation";
-import SimulationSummary from "./pages/Simulation/SimulationSummary";
-import BadAIExplanation from "./pages/Simulation/BadAIExplanation";
-import AICodeRepair from "./pages/ImproveAICode/AICodeRepair";
-import ImprovedAISimulation from "./pages/ImproveAICode/ImprovedAISimulation";
-import AlterationStart from "./pages/AlterationActivity/AlterationStart";
-import AlterationQuiz from "./pages/AlterationActivity/AlterationQuiz";
-import ExerciseEnd from "./pages/ExerciseEnd";
-import { Lab7ContextProvider } from "src/reducers/lab7/Lab7Context";
+import ExerciseStart from './pages/ExerciseStart';
+import AISimulation from './pages/Simulation/AISimulation';
+import SimulationSummary from './pages/Simulation/SimulationSummary';
+import BadAIExplanation from './pages/Simulation/BadAIExplanation';
+import AICodeRepair from './pages/ImproveAICode/AICodeRepair';
+import ImprovedAISimulation from './pages/ImproveAICode/ImprovedAISimulation';
+import AlterationStart from './pages/AlterationActivity/AlterationStart';
+import AlterationQuiz from './pages/AlterationActivity/AlterationQuiz';
+import ExerciseEnd from './pages/ExerciseEnd';
+import { Lab7ContextProvider } from 'src/reducers/lab7/Lab7Context';
 
 /**
  * Main component for the Lab7 exercise.

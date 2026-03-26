@@ -7,6 +7,7 @@ import {
 import { PropTypes } from "prop-types";
 import AuthService from "src/services/AuthService";
 import UserService from "../services/UserService";
+import { MathJaxContext } from "node_modules/better-react-mathjax/index";
 
 /**
  * MainStateContext is a context object created using createContext() function.
@@ -132,7 +133,9 @@ export const MainContextProvider = ({ children }) => {
 
   return (
     <MainStateContext.Provider value={value}>
-      {children}
+      <MathJaxContext>
+        {children}
+      </MathJaxContext>
     </MainStateContext.Provider>
   );
 };
