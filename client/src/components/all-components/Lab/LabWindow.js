@@ -51,7 +51,7 @@ const LabWindow = (props) => {
         >
           <div
             className={
-              "tw-col-start-1 md:tw-col-span-3 xl:tw-col-span-2 tw-mx-2"
+              "tw-col-start-1 md:tw-col-span-3 xl:tw-col-span-2 tw-mx-2 tw-pt-8"
             }
           >
             <div className={"tw-sticky tw-top-[7.75rem]"}>
