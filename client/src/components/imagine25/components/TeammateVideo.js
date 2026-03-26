@@ -49,10 +49,8 @@ const TeammateVideo = (props) => {
     updateVideoSource();
   }, [teammateId, delayedMessageShown]);
 
-  const buttonSize = "tw-w-16 tw-mx-auto";
-
   return (
-    <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[575px]">
+    <div>
       {!videoEnded ? (
         <video
           src={videoSrc}
@@ -66,34 +64,11 @@ const TeammateVideo = (props) => {
           }`}
         />
       ) : (
-        <div className="tw-w-64 tw-h-36 tw-bg-black tw-rounded-lg tw-shadow-lg"></div>
+        <div className="tw-w-64 tw-h-36 tw-bg-black tw-rounded-lg tw-shadow-lg tw-mx-auto"></div>
       )}
       <p>
         Teammate live from: <b>Buffalo, NY</b>
       </p>
-      <p className="tw-col-span-2 tw-text-center tw-font-bold">
-        <br />
-        (Keyboard)
-      </p>
-      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
-        <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
-        <img
-          className={
-            "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
-            buttonSize
-          }
-          src="/img/imagine_game_controls/ArrowKey.png"
-        />
-        <img
-          className={buttonSize}
-          src="/img/imagine_game_controls/ArrowKey.png"
-        />
-        <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
-        <img
-          className="tw-col-span-2 tw-w-32 tw-mx-auto"
-          src="/img/imagine_game_controls/SpaceBar.png"
-        />
-      </div>
     </div>
   );
 };

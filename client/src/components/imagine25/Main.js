@@ -13,6 +13,7 @@ import {
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
+import Analysis from "./pages/Analysis";
 import "./main.css";
 import AvatarCreationPage from "./pages/AvatarCreationPage";
 
@@ -163,6 +164,7 @@ const Main = () => {
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
+            <Analysis path={"/Analysis"}></Analysis>
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}
