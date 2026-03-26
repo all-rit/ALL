@@ -303,13 +303,6 @@ create table professors
     primary key (id)
 );
 
-create table session
-(
-    usersessionid  serial,
-    userid        integer,
-    primary key (usersessionid)
-);
-
 create table team_members
 (
     id            serial,
@@ -376,20 +369,19 @@ create table userlabcompletion
     primary key (id)
 );
 
-create table users
+create table users 
 (
-    userid      serial,
-    firstname   text,
-    lastinitial char,
-    email1      text,
-    email2      text,
-    userpfp     text,
-    PRIMARY KEY (userid),
-    UNIQUE (email1),
-    UNIQUE (email2)
+    id                serial unique,
+    "googleAccountId" text unique,
+    email             text,
+    "firstName"       text,
+    "lastInitial"     char(1),
+    pfp               text,
+    primary key (id)
 );
-insert into users (userid, firstname, lastinitial, email1, email2, userpfp)
-VALUES (98, 'Ally', 'A', 'allyaccessibility@all.edu', null, null), (99, 'Lily', 'L', 'lilylabs@all.edu', null, null), (100, 'Edna', 'E', 'ednaeducation@all.edu', null, null);
+insert into users (id, "googleAccountId", email, "firstName", "lastInitial", pfp)
+values (1, null, 'allyaccessibility@all.edu', 'Ally', 'A', null), (2, null, 'lilylabs@all.edu', 'Lily', 'L', null), (3, null, 'ednaeducation@all.edu', 'Edna', 'E', null);
+ALTER SEQUENCE users_id_seq RESTART WITH 4;
 
 create table lab8_exercise
 (

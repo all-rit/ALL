@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Universal Controllers
+const AuthController = require('../controllers/AuthController')
 const UserController = require('../controllers/UserController');
 const UserLabController = require('../controllers/UserLabController');
 const PageController = require('../controllers/PageController');
@@ -68,16 +69,14 @@ const TeamMemberController = require('../controllers/TeamMemberController');
 // Imagine Controller
 const ImagineController = require('../controllers/ImagineController');
 
+// Auth Routes
+router.get('/auth/google', AuthController.google);
+router.get('/auth/google/callback', AuthController.googleCallback);
+
 // User Routes
-router.post('/url', UserController.storeURL);
-router.get('/auth/google', UserController.authenticate);
-router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
-router.get('/logout', UserController.logout);
-router.get('/user', UserController.main);
-router.get('/user/:userID', UserController.getUser);
-router.get('/user/:userID/development', UserController.developmentLogin);
-router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
+router.get('/user', UserController.index);
 router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
+router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
 router.get('/user/:userID/assigned', UserController.getUserAssignedLabs);
 router.get('/user/:userID/todo', UserController.getUserToDoLabs);
 router.get('/user/:userID/labrecords', UserLabController.getUserLabRecords);
