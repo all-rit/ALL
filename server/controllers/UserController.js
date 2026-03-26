@@ -1,40 +1,39 @@
 const UserService = require('../services/UserService');
 
-const index = (req, res) => {
-  UserService.getSession(req.session.token).then((data) => {
-    req.session.token = data.token;
-    res.json(data.user);
+const getUser = (req, res) => {
+  UserService.getUser(req.userId).then((user) => {
+    res.json(user);
   });
 };
 
 const getUserInstructingGroups = (req, res) => {
-  UserService.getUserInstructingGroups(req.params.userID).then((records) => {
+  UserService.getUserInstructingGroups(req.userId).then((records) => {
     res.json(records);
   });
 };
 
 const getUserEnrolledGroups = (req, res) => {
-  UserService.getUserEnrolledGroups(req.params.userID).then((records) => {
+  UserService.getUserEnrolledGroups(req.userId).then((records) => {
     res.json(records);
   });
 };
 
 const getUserAssignedLabs = (req, res) => {
-  UserService.getUserAssignedLabs(req.params.userID).then((records) => {
+  UserService.getUserAssignedLabs(req.userId).then((records) => {
     res.json(records);
   });
 };
 
 const getUserToDoLabs = (req, res) => {
-  UserService.getUserToDoLabs(req.params.userID).then((records) => {
+  UserService.getUserToDoLabs(req.userId).then((records) => {
     res.json(records);
   });
 };
 
 module.exports = {
-  index,
-  getUserEnrolledGroups,
+  getUser,
   getUserInstructingGroups,
+  getUserEnrolledGroups,
   getUserAssignedLabs,
   getUserToDoLabs,
 };

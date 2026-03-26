@@ -1,5 +1,42 @@
 const db = require('../database');
 
+const getUserLabRecords = async (userId) => {
+  try {
+    if (userId) {
+      return db.sequelize.query(
+        `SELECT * FROM "userlabcompletion" 
+			   JOIN "labs" ON  "userlabcompletion"."labid"="labs"."id" 
+			   WHERE "userlabcompletion"."userid"=(:userId)
+		    `, {
+        replacements: { userId: userId },
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true,
+      });
+    }
+  } catch (error) {
+    console.warn('Error getting user lab records', error);
+  }
+};
+
+const getUserLabCompletion = (userId, labId) => {
+  if (userId && labId) {
+    return db.UserLabCompletion
+      .findOne({
+        where:
+        {
+          userid: userId,
+          labid: labId,
+        },
+      }).then((userlabcompletion) => {
+        return userlabcompletion;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  return Promise.resolve();
+};
+
 const completeAbout = (data) => {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
@@ -389,44 +426,6 @@ const userCompleteQuiz = (data) => {
       });
   }
   return Promise.resolve();
-};
-
-
-const getUserLabCompletion = (data) => {
-  if (data.userid) {
-    return db.UserLabCompletion
-      .findOne({
-        where:
-        {
-          userid: data.userid,
-          labid: data.labid,
-        },
-      }).then((userlabcompletion) => {
-        return userlabcompletion;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-  return Promise.resolve();
-};
-
-const getUserLabRecords = async (userid) => {
-  try {
-    if (userid) {
-      return db.sequelize.query(
-        `SELECT * FROM "userlabcompletion" 
-			JOIN "labs" ON  "userlabcompletion"."labid"="labs"."id" 
-			WHERE "userlabcompletion"."userid"=(:userID)
-		    `, {
-        replacements: { userID: userid },
-        type: db.sequelize.QueryTypes.SELECT,
-        raw: true,
-      });
-    }
-  } catch (error) {
-    console.warn('Error getting user lab records', error);
-  }
 };
 
 module.exports = {

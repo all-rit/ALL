@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const google = (req, res) => {
     const state = crypto.randomBytes(32).toString('hex');
     req.session.state = state;
-    
+
     const authorizationUrl = oauth2Client.generateAuthUrl({
         access_type: 'offline',
         scope: scopes,
@@ -18,12 +18,12 @@ const google = (req, res) => {
 };
 
 const googleCallback = async (req, res) => {
-    if(req.query.error) {
+    if (req.query.error) {
         res.status(400).json({ error: 'Error during Google consent screen authorization.' });
         return;
     }
 
-    if(req.query.state !== req.session.state) {
+    if (req.query.state !== req.session.state) {
         res.status(400).json({ error: 'Invalid state parameter. Aborting due to possible CSRF attack.' });
         return;
     }
@@ -31,7 +31,7 @@ const googleCallback = async (req, res) => {
     let ticket;
     try {
         let { tokens } = await oauth2Client.getToken(req.query.code);
-    
+
         ticket = await oauth2Client.verifyIdToken({
             idToken: tokens.id_token,
             audience: oauth2Client._clientId,
@@ -40,13 +40,13 @@ const googleCallback = async (req, res) => {
         res.status(500).json({ error: 'Failed to exchange provided code for Google token.' });
     }
 
-    let user = await db.Users.findOne({ 
-        where: { 
-            googleAccountId: ticket.getUserId() 
-        } 
+    let user = await db.Users.findOne({
+        where: {
+            googleAccountId: ticket.getUserId()
+        }
     });
 
-    if(!user) {
+    if (!user) {
         user = await db.Users.create({
             googleAccountId: ticket.getUserId(),
             email: ticket.getPayload().email,
@@ -58,9 +58,10 @@ const googleCallback = async (req, res) => {
 
     const iat = Math.floor(Date.now() / 1000);
     const token = jwt.sign({
-        iss: "all.rit.edu",
+        iss: 'all.rit.edu',
         sub: user.id,
         aud: user.id,
+        exp: iat + (60 * 60 * 24), // Token valid for 1 day
         nbf: iat,
         iat: iat,
         googleAccountId: user.googleAccountId,
@@ -72,14 +73,8 @@ const googleCallback = async (req, res) => {
         algorithm: 'HS256'
     });
 
-    const userSession = await db.UserSessions.create({
-        userId: user.id,
-        jwt: token,
-        issuedAt: new Date(),
-    });
-
     return res.status(200).json({
-        jwt: userSession.jwt
+        token: token
     });
 };
 

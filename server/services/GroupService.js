@@ -1,6 +1,89 @@
 const db = require('../database');
 const crypto = require('crypto');
 
+const createGroup = async (userId, groupName, color) => {
+  try {
+    const data = await db.Groups.create({
+      instructorUserID: userId,
+      groupName: groupName,
+      createdDate: Date.now(),
+      color: color,
+      isActive: true,
+      code: crypto.randomUUID().toUpperCase().slice(1, 7),
+    });
+    return data;
+  } catch (error) {
+    console.error('Error while creating group', error);
+  }
+};
+
+const enrollUserInGroup = (userId, code) => {
+  return db.Groups
+    .findOne({
+      where: {
+        code: code,
+      },
+    }).then((group) => {
+      if (group) {
+        // check if user is already enrolled in the group
+        return db.Enrollment.findOne({
+          where: {
+            userID: userId,
+            groupID: group.id,
+            isActive: true,
+          },
+        }).then((record) => {
+          if (record !== null) {
+            // an active enrollment record already exists, do not duplicate record
+            return {
+              'status': 'failure',
+              'message': 'User is already enrolled in the group.',
+            };
+          } else {
+            return db.Enrollment.create({
+              userID: userId,
+              groupID: group.id,
+              enrolledDate: Date.now(),
+              isActive: true,
+            }).then(() => {
+              return {
+                'status': 'success',
+                'message': 'User has been successfully enrolled in the group.',
+              };
+            });
+          }
+        });
+      } else {
+        return {
+          'status': 'failure',
+          'message': 'Invite code is not valid.',
+        };
+      }
+    },
+    );
+};
+
+const unenrollUserFromGroup = (userId, groupId) => {
+  if (userId && groupId) {
+    return db.Enrollment
+      .findOne({
+        where:
+        {
+          userID: userId,
+          groupID: groupId,
+          isActive: true,
+        },
+      }).then((enrollment) => {
+        enrollment.isActive = false;
+        enrollment.save();
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
+  }
+  return Promise.resolve();
+};
+
 const getGroupLabs = (groupid) => {
   return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
     replacements: { groupID: groupid },
@@ -23,91 +106,6 @@ const getCompletedGroupLabs = (userid, groupid) => {
     type: db.sequelize.QueryTypes.SELECT,
     raw: true,
   });
-};
-
-const enrollUserInGroup = (userid, code) => {
-  return db.Groups
-    .findOne({
-      where: {
-        code: code,
-      },
-    }).then((group) => {
-      if (group) {
-        // check if user is already enrolled in the group
-        return db.Enrollment.findOne({
-          where: {
-            userID: userid,
-            groupID: group.id,
-            isActive: true,
-          },
-        }).then((record) => {
-          if (record !== null) {
-            // an active enrollment record already exists, do not duplicate record
-            return {
-              'status': 'failure',
-              'message': 'User is already enrolled in the group.',
-            };
-          } else {
-            return db.Enrollment.create({
-              userID: userid,
-              groupID: group.id,
-              enrolledDate: Date.now(),
-              isActive: true,
-            }).then(() => {
-              return {
-                'status': 'success',
-                'message': 'User has been successfully enrolled in the group.',
-              };
-            });
-          }
-        });
-      } else {
-        return {
-          'status': 'failure',
-          'message': 'Invite code is not valid.',
-        };
-      }
-    },
-    );
-};
-
-const unenrollUserFromGroup = (data) => {
-  const userid = data.userID;
-  const groupid = data.groupID;
-  if (userid && groupid) {
-    return db.Enrollment
-      .findOne({
-        where:
-        {
-          userID: userid,
-          groupID: groupid,
-          isActive: true,
-        },
-      }).then((enrollment) => {
-        enrollment.isActive = false;
-        enrollment.save();
-      }).catch((err) => {
-        console.log(err);
-        return true;
-      });
-  }
-  return Promise.resolve();
-};
-
-const createGroup = async (userID, groupName, color) => {
-  try {
-    const data = await db.Groups.create({
-      instructorUserID: userID,
-      groupName: groupName,
-      createdDate: Date.now(),
-      color: color,
-      isActive: true,
-      code: crypto.randomUUID().toUpperCase().slice(1, 7),
-    });
-    return data;
-  } catch (error) {
-    console.error('Error while creating group', error);
-  }
 };
 
 const addGroupLab = async (groupID, labID) => {

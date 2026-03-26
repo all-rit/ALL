@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Middleware
+const { authMiddleware } = require('../auth');
+
 // Universal Controllers
 const AuthController = require('../controllers/AuthController')
 const UserController = require('../controllers/UserController');
@@ -74,18 +77,20 @@ router.get('/auth/google', AuthController.google);
 router.get('/auth/google/callback', AuthController.googleCallback);
 
 // User Routes
-router.get('/user', UserController.index);
-router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
-router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
-router.get('/user/:userID/assigned', UserController.getUserAssignedLabs);
-router.get('/user/:userID/todo', UserController.getUserToDoLabs);
-router.get('/user/:userID/labrecords', UserLabController.getUserLabRecords);
-router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
+router.get('/user', authMiddleware, UserController.getUser);
+router.get('/user/groups', authMiddleware, UserController.getUserInstructingGroups);
+router.get('/user/groups/enrolled', authMiddleware, UserController.getUserEnrolledGroups);
+router.get('/user/assigned', authMiddleware, UserController.getUserAssignedLabs);
+router.get('/user/todo', authMiddleware, UserController.getUserToDoLabs);
+
+// User Lab Routes
+router.get('/user/records', authMiddleware, UserLabController.getUserLabRecords);
+router.get('/user/:labId', authMiddleware, UserLabController.getUserLabCompletion);
 
 // Group Routes
-router.post('/group/enroll', GroupController.enrollUserInGroup);
-router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
-router.post('/group/create', GroupController.createGroup);
+router.post('/group/create', authMiddleware, GroupController.createGroup);
+router.post('/group/enroll', authMiddleware, GroupController.enrollUserInGroup);
+router.post('/group/unenroll', authMiddleware, GroupController.unenrollUserFromGroup);
 router.post('/group/:groupID/add', GroupController.addGroupLab);
 router.put('/group/:groupID/update', GroupController.updateGroup);
 router.put('/group/:groupID/:labID/delete', GroupController.deleteGroupLab);

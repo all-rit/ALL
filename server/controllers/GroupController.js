@@ -1,5 +1,46 @@
 const GroupService = require('../services/GroupService');
 
+const createGroup = async (req, res) => {
+  try {
+    const data = await GroupService.createGroup(
+      req.userId,
+      req.body.groupName,
+      req.body.color,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error while creating group', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const enrollUserInGroup = (req, res) => {
+  GroupService.enrollUserInGroup(
+    req.userId,
+    req.body.inviteCode,
+  ).then((response) => {
+    // todo: figure out how to send status code along with message,
+    // right now, the status is repeated and code doesn't look clean
+    if (response.status === 'success') {
+      res.status(200).json({
+        status: 200,
+        message: response.message,
+      });
+    } else {
+      res.status(400).json({
+        status: 400,
+        error: response.message,
+      });
+    }
+  });
+};
+
+const unenrollUserFromGroup = (req, res) => {
+  GroupService.unenrollUserFromGroup(req.userId, req.body.groupId).then(() => {
+    res.sendStatus(200);
+  });
+};
+
 const getGroupLabs = async (req, res) => {
   try {
     const data = await GroupService.getGroupLabs(req.params.groupID);
@@ -27,50 +68,6 @@ const getCompletedGroupLabs = async (req, res) => {
   } catch (error) {
     console.error('Error while getting completed group labs', error);
     res.status(500).json({ message: error.message });
-  }
-};
-
-const enrollUserInGroup = (req, res) => {
-  GroupService.enrollUserInGroup(
-    req.body.userID,
-    req.body.inviteCode,
-  ).then((response) => {
-    // todo: figure out how to send status code along with message,
-    // right now, the status is repeated and code doesn't look clean
-    if (response.status === 'success') {
-      res.status(200).json({
-        status: 200,
-        message: response.message,
-      });
-    } else {
-      res.status(400).json({
-        status: 400,
-        error: response.message,
-      });
-    }
-  });
-};
-
-const unenrollUserFromGroup = (req, res) => {
-  GroupService.unenrollUserFromGroup({
-    userID: req.body.userID,
-    groupID: req.body.groupID,
-  }).then(() => {
-    res.sendStatus(200);
-  });
-};
-
-const createGroup = async (req, res) => {
-  try {
-    const data = await GroupService.createGroup(
-      req.body.userID,
-      req.body.groupName,
-      req.body.color,
-    );
-    res.status(200).json(data);
-  } catch (error) {
-    console.error('Error while creating group', error);
-    res.status(500).json({ error: error.message });
   }
 };
 
@@ -126,13 +123,13 @@ const updateGroup = async (req, res) => {
 };
 
 module.exports = {
+  createGroup,
+  enrollUserInGroup,
+  unenrollUserFromGroup,
   updateGroup,
   deleteGroup,
   deleteGroupLab,
   addGroupLab,
-  createGroup,
-  unenrollUserFromGroup,
-  enrollUserInGroup,
   getCompletedGroupLabs,
   getGroupEnrolledStudents,
   getGroupLabs,
