@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as appActions } from "../../reducers/lab1/AppReducer";
-import { actions as mainActions } from "../../reducers/MainReducer";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
-import AccessibilityImage from "../../assets/images/accessibility_icon.png";
-import { Collapse, Card, CardHeader, CardBody } from "reactstrap";
+import React, { useState } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { actions as appActions } from '../../reducers/lab1/AppReducer';
+import { actions as mainActions } from '../../reducers/MainReducer';
+import Chrome from '@uiw/react-color-chrome';
+import AccessibilityImage from '../../assets/images/accessibility_icon.png';
+import { Collapse, Card, CardHeader, CardBody } from 'reactstrap';
 import {
   changeTSize,
   setTextColor,
   setBackgroundColor,
-} from "../footer/edit/editPage";
-import SquircleButton from "../../assets/stylesheets/components/SquircleButton";
+} from '../footer/edit/editPage';
+import SquircleButton from '../../assets/stylesheets/components/SquircleButton';
 
 const mapStateToProps = (state) => {
   return {
@@ -101,10 +101,10 @@ const SiteAccessibilityButton = () => {
             <p className="tw-text-left tw-body-text tw-my-2 tw-px-3">
               Text Color Adjuster
             </p>
-            <div className={"tw-w-full tw-flex tw-justify-center"}>
-              <ColorPickerPanel
+            <div className={'tw-w-full tw-flex tw-justify-center'}>
+              <Chrome
                 enableAlpha={false}
-                defaultColor={"#345679"}
+                defaultColor={'#345679'}
                 color={state.color}
                 onChange={onTextColorChange.bind(this)}
               />
@@ -112,10 +112,10 @@ const SiteAccessibilityButton = () => {
             <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
               Background Color Adjuster
             </p>
-            <div className={"tw-w-full tw-flex tw-justify-center"}>
-              <ColorPickerPanel
+            <div className={'tw-w-full tw-flex tw-justify-center'}>
+              <Chrome
                 enableAlpha={false}
-                defaultColor={"#345679"}
+                defaultColor={'#345679'}
                 color={state.backgroundColor}
                 onChange={onBgColorChange.bind(this)}
               />
