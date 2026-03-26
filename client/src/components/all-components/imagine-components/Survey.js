@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 import Likert from "../Likert";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
+import { convertAvatarToDicebear } from "../convertAvatarToDicebear";
 import ImagineService from "src/services/ImagineService";
 import RankingQuestion from "./Ranking";
 
@@ -38,12 +40,15 @@ function Survey(props) {
 
       setDisplayedAvatar(
         <>
-          <Avatar
-            topType={avatar?.hairStyle || "Default"}
-            hairColor={avatar?.hairColor || "Default"}
-            clotheColor={avatar?.clotheColor || "Default"}
-            skinColor={avatar?.skinColor || "Default"}
-            clotheType="ShirtCrewNeck"
+          <img
+            src={convertAvatarToDicebear({
+              topType: avatar?.hairStyle || "Default",
+              hairColor: avatar?.hairColor || "Default",
+              clotheColor: avatar?.clotheColor || "Default",
+              skinColor: avatar?.skinColor || "Default",
+              clotheType: "ShirtCrewNeck",
+            })}
+            alt="Avatar"
             className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
           />
           <div className="tw-pt-3 tw-body-text tw-text-center tw-text-[2rem]">

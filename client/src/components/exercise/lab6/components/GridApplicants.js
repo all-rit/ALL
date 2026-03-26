@@ -3,7 +3,9 @@
 import React, { useEffect, useCallback, useState } from "react";
 import clsx from "clsx";
 import createAvatarData from "../../../all-components/createAvatarData";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
+import { convertAvatarToDicebear } from "../../../../all-components/convertAvatarToDicebear";
 import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "./Recomendation";
 import Decision from "./Decision";
@@ -126,20 +128,21 @@ const GridApplicants = (props) => {
               }`}
             >
               <li className="candidate__image_container">
-                <Avatar
+                <img
                   className="candidate__image"
                   alt={data.name}
-                  avatarStyle="Square"
-                  topType={data.avatarAttributes.topType}
-                  accessoriesType={data.avatarAttributes.accessoriesType}
-                  hairColor={data.avatarAttributes.hairColor}
-                  facialHairType={data.avatarAttributes.facialHairType}
-                  clotheType={data.avatarAttributes.clotheType}
-                  clotheColor={data.avatarAttributes.clotheColor}
-                  eyeType={data.avatarAttributes.eyeType}
-                  eyebrowType={data.avatarAttributes.eyebrowType}
-                  mouthType={data.avatarAttributes.mouthType}
-                  skinColor={data.avatarAttributes.skinColor}
+                  src={convertAvatarToDicebear({
+                    topType: data.avatarAttributes.topType,
+                    accessoriesType: data.avatarAttributes.accessoriesType,
+                    hairColor: data.avatarAttributes.hairColor,
+                    facialHairType: data.avatarAttributes.facialHairType,
+                    clotheType: data.avatarAttributes.clotheType,
+                    clotheColor: data.avatarAttributes.clotheColor,
+                    eyeType: data.avatarAttributes.eyeType,
+                    eyebrowType: data.avatarAttributes.eyebrowType,
+                    mouthType: data.avatarAttributes.mouthType,
+                    skinColor: data.avatarAttributes.skinColor,
+                  })}
                 />
               </li>
               <li className="tw-p-4">{data?.gender}</li>

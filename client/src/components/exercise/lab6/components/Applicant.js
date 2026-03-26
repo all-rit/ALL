@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Avatar } from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
 import React from "react";
+import { convertAvatarToDicebear } from "../../../../all-components/convertAvatarToDicebear";
 import { FormGroup, Input, Label } from "reactstrap";
 import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
 
@@ -45,20 +47,21 @@ const Applicant = (props) => {
           <li className="candidate__container">
             <ul htmlFor="applicant" className="candidate__col">
               <li className="candidate__image" alt="krutz">
-                <Avatar
+                <img
                   className="tw-w-16 tw-h-16"
                   alt={data.name}
-                  avatarStyle="Circle"
-                  topType={data.avatarAttributes.topType}
-                  accessoriesType={data.avatarAttributes.accessoriesType}
-                  hairColor={data.avatarAttributes.hairColor}
-                  facialHairType={data.avatarAttributes.facialHairType}
-                  clotheType={data.avatarAttributes.clotheType}
-                  clotheColor={data.avatarAttributes.clotheColor}
-                  eyeType={data.avatarAttributes.eyeType}
-                  eyebrowType={data.avatarAttributes.eyebrowType}
-                  mouthType={data.avatarAttributes.mouthType}
-                  skinColor={data.avatarAttributes.skinColor}
+                  src={convertAvatarToDicebear({
+                    topType: data.avatarAttributes.topType,
+                    accessoriesType: data.avatarAttributes.accessoriesType,
+                    hairColor: data.avatarAttributes.hairColor,
+                    facialHairType: data.avatarAttributes.facialHairType,
+                    clotheType: data.avatarAttributes.clotheType,
+                    clotheColor: data.avatarAttributes.clotheColor,
+                    eyeType: data.avatarAttributes.eyeType,
+                    eyebrowType: data.avatarAttributes.eyebrowType,
+                    mouthType: data.avatarAttributes.mouthType,
+                    skinColor: data.avatarAttributes.skinColor,
+                  })}
                 />
               </li>
               <li>

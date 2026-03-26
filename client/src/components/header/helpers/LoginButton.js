@@ -2,8 +2,10 @@
 import React from "react";
 import API from "../../../services/API";
 import GoogleLogin from "../../../assets/images/google_buttons/Google_Sign_In.svg";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
 import { AvatarData } from "../../body/login/AvatarData";
+import { convertAvatarToDicebear } from "../../all-components/convertAvatarToDicebear";
 import useMainStateContext from "../../../reducers/MainContext";
 import PropTypes from "prop-types";
 
@@ -34,22 +36,23 @@ const LoginButton = (props) => {
                   "tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-cursor-pointer"
                 }
               >
-                <Avatar
+                <img
                   className={
                     "tw-rounded-full tw-border-8 tw-w-[4rem] tw-h-[4rem]"
                   }
                   alt={data.name}
-                  avatarStyle="Circle"
-                  topType={data.avatarAttributes.topType}
-                  accessoriesType={data.avatarAttributes.accessoriesType}
-                  hairColor={data.avatarAttributes.hairColor}
-                  facialHairType={data.avatarAttributes.facialHairType}
-                  clotheType={data.avatarAttributes.clotheType}
-                  clotheColor={data.avatarAttributes.clotheColor}
-                  eyeType={data.avatarAttributes.eyeType}
-                  eyebrowType={data.avatarAttributes.eyebrowType}
-                  mouthType={data.avatarAttributes.mouthType}
-                  skinColor={data.avatarAttributes.skinColor}
+                  src={convertAvatarToDicebear({
+                    topType: data.avatarAttributes.topType,
+                    accessoriesType: data.avatarAttributes.accessoriesType,
+                    hairColor: data.avatarAttributes.hairColor,
+                    facialHairType: data.avatarAttributes.facialHairType,
+                    clotheType: data.avatarAttributes.clotheType,
+                    clotheColor: data.avatarAttributes.clotheColor,
+                    eyeType: data.avatarAttributes.eyeType,
+                    eyebrowType: data.avatarAttributes.eyebrowType,
+                    mouthType: data.avatarAttributes.mouthType,
+                    skinColor: data.avatarAttributes.skinColor,
+                  })}
                 />
                 {data.name}
               </div>

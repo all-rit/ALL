@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useCallback } from "react";
-import clsx from "clsx";
-import Avatar from "avataaars";
-import Spinner from "../../common/Spinner/Spinner";
-import createAvatarData from "./createAvatarData";
+import React, { useState, useEffect, useCallback } from 'react';
+import clsx from 'clsx';
+import Spinner from '../../common/Spinner/Spinner';
+import createAvatarData from './createAvatarData';
+import { convertAvatarToDicebear } from './convertAvatarToDicebear';
 
 const GridImages = (props) => {
   const { multi, setSelection } = props;
@@ -78,7 +78,7 @@ const GridImages = (props) => {
   }, [currentFile]);
 
   const gridImagesClassnames = clsx({
-    "tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
+    'tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ': true,
   });
 
   return (
@@ -98,24 +98,25 @@ const GridImages = (props) => {
                     handleKeyPress(data.id);
                   }}
                 >
-                  <Avatar
+                  <img
                     className={
                       id.includes(data.id)
-                        ? "tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto"
-                        : "tw-max-w-full tw-h-auto"
+                        ? 'tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto'
+                        : 'tw-max-w-full tw-h-auto'
                     }
                     alt={data.name}
-                    avatarStyle="Square"
-                    topType={data.avatarAttributes.topType}
-                    accessoriesType={data.avatarAttributes.accessoriesType}
-                    hairColor={data.avatarAttributes.hairColor}
-                    facialHairType={data.avatarAttributes.facialHairType}
-                    clotheType={data.avatarAttributes.clotheType}
-                    clotheColor={data.avatarAttributes.clotheColor}
-                    eyeType={data.avatarAttributes.eyeType}
-                    eyebrowType={data.avatarAttributes.eyebrowType}
-                    mouthType={data.avatarAttributes.mouthType}
-                    skinColor={data.avatarAttributes.skinColor}
+                    src={convertAvatarToDicebear({
+                      topType: data.avatarAttributes.topType,
+                      accessoriesType: data.avatarAttributes.accessoriesType,
+                      hairColor: data.avatarAttributes.hairColor,
+                      facialHairType: data.avatarAttributes.facialHairType,
+                      clotheType: data.avatarAttributes.clotheType,
+                      clotheColor: data.avatarAttributes.clotheColor,
+                      eyeType: data.avatarAttributes.eyeType,
+                      eyebrowType: data.avatarAttributes.eyebrowType,
+                      mouthType: data.avatarAttributes.mouthType,
+                      skinColor: data.avatarAttributes.skinColor,
+                    })}
                   />
                 </div>
               </div>
@@ -128,7 +129,7 @@ const GridImages = (props) => {
         )}
       </div>
       <div className="tw-text-2xl tw-mb-5 tw-p-2">
-        {currentFile.length + " of " + multi + " selected."}
+        {currentFile.length + ' of ' + multi + ' selected.'}
       </div>
     </>
   );

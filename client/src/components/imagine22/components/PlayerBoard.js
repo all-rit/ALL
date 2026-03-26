@@ -6,7 +6,9 @@ import ImagineService from "../../../services/ImagineService";
 import Spinner from "../../../common/Spinner/Spinner";
 import Bias from "./Bias";
 import PenaltyStatus from "./PenaltyStatus";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
+import { convertAvatarToDicebear } from "../../all-components/convertAvatarToDicebear";
 import createAvatarData from "../../all-components/createAvatarData";
 
 const PlayerBoard = (props) => {
@@ -80,22 +82,21 @@ const PlayerBoard = (props) => {
             </thead>
             <tr className="teamMember">
               <td>
-                <Avatar
+                <img
                   className="tw-w-16 tw-h-16"
                   alt={avatar[0].name}
-                  avatarStyle="Circle"
-                  topType={avatar[0].avatarAttributes.topType}
-                  accessoriesType={avatar[0].avatarAttributes.accessoriesType}
-                  hairColor={avatar[0].avatarAttributes.hairColor}
-                  facialHairType={avatar[0].avatarAttributes.facialHairType}
-                  facialHairColor={avatar[0].avatarAttributes.facialHairColor}
-                  clotheType={avatar[0].avatarAttributes.clotheType}
-                  clotheColor={avatar[0].avatarAttributes.clotheColor}
-                  graphicType={avatar[0].avatarAttributes.graphicType}
-                  eyeType={avatar[0].avatarAttributes.eyeType}
-                  eyebrowType={avatar[0].avatarAttributes.eyebrowType}
-                  mouthType={avatar[0].avatarAttributes.mouthType}
-                  skinColor={avatar[0].avatarAttributes.skinColor}
+                  src={convertAvatarToDicebear({
+                    topType: avatar[0].avatarAttributes.topType,
+                    accessoriesType: avatar[0].avatarAttributes.accessoriesType,
+                    hairColor: avatar[0].avatarAttributes.hairColor,
+                    facialHairType: avatar[0].avatarAttributes.facialHairType,
+                    clotheType: avatar[0].avatarAttributes.clotheType,
+                    clotheColor: avatar[0].avatarAttributes.clotheColor,
+                    eyeType: avatar[0].avatarAttributes.eyeType,
+                    eyebrowType: avatar[0].avatarAttributes.eyebrowType,
+                    mouthType: avatar[0].avatarAttributes.mouthType,
+                    skinColor: avatar[0].avatarAttributes.skinColor,
+                  })}
                 />
               </td>
               <td>
@@ -122,20 +123,21 @@ const PlayerBoard = (props) => {
               return (
                 <tr className="teamMember" key={index}>
                   <td>
-                    <Avatar
+                    <img
                       className="tw-w-16 tw-h-16"
                       alt={data.name}
-                      avatarStyle="Circle"
-                      topType={data.avatarAttributes.topType}
-                      accessoriesType={data.avatarAttributes.accessoriesType}
-                      hairColor={data.avatarAttributes.hairColor}
-                      facialHairType={data.avatarAttributes.facialHairType}
-                      clotheType={data.avatarAttributes.clotheType}
-                      clotheColor={data.avatarAttributes.clotheColor}
-                      eyeType={data.avatarAttributes.eyeType}
-                      eyebrowType={data.avatarAttributes.eyebrowType}
-                      mouthType={data.avatarAttributes.mouthType}
-                      skinColor={data.avatarAttributes.skinColor}
+                      src={convertAvatarToDicebear({
+                        topType: data.avatarAttributes.topType,
+                        accessoriesType: data.avatarAttributes.accessoriesType,
+                        hairColor: data.avatarAttributes.hairColor,
+                        facialHairType: data.avatarAttributes.facialHairType,
+                        clotheType: data.avatarAttributes.clotheType,
+                        clotheColor: data.avatarAttributes.clotheColor,
+                        eyeType: data.avatarAttributes.eyeType,
+                        eyebrowType: data.avatarAttributes.eyebrowType,
+                        mouthType: data.avatarAttributes.mouthType,
+                        skinColor: data.avatarAttributes.skinColor,
+                      })}
                     />
                   </td>
                   <td>{data.name}</td>

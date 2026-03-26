@@ -1,5 +1,7 @@
 import React from "react";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
+import { convertAvatarToDicebear } from "../../../all-components/convertAvatarToDicebear";
 import PropTypes from "prop-types";
 
 const AvatarSelection = (props) => {
@@ -21,12 +23,15 @@ const AvatarSelection = (props) => {
               avatarSelected
             }
           >
-            <Avatar
-              topType={avatar.hairStyle}
-              hairColor={avatar.hairColor}
-              clotheColor={avatar.clotheColor}
-              skinColor={avatar.skinColor}
-              clotheType="ShirtCrewNeck"
+            <img
+              src={convertAvatarToDicebear({
+                topType: avatar.hairStyle,
+                hairColor: avatar.hairColor,
+                clotheColor: avatar.clotheColor,
+                skinColor: avatar.skinColor,
+                clotheType: "ShirtCrewNeck",
+              })}
+              alt="Avatar"
               className="xs:tw-h-[100px] xs:tw-w-[100px] sm:tw-h-[100px] sm:tw-w-[100px] md:tw-h-[125px] md:tw-w-[125px] lg:tw-h-[150px] lg:tw-w-[150px]"
             />
           </div>

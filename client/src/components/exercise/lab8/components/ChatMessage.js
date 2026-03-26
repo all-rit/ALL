@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../../../../assets/stylesheets/components/Witch.css";
 import PropTypes from "prop-types";
 import createAvatarData from "../../../all-components/createAvatarData";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
+import { convertAvatarToDicebear } from "../../../../all-components/convertAvatarToDicebear";
 
 const ChatMessage = ({
   username,
@@ -53,20 +55,21 @@ const ChatMessage = ({
       <div className="tw-flex tw-flex-col">
         <div className="tw-flex tw-items-center tw-p-2">
           {userAvatar && (
-            <Avatar
+            <img
               alt={userAvatar.name}
               className="tw-w-10 tw-h-10 tw-rounded-full"
-              avatarStyle="Circle"
-              topType={userAvatar.avatarAttributes.topType}
-              accessoriesType={userAvatar.avatarAttributes.accessoriesType}
-              hairColor={userAvatar.avatarAttributes.hairColor}
-              facialHairType={userAvatar.avatarAttributes.facialHairType}
-              clotheType={userAvatar.avatarAttributes.clotheType}
-              clotheColor={userAvatar.avatarAttributes.clotheColor}
-              eyeType={userAvatar.avatarAttributes.eyeType}
-              eyebrowType={userAvatar.avatarAttributes.eyebrowType}
-              mouthType={userAvatar.avatarAttributes.mouthType}
-              skinColor={userAvatar.avatarAttributes.skinColor}
+              src={convertAvatarToDicebear({
+                topType: userAvatar.avatarAttributes.topType,
+                accessoriesType: userAvatar.avatarAttributes.accessoriesType,
+                hairColor: userAvatar.avatarAttributes.hairColor,
+                facialHairType: userAvatar.avatarAttributes.facialHairType,
+                clotheType: userAvatar.avatarAttributes.clotheType,
+                clotheColor: userAvatar.avatarAttributes.clotheColor,
+                eyeType: userAvatar.avatarAttributes.eyeType,
+                eyebrowType: userAvatar.avatarAttributes.eyebrowType,
+                mouthType: userAvatar.avatarAttributes.mouthType,
+                skinColor: userAvatar.avatarAttributes.skinColor,
+              })}
             />
           )}
           <p className="tw-ml-3 tw-font-semibold">{username}</p>

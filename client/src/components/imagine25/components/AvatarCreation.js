@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import Avatar from "avataaars";
+import { createAvatar } from "@dicebear/core";
+import { avataaars } from "@dicebear/collection";
+import { convertAvatarToDicebear } from "../../../all-components/convertAvatarToDicebear";
 import {
   Dropdown,
   DropdownToggle,
@@ -77,12 +79,15 @@ const AvatarCreation = (props) => {
   return (
     <div className="d-flex justify-content-center">
       <div>
-        <Avatar
-          clotheType="ShirtCrewNeck"
-          topType={props.userAvatar.hairStyle || "Default"}
-          hairColor={props.userAvatar.hairColor || "Default"}
-          clotheColor={props.userAvatar.clotheColor || "Default"}
-          skinColor={props.userAvatar.skinColor || "Default"}
+        <img
+          src={convertAvatarToDicebear({
+            topType: props.userAvatar.hairStyle || "Default",
+            clotheType: "ShirtCrewNeck",
+            hairColor: props.userAvatar.hairColor || "Default",
+            clotheColor: props.userAvatar.clotheColor || "Default",
+            skinColor: props.userAvatar.skinColor || "Default",
+          })}
+          alt="User Avatar"
           className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
         />
         {/*Iterate over nested data structure. Note this needs to be a specific data structure, check out Contants/imagine25/Avatar.js for an example.
