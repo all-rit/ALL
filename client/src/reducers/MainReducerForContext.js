@@ -26,6 +26,7 @@ export const types = {
   SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine",
   SHOW_SNACKBAR: "@accessibility-lab/context/show_snackbar",
   HIDE_SNACKBAR: "@accessibility-lab/context/hide_snackbar",
+  DEV_LOGIN: "@accessibility-lab/context/dev_login",
 };
 
 /**
@@ -46,7 +47,7 @@ export const types = {
 export const initialState = {
   userState: EXERCISE_IDLE,
   main: {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")) || null,
     lab: 99,
     body: 0,
     isImagine: false,

@@ -75,6 +75,7 @@ router.get('/auth/google/callback', UserController.authenticateRedirect, UserCon
 router.get('/logout', UserController.logout);
 router.get('/user', UserController.main);
 router.get('/user/:userID', UserController.getUser);
+router.get('/user/:userID/development', UserController.developmentLogin);
 router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
 router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
 router.get('/user/:userID/assigned', UserController.getUserAssignedLabs);

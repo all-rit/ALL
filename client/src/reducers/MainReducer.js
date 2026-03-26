@@ -6,6 +6,7 @@ export const types = {
   SET_IS_IMAGINE: "@accessibility-lab/isImagine",
   SHOW_SNACKBAR: "@accessibility-lab/showSnackbar",
   HIDE_SNACKBAR: "@accessibility-lab/hideSnackbar",
+  DEV_LOGIN: "@accessibility-lab/developmentLogin",
 };
 
 export const initialState = {
@@ -67,6 +68,7 @@ export const MainReducer = (state = initialState, action) => {
 export const actions = {
   setBody: (body) => ({ type: types.SET_BODY, body }),
   login: () => ({ type: types.LOGIN }),
+  developmentLogin: (user) => ({ type: types.LOGIN, user }),
   setLab: (lab) => ({ type: types.SET_LAB, lab }),
   updateUser: (user) => ({ type: types.UPDATE_USER, user }),
   setIsImagine: (isImagine) => ({ type: types.SET_IS_IMAGINE, isImagine }),

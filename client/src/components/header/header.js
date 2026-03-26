@@ -205,7 +205,11 @@ const Header = ({ isImagine }) => {
           isOpen={showSignIn}
           toggle={toggleSignInShown}
         >
-          <LoginBody />
+          <LoginBody
+            closeModal={() => {
+              setShowSignIn(false);
+            }}
+          />
         </BrandedALLModal>
       </div>
     </div>
