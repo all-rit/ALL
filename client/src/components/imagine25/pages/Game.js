@@ -83,7 +83,9 @@ const Game = () => {
         </div>
       </div>
       <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[575px]">
-        <TeammateVideo teammateId={teammateId} messageShown={false} />
+        <div className="tw-w-64 tw-h-36">
+          <TeammateVideo teammateId={teammateId} messageShown={false} />
+        </div>
         <p className="tw-col-span-2 tw-text-center tw-font-bold">
           <br />
           (Keyboard)

@@ -50,21 +50,21 @@ const TeammateVideo = (props) => {
   }, [teammateId, delayedMessageShown]);
 
   return (
-    <div>
+    <div className="tw-w-full tw-h-full">
       {!videoEnded ? (
         <video
           src={videoSrc}
           autoPlay
           muted
           onEnded={() => setVideoEnded(true)}
-          className={`tw-shadow-lg tw-rounded-lg ${
+          className={`tw-shadow-lg tw-rounded-lg tw-w-full tw-h-full ${
             delayedMessageShown
-              ? "tw-w-80 tw-h-44 tw-border-solid tw-border-[#FF0000] tw-border-[3px]"
-              : "tw-w-64 tw-h-36"
+              ? "tw-border-solid tw-border-[#FF0000] tw-border-[3px]"
+              : ""
           }`}
         />
       ) : (
-        <div className="tw-w-64 tw-h-36 tw-bg-black tw-rounded-lg tw-shadow-lg tw-mx-auto"></div>
+        <div className="tw-w-full tw-h-full tw-bg-black tw-rounded-lg tw-shadow-lg tw-mx-auto"></div>
       )}
       <p>
         Teammate live from: <b>Buffalo, NY</b>

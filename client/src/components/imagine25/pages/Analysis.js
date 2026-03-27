@@ -151,7 +151,9 @@ const Results = () => {
       <div className={contentSizing + " tw-pt-[7rem] tw-hidden"}>
         <ScorePage className={contentSizing} />
       </div>
-      <TeammateVideo teammateId={teammateId} messageShown={true} />
+      <div className="tw-w-[60%] tw-aspect-video tw-mx-auto">
+        <TeammateVideo teammateId={teammateId} messageShown={true} />
+      </div>
     </div>
   );
 };
