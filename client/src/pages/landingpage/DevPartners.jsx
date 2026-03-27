@@ -1,5 +1,4 @@
-import React from "react";
-import PartnerGeneration from "./citation/PartnerGeneration";
+import PartnerGeneration from './citation/PartnerGeneration';
 
 const DevPartners = () => {
   return (

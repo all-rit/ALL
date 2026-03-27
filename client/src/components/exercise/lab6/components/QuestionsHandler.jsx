@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import Quiz from "../../../quiz/components/Quiz";
-import PropTypes from "prop-types";
+import { useState } from 'react';
+import Quiz from '../../../quiz/components/Quiz';
+import PropTypes from 'prop-types';
 
 const QuestionsHandler = (props) => {
   const { questions, handleContinue } = props;
@@ -68,7 +67,7 @@ const QuestionsHandler = (props) => {
     let tempAnswers = selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
-    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
+    if (typeof tempAnswers[currentQuestionCursor] !== 'undefined') {
       // copies over the set
       storageSet = new Set(tempAnswers[currentQuestionCursor]);
       // checks to see if the set has the value in it
@@ -93,7 +92,7 @@ const QuestionsHandler = (props) => {
   return (
     <Quiz
       isFinalQuiz={props.isFinalQuiz}
-      answer={""}
+      answer={''}
       answerOptions={answerOption}
       disable={disableNext}
       multiChoice={questions[currentQuestionCursor].multiChoice}

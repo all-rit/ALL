@@ -1,17 +1,16 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { createAvatar } from "@dicebear/core";
-import { avataaars } from "@dicebear/collection";
-import React from "react";
-import { convertAvatarToDicebear } from "../../../../all-components/convertAvatarToDicebear";
-import { FormGroup, Input, Label } from "reactstrap";
-import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
+import { createAvatar } from '@dicebear/core';
+import { avataaars } from '@dicebear/collection';
+import { convertAvatarToDicebear } from '../../../../all-components/convertAvatarToDicebear';
+import { FormGroup, Input, Label } from 'reactstrap';
+import LongHorizontalLine from '../../../../common/HorizontalLine/LongHorizontalLine';
 
 const Applicant = (props) => {
   const { type, gender, age, years, availability, pay, ai, data } = props;
 
   switch (type) {
-    case "key":
+    case 'key':
       return (
         <>
           <div className="candidate__key__container">
@@ -41,7 +40,7 @@ const Applicant = (props) => {
           </div>
         </>
       );
-    case "applicant":
+    case 'applicant':
       return (
         <ul>
           <li className="candidate__container">

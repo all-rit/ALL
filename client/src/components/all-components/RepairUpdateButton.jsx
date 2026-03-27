@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const RepairUpdateButton = (props) => {
   const { onClick, disabled } = props;
   return (
-    <div className={"tw-w-full tw-flex tw-justify-center"}>
+    <div className={'tw-w-full tw-flex tw-justify-center'}>
       <button
         disabled={disabled}
         onClick={onClick}

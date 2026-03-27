@@ -1,6 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { operatorRegex } from "../Constants";
+import PropTypes from 'prop-types';
+import { operatorRegex } from '../Constants';
 
 /**
  * React component for rendering JSON-formatted text with syntax highlighting.
@@ -17,8 +16,8 @@ import { operatorRegex } from "../Constants";
  */
 
 const JSONText = ({ children }) => {
-  if (typeof children === "object") {
-    children = children.toString().replaceAll(/,/g, "").padStart(1);
+  if (typeof children === 'object') {
+    children = children.toString().replaceAll(/,/g, '').padStart(1);
   }
   const highlightSyntax = (text) => {
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
@@ -30,7 +29,7 @@ const JSONText = ({ children }) => {
         );
       }
       return (
-        <span key={index} className={"json"}>
+        <span key={index} className={'json'}>
           {segment}
         </span>
       );

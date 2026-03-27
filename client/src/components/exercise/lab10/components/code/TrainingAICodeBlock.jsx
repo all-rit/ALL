@@ -1,11 +1,10 @@
-import React from "react";
-import { DURATION_RANGE, POPUP_MESSAGES } from "../../../../../constants/lab10";
-import { actions as repairActions } from "../../../../../reducers/lab10/RepairReducer";
-import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
+import { DURATION_RANGE, POPUP_MESSAGES } from '../../../../../constants/lab10';
+import { actions as repairActions } from '../../../../../reducers/lab10/RepairReducer';
+import { actions as exerciseActions } from '../../../../../reducers/lab10/ExerciseReducer';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import RepairUpdateButton from '../../../../all-components/RepairUpdateButton';
 
 const TrainingAICodeBlock = (props) => {
   const { actions, timeValue, repairError } = props;
@@ -18,7 +17,7 @@ const TrainingAICodeBlock = (props) => {
     const value = parseInt(timeValue, 10);
     actions.updateRepairError(true);
     if (isNaN(value) || !Number.isInteger(value)) {
-      actions.updateRepairError("Try inputting a number.");
+      actions.updateRepairError('Try inputting a number.');
       actions.updatePopup(POPUP_MESSAGES.INVALID_INTEGER);
     } else {
       if (!(value >= DURATION_RANGE[0] && value <= DURATION_RANGE[1])) {
@@ -61,17 +60,17 @@ const TrainingAICodeBlock = (props) => {
             <span className="code_editor__line--purple">import&nbsp;</span>
             <span className="code_editor__line--gold">&#123;</span>
             <span className="code_editor__line--blue">
-              {" convertMinutesToSeconds"}
+              {' convertMinutesToSeconds'}
             </span>
-            <span>{", "}</span>
-            <span className="code_editor__line--blue">{"handleShiftLeft"}</span>
-            <span>{", "}</span>
+            <span>{', '}</span>
+            <span className="code_editor__line--blue">{'handleShiftLeft'}</span>
+            <span>{', '}</span>
             <span className="code_editor__line--blue">
-              {"handleShiftRight"}
+              {'handleShiftRight'}
             </span>
-            <span>{", "}</span>
+            <span>{', '}</span>
             <span className="code_editor__line--blue">
-              {"useCollectUserData "}
+              {'useCollectUserData '}
             </span>
             <span className="code_editor__line--gold">&#125;&nbsp;</span>
             <span className="code_editor__line--purple">from&nbsp;</span>
@@ -85,7 +84,7 @@ const TrainingAICodeBlock = (props) => {
             <span className="code_editor__line--purple">import&nbsp;</span>
             <span className="code_editor__line--gold">&#123;</span>
             <span className="code_editor__line--blue">
-              {" collectSimulationData "}
+              {' collectSimulationData '}
             </span>
             <span className="code_editor__line--gold">&#125;&nbsp;</span>
             <span className="code_editor__line--purple">from&nbsp;</span>
@@ -99,16 +98,16 @@ const TrainingAICodeBlock = (props) => {
 
           <div className="code_editor__line">
             <span className="code_editor__line--darkgreen">
-              {"// Enter a number between 60 - 120 below."}
+              {'// Enter a number between 60 - 120 below.'}
             </span>
           </div>
 
           <div className="code_editor__line">
             <span className="code_editor__line--purple">const</span>
             <span className="code_editor__line--yellow">
-              {" SIMULATION_DURATION_SECONDS "}
+              {' SIMULATION_DURATION_SECONDS '}
             </span>
-            <span>{" = "}</span>
+            <span>{' = '}</span>
             <input
               type="string"
               name="timeValue"
@@ -116,7 +115,7 @@ const TrainingAICodeBlock = (props) => {
               maxLength={3}
               onChange={handleChange}
               className={`${
-                repairError ? "form-error-input" : ""
+                repairError ? 'form-error-input' : ''
               } tw-w-16 tw-text-center`}
               required
               title="Must enter a value between'"
@@ -125,7 +124,7 @@ const TrainingAICodeBlock = (props) => {
           </div>
           {repairError && (
             <div className="code_editor__line">
-              <span className={"form-error"}>{repairError}</span>
+              <span className={'form-error'}>{repairError}</span>
             </div>
           )}
 
@@ -135,11 +134,11 @@ const TrainingAICodeBlock = (props) => {
           <div className="code_editor__line">
             <span className="code_editor__line--purple">const </span>
             <span className="code_editor__line--yellow">Simulation</span>
-            <span>{" = "}</span>
+            <span>{' = '}</span>
             <span className="code_editor__line--purple">(</span>
             <span>props</span>
             <span className="code_editor__line--purple">)</span>
-            <span>{" => "}</span>
+            <span>{' => '}</span>
             <span className="code_editor__line--purple">&#123;</span>
           </div>
           <div className="code_editor__line">
@@ -147,109 +146,109 @@ const TrainingAICodeBlock = (props) => {
             <span className="code_editor__line--blue">
               collectSimulationData
             </span>
-            <span className={"code_editor__line--purple"}>()</span>
+            <span className={'code_editor__line--purple'}>()</span>
             <span>;</span>
           </div>
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const</span>
+            <span className={'code_editor__line--purple'}>const</span>
             <span> seconds = </span>
             <span className="code_editor__line--blue">
               convertMinutesToSeconds
             </span>
-            <span className={"code_editor__line--purple"}>(</span>
+            <span className={'code_editor__line--purple'}>(</span>
             <span className="code_editor__line--yellow">
               SIMULATION_DURATION_SECONDS
             </span>
-            <span className={"code_editor__line--purple"}>)</span>
+            <span className={'code_editor__line--purple'}>)</span>
             <span>;</span>
           </div>
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </div>
 
-          <div className={"code_editor__line"}>
+          <div className={'code_editor__line'}>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>return (</span>
+              <span className={'code_editor__line--purple'}>return (</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
-            </div>
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
+              <span>{'<'}</span>
+              <span className={'code_editor__line--red'}>{'div'}</span>
+              <span>{'>'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>{'<'}</span>
+              <span className={'code_editor__line--red'}>{'div'}</span>
+              <span>{'>'}</span>
+            </div>
+            <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--orange"}>
-                {"ProgressBar"}
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>{'<'}</span>
+              <span className={'code_editor__line--orange'}>
+                {'ProgressBar'}
               </span>
-              <span className={"code_editor__line--gold"}>{" duration"}</span>
-              <span>{"="}</span>
-              <span className={"code_editor__line--purple"}>{"{"}</span>
-              <span>{"seconds"}</span>
-              <span className={"code_editor__line--purple"}>{"}"}</span>
-              <span>{" />"}</span>
+              <span className={'code_editor__line--gold'}>{' duration'}</span>
+              <span>{'='}</span>
+              <span className={'code_editor__line--purple'}>{'{'}</span>
+              <span>{'seconds'}</span>
+              <span className={'code_editor__line--purple'}>{'}'}</span>
+              <span>{' />'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--orange"}>
-                {"ShapeSpawner"}
+              <span>{'<'}</span>
+              <span className={'code_editor__line--orange'}>
+                {'ShapeSpawner'}
               </span>
-              <span>{" />"}</span>
+              <span>{' />'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--orange"}>
-                {"MovingObject"}
+              <span>{'<'}</span>
+              <span className={'code_editor__line--orange'}>
+                {'MovingObject'}
               </span>
-              <span>{" />"}</span>
+              <span>{' />'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"</"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
+              <span>{'</'}</span>
+              <span className={'code_editor__line--red'}>{'div'}</span>
+              <span>{'>'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
+              <span>{'<'}</span>
+              <span className={'code_editor__line--red'}>{'div'}</span>
+              <span>{'>'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--orange"}>
-                {"MovementKeys"}
+              <span>{'<'}</span>
+              <span className={'code_editor__line--orange'}>
+                {'MovementKeys'}
               </span>
             </div>
             <div className="code_editor__line">
@@ -258,13 +257,13 @@ const TrainingAICodeBlock = (props) => {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--gold"}>
-                {"handleShiftLeft"}
+              <span className={'code_editor__line--gold'}>
+                {'handleShiftLeft'}
               </span>
-              <span>{"="}</span>
-              <span className={"code_editor__line--purple"}>{"{"}</span>
-              <span>{"handleShiftLeft"}</span>
-              <span className={"code_editor__line--purple"}>{"}"}</span>
+              <span>{'='}</span>
+              <span className={'code_editor__line--purple'}>{'{'}</span>
+              <span>{'handleShiftLeft'}</span>
+              <span className={'code_editor__line--purple'}>{'}'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -272,50 +271,50 @@ const TrainingAICodeBlock = (props) => {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--gold"}>
-                {"handleShiftRight"}
+              <span className={'code_editor__line--gold'}>
+                {'handleShiftRight'}
               </span>
-              <span>{"="}</span>
-              <span className={"code_editor__line--purple"}>{"{"}</span>
-              <span>{"handleShiftRight"}</span>
-              <span className={"code_editor__line--purple"}>{"}"}</span>
+              <span>{'='}</span>
+              <span className={'code_editor__line--purple'}>{'{'}</span>
+              <span>{'handleShiftRight'}</span>
+              <span className={'code_editor__line--purple'}>{'}'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"/>"}</span>
+              <span>{'/>'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"<"}</span>
-              <span className={"code_editor__line--orange"}>
-                {"KeyboardGuide"}
+              <span>{'<'}</span>
+              <span className={'code_editor__line--orange'}>
+                {'KeyboardGuide'}
               </span>
-              <span>{" />"}</span>
+              <span>{' />'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"</"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
+              <span>{'</'}</span>
+              <span className={'code_editor__line--red'}>{'div'}</span>
+              <span>{'>'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"</"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
+              <span>{'</'}</span>
+              <span className={'code_editor__line--red'}>{'div'}</span>
+              <span>{'>'}</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>)</span>
+              <span className={'code_editor__line--purple'}>)</span>
             </div>
           </div>
 

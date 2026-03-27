@@ -1,13 +1,12 @@
-import ReactText from "../../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import CodeLine from "../../../../../all-components/CodeBlock/Components/CodeLine";
-import Tab from "../../../../../all-components/CodeBlock/Components/Tab";
-import CommentText from "../../../../../all-components/CodeBlock/StyleComponents/CommentText";
-import JSONText from "../../../../../all-components/CodeBlock/StyleComponents/JSONText";
-import CodeBlockInput from "../../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import MultiTab from "../../../../../all-components/CodeBlock/Components/MultiTab";
-import React from "react";
-import PropTypes from "prop-types";
-import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
+import ReactText from '../../../../../all-components/CodeBlock/StyleComponents/ReactText';
+import CodeLine from '../../../../../all-components/CodeBlock/Components/CodeLine';
+import Tab from '../../../../../all-components/CodeBlock/Components/Tab';
+import CommentText from '../../../../../all-components/CodeBlock/StyleComponents/CommentText';
+import JSONText from '../../../../../all-components/CodeBlock/StyleComponents/JSONText';
+import CodeBlockInput from '../../../../../all-components/CodeBlock/Components/CodeBlockInput';
+import MultiTab from '../../../../../all-components/CodeBlock/Components/MultiTab';
+import PropTypes from 'prop-types';
+import ErrorText from '../../../../../all-components/CodeBlock/StyleComponents/ErrorText';
 
 const DateFormRepair = (props = {}) => {
   const { inputs, userInput, validInputs, isFirst } = props;
@@ -16,11 +15,11 @@ const DateFormRepair = (props = {}) => {
       <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
       {inputs.map((country, index) => (
         <CodeLine key={index}>
-          <Tab />{" "}
+          <Tab />{' '}
           <ReactText>
-            {" "}
+            {' '}
             const {country.countryVariable} = &ldquo;{country.countryName}
-            &rdquo;{" "}
+            &rdquo;{' '}
           </ReactText>
         </CodeLine>
       ))}
@@ -36,7 +35,7 @@ const DateFormRepair = (props = {}) => {
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
-              {" "}
+              {' '}
               &ldquo;{input.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
@@ -55,8 +54,8 @@ const DateFormRepair = (props = {}) => {
                   userInput(input.id, event.target.value);
                 },
                 name: input.name,
-                type: "text",
-                placeholder: "Enter Dateform Here",
+                type: 'text',
+                placeholder: 'Enter Dateform Here',
               }}
             />
             <JSONText>&rdquo;</JSONText>

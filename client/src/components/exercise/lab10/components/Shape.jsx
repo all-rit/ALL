@@ -1,7 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { twMerge } from "tailwind-merge";
-import { NAMES } from "../../../../constants/lab10";
+import PropTypes from 'prop-types';
+import { twMerge } from 'tailwind-merge';
+import { NAMES } from '../../../../constants/lab10';
 
 /**
  * Shape component for render
@@ -13,7 +12,7 @@ const Shape = ({ y, x, size, className, color }) => {
       style={{ left: x, top: y, width: size, height: size }}
       className={twMerge(
         className,
-        "tw-flex tw-items-center tw-justify-center tw-font-bold",
+        'tw-flex tw-items-center tw-justify-center tw-font-bold',
       )}
     >
       {name}

@@ -1,6 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useState } from "react";
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const Decision = (props) => {
   const { id, primary, secondary, handleInput, incrementInput } = props;
@@ -13,7 +12,7 @@ const Decision = (props) => {
       <fieldset id={id} className="decision__radio">
         <input name={`${id}switch`} id={`${id}on`} type="radio" />
         <label
-          tabIndex={"0"}
+          tabIndex={'0'}
           alt={primary}
           onKeyPress={() => {
             document.getElementById(`${id}on`).click();

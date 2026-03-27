@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
-import Circle from "../components/circle";
+import Circle from '../components/circle';
 
 /*
 Component for displaying the instructions at the bottom of the page of the
@@ -17,7 +16,7 @@ const Instructions = ({
       <div className="instruction tw-flex tw-flex-row tw-mx-3 tw-justify-between">
         <div
           className={
-            "tw-flex tw-flex-row tw-gap-x-6 tw-align-middle tw-justify-start tw-items-center"
+            'tw-flex tw-flex-row tw-gap-x-6 tw-align-middle tw-justify-start tw-items-center'
           }
         >
           <p className="tw-body-text tw-pl-6 tw-leading-snug tw-text-right tw-w-3/4">
@@ -29,7 +28,7 @@ const Instructions = ({
         </div>
         <div
           className={
-            "tw-flex tw-flex-row tw-align-middle tw-justify-end tw-items-center"
+            'tw-flex tw-flex-row tw-align-middle tw-justify-end tw-items-center'
           }
         >
           <p className="tw-w-1/2 tw-body-text tw-leading-snug tw-text-right ">

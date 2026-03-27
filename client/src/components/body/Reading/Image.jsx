@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-
 /**
  * Image is a display component used to render to the page a
  * Image with subheadings to the reading section of the lab.
@@ -10,7 +8,7 @@ const Image = ({ data }) => {
     <>
       <ul>
         <li>
-          <img src={"/img/lab_images" + data.image} alt={data.alt} />
+          <img src={'/img/lab_images' + data.image} alt={data.alt} />
         </li>
         <ul>
           <li>

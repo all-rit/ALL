@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 /**
  * React component for rendering a line of code as a row in a code editor or display.
@@ -17,7 +16,7 @@ import PropTypes from "prop-types";
 
 const CodeLine = ({ children }) => {
   return (
-    <div className={"tw-flex tw-row-auto tw-items-center"}>{children}</div>
+    <div className={'tw-flex tw-row-auto tw-items-center'}>{children}</div>
   );
 };
 

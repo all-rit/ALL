@@ -1,7 +1,6 @@
-import React from "react";
-import { useDroppable } from "@dnd-kit/core";
-import DraggableCard from "./DraggableCard";
-import PropTypes from "prop-types";
+import { useDroppable } from '@dnd-kit/core';
+import DraggableCard from './DraggableCard';
+import PropTypes from 'prop-types';
 
 const DroppableColumn = ({
   column,

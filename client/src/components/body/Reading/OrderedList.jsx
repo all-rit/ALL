@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 /**
  * OrderedList is a display component used to render to the page
@@ -9,10 +8,10 @@ const OrderedList = ({ data }) => {
   return (
     <>
       <div className="ordered__list__div">
-        <ol className={"ordered__list"}>
+        <ol className={'ordered__list'}>
           {data.map((text) => {
             return (
-              <li className={"tw-body-text"} key={text.id}>
+              <li className={'tw-body-text'} key={text.id}>
                 {text}
               </li>
             );

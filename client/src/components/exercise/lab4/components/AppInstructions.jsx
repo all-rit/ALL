@@ -1,9 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const AppInstructions = (props) => {
   return (
-    <div className={"tw-p-3"}>
+    <div className={'tw-p-3'}>
       <p className="tw-body-text tw-font-medium tw-text-left">
         {props.instructions}
       </p>

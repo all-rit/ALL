@@ -1,8 +1,7 @@
-import React from "react";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 /**
  * SimulationCover component to restrict the user from starting the simulation
@@ -21,7 +20,7 @@ const SimulationCover = (props) => {
     props.simulationCovered && (
       <div
         className={
-          "tw-absolute tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center tw-rounded tw-bg-[#000000] tw-bg-opacity-70 tw-z-20"
+          'tw-absolute tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center tw-rounded tw-bg-[#000000] tw-bg-opacity-70 tw-z-20'
         }
       >
         <div>

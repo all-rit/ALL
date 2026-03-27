@@ -1,11 +1,10 @@
-import { useState, useRef } from "react";
-import PropTypes from "prop-types";
-import React from "react";
-import Popup from "src/components/all-components/Popup";
-import LabButton from "../../all-components/LabButton";
-import RepairUpdateButton from "../../all-components/RepairUpdateButton";
-import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
-import CheckIcon from "@mui/icons-material/Check";
+import { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
+import Popup from 'src/components/all-components/Popup';
+import LabButton from '../../all-components/LabButton';
+import RepairUpdateButton from '../../all-components/RepairUpdateButton';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import CheckIcon from '@mui/icons-material/Check';
 
 /**
  * Repair: is a reusable component that is responsible for
@@ -45,12 +44,12 @@ const Repair = (props) => {
   const [repairVisible, setRepairVisible] = useState(false);
   const [selectedFile, setSelectedFile] = useState(0);
   const [enableNext, setEnableNext] = useState(false);
-  const [popUpMessage, setPopUpMessage] = useState("");
+  const [popUpMessage, setPopUpMessage] = useState('');
   const [userError, setUserError] = useState(false);
   const headingRef = useRef(null);
 
-  const REPAIR_MESSAGE = "Repair Successful!";
-  const ERROR_MESSAGE = "Error in Repair. Please fix.";
+  const REPAIR_MESSAGE = 'Repair Successful!';
+  const ERROR_MESSAGE = 'Error in Repair. Please fix.';
 
   const handleOpenRepair = () => {
     setIsRepairActive(true);
@@ -90,21 +89,21 @@ const Repair = (props) => {
    * @returns The status of the file as either "gray", "red", or "green".
    */
   const getFileStatusColor = (fileId) => {
-    let statusColor = "";
-    if (popUpMessage === "") {
-      statusColor = "gray";
+    let statusColor = '';
+    if (popUpMessage === '') {
+      statusColor = 'gray';
     } else if (
       exercisePromptsState
         .filter((input) => input.fileId === fileId)
         .some((input) => !validInputs[input.id])
     ) {
-      statusColor = "red";
+      statusColor = 'red';
     } else if (
       exercisePromptsState
         .filter((input) => input.fileId === fileId)
         .every((input) => validInputs[input.id] === true)
     ) {
-      statusColor = "green";
+      statusColor = 'green';
     }
     return statusColor;
   };
@@ -130,7 +129,7 @@ const Repair = (props) => {
       setUserError(true);
       popUpHandler(ERROR_MESSAGE);
     }
-    headingRef.current?.scrollIntoView({ block: "center" });
+    headingRef.current?.scrollIntoView({ block: 'center' });
   };
 
   /**
@@ -150,7 +149,7 @@ const Repair = (props) => {
 
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"} ref={headingRef}>
+      <h1 className={'tw-title tw-text-left'} ref={headingRef}>
         {headingText}
       </h1>
       <div className="tw-pb-10 tw-text-xl ">
@@ -165,14 +164,14 @@ const Repair = (props) => {
         <div className="tw-pr-10">
           <LabButton
             onClick={handleRepair}
-            label={"Repair"}
+            label={'Repair'}
             disabled={enableNext}
           />
         </div>
         <div className="tw-pl-10">
           <LabButton
             onClick={handleNext}
-            label={"Next"}
+            label={'Next'}
             disabled={!enableNext}
           />
         </div>
@@ -180,20 +179,20 @@ const Repair = (props) => {
       <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
       {isRepairActive && (
         <div
-          className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+          className={`${repairVisible ? 'tw-opacity-100' : 'tw-opacity-0'} tw-transition-opacity tw-duration-500 tw-ease-in`}
         >
           <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[[#ffffffe8]] tw-rounded-lg tw-text-left tw tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
             <div className="tw-flex tw-flex-wrap tw-pt-3 tw-pl-3">
               {files.map((file) => (
                 <button
                   key={file.fileId}
-                  className={`tw-border-solid tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? "tw-opacity-50" : ""}`}
+                  className={`tw-border-solid tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? 'tw-opacity-50' : ''}`}
                   onClick={() => handleFileChange(file.fileId)}
                 >
                   <div className="tw-flex tw-items-center tw-gap-2">
-                    {getFileStatusColor(file.fileId) === "gray" ? (
+                    {getFileStatusColor(file.fileId) === 'gray' ? (
                       <div className="tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-labGray"></div>
-                    ) : getFileStatusColor(file.fileId) === "red" ? (
+                    ) : getFileStatusColor(file.fileId) === 'red' ? (
                       <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-error tw-text-white">
                         <PriorityHighIcon className="tw-absolute tw-left-0 tw-text-[1.25rem]" />
                       </div>
@@ -210,7 +209,7 @@ const Repair = (props) => {
             </div>
 
             <div className="tw-bg-[#333] tw-m-3 tw-mt-0 tw-ease-in tw-shadow-2xl tw-rounded-r-sm code_editor__code">
-              <div className={"tw-m-5"}>
+              <div className={'tw-m-5'}>
                 {React.createElement(
                   files.find((file) => file.fileId === selectedFile)
                     .implementation,

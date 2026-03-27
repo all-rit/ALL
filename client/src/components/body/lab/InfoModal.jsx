@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 const InfoModal = (props) => {
   const {
@@ -16,7 +15,7 @@ const InfoModal = (props) => {
   return (
     <Modal isOpen={open} toggle={toggleOpen}>
       <div className="modal-content__header tw-bg-primary-blue tw-text-white">
-        <h1 className={"tw-title tw-py-5"}>{labName}</h1>
+        <h1 className={'tw-title tw-py-5'}>{labName}</h1>
       </div>
       <ModalBody>
         <ul className="module__more_info">
@@ -47,7 +46,7 @@ const InfoModal = (props) => {
       <ModalFooter>
         <Button className="btn-primary" onClick={redirect}>
           Launch Lab
-        </Button>{" "}
+        </Button>{' '}
         <Button className="btn-second" onClick={toggleOpen}>
           Close
         </Button>

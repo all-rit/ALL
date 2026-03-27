@@ -1,6 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import UserPfp from "src/components/all-components/UserPfp";
+import PropTypes from 'prop-types';
+import UserPfp from 'src/components/all-components/UserPfp';
 
 const ProfileHeader = (props) => {
   const { user } = props;
@@ -16,7 +15,7 @@ const ProfileHeader = (props) => {
           >
             <div
               className={
-                "tw-flex tw-flex-row tw-items-center tw-justify-between"
+                'tw-flex tw-flex-row tw-items-center tw-justify-between'
               }
             >
               <div className="tw-rounded-full">
@@ -30,10 +29,10 @@ const ProfileHeader = (props) => {
                   <UserPfp />
                 </div>
               </div>
-              <div className={"tw-w-full tw-h-full tw-flex tw-items-center "}>
+              <div className={'tw-w-full tw-h-full tw-flex tw-items-center '}>
                 <p
                   className={
-                    "xs:tw-text-xl md:tw-text-4xl tw-font-poppins tw-title tw-mx-10 tw-text-left"
+                    'xs:tw-text-xl md:tw-text-4xl tw-font-poppins tw-title tw-mx-10 tw-text-left'
                   }
                 >
                   {user.firstname} {user.lastinitial}.

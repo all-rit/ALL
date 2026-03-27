@@ -51,7 +51,7 @@ const MemberDisplay = (props) => {
         setLabCredits(memberLabs);
       }
     } catch (error) {
-      // eslint-disable-line no-unused-vars
+       
       setLabCredits(["No lab credits at this time."]);
     }
   };

@@ -1,10 +1,9 @@
-import React from "react";
-import { Frame } from "../components/Frame";
-import PropTypes from "prop-types";
-import useMainStateContext from "src/reducers/MainContext";
-import { ERROR } from "src/constants/notifications";
-import ImagineHeader from "../components/ImagineHeader";
-import AvatarSelection from "../components/AvatarSelection";
+import { Frame } from '../components/Frame';
+import PropTypes from 'prop-types';
+import useMainStateContext from 'src/reducers/MainContext';
+import { ERROR } from 'src/constants/notifications';
+import ImagineHeader from '../components/ImagineHeader';
+import AvatarSelection from '../components/AvatarSelection';
 
 const AvatarSelectionPage = (props) => {
   //snackbar
@@ -12,7 +11,7 @@ const AvatarSelectionPage = (props) => {
 
   return (
     <>
-      <ImagineHeader title={"Select Your " + props.title} />
+      <ImagineHeader title={'Select Your ' + props.title} />
       {Frame(
         <AvatarSelection
           avatars={props.avatars}
@@ -23,17 +22,17 @@ const AvatarSelectionPage = (props) => {
           if (props.avatarSelected != null) {
             props.nextNavigation();
             await props.imagineService(
-              sessionStorage.getItem("userID"),
+              sessionStorage.getItem('userID'),
               props.avatars[props.avatarSelected],
               25,
             );
             return;
           }
           actions.showSnackbar(
-            "Please select your " + props.title,
+            'Please select your ' + props.title,
             ERROR,
-            "center",
-            "top",
+            'center',
+            'top',
           );
         },
         props.prevNavigation,

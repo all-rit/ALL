@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import API from "../../../services/API";
-import GoogleLogin from "../../../assets/images/google_buttons/Google_Sign_In.svg";
-import { createAvatar } from "@dicebear/core";
-import { avataaars } from "@dicebear/collection";
-import { AvatarData } from "../../body/login/AvatarData";
-import { convertAvatarToDicebear } from "../../all-components/convertAvatarToDicebear";
-import useMainStateContext from "../../../reducers/MainContext";
-import PropTypes from "prop-types";
+import API from '../../../services/API';
+import GoogleLogin from '../../../assets/images/google_buttons/Google_Sign_In.svg';
+import { createAvatar } from '@dicebear/core';
+import { avataaars } from '@dicebear/collection';
+import { AvatarData } from '../../body/login/AvatarData';
+import { convertAvatarToDicebear } from '../../all-components/convertAvatarToDicebear';
+import useMainStateContext from '../../../reducers/MainContext';
+import PropTypes from 'prop-types';
 
 const LoginButton = (props) => {
   const { enabled } = props;
   const { actions } = useMainStateContext();
 
-  const isDev = process.env.NODE_ENV === "development";
+  const isDev = process.env.NODE_ENV === 'development';
 
   const developmentLogin = (userId) => {
     actions.developmentLogin(userId);
@@ -23,22 +22,22 @@ const LoginButton = (props) => {
   const devLogin = () => {
     return (
       <div
-        className={"tw-flex tw-flex-col tw-w-full tw-h-full tw-items-center"}
+        className={'tw-flex tw-flex-col tw-w-full tw-h-full tw-items-center'}
       >
         <p>Who would you like to log in as?</p>
-        <div className={"tw-flex tw-justify-between tw-p-5 tw-gap-x-6"}>
+        <div className={'tw-flex tw-justify-between tw-p-5 tw-gap-x-6'}>
           {AvatarData.map((data, index) => {
             return (
               <div
                 onClick={() => developmentLogin(data.id)}
                 key={index}
                 className={
-                  "tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-cursor-pointer"
+                  'tw-flex tw-flex-col tw-items-center tw-rounded-full hover:tw-cursor-pointer'
                 }
               >
                 <img
                   className={
-                    "tw-rounded-full tw-border-8 tw-w-[4rem] tw-h-[4rem]"
+                    'tw-rounded-full tw-border-8 tw-w-[4rem] tw-h-[4rem]'
                   }
                   alt={data.name}
                   src={convertAvatarToDicebear({
@@ -68,11 +67,11 @@ const LoginButton = (props) => {
       <a
         href="# "
         onClick={() =>
-          API.postWithBody(process.env.REACT_APP_SERVER_URL + "/url", {
+          API.postWithBody(process.env.REACT_APP_SERVER_URL + '/url', {
             url: window.location,
           }).then(() => {
             window.location.href =
-              process.env.REACT_APP_SERVER_URL + "/auth/google";
+              process.env.REACT_APP_SERVER_URL + '/auth/google';
           })
         }
       >

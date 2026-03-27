@@ -1,15 +1,14 @@
-import ReactText from "../../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import CodeLine from "../../../../../all-components/CodeBlock/Components/CodeLine";
-import Tab from "../../../../../all-components/CodeBlock/Components/Tab";
-import CommentText from "../../../../../all-components/CodeBlock/StyleComponents/CommentText";
-import CodeBlockInput from "../../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import MultiTab from "../../../../../all-components/CodeBlock/Components/MultiTab";
-import PropTypes from "prop-types";
-import HTMLTag from "../../../../../all-components/CodeBlock/StyleComponents/HTMLTag";
-import HTMLText from "../../../../../all-components/CodeBlock/StyleComponents/HTMLText";
-import React from "react";
-import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
-import ImportText from "src/components/all-components/CodeBlock/StyleComponents/ImportText";
+import ReactText from '../../../../../all-components/CodeBlock/StyleComponents/ReactText';
+import CodeLine from '../../../../../all-components/CodeBlock/Components/CodeLine';
+import Tab from '../../../../../all-components/CodeBlock/Components/Tab';
+import CommentText from '../../../../../all-components/CodeBlock/StyleComponents/CommentText';
+import CodeBlockInput from '../../../../../all-components/CodeBlock/Components/CodeBlockInput';
+import MultiTab from '../../../../../all-components/CodeBlock/Components/MultiTab';
+import PropTypes from 'prop-types';
+import HTMLTag from '../../../../../all-components/CodeBlock/StyleComponents/HTMLTag';
+import HTMLText from '../../../../../all-components/CodeBlock/StyleComponents/HTMLText';
+import ErrorText from 'src/components/all-components/CodeBlock/StyleComponents/ErrorText';
+import ImportText from 'src/components/all-components/CodeBlock/StyleComponents/ImportText';
 
 const NavBarRepair = (props = {}) => {
   const { inputs, userInput, validInputs, isFirst } = props;
@@ -50,7 +49,7 @@ const NavBarRepair = (props = {}) => {
       {inputs.map((input) => (
         <div key={input.id}>
           <CodeLine>
-            <MultiTab numberOfTabs={3} />{" "}
+            <MultiTab numberOfTabs={3} />{' '}
             <HTMLTag> &#60;div className = &ldquo;nav-item&rdquo;&#62;</HTMLTag>
           </CodeLine>
           <CodeLine>
@@ -70,8 +69,8 @@ const NavBarRepair = (props = {}) => {
             <CommentText> {input.comment} </CommentText>
           </CodeLine>
           <CodeLine>
-            <MultiTab numberOfTabs={4} />{" "}
-            <HTMLTag> &#60;img href = {"{"}</HTMLTag>
+            <MultiTab numberOfTabs={4} />{' '}
+            <HTMLTag> &#60;img href = {'{'}</HTMLTag>
             <CodeBlockInput
               value={input.userInput}
               attributes={{
@@ -79,11 +78,11 @@ const NavBarRepair = (props = {}) => {
                   userInput(input.id, event.target.value);
                 },
                 name: input.name,
-                type: "text",
-                placeholder: "Enter icon image file here",
+                type: 'text',
+                placeholder: 'Enter icon image file here',
               }}
             />
-            <HTMLTag>{"}"}/&#62; </HTMLTag>
+            <HTMLTag>{'}'}/&#62; </HTMLTag>
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (
             <CodeLine>

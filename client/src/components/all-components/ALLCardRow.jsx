@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 /**
  * A standard ALL component that displays an image, a title, and a button in a row.
@@ -37,11 +36,11 @@ const ALLCardRow = (props) => {
           className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
           style={{
             backgroundImage: `url(${imageURL})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
-          alt={"Image of Wrench created by Google Gemini."}
+          alt={'Image of Wrench created by Google Gemini.'}
         />
         {/* Middle */}
         <div className="tw-p-5">
@@ -51,12 +50,12 @@ const ALLCardRow = (props) => {
               return (
                 <div
                   key={i}
-                  className={`tw-m-0.5 ${i < circlesFilled ? "tw-bg-success tw-p-2 tw-mx-2" : "tw-bg-primary-yellow"}`}
+                  className={`tw-m-0.5 ${i < circlesFilled ? 'tw-bg-success tw-p-2 tw-mx-2' : 'tw-bg-primary-yellow'}`}
                 />
               );
             })}
           </div>
-          <p className={"tw-font-poppins tw-font-bold tw-text-md tw-text-left"}>
+          <p className={'tw-font-poppins tw-font-bold tw-text-md tw-text-left'}>
             {title}
           </p>
         </div>

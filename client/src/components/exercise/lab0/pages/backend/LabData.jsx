@@ -1,7 +1,6 @@
-import React from "react";
-import { Page } from "../../components/Page";
-import labData from "../../../../../assets/images/lab0/exercise/lab-data.png";
-import { ROUTES } from "../../../../../constants/lab0/index";
+import { Page } from '../../components/Page';
+import labData from '../../../../../assets/images/lab0/exercise/lab-data.png';
+import { ROUTES } from '../../../../../constants/lab0/index';
 
 export const LabData = () => {
   return (
@@ -17,7 +16,7 @@ export const LabData = () => {
           key fields that you&apos;ll need to pay attention to.
         </Page.Header.Description>
       </Page.Header>
-      <Page.Body className={"tw-gap-y-0"}>
+      <Page.Body className={'tw-gap-y-0'}>
         <div className="tw-flex tw-justify-center tw-pb-9">
           <img src={labData} alt="Lab Data" />
         </div>
@@ -25,7 +24,7 @@ export const LabData = () => {
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
               <b>about</b> – This is the plain text introduction that shows up
-              on each lab&apos;s landing page (when someone visits{" "}
+              on each lab&apos;s landing page (when someone visits{' '}
               <code>/Lab/About</code>). Think of it as the lab&apos;s elevator
               pitch; it should explain what the lab covers, what students will
               learn, and why they should care about the topic. Keep it clear,
@@ -66,7 +65,7 @@ export const LabData = () => {
             </li>
             <li>
               <b>reinforcement</b> – This is our video playlist, stored as a
-              JSON list. Each entry has a <code>title</code> and a{" "}
+              JSON list. Each entry has a <code>title</code> and a{' '}
               <code>link</code> to the <b>embedded</b> YouTube video. These
               videos show up on the reinforcement page and help drive home
               important concepts in different ways. They&apos;re especially
@@ -74,7 +73,7 @@ export const LabData = () => {
               same idea explained from different angles.
               <br />
               <br />
-              <b>Note:</b> The link should look like this:{" "}
+              <b>Note:</b> The link should look like this:{' '}
               <a
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 target="_blank"

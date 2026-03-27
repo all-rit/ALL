@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Recomendation = (props) => {
   const { aiRecommendation } = props;
@@ -7,11 +6,11 @@ const Recomendation = (props) => {
     <div
       className="recommendation"
       tabIndex={0}
-      alt={`AI Recommendation ${aiRecommendation ? "HIRE" : "DECLINE"}`}
+      alt={`AI Recommendation ${aiRecommendation ? 'HIRE' : 'DECLINE'}`}
     >
       <div
         className={`recommendation__card ${
-          aiRecommendation ? "recommendation__hire" : "recommendation__reject"
+          aiRecommendation ? 'recommendation__hire' : 'recommendation__reject'
         }`}
       >
         <div className="recommendation__img">AI</div>
@@ -21,11 +20,11 @@ const Recomendation = (props) => {
               className={`recommendation__title  
                         ${
                           aiRecommendation
-                            ? "recommendation__title_hire"
-                            : "recommendation__title_reject"
+                            ? 'recommendation__title_hire'
+                            : 'recommendation__title_reject'
                         }`}
             >
-              {aiRecommendation ? "HIRE" : "REJECT"}
+              {aiRecommendation ? 'HIRE' : 'REJECT'}
             </div>
             {/* <span className="span">Decline</span> */}
           </div>

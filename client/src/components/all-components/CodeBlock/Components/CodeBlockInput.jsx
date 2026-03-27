@@ -1,5 +1,4 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import { PropTypes } from 'prop-types';
 
 /**
  * React component for rendering an input element within a code block.
@@ -21,7 +20,7 @@ const CodeBlockInput = (props) => {
       <input
         value={value}
         defaultValue={defaultValue}
-        className={"tw-p-1 code_editor__input"}
+        className={'tw-p-1 code_editor__input'}
         {...attributes}
       />
     </>

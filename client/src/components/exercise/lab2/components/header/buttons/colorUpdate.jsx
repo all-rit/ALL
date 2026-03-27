@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import "../title.css";
-import LabButton from "../../../../../all-components/LabButton";
+import '../title.css';
+import LabButton from '../../../../../all-components/LabButton';
 
 /*
 Component for the color update button on the color change popup
@@ -11,7 +10,7 @@ const ColorUpdate = ({ openColorChange }) => {
     <div>
       <LabButton
         type="button"
-        label={"Update Colors"}
+        label={'Update Colors'}
         onClick={openColorChange}
       >
         Update Colors

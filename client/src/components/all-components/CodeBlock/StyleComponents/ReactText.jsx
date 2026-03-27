@@ -1,13 +1,12 @@
-import PropTypes from "prop-types";
-import React from "react";
-import "../../../../assets/stylesheets/components/CodeBlockCSS.scss";
+import PropTypes from 'prop-types';
+import '../../../../assets/stylesheets/components/CodeBlockCSS.scss';
 import {
   javascriptRegex,
   operatorRegex,
   reactRegex,
   numberRegex,
   funcRegex,
-} from "../Constants";
+} from '../Constants';
 
 /**
  * React component for rendering code with syntax highlighting tailored for React code.
@@ -25,8 +24,8 @@ import {
  */
 
 const ReactText = ({ children }) => {
-  if (typeof children === "object") {
-    children = children.toString().replaceAll(/,/g, "").padStart(1);
+  if (typeof children === 'object') {
+    children = children.toString().replaceAll(/,/g, '').padStart(1);
   }
   const highlightSyntax = (string) => {
     return string.split(/(\s+|\b|\W)/).map((segment, index) => {
@@ -62,7 +61,7 @@ const ReactText = ({ children }) => {
         );
       }
       return (
-        <span key={index} className={"otherText"}>
+        <span key={index} className={'otherText'}>
           {segment}
         </span>
       );

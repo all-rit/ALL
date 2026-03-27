@@ -1,6 +1,5 @@
-import React from "react";
-import LabButton from "../../../all-components/LabButton";
-import PropTypes from "prop-types";
+import LabButton from '../../../all-components/LabButton';
+import PropTypes from 'prop-types';
 
 const Conclusion = ({ resetSystem }) => {
   const resetFullSystem = () => {
@@ -14,7 +13,7 @@ const Conclusion = ({ resetSystem }) => {
         Thank you for using our system to advance your understanding of software
         accessibility. Here is a short recap of what we covered:
       </p>
-      <div className={"tw-body-text"}>
+      <div className={'tw-body-text'}>
         <br />
         <li className="tw-body-text tw-list-decimal">
           How inaccessible software can be detrimental to users with color
@@ -31,7 +30,7 @@ const Conclusion = ({ resetSystem }) => {
       </div>
       <br />
       <div className="center">
-        <LabButton onClick={resetFullSystem} label={"Play Again!"} />
+        <LabButton onClick={resetFullSystem} label={'Play Again!'} />
       </div>
     </div>
   );

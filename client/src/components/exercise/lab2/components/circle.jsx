@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import Countdown from "react-countdown";
-import "./exerciseStyle.css";
+import Countdown from 'react-countdown';
+import './exerciseStyle.css';
 
 // Object for holding the current background color of the Circle
 // Used to fade to black on each circle
 const style = {
-  backgroundColor: "",
+  backgroundColor: '',
 };
 
 /*
@@ -18,14 +17,14 @@ const Circle = ({ color, clickable, onClick }) => {
   const toDark = ({ milliseconds }) => {
     style.backgroundColor = color;
     if (milliseconds < 100) {
-      style.backgroundColor = "black";
+      style.backgroundColor = 'black';
     }
     return (
       <span
         className="circle clickable"
         style={{ backgroundColor: style.backgroundColor }}
         onClick={onClick}
-        label={"circle"}
+        label={'circle'}
       />
     );
   };

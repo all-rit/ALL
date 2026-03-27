@@ -1,6 +1,4 @@
-import PropTypes from "prop-types";
-import React from "react";
-
+import PropTypes from 'prop-types';
 /**
  * React component for rendering text in a dark green color, typically used for comments in code.
  *

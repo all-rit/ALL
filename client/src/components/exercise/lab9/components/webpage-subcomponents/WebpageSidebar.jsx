@@ -1,6 +1,4 @@
-import React from "react";
-
-import person from "../../../../../assets/images/lab9/person.jpeg";
+import person from '../../../../../assets/images/lab9/person.jpeg';
 
 /**
  * WebpageSidebar is a sub-component of the main Webpage component.

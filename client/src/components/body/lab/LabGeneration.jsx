@@ -40,7 +40,7 @@ const LabGeneration = (props) => {
 
   useEffect(() => {
     if (labInformation.length === 0) {
-      // eslint-disable-next-line
+       
       async function fetchGroups() {
         return LabService.getAllLabs();
       }

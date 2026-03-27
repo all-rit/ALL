@@ -1,6 +1,5 @@
-import React from "react";
-import "../title.css";
-import PropTypes from "prop-types";
+import '../title.css';
+import PropTypes from 'prop-types';
 
 /*
 Component for creating a generic button for the system

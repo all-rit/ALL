@@ -1,6 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { javascriptRegex } from "../Constants";
+import PropTypes from 'prop-types';
+import { javascriptRegex } from '../Constants';
 
 /**
  * React component for rendering plain text with a background color suitable for HTML content.
@@ -28,7 +27,7 @@ const ImportText = ({ children }) => {
         );
       }
       return (
-        <span key={index} className={"import"}>
+        <span key={index} className={'import'}>
           {segment}
         </span>
       );

@@ -1,13 +1,12 @@
-import Tab from "../../../../../all-components/CodeBlock/Components/Tab";
-import CodeLine from "../../../../../all-components/CodeBlock/Components/CodeLine";
-import MultiTab from "../../../../../all-components/CodeBlock/Components/MultiTab";
-import ReactText from "../../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import CommentText from "../../../../../all-components/CodeBlock/StyleComponents/CommentText";
-import JSONText from "../../../../../all-components/CodeBlock/StyleComponents/JSONText";
-import CodeBlockInput from "../../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import PropTypes from "prop-types";
-import React from "react";
-import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
+import Tab from '../../../../../all-components/CodeBlock/Components/Tab';
+import CodeLine from '../../../../../all-components/CodeBlock/Components/CodeLine';
+import MultiTab from '../../../../../all-components/CodeBlock/Components/MultiTab';
+import ReactText from '../../../../../all-components/CodeBlock/StyleComponents/ReactText';
+import CommentText from '../../../../../all-components/CodeBlock/StyleComponents/CommentText';
+import JSONText from '../../../../../all-components/CodeBlock/StyleComponents/JSONText';
+import CodeBlockInput from '../../../../../all-components/CodeBlock/Components/CodeBlockInput';
+import PropTypes from 'prop-types';
+import ErrorText from '../../../../../all-components/CodeBlock/StyleComponents/ErrorText';
 
 const AddressRepairCodeBlock = (props = {}) => {
   const { inputs, userInput, validInputs, isFirst } = props;
@@ -17,11 +16,11 @@ const AddressRepairCodeBlock = (props = {}) => {
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
       {inputs.map((country, index) => (
         <CodeLine key={index}>
-          <Tab />{" "}
+          <Tab />{' '}
           <ReactText>
-            {" "}
+            {' '}
             const {country.countryVariable} = &ldquo;{country.countryName}
-            &rdquo;{" "}
+            &rdquo;{' '}
           </ReactText>
         </CodeLine>
       ))}
@@ -38,7 +37,7 @@ const AddressRepairCodeBlock = (props = {}) => {
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
-              {" "}
+              {' '}
               &ldquo;{input.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
@@ -61,10 +60,10 @@ const AddressRepairCodeBlock = (props = {}) => {
                   userInput(input.id, event.target.value);
                 },
                 name: input.countryName,
-                type: "text",
-                placeholder: "Enter Address Format Here",
+                type: 'text',
+                placeholder: 'Enter Address Format Here',
                 // overwrite styling to make input wider
-                className: "p-1 tw-w-[34rem] code_editor__input",
+                className: 'p-1 tw-w-[34rem] code_editor__input',
               }}
             />
             <JSONText>&rdquo;</JSONText>

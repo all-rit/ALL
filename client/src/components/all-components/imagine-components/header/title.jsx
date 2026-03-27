@@ -1,6 +1,5 @@
-import React from "react";
-import "./title.css";
-import PropTypes from "prop-types";
+import './title.css';
+import PropTypes from 'prop-types';
 
 /*
 Displays the title of the page dependent on the state it is in

@@ -1,9 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 function AnswerOption(props) {
   switch (props.questionType) {
-    case "singleChoice":
+    case 'singleChoice':
       return (
         <li className="answerOption">
           <input
@@ -19,7 +18,7 @@ function AnswerOption(props) {
           </label>
         </li>
       );
-    case "multiChoice":
+    case 'multiChoice':
       return (
         <li className="answerOption">
           <input

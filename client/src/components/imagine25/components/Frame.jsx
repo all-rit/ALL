@@ -1,5 +1,3 @@
-import React from "react";
-
 //put null for any button you do not wish to use
 export const Frame = (content, nextOnClick, prevOnClick) => {
   const prev =

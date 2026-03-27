@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
 /**
  * Links is a visual component used in the reading
  * section of a lab. Displaying a assortment of links to other sites

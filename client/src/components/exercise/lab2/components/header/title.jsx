@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import "./title.css";
+import './title.css';
 
 /*
 Displays the title of the page dependent on the state it is in

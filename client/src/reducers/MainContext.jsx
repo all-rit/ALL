@@ -5,9 +5,9 @@ import {
   types,
 } from "./MainReducerForContext";
 import { PropTypes } from "prop-types";
-import AuthService from "src/services/AuthService";
+import AuthService from "../services/AuthService";
 import UserService from "../services/UserService";
-import { MathJaxContext } from "node_modules/better-react-mathjax/index";
+import { MathJaxContext } from "better-react-mathjax";
 
 /**
  * MainStateContext is a context object created using createContext() function.
@@ -141,7 +141,7 @@ export const MainContextProvider = ({ children }) => {
 };
 
 MainContextProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export default useMainStateContext;

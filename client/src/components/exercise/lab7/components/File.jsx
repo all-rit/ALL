@@ -1,8 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { AI_CORRECT, LOCKED_FILE } from "../../../../constants/lab7";
-import LOCKED from "../../../../assets/images/lab7/lock.png";
-import OPEN from "../../../../assets/images/lab7/unlock.png";
+import PropTypes from 'prop-types';
+import { AI_CORRECT, LOCKED_FILE } from '../../../../constants/lab7';
+import LOCKED from '../../../../assets/images/lab7/lock.png';
+import OPEN from '../../../../assets/images/lab7/unlock.png';
 
 /**
  * Renders a file component.
@@ -14,34 +13,34 @@ import OPEN from "../../../../assets/images/lab7/unlock.png";
 const File = ({ data }) => {
   const image = data.decision === LOCKED_FILE ? LOCKED : OPEN;
   const alt = `A .png image of ${
-    data.decision === LOCKED_FILE ? "a locked" : "an unlocked"
+    data.decision === LOCKED_FILE ? 'a locked' : 'an unlocked'
   } lock.`;
   const reportClassName =
-    data.report === AI_CORRECT ? "tw-text-[#2e8540]" : "tw-text-[#e31c3d]";
+    data.report === AI_CORRECT ? 'tw-text-[#2e8540]' : 'tw-text-[#e31c3d]';
 
   return (
-    <div className={"tw-flex tw-flex-col tw-items-center tw-p-1"}>
+    <div className={'tw-flex tw-flex-col tw-items-center tw-p-1'}>
       <div
-        className={"tw-space-y-3 tw-flex tw-flex-col tw-justify-center file"}
+        className={'tw-space-y-3 tw-flex tw-flex-col tw-justify-center file'}
       >
         {data.report !== undefined && (
           <div>
-            <img className={"tw-h-10 tw-w-6"} src={image} alt={alt} />
-            <p className={"tw-mt-1.5 tw-font-bold"}>{data.decision} FILE</p>
+            <img className={'tw-h-10 tw-w-6'} src={image} alt={alt} />
+            <p className={'tw-mt-1.5 tw-font-bold'}>{data.decision} FILE</p>
           </div>
         )}
         <div>
-          <p className={"tw-leading-tight"}>{data.fileName}</p>
-          <p className={"tw-leading-tight tw-italic"}>
+          <p className={'tw-leading-tight'}>{data.fileName}</p>
+          <p className={'tw-leading-tight tw-italic'}>
             Sensitivity Level {data.sensitivityLevel}
           </p>
         </div>
         <div>
-          <p className={"tw-font-bold"}>{data.content}</p>
+          <p className={'tw-font-bold'}>{data.content}</p>
         </div>
       </div>
       {data.report !== undefined && (
-        <div className={"tw-bg-[#DCDCDC] tw-mt-6 tw-px-6 tw-py-2"}>
+        <div className={'tw-bg-[#DCDCDC] tw-mt-6 tw-px-6 tw-py-2'}>
           <span className={`tw-font-bold tw-flex-wrap ${reportClassName}`}>
             {data.report}
           </span>

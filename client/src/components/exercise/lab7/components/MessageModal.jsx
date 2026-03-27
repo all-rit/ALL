@@ -1,10 +1,9 @@
-import React from "react";
-import { Modal, ModalHeader } from "reactstrap";
-import { CheckRounded, WarningRounded } from "@mui/icons-material";
-import ProgressBar from "./ProgressBar";
-import { MESSAGES, READ_TIME } from "../../../../constants/lab7";
-import Countdown from "react-countdown";
-import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
+import { Modal, ModalHeader } from 'reactstrap';
+import { CheckRounded, WarningRounded } from '@mui/icons-material';
+import ProgressBar from './ProgressBar';
+import { MESSAGES, READ_TIME } from '../../../../constants/lab7';
+import Countdown from 'react-countdown';
+import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
 
 /**
  * Represents a message modal component.
@@ -31,17 +30,17 @@ const MessageModal = () => {
     <Modal
       centered={true}
       isOpen={state.isModalOpen}
-      contentClassName={"tw-max-w-4xl"}
+      contentClassName={'tw-max-w-4xl'}
     >
       <ModalHeader>
-        <span className={"tw-flex tw-items-center"}>
+        <span className={'tw-flex tw-items-center'}>
           {isIntrusion ? (
-            <WarningRounded fontSize={"large"} htmlColor={"#e31c3d"} />
+            <WarningRounded fontSize={'large'} htmlColor={'#e31c3d'} />
           ) : (
-            <CheckRounded fontSize={"large"} htmlColor={"#2e8540"} />
+            <CheckRounded fontSize={'large'} htmlColor={'#2e8540'} />
           )}
-          <h3 className={"tw-ml-3 tw-text-2xl tw-font-bold"}>
-            {isIntrusion ? "Intrusion detected!" : "Perfect score!"}
+          <h3 className={'tw-ml-3 tw-text-2xl tw-font-bold'}>
+            {isIntrusion ? 'Intrusion detected!' : 'Perfect score!'}
           </h3>
         </span>
       </ModalHeader>

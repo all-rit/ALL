@@ -1,6 +1,5 @@
-import React from "react";
-import Tab from "./Tab";
-import { PropTypes } from "prop-types";
+import Tab from './Tab';
+import { PropTypes } from 'prop-types';
 
 /**
  * MultiTab component to display multiple tabs.

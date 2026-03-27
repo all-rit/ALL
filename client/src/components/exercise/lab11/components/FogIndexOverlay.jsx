@@ -1,8 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import check_mark from "../../../../assets/images/lab11/checkmark.png";
-import exclamation_mark from "../../../../assets/images/lab11/exclamationmark.png";
-import { twMerge } from "tailwind-merge";
+import PropTypes from 'prop-types';
+import check_mark from '../../../../assets/images/lab11/checkmark.png';
+import exclamation_mark from '../../../../assets/images/lab11/exclamationmark.png';
+import { twMerge } from 'tailwind-merge';
 
 /**
  * Renders the Fog Index Overlay component.
@@ -21,13 +20,13 @@ const FogIndexOverlay = ({
   totalComplexWords,
 }) => {
   let className =
-    "tw-w-12 tw-h-12 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4";
+    'tw-w-12 tw-h-12 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4';
   if (fogIndex > 12) {
-    className = twMerge(className, "tw-bg-[#FF0000]");
+    className = twMerge(className, 'tw-bg-[#FF0000]');
   } else if (fogIndex > 9) {
-    className = twMerge(className, "tw-bg-[#FED136]");
+    className = twMerge(className, 'tw-bg-[#FED136]');
   } else {
-    className = twMerge(className, "tw-bg-[#14FF00]");
+    className = twMerge(className, 'tw-bg-[#14FF00]');
   }
 
   return (

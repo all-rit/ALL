@@ -1,18 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const defaultOptions = [
-  "Strongly Disagree",
-  "Disagree",
-  "Neutral",
-  "Agree",
-  "Strongly Agree",
+  'Strongly Disagree',
+  'Disagree',
+  'Neutral',
+  'Agree',
+  'Strongly Agree',
 ];
 
 const Likert = ({
   options = defaultOptions,
   onAnswerSelected,
-  name = "likert",
+  name = 'likert',
 }) => {
   return (
     <div className="tw-my-4">

@@ -1,12 +1,11 @@
-import React from "react";
-import LoginButton from "../../header/helpers/LoginButton";
-import getExerciseState from "../../../helpers/GetReducer";
-import { EXERCISE_IDLE } from "../../../constants/lab1";
-import useMainStateContext from "../../../reducers/MainContext";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import { connect } from "react-redux";
+import LoginButton from '../../header/helpers/LoginButton';
+import getExerciseState from '../../../helpers/GetReducer';
+import { EXERCISE_IDLE } from '../../../constants/lab1';
+import useMainStateContext from '../../../reducers/MainContext';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { actions as mainActions } from '../../../reducers/MainReducer';
+import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
@@ -31,7 +30,7 @@ const LoginBody = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-align-middle tw-h-full tw-justify-center"
+        'tw-flex tw-flex-col tw-align-middle tw-h-full tw-justify-center'
       }
     >
       <div className="xs:tw-text-md tw-font-poppins sm:tw-text-3xl md:lg:tw-text-5xl tw-title tw-text-primary-blue tw-flex tw-flex-row tw-justify-center tw-align-middle">
@@ -39,32 +38,32 @@ const LoginBody = (props) => {
       </div>
       <div
         className={
-          "tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center"
+          'tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center'
         }
       >
         <p
           className={
-            "sm:tw-w-1/2 xs:tw-w-full xs:tw-text-xs md:tw-body-text md:tw-text-[1.125rem] tw-leading-snug tw-text-center tw-m-5"
+            'sm:tw-w-1/2 xs:tw-w-full xs:tw-text-xs md:tw-body-text md:tw-text-[1.125rem] tw-leading-snug tw-text-center tw-m-5'
           }
         >
-          {" "}
+          {' '}
           Continue with Google to complete labs, assign labs as an educator, and
-          keep track of scores.{" "}
+          keep track of scores.{' '}
         </p>
       </div>
 
       <div
         className={
-          "tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-pb-2"
+          'tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-pb-2'
         }
       >
         <p
           className={
-            "tw-w-1/2 tw-mt-5 tw-text-xs tw-flex tw-flex-row tw-justify-center xs:tw-text-[0.75rem]"
+            'tw-w-1/2 tw-mt-5 tw-text-xs tw-flex tw-flex-row tw-justify-center xs:tw-text-[0.75rem]'
           }
         >
-          {" "}
-          Sign Up or Log In{" "}
+          {' '}
+          Sign Up or Log In{' '}
         </p>
       </div>
       <div className="tw-flex tw-flex-row tw-justify-center tw-align-middle xs:tw-w-full">

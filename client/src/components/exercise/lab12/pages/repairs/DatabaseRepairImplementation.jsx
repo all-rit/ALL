@@ -1,12 +1,11 @@
-import React from "react";
-import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
-import SQLText from "../../../../all-components/CodeBlock/StyleComponents/SQLText";
-import MultiTab from "../../../../all-components/CodeBlock/Components/MultiTab";
-import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import PropTypes from "prop-types";
-import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
-import ErrorText from "../../../../all-components/CodeBlock/StyleComponents/ErrorText";
-import IdentityDatabaseData from "../../../../../constants/lab12/DatabaseRepair";
+import CodeLine from '../../../../all-components/CodeBlock/Components/CodeLine';
+import SQLText from '../../../../all-components/CodeBlock/StyleComponents/SQLText';
+import MultiTab from '../../../../all-components/CodeBlock/Components/MultiTab';
+import CodeBlockInput from '../../../../all-components/CodeBlock/Components/CodeBlockInput';
+import PropTypes from 'prop-types';
+import CommentText from '../../../../all-components/CodeBlock/StyleComponents/CommentText';
+import ErrorText from '../../../../all-components/CodeBlock/StyleComponents/ErrorText';
+import IdentityDatabaseData from '../../../../../constants/lab12/DatabaseRepair';
 const DatabaseRepairImplementation = (props = {}) => {
   /**
    * DatabaseRepairImplementation is a component that is responsible for displaying the codeblock contents
@@ -61,8 +60,8 @@ const DatabaseRepairImplementation = (props = {}) => {
                     userInput(item.id, event.target.value);
                   },
                   name: item.variable,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
+                  type: 'text',
+                  placeholder: 'Enter Answer Here',
                 }}
               />
               <SQLText>)</SQLText>
@@ -102,8 +101,8 @@ const DatabaseRepairImplementation = (props = {}) => {
                       userInput(item.id, event.target.value);
                     },
                     name: item.variable,
-                    type: "text",
-                    placeholder: "Enter Answer Here",
+                    type: 'text',
+                    placeholder: 'Enter Answer Here',
                   }}
                 />
               ) : (
@@ -113,8 +112,8 @@ const DatabaseRepairImplementation = (props = {}) => {
                       userInput(item.id, event.target.value);
                     },
                     name: item.variable,
-                    type: "text",
-                    placeholder: "Enter Answer Here",
+                    type: 'text',
+                    placeholder: 'Enter Answer Here',
                   }}
                 />
               )}

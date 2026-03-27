@@ -11,7 +11,7 @@ function* authFlow() {
     const user = yield call(authApi);
     yield put({ type: types.UPDATE_USER, user });
   } catch (e) {
-    // eslint-disable-line no-unused-vars
+    console.warn(e);
     return null;
   }
 }

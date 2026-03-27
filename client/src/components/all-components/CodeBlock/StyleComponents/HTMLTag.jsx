@@ -1,6 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { htmlTagRegex, htmlElementRegex } from "../Constants";
+import PropTypes from 'prop-types';
+import { htmlTagRegex, htmlElementRegex } from '../Constants';
 
 /**
  * React component for rendering HTML-like code with syntax highlighting for HTML tags and attributes.
@@ -17,8 +16,8 @@ import { htmlTagRegex, htmlElementRegex } from "../Constants";
  */
 
 const HTMLTag = ({ children }) => {
-  if (typeof children === "object") {
-    children = children.toString().replaceAll(/,/g, "").padStart(1);
+  if (typeof children === 'object') {
+    children = children.toString().replaceAll(/,/g, '').padStart(1);
   }
   const highlightSyntax = (text) => {
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {

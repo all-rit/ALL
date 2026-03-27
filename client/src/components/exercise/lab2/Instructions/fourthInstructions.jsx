@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
-import UserLabService from "../../../../services/UserLabService";
-import "./secondaryInstructions.css";
-import { LAB_ID } from "../../../../constants/lab2";
-import LabButton from "../../../all-components/LabButton";
+import UserLabService from '../../../../services/UserLabService';
+import './secondaryInstructions.css';
+import { LAB_ID } from '../../../../constants/lab2';
+import LabButton from '../../../all-components/LabButton';
 
 /*
 Responsible for displaying the fourth and final page of instructions to the users
@@ -26,7 +25,7 @@ const FourthInstructions = ({
     }
   };
 
-  if (background !== "white") {
+  if (background !== 'white') {
     toWhiteBackground();
   }
 
@@ -72,9 +71,9 @@ const FourthInstructions = ({
         </ul>
       </div>
       <div className="center tw-gap-x-3">
-        <LabButton onClick={closeInstructions} label={"Continue Playing"} />
-        <LabButton onClick={endExercise} label={"End Exercise"} />
-        <LabButton onClick={activatePopup} label={"Make Changes"} />
+        <LabButton onClick={closeInstructions} label={'Continue Playing'} />
+        <LabButton onClick={endExercise} label={'End Exercise'} />
+        <LabButton onClick={activatePopup} label={'Make Changes'} />
       </div>
     </div>
   );

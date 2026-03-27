@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * React component for rendering a tab character as whitespace.
  *

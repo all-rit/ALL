@@ -1,11 +1,10 @@
-import React from "react";
-import CodeLine from "../../../../../components/all-components/CodeBlock/Components/CodeLine";
-import CodeBlockInput from "../../../../../components/all-components/CodeBlock/Components/CodeBlockInput";
-import MultiTab from "../../../../../components/all-components/CodeBlock/Components/MultiTab";
-import PropTypes from "prop-types";
-import ReactText from "../../../../../components/all-components/CodeBlock/StyleComponents/ReactText";
-import CommentText from "../../../../../components/all-components/CodeBlock/StyleComponents/CommentText";
-import ErrorText from "../../../../../components/all-components/CodeBlock/StyleComponents/ErrorText";
+import CodeLine from '../../../../../components/all-components/CodeBlock/Components/CodeLine';
+import CodeBlockInput from '../../../../../components/all-components/CodeBlock/Components/CodeBlockInput';
+import MultiTab from '../../../../../components/all-components/CodeBlock/Components/MultiTab';
+import PropTypes from 'prop-types';
+import ReactText from '../../../../../components/all-components/CodeBlock/StyleComponents/ReactText';
+import CommentText from '../../../../../components/all-components/CodeBlock/StyleComponents/CommentText';
+import ErrorText from '../../../../../components/all-components/CodeBlock/StyleComponents/ErrorText';
 
 /**
  * IDEExerciseImplementation is a component that is responsible for displaying the codeblock contents
@@ -35,11 +34,11 @@ const IDEExerciseImplementation = (props = {}) => {
         <ReactText>disclaimerText = </ReactText>
         <ReactText>{'"'}</ReactText>
         <CodeBlockInput
-          value={inputs.find((i) => i.id === "disclaimer")?.value || ""}
+          value={inputs.find((i) => i.id === 'disclaimer')?.value || ''}
           attributes={{
-            type: "text",
-            onChange: (e) => userInput("disclaimer", e.target.value),
-            placeholder: "Enter Answer Here",
+            type: 'text',
+            onChange: (e) => userInput('disclaimer', e.target.value),
+            placeholder: 'Enter Answer Here',
           }}
         />
         <ReactText>{'"'}</ReactText>
@@ -59,11 +58,11 @@ const IDEExerciseImplementation = (props = {}) => {
         <MultiTab numberOfTabs={1} />
         <ReactText>showConfidenceScores = </ReactText>
         <CodeBlockInput
-          value={inputs.find((i) => i.id === "confidence")?.value || ""}
+          value={inputs.find((i) => i.id === 'confidence')?.value || ''}
           attributes={{
-            type: "text",
-            onChange: (e) => userInput("confidence", e.target.value),
-            placeholder: "Enter Answer Here",
+            type: 'text',
+            onChange: (e) => userInput('confidence', e.target.value),
+            placeholder: 'Enter Answer Here',
           }}
         />
         <ReactText>;</ReactText>
@@ -79,11 +78,11 @@ const IDEExerciseImplementation = (props = {}) => {
         <MultiTab numberOfTabs={1} />
         <ReactText>showCitations = </ReactText>
         <CodeBlockInput
-          value={inputs.find((i) => i.id === "citations")?.value || ""}
+          value={inputs.find((i) => i.id === 'citations')?.value || ''}
           attributes={{
-            type: "text",
-            onChange: (e) => userInput("citations", e.target.value),
-            placeholder: "Enter Answer Here",
+            type: 'text',
+            onChange: (e) => userInput('citations', e.target.value),
+            placeholder: 'Enter Answer Here',
           }}
         />
         <ReactText>;</ReactText>

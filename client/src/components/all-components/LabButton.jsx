@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const LabButton = (props) => {
   const { onClick, type, label, key, disabled, ariaLabel } = props;

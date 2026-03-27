@@ -1,13 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Question from "./Question";
-import QuestionCount from "./QuestionCount";
-import AnswerOption from "./AnswerOption";
-import { MathComponent } from "better-react-mathjax"
+import PropTypes from 'prop-types';
+import Question from './Question';
+import QuestionCount from './QuestionCount';
+import AnswerOption from './AnswerOption';
+import { MathComponent } from 'better-react-mathjax';
 
 const formulateEquation = (equation) => {
   return (
-    <div className={"tw-flex tw-flex-col"}>
+    <div className={'tw-flex tw-flex-col'}>
       <MathComponent tex={String.raw`New\;Utility\;Equation=${equation}`} />
     </div>
   );
@@ -46,7 +45,7 @@ function Quiz(props) {
           {props.answerOptions.map(renderAnswerOptions)}
         </ol>
         <div
-          className={"tw-w-full tw-flex tw-flex-row tw-justify-between tw-p-6"}
+          className={'tw-w-full tw-flex tw-flex-row tw-justify-between tw-p-6'}
         >
           <div className="align-right">
             {props.questionId !== 1 && (
@@ -59,7 +58,7 @@ function Quiz(props) {
               </button>
             )}
           </div>
-          <div className={"tw-font-bold tw-body-text tw-my-6"}>
+          <div className={'tw-font-bold tw-body-text tw-my-6'}>
             {props.questionId}/{props.questionTotal}
           </div>
           <div className="align-right">

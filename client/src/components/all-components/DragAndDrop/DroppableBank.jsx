@@ -1,10 +1,9 @@
-import { useDroppable } from "@dnd-kit/core";
-import React from "react";
-import DraggableCard from "./DraggableCard";
-import PropTypes from "prop-types";
+import { useDroppable } from '@dnd-kit/core';
+import DraggableCard from './DraggableCard';
+import PropTypes from 'prop-types';
 
 const DroppableBank = ({ bank, bankStyle, cardStyle, cardIcon }) => {
-  const { setNodeRef } = useDroppable({ id: "bank" });
+  const { setNodeRef } = useDroppable({ id: 'bank' });
 
   return (
     <div ref={setNodeRef} className={bankStyle}>

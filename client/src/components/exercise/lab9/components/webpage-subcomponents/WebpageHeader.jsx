@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * WebpageHeader is a sub-component of the main Webpage component.
  * It is responsible for displaying the textual information over the hero image,

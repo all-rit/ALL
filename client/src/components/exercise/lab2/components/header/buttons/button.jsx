@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import "../title.css";
+import '../title.css';
 
 /*
 Component for creating a generic button for the system

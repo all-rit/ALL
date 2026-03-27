@@ -1,6 +1,5 @@
-import React from "react";
-import { Page } from "../../components/Page";
-import { ROUTES } from "../../../../../constants/lab0/index";
+import { Page } from '../../components/Page';
+import { ROUTES } from '../../../../../constants/lab0/index';
 
 export const LabIntroduction = () => {
   return (

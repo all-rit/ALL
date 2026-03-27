@@ -1,38 +1,37 @@
-import React from "react";
-import { Modal } from "reactstrap";
-import PropTypes from "prop-types";
-import logo from "../../assets/images/logos/ALL_White.svg";
+import { Modal } from 'reactstrap';
+import PropTypes from 'prop-types';
+import logo from '../../assets/images/logos/ALL_White.svg';
 
 const BrandedALLModal = (props) => {
   const { isOpen, toggle, direction, children } = props;
 
-  return direction === "row" && window.innerWidth >= 640 ? (
+  return direction === 'row' && window.innerWidth >= 640 ? (
     <Modal toggle={toggle} isOpen={isOpen}>
       <div
         className={`tw-flex tw-flex-row xs:tw-h-[10rem] sm:tw-h-[20rem] md:lg:tw-min-h-[28rem] sm:tw-min-w-[30rem] md:tw-min-w-[40rem] lg:tw-min-w-[64rem] lg:tw-max-w-[64rem]`}
       >
         <div
           id="row-header"
-          className={"tw-bg-primary-blue tw-w-1/2 tw-rounded-l-md"}
+          className={'tw-bg-primary-blue tw-w-1/2 tw-rounded-l-md'}
         >
           <div
             className={
-              "tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full"
+              'tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full'
             }
           >
             <div
               className={
-                "tw-w-1/2 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle"
+                'tw-w-1/2 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle'
               }
             >
-              <img className={"tw-object-cover"} src={logo} />
+              <img className={'tw-object-cover'} src={logo} />
             </div>
           </div>
         </div>
         <div
-          id={"row-body"}
+          id={'row-body'}
           className={
-            "tw-w-1/2 tw-flex tw-flex-col tw-align-middle tw-justify-center tw-relative"
+            'tw-w-1/2 tw-flex tw-flex-col tw-align-middle tw-justify-center tw-relative'
           }
         >
           <button
@@ -45,19 +44,19 @@ const BrandedALLModal = (props) => {
             onClick={toggle}
             aria-label="Escape Button"
           >
-            &times;{" "}
+            &times;{' '}
           </button>
           {children}
         </div>
       </div>
     </Modal>
   ) : (
-    <Modal toggle={toggle} isOpen={isOpen} className={"md:tw-mx-36"}>
+    <Modal toggle={toggle} isOpen={isOpen} className={'md:tw-mx-36'}>
       <div className={`tw-flex tw-flex-col`}>
         <div
           id="col-header"
           className={
-            "tw-bg-primary-blue tw-relative tw-h-56 tw-rounded-t-md tw-bg-cover"
+            'tw-bg-primary-blue tw-relative tw-h-56 tw-rounded-t-md tw-bg-cover'
           }
         >
           <button
@@ -68,30 +67,30 @@ const BrandedALLModal = (props) => {
             onClick={toggle}
             aria-label="Escape Button"
           >
-            {" "}
-            &times;{" "}
+            {' '}
+            &times;{' '}
           </button>
           <div
             className={
-              "tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full"
+              'tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full'
             }
           >
             <div
               className={
-                "xs:tw-w-3/4 md:tw-w-1/4 tw-h-full tw-flex tw-flex-row tw-items-center"
+                'xs:tw-w-3/4 md:tw-w-1/4 tw-h-full tw-flex tw-flex-row tw-items-center'
               }
             >
-              <img className={"tw-object-cover"} src={logo} />
+              <img className={'tw-object-cover'} src={logo} />
             </div>
           </div>
         </div>
         <div
           id="col-body"
           className={
-            "tw-w-full tw-h-full tw-flex tw-flex-row tw-justify-center tw-align-middle"
+            'tw-w-full tw-h-full tw-flex tw-flex-row tw-justify-center tw-align-middle'
           }
         >
-          <div className={"tw-w-full md:tw-min-h-[15rem] tw-p-6"}>
+          <div className={'tw-w-full md:tw-min-h-[15rem] tw-p-6'}>
             {children}
           </div>
         </div>
@@ -105,6 +104,6 @@ BrandedALLModal.propTypes = {
   toggle: PropTypes.func.isRequired,
   children: PropTypes.any,
   width: PropTypes.string,
-  direction: PropTypes.oneOf(["row", "column"]).isRequired,
+  direction: PropTypes.oneOf(['row', 'column']).isRequired,
 };
 export default BrandedALLModal;

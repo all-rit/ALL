@@ -1,11 +1,10 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
 import {
   sqlKeywordRegex,
   sqlVariableRegex,
   numberRegex,
   operatorRegex,
-} from "../Constants";
+} from '../Constants';
 
 /**
  * React component for rendering code with syntax highlighting tailored for SQL code.
@@ -23,8 +22,8 @@ import {
  */
 
 const SQLText = ({ children }) => {
-  if (typeof children === "object") {
-    children = children.toString().replaceAll(/,/g, "").padStart(1);
+  if (typeof children === 'object') {
+    children = children.toString().replaceAll(/,/g, '').padStart(1);
   }
   const highlightSyntax = (string) => {
     return string.split(/(\s+|\b|\W)/).map((segment, index) => {
@@ -54,7 +53,7 @@ const SQLText = ({ children }) => {
         );
       }
       return (
-        <span key={index} className={"otherText"}>
+        <span key={index} className={'otherText'}>
           {segment}
         </span>
       );

@@ -1,5 +1,4 @@
-import React from "react";
-import "./homeStyle.css";
+import './homeStyle.css';
 
 /*
 Component for displaying a success message after the colors succesfully switch
