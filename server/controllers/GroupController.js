@@ -22,7 +22,7 @@ const updateGroup = async (req, res) => {
       req.body.groupName,
       req.body.groupColor,
     );
-    if(result.status === 'failure') {
+    if (result.status === 'failure') {
       res.status(403).json(result);
     } else {
       res.status(200).send('Group name/color successfully updated!');
@@ -32,6 +32,20 @@ const updateGroup = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+const deleteGroup = async (req, res) => {
+  try {
+    const result = await GroupService.deleteGroup(
+      req.params.groupId,
+      req.userId
+    );
+    res.status(result.status === 'failure' ? 403 : 200).json(result);
+  } catch (error) {
+    console.error('Error while deleting group:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 const enrollUserInGroup = (req, res) => {
   GroupService.enrollUserInGroup(
@@ -112,18 +126,6 @@ const deleteGroupLab = async (req, res) => {
     );
     res.status(200).send('Lab successfully deleted!');
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const deleteGroup = async (req, res) => {
-  try {
-    const data = await GroupService.deleteGroup(
-      req.body.groupID,
-    );
-    res.status(200).json(data);
-  } catch (error) {
-    console.error('Error while deleting group:', error);
     res.status(500).json({ error: error.message });
   }
 };

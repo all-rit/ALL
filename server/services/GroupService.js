@@ -27,11 +27,10 @@ const updateGroup = async (groupId, userId, groupName, groupColor) => {
       }
     });
 
-    console.log(group);
     if (!group) {
       return {
         status: 'failure',
-        message: 'The specified group does not exist or you are not the instructor of the group.'
+        message: 'The specified group does not exist, or you are not the instructor of the group.'
       };
     }
 
@@ -48,6 +47,31 @@ const updateGroup = async (groupId, userId, groupName, groupColor) => {
   } catch (error) {
     console.warn('Error updating group name/color: ', error);
   }
+};
+
+const deleteGroup = async (groupId, userId) => {
+  const group = await db.Groups.findOne({
+    where: {
+      id: groupId,
+      instructorUserID: userId,
+      isActive: true,
+    }
+  });
+
+  if (!group) {
+    return {
+      status: 'failure',
+      message: 'The specified group does not exist, or you are not the instructor of the group.'
+    };
+  }
+
+  return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupId); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupId); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupId);', {
+    replacements: { 
+      groupId: groupId 
+    },
+    type: db.sequelize.QueryTypes.UPDATE,
+    raw: true,
+  });
 };
 
 const enrollUserInGroup = (userId, code) => {
@@ -130,7 +154,7 @@ const addGroupLab = async (groupId, userId, labId) => {
     if (!group) {
       return {
         status: 'failure',
-        message: 'The specified group does not exist or you are not the instructor of the group.'
+        message: 'The specified group does not exist, or you are not the instructor of the group.'
       };
     }
 
@@ -194,22 +218,14 @@ const deleteGroupLab = async (groupID, labID) => {
   }
 };
 
-const deleteGroup = (groupID) => {
-  return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupID); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupID);  ', {
-    replacements: { groupID: groupID },
-    type: db.sequelize.QueryTypes.UPDATE,
-    raw: true,
-  });
-};
-
 module.exports = {
   createGroup,
   updateGroup,
+  deleteGroup,
   enrollUserInGroup,
   unenrollUserFromGroup,
   addGroupLab,
   getGroupLabs,
-  deleteGroup,
   deleteGroupLab,
   getCompletedGroupLabs,
   getGroupEnrolledStudents,

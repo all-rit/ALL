@@ -36,7 +36,7 @@ const getUserAssignedLabs = (userId) => {
   return db.sequelize.query(
     `SELECT DISTINCT "labID" FROM "group_labs" 
 			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
-			WHERE "enrollment"."userID"=(:userId) 
+			WHERE "enrollment"."userID"=(:userId) AND "enrollment"."isActive"=true
 			ORDER BY "labID" ASC
 		`,
     {
@@ -54,7 +54,7 @@ const getUserToDoLabs = (userId) => {
 		SELECT DISTINCT "labID", "labName" FROM "group_labs"
 		JOIN "enrollment" on "group_labs"."groupID" = "enrollment"."groupID"
 		JOIN "labs" on "labs"."id" = "group_labs" . "labID"
-		WHERE "enrollment"."userID"=(:userId) AND "labID" NOT IN
+		WHERE "enrollment"."userID"=(:userId) AND "enrollment"."isActive"=true AND "labID" NOT IN
       		(SELECT "labid" FROM "userlabcompletion"
           		WHERE "userid"=(:userId))
         ORDER BY "labID" ASC
