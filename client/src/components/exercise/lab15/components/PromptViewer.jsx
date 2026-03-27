@@ -1,38 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { GCSE_SECTIONS, DEFAULT_ACTIVE_KEY } from "../../../../constants/lab15";
-
-const ANIM_NONE = "";
-const ANIM_FADE_IN = "pv-fade-in";
-const ANIM_LOCK_POP = "pv-lock-pop";
-const ANIM_FADE_DURATION_MS = 400;
-const ANIM_POP_DURATION_MS = 450;
-
-const KEYFRAME_CSS = `
-  @keyframes pv-fadeSlideIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pv-lockPop {
-    0%   { transform: scale(1); }
-    35%  { transform: scale(1.04); }
-    100% { transform: scale(1); }
-  }
-  .pv-fade-in  { animation: pv-fadeSlideIn 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-  .pv-lock-pop { animation: pv-lockPop 0.38s ease both; }
-`;
-
-const SECTION_STATE_STYLES = {
-  // Not reached yet
-  empty:
-    "tw-bg-secondary-gray tw-outline tw-outline-1 tw-outline-labGray [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-bg-labGray tw-transition-all tw-duration-300 tw-italic",
-  // Currently being answered
-  active:
-    "tw-bg-labYellow tw-outline tw-outline-1 tw-outline-darkLine [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-transition-all tw-duration-300 tw-not-italic",
-  // Submitted and locked into prompt viewer
-  locked:
-    "tw-bg-success tw-outline tw-outline-1 tw-outline-hoverSuccess [box-decoration-break:clone] [-webkit-box-decoration-break:clone] tw-transition-all tw-duration-300 tw-not-italic",
-};
+import {
+  ANIM_NONE,
+  ANIM_FADE_IN,
+  ANIM_LOCK_POP,
+  ANIM_FADE_DURATION_MS,
+  ANIM_POP_DURATION_MS,
+  KEYFRAME_CSS,
+  SECTION_STATE_STYLES,
+} from "../../../../constants/lab15/PromptViewer";
 
 const PromptViewer = ({
   sections,
