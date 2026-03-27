@@ -14,6 +14,25 @@ const createGroup = async (req, res) => {
   }
 };
 
+const updateGroup = async (req, res) => {
+  try {
+    const result = await GroupService.updateGroup(
+      req.params.groupId,
+      req.userId,
+      req.body.groupName,
+      req.body.groupColor,
+    );
+    if(result.status === 'failure') {
+      res.status(403).json(result);
+    } else {
+      res.status(200).send('Group name/color successfully updated!');
+    }
+  } catch (error) {
+    console.error('Error in updating groupName:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const enrollUserInGroup = (req, res) => {
   GroupService.enrollUserInGroup(
     req.userId,
@@ -36,9 +55,23 @@ const enrollUserInGroup = (req, res) => {
 };
 
 const unenrollUserFromGroup = (req, res) => {
-  GroupService.unenrollUserFromGroup(req.userId, req.body.groupId).then(() => {
+  GroupService.unenrollUserFromGroup(req.userId, req.params.groupId).then(() => {
     res.sendStatus(200);
   });
+};
+
+const addGroupLab = async (req, res) => {
+  try {
+    const groupLab = await GroupService.addGroupLab(
+      req.params.groupId,
+      req.userId,
+      req.body.labId,
+    );
+    res.status(groupLab.status === 'failure' ? 403 : 200).json(groupLab);
+  } catch (error) {
+    console.error('Error while adding lab to group', error);
+    res.status(500).json({ error: error.message });
+  }
 };
 
 const getGroupLabs = async (req, res) => {
@@ -71,19 +104,6 @@ const getCompletedGroupLabs = async (req, res) => {
   }
 };
 
-const addGroupLab = async (req, res) => {
-  try {
-    const lab = await GroupService.addGroupLab(
-      req.body.groupID,
-      req.body.labID,
-    );
-    res.status(200).json(lab);
-  } catch (error) {
-    console.error('Error while adding lab to group', error);
-    res.status(500).json({ error: error.message });
-  }
-};
-
 const deleteGroupLab = async (req, res) => {
   try {
     await GroupService.deleteGroupLab(
@@ -108,28 +128,14 @@ const deleteGroup = async (req, res) => {
   }
 };
 
-const updateGroup = async (req, res) => {
-  try {
-    await GroupService.updateGroup(
-      req.body.groupID,
-      req.body.groupName,
-      req.body.groupColor,
-    );
-    res.status(200).send('Group name successfully updated!');
-  } catch (error) {
-    console.error('Error in updating groupName:', error);
-    res.status(500).json({ error: error.message });
-  }
-};
-
 module.exports = {
   createGroup,
+  updateGroup,
   enrollUserInGroup,
   unenrollUserFromGroup,
-  updateGroup,
+  addGroupLab,
   deleteGroup,
   deleteGroupLab,
-  addGroupLab,
   getCompletedGroupLabs,
   getGroupEnrolledStudents,
   getGroupLabs,

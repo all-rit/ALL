@@ -17,6 +17,39 @@ const createGroup = async (userId, groupName, color) => {
   }
 };
 
+const updateGroup = async (groupId, userId, groupName, groupColor) => {
+  try {
+    const group = await db.Groups.findOne({
+      where: {
+        id: groupId,
+        instructorUserID: userId,
+        isActive: true,
+      }
+    });
+
+    console.log(group);
+    if (!group) {
+      return {
+        status: 'failure',
+        message: 'The specified group does not exist or you are not the instructor of the group.'
+      };
+    }
+
+    return await db.Groups.update(
+      {
+        groupName: groupName,
+        color: groupColor
+      },
+      {
+        where: {
+          id: groupId,
+        },
+      });
+  } catch (error) {
+    console.warn('Error updating group name/color: ', error);
+  }
+};
+
 const enrollUserInGroup = (userId, code) => {
   return db.Groups
     .findOne({
@@ -84,6 +117,44 @@ const unenrollUserFromGroup = (userId, groupId) => {
   return Promise.resolve();
 };
 
+const addGroupLab = async (groupId, userId, labId) => {
+  try {
+    const group = await db.Groups.findOne({
+      where: {
+        id: groupId,
+        instructorUserID: userId,
+        isActive: true,
+      }
+    });
+
+    if (!group) {
+      return {
+        status: 'failure',
+        message: 'The specified group does not exist or you are not the instructor of the group.'
+      };
+    }
+
+    const [groupLab, created] = await db.GroupLabs.findOrCreate({
+      where: {
+        groupID: groupId,
+        labID: labId,
+      },
+      defaults: {
+        isActive: true,
+      },
+    });
+
+    if (!created && !groupLab.isActive) {
+      groupLab.isActive = true;
+      await groupLab.save();
+    }
+
+    return groupLab;
+  } catch (error) {
+    console.error('Error adding group lab', error);
+  }
+};
+
 const getGroupLabs = (groupid) => {
   return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
     replacements: { groupID: groupid },
@@ -106,29 +177,6 @@ const getCompletedGroupLabs = (userid, groupid) => {
     type: db.sequelize.QueryTypes.SELECT,
     raw: true,
   });
-};
-
-const addGroupLab = async (groupID, labID) => {
-  try {
-    const [groupLab, created] = await db.GroupLabs.findOrCreate({
-      where: {
-        groupID: groupID,
-        labID: labID,
-      },
-      defaults: {
-        isActive: true,
-      },
-    });
-
-    if (!created && !groupLab.isActive) {
-      groupLab.isActive = true;
-      await groupLab.save();
-    }
-
-    return groupLab;
-  } catch (error) {
-    console.error('Error adding group lab', error);
-  }
 };
 
 const deleteGroupLab = async (groupID, labID) => {
@@ -154,30 +202,15 @@ const deleteGroup = (groupID) => {
   });
 };
 
-
-const updateGroup = async (groupID, groupName, groupColor) => {
-  try {
-    return await db.Groups.update(
-      { groupName: groupName, color: groupColor },
-      {
-        where: {
-          id: groupID,
-        },
-      });
-  } catch (error) {
-    console.warn('Error updating lab name: ', error);
-  }
-};
-
 module.exports = {
-  getGroupLabs,
+  createGroup,
   updateGroup,
+  enrollUserInGroup,
+  unenrollUserFromGroup,
+  addGroupLab,
+  getGroupLabs,
   deleteGroup,
   deleteGroupLab,
-  addGroupLab,
-  createGroup,
-  unenrollUserFromGroup,
   getCompletedGroupLabs,
-  enrollUserInGroup,
   getGroupEnrolledStudents,
 };

@@ -89,10 +89,10 @@ router.get('/user/:labId', authMiddleware, UserLabController.getUserLabCompletio
 
 // Group Routes
 router.post('/group/create', authMiddleware, GroupController.createGroup);
+router.put('/group/:groupId/update', authMiddleware, GroupController.updateGroup);
 router.post('/group/enroll', authMiddleware, GroupController.enrollUserInGroup);
-router.post('/group/unenroll', authMiddleware, GroupController.unenrollUserFromGroup);
-router.post('/group/:groupID/add', GroupController.addGroupLab);
-router.put('/group/:groupID/update', GroupController.updateGroup);
+router.post('/group/:groupId/unenroll', authMiddleware, GroupController.unenrollUserFromGroup);
+router.post('/group/:groupId/add', authMiddleware, GroupController.addGroupLab);
 router.put('/group/:groupID/:labID/delete', GroupController.deleteGroupLab);
 router.put('/group/:groupID/delete', GroupController.deleteGroup);
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
