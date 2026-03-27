@@ -4231,7 +4231,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   } 
  ]', 3, 'coming soon', 'coming soon', true),
- (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/aihallucinations.jpg', 'Learn how prompting influences AI Hallucinations', 
+ (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/AIHallucinations.png', 'Learn how prompting influences AI Hallucinations', 
  'Learn how prompting influences AI Hallucinations', e'[]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez', 'https://all.rit.edu/lab15', null, 
 
  -- About Section
