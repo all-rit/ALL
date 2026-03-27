@@ -3,8 +3,10 @@ const EXERCISE_PATH = "/Lab15/Exercise";
 
 const EXERCISE_SELECTION_DEFAULT = "default selection";
 const MODEL_REPAIR = "ModelRepair";
+const PROMPT_BUILDER = "PromptBuilder";
 const EXERCISE_STATES = {
   EXERCISE_SELECTION_DEFAULT,
+  PROMPT_BUILDER,
   MODEL_REPAIR,
 };
 
