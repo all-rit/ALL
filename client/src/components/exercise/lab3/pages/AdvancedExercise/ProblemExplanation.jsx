@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import Typography from '@mui/material/Typography';
-import CheckCircleIcon from '@mui/material/SvgIcon/';
+import { CheckCircleIcon } from '@mui/material';
 import { amber, green, red, yellow } from '@mui/material/colors';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import clsx from 'clsx';

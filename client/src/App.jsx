@@ -1,5 +1,4 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
-import ReactGA from "react-ga";
 
 /** Body Components **/
 import { default as About } from "./components/body/About";
@@ -69,14 +68,6 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({ ...appActions, ...mainActions }, dispatch),
   };
 };
-
-function initializeReactGA() {
-  if (process.env.NODE_ENV === "production") {
-    const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
-    ReactGA.initialize(TRACKING_ID);
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }
-}
 
 const App = () => {
   const context = useMainStateContext();
@@ -189,7 +180,6 @@ const App = () => {
   };
 
   // look into index.js in constants
-  initializeReactGA();
   return (
     <>
       {isLoaded ? (

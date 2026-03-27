@@ -39,7 +39,6 @@
     "react-color": "^2.19.3",
     "react-countdown": "^2.3.6",
     "react-dom": "^19.2.4",
-    "react-ga": "^3.3.1",
     "react-player": "^3.4.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.2",
@@ -96,7 +95,6 @@
     "postcss": "^8.5.8",
     "prettier": "^3.8.1",
     "react-google-button": "^0.8.0",
-    "redux-devtools": "^3.7.0",
     "tailwindcss": "^4.2.2",
     "vite": "^8.0.3"
   }

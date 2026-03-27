@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import "../../../../../assets/stylesheets/prism.scss";
-import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
+import { CheckCircleIcon } from "@mui/material";
 import { amber, green, red, yellow } from "@mui/material/colors";
 import SnackbarContent from "@mui/material/SnackbarContent";
 import clsx from "clsx";

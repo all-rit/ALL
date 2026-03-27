@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { navigate } from 'react-router-dom';
 import Prism from 'prismjs';
 import { Snackbar } from '@mui/material';
-import CheckCircleIcon from '@mui/material/SvgIcon/SvgIcon';
+import { CheckCircleIcon } from '@mui/material';
 import { amber, green, red, yellow } from '@mui/material/colors';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import clsx from 'clsx';

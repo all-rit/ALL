@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import IconButton from '@mui/material/IconButton';
-import CheckCircleIcon from '@mui/material/SvgIcon/SvgIcon';
+import { CheckCircleIcon } from '@mui/material';
 import clsx from 'clsx';
 import Snackbar from '@mui/material/Snackbar';
 import { amber, green, red, yellow } from '@mui/material/colors';

@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Prism from 'prismjs';
 import { navigate } from 'react-router-dom';
-import {
-  Paper,
-  Snackbar,
-  SnackbarContent,
-  IconButton,
-  Typography,
-} from '@mui/material';
-import CheckCircleIcon from '@mui/material/SvgIcon/SvgIcon';
+import Snackbar from '@mui/material/Snackbar';
+import { CheckCircleIcon } from '@mui/material';
 import { amber, green, red, yellow } from '@mui/material/colors';
+import SnackbarContent from '@mui/material/SnackbarContent';
 import clsx from 'clsx';
+import IconButton from '@mui/material/IconButton';
+import WarningIcon from '@mui/icons-material/Warning';
 import ErrorIcon from '@mui/icons-material/Error';
 import InfoIcon from '@mui/icons-material/Info';
 import CloseIcon from '@mui/icons-material/Close';
-import WarningIcon from '@mui/icons-material/Warning';
 import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
 import RepairService from '../../../../services/lab4/RepairService';
-import useMainStateContext from 'src/reducers/MainContext';
 import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from 'src/reducers/MainContext';
 import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
 
 const variantIcon = {
@@ -96,23 +93,14 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
-const CodeChangeAccessible = () => {
+const CodeChangeBlocks = () => {
   const { actions } = useMainStateContext();
+
   const [textValue, setTextValue] = useState('');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState(
     'Please type code before updating code!',
   );
-
-  useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
-    Prism.highlightAll();
-    if (window?.location?.state?.hint !== undefined) {
-      const el0 = document.getElementById('first');
-      el0.value = window?.location?.state?.hint;
-      doEvent(el0, 'input');
-    }
-  }, []);
 
   const handleChange = (event) => {
     setTextValue(event.target.value);
@@ -124,28 +112,22 @@ const CodeChangeAccessible = () => {
     if (reason === 'clickaway') {
       return;
     }
+
     setSnackBarOpen(false);
     console.log('SnackBar Closed');
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('hint updated as: ' + textValue);
-    if (textValue === '') {
+    if (textValue === '' || textValue === null) {
       setMessage('Please type code before updating code!');
-      setSnackBarOpen(true);
-    } else if (parseInt(textValue) !== 0) {
-      setMessage('Please enter value 0');
-      setSnackBarOpen(true);
-    } else if (!/^\d+$/.test(textValue)) {
-      setMessage('Please enter numeric value');
       setSnackBarOpen(true);
     } else {
       window.location.state = {
-        hint: textValue,
+        role: textValue,
       };
-      RepairService.submitRepairHint(textValue);
-      navigate('/Lab4/Exercise/FormHintAccessible');
+      RepairService.submitRepairSkip(textValue);
+      navigate('/Lab4/Exercise/FormSkipToMainFixed');
     }
     Prism.highlightAll();
   };
@@ -155,75 +137,62 @@ const CodeChangeAccessible = () => {
     return obj ? obj.dispatchEvent(eventInit) : false;
   };
 
-  const paperStyle = {
-    marginLeft: '10px',
-    marginRight: '10px',
-    marginTop: '20px',
-  };
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+    Prism.highlightAll();
+    if (window.location.state?.role !== undefined) {
+      const el0 = document.getElementById('first');
+      el0.value = window.location.state.role;
+      doEvent(el0, 'input');
+    }
+  }, []);
+
   return (
-    <div className={'code_editor'}>
-      <div className={'tw-p-4'}>
-        <h2 className="tw-title tw-text-left tw-my-6">Repair</h2>
+    <div>
+      <div className={'tw-p-3'}>
+        <h2 className="tw-title tw-text-left tw-pb-3">Repair</h2>
         <p className="tw-body-text tw-text-left">
-          The intent of this code repair is to ensure that, wherever possible,
-          content can be operated through a keyboard or keyboard interface.
-        </p>
-        <p className="tw-body-text tw-text-left tw-my-3">
-          <strong>Tabindex=&quot;-1&quot;</strong> prevents access through
-          keyboard navigation.
-        </p>
-        <p className="tw-body-text tw-text-left tw-my-3">
-          <strong>Tabindex=&quot;2&quot;</strong> (positive non-zero) means
-          focusable in sequential keyboard navigation, with its order defined by
-          the value of the number. Tabindex=&quot;0&quot; means that the element
-          should be focusable in sequential keyboard navigation.
+          The intent of this code repair is to allow people who navigate
+          sequentially through content more direct access to the primary content
+          of the Web page and skip over repeated blocks. These include but are
+          not limited to navigation links, heading graphics, and advertising
+          frames.
         </p>
       </div>
       <form onSubmit={handleSubmit} noValidate autoComplete={'off'}>
-        <Paper style={paperStyle}>
+        <div className={'tw-rounded-lg'}>
           <pre>
             <code className="language-html">
-              {`<form>
-  <div>
-      <label>Favorite Animal</label>
-      <input>
-  </div>
-  <div>
-      <label>Favorite Color</label>
-      <div>
-          // set tab-index to 0 so tooltip can be keyboard accessible
-          <span tabindex= `}
+              {`/* add the following in the input: <a className="skip-main" href="#main">Skip to main content</a> */
+`}
             </code>
             <input
               type={'text'}
               id="first"
+              className={'tw-bg-[#333] tw-text-primary-yellow'}
+              style={{ width: '600px' }}
               value={textValue}
               placeholder=""
               onChange={handleChange}
               aria-label={
-                'set tab-index to 0 so tooltip can be keyboard accessible'
+                'add the following: <a className="skip-main" href="#main">Skip to main content</a>'
               }
             />
+
             <code className="language-html">
-              {`>hint</span>
-      </div>
-      <input>
-  </div>
-  <div>
-      <label>Favorite Candy</label>
-      <input>
-  </div>
-  <div>
-      <label>Favorite City</label>
-      <input>
-  </div>
-</form>
-`}
+              {`
+<div>
+  <header>...</header>
+</div>
+<div>
+  <nav>...</nav>
+</div>
+  <form id="main">...</form>
+</div>
+                      `}
             </code>
           </pre>
-        </Paper>
-        <br />
-        <br />
+        </div>
         <RepairUpdateButton disabled={!textValue} />
       </form>
       <Snackbar
@@ -245,4 +214,4 @@ const CodeChangeAccessible = () => {
   );
 };
 
-export default CodeChangeAccessible;
+export default CodeChangeBlocks;
