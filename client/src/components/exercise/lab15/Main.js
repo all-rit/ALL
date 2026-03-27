@@ -8,6 +8,7 @@ import { ExerciseStateProvider } from "./Lab15Context";
 import ExerciseIntro from "./pages/ExerciseIntro";
 import ModelHallucination from "./pages/ModelHallucination";
 import GoodPromptingGuide from "./pages/GoodPromptingGuide";
+import PromptBuilder from "./pages/PromptBuilder";
 import ModelRepair from "./pages/ModelRepair";
 import ModelWithGrades from "./pages/ModelWithGrades";
 import Conclusion from "./pages/Conclusion";
@@ -31,6 +32,7 @@ const Main = () => {
           <ExerciseIntro default path="/" />
           <ModelHallucination path="/model-hallucination" />
           <GoodPromptingGuide path="/good-prompting-guide" />
+          <PromptBuilder path="/prompt-builder" />
           <ModelRepair path="/model-repair" />
           <ModelWithGrades path="/model-with-grades" />
           <Conclusion path="/conclusion" />
