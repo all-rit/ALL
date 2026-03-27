@@ -1,33 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { GCSE_SECTIONS, DEFAULT_ACTIVE_KEY } from "../../../../constants/lab15";
 
-// Define what sections exist within the prompt viewer
-export const GCSE_SECTIONS = [
-  {
-    number: 1,
-    key: "goal",
-    label: "Goal",
-    placeholder: "Define what you want the AI to do...",
-  },
-  {
-    number: 2,
-    key: "context",
-    label: "Context",
-    placeholder: "Add the background context the AI needs...",
-  },
-  {
-    number: 3,
-    key: "sources",
-    label: "Sources",
-    placeholder: "Specify any sources to reference (optional)...",
-  },
-  {
-    number: 4,
-    key: "expectations",
-    label: "Expectations",
-    placeholder: "Describe the format, length, or tone of the output...",
-  },
-];
+const ANIM_NONE = "";
+const ANIM_FADE_IN = "pv-fade-in";
+const ANIM_LOCK_POP = "pv-lock-pop";
+const ANIM_FADE_DURATION_MS = 400;
+const ANIM_POP_DURATION_MS = 450;
 
 const KEYFRAME_CSS = `
   @keyframes pv-fadeSlideIn {
@@ -97,8 +76,11 @@ const PromptViewer = ({
       if (newValue && newValue !== oldValue) {
         const setAnim = animSetters.current[section.key];
 
-        setAnim("pv-fade-in");
-        const timer = setTimeout(() => setAnim(""), 400);
+        setAnim(ANIM_FADE_IN);
+        const timer = setTimeout(
+          () => setAnim(ANIM_NONE),
+          ANIM_FADE_DURATION_MS,
+        );
 
         prevValues.current[section.key] = newValue;
         return () => clearTimeout(timer);
@@ -112,8 +94,9 @@ const PromptViewer = ({
     const setAnim = animSetters.current[justLockedKey];
     if (!setAnim) return;
 
-    setAnim("pv-lock-pop");
-    const timer = setTimeout(() => setAnim(""), 450);
+    setAnim(ANIM_LOCK_POP);
+    const timer = setTimeout(() => setAnim(ANIM_NONE), ANIM_POP_DURATION_MS);
+
     return () => clearTimeout(timer);
   }, [justLockedKey]);
 
@@ -190,7 +173,7 @@ PromptViewer.propTypes = {
 PromptViewer.defaultProps = {
   sections: GCSE_SECTIONS,
   values: {},
-  activeKey: "goal",
+  activeKey: DEFAULT_ACTIVE_KEY,
   lockedKeys: [],
   justLockedKey: null,
 };
