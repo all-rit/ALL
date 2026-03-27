@@ -43,74 +43,80 @@ const getTotalScore = (scores) =>
 
 // Determining if there is an answer there
 const hasSelection = (selection) => selection !== null && selection !== "";
+const handleSelectStageOption = (state, action) => {
+  const { stage, value, score = 0 } = action.payload;
+
+  if (!PROMPT_BUILDER_STAGES.includes(stage)) {
+    return state;
+  }
+
+  return {
+    ...state,
+    selections: {
+      ...state.selections,
+      [stage]: value,
+    },
+    scores: {
+      ...state.scores,
+      [stage]: score,
+    },
+  };
+};
+
+const handleLockCurrentStage = (state) => {
+  const stage = PROMPT_BUILDER_STAGES[state.currentStageIndex];
+  if (!hasSelection(state.selections[stage])) {
+    return state;
+  }
+
+  return {
+    ...state,
+    lockedStages: {
+      ...state.lockedStages,
+      [stage]: true,
+    },
+    justLockedKey: stage,
+  };
+};
+
+const handleClearJustLocked = (state) => ({
+  ...state,
+  justLockedKey: null,
+});
+
+const handleMoveStage = (state, action) => {
+  const delta = action.payload?.delta ?? 0;
+  return {
+    ...state,
+    currentStageIndex: clampStageIndex(state.currentStageIndex + delta),
+    justLockedKey: null,
+  };
+};
+
+const handleSetStageIndex = (state, action) => ({
+  ...state,
+  currentStageIndex: clampStageIndex(action.payload.index),
+  justLockedKey: null,
+});
+
+const handleReset = (state) => buildInitialState(state.passingScore);
+
+const ACTION_HANDLERS = {
+  [ACTIONS.SELECT_STAGE_OPTION]: handleSelectStageOption,
+  [ACTIONS.LOCK_CURRENT_STAGE]: handleLockCurrentStage,
+  [ACTIONS.CLEAR_JUST_LOCKED]: handleClearJustLocked,
+  [ACTIONS.MOVE_STAGE]: handleMoveStage,
+  [ACTIONS.SET_STAGE_INDEX]: handleSetStageIndex,
+  [ACTIONS.RESET]: handleReset,
+};
 
 // With the current state and the next action, determine which stage to go to
 export const promptBuilderStageReducer = (state, action) => {
-  switch (action.type) {
-    case ACTIONS.SELECT_STAGE_OPTION: {
-      const { stage, value, score = 0 } = action.payload;
-
-      if (!PROMPT_BUILDER_STAGES.includes(stage)) {
-        return state;
-      }
-
-      return {
-        ...state,
-        selections: {
-          ...state.selections,
-          [stage]: value,
-        },
-        scores: {
-          ...state.scores,
-          [stage]: score,
-        },
-      };
-    }
-
-    case ACTIONS.LOCK_CURRENT_STAGE: {
-      const stage = PROMPT_BUILDER_STAGES[state.currentStageIndex];
-      if (!hasSelection(state.selections[stage])) {
-        return state;
-      }
-
-      return {
-        ...state,
-        lockedStages: {
-          ...state.lockedStages,
-          [stage]: true,
-        },
-        justLockedKey: stage,
-      };
-    }
-
-    case ACTIONS.CLEAR_JUST_LOCKED:
-      return {
-        ...state,
-        justLockedKey: null,
-      };
-
-    case ACTIONS.MOVE_STAGE: {
-      const delta = action.payload?.delta ?? 0;
-      return {
-        ...state,
-        currentStageIndex: clampStageIndex(state.currentStageIndex + delta),
-        justLockedKey: null,
-      };
-    }
-
-    case ACTIONS.SET_STAGE_INDEX:
-      return {
-        ...state,
-        currentStageIndex: clampStageIndex(action.payload.index),
-        justLockedKey: null,
-      };
-
-    case ACTIONS.RESET:
-      return buildInitialState(state.passingScore);
-
-    default:
-      return state;
+  const handler = ACTION_HANDLERS[action.type];
+  if (!handler) {
+    return state;
   }
+  return handler(state, action);
 };
 
 export const usePromptBuilderStageManager = ({
@@ -125,21 +131,13 @@ export const usePromptBuilderStageManager = ({
   const currentStage = PROMPT_BUILDER_STAGES[state.currentStageIndex];
   const totalScore = useMemo(() => getTotalScore(state.scores), [state.scores]);
   const allStagesAnswered = useMemo(
-    () =>
-      Object.values(state.selections).every((selection) =>
-        hasSelection(selection),
-      ),
+    () => Object.values(state.selections).every(hasSelection),
     [state.selections],
   );
 
   const canMoveToNextStage = hasSelection(state.selections[currentStage]);
-  const hasMetPassingScore = useMemo(() => {
-    if (!allStagesAnswered) {
-      return false;
-    }
-
-    return totalScore >= state.passingScore;
-  }, [allStagesAnswered, totalScore, state.passingScore]);
+  const hasMetPassingScore =
+    allStagesAnswered && totalScore >= state.passingScore;
 
   const selectStageOption = (stage, value, score = 0) => {
     dispatch({
@@ -164,7 +162,7 @@ export const usePromptBuilderStageManager = ({
     canMoveToNextStage,
     lockedKeys,
     hasMetPassingScore,
-    isPromptReadyToSubmit: allStagesAnswered && hasMetPassingScore,
+    isPromptReadyToSubmit: hasMetPassingScore,
     selectStageOption,
     selectGoal: (value, score = 0) => selectStageOption("goal", value, score),
     selectContext: (value, score = 0) =>
