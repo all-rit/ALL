@@ -180,7 +180,7 @@ const App = () => {
         <Profile path="/Profile" user={state.main.user} />
         <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
         <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error actions={actions} default />
+        <Error default />
 
         <Imagine2023
           path={"/Imagine2023/*"}
