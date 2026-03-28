@@ -2,19 +2,21 @@ import React from "react";
 import ALLButton from "../all-components/ALLButton";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
+import { useImagine26Context } from "src/reducers/imagine/imagine26Context";
 
 // This component is the start component that updates the user ID
 const Done = (props) => {
+  const { clearPhoto } = useImagine26Context();
   const handleNext = () => {
     navigate("/Imagine2026/");
     if (props.resetInstance !== null) {
+      clearPhoto();
       props.resetInstance();
     }
   };
 
   const handleUpdateID = async () => {
     sessionStorage.removeItem("userID");
-
     handleNext();
   };
 

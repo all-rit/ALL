@@ -11,8 +11,8 @@ const GalagaInstructions = () => {
       {Frame(
         <div className="tw-grid tw-w-[20vw]">
           <p className="tw-body-text">
-            You and your teammate will each compete against your opponent for 1
-            minute. The team with the highest combined score wins!
+            You will have a teammate and together will each compete against our
+            AI-controlled Galaga. The team with the highest combined score wins!
           </p>
           <br />
           {/*&apos; is just a apostrophe --> " ' "*/}

@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const multer  = require('multer')
+const upload = multer({});
 
 // Universal Controllers
 const UserController = require("../controllers/UserController");
@@ -404,5 +406,17 @@ router.post("/imagine26/quizScore", async function (req, res) {
   const resp = await ImagineController.quizScore(req);
   res.send(resp);
 });
+
+//deepfake generator
+router.post('/imagine26/handleImageUploads', upload.single('image'),async function(req,res){
+  const resp = await ImagineController.handleImageUploads(req)
+  res.send(resp)
+})
+
+router.get('/imagine26/getImagePath/:userID/:pictureType', async function (req,res){
+  req.params.year = 26;
+  const imagePath = await ImagineController.getImagePath(req)
+  res.json(imagePath);
+})
 
 module.exports = router;

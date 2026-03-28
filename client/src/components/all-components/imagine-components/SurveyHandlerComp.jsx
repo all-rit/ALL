@@ -106,8 +106,11 @@ const SurveyHandler = (props) => {
         // This will handle navigation
       } else if (surveyType === "post") {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
-
-        navigate("/Imagine2025/Done");
+        if (year === 25) {
+          navigate("/Imagine2025/Done");
+        } else if (year === 26) {
+          navigate("/Imagine2026/Done");
+        }
       }
     } catch (error) {
       console.error(error);
@@ -151,12 +154,11 @@ const SurveyHandler = (props) => {
       }
     } else if (year == 26) {
       sessionStorage.setItem("isUnderAge", isUnderAge);
-
       if (isUnderAge) {
         navigate("/Imagine2026/GalagaInstructions");
       } else {
         await ImagineService.preSurvey(props.userID, selectedAnswers, year);
-        navigate("/Imagine2026/PHDConsentForm");
+        navigate("/Imagine2026/UserProfilePicture");
       }
     } else {
       console.error("invalid year");
@@ -177,7 +179,9 @@ const SurveyHandler = (props) => {
       questions[currentQuestionCursor].type == "likert"
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
-    setIsUnderAge(answer == "Under 18 years old" && props.year == 26);
+    setIsUnderAge(
+      answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
+    );
 
     setSelectedAnswers((prevAnswers) => {
       // Removes the "Under 18 years old" option from the selected answers

@@ -1,3 +1,4 @@
+//we need to updated pre/post survey questions
 const postSurveyQuestions = [
   {
     question:
@@ -26,22 +27,6 @@ const postSurveyQuestions = [
   {
     question: "The activity increased my curiosity related to fairness.",
     type: "likert",
-  },
-  {
-    question:
-      "Why do you believe that your opponent lost? Select the response that best represents your feelings.",
-    answers: [
-      {
-        index: "0",
-        content: "The opponent's game version was harder than mine.",
-      },
-      {
-        index: "1",
-        content: "The game was too challenging for the opponent.",
-      },
-    ],
-    type: "singleChoice",
-    avatar: "Opponent",
   },
   {
     question:

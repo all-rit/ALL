@@ -139,5 +139,22 @@ const ImagineService = {
       },
     );
   },
+
+  handleImageUploads: async (data) => {
+    return await API.postWithBodyFormData(
+      process.env.REACT_APP_SERVER_URL + `/imagine26/handleImageUploads`,
+      data,
+    );
+  },
+
+  getImagePath: (userID, year, pictureType) => {
+    return Promise.resolve(
+      API.get(
+        process.env.REACT_APP_SERVER_URL +
+          `/imagine${year}/getImagePath/${userID}/${pictureType}`,
+        {},
+      ).then((response) => response.json()),
+    );
+  },
 };
 export default ImagineService;

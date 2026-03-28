@@ -23,12 +23,12 @@ const PHDConsentForm = () => {
 
           <div className="tw-flex tw-gap-4 tw-mt-4">
             <LabButton
-              onClick={() => navigate("/Imagine2026/GalagaInstructions")}
+              onClick={() => navigate("/Imagine2026/PreSurvey")}
               label={"Yes"}
             />
 
             <LabButton
-              onClick={() => navigate("/Imagine2026/GalagaInstructions")}
+              onClick={() => navigate("/Imagine2026/PreSurvey")}
               label={"No"}
             />
           </div>

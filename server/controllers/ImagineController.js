@@ -76,8 +76,8 @@ const getUsers = async (_req, _res) => {
 
 const getGroup = async (req, _res) => {
   try {
-    const { year, userID } = req.params;
-    const group = await ImagineService.getGroup(userID, year);
+    const {userID,year} = req.params;
+    const group = await ImagineService.getGroup({userID, year});
     return group;
   } catch (error) {
     console.log(error);
@@ -198,6 +198,33 @@ const postUserAvatar = async (req, _res) => {
   }
 };
 
+const handleImageUploads = async (req,_res) =>{
+  try{
+    const response = await ImagineService.handleImageUploads(req)
+    if (!response){
+      throw new Error("Error while generating deepfake")
+    }
+    return response
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+
+const getImagePath = async(req,_res) =>{
+  try {
+    const {year, userID, pictureType} = req.params;
+    const imagePath = await ImagineService.getImagePath({userID,year,pictureType})
+    if (!imagePath){
+      throw new Error("Error while fetching deepfake image path")
+    }
+    return imagePath
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   readMoreCount,
   readMoreTimeElapsed,
@@ -213,4 +240,6 @@ module.exports = {
   postOpponentAvatar,
   getGroup,
   getTeammate,
+  handleImageUploads,
+  getImagePath
 };
