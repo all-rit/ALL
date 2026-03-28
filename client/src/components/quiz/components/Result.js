@@ -85,7 +85,6 @@ function Result(props) {
               {renderTableSelectedAnswersData(
                 props.selectedAnswers[counter - 1],
                 answers,
-                counter,
               )}
             </div>
             <div className={"tw-min-w-[1rem] tw-max-w-[2rem]"}>
@@ -114,7 +113,6 @@ function Result(props) {
     return (
       <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
-          console.log(index);
           if (answer["val"] === 1) {
             return (
               <div key={index}>
@@ -158,14 +156,10 @@ function Result(props) {
     );
   }
 
-  function renderTableSelectedAnswersData(selectedAnswers, answers, counter) {
+  function renderTableSelectedAnswersData(selectedAnswers, answers) {
     if (selectedAnswers instanceof Set) {
       return Array.from(selectedAnswers).map((answer) => {
-        let index = answer;
-        if (index == 0) {
-          index = 5;
-        }
-        const questionNumber = (counter + 10) * index; // TO-DO FIX THIS INCREMENTATION
+        const questionNumber = parseInt(answer) + 1;
         return (
           <ul>
             <div key={questionNumber}>{answers[answer]["content"]}</div>
@@ -173,11 +167,7 @@ function Result(props) {
         );
       });
     } else {
-      let index = selectedAnswers.type;
-      if (index == 0) {
-        index = 5;
-      }
-      const questionNumber = (counter + 6) * index; // TO-DO FIX THIS INCREMENTATION
+      const questionNumber = parseInt(selectedAnswers.type) + 1;
       return (
         <ul>
           <div key={questionNumber}>
