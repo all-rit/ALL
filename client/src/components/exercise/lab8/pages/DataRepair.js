@@ -23,6 +23,10 @@ const DataRepair = () => {
     setCurrentMessages,
     setPolaritiesCorrect,
   } = useContext(ExerciseStateContext);
+  /* 
+    To-Do this would require rewriting this context.
+    Polarity can never be 
+  */
 
   /*
     state variables to contain the user's inputted repair values
