@@ -13,8 +13,10 @@ function Result(props) {
   const [viewCertificate, setViewCertificate] = useState(false);
   const openDetails = (questionId) => {
     setDetailsOpen(detailsOpen === questionId ? null : questionId);
-    console.warn(questionId);
   };
+
+  let i = Array.from({ length: 16 }, (_, index) => index + 1);
+  let j = Array.from({ length: 16 }, (_, index) => index + 17);
 
   function checkIfCorrect(answerIndex, questionIndex) {
     let isCorrect;
@@ -63,7 +65,7 @@ function Result(props) {
       }
       return (
         <a
-          key={index}
+          key={index + 100}
           onClick={() => openDetails(index + 1)}
           className={`tw-rounded-lg tw-shadow-md tw-body-text tw-my-2 tw-w-10/12 tw-flex tw-flex-col tw-cursor-pointer tw-border-solid tw-border-[0.5px] tw-border-[#eee] ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white"}`}
         >
@@ -113,9 +115,10 @@ function Result(props) {
     return (
       <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
+          console.log(index);
           if (answer["val"] === 1) {
             return (
-              <div key={index}>
+              <div key={index + 1000}>
                 <div
                   className={
                     "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top tw-items-center"
@@ -157,9 +160,11 @@ function Result(props) {
   }
 
   function renderTableSelectedAnswersData(selectedAnswers, answers) {
+    // Fix-This I do not know what is going wrong
     if (selectedAnswers instanceof Set) {
       return Array.from(selectedAnswers).map((answer) => {
-        const questionNumber = parseInt(answer) + 1;
+        const questionNumber = i.pop();
+        console.log(questionNumber, "multi");
         return (
           <ul>
             <div key={questionNumber}>{answers[answer]["content"]}</div>
@@ -167,7 +172,8 @@ function Result(props) {
         );
       });
     } else {
-      const questionNumber = parseInt(selectedAnswers.type) + 1;
+      const questionNumber = j.pop();
+      console.log(questionNumber, "nonmulti");
       return (
         <ul>
           <div key={questionNumber}>
