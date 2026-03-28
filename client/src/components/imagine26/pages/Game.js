@@ -93,12 +93,15 @@ const Analysis = (props) => {
 
   const handleNavigation = async () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
-    if (isUnderAge === "true") {
+    const surveyConsent = JSON.parse(
+      sessionStorage.getItem("phdConsent") || "false",
+    );
+    if (isUnderAge === "true" || surveyConsent == false) {
       console.log("is not underage");
       console.log(isUnderAge);
       navigate("/Imagine2026/Done");
     } else {
-      navigate("/Imagine2026/PostSurvey");
+      navigate("/Imagine2026/ReadingSection");
     }
   };
 
@@ -179,7 +182,7 @@ const Game = () => {
 
   const [seconds, setSeconds] = useState(60);
 
-  const [teammateId, setTeammateId] = useState(null);
+  const [teammateId, setTeammateId] = useState(1);
 
   //Checks the iframe ref to see if anything exists, when the iframe fully loads, immediately focus it
   useEffect(() => {
