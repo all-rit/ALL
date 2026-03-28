@@ -8,8 +8,6 @@ import LabButton from "src/components/all-components/LabButton";
 const PHDConsentForm = ({ setConsent }) => {
   const handleAnswer = (answer) => {
     setConsent(answer);
-
-    // optional: also store in sessionStorage
     sessionStorage.setItem("phdConsent", JSON.stringify(answer));
 
     if (answer) {
