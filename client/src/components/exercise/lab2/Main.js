@@ -90,6 +90,10 @@ const mapDispatchToProps = (dispatch) => {
     onResetOption: () => dispatch(resetOption()),
     onResetColors: () => dispatch(resetColors()),
     onResetChange: () => dispatch(resetChange()),
+    /*
+      To-DO I do not know how to fix this, but I know by following
+      this dispatch 
+    */
     onCloseInfoPopup: () => dispatch(closeInfoPopup()),
     onOpenAboutPage: () => dispatch(openAboutPage()),
     onCloseAboutPage: () => dispatch(closeAboutPage()),
@@ -115,6 +119,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class Main extends Component {
   shouldComponentUpdate(nextprops) {
+    console.log(nextprops);
     if (nextprops.exerciseState !== this.props.exerciseState) {
       return true;
     }
