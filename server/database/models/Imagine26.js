@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         deepfakeImagePath: {
           type: DataTypes.TEXT,
         },
+        chatReply: {
+          type: DataTypes.TEXT,
+        },
       },
     { tableName: "imagine26" },
   );

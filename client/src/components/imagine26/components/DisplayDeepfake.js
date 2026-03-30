@@ -6,13 +6,15 @@ import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
 import PropTypes from "prop-types";
 
 const DisplayDeepFake = (props) => {
-  const { teammateId, isExperential, toggleAction } = props;
+  const { teammateId, isExperential, toggleAction, isChatRoom } = props;
   const [imagePath, setImagePath] = useState("");
   const [modal, setModal] = useState(true);
 
   const toggle = () => {
     setModal(!modal);
-    toggleAction();
+    if (toggleAction) {
+      toggleAction();
+    }
   };
 
   useEffect(() => {
@@ -35,10 +37,11 @@ const DisplayDeepFake = (props) => {
   return (
     <>
       <div className="tw-flex tw-flex-col tw-items-center tw-w-full tw-px-6">
-        {modal ? (
+        {modal  && isChatRoom === false ?(
           <Modal isOpen={modal} toggle={toggle} centered>
             <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold ">
               System Alert
+              
             </ModalHeader>
             <ModalBody className="tw-text-center tw-py-8">
               {isExperential ? (
@@ -61,20 +64,44 @@ const DisplayDeepFake = (props) => {
             </ModalFooter>
           </Modal>
         ) : (
-          <div className="tw-flex tw-flex-col tw-items-center tw-text-center tw-w-full tw-gap-4">
-            <ImagineHeader title={"Found footage"} />
-
-            <p className="tw-text-gray-700 tw-leading-relaxed tw-max-w-md tw-mt-3">
+        <div >
+         {isChatRoom ? (
+            <>
+            <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2">
+              <p className="tw-text-md tw-font-bold tw-text-brightRed ">Found Footage </p>
+             <img
+              className="tw-w-5 tw-h-5 tw-object-contain"
+              src="/img/imagine26/activityImages/alert.png"
+              alt="aler icon"
+            />
+            </div>
+            </>
+           
+         ): (
+          <>
+           
+           <div className="tw-flex tw-flex-col tw-items-center tw-text-center tw-w-full tw-gap-4">
+              <div className="tw-flex  tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-text-brightRed">
+               <h3 className="tw-title tw-font-bold tw-text-brightRed ">Found Footage </h3>
+              <img
+              className="tw-w-16 tw-h-16 tw-object-contain"
+              src="/img/imagine26/activityImages/alert.png"
+              alt="aler icon"
+              />
+              </div>
+            <p className="tw-font-semibold tw-text-gray-700 tw-leading-relaxed tw-max-w-md tw-mt-3">
               {isExperential
                 ? "Unfortunately, due to this information, you won't be receiving your prize."
                 : "Unfortunately, due to this information, your teammate lost their prize."}
             </p>
-
-            <div className="tw-relative tw-w-full tw-max-w-[400px] tw-mx-auto">
+            </div>
+          </>
+         )} 
+          <div className="tw-relative tw-max-w-[300px] tw-mx-auto tw-mt-2">
               <img
                 src={imagePath}
                 alt="Deepfake footage"
-                className="tw-rounded-xl tw-shadow-2xl tw-w-full tw-h-auto tw-object-contain tw-border tw-border-gray-100"
+                className="tw-rounded-md tw-shadow-2xl tw-w-full tw-h-auto tw-object-contain tw-border tw-border-gray-100"
               />
             </div>
           </div>
@@ -83,10 +110,12 @@ const DisplayDeepFake = (props) => {
     </>
   );
 };
+
 export default DisplayDeepFake;
 
 DisplayDeepFake.propTypes = {
   teammateId: PropTypes.number.isRequired,
   isExperential: PropTypes.bool.isRequired,
-  toggleAction: PropTypes.func.isRequired,
+  toggleAction: PropTypes.func,
+  isChatRoom: PropTypes.bool,
 };

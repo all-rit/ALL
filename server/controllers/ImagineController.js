@@ -225,6 +225,20 @@ const getImagePath = async(req,_res) =>{
   }
 }
 
+const postChatReply = async(req,_res) =>{
+  try {
+     const {userID,reply} = req.body;
+     const resp = await ImagineService.postChatReply({userID,reply})
+    if(!resp){
+      throw new Error("Error while posting chat reply")
+    }
+    return resp
+  } catch (error) {
+    console.log(error)
+  }
+ 
+}
+
 module.exports = {
   readMoreCount,
   readMoreTimeElapsed,
@@ -241,5 +255,6 @@ module.exports = {
   getGroup,
   getTeammate,
   handleImageUploads,
-  getImagePath
+  getImagePath,
+  postChatReply
 };

@@ -419,4 +419,8 @@ router.get('/imagine26/getImagePath/:userID/:pictureType', async function (req,r
   res.json(imagePath);
 })
 
+router.post("/imagine26/postChatReply/:userID", async function (req, res) {
+  const resp = await ImagineController.postChatReply(req);
+  res.send(resp);
+});
 module.exports = router;

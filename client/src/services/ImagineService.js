@@ -156,5 +156,14 @@ const ImagineService = {
       ).then((response) => response.json()),
     );
   },
+    postChatReply: async (userID,reply, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/postChatReply/${userID}`,
+      {
+        userID,
+        reply
+      },
+    );
+  },
 };
 export default ImagineService;
