@@ -548,6 +548,33 @@ const getImagePath = async (data) => {
   }
 };
 
+const postChatReply = async (data) =>{
+  const {userID,reply} = data
+  console.log(reply)
+  const imagine = 'Imagine26'
+  try {
+    const user = await db[imagine].findOne({
+        where: {
+          userid: userID,
+        },
+      });
+      if (user !== null) {
+        user.chatReply = reply
+        console.log("user reply storage")
+        console.log(user.chatReply)
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          chatReply: reply,
+        });
+      }
+      return true;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   submitStudy,
   newID,
@@ -566,4 +593,6 @@ module.exports = {
   deepFakeGenerator,
   getImagePath,
   handleImageUploads,
+  postChatReply,
+
 };

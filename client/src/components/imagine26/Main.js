@@ -11,6 +11,7 @@ import "./main.css";
 import { Imagine26Provider } from "src/reducers/imagine/imagine26Context";
 import UserProfilePicture from "./pages/UserProfilePicture";
 import PHDConsentForm from "./pages/PHDConsentForm";
+import ChatRoom from "./pages/ChatRoom";
 import ReadingSection from "./pages/ReadingSection";
 
 const Main = () => {
@@ -104,8 +105,8 @@ const Main = () => {
               <UserProfilePicture path="/UserProfilePicture" />
               <GalagaInstructions path={"/GalagaInstructions"} />
               <Galaga path={"/Galaga"} />
+              <ChatRoom path={"/ChatRoom"}></ChatRoom>
               <ReadingSection path={"/ReadingSection"} />
-
               <Survey
                 className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
                 path={`/PostSurvey`}

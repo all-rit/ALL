@@ -43,7 +43,6 @@ const Analysis = (props) => {
   }, []);
 
   const fetchContent = () => {
-    console.log(group);
     if (loading) return <div className="tw-py-10">Loading ..</div>;
 
     if (group === "control" || !group) {
@@ -57,6 +56,7 @@ const Analysis = (props) => {
           teammateId={teammateId}
           isExperential={true}
           toggleAction={showVideo}
+          isChatRoom = {false}
         />
       ),
       expression: (
@@ -64,6 +64,7 @@ const Analysis = (props) => {
           teammateId={teammateId}
           isExperential={false}
           toggleAction={showVideo}
+          isChatRoom = {false}
         />
       ),
       control: <ControlGroupOutcome />,
@@ -93,15 +94,22 @@ const Analysis = (props) => {
 
   const handleNavigation = async () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
+    sessionStorage.setItem("group",group);
+    sessionStorage.setItem("teammateId",teammateId);
     const surveyConsent = JSON.parse(
       sessionStorage.getItem("phdConsent") || "false",
     );
+    
     if (isUnderAge === "true" || surveyConsent == false) {
-      console.log("is not underage");
+      console.log("is underage");
       console.log(isUnderAge);
       navigate("/Imagine2026/Done");
     } else {
-      navigate("/Imagine2026/ReadingSection");
+      if (group != "control"){
+        navigate("/Imagine2026/ChatRoom");
+      }else{
+        navigate("/Imagine2026/ReadingSection");
+      }
     }
   };
 

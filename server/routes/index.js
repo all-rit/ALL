@@ -426,4 +426,8 @@ router.get(
   },
 );
 
+router.post("/imagine26/postChatReply/:userID", async function (req, res) {
+  const resp = await ImagineController.postChatReply(req);
+  res.send(resp);
+});
 module.exports = router;

@@ -21,7 +21,8 @@ create table imagine26
     "preSurvey"                  json,
     "postSurvey"                 json,
     "section"                    enum_imagine26,
-    "deepfakeImagePath"            text,
+    "deepfakeImagePath"          text,
+    "chatReply"                  text,
     primary key (id)
 );
 
