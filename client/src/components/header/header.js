@@ -138,7 +138,7 @@ const Header = ({ isImagine }) => {
 
   return (
     <div
-      className={`tw-h-[6rem] tw-relative tw-my-0 ${isImagine ? "tw-mb-[3.5rem]" : ""}`}
+      className={`tw-h-[7rem] tw-relative tw-my-0 ${isImagine ? "tw-mb-[4rem]" : ""}`}
     >
       {/* Shadow & Positioning*/}
       <div
@@ -147,7 +147,7 @@ const Header = ({ isImagine }) => {
         {/* Logo */}
         <a onClick={() => !isImagine && navigate("/")}>
           <img
-            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[6rem]`}
+            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[7rem]`}
             src={Logo}
             alt="Accessible Learning Labs"
           />
