@@ -10,6 +10,7 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
+
 const app = express();
 const port = process.env.PORT || 5005;
 
@@ -58,8 +59,6 @@ app.use(
 );
 
 app.use(require("./routes"));
-
-
 
 let server;
 
