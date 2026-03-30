@@ -138,16 +138,16 @@ const Header = ({ isImagine }) => {
 
   return (
     <div
-      className={`tw-h-[5rem] tw-my-0 ${isImagine ? "tw-h-[8rem] tw-mb-[0.5rem]" : ""}`}
+      className={`tw-h-[7rem] tw-relative tw-my-0 ${isImagine ? "tw-mb-[4rem]" : ""}`}
     >
       {/* Shadow & Positioning*/}
       <div
-        className={`tw-flex tw-bg-white tw-z-30 tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-shadow-lg tw-pl-5 lg:tw-pl-12`}
+        className={`tw-h-full tw-flex tw-bg-white tw-z-30 tw-absolute tw-top-0 tw-left-0 tw-right-0 tw-shadow-lg tw-pl-5 lg:tw-pl-12`}
       >
         {/* Logo */}
         <a onClick={() => !isImagine && navigate("/")}>
           <img
-            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[5rem]`}
+            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[7rem]`}
             src={Logo}
             alt="Accessible Learning Labs"
           />
