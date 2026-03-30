@@ -1,23 +1,9 @@
 import { useMemo, useReducer } from "react";
-
-export const PROMPT_BUILDER_STAGES = [
-  "goal",
-  "context",
-  "sources",
-  "expectations",
-];
-
-// Number of points the prompt answers have to reach to be passing and move onto the next stage
-export const DEFAULT_PASSING_SCORE = 6;
-
-const ACTIONS = {
-  SELECT_STAGE_OPTION: "SELECT_STAGE_OPTION",
-  LOCK_CURRENT_STAGE: "LOCK_CURRENT_STAGE",
-  CLEAR_JUST_LOCKED: "CLEAR_JUST_LOCKED",
-  MOVE_STAGE: "MOVE_STAGE",
-  SET_STAGE_INDEX: "SET_STAGE_INDEX",
-  RESET: "RESET",
-};
+import {
+  ACTIONS,
+  DEFAULT_PASSING_SCORE,
+  PROMPT_BUILDER_STAGES,
+} from "../../../../constants/lab15/PromptStateManagerConfig";
 
 const buildEmptyStageMap = (defaultValue) =>
   PROMPT_BUILDER_STAGES.reduce((acc, stage) => {
