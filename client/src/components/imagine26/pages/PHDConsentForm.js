@@ -1,11 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Frame } from "../components/Frame";
 import { navigate } from "@reach/router";
 import ImagineHeader from "../components/ImagineHeader";
 import LabButton from "src/components/all-components/LabButton";
 
-const PHDConsentForm = () => {
-  // const fontSize = "xs:tw-text-md xl:tw-text-xl";
+const PHDConsentForm = ({ setConsent }) => {
+  const handleAnswer = (answer) => {
+    setConsent(answer);
+    sessionStorage.setItem("phdConsent", JSON.stringify(answer));
+
+    if (answer) {
+      navigate("/Imagine2026/PreSurvey");
+    } else {
+      navigate("/Imagine2026/GalagaInstructions");
+    }
+  };
   return (
     <>
       <ImagineHeader title="PHD Consent Form" />
@@ -22,20 +32,19 @@ const PHDConsentForm = () => {
           </p>
 
           <div className="tw-flex tw-gap-4 tw-mt-4">
-            <LabButton
-              onClick={() => navigate("/Imagine2026/PreSurvey")}
-              label={"Yes"}
-            />
+            <LabButton onClick={() => handleAnswer(true)} label={"Yes"} />
 
-            <LabButton
-              onClick={() => navigate("/Imagine2026/PreSurvey")}
-              label={"No"}
-            />
+            <LabButton onClick={() => handleAnswer(false)} label={"No"} />
           </div>
         </div>,
       )}
     </>
   );
+};
+
+PHDConsentForm.propTypes = {
+  setConsent: PropTypes.func.isRequired,
+  path: PropTypes.string,
 };
 
 export default PHDConsentForm;
