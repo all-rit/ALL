@@ -61,7 +61,7 @@ const preSurvey = async (data) => {
       } else if (year == 25) {
         section = await determineSection2025();
       } else if (year == 26) {
-        section = await determineSection2025(preSurvey, year);
+        section = await determineSection2026();
       } else {
         console.log("invalid year");
       }
@@ -414,9 +414,24 @@ const determineSection2025 = async () => {
   return options[randIndex];
 };
 
+const determineSection2026 = async ()=>{
+  const options = ["experiential", "expression", "control"];
+  const imagine = "Imagine26";
+
+  const sectionCounts = []
+  for (const option of options){
+    const count = await db[imagine].count({
+      where: {section:option},
+    })
+    sectionCounts.push({name:option,count:count})
+  }
+
+  sectionCounts.sort((a, b) => a.count - b.count);
+  return sectionCounts[0].name;
+}
 
 
-const postImagepath = async (imagine, userID, imagepath) => {
+const postImagepath = async (imagine,userID,imagepath) =>{
   try {
     if (userID) {
       const user = await db[imagine].findOne({
@@ -446,8 +461,7 @@ const deepFakeGenerator = async (imagine, userID, base64String, imagePath) => {
     apiKey: process.env.GEMINI_API_KEY,
   });
 
-  const textPrompt =
-    "Generate an image of the person in this photo with a blue hat and holding a sign that says, I dont want cotton candy";
+  const textPrompt = "Generate an image of the person in this photo frowning,wearing a blue hat and holding a sign that says: I dont want cotton candy. The sign has to be visible in the image"
   const prompt = [
     { text: textPrompt },
     {
