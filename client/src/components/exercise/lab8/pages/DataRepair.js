@@ -312,7 +312,11 @@ const DataRepair = () => {
                               parseInt(e.target.value),
                             );
                           }}
-                          title={message.ai_polarity}
+                          title={
+                            isNaN(message.ai_polarity)
+                              ? -1
+                              : message.ai_polarity
+                          }
                           className={
                             messageError[index] ? "form-error-input" : ""
                           }
