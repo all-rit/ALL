@@ -209,7 +209,7 @@ const App = () => {
           }
         >
           <Suspense fallback={<Spinner />}>
-            <Header isImagine={isImagine} />
+            <Header isImagine={isImagine} actions={actions} />
             <div className={`tw-relative`}>
               <div className={`tw-relative tw-grid`}>
                 {labInProgress ? (
