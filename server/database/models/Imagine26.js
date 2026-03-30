@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         chatReply: {
           type: DataTypes.TEXT,
         },
-      },
+    },
     { tableName: "imagine26" },
   );
 

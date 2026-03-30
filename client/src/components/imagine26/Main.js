@@ -12,11 +12,13 @@ import { Imagine26Provider } from "src/reducers/imagine/imagine26Context";
 import UserProfilePicture from "./pages/UserProfilePicture";
 import PHDConsentForm from "./pages/PHDConsentForm";
 import ChatRoom from "./pages/ChatRoom";
+import ReadingSection from "./pages/ReadingSection";
 
 const Main = () => {
   const userID = sessionStorage.getItem("userID");
 
   const [canContinue, setCanContinue] = useState(true);
+  const [, setPhdConsent] = useState(false);
 
   // user has to wait 10 seconds before allowing the next person to play
   useEffect(() => {
@@ -89,7 +91,10 @@ const Main = () => {
               }
             >
               <UpdateId default path={"/"} canContinue={canContinue} />
-              <PHDConsentForm path={"/PHDConsentForm"} />
+              <PHDConsentForm
+                path={"/PHDConsentForm"}
+                setConsent={setPhdConsent}
+              />
               <Survey
                 className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
                 path={`/PreSurvey`}
@@ -101,13 +106,7 @@ const Main = () => {
               <GalagaInstructions path={"/GalagaInstructions"} />
               <Galaga path={"/Galaga"} />
               <ChatRoom path={"/ChatRoom"}></ChatRoom>
-              <Survey
-                className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
-                path={`/PreSurvey`}
-                type={"pre"}
-                year={year}
-                userID={userID || ""}
-              />
+              <ReadingSection path={"/ReadingSection"} />
               <Survey
                 className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
                 path={`/PostSurvey`}

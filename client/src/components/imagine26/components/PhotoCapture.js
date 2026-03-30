@@ -29,6 +29,14 @@ const PhotoCapture = () => {
     };
   }, []);
 
+  const stopCamera = () => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const tracks = videoRef.current.srcObject.getTracks();
+      tracks.forEach((track) => track.stop());
+      videoRef.current.srcObject = null;
+    }
+  };
+
   const capture = () => {
     if (videoRef.current) {
       const canvas = document.createElement("canvas"); // Create a canvas element
@@ -41,6 +49,7 @@ const PhotoCapture = () => {
       const imageDataUrl = canvas.toDataURL("image/png");
       canvas.toBlob(function (blob) {
         updatePhoto(blob, imageDataUrl);
+        stopCamera();
       }, "image/png");
     }
   };
