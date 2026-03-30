@@ -115,7 +115,6 @@ function Result(props) {
     return (
       <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
-          console.log(index);
           if (answer["val"] === 1) {
             return (
               <div key={index + 1000}>
@@ -164,21 +163,19 @@ function Result(props) {
     if (selectedAnswers instanceof Set) {
       return Array.from(selectedAnswers).map((answer) => {
         const questionNumber = i.pop();
-        console.log(questionNumber, "multi");
         return (
-          <ul>
-            <div key={questionNumber}>{answers[answer]["content"]}</div>
+          <ul key={questionNumber}>
+            {/* Key needs to be at highest level */}
+            <div>{answers[answer]["content"]}</div>
           </ul>
         );
       });
     } else {
       const questionNumber = j.pop();
-      console.log(questionNumber, "nonmulti");
       return (
-        <ul>
-          <div key={questionNumber}>
-            {answers[selectedAnswers.type]["content"]}
-          </div>
+        <ul key={questionNumber}>
+          {/* Key needs to be at highest level */}
+          <div>{answers[selectedAnswers.type]["content"]}</div>
         </ul>
       );
     }
