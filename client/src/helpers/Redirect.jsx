@@ -1,7 +1,7 @@
 import { Sections } from "../constants/index";
 import { navigate } from "react-router-dom";
 
-// eslint-disable-next-line no-unused-vars
+ 
 const handleRedirect = (actions = {}, lab, body = 0) => {
   if (!(lab in Sections)) {
     // check if lab exists

@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
-import GameScore from "./GameScore";
-import GameStatus from "./GameStatus";
-import ImagineService from "../../../services/ImagineService";
-import Spinner from "../../../common/Spinner/Spinner";
-import Bias from "./Bias";
-import PenaltyStatus from "./PenaltyStatus";
-import { createAvatar } from "@dicebear/core";
-import { avataaars } from "@dicebear/collection";
-import { convertAvatarToDicebear } from "../../all-components/convertAvatarToDicebear";
-import createAvatarData from "../../all-components/createAvatarData";
+import React, { useEffect, useState } from 'react';
+import GameScore from './GameScore';
+import GameStatus from './GameStatus';
+import ImagineService from '../../../services/ImagineService';
+import Spinner from '../../../common/Spinner/Spinner';
+import Bias from './Bias';
+import PenaltyStatus from './PenaltyStatus';
+import { createAvatar } from '@dicebear/core';
+import { avataaars } from '@dicebear/collection';
+import { convertAvatarToDicebear } from '../../all-components/convertAvatarToDicebear';
+import createAvatarData from '../../all-components/createAvatarData';
 
 const PlayerBoard = (props) => {
   const { user, handleNext, biasType } = props;
@@ -101,8 +101,8 @@ const PlayerBoard = (props) => {
               </td>
               <td>
                 {user?.firstname != null
-                  ? user?.firstname + " " + user?.lastinitial
-                  : "User#" + user?.userid}
+                  ? user?.firstname + ' ' + user?.lastinitial
+                  : 'User#' + user?.userid}
               </td>
               <td>0/0/0</td>
               <td>
@@ -115,7 +115,7 @@ const PlayerBoard = (props) => {
               </td>
               <td>
                 <PenaltyStatus
-                  isOffender={biasType === "user" ? true : false}
+                  isOffender={biasType === 'user' ? true : false}
                 />
               </td>
             </tr>
@@ -150,7 +150,7 @@ const PlayerBoard = (props) => {
                   <td>
                     <PenaltyStatus
                       isOffender={
-                        biasType === "team"
+                        biasType === 'team'
                           ? data.id === offender?.id
                             ? true
                             : false
@@ -165,20 +165,21 @@ const PlayerBoard = (props) => {
               return (
                 <tr className="opposingMember" key={index}>
                   <td>
-                    <Avatar
+                    <img
                       className="tw-w-16 tw-h-16"
                       alt={data.name}
-                      avatarStyle="Circle"
-                      topType={data.avatarAttributes.topType}
-                      accessoriesType={data.avatarAttributes.accessoriesType}
-                      hairColor={data.avatarAttributes.hairColor}
-                      facialHairType={data.avatarAttributes.facialHairType}
-                      clotheType={data.avatarAttributes.clotheType}
-                      clotheColor={data.avatarAttributes.clotheColor}
-                      eyeType={data.avatarAttributes.eyeType}
-                      eyebrowType={data.avatarAttributes.eyebrowType}
-                      mouthType={data.avatarAttributes.mouthType}
-                      skinColor={data.avatarAttributes.skinColor}
+                      src={convertAvatarToDicebear({
+                        topType: data.avatarAttributes.topType,
+                        accessoriesType: data.avatarAttributes.accessoriesType,
+                        hairColor: data.avatarAttributes.hairColor,
+                        facialHairType: data.avatarAttributes.facialHairType,
+                        clotheType: data.avatarAttributes.clotheType,
+                        clotheColor: data.avatarAttributes.clotheColor,
+                        eyeType: data.avatarAttributes.eyeType,
+                        eyebrowType: data.avatarAttributes.eyebrowType,
+                        mouthType: data.avatarAttributes.mouthType,
+                        skinColor: data.avatarAttributes.skinColor,
+                      })}
                     />
                   </td>
                   <td>{data.name}</td>
@@ -186,7 +187,7 @@ const PlayerBoard = (props) => {
                     <GameScore />
                   </td>
                   <td>
-                    <GameStatus userType="opposingMember" biasType={"none"} />
+                    <GameStatus userType="opposingMember" biasType={'none'} />
                   </td>
                   <td>None</td>
                 </tr>

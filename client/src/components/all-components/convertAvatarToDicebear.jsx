@@ -1,5 +1,8 @@
+/* eslint-disable react/prop-types */
+
 import { createAvatar } from "@dicebear/core";
 import { avataaars } from "@dicebear/collection";
+import PropTypes from 'prop-types';
 
 /**
  * Convert old Avataaars attributes to DiceBears avataaars options format
@@ -30,6 +33,12 @@ export const convertAvatarToDicebear = (avatarAttributes) => {
   return avatar.toDataUrl();
 };
 
+convertAvatarToDicebear.PropTypes = {
+  avatarAttributes: PropTypes.object,
+  className: PropTypes.string,
+  alt: PropTypes.string
+}
+
 /**
  * Generate a DiceBears avatar SVG component
  */
@@ -50,3 +59,9 @@ export const DicebearAvatar = ({
     />
   );
 };
+
+DicebearAvatar.PropTypes = {
+  avatarAttributes: PropTypes.object,
+  className: PropTypes.string,
+  alt: PropTypes.string
+}

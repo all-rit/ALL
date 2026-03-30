@@ -26,6 +26,7 @@ export default [
       ...js.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs["jsx-runtime"].rules,
+      "no-unused-vars": "off"
     },
     settings: {
       react: {

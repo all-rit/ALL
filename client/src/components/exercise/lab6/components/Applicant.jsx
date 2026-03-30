@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+ 
 /* eslint-disable react/prop-types */
 import { createAvatar } from '@dicebear/core';
 import { avataaars } from '@dicebear/collection';

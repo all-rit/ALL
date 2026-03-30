@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+ 
 /**
  * Model.js is a Javascript file that is responsible for holding the logic behind a game of
  * Tic Tack Toe. This file contains the behavior starting a game and checking the given

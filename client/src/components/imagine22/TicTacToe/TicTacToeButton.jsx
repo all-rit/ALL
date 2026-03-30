@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+ 
 import { useEffect, useState } from "react";
 
 const TicTacToeButton = ({ piece, moveMade, setUpdateBoard }) => {
