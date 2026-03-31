@@ -39,7 +39,7 @@ const TeammateVideo = (props) => {
           25,
         );
         const groupVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
-        setVideoSrc(groupVideos[group] || groupVideos.A);
+        setVideoSrc(groupVideos[group] || groupVideos["control"]);
       } else {
         setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
       }
