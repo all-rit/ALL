@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
-import Likert from "./Likert";
+import Likert from "../Likert";
 import Avatar from "avataaars";
 import ImagineService from "src/services/ImagineService";
 import RankingQuestion from "./Ranking";

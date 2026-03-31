@@ -52,6 +52,13 @@ const Decryption = ({
     setDecrypted(true);
   };
 
+  const formatNumber = (num) => {
+    if (Math.abs(num) >= 1e12) {
+      return num.toExponential(2);
+    }
+    return num.toLocaleString();
+  };
+
   return (
     <div className="tw-flex tw-flex-col tw-items-center">
       {/* Spacer block */}
@@ -103,9 +110,10 @@ const Decryption = ({
 
           {/* Summary section */}
           <p className="tw-text-center tw-max-w-2xl tw-text-lg">
-            In this example, a classical computer took {classicAttempts}{" "}
-            attempt(s) to decrypt the message, while a quantum computer only
-            took {quantumAttempts} attempt(s)!
+            In this example, a classical computer took{" "}
+            {formatNumber(classicAttempts)} attempt(s) to decrypt the message,
+            while a quantum computer only took {formatNumber(quantumAttempts)}{" "}
+            attempt(s)!
           </p>
 
           {/* Spacer block */}
@@ -125,7 +133,9 @@ const Decryption = ({
           <div className="tw-flex tw-justify-center tw-items-center">
             <p className="tw-text-center tw-max-w-2xl tw-text-lg">
               In this example, a quantum computer was{" "}
-              {Math.round((classicAttempts / quantumAttempts) * 100) / 100}{" "}
+              {formatNumber(
+                Math.round((classicAttempts / quantumAttempts) * 100) / 100,
+              )}{" "}
               times faster than a classical computer!
             </p>
           </div>
