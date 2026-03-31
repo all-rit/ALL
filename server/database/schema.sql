@@ -4277,9 +4277,9 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
         "header":"Microsoft GCSE framework:",
         "type":"",
         "content":[
-          " 1. Goal: Define what you want the model to do",
-          " 2. Context: Add the required context you want the AI to make it’s answered based on",
-          " 3. Sources: This is kinda part of the context part, but is kinda optional. Should you want the AI to ONLY look at certain websites or reference certain documents, include them",
+          " 1. Goal: Define what you want the model to do.",
+          " 2. Context: Explain the required context surrounding the prompt.",
+          " 3. Sources: Give the AI acess to the sources you wish it to base its answers off of.",
           " 4. Expectations: Describe how the final output should look / feel. Specify the desired format, length, style, or tone."
         ]
       }
