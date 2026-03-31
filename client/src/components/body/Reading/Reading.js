@@ -35,6 +35,7 @@ const Reading = (props) => {
   );
   const [originalPieLabels, setOriginalPieLabels] = useState([]);
   const [mobileLabelWrap, setMobileLabelWrap] = useState(false);
+  const [accessiblePieLabel, setAccessiblePieLabel] = useState("");
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
@@ -195,6 +196,18 @@ const Reading = (props) => {
     return labelsForReturn;
   }
 
+  const createAccessiblePieLabel = (pieLabels, pieDataSet, pieTitle) => {
+    let formattedLabel = "Pie chart titled '" + pieTitle + "' with data: ";
+    for (let index = 0; index < pieLabels.length; index++) {
+      if (index != pieLabels.length - 1) {
+        formattedLabel += pieLabels[index] + ": " + pieDataSet[index] + ", ";
+      } else {
+        formattedLabel += pieLabels[index] + ": " + pieDataSet[index] + ".";
+      }
+    }
+    setAccessiblePieLabel(formattedLabel);
+  };
+
   useEffect(() => {
     const windowResizeEvent = () => {
       if (window.innerWidth > PIE_WINDOW_RESIZE_WIDTH) {
@@ -224,8 +237,12 @@ const Reading = (props) => {
             );
           }
         }
+        createAccessiblePieLabel(
+          data[0].reading.piechart.data.labels,
+          data[0].reading.piechart.data.datasets[0].data,
+          data[0].reading.piechart.header,
+        );
         setReadingData(data[0].reading);
-        console.log(data[0].reading);
       });
 
       if (isImagine) {
@@ -361,9 +378,7 @@ const Reading = (props) => {
                       data={readingData?.piechart.data}
                       options={largeViewPortOptions}
                       height={!isImagine && PIE_SIZE}
-                      aria-label={
-                        "Pie chart titled " + readingData.piechart.header
-                      }
+                      aria-label={accessiblePieLabel}
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
