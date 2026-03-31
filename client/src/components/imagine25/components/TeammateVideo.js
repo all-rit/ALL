@@ -77,9 +77,6 @@ const TeammateVideo = (props) => {
           </p>
         </div>
       )}
-      <p>
-        Teammate live from: <b>Buffalo, NY</b>
-      </p>
     </div>
   );
 };
