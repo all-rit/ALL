@@ -119,7 +119,6 @@ const mapDispatchToProps = (dispatch) => {
 
 class Main extends Component {
   shouldComponentUpdate(nextprops) {
-    console.log(nextprops);
     if (nextprops.exerciseState !== this.props.exerciseState) {
       return true;
     }
@@ -265,6 +264,7 @@ class Main extends Component {
     // custom renderer for top of page popup
     // popup occurs after a successful change to the colors in the system
     const renderer = (props) => {
+      console.log(props);
       if (props.total > 0) {
         return (
           <div className="successPopup">

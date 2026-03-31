@@ -25,7 +25,7 @@ const DataRepair = () => {
   } = useContext(ExerciseStateContext);
   /* 
     To-Do this would require rewriting this context.
-    Polarity can never be 
+    Polarity can never be NaN
   */
 
   /*
