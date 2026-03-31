@@ -86,6 +86,9 @@ const Game = () => {
         <div className="tw-w-64 tw-h-36">
           <TeammateVideo teammateId={teammateId} messageShown={false} />
         </div>
+        <p>
+          Teammate live from: <b>Buffalo, NY</b>
+        </p>
         <p className="tw-col-span-2 tw-text-center tw-font-bold">
           <br />
           (Keyboard)
