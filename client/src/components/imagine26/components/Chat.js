@@ -37,7 +37,7 @@ export const ChatComponent =  (props) =>{
     }
     const groupMap = {
             experiential:"That image is so crazy, did you really say that? How do you feel?",
-            expression: "THAT IS A FAKE IMAGE. What do you think about this?"
+            expression: "THAT IS A FAKE IMAGE. I NEVER SAID THAT !!"
     }
 
     return (

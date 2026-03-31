@@ -227,7 +227,7 @@ const Game = () => {
   useEffect(() => {
     //for testing purposes we can change the teammate id to 1 since we have 1 video, when we have all videos we need to uncomment the code below
     // const id = Math.floor(Math.random() * 4);
-    setTeammateId(1);
+    setTeammateId(0);
   }, []);
 
   return (
