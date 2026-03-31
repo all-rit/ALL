@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 
-module.exports = {
+export default {
   prefix: "tw-",
   content: ["../client/src/**/*.{js,jsx}"],
   important: true,
