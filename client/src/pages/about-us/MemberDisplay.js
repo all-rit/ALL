@@ -138,7 +138,7 @@ const MemberDisplay = (props) => {
                 })}
               </div>
             </div>
-            {currentMember.favoritelab !== null ? (
+            {currentMember.favoritelab ? (
               <div id="member-favorite-lab">
                 <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Favorite Lab
