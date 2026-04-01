@@ -3,59 +3,16 @@ import { navigate } from "@reach/router";
 import LabButton from "src/components/all-components/LabButton";
 import Quiz from "src/components/quiz/components/Quiz";
 import { GCSE_SECTIONS } from "src/constants/lab15";
+import {
+  PROMPT_BUILDER_DESCRIPTION,
+  PROMPT_BUILDER_HEADING,
+  PROMPT_COMPLETE_FAILED_MESSAGE,
+  PROMPT_COMPLETE_PASSED_MESSAGE,
+  PROMPT_QUESTION_TEMPLATE,
+  STAGE_OPTIONS,
+} from "src/constants/lab15/PromptBuilderConfig";
 import PromptViewer from "../components/PromptViewer";
 import usePromptBuilderStageManager from "../components/PromptStateManager";
-
-const STAGE_OPTIONS = {
-  goal: [
-    {
-      id: "goal-1",
-      text: "Help me with science.",
-      score: 1,
-    },
-    {
-      id: "goal-2",
-      text: "Explain Newton's First Law in simple terms for a middle school student.",
-      score: 3,
-    },
-  ],
-  context: [
-    {
-      id: "context-1",
-      text: "I need this quickly.",
-      score: 1,
-    },
-    {
-      id: "context-2",
-      text: "This is for a class recap and I struggled with motion and forces this week.",
-      score: 3,
-    },
-  ],
-  sources: [
-    {
-      id: "sources-1",
-      text: "Use anything online.",
-      score: 1,
-    },
-    {
-      id: "sources-2",
-      text: "Use our textbook chapter on Forces and cite one trustworthy educational source.",
-      score: 3,
-    },
-  ],
-  expectations: [
-    {
-      id: "expectations-1",
-      text: "Make it short.",
-      score: 1,
-    },
-    {
-      id: "expectations-2",
-      text: "Answer in 4 bullet points and include one real-world example.",
-      score: 3,
-    },
-  ],
-};
 
 const PromptBuilder = () => {
   const {
@@ -123,10 +80,9 @@ const PromptBuilder = () => {
   return (
     <div className="tw-flex tw-flex-col tw-w-full tw-h-full tw-min-h-0 tw-overflow-hidden">
       <div className="tw-px-6 tw-pt-6 tw-pb-4 tw-shrink-0 md:tw-px-0 md:tw-pt-0 md:tw-pb-0">
-        <h1 className="tw-title tw-text-left">Exercise Start</h1>
+        <h1 className="tw-title tw-text-left">{PROMPT_BUILDER_HEADING}</h1>
         <p className="tw-body-text tw-text-left tw-py-6">
-          Build your prompt section by section using GCSE. Choose the strongest
-          option in each category to improve your score.
+          {PROMPT_BUILDER_DESCRIPTION}
         </p>
       </div>
 
@@ -158,7 +114,10 @@ const PromptBuilder = () => {
               });
             }}
             questionId={currentStageIndex + 1}
-            question={`Choose the best ${questionLabel} statement for your prompt.`}
+            question={PROMPT_QUESTION_TEMPLATE.replace(
+              "{label}",
+              questionLabel,
+            )}
             questionTotal={stages.length}
           />
 
@@ -166,8 +125,8 @@ const PromptBuilder = () => {
             <div className="tw-mt-6 tw-p-4 tw-rounded-lg tw-border tw-border-darkLine tw-bg-secondary-gray/60">
               <div className="tw-font-semibold tw-text-darkGray">
                 {hasMetPassingScore
-                  ? "Prompt complete. You passed the quality threshold."
-                  : "Prompt complete, but score is below passing. Improve your choices."}
+                  ? PROMPT_COMPLETE_PASSED_MESSAGE
+                  : PROMPT_COMPLETE_FAILED_MESSAGE}
               </div>
             </div>
           )}
