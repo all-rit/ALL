@@ -4263,14 +4263,14 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       {
         "header":"What causes AI Hallucinations?",
         "type":"",
-        "content":["Broadly, hallucinations in LLMs can be divided into two primary sources: Prompting-induced hallucinations, where ill-structured, unspecified, or misleading prompts cause inefficient outputs, and Model-internal hallucinations, which is caused by the models architecture, the data it was trained on, or inference behavior."]
+        "content":["Broadly, hallucinations in LLMs can be divided into two primary sources: Prompting-induced hallucinations, where ill-structured, unspecified, or misleading prompts cause unreliable outputs, and Model-internal hallucinations, which are caused by the model’s architecture, the data it was trained on, or inference behavior."]
       },
       {
         "header":"How does prompting influence AI Hallucinations?",
         "type":"",
         "content":[
-          "In a study of how prompting influences AI hallucination rates, researchers gave models difficult prompts to answer to maximize the hallucination rate. One set of these prompts were vague, and the others were clear and concise. The clear group had half the hallucination rates of the vague group",
-          "More context and directions reduce the models uncertainty and degrees of freedom. For instance if you don’t tell a model to admit that it isn’t fully aware of something, it will often just answer with its best guess. By giving models more context and clear instructions, it forces them to stay within tight constraints of how to respond, thus generating more consistent and reliable answers."
+          "In a study of how prompting influences AI hallucination rates, researchers gave models difficult prompts to answer to maximize the hallucination rate. One set of these prompts was vague, and the others was clear and concise. The clear group had half the hallucination rates of the vague group.",
+          "More context and directions reduce the model’s uncertainty and freedom to generate an improper or irrelevant response. For instance, if you don’t tell a model to admit that it isn’t fully aware of something, it will often just answer with its best guess. By giving models more context and clear instructions, it forces them to stay within tight constraints of how to respond, thus generating more consistent and reliable answers."
         ]
       },
       {
@@ -4279,7 +4279,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
         "content":[
           " 1. Goal: Define what you want the model to do.",
           " 2. Context: Explain the required context surrounding the prompt.",
-          " 3. Sources: Give the AI acess to the sources you wish it to base its answers off of.",
+          " 3. Sources: Give the AI access to the sources you wish it to base its answers off of.",
           " 4. Expectations: Describe how the final output should look / feel. Specify the desired format, length, style, or tone."
         ]
       }
@@ -4295,7 +4295,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
             "link":"https://alfapeople.com/importance-of-prompt-engineering-preventing-ai-hallucinations"
           },
           {
-            "name":"Promptings effect on AI Hallucinations",
+            "name":"Prompting’s effect on AI Hallucinations",
             "link":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12518350/#abstract1"
           }
         ]
