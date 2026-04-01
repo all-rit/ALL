@@ -236,13 +236,13 @@ const LabsPage = (props) => {
       <div className="tw-relative tw-h-auto  tw-mb-20">
         <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16">
           <div
-            className="tw-flex tw-bg-primary-blue tw-w-full -tw-left-8 tw-top-16
-                            tw-h-auto tw-relative tw-rounded-tr-lg"
+            className="tw-flex tw-bg-primary-blue tw-w-full sm:-tw-left-8 tw-top-16
+                            tw-h-auto tw-relative sm:tw-rounded-tr-lg"
           >
-            <div className="tw-bg-white tw-auto tw-w-full -tw-left-4 tw-top-4 tw-rounded-tr-lg tw-justify-left tw-relative">
+            <div className="tw-bg-white tw-auto tw-w-full sm:-tw-left-4 -tw-left-0 tw-top-4 sm:tw-rounded-tr-lg tw-justify-left tw-relative">
               <div
-                className="tw-flex tw-flex-col tw-pt-16 tw-relative tw-left-12 tw-items-center
-                              tw-flex-wrap tw-px-12"
+                className="tw-flex tw-flex-col tw-pt-16 tw-relative sm:tw-left-12 tw-items-center
+                              tw-flex-wrap tw-px-8 sm:tw-px-12"
               >
                 {loggedIn && (
                   <div className={"tw-w-full"}>
