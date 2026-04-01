@@ -43,13 +43,14 @@ const ModelRepair = () => {
         />
 
         {/* Right Panel */}
-        <div className="tw-flex-1 tw-overflow-y-auto tw-p-6 tw-bg-white">
+        <div className="tw-flex-1 md:tw-flex-[1.5] tw-p-8 tw-bg-white tw-flex tw-flex-col tw-h-full tw-min-h-0">
           <PromptViewer
             sections={GCSE_SECTIONS}
             values={sectionValues.values}
             activeKey={activeKey}
             lockedKeys={sectionValues.lockedKeys}
             justLockedKey={sectionValues.justLockedKey}
+            className="tw-flex-1"
           />
         </div>
       </div>
