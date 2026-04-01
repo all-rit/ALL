@@ -32,8 +32,8 @@ const Main = () => {
           <ExerciseIntro default path="/" />
           <ModelHallucination path="/model-hallucination" />
           <GoodPromptingGuide path="/good-prompting-guide" />
-          <PromptBuilder path="/prompt-builder" />
           <ModelRepair path="/model-repair" />
+          <PromptBuilder path="/prompt-builder" />
           <ModelWithGrades path="/model-with-grades" />
           <Conclusion path="/conclusion" />
         </Router>

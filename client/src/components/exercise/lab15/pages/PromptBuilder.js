@@ -1,48 +1,183 @@
 import { navigate } from "@reach/router";
-import React, { useState } from "react";
+
+import LabButton from "src/components/all-components/LabButton";
+import Quiz from "src/components/quiz/components/Quiz";
+import { GCSE_SECTIONS } from "src/constants/lab15";
 import PromptViewer from "../components/PromptViewer";
-import { GCSE_SECTIONS } from "../../../../constants/lab15";
-import LabButton from "../../../all-components/LabButton";
+import usePromptBuilderStageManager from "../components/PromptStateManager";
 
-const ModelRepair = () => {
-  const [sectionValues] = useState({
-    values: GCSE_SECTIONS.reduce((acc, section) => {
-      acc[section.key] = null;
-      return acc;
-    }, {}),
-    activeIndex: 0,
-    lockedKeys: [],
-    justLockedKey: null,
-  });
+const STAGE_OPTIONS = {
+  goal: [
+    {
+      id: "goal-1",
+      text: "Help me with science.",
+      score: 1,
+    },
+    {
+      id: "goal-2",
+      text: "Explain Newton's First Law in simple terms for a middle school student.",
+      score: 3,
+    },
+  ],
+  context: [
+    {
+      id: "context-1",
+      text: "I need this quickly.",
+      score: 1,
+    },
+    {
+      id: "context-2",
+      text: "This is for a class recap and I struggled with motion and forces this week.",
+      score: 3,
+    },
+  ],
+  sources: [
+    {
+      id: "sources-1",
+      text: "Use anything online.",
+      score: 1,
+    },
+    {
+      id: "sources-2",
+      text: "Use our textbook chapter on Forces and cite one trustworthy educational source.",
+      score: 3,
+    },
+  ],
+  expectations: [
+    {
+      id: "expectations-1",
+      text: "Make it short.",
+      score: 1,
+    },
+    {
+      id: "expectations-2",
+      text: "Answer in 4 bullet points and include one real-world example.",
+      score: 3,
+    },
+  ],
+};
 
-  const activeSection = GCSE_SECTIONS[sectionValues.activeIndex];
-  const activeKey = activeSection?.key ?? null;
+const PromptBuilder = () => {
+  const {
+    stages,
+    currentStage,
+    currentStageIndex,
+    selections,
+    lockedKeys,
+    justLockedKey,
+    totalScore,
+    passingScore,
+    canMoveToNextStage,
+    allStagesAnswered,
+    hasMetPassingScore,
+    selectStageOption,
+    lockCurrentStage,
+    clearJustLockedKey,
+    nextStage,
+    previousStage,
+  } = usePromptBuilderStageManager();
+
+  const activeOptions = STAGE_OPTIONS[currentStage] || [];
+  const isFinalStage = currentStageIndex === stages.length - 1;
+
+  const handleNext = () => {
+    if (!canMoveToNextStage) return;
+    clearJustLockedKey();
+    requestAnimationFrame(() => {
+      lockCurrentStage();
+    });
+
+    if (!isFinalStage) {
+      nextStage();
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStageIndex === 0) return;
+    previousStage();
+  };
+
+  const handleAnswerSelected = (event) => {
+    const optionIndex = Number(event.target.value);
+    const selectedOption = activeOptions[optionIndex];
+    if (!selectedOption) return;
+
+    selectStageOption(currentStage, selectedOption.text, selectedOption.score);
+  };
+
+  const quizAnswerOptions = activeOptions.map((option, index) => ({
+    type: String(index),
+    content: option.text,
+  }));
+
+  const questionLabel =
+    GCSE_SECTIONS[currentStageIndex]?.label || GCSE_SECTIONS[0].label;
+
+  const sectionValues = {
+    values: selections,
+    lockedKeys,
+    justLockedKey,
+  };
+  const activeKey = currentStage;
 
   return (
     <div className="tw-flex tw-flex-col tw-w-full tw-h-full tw-min-h-0 tw-overflow-hidden">
       <div className="tw-px-6 tw-pt-6 tw-pb-4 tw-shrink-0 md:tw-px-0 md:tw-pt-0 md:tw-pb-0">
         <h1 className="tw-title tw-text-left">Exercise Start</h1>
         <p className="tw-body-text tw-text-left tw-py-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
+          Build your prompt section by section using GCSE. Choose the strongest
+          option in each category to improve your score.
         </p>
       </div>
+
       <div className="tw-flex tw-flex-col md:tw-flex-row tw-flex-1 tw-min-h-0 tw-overflow-hidden">
-        {/* Left Panel */}
         <div className="tw-flex-1 tw-overflow-y-auto tw-p-6">
-          <div className="tw-border-solid tw-border-b-labGray tw-p-4">
-            {/* QUIZ COMPONENT TO BE ADDED */}
+          <div className="tw-flex tw-items-center tw-justify-between tw-mb-4 tw-gap-3">
+            <h2 className="tw-text-xl tw-font-bold tw-text-darkGray tw-capitalize">
+              {currentStage}
+            </h2>
+            <div className="tw-text-sm tw-font-semibold tw-text-darkGray">
+              Score: {totalScore}/{passingScore}
+            </div>
           </div>
+
+          <Quiz
+            isFinalQuiz
+            answer={""}
+            answerOptions={quizAnswerOptions}
+            disable={!canMoveToNextStage}
+            multiChoice={false}
+            multiSelectedEntry={() => {}}
+            nextQuestion={handleNext}
+            lastQuestion={handleBack}
+            onAnswerSelected={handleAnswerSelected}
+            onComplete={() => {
+              clearJustLockedKey();
+              requestAnimationFrame(() => {
+                lockCurrentStage();
+              });
+            }}
+            questionId={currentStageIndex + 1}
+            question={`Choose the best ${questionLabel} statement for your prompt.`}
+            questionTotal={stages.length}
+          />
+
+          {allStagesAnswered && (
+            <div className="tw-mt-6 tw-p-4 tw-rounded-lg tw-border tw-border-darkLine tw-bg-secondary-gray/60">
+              <div className="tw-font-semibold tw-text-darkGray">
+                {hasMetPassingScore
+                  ? "Prompt complete. You passed the quality threshold."
+                  : "Prompt complete, but score is below passing. Improve your choices."}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Divider */}
         <div
           aria-hidden="true"
           className="tw-h-px md:tw-h-auto md:tw-w-px tw-w-full tw-bg-bgdark tw-shrink-0"
         />
 
-        {/* Right Panel */}
         <div className="tw-flex-1 tw-overflow-y-auto tw-p-6 tw-bg-white">
           <PromptViewer
             sections={GCSE_SECTIONS}
@@ -53,14 +188,15 @@ const ModelRepair = () => {
           />
         </div>
       </div>
+
       <div className="tw-mt-5">
         <LabButton
           label="Next"
-          onClick={() => navigate("/Lab15/Exercise/model-repair")}
+          onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
         />
       </div>
     </div>
   );
 };
 
-export default ModelRepair;
+export default PromptBuilder;
