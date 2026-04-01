@@ -132,12 +132,10 @@ const Results = () => {
       <div className={showScores ? "" : "tw-hidden"}>
         <ScorePage />
       </div>
-      <div
-        className={
-          showScores ? "tw-hidden" : "tw-w-[60%] tw-aspect-video tw-mx-auto"
-        }
-      >
-        <TeammateVideo teammateId={teammateId} messageShown={true} />
+      <div className={showScores ? "tw-hidden" : ""}>
+        <div className="tw-w-[60%] tw-aspect-video tw-mx-auto">
+          <TeammateVideo teammateId={teammateId} messageShown={true} />
+        </div>
       </div>
       <Button
         className="tw-absolute tw-left-10 tw-bottom-40 tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
