@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
-import { MathComponent } from 'better-react-mathjax';
+import { useNavigate } from 'react-router-dom';
+import { MathJax } from 'better-react-mathjax';
 import { EXERCISE_PLAYING } from '@/constants/index';
 import useMainStateContext from '@/reducers/MainContext';
 
@@ -36,9 +36,7 @@ const AlterationStart = () => {
               values to certain actions that the AI system can take. A
               simplified version of a utility equation can be written as:
             </p>
-            <MathComponent
-              tex={String.raw`Utility = \frac{Reward\;Value}{Cost\;Value}`}
-            />
+            <MathJax>{String.raw`Utility = \frac{Reward\;Value}{Cost\;Value}`}</MathJax>
             <p className="playthrough__sentence">
               The goal of a <b>utility equation</b> is to get more reward,
               despite the cost or higher utility.

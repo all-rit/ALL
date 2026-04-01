@@ -1,6 +1,6 @@
 // Pre Correct Diploma (Page #4)
 
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
 const PreCorrectDiploma = () => {

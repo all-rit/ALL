@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { default as Quiz } from '../../../../quiz/components/QuizHandler';
 import { EXERCISE_IDLE } from '@/constants/index';
-import { navigate } from 'react-router-dom';
-import { MathComponent } from 'better-react-mathjax';
+import { useNavigate } from 'react-router-dom';
+import { MathJax } from 'better-react-mathjax';
 import ExerciseService from '../../../../../services/lab7/ExerciseService';
 import useMainStateContext from '@/reducers/MainContext';
 import alterationQuizQuestions from '@/constants/lab7/alterationQuestions';
@@ -45,9 +45,7 @@ const AlterationQuiz = () => {
         compared to the <b>original utility equation</b>?
       </p>
       <div className={'tw-flex tw-flex-col playthrough__sentence'}>
-        <MathComponent
-          tex={String.raw`Original\;Utility\;Equation=\frac{Reward\;Value}{Cost\;Value}`}
-        />
+        <MathJax>{String.raw`Original\;Utility\;Equation=\frac{Reward\;Value}{Cost\;Value}`}</MathJax>
       </div>
       <Quiz
         path={`/AlterationQuiz`}

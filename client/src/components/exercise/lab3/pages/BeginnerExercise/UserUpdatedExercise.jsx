@@ -2,9 +2,11 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import CatClickNavigate from '../../helpers/CatClickNavigate';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PageService } from '../../../../../services/PageService';
 import { EXERCISE_PLAYING, LAB_ID } from '../../../../../constants/lab3/index';
+
+const navigate = useNavigate();
 
 class UserUpdatedExercise extends Component {
   constructor(props) {

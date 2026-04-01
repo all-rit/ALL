@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_STATES } from '../../../../../constants/lab9';
 import PropTypes from 'prop-types';
 import { REPAIR } from '@/constants/lab9/index';

@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { startExercise } from '@/reducers/lab2/actions';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ShorsAlgorithm = () => {
   const handleContinue = () => {

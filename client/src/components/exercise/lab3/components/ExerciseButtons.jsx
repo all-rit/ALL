@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 class ExerciseButtons extends Component {
   render() {

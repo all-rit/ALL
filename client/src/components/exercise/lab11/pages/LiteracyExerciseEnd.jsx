@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 
 import { LAB_ID } from '../../../../constants/lab11';

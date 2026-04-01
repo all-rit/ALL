@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useMainStateContext from '@/reducers/MainContext';

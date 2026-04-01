@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
-import { LAB_ID } from '@constants/lab6';
-import GridApplicants from '@components/GridApplicants';
+import { useNavigate } from 'react-router-dom';
+import { LAB_ID } from '@/constants/lab6';
+import GridApplicants from '../../components/GridApplicants';
 import { useState } from 'react';
 import RepairService from '@/services/lab6/RepairService';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';

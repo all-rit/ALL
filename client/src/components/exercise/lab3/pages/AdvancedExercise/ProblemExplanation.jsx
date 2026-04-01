@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import Typography from '@mui/material/Typography';
-import { CheckCircleIcon } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { amber, green, red, yellow } from '@mui/material/colors';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import clsx from 'clsx';
@@ -11,7 +11,7 @@ import WarningIcon from '@mui/icons-material/Warning';
 import ErrorIcon from '@mui/icons-material/Error';
 import InfoIcon from '@mui/icons-material/Info';
 import CloseIcon from '@mui/icons-material/Close';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_PLAYING } from '../../../../../constants/lab3/index';
 const variantIcon = {
   success: CheckCircleIcon,

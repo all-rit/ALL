@@ -1,6 +1,6 @@
 import { React, useContext, useMemo, useState, useEffect, useRef } from 'react';
 import { startExercise } from '@/reducers/lab2/actions';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Tabs } from '../components/Tab/Tabs';
 import ExerciseStateContext from '../Lab13Context';
 import { getTopicById } from '@/constants/lab13/BiasQuestionsConfig';

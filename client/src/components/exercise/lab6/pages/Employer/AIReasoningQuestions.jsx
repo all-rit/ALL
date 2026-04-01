@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import QuestionsHandler from '../../components/QuestionsHandler';
 import ExerciseService from '../../../../../services/lab6/ExerciseService';
 import useMainStateContext from '@/reducers/MainContext';

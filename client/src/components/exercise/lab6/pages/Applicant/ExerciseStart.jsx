@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from '@/constants/index';
 import useMainStateContext from '@/reducers/MainContext';
 import LabButton from '../../../../all-components/LabButton';

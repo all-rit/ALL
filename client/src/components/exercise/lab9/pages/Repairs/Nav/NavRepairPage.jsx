@@ -4,7 +4,7 @@ import Repair from '../../../../../body/Repair/Repair';
 import { HEADINGS, EXERCISE_STATES } from '../../../../../../constants/lab9';
 import NavBarRepair from './NavBarRepair';
 import useDataService from '../../../hooks/useDataService';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import NavBarData from '../../../../../../constants/lab9/NavBarData';
 import useMainStateContext from '@/reducers/MainContext';
 import { EXERCISE_PLAYING } from '@/constants/index';

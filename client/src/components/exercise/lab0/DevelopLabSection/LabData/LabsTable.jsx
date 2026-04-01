@@ -1,6 +1,6 @@
-import SQLText from '../../../../all-components/CodeBlock/StyleComponents/SQLText';
-import Tab from '../../../../all-components/CodeBlock/Components/Tab';
-import { labData } from '../../../../../constants/lab0/DevelopALab/LabTableData';
+import SQLText from '@all-components/CodeBlock/StyleComponents/SQLText';
+import Tab from '@all-components/CodeBlock/Components/Tab';
+import { labData } from '@/constants/lab0/DevelopALab/LabTableData';
 
 const LabsTable = () => {
   return (

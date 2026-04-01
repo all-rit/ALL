@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import uni from '../../../../assets/images/lab9/uni.jpeg';
 import logo from '../../../../assets/images/lab9/logo.png';
 import WebpageHeader from './webpage-subcomponents/WebpageHeader';

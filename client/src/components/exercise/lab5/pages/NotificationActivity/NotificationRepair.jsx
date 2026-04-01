@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import RepairService from '../../../../../services/lab5/RepairService';
 import PageServiceTimer from '../../../../all-components/PageServiceTimer';
 import Popup from '../../../../all-components/Popup';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { minFontNotif, maxFontNotif } from '../../../../../constants/lab5';
 import RepairUpdateButton from '../../../../all-components/RepairUpdateButton';
 import LabButton from '../../../../all-components/LabButton';

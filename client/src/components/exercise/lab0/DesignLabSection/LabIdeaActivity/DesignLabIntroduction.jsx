@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
+import DragDropGame from "@all-components/DragAndDrop/DragDropGame";
 import Lab0Context from "../../Lab0Context";
 import {
   columns,
   initial_Bank,
   correctAssignments,
-} from "../../../../../constants/lab0/DesignALab/LabCategoryDND";
+} from "@/constants/lab0/DesignALab/LabCategoryDND";
 
 const DesignLabIntroduction = () => {
   const [success, setSuccess] = useState(false);

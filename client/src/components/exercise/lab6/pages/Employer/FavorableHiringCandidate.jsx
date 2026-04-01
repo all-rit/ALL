@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LongHorizontalLine from '../../../../../common/HorizontalLine/LongHorizontalLine';
 import Recomendation from '../../components/Recomendation';
 import Decision from '../../components/Decision';

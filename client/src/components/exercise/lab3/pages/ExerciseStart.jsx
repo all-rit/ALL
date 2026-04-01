@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions as mainActions } from '../../../../reducers/MainReducer';
-import { actions as exerciseActions } from '../../../../reducers/lab5/ExerciseReducer';
+import { actions as mainActions } from '@/reducers/MainReducer';
+import { actions as exerciseActions } from '@/reducers/lab5/ExerciseReducer';
 import AppInstructions from '../components/AppInstructions';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,7 +21,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+const navigate = useNavigate();
+
 class ExerciseStart extends Component {
+
   handleSubmit() {
     navigate('/Lab3/Exercise/BeginnerExercise');
   }

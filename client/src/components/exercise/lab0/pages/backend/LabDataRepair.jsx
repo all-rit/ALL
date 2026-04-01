@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Page } from "../../components/Page";
-import { ROUTES } from "../../../../../constants/lab0/index";
+import { ROUTES } from "@/constants/lab0/index";
 import DataRepair from "../../DevelopLabSection/LabData/LabDataRepair";
 import LabsTable from "../../DevelopLabSection/LabData/LabsTable";
 

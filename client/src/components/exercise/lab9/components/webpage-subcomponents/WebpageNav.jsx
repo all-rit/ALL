@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../../../../assets/images/lab9/logo.png';
 import { EXERCISE_STATES, REPAIR } from '../../../../../constants/lab9';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import BadgeIcon from '@mui/icons-material/Badge';
 import SchoolIcon from '@mui/icons-material/School';

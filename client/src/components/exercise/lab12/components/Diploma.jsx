@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SealImage from '../../../../assets/images/lab12/diploma_seal.png';
 import '../../../../assets/stylesheets/components/Diploma.css';

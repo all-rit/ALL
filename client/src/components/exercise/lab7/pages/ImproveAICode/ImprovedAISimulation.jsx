@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import Simulation from '../../components/Simulation';
 import { ALTERATION_START } from '../../../../../constants/lab7';

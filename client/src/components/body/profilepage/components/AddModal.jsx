@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { ModalBody, Form, Label, Input } from "reactstrap";
-import GroupForm from "./GroupForm.js";
-import GroupService from "../../../../services/GroupService";
-import ALLButton from "../../../all-components/ALLButton";
-import BrandedALLModal from "../../../all-components/BrandedALLModal";
+import GroupForm from "./GroupForm";
+import GroupService from "@/services/GroupService";
+import ALLButton from "@all-components/ALLButton";
+import BrandedALLModal from "@all-components/BrandedALLModal";
 import PropTypes from "prop-types";
-import useMainStateContext from "../../../../reducers/MainContext";
+import useMainStateContext from "@/reducers/MainContext";
 import {
   ENROLL_ERROR,
   ENROLL_SUCCESS,
   ERROR,
   SUCCESS,
-} from "../../../../constants/notifications";
+} from "@/constants/notifications";
 
 const AddModal = (props) => {
   const {

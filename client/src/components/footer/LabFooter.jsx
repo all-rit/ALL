@@ -5,7 +5,7 @@ import { actions as mainActions } from '../../reducers/MainReducer';
 import { bindActionCreators } from 'redux';
 import handleRedirect from '../../helpers/Redirect';
 import getExerciseState from '../../helpers/GetReducer';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useMainStateContext from '../../reducers/MainContext';
 import { EXERCISE_IN_PROGRESS } from '../../constants/notifications';

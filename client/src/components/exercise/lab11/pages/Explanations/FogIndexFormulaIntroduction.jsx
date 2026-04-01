@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { useEffect } from 'react';
 import { REPAIR, EXERCISE_STATES } from '../../../../../constants/lab11';

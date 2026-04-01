@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Popup from '../../../../all-components/Popup';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Code from '../../components/Code';
 import { LOCKED_FILE, OPEN_FILE } from '../../../../../constants/lab7';
 import { evaluate } from 'mathjs';
 import { EXERCISE_PLAYING } from '@/constants/index';
-import { MathComponent } from 'better-react-mathjax';
+import { MathJax } from 'better-react-mathjax';
 import useMainStateContext from '@/reducers/MainContext';
 import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
 
@@ -87,9 +87,7 @@ const AICodeRepair = () => {
             autonomous system. The utility equation is calculated by weighing
             the reward of a decision and the cost of making said decision.
           </p>
-          <MathComponent
-            tex={String.raw`Utility=\frac{Reward\;Value}{Cost\;Value}`}
-          />
+          <MathJax>{String.raw`Utility=\frac{Reward\;Value}{Cost\;Value}`}</MathJax>
         </div>
         <p className="tw-body-text tw-my-6">
           Click the &lsquo;<span className={'tw-font-bold'}>Repair</span>

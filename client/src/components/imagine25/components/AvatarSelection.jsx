@@ -1,6 +1,6 @@
 import { createAvatar } from '@dicebear/core';
 import { avataaars } from '@dicebear/collection';
-import { convertAvatarToDicebear } from '../../../all-components/convertAvatarToDicebear';
+import { convertAvatarToDicebear } from '@all-components/convertAvatarToDicebear';
 import PropTypes from 'prop-types';
 
 const AvatarSelection = (props) => {

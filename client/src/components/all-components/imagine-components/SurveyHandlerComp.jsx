@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import Survey from './Survey';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PreSurveyQuestions23 from '../../imagine23/data/preSurveyQuestions';
 import PostSurveyQuestions23 from '../../imagine23/data/postSurveyQuestions';
 import ImagineService from '../../../services/ImagineService';

@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import Repair from '../../../../../body/Repair/Repair';
 import { EXERCISE_STATES, HEADINGS } from '../../../../../../constants/lab9';
 import useDataService from '../../../hooks/useDataService';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AddressRepairData } from '../../../../../../constants/lab9/AddressRepairData';
 import AddressRepairCodeBlock from './AddressRepairCodeBlock';
 import useMainStateContext from '@/reducers/MainContext';

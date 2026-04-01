@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import ExerciseService from '../../../../services/lab5/ExerciseService';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 class KnowledgeTest extends Component {
   constructor(props) {

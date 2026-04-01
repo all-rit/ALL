@@ -1,11 +1,11 @@
-const initialColumns = [
+export const initialColumns = [
   { id: "column1", title: "Sprint 1", cards: [] },
   { id: "column2", title: "Sprint 2", cards: [] },
   { id: "column3", title: "Sprint 3", cards: [] },
   { id: "column4", title: "Sprint 4", cards: [] },
 ];
 
-const initialBank = [
+export const initialBank = [
   {
     id: "card1",
     content: "A",
@@ -53,15 +53,9 @@ const initialBank = [
   },
 ];
 
-const correctAssignments = [
+export const correctAssignments = [
   { id: "column1", cards: ["card2"] },
   { id: "column2", cards: ["card4"] },
   { id: "column3", cards: ["card1"] },
   { id: "column4", cards: ["card3"] },
 ];
-
-module.exports = {
-  initialColumns,
-  initialBank,
-  correctAssignments,
-};

@@ -1,7 +1,7 @@
 import React from 'react';
 import ALLButton from '../../components/all-components/ALLButton';
 import Educator from '../../assets/images/stockImages/Girl3.png';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const WhatsAvailable = () => {
   const handleProfileNav = () => {
     navigate('/Profile');

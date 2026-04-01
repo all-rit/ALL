@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_IDLE } from '../../../../constants/lab10';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';

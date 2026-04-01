@@ -2,8 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './secondaryInstructions.css';
-import { navigate } from 'react-router-dom';
-import LabButton from '../../../all-components/LabButton';
+import { useNavigate } from 'react-router-dom';
+import LabButton from '@all-components/LabButton';
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -16,6 +16,8 @@ const SecondInstructions = ({
   background,
   isImagineExpression,
 }) => {
+  const navigate = useNavigate();
+  
   const alreadyCalled = false;
   if (!alreadyCalled) {
     selectOption('Protanopia');

@@ -3,7 +3,7 @@ import { useLab13 } from '../Lab13Context';
 import Repair from '@/components/body/Repair/Repair';
 import PropTypes from 'prop-types';
 import { startExercise } from '@/reducers/lab2/actions';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import IDEExerciseImplementation from './repairs/IDEExerciseImplementation';
 
 const IDEExercise = () => {

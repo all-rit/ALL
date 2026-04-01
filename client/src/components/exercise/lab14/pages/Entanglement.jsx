@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import EntanglementQubit from '@/components/exercise/lab14/components/EntaglementQubit';
 
 const Entanglement = () => {

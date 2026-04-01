@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LabGeneration from '@components/body/lab/LabGeneration';
 import GettingInvolved from '@all-components/GettingInvolved';
 import DevPartners from './DevPartners';

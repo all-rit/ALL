@@ -24,7 +24,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@uiw/react-color-chrome": "^2.9.6",
     "@xyflow/react": "^12.10.1",
-    "better-react-mathjax": "^3.0.0",
+    "better-react-mathjax": "^2.3.0",
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
     "classnames": "^2.5.1",

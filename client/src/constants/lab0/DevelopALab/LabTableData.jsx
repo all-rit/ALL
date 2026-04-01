@@ -1,4 +1,4 @@
-const labData = [
+export const labData = [
   {
     name: "id",
     type: "serial",
@@ -76,7 +76,3 @@ const labData = [
     type: "boolean default false",
   },
 ];
-
-module.exports = {
-  labData,
-};

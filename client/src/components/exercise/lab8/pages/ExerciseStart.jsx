@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   CHAT_MESSAGES,

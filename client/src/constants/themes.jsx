@@ -1,7 +1,2 @@
-const LIGHT = "light";
-const DARK = "dark";
-
-module.exports = {
-  LIGHT,
-  DARK,
-};
+export const LIGHT = "light";
+export const DARK = "dark";

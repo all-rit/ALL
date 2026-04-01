@@ -1,10 +1,11 @@
 import { React, useEffect } from 'react';
 import { EXERCISE_PLAYING } from '@/constants/index';
 import useMainStateContext from '@/reducers/MainContext';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ExerciseService } from '@/services/lab13/ExerciseService';
 
 const ExerciseIntroduction = () => {
+  const navigate = useNavigate();
   const { state, actions } = useMainStateContext();
 
   useEffect(() => {

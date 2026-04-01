@@ -1,7 +1,7 @@
 import React from 'react';
 import { Frame } from '../components/Frame';
 import ImagineService from '@/services/ImagineService';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ERROR } from '@/constants/notifications';
 import useMainStateContext from '@/reducers/MainContext';

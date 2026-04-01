@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Popup from '@all-components/Popup';
 import BuildingAICodeBlock from '../components/code/BuildingAICodeBlock';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LabButton from '@all-components/LabButton';
 
 class BuildingAIRepair extends Component {

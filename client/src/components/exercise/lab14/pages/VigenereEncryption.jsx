@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ExerciseStateContext from '../Lab14Context';
 import Encryption from '../components/Encryption';

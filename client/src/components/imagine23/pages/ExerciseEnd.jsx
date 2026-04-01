@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RESET } from '../../../constants/lab2/index';
 import { useDispatch } from 'react-redux';
 

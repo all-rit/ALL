@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import { PageService } from '../../../../services/PageService';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LAB_ID } from '../../../../constants/lab4';
 import TooltipWithTab from '../helpers/tooltip';
 

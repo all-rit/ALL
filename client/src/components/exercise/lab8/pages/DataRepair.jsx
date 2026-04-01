@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import Popup from '@all-components/Popup';
 import { CHAT_MESSAGES } from '@/constants/lab8/messages';

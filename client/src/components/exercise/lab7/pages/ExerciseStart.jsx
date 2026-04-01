@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useMainStateContext from '@/reducers/MainContext';
 import { EXERCISE_PLAYING } from '@/constants/index';

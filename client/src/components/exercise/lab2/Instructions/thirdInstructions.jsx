@@ -1,7 +1,7 @@
  
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import './secondaryInstructions.css';
 import LabButton from '../../../all-components/LabButton';
@@ -18,6 +18,8 @@ const ThirdInstructions = ({
   selectOption,
   isImagine,
 }) => {
+  const navigate = useNavigate();
+  
   const alreadyCalled = false;
   if (!alreadyCalled) {
     selectOption('Protanopia');

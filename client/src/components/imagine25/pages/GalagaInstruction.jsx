@@ -1,6 +1,6 @@
 import React from 'react';
 import { Frame } from '../components/Frame';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ImagineHeader from '../components/ImagineHeader';
 
 const GalagaInstructions = () => {

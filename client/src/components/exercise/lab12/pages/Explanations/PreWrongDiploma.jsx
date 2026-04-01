@@ -1,6 +1,6 @@
 // Pre Wrong Diploma (Page #2)
 
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import useMainStateContext from '@/reducers/MainContext';

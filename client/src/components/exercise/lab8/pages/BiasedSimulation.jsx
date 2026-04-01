@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../../../assets/stylesheets/components/Witch.css';
 import ChatRoom from '../components/ChatRoom';
 import { getMessages } from '../../../../constants/lab8/messages';

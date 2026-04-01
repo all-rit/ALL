@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useMainStateContext from '@/reducers/MainContext';
 import { EXERCISE_PLAYING } from '@/constants/index';
 

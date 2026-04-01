@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Button from '@mui/material/Button';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PageService } from '../../../../services/PageService';
 import { LAB_ID } from '../../../../constants/lab4';
 import AppInstructions from '../components/AppInstructions';

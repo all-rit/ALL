@@ -6,7 +6,7 @@ import {
 } from "reactstrap";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { DARK } from "../../../../constants/themes";
+import { DARK } from "@/constants/themes";
 
 /**
  * React component for rendering a dropdown for a code block.

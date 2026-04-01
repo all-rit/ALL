@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'reactstrap';
 import ImagineService from '@/services/ImagineService';
 import TeammateVideo from '../components/TeammateVideo';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Analysis = () => {
   const [content, setContent] = useState(null);

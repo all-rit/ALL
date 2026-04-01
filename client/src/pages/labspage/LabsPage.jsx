@@ -6,7 +6,7 @@ import { actions as mainActions } from '../../reducers/MainReducer';
 import LabService from '../../services/LabService';
 import Lab from '../../components/body/lab/Lab';
 import useMainStateContext from '../../reducers/MainContext';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BrandedALLModal from '../../components/all-components/BrandedALLModal';
 import LoginBody from '../../components/body/login/LoginBody';
 import GettingInvolved from '../../components/all-components/GettingInvolved';

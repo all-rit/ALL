@@ -3,7 +3,7 @@ import useMainStateContext from '@/reducers/MainContext';
 import UserLabService from '@/services/UserLabService';
 import { EXERCISE_IDLE } from '@/constants/index';
 import { LAB_ID } from '@/constants/lab14';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Conclusion = () => {
   const { actions, state } = useMainStateContext();

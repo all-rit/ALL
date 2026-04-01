@@ -1,7 +1,6 @@
- 
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import GridImages from '../../all-components/GridImages';
 import ImagineService from '../../../services/ImagineService';
 

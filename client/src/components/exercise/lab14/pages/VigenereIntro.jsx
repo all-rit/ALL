@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LabButton from '../../../all-components/LabButton';
 import VigenereImage from '../../../../assets/images/lab14/vigenerecipher.jpg';
 import VigenereGraph from '../../../../assets/images/lab14/vigeneregraph.png';

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PlayerBoard from '../components/PlayerBoard';
 
 const MatchLobby = (props) => {

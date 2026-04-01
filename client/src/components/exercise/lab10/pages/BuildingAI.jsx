@@ -8,7 +8,7 @@ import {
   EXERCISE_PLAYING,
   MIN_USER_ATTEMPTS,
 } from '../../../../constants/lab10';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useScroll from '../../../../use-hooks/useScroll';
 
 const BuildingAI = (props) => {

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import ALLButton from './ALLButton';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LookingAtComputer from '../../assets/images/stockImages/WomanOnComputer.png';
 import PropTypes from 'prop-types';
 

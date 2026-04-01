@@ -1,5 +1,5 @@
 import { React, useState, useContext, useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ExerciseStateContext from '../Lab14Context';
 import Decryption from '../components/Decryption';
 import LabButton from '../../../all-components/LabButton';

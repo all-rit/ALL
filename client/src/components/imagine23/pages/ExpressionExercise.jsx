@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ImagineService from '../../../services/ImagineService';
 import PropTypes from 'prop-types';
 

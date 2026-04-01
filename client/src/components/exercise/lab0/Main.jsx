@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useMainStateContext from '../../../reducers/MainContext';
-import { navigate, Router } from 'react-router-dom';
-// import SelectExercise from "./SelectExercise";
+import { useNavigate, Router } from 'react-router-dom';
 import Lab0Context from './Lab0Context';
 
 import ExperientialIntroduction from './DesignLabSection/ExperientialActivity/ExperientialIntroduction';
@@ -48,9 +47,9 @@ import ScrumBoardActivity from './DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from './DesignLabSection/ScrumActivity/ScrumVelocityReading';
 import ScrumVelocityActivity from './DesignLabSection/ScrumActivity/ScrumVelocityActivity';
 import DesignLabEnd from './DesignLabSection/ScrumActivity/DesignLabEnd';
-// import MockBrowser from "@/components/all-components/MockBrowser";
 
 const Main = (props) => {
+  const navigate = useNavigate();
   const { user } = props;
   const { actions } = useMainStateContext();
   const [section, setSectionState] = useState({});

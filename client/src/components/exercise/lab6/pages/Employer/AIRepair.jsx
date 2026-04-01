@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import RepairService from '../../../../../services/lab6/RepairService';
 import useMainStateContext from '@/reducers/MainContext';

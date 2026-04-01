@@ -11,7 +11,7 @@ import {
   SIMULATION_STARTED,
 } from '../../../../constants/lab10';
 import Simulation from '../components/Simulation';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SecondTrainingAI = (props) => {
   useScroll();

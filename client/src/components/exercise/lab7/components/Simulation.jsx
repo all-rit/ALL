@@ -20,7 +20,7 @@ import {
   THREAT_LEVEL_TEXT,
   THREAT_MAX,
 } from '../../../../constants/lab7';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { generateList } from './data/files';
 import File from './File';
 import RepairService from '../../../../services/lab7/RepairService';

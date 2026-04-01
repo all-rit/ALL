@@ -1,6 +1,6 @@
 // Post Wrong Newsletter (Page #3)
 
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
 const PostWrongDiploma = () => {

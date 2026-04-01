@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Repair from '../../../../body/Repair/Repair';
 import { EXERCISE_PATH, EXERCISE_STATES } from '../../../../../constants/lab11';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { WORD_COUNT_REPAIR_HEADING } from '../../../../../constants/lab11';
 import useDataService from '../../hooks/useDataService';
 import WordCountRepairImplementation from '../RepairImpls/WordCountRepairImplementation';

@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LabButton from '../../../all-components/LabButton';
+
+const navigate = useNavigate();
 
 class CatClickFirstNavigate extends Component {
   constructor(props) {

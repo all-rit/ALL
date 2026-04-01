@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Timer from '../../components/Timer';
 import PageServiceTimer from '../../../../all-components/PageServiceTimer';
 import { time } from '../../../../../constants/lab5';

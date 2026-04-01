@@ -2,7 +2,7 @@ import { React, useContext, useEffect, useState } from 'react';
 import InformationLetterEmail from '@all-components/InformationLetterEmail';
 import { ALUMNI_NEWSLETTER_CONTENT } from '@/constants/lab12/index';
 import ExerciseStateContext from '../Lab12Context';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ExerciseService } from '@/services/lab12/ExerciseService';
 import useMainStateContext from '@/reducers/MainContext';
 

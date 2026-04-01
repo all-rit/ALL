@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { EXERCISE_PLAYING } from '@/constants/index';
 import useMainStateContext from '@/reducers/MainContext';

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ModalExample = (props) => {
   const { buttonLabel, message, title, link } = props;

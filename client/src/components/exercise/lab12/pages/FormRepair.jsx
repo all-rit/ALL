@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useDataService from '../../lab12/hooks/useDataService';
 import Repair from '@/components/body/Repair/Repair';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   FORM_REPAIR_HEADING,
   EXERCISE_STATES,

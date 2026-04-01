@@ -10,7 +10,7 @@ import carImage from '../../../../../assets/images/lab3/exercise/car.svg';
 // link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
 // license: https://pixabay.com/service/license/
 import burgerImage from '../../../../../assets/images/lab3/exercise/hamburger.svg';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_PLAYING, LAB_ID } from '../../../../../constants/lab3/index';
 import { PageService } from '../../../../../services/PageService';
 

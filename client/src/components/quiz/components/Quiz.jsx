@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import Question from './Question';
 import QuestionCount from './QuestionCount';
 import AnswerOption from './AnswerOption';
-import { MathComponent } from 'better-react-mathjax';
+import { MathJax } from 'better-react-mathjax';
 
 const formulateEquation = (equation) => {
   return (
     <div className={'tw-flex tw-flex-col'}>
-      <MathComponent tex={String.raw`New\;Utility\;Equation=${equation}`} />
+      <MathJax>{String.raw`New\;Utility\;Equation=${equation}`}</MathJax>
     </div>
   );
 };

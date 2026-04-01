@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Collapsible from '../../components/Collapsible';
 import PropTypes from 'prop-types';
 import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';

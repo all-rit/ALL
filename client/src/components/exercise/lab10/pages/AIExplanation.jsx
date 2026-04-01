@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AIExplanationCodeBlock from '../components/code/AIExplanationCodeBlock';
 import useScroll from '../../../../use-hooks/useScroll';
 import ExerciseService from '../../../../services/lab10/ExerciseService';

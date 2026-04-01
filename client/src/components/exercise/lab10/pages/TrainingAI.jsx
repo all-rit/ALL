@@ -12,7 +12,7 @@ import {
   SIMULATION_STARTED,
 } from '../../../../constants/lab10';
 import useScroll from '../../../../use-hooks/useScroll';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const TrainingAI = (props) => {
   useScroll();

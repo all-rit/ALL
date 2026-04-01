@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LabButton from '@/components/all-components/LabButton';
 
 const IDEIntroduction = () => {

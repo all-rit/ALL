@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PageServiceTimer from '../../../../all-components/PageServiceTimer';
 import Form from '../../components/Form';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 class FormInaccessible extends Component {
   constructor(props) {

@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import GreenCheck from '../../../assets/images/GreenCheck.webp';
 import RedX from '../../../assets/images/RedX.png';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import Certificate from './Certificate';
 import ViewCertificateButton from '../../exercise/lab1/components/ViewCertificateButton';
 
 function Result(props) {
+  const navigate = useNavigate();
   const [detailsOpen, setDetailsOpen] = useState({});
   const [viewCertificate, setViewCertificate] = useState(false);
   const openDetails = (questionId) => {

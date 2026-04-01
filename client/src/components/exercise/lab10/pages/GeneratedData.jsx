@@ -9,7 +9,7 @@ import AIExplanationCodeBlock from '../components/code/AIExplanationCodeBlock';
 import useScroll from '../../../../use-hooks/useScroll';
 import { EXERCISE_PLAYING } from '../../../../constants/lab10';
 import ExerciseService from '../../../../services/lab10/ExerciseService';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserLabService from '../../../../services/UserLabService';
 import { LAB_ID } from '../../../../constants/lab10';
 

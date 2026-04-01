@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_IDLE, LAB_ID } from '../../../../../constants/lab3/index';
 import UserLabService from '../../../../../services/UserLabService';
 class AdvancedExerciseConclusion extends Component {

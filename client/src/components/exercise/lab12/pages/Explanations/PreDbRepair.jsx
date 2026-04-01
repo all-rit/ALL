@@ -1,7 +1,7 @@
 // Exercise Instructions (Page #1)
 
 import React from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const PreDbRepair = () => {
   const handleContinue = () => {

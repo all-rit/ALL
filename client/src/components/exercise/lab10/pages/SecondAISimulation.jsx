@@ -10,7 +10,7 @@ import {
   SIMULATION_IDLE,
   SIMULATION_STARTED,
 } from '../../../../constants/lab10';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Simulation from '../components/Simulation';
 
 const SecondAISimulation = (props) => {

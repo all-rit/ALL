@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ALLButton from '../all-components/ALLButton';
 import useMainStateContext from '../../reducers/MainContext';
 const { nanoid } = require('nanoid');
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ImagineService from '../../services/ImagineService';
 import PropTypes from 'prop-types';
 

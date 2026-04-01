@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TrainingAICodeBlock from '../components/code/TrainingAICodeBlock';
 import Popup from '@all-components/Popup';
 import { bindActionCreators } from 'redux';

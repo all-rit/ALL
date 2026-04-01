@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { EXERCISE_PLAYING, LAB_ID } from '../../../../../constants/lab3/index';
 import { PageService } from '../../../../../services/PageService';
 class ViewFix extends Component {

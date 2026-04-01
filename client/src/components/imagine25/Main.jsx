@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { navigate, Router } from 'react-router-dom';
+import { useNavigate, Router } from 'react-router-dom';
 import UpdateId from './UpdateId';
 import Done from './Done';
 import AvatarSelectionPage from './pages/AvatarSelectionPage';

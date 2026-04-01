@@ -1,4 +1,4 @@
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 const { nanoid } = require('nanoid');
 import { PropTypes } from 'prop-types';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { navigate, Router } from 'react-router-dom';
+import { useNavigate, Router } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import LandingPage from './pages/landingPage';
 import MainInstructions from './pages/mainInstructions';

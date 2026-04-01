@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LAB_ID } from '@/constants/lab4';
 import UserLabService from '@/services/UserLabService';
 import useMainStateContext from '@/reducers/MainContext';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Circle from '../../all-components/imagine-components/circle';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './landingpage.css';
 
 const MainInstructions = () => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../../../../assets/stylesheets/components/Witch.css";
+import "@/assets/stylesheets/components/Witch.css";
 import PropTypes from "prop-types";
-import createAvatarData from "../../../all-components/createAvatarData";
+import createAvatarData from "@all-components/createAvatarData";
 import { createAvatar } from "@dicebear/core";
 import { avataaars } from "@dicebear/collection";
-import { convertAvatarToDicebear } from "../../../../all-components/convertAvatarToDicebear";
+import { convertAvatarToDicebear } from "@all-components/convertAvatarToDicebear";
 
 const ChatMessage = ({
   username,

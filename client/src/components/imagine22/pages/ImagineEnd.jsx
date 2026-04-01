@@ -1,7 +1,6 @@
- 
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-// import { navigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const ImagineEnd = (props) => {
   // const {linkNum} = props;

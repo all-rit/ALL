@@ -1,6 +1,6 @@
 import React from 'react';
 import ALLButton from '../all-components/ALLButton';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // This component is the start component that updates the user ID

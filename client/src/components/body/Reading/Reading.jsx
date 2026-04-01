@@ -14,7 +14,7 @@ import OrderedList from './OrderedList';
 import ReadMoreButton from '@all-components/imagine-components/LearnMoreButton';
 import ImagineService from '@/services/ImagineService';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PIE_WINDOW_HEIGHT_PERCENTAGE = 0.7;
@@ -26,6 +26,7 @@ const PIE_SIZE = 300;
 Chart.register(ArcElement, Tooltip, Legend);
 
 const Reading = (props) => {
+  const navigate = useNavigate();
   const { user, labID, isImagine, userID, year } = props;
   const [readingData, setReadingData] = useState('');
   const [modalOpen, setModalOpen] = useState(true);

@@ -7,7 +7,7 @@ import {
 } from '../../../../constants/lab12';
 import React from 'react';
 import Repair from '../../../body/Repair/Repair';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DatabaseRepairImplementation from './repairs/DatabaseRepairImplementation';
 import IdentityDatabaseData from '../../../../constants/lab12/DatabaseRepair';
