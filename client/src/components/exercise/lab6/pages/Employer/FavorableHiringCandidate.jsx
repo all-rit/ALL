@@ -4,8 +4,8 @@ import LongHorizontalLine from '../../../../../common/HorizontalLine/LongHorizon
 import Recomendation from '../../components/Recomendation';
 import Decision from '../../components/Decision';
 import useScroll from '../../../../../use-hooks/useScroll';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 const FavorableHiringCandidate = () => {
   const { actions } = useMainStateContext();

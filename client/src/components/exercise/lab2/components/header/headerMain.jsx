@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import ColorUpdate from "./buttons/colorUpdate";
-import Home from "./buttons/homeReset.js";
+import Home from "./buttons/homeReset";
 import "../../Instructions/secondaryInstructions.css";
 import LabButton from "../../../../all-components/LabButton";
 

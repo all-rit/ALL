@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import TeamMemberService from "src/services/TeamMemberService";
+import React, { useEffect, useState } from 'react';
+import TeamMemberService from '@/services/TeamMemberService';
 
 const PartnerGeneration = () => {
   const [partnerInformation, setPartnerInformation] = useState([]);
@@ -21,7 +21,7 @@ const PartnerGeneration = () => {
           target="_blank"
           rel="noopener noreferrer"
           className={
-            "tw-bg-white tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-2 lg:tw-p-5"
+            'tw-bg-white tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-2 lg:tw-p-5'
           }
         >
           <img

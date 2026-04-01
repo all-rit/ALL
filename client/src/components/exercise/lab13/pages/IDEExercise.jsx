@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLab13 } from '../Lab13Context';
-import Repair from 'src/components/body/Repair/Repair';
+import Repair from '@/components/body/Repair/Repair';
 import PropTypes from 'prop-types';
-import { startExercise } from 'src/reducers/lab2/actions';
+import { startExercise } from '@/reducers/lab2/actions';
 import { navigate } from 'react-router-dom';
 import IDEExerciseImplementation from './repairs/IDEExerciseImplementation';
 

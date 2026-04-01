@@ -4,8 +4,8 @@ import { ExerciseStateProvider } from './Lab13Context';
 
 import ExerciseIntroduction from './pages/ExerciseIntroduction';
 import ConfidenceRanking from './pages/ConfidenceRanking';
-import AIPanel from './pages/AIPanel.js';
-import Conclusion from './pages/Conclusion.js';
+import AIPanel from './pages/AIPanel';
+import Conclusion from './pages/Conclusion';
 import IDEExercise from './pages/IDEExercise';
 import IDEIntroduction from './pages/IDEIntroduction';
 

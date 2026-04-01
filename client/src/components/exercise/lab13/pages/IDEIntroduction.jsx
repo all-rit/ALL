@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { navigate } from 'react-router-dom';
-import LabButton from 'src/components/all-components/LabButton';
+import LabButton from '@/components/all-components/LabButton';
 
 const IDEIntroduction = () => {
   const handleContinue = () => {

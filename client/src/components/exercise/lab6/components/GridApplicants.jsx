@@ -5,8 +5,8 @@ import clsx from "clsx";
 import createAvatarData from "../../../all-components/createAvatarData";
 import { createAvatar } from "@dicebear/core";
 import { avataaars } from "@dicebear/collection";
-import { convertAvatarToDicebear } from "../../../../all-components/convertAvatarToDicebear";
-import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
+import { convertAvatarToDicebear } from "@all-components/convertAvatarToDicebear";
+import LongHorizontalLine from "@/common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "./Recomendation";
 import Decision from "./Decision";
 

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import QuestionCount from "../../quiz/components/QuestionCount";
-import AnswerOption from "./AnswerOption";
-import Likert from "../Likert";
-import { createAvatar } from "@dicebear/core";
-import { avataaars } from "@dicebear/collection";
-import { convertAvatarToDicebear } from "../convertAvatarToDicebear";
-import ImagineService from "src/services/ImagineService";
-import RankingQuestion from "./Ranking";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import QuestionCount from '../../quiz/components/QuestionCount';
+import AnswerOption from './AnswerOption';
+import Likert from '../Likert';
+import { createAvatar } from '@dicebear/core';
+import { avataaars } from '@dicebear/collection';
+import { convertAvatarToDicebear } from '../convertAvatarToDicebear';
+import ImagineService from '@/services/ImagineService';
+import RankingQuestion from './Ranking';
 
 function Survey(props) {
   //any niche questions can be placed here, match the key with the question type in whatever data file you are using
@@ -33,20 +33,20 @@ function Survey(props) {
     }
     const getUser = async () => {
       const user = await ImagineService.getUserByID(
-        sessionStorage.getItem("userID"),
+        sessionStorage.getItem('userID'),
         25,
       );
-      const avatar = user[props.avatar.toLowerCase() + "Avatar"];
+      const avatar = user[props.avatar.toLowerCase() + 'Avatar'];
 
       setDisplayedAvatar(
         <>
           <img
             src={convertAvatarToDicebear({
-              topType: avatar?.hairStyle || "Default",
-              hairColor: avatar?.hairColor || "Default",
-              clotheColor: avatar?.clotheColor || "Default",
-              skinColor: avatar?.skinColor || "Default",
-              clotheType: "ShirtCrewNeck",
+              topType: avatar?.hairStyle || 'Default',
+              hairColor: avatar?.hairColor || 'Default',
+              clotheColor: avatar?.clotheColor || 'Default',
+              skinColor: avatar?.skinColor || 'Default',
+              clotheType: 'ShirtCrewNeck',
             })}
             alt="Avatar"
             className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
@@ -79,10 +79,10 @@ function Survey(props) {
     <div className="quiz container tw-p-6" key={props.questionId}>
       <QuestionCount counter={props.questionId} total={props.questionTotal} />
       <h2 className="quiz tw-sub-title tw-text-[2rem]">
-        {props.question} {props.multiChoice && " Select all that apply."}
+        {props.question} {props.multiChoice && ' Select all that apply.'}
       </h2>
-      <div className={"tw-flex tw-justify-center tw-mt-0"}>
-        <hr className={"tw-w-3/4"} />
+      <div className={'tw-flex tw-justify-center tw-mt-0'}>
+        <hr className={'tw-w-3/4'} />
       </div>
       {questionTypes[props.questionType] || (
         <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">

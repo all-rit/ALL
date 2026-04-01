@@ -6,9 +6,9 @@ import {
   SIMULATION_STARTED,
   STEP_COUNT,
   TRAINING_DURATION,
-} from "src/constants/lab10";
-import WalkingManImageRight from "src/assets/images/lab10/walking-man-right.svg";
-import WalkingManImageLeft from "src/assets/images/lab10/walking-man-left.svg";
+} from "@/constants/lab10";
+import WalkingManImageRight from "@/assets/images/lab10/walking-man-right.svg";
+import WalkingManImageLeft from "@/assets/images/lab10/walking-man-left.svg";
 
 export const types = {
   UPDATE_STATE: "@accessibility-lab/lab10/exercise/update_state",

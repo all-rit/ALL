@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
-import PropTypes from "prop-types";
-import ALLModal from "src/components/all-components/ALLModal";
-import Likert from "src/components/all-components/Likert";
-import LabButton from "src/components/all-components/LabButton";
+import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import ALLModal from '@/components/all-components/ALLModal';
+import Likert from '@/components/all-components/Likert';
+import LabButton from '@/components/all-components/LabButton';
 
-const optionsList = ["Very Low", "Low", "Medium", "High", "Very High"];
+const optionsList = ['Very Low', 'Low', 'Medium', 'High', 'Very High'];
 
 const RatingModal = ({
   show,
@@ -24,18 +24,18 @@ const RatingModal = ({
   // Control overlay when modals are shown
   useEffect(() => {
     if (show || showTextModal) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [show, showTextModal]);
 
   const handleSubmit = () => {
     if (!toneRating || !confidenceRating) {
-      alert("Please rate both factors before submitting.");
+      alert('Please rate both factors before submitting.');
       return;
     }
     onSubmit();
@@ -83,7 +83,7 @@ const RatingModal = ({
                     options={optionsList}
                     onAnswerSelected={(e) =>
                       setToneRating(
-                        e.target.value.toLowerCase().replace(/ /g, "-"),
+                        e.target.value.toLowerCase().replace(/ /g, '-'),
                       )
                     }
                   />
@@ -101,7 +101,7 @@ const RatingModal = ({
                     options={optionsList}
                     onAnswerSelected={(e) =>
                       setConfidenceRating(
-                        e.target.value.toLowerCase().replace(/ /g, "-"),
+                        e.target.value.toLowerCase().replace(/ /g, '-'),
                       )
                     }
                   />

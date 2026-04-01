@@ -16,13 +16,9 @@ import WireframeFirstGlance from './DesignLabSection/WireframingActivity/Wirefra
 import WireframeReinforceQuiz from './DesignLabSection/WireframingActivity/WireframeReinforceQuiz';
 import WireframeExercise from './DesignLabSection/WireframingActivity/WireframeExercise';
 import WireframeComponents from './DesignLabSection/WireframingActivity/WireframeComponents';
-import {
-  SECTION_STATUSES,
-  SECTIONS,
-  ROUTES,
-} from '../../../constants/lab0/index';
-import { EXERCISE_PLAYING } from '../../../constants/index';
-import ProgressService from 'src/services/lab0/ProgressService';
+import { SECTION_STATUSES, SECTIONS, ROUTES } from '@/constants/lab0/index';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import ProgressService from '@/services/lab0/ProgressService';
 import StartExercise from './StartExercise';
 import { LabIntroduction } from './pages/intro';
 import {
@@ -52,7 +48,7 @@ import ScrumBoardActivity from './DesignLabSection/ScrumActivity/ScrumBoardActiv
 import ScrumVelocityReading from './DesignLabSection/ScrumActivity/ScrumVelocityReading';
 import ScrumVelocityActivity from './DesignLabSection/ScrumActivity/ScrumVelocityActivity';
 import DesignLabEnd from './DesignLabSection/ScrumActivity/DesignLabEnd';
-// import MockBrowser from "src/components/all-components/MockBrowser";
+// import MockBrowser from "@/components/all-components/MockBrowser";
 
 const Main = (props) => {
   const { user } = props;

@@ -1,16 +1,16 @@
 import React from 'react';
 import { navigate } from 'react-router-dom';
 import TrainingAICodeBlock from '../components/code/TrainingAICodeBlock';
-import Popup from 'src/components/all-components/Popup';
+import Popup from '@all-components/Popup';
 import { bindActionCreators } from 'redux';
 import {
   actions as repairActions,
   initialState,
-} from '../../../../reducers/lab10/RepairReducer';
-import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+} from '@/reducers/lab10/RepairReducer';
+import { actions as exerciseActions } from '@/reducers/lab10/ExerciseReducer';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LabButton from '../../../all-components/LabButton';
+import LabButton from '@all-components/LabButton';
 
 const TrainingAIRepair = (props) => {
   const { actions, repairError, timeValue, popupMessage, repairVisible } =

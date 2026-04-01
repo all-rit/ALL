@@ -1,7 +1,7 @@
 import { navigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from '@/constants/index';
 import PropTypes from 'prop-types';
 import LabButton from '../../../all-components/LabButton';
 

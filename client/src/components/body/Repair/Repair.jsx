@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Popup from 'src/components/all-components/Popup';
+import Popup from '@/components/all-components/Popup';
 import LabButton from '../../all-components/LabButton';
 import RepairUpdateButton from '../../all-components/RepairUpdateButton';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';

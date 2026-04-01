@@ -1,9 +1,9 @@
-import { Tab } from "../Tab/Tab";
-import ProgressBar from "src/components/all-components/ProgressBar";
-import AllPediaImage from "../AIPanel/AllPediaImage";
-import PropTypes from "prop-types";
-import { renderTextWithHighlight } from "../../functions/RenderTextWithHighlight";
-import { getAnswerDataHighlights } from "../../functions/getAnswerDataHighlights";
+import { Tab } from '../Tab/Tab';
+import ProgressBar from '@/components/all-components/ProgressBar';
+import AllPediaImage from '../AIPanel/AllPediaImage';
+import PropTypes from 'prop-types';
+import { renderTextWithHighlight } from '../../functions/RenderTextWithHighlight';
+import { getAnswerDataHighlights } from '../../functions/getAnswerDataHighlights';
 
 const AllPediaTab = ({
   wikipediaContent,
@@ -59,7 +59,7 @@ const AllPediaTab = ({
             {/* Left: Text Content */}
             <div className="tw-pr-4">
               <div className="tw-prose tw-prose-lg">
-                {wikipediaContent.text.split("\n\n").map((paragraph, index) => (
+                {wikipediaContent.text.split('\n\n').map((paragraph, index) => (
                   <p
                     key={index}
                     className="tw-text-gray-700 tw-leading-relaxed tw-mb-4 tw-text-left"

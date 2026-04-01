@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import RobotImage from '../../../../assets/images/lab13/robot.png';
 import { AvatarType } from '../../../../constants/lab13/AvatarType';
-import UserPfp from 'src/components/all-components/UserPfp';
+import UserPfp from '@/components/all-components/UserPfp';
 
 const Avatar = ({ type, size = 40 }) => {
   const isAI = type === AvatarType.AI;

@@ -1,6 +1,6 @@
-import useMainStateContext from "src/reducers/MainContext";
+import useMainStateContext from "@/reducers/MainContext";
 import PropTypes from "prop-types";
-import DefaultUser from "../../assets/images/DefaultUser.png";
+import DefaultUser from "@/assets/images/DefaultUser.png";
 
 // User profile picture circle
 const UserPfp = ({ onClick }) => {

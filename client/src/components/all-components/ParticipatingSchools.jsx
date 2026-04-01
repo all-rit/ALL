@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TeamMemberService from "src/services/TeamMemberService";
+import TeamMemberService from "@/services/TeamMemberService";
 
 function display_schools(schools) {
   return (

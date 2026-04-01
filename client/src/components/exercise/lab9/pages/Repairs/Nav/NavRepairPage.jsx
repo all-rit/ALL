@@ -6,8 +6,8 @@ import NavBarRepair from './NavBarRepair';
 import useDataService from '../../../hooks/useDataService';
 import { navigate } from 'react-router-dom';
 import NavBarData from '../../../../../../constants/lab9/NavBarData';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * Nav Repair is a component that is responsible for passing logic into the universal

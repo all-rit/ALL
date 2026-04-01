@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
-import { LAB_ID } from '../../../../../constants/lab6';
-import GridApplicants from '../../components/GridApplicants';
+import { LAB_ID } from '@constants/lab6';
+import GridApplicants from '@components/GridApplicants';
 import { useState } from 'react';
-import RepairService from '../../../../../services/lab6/RepairService';
+import RepairService from '@/services/lab6/RepairService';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
-import ExerciseService from '../../../../../services/lab6/ExerciseService';
-import UserLabService from '../../../../../services/UserLabService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import LabButton from '../../../../all-components/LabButton';
+import ExerciseService from '@/services/lab6/ExerciseService';
+import UserLabService from '@/services/UserLabService';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import LabButton from '@all-components/LabButton';
 
 const FixedHiringCandidate = () => {
   const { actions, state } = useMainStateContext();

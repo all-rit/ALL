@@ -4,10 +4,10 @@ import { navigate } from 'react-router-dom';
 import Code from '../../components/Code';
 import { LOCKED_FILE, OPEN_FILE } from '../../../../../constants/lab7';
 import { evaluate } from 'mathjs';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import { EXERCISE_PLAYING } from '@/constants/index';
 import { MathComponent } from 'better-react-mathjax';
-import useMainStateContext from 'src/reducers/MainContext';
-import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
+import useMainStateContext from '@/reducers/MainContext';
+import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
 
 /**
  * Represents the component for repairing the AI code.

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { navigate } from 'react-router-dom';
 import { EXERCISE_STATES } from '../../../../../constants/lab9';
 import PropTypes from 'prop-types';
-import { REPAIR } from 'src/constants/lab9/index';
+import { REPAIR } from '@/constants/lab9/index';
 
 /**
  * NewsletterForm is a sub-component of the main Webpage component.

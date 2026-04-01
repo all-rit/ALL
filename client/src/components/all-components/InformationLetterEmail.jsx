@@ -6,8 +6,8 @@ import { useContext } from 'react';
 import ExerciseStateContext from '../exercise/lab11/Lab11Context';
 import { fogIndexCalculation } from '../exercise/lab11/helpers/FogIndexCalculation';
 import FogIndexOverlay from '../exercise/lab11/components/FogIndexOverlay';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * Renders the Information Letter Email page component.

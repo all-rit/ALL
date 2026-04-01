@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import useMainStateContext from 'src/reducers/MainContext';
+import useMainStateContext from '@/reducers/MainContext';
 import ExerciseStateContext from '../Lab12Context';
 import { navigate } from 'react-router-dom';
 import { ExerciseService } from '../../../../services/lab12/ExerciseService';

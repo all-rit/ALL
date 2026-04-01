@@ -3,8 +3,8 @@
 import { navigate } from 'react-router-dom';
 import React from 'react';
 import { useEffect } from 'react';
-import useMainStateContext from 'src/reducers/MainContext';
-import { ExerciseService } from '../../../../../services/lab12/ExerciseService';
+import useMainStateContext from '@/reducers/MainContext';
+import { ExerciseService } from '@/services/lab12/ExerciseService';
 
 const PostCorrectNewsletter = () => {
   const { state } = useMainStateContext();

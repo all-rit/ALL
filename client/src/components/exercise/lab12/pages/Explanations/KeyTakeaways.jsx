@@ -1,10 +1,10 @@
 // Key Takeaways (Page #6)
 
 import React from 'react';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE } from 'src/constants/index';
-import UserLabService from '../../../../../services/UserLabService';
-import { LAB_ID } from '../../../../../constants/lab12';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE } from '@/constants/index';
+import UserLabService from '@/services/UserLabService';
+import { LAB_ID } from '@/constants/lab12';
 import { navigate } from 'react-router-dom';
 
 const KeyTakeaways = () => {

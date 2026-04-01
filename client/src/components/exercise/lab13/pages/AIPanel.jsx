@@ -1,10 +1,10 @@
 import { React, useContext, useMemo, useState, useEffect, useRef } from 'react';
-import { startExercise } from 'src/reducers/lab2/actions';
+import { startExercise } from '@/reducers/lab2/actions';
 import { navigate } from 'react-router-dom';
 import { Tabs } from '../components/Tab/Tabs';
 import ExerciseStateContext from '../Lab13Context';
-import { getTopicById } from 'src/constants/lab13/BiasQuestionsConfig';
-import { content } from 'src/constants/lab13/WikipediaContent';
+import { getTopicById } from '@/constants/lab13/BiasQuestionsConfig';
+import { content } from '@/constants/lab13/WikipediaContent';
 import AIPanelRatingModal from '../components/AIPanel/AIPanelRatingModal';
 import AIChatBotTab from '../components/AIPanel/AIChatBotTab';
 import AllPediaTab from '../components/AIPanel/AllPediaTab';

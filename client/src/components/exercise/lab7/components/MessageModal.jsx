@@ -3,7 +3,7 @@ import { CheckRounded, WarningRounded } from '@mui/icons-material';
 import ProgressBar from './ProgressBar';
 import { MESSAGES, READ_TIME } from '../../../../constants/lab7';
 import Countdown from 'react-countdown';
-import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
+import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
 
 /**
  * Represents a message modal component.

@@ -5,8 +5,8 @@ import logo from '../../../../assets/images/lab9/logo.png';
 import WebpageHeader from './webpage-subcomponents/WebpageHeader';
 import WebpageSidebar from './webpage-subcomponents/WebpageSidebar';
 import PropTypes from 'prop-types';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * FacadeWebpage is a static component used to display

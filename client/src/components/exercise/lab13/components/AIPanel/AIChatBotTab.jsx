@@ -2,12 +2,12 @@ import {
   BIAS_DEFINITIONS,
   BIAS_POSITION_MAP,
   BIAS_TYPES,
-} from "src/constants/lab13/BiasQuestionsConfig";
-import AIChatBot from "../AIChatBot";
-import { Tab } from "../Tab/Tab";
-import { useContext, useMemo } from "react";
-import ExerciseStateContext from "../../Lab13Context";
-import PropTypes from "prop-types";
+} from '@/constants/lab13/BiasQuestionsConfig';
+import AIChatBot from '../AIChatBot';
+import { Tab } from '../Tab/Tab';
+import { useContext, useMemo } from 'react';
+import ExerciseStateContext from '../../Lab13Context';
+import PropTypes from 'prop-types';
 
 const AIChatBotTab = ({
   currentTopic,
@@ -105,7 +105,7 @@ const AIChatBotTab = ({
         if (!hasVisitedWikipedia) {
           return `Before reviewing ALL-IE's response on ${currentTopic.title}, click the ALLpedia tab above and stay on the page for at least 15 seconds.`;
         }
-        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? "s" : ""} on ALLpedia`;
+        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
       }
       return null;
     }
@@ -119,7 +119,7 @@ const AIChatBotTab = ({
         if (!hasVisitedWikipedia) {
           return `Before reviewing ALL-IE's response on ${currentTopic.title}, click the ALLpedia tab above and stay on the page for at least 15 seconds.`;
         }
-        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? "s" : ""} on ALLpedia`;
+        return `Please spend ${timeLeft} more second${timeLeft !== 1 ? 's' : ''} on ALLpedia`;
       }
       return null;
     }
@@ -176,7 +176,7 @@ const AIChatBotTab = ({
 
   // Switch to Wikipedia tab on citation click
   const handleCitationClick = () => {
-    setActiveTab("ALLpedia");
+    setActiveTab('ALLpedia');
   };
 
   // Track when a question is asked
@@ -221,7 +221,7 @@ const AIChatBotTab = ({
             canSelectQuestion={!questionAnswered}
             showConfidenceScore={currentPhase === 4 && showConfidenceScore}
             showCitations={currentPhase === 4 && showCitations}
-            disclaimerMessage={currentPhase === 4 ? disclaimerMessage : ""}
+            disclaimerMessage={currentPhase === 4 ? disclaimerMessage : ''}
             onCitationClick={handleCitationClick}
             onQuestionAsked={handleQuestionAsked}
           />

@@ -1,4 +1,4 @@
-import { EXERCISE_IDLE } from "src/constants/index";
+import { EXERCISE_IDLE } from "@/constants/index";
 
 /**
  * Defines the types of actions for the MainReducerForContext.

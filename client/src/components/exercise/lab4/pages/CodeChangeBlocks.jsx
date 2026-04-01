@@ -14,8 +14,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import RepairService from '../../../../services/lab4/RepairService';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
 import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
 
 const variantIcon = {

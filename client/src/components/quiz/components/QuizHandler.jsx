@@ -1,6 +1,6 @@
-import UserLabService from "../../../services/UserLabService";
-import labService from "src/services/LabService";
-import useMainStateContext from "../../../reducers/MainContext";
+import UserLabService from "@/services/UserLabService";
+import labService from "@/services/LabService";
+import useMainStateContext from "@/reducers/MainContext";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz";

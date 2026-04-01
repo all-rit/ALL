@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import Exercise from "./exercise.js";
+import Exercise from "./exercise";
 
 /*
 Class for connecting the exercise component to the main system

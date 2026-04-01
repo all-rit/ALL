@@ -1,12 +1,12 @@
-import ReactText from "../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
-import Tab from "../../../../all-components/CodeBlock/Components/Tab";
-import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
-import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTab";
-import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
+import ReactText from '../../../../all-components/CodeBlock/StyleComponents/ReactText';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import CodeLine from '../../../../all-components/CodeBlock/Components/CodeLine';
+import Tab from '../../../../all-components/CodeBlock/Components/Tab';
+import CodeBlockInput from '../../../../all-components/CodeBlock/Components/CodeBlockInput';
+import CommentText from '../../../../all-components/CodeBlock/StyleComponents/CommentText';
+import MultiTab from '@/components/all-components/CodeBlock/Components/MultiTab';
+import ErrorText from '@/components/all-components/CodeBlock/StyleComponents/ErrorText';
 
 const SentenceCountRepairImplementation = (props) => {
   const { inputs, userInput, validInputs, isFirst } = props;
@@ -23,9 +23,9 @@ const SentenceCountRepairImplementation = (props) => {
         const fogIndexCalculation = ( letterContent ) =&#62; &#123;
       </ReactText>
       <CodeLine>
-        <Tab />{" "}
+        <Tab />{' '}
         <ReactText>
-          {" "}
+          {' '}
           let wordCount = letterContent.split(&#39; &#39;).length;
         </ReactText>
       </CodeLine>
@@ -44,8 +44,8 @@ const SentenceCountRepairImplementation = (props) => {
                   userInput(input.id, event.target.value);
                 },
                 name: input.variableName,
-                type: "text",
-                placeholder: "Enter Answer Here",
+                type: 'text',
+                placeholder: 'Enter Answer Here',
               }}
             />
             <ReactText>;</ReactText>
@@ -62,7 +62,7 @@ const SentenceCountRepairImplementation = (props) => {
         </Fragment>
       ))}
       <CodeLine>
-        <Tab />{" "}
+        <Tab />{' '}
         <ReactText>
           let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 *
           (wordCount))).toFixed(4);

@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import { EXERCISE_PLAYING } from '../../../../constants';
-import { actions as repairActions } from '../../../../reducers/lab10/RepairReducer';
-import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import { EXERCISE_PLAYING } from '@/constants';
+import { actions as repairActions } from '@/reducers/lab10/RepairReducer';
+import { actions as exerciseActions } from '@/reducers/lab10/ExerciseReducer';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Popup from 'src/components/all-components/Popup';
+import Popup from '@all-components/Popup';
 import BuildingAICodeBlock from '../components/code/BuildingAICodeBlock';
 import { navigate } from 'react-router-dom';
-import LabButton from '../../../all-components/LabButton';
+import LabButton from '@all-components/LabButton';
 
 class BuildingAIRepair extends Component {
   constructor(props) {

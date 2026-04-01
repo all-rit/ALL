@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { startExercise } from 'src/reducers/lab2/actions';
+import { startExercise } from '@/reducers/lab2/actions';
 import { navigate } from 'react-router-dom';
 import DragDropGame from '../components/DragAndDropNoCorrectAnswer/DragDropGame';
 import ExerciseStateContext from '../Lab13Context';
-import { initialColumns, initialBank } from 'src/constants/lab13/RankingConfig';
+import { initialColumns, initialBank } from '@/constants/lab13/RankingConfig';
 import DragIndicatorRoundedIcon from '@mui/icons-material/DragIndicatorRounded';
 
 const ConfidenceRanking = () => {

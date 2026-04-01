@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import ImagineService from "src/services/ImagineService";
-import { videoPaths, groupVideoPaths } from "src/constants/imagine25/Videos";
+import React, { useEffect, useState } from 'react';
+import ImagineService from '@/services/ImagineService';
+import { videoPaths, groupVideoPaths } from '@/constants/imagine25/Videos';
 
 const TeammateVideo = (props) => {
   let teammateIdJSON = props;
@@ -35,7 +35,7 @@ const TeammateVideo = (props) => {
     const updateVideoSource = async () => {
       if (delayedMessageShown) {
         const group = await ImagineService.getGroup(
-          sessionStorage.getItem("userID"),
+          sessionStorage.getItem('userID'),
           25,
         );
         const groupVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
@@ -49,7 +49,7 @@ const TeammateVideo = (props) => {
     updateVideoSource();
   }, [teammateId, delayedMessageShown]);
 
-  const buttonSize = "tw-w-16 tw-mx-auto";
+  const buttonSize = 'tw-w-16 tw-mx-auto';
 
   return (
     <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[575px]">
@@ -61,8 +61,8 @@ const TeammateVideo = (props) => {
           onEnded={() => setVideoEnded(true)}
           className={`tw-shadow-lg tw-rounded-lg ${
             delayedMessageShown
-              ? "tw-w-80 tw-h-44 tw-border-solid tw-border-[#FF0000] tw-border-[3px]"
-              : "tw-w-64 tw-h-36"
+              ? 'tw-w-80 tw-h-44 tw-border-solid tw-border-[#FF0000] tw-border-[3px]'
+              : 'tw-w-64 tw-h-36'
           }`}
         />
       ) : (
@@ -79,7 +79,7 @@ const TeammateVideo = (props) => {
         <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
         <img
           className={
-            "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
+            'tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 ' +
             buttonSize
           }
           src="/img/imagine_game_controls/ArrowKey.png"

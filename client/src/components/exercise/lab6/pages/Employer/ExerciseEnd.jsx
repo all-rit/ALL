@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from 'src/constants/index';
-import LabButton from '../../../../all-components/LabButton';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from '@/constants/index';
+import LabButton from '@all-components/LabButton';
 
 const ExerciseEnd = () => {
   const { actions } = useMainStateContext();

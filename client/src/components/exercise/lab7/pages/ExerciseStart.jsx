@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * Renders the ExerciseStart component.

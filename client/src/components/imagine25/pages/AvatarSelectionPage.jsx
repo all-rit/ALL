@@ -1,7 +1,7 @@
 import { Frame } from '../components/Frame';
 import PropTypes from 'prop-types';
-import useMainStateContext from 'src/reducers/MainContext';
-import { ERROR } from 'src/constants/notifications';
+import useMainStateContext from '@/reducers/MainContext';
+import { ERROR } from '@/constants/notifications';
 import ImagineHeader from '../components/ImagineHeader';
 import AvatarSelection from '../components/AvatarSelection';
 

@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 
 import { LAB_ID } from '../../../../constants/lab11';
 import UserLabService from '../../../../services/UserLabService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from '@/constants/index';
 
 const LiteracyExerciseEnd = () => {
   const { actions, state } = useMainStateContext();

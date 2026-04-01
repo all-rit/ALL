@@ -4,8 +4,8 @@ import AppInstructions from '../components/AppInstructions';
 import { navigate } from 'react-router-dom';
 import { PageService } from '../../../../services/PageService';
 import { LAB_ID } from '../../../../constants/lab4';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
 
 const SubmitUpdated = () => {
   const { actions } = useMainStateContext();

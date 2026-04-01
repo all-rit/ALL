@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
 import UserLabService from '../../../../services/UserLabService';
 import { LAB_ID } from '../../../../constants/lab7';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE } from '@/constants/index';
 import LabButton from '../../../all-components/LabButton';
 
 /**

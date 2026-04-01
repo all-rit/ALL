@@ -25,9 +25,9 @@ import { generateList } from './data/files';
 import File from './File';
 import RepairService from '../../../../services/lab7/RepairService';
 import MessageModal from './MessageModal';
-import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * Represents a simulation component.

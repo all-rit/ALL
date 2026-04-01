@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
 import QuestionsHandler from '../../components/QuestionsHandler';
 import ExerciseService from '../../../../../services/lab6/ExerciseService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 const AIAnalysisQuestions = () => {
   const { actions } = useMainStateContext();

@@ -1,6 +1,6 @@
-import { BIAS_DEFINITIONS } from "src/constants/lab13/BiasQuestionsConfig";
-import RatingModal from "../RatingModal";
-import PropTypes from "prop-types";
+import { BIAS_DEFINITIONS } from '@/constants/lab13/BiasQuestionsConfig';
+import RatingModal from '../RatingModal';
+import PropTypes from 'prop-types';
 const AIPanelRatingModal = ({
   showRatingModal,
   setShowRatingModal,

@@ -1,12 +1,12 @@
-import CodeLine from 'src/components/all-components/CodeBlock/Components/CodeLine';
-import ReactText from 'src/components/all-components/CodeBlock/StyleComponents/ReactText';
+import CodeLine from '@/components/all-components/CodeBlock/Components/CodeLine';
+import ReactText from '@/components/all-components/CodeBlock/StyleComponents/ReactText';
 import PropTypes from 'prop-types';
-import Tab from 'src/components/all-components/CodeBlock/Components/Tab';
-import MultiTab from 'src/components/all-components/CodeBlock/Components/MultiTab';
-import JSONText from 'src/components/all-components/CodeBlock/StyleComponents/JSONText';
-import CommentText from 'src/components/all-components/CodeBlock/StyleComponents/CommentText';
-import CodeBlockInput from 'src/components/all-components/CodeBlock/Components/CodeBlockInput';
-import IdentityFormData from 'src/constants/lab12/FormRepair';
+import Tab from '@/components/all-components/CodeBlock/Components/Tab';
+import MultiTab from '@/components/all-components/CodeBlock/Components/MultiTab';
+import JSONText from '@/components/all-components/CodeBlock/StyleComponents/JSONText';
+import CommentText from '@/components/all-components/CodeBlock/StyleComponents/CommentText';
+import CodeBlockInput from '@/components/all-components/CodeBlock/Components/CodeBlockInput';
+import IdentityFormData from '@/constants/lab12/FormRepair';
 import ErrorText from '../../../../all-components/CodeBlock/StyleComponents/ErrorText';
 
 /**

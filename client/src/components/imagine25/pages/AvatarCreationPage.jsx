@@ -1,10 +1,10 @@
 import React from 'react';
 import { Frame } from '../components/Frame';
-import ImagineService from 'src/services/ImagineService';
+import ImagineService from '@/services/ImagineService';
 import { navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { ERROR } from 'src/constants/notifications';
-import useMainStateContext from 'src/reducers/MainContext';
+import { ERROR } from '@/constants/notifications';
+import useMainStateContext from '@/reducers/MainContext';
 import ImagineHeader from '../components/ImagineHeader';
 import AvatarCreation from '../components/AvatarCreation';
 

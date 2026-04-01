@@ -6,8 +6,8 @@ import useDataService from '../../../hooks/useDataService';
 import { navigate } from 'react-router-dom';
 import { AddressRepairData } from '../../../../../../constants/lab9/AddressRepairData';
 import AddressRepairCodeBlock from './AddressRepairCodeBlock';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information

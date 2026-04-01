@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import ProfileHeader from "./ProfileHeader";
 import InstructingGroups from "./InstructingGroups";
 import Labs from "./Labs";
-import UserService from "../../../services/UserService";
-import UserLabService from "../../../services/UserLabService";
+import UserService from "@/services/UserService";
+import UserLabService from "@/services/UserLabService";
 import EnrolledGroups from "./EnrolledGroups";
-import useMainStateContext from "src/reducers/MainContext";
+import useMainStateContext from "@/reducers/MainContext";
 import BrandedALLModal from "../../all-components/BrandedALLModal";
 import LoginBody from "../login/LoginBody";
 

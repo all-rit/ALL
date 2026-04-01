@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
 
 /**
  * Renders the component that explains the behavior of a bad AI in file access management.

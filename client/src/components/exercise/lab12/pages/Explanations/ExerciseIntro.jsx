@@ -1,11 +1,11 @@
 // Exercise Instructions (Page #1)
 
 import React from 'react';
-import useMainStateContext from 'src/reducers/MainContext';
+import useMainStateContext from '@/reducers/MainContext';
 import { navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import { ExerciseService } from '../../../../../services/lab12/ExerciseService';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import { ExerciseService } from '@/services/lab12/ExerciseService';
 
 const ExerciseIntro = () => {
   const { actions, state } = useMainStateContext();

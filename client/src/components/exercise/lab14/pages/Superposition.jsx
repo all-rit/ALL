@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { navigate } from 'react-router-dom';
 import { useState } from 'react';
-import Qubit from 'src/components/exercise/lab14/components/Qubit.js';
+import Qubit from '@/components/exercise/lab14/components/Qubit';
 
 const Superposition = () => {
   const handleContinue = () => {

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
 import Collapsible from '../../components/Collapsible';
 import PropTypes from 'prop-types';
-import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE } from 'src/constants/index';
+import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE } from '@/constants/index';
 
 /**
  * Renders the Simulation Summary component.

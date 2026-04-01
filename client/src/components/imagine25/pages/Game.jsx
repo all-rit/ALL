@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'reactstrap';
-import ImagineService from 'src/services/ImagineService';
+import ImagineService from '@/services/ImagineService';
 import TeammateVideo from '../components/TeammateVideo';
 import { navigate } from 'react-router-dom';
 

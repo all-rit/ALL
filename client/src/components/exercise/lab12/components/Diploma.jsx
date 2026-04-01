@@ -3,7 +3,7 @@ import { navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SealImage from '../../../../assets/images/lab12/diploma_seal.png';
 import '../../../../assets/stylesheets/components/Diploma.css';
-import useMainStateContext from 'src/reducers/MainContext';
+import useMainStateContext from '@/reducers/MainContext';
 import ExerciseStateContext from '../Lab12Context';
 import { ExerciseService } from '../../../../services/lab12/ExerciseService';
 

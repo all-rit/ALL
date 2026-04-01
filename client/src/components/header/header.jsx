@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import useMainStateContext from 'src/reducers/MainContext';
-import Logo from '../../assets/images/logos/ALL_Logo.svg';
+import useMainStateContext from '@/reducers/MainContext';
+import Logo from '@/assets/images/logos/ALL_Logo.svg';
 import { navigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Fade from '@mui/material/Fade';
-import BrandedALLModal from '../all-components/BrandedALLModal';
+import BrandedALLModal from '@all-components/BrandedALLModal';
 import LoginBody from '../body/login/LoginBody';
 import {
   ERROR,

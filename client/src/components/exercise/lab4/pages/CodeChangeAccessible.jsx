@@ -16,10 +16,10 @@ import InfoIcon from '@mui/icons-material/Info';
 import CloseIcon from '@mui/icons-material/Close';
 import WarningIcon from '@mui/icons-material/Warning';
 import PropTypes from 'prop-types';
-import RepairService from '../../../../services/lab4/RepairService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
+import RepairService from '@/services/lab4/RepairService';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import RepairUpdateButton from '@all-components/RepairUpdateButton';
 
 const variantIcon = {
   success: CheckCircleIcon,

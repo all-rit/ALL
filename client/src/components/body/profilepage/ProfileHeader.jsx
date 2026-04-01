@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import UserPfp from 'src/components/all-components/UserPfp';
+import UserPfp from '@/components/all-components/UserPfp';
 
 const ProfileHeader = (props) => {
   const { user } = props;

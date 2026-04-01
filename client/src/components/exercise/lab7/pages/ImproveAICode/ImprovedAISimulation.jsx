@@ -2,9 +2,9 @@ import { navigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import Simulation from '../../components/Simulation';
 import { ALTERATION_START } from '../../../../../constants/lab7';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
-import { useLab7StateContext } from 'src/reducers/lab7/Lab7Context';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
 
 /**
  * Renders the Improved AI Simulation component.

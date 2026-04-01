@@ -1,6 +1,6 @@
-import useScroll from 'src/use-hooks/useScroll';
+import useScroll from '@/use-hooks/useScroll';
 import { bindActionCreators } from 'redux';
-import { actions as exerciseActions } from '../../../../reducers/lab10/ExerciseReducer';
+import { actions as exerciseActions } from '@/reducers/lab10/ExerciseReducer';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';

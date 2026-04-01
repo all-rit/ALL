@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LabGeneration from "../lab/LabGeneration";
-import useMainStateContext from "src/reducers/MainContext";
+import useMainStateContext from "@/reducers/MainContext";
 import PropTypes from "prop-types";
 import { Input } from "reactstrap";
 

@@ -7,7 +7,7 @@ import FormRepair from './pages/FormRepair';
 import DatabaseRepair from './pages/DatabaseRepair';
 
 // lab imported dependencies;
-import GradApplication from './components/GradApplication.js';
+import GradApplication from './components/GradApplication';
 import Diploma from './components/Diploma';
 import AlumniNewsletter from './pages/AlumniNewsletter';
 import ExerciseIntro from './pages/Explanations/ExerciseIntro';

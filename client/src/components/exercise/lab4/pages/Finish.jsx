@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
-import { LAB_ID } from '../../../../constants/lab4';
-import UserLabService from '../../../../services/UserLabService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_IDLE } from 'src/constants/index';
+import { LAB_ID } from '@/constants/lab4';
+import UserLabService from '@/services/UserLabService';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_IDLE } from '@/constants/index';
 
 const Finish = () => {
   const { actions, state } = useMainStateContext();

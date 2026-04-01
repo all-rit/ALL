@@ -6,8 +6,8 @@ import { HEADINGS, EXERCISE_STATES } from '../../../../../../constants/lab9';
 import DateFormRepair from './DateFormRepair';
 import useDataService from '../../../hooks/useDataService';
 import { navigate } from 'react-router-dom';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * Date Repair is a component that is responsible for passing logic into the universal

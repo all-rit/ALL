@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useDataService from '../../lab12/hooks/useDataService';
-import Repair from 'src/components/body/Repair/Repair';
+import Repair from '@/components/body/Repair/Repair';
 import { navigate } from 'react-router-dom';
 import {
   FORM_REPAIR_HEADING,
   EXERCISE_STATES,
   EXERCISE_PATH,
-} from 'src/constants/lab12/index';
+} from '@/constants/lab12/index';
 import FormRepairImplementation from './repairs/FormRepairImplementation';
-import useMainStateContext from 'src/reducers/MainContext';
+import useMainStateContext from '@/reducers/MainContext';
 import IdentityFormData from '../../../../constants/lab12/FormRepair';
 
 /**

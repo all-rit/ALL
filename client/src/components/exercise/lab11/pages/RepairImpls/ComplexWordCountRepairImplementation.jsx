@@ -1,12 +1,12 @@
-import ReactText from "../../../../all-components/CodeBlock/StyleComponents/ReactText";
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
-import Tab from "../../../../all-components/CodeBlock/Components/Tab";
-import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
-import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTab";
-import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
+import ReactText from '../../../../all-components/CodeBlock/StyleComponents/ReactText';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import CodeLine from '../../../../all-components/CodeBlock/Components/CodeLine';
+import Tab from '../../../../all-components/CodeBlock/Components/Tab';
+import CodeBlockInput from '../../../../all-components/CodeBlock/Components/CodeBlockInput';
+import CommentText from '../../../../all-components/CodeBlock/StyleComponents/CommentText';
+import MultiTab from '@/components/all-components/CodeBlock/Components/MultiTab';
+import ErrorText from '@/components/all-components/CodeBlock/StyleComponents/ErrorText';
 
 const ComplexWordCountRepairImplementation = (props) => {
   const { inputs, userInput, validInputs, isFirst } = props;
@@ -109,16 +109,16 @@ const ComplexWordCountRepairImplementation = (props) => {
         const fogIndexCalculation = ( letterContent ) =&#62; &#123;
       </ReactText>
       <CodeLine>
-        <Tab />{" "}
+        <Tab />{' '}
         <ReactText>
-          {" "}
+          {' '}
           let wordCount = letterContent.split(&#39; &#39;).length;
         </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab />{" "}
+        <Tab />{' '}
         <ReactText>
-          {" "}
+          {' '}
           let sentenceCount = letterContent.split(/[.!?]/).length - 1;
         </ReactText>
       </CodeLine>
@@ -129,9 +129,9 @@ const ComplexWordCountRepairImplementation = (props) => {
             <CommentText>{input.comment}</CommentText>
           </CodeLine>
           <CodeLine>
-            <Tab />{" "}
+            <Tab />{' '}
             <ReactText>
-              {" "}
+              {' '}
               let {input.variableName} = letterContent.split(&#39;
               &#39;).filter((word) =&#62;
             </ReactText>
@@ -142,8 +142,8 @@ const ComplexWordCountRepairImplementation = (props) => {
                   userInput(input.id, event.target.value);
                 },
                 name: input.variableName,
-                type: "text",
-                placeholder: "Enter Answer Here",
+                type: 'text',
+                placeholder: 'Enter Answer Here',
               }}
             />
             <ReactText>).length;</ReactText>
@@ -160,7 +160,7 @@ const ComplexWordCountRepairImplementation = (props) => {
         </Fragment>
       ))}
       <CodeLine>
-        <Tab />{" "}
+        <Tab />{' '}
         <ReactText>
           let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 *
           (complexWordCount / wordCount))).toFixed(4);

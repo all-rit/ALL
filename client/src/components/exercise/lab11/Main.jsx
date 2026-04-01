@@ -3,19 +3,19 @@ import ExerciseStateContext from './Lab11Context';
 import { Router, navigate } from 'react-router-dom';
 import LiteracyExerciseStart from './pages/LiteracyExerciseStart';
 import LiteracyExerciseEnd from './pages/LiteracyExerciseEnd';
-import InformationLetterEmail from '../../all-components/InformationLetterEmail';
+import InformationLetterEmail from '@all-components/InformationLetterEmail';
 import {
   LETTER_TEXT_ARRAY,
   LETTER_TEXT_FOG_INDEX_10,
   REPAIR,
-} from '../../../constants/lab11/index';
+} from '@/constants/lab11/index';
 import FogIndexFormulaIntroduction from './pages/Explanations/FogIndexFormulaIntroduction';
-import useScroll from '../../../use-hooks/useScroll';
+import useScroll from '@/use-hooks/useScroll';
 import LiteracyRepair from './pages/LiteracyRepair';
 import FogIndexFormulaSentences from './pages/Explanations/FogIndexFormulaSetences';
 import FogIndexFormulaComplexWords from './pages/Explanations/FogIndexFormulaComplexWords';
 import FogIndexFormulaConclusion from './pages/Explanations/FogIndexFormulaConclusion';
-import useMainStateContext from 'src/reducers/MainContext';
+import useMainStateContext from '@/reducers/MainContext';
 import {
   FOG_INDEX_FORMULA_COMPLEX_WORDS,
   FOG_INDEX_FORMULA_CONCLUSION,
@@ -27,7 +27,7 @@ import {
   INFORMATION_LETTER_SENTENCE_COUNT,
   INFORMATION_LETTER_WORD_COUNT,
   LITERACY_EXERCISE_END,
-} from 'src/constants/lab11/index';
+} from '@/constants/lab11/index';
 
 const Main = () => {
   const { actions } = useMainStateContext();

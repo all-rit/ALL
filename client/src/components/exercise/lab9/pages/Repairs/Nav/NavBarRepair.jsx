@@ -7,8 +7,8 @@ import MultiTab from '../../../../../all-components/CodeBlock/Components/MultiTa
 import PropTypes from 'prop-types';
 import HTMLTag from '../../../../../all-components/CodeBlock/StyleComponents/HTMLTag';
 import HTMLText from '../../../../../all-components/CodeBlock/StyleComponents/HTMLText';
-import ErrorText from 'src/components/all-components/CodeBlock/StyleComponents/ErrorText';
-import ImportText from 'src/components/all-components/CodeBlock/StyleComponents/ImportText';
+import ErrorText from '@/components/all-components/CodeBlock/StyleComponents/ErrorText';
+import ImportText from '@/components/all-components/CodeBlock/StyleComponents/ImportText';
 
 const NavBarRepair = (props = {}) => {
   const { inputs, userInput, validInputs, isFirst } = props;

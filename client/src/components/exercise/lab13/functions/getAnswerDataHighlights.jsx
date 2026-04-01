@@ -1,4 +1,4 @@
-import { HIGHLIGHTS_MAPPING } from "src/constants/lab13/HighlightsMapping";
+import { HIGHLIGHTS_MAPPING } from '@/constants/lab13/HighlightsMapping';
 
 // Get highlights based on current answer data, topic, and question
 export const getAnswerDataHighlights = (

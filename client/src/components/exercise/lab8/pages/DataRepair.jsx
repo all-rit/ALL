@@ -1,12 +1,12 @@
 import { navigate } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
-import Popup from '../../../all-components/Popup';
-import { CHAT_MESSAGES } from '../../../../constants/lab8/messages';
-import ExerciseService from '../../../../services/lab8/ExerciseService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
-import LabButton from '../../../all-components/LabButton';
+import Popup from '@all-components/Popup';
+import { CHAT_MESSAGES } from '@/constants/lab8/messages';
+import ExerciseService from '@/services/lab8/ExerciseService';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import RepairUpdateButton from '@all-components/RepairUpdateButton';
+import LabButton from '@all-components/LabButton';
 import ExerciseStateContext from '../Lab8Context';
 
 // the only acceptable values that a user can enter

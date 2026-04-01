@@ -3,8 +3,8 @@ import { navigate } from 'react-router-dom';
 import '../../../../assets/stylesheets/components/Witch.css';
 import ChatRoom from '../components/ChatRoom';
 import { getMessages } from '../../../../constants/lab8/messages';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
 import LabButton from '../../../all-components/LabButton';
 import ExerciseStateContext from '../Lab8Context';
 

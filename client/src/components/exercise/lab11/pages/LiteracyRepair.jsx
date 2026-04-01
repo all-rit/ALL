@@ -6,8 +6,8 @@ import WordCountRepair from './Repairs/WordCountRepair';
 import SentenceCountRepair from './Repairs/SentenceCountRepair';
 import ComplexWordCountRepair from './Repairs/ComplexWordCountRepair';
 import { EXERCISE_STATES } from '../../../../constants/lab11';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 /**
  * LiteracyRepair is a Route wrapper component that is responsible for declaring the

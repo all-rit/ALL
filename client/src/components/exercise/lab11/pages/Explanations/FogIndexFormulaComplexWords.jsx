@@ -1,9 +1,9 @@
 import { navigate } from 'react-router-dom';
 import React from 'react';
 import { useEffect } from 'react';
-import { REPAIR, EXERCISE_STATES } from '../../../../../constants/lab11';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import { REPAIR, EXERCISE_STATES } from '@/constants/lab11';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 
 const FogIndexFormulaComplexWords = () => {
   const { actions } = useMainStateContext();

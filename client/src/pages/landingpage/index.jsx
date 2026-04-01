@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from 'react-router-dom';
-import LabGeneration from '../../components/body/lab/LabGeneration';
-import GettingInvolved from '../../components/all-components/GettingInvolved';
+import LabGeneration from '@components/body/lab/LabGeneration';
+import GettingInvolved from '@all-components/GettingInvolved';
 import DevPartners from './DevPartners';
-import Carousel from 'src/components/all-components/ParticipatingSchools';
-import Girl3 from '../../assets/images/stockImages/Girl3.png';
-import Girl2 from '../../assets/images/stockImages/Girl2.png';
-import ALLButton from '../../components/all-components/ALLButton';
-import labService from 'src/services/LabService';
-import useMainStateContext from 'src/reducers/MainContext';
-import YellowBlockSection from '../../components/all-components/YellowBlockSection';
-import LandingSection from '../../components/all-components/LandingSection';
+import Carousel from '@all-components/ParticipatingSchools';
+import Girl3 from '@/assets/images/stockImages/Girl3.png';
+import Girl2 from '@/assets/images/stockImages/Girl2.png';
+import ALLButton from '@all-components/ALLButton';
+import labService from '@/services/LabService';
+import useMainStateContext from '@/reducers/MainContext';
+import YellowBlockSection from '@all-components/YellowBlockSection';
+import LandingSection from '@all-components/LandingSection';
 import {
   ABOUT_US_BODY,
   ABOUT_US_TITLE,
@@ -18,7 +18,7 @@ import {
   ARE_YOU_AN_EDUCATOR_TITLE,
   WELCOME_TO_ALL_BODY,
   WELCOME_TO_ALL_TITLE,
-} from '../../constants/sections';
+} from '@/constants/sections';
 
 const Home = () => {
   const { actions } = useMainStateContext();

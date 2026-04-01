@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import GridApplicants from '../../components/GridApplicants';
 import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 import ExerciseService from '../../../../../services/lab6/ExerciseService';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 import LabButton from '../../../../all-components/LabButton';
 
 const HiringCandidate = () => {

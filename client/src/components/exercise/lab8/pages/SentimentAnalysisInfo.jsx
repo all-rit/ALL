@@ -1,7 +1,7 @@
 import { navigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import useMainStateContext from 'src/reducers/MainContext';
-import { EXERCISE_PLAYING } from 'src/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
 import LabButton from '../../../all-components/LabButton';
 
 const SentimentAnalysisInfo = () => {

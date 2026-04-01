@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'react-router-dom';
 import { MathComponent } from 'better-react-mathjax';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
 
 /**
  * Renders the start page for the Alteration activity.

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Title from "./components/header/title";
 import Home from "./home/Home";
 import ExerciseCenter from "./components/ExerciseCenter";
-import Repair from "./components/Repair.js";
+import Repair from "./components/Repair";
 import Header from "./components/header/headerMain";
 import SuccessMessage from "./home/successMessage";
 import Countdown from "react-countdown";

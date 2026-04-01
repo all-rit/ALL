@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { navigate } from 'react-router-dom';
-import EntanglementQubit from 'src/components/exercise/lab14/components/EntaglementQubit.js';
+import EntanglementQubit from '@/components/exercise/lab14/components/EntaglementQubit';
 
 const Entanglement = () => {
   const [text, setText] = useState('');

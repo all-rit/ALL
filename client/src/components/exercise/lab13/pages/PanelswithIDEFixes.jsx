@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { startExercise } from 'src/reducers/lab2/actions';
+import { startExercise } from '@/reducers/lab2/actions';
 import { navigate } from 'react-router-dom';
 
 const IDEIntroduction = () => {

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import RepairService from "../../../../services/lab7/RepairService";
-import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
-import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
-import { evaluate } from "mathjs";
-import { FILE_FORMAT_VALIDATION } from "src/constants/lab7/index";
-import { PropTypes } from "prop-types";
-import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
+import React, { useState } from 'react';
+import RepairService from '../../../../services/lab7/RepairService';
+import { POPUP_DELAY, POPUP_MESSAGES } from '../../../../constants/lab7';
+import { useLab7StateContext } from '@/reducers/lab7/Lab7Context';
+import { evaluate } from 'mathjs';
+import { FILE_FORMAT_VALIDATION } from '@/constants/lab7/index';
+import { PropTypes } from 'prop-types';
+import RepairUpdateButton from '../../../all-components/RepairUpdateButton';
 
 /**
  * Represents a Code component.
@@ -15,7 +15,7 @@ const Code = (props) => {
   const { handleCloseRepair } = props;
   const [timeout, setTimeout] = useState(null);
   const { actions, state } = useLab7StateContext();
-  const { componentName } = useState("AICodeRepair");
+  const { componentName } = useState('AICodeRepair');
 
   /**
    * Validates the reward value.
@@ -25,16 +25,16 @@ const Code = (props) => {
     let value,
       error = null;
 
-    if (!state.rewardValue.includes("file.sensitivityLevel")) {
+    if (!state.rewardValue.includes('file.sensitivityLevel')) {
       error = POPUP_MESSAGES.FILE_SENS_NOT_INCLUDED;
     } else {
       try {
         value = evaluate(state.rewardValue, FILE_FORMAT_VALIDATION);
-        if (typeof value !== "number")
+        if (typeof value !== 'number')
           error = POPUP_MESSAGES.INVALID_EXPRESSION;
       } catch (e) {
         switch (e.data?.category) {
-          case "wrongType":
+          case 'wrongType':
             error = POPUP_MESSAGES.INVALID_EXPRESSION;
             break;
           default:
@@ -63,17 +63,17 @@ const Code = (props) => {
     let value,
       error = null;
 
-    if (!state.costValue.includes("threatLvl")) {
+    if (!state.costValue.includes('threatLvl')) {
       error = POPUP_MESSAGES.THREAT_LVL_NOT_INCLUDED;
     } else {
       try {
         value = evaluate(state.costValue, FILE_FORMAT_VALIDATION);
-        if (typeof value !== "number")
+        if (typeof value !== 'number')
           error = POPUP_MESSAGES.INVALID_EXPRESSION;
         else if (value === 0) error = POPUP_MESSAGES.ZERO_DIVISION;
       } catch (e) {
         switch (e.data?.category) {
-          case "wrongType":
+          case 'wrongType':
             error = POPUP_MESSAGES.INVALID_EXPRESSION;
             break;
           default:
@@ -107,7 +107,7 @@ const Code = (props) => {
   const clearPopupMessage = () => {
     clearTimeout(timeout);
     setTimeout(() => {
-      actions.updatePopup("");
+      actions.updatePopup('');
       actions.updateRepairError(null);
     }, POPUP_DELAY);
   };
@@ -150,7 +150,7 @@ const Code = (props) => {
         actions.updateCostError(cost.error);
       }
       actions.undoRepairChanges();
-      setPopupMessage("Errors in Repair. Please fix.");
+      setPopupMessage('Errors in Repair. Please fix.');
     } else {
       const [rewardValue, costValue] = [reward.value, cost.value];
       RepairService.submitRepair(
@@ -238,19 +238,19 @@ const Code = (props) => {
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <span className="code_editor__line--darkgreen">
               enter &lsquo;file.sensitivityLevel&lsquo; into the first
-              input{" "}
+              input{' '}
             </span>
           </div>
           <div className="code_editor__line code_editor__line-background--light">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const </span>
-            <span className={""}>rewardValue</span>
-            <span className={"code_editor__line--purple"}> = </span>
+            <span className={'code_editor__line--purple'}>const </span>
+            <span className={''}>rewardValue</span>
+            <span className={'code_editor__line--purple'}> = </span>
             <input
               name="rewardvalue"
               type="text"
               className={`${
-                state.rewardError ? "form-error-input" : ""
+                state.rewardError ? 'form-error-input' : ''
               } tw-w-96`}
               defaultValue={state.rewardValue}
               onChange={handleRewardValueChange}
@@ -261,7 +261,7 @@ const Code = (props) => {
           </div>
           {state.rewardError && (
             <div className="code_editor__line">
-              <span className={"form-error"}>
+              <span className={'form-error'}>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 {state.rewardError}
               </span>
@@ -278,13 +278,13 @@ const Code = (props) => {
           </div>
           <div className="code_editor__line code_editor__line-background--light">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const </span>
-            <span className={""}>costValue</span>
-            <span className={"code_editor__line--purple"}> = </span>
+            <span className={'code_editor__line--purple'}>const </span>
+            <span className={''}>costValue</span>
+            <span className={'code_editor__line--purple'}> = </span>
             <input
               name="costvalue"
               type="text"
-              className={`${state.costError ? "form-error-input" : ""} tw-w-96`}
+              className={`${state.costError ? 'form-error-input' : ''} tw-w-96`}
               defaultValue={state.costValue}
               onChange={handleCostValueChange}
               required
@@ -294,7 +294,7 @@ const Code = (props) => {
           </div>
           {state.costError && (
             <div className="code_editor__line">
-              <span className={"form-error"}>
+              <span className={'form-error'}>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 {state.costError}
               </span>
@@ -305,11 +305,11 @@ const Code = (props) => {
           </div>
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const </span>
+            <span className={'code_editor__line--purple'}>const </span>
             <span>utility</span>
-            <span className={"code_editor__line--purple"}> = </span>
+            <span className={'code_editor__line--purple'}> = </span>
             <span>
-              rewardValue <span className={"code_editor__line--purple"}>/</span>{" "}
+              rewardValue <span className={'code_editor__line--purple'}>/</span>{' '}
               costValue;
             </span>
           </div>

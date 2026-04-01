@@ -3,14 +3,14 @@ import { navigate, Router } from 'react-router-dom';
 import UpdateId from './UpdateId';
 import Done from './Done';
 import AvatarSelectionPage from './pages/AvatarSelectionPage';
-import ImagineService from 'src/services/ImagineService';
-import useMainStateContext from 'src/reducers/MainContext';
+import ImagineService from '@/services/ImagineService';
+import useMainStateContext from '@/reducers/MainContext';
 import Survey from '../all-components/imagine-components/SurveyHandlerComp';
 import {
   avatarSelections,
   opponentAvatars,
   teammateAvatars,
-} from 'src/constants/imagine25/Avatar';
+} from '@/constants/imagine25/Avatar';
 import GalagaInstructions from './pages/GalagaInstruction';
 import Galaga from './pages/Game';
 import './main.css';

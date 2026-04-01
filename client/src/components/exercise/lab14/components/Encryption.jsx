@@ -1,8 +1,8 @@
-import { React, useState } from "react";
-import PropTypes from "prop-types";
+import { React, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { FormGroup, Input, Label } from "reactstrap";
-import LabButton from "src/components/all-components/LabButton";
+import { FormGroup, Input, Label } from 'reactstrap';
+import LabButton from '@/components/all-components/LabButton';
 
 const Encryption = ({
   encryptionFunction,
@@ -18,12 +18,12 @@ const Encryption = ({
     const value = e.target.value;
     setBaseMessage(value);
 
-    if (value === "" || value.trim().length == 0) {
+    if (value === '' || value.trim().length == 0) {
       setValidInput(false);
       return;
     }
 
-    const filteredValue = value.replace(/[^a-zA-Z\s]/g, "");
+    const filteredValue = value.replace(/[^a-zA-Z\s]/g, '');
     setValidInput(filteredValue === value ? true : false);
   };
 
@@ -45,7 +45,7 @@ const Encryption = ({
             className="tw-flex tw-bg-[#f2f0eb] tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold focus:tw-border-black focus:tw-outline-none tw-w-[20rem] tw-h-[4rem]"
           />
           <p
-            className={`tw-w-[20rem] tw-my-2 ${validInput !== false ? "tw-hidden" : ""}`}
+            className={`tw-w-[20rem] tw-my-2 ${validInput !== false ? 'tw-hidden' : ''}`}
           >
             Error: Remove any special characters or numbers from the input, and
             make sure the input box is not empty.
@@ -59,7 +59,7 @@ const Encryption = ({
         <LabButton
           disabled={!shiftValueValid || !validInput}
           onClick={encryptionFunction}
-          label={"Encrypt"}
+          label={'Encrypt'}
         ></LabButton>
       </div>
 

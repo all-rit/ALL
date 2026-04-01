@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { default as Quiz } from '../../../../quiz/components/QuizHandler';
-import { EXERCISE_IDLE } from 'src/constants/index';
+import { EXERCISE_IDLE } from '@/constants/index';
 import { navigate } from 'react-router-dom';
 import { MathComponent } from 'better-react-mathjax';
 import ExerciseService from '../../../../../services/lab7/ExerciseService';
-import useMainStateContext from 'src/reducers/MainContext';
-import alterationQuizQuestions from 'src/constants/lab7/alterationQuestions';
+import useMainStateContext from '@/reducers/MainContext';
+import alterationQuizQuestions from '@/constants/lab7/alterationQuestions';
 
 /**
  * Renders the Alteration Quiz component.

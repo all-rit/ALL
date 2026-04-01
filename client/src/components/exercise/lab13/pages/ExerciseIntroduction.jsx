@@ -1,8 +1,8 @@
 import { React, useEffect } from 'react';
-import { EXERCISE_PLAYING } from 'src/constants/index';
-import useMainStateContext from 'src/reducers/MainContext';
+import { EXERCISE_PLAYING } from '@/constants/index';
+import useMainStateContext from '@/reducers/MainContext';
 import { navigate } from 'react-router-dom';
-import { ExerciseService } from 'src/services/lab13/ExerciseService';
+import { ExerciseService } from '@/services/lab13/ExerciseService';
 
 const ExerciseIntroduction = () => {
   const { state, actions } = useMainStateContext();

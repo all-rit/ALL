@@ -1,14 +1,14 @@
-import LandingSection from '../../components/all-components/LandingSection';
+import LandingSection from '@all-components/LandingSection';
 import InvestigatorsSection from './InvestigatorsSection';
 import StudentTeamSection from './StudentTeamSection';
-import GettingInvolved from 'src/components/all-components/GettingInvolved';
-import YellowBlockSection from '../../components/all-components/YellowBlockSection';
+import GettingInvolved from '@all-components/GettingInvolved';
+import YellowBlockSection from '@all-components/YellowBlockSection';
 import {
   ABOUT_US_BODY,
   ABOUT_US_TITLE,
   OUR_MISSION_BODY,
   OUR_MISSION_TITLE,
-} from '../../constants/sections';
+} from '@/constants/sections';
 
 const AboutUsPage = () => {
   return (
