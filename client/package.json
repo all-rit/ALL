@@ -21,6 +21,7 @@
     "@mui/styles": "^6.4.8",
     "@redux-devtools/core": "^5.0.0",
     "@reduxjs/toolkit": "^2.11.2",
+    "@tailwindcss/vite": "^4.2.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@uiw/react-color-chrome": "^2.9.6",
     "@xyflow/react": "^12.10.1",

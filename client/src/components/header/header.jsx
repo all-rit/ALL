@@ -17,6 +17,7 @@ import {
 import UserPfp from '../all-components/UserPfp';
 
 const Header = ({ isImagine }) => {
+  const navigate = useNavigate();
   const { state, actions } = useMainStateContext();
 
   const [linksCollapseOpen, setLinksCollapseOpen] = useState(false);
@@ -130,7 +131,7 @@ const Header = ({ isImagine }) => {
   const logout = () => {
     try {
       actions.showSnackbar(LOGOUT_SUCCESS, SUCCESS);
-      window.location.href = `${process.env.REACT_APP_SERVER_URL}/logout`;
+      window.location.href = `${import.meta.env.VITE_REACT_APP_SERVER_URL}/logout`;
     } catch {
       actions.showSnackbar(LOGOUT_ERROR, ERROR);
     }

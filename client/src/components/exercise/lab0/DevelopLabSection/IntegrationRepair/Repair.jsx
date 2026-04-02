@@ -1,27 +1,27 @@
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import {
   CodeDropdown,
   CodeLine,
   MultiTab,
-} from "../../../../all-components/CodeBlock/Components";
+} from '../../../../all-components/CodeBlock/Components';
 import {
   ImportText,
   JSONText,
   ReactText,
-} from "../../../../all-components/CodeBlock/StyleComponents";
-import { DARK } from "../../../../../constants/themes";
+} from '../../../../all-components/CodeBlock/StyleComponents';
+import { DARK } from '../../../../../constants/themes';
 
 const Repair = (props) => {
-  const POST = "post";
-  const POST_WITH_BODY = "postWithBody";
-  const GET = "get";
-  const PUT_WITH_BODY = "putWithBody";
-  const INITIAL_METHOD_LABEL = "Select the Correct Method";
+  const POST = 'post';
+  const POST_WITH_BODY = 'postWithBody';
+  const GET = 'get';
+  const PUT_WITH_BODY = 'putWithBody';
+  const INITIAL_METHOD_LABEL = 'Select the Correct Method';
 
-  const SUBMIT_EXERCISE = "SUBMIT_EXERCISE";
-  const GET_EXERCISE = "GET_EXERCISE";
-  const INITIAL_ENDPOINT_LABEL = "Select the Correct Endpoint";
+  const SUBMIT_EXERCISE = 'SUBMIT_EXERCISE';
+  const GET_EXERCISE = 'GET_EXERCISE';
+  const INITIAL_ENDPOINT_LABEL = 'Select the Correct Endpoint';
 
   const METHOD_OPTIONS = [POST, POST_WITH_BODY, GET, PUT_WITH_BODY];
 
@@ -30,10 +30,10 @@ const Repair = (props) => {
   const { setCompleted } = props;
 
   const [methodDropdownOpen, setMethodDropdownOpen] = useState(false);
-  const [method, selectMethod] = useState("");
+  const [method, selectMethod] = useState('');
 
   const [endpointDropdownOpen, setEndpointDropdownOpen] = useState(false);
-  const [endpoint, selectEndpoint] = useState("");
+  const [endpoint, selectEndpoint] = useState('');
 
   const toggleMethodDropdown = () => {
     setMethodDropdownOpen(!methodDropdownOpen);
@@ -57,7 +57,7 @@ const Repair = (props) => {
   return (
     <div
       className={
-        "code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[14px]"
+        'code_editor__code tw-w-full tw-h-full tw-p-5 tw-rounded-lg tw-text-[14px]'
       }
     >
       {/* Import Statement */}
@@ -110,11 +110,11 @@ const Repair = (props) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={2} />
-        <div className={"tw-bg-[#444] tw-text-[#777] tw-px-1 tw-rounded-md"}>
+        <div className={'tw-bg-[#444] tw-text-[#777] tw-px-1 tw-rounded-md'}>
           path:
         </div>
         <ReactText>
-          &#96;$&#123;process.env.REACT_APP_SERVER_URL&#125;$&#123;endpoints.
+          &#96;$&#123;import.meta.env.VITE_REACT_APP_SERVER_URL&#125;$&#123;endpoints.
         </ReactText>
         <CodeDropdown
           isOpen={endpointDropdownOpen}
@@ -129,7 +129,7 @@ const Repair = (props) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={2} />
-        <div className={"tw-bg-[#444] tw-text-[#777] tw-px-1 tw-rounded-md"}>
+        <div className={'tw-bg-[#444] tw-text-[#777] tw-px-1 tw-rounded-md'}>
           body:
         </div>
         <ReactText>&#123;</ReactText>

@@ -1,8 +1,8 @@
-import API from "../API";
+import API from '../API';
 
 const prefix = {
   POST_SUFFIX: `submit`,
-  LAB_PREFIX: `${process.env.REACT_APP_SERVER_URL}/lab9`,
+  LAB_PREFIX: `${import.meta.env.VITE_REACT_APP_SERVER_URL}/lab9`,
 };
 
 const resource = {

@@ -1,15 +1,16 @@
-import API from "./API";
+import API from './API';
 
 const ImagineService = {
   postStudy: async (data) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${data.year}/postStudy`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        `/imagine${data.year}/postStudy`,
       data,
     );
   },
   preSurvey: async (userID, preSurvey, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/preSurvey`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + `/imagine${year}/preSurvey`,
       {
         userID,
         preSurvey,
@@ -20,7 +21,7 @@ const ImagineService = {
 
   newID: async (userID, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/newID`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + `/imagine${year}/newID`,
       {
         userID,
         year,
@@ -30,7 +31,7 @@ const ImagineService = {
 
   postSurvey: async (userID, postSurvey, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/postSurvey`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + `/imagine${year}/postSurvey`,
       {
         userID,
         postSurvey,
@@ -40,15 +41,16 @@ const ImagineService = {
   },
   getUsers: () => {
     return Promise.resolve(
-      API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users").then(
-        (response) => response.json(),
-      ),
+      API.get(
+        import.meta.env.VITE_REACT_APP_SERVER_URL + '/imagine/users',
+      ).then((response) => response.json()),
     );
   },
   getUserByID: (userID, year) => {
     return Promise.resolve(
       API.get(
-        process.env.REACT_APP_SERVER_URL + `/imagine${year}/user/${userID}`,
+        import.meta.env.VITE_REACT_APP_SERVER_URL +
+          `/imagine${year}/user/${userID}`,
         {},
       ).then((response) => response.json()),
     );
@@ -56,7 +58,8 @@ const ImagineService = {
   getGroup: (userID, year) => {
     return Promise.resolve(
       API.get(
-        process.env.REACT_APP_SERVER_URL + `/imagine${year}/getGroup/${userID}`,
+        import.meta.env.VITE_REACT_APP_SERVER_URL +
+          `/imagine${year}/getGroup/${userID}`,
         {},
       ).then((response) => response.json()),
     );
@@ -64,7 +67,7 @@ const ImagineService = {
   getTeammate: (userID, year) => {
     return Promise.resolve(
       API.get(
-        process.env.REACT_APP_SERVER_URL +
+        import.meta.env.VITE_REACT_APP_SERVER_URL +
           `/imagine${year}/getTeammate/${userID}`,
         {},
       ).then((response) => response.json()),
@@ -72,7 +75,8 @@ const ImagineService = {
   },
   readMoreCount: async (userID, readMoreCount, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/readMoreCount`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        `/imagine${year}/readMoreCount`,
       {
         userID,
         readMoreCount,
@@ -83,7 +87,8 @@ const ImagineService = {
 
   readMoreTimeElapsed: async (userID, readMoreTimeElapsed, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/readMoreTimeElapsed`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        `/imagine${year}/readMoreTimeElapsed`,
       {
         userID,
         readMoreTimeElapsed,
@@ -98,7 +103,7 @@ const ImagineService = {
     year,
   ) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/imagine${year}/readingSectionPagePosition`,
       {
         userID,
@@ -109,7 +114,7 @@ const ImagineService = {
   },
   postTeammateSelection: async (userID, teammateAvatar, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/imagine${year}/teammateAvatarSelection`,
       {
         userID,
@@ -120,7 +125,8 @@ const ImagineService = {
   },
   postUserAvatar: async (userID, avatar, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/userAvatarCreation`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        `/imagine${year}/userAvatarCreation`,
       {
         userID,
         avatar,
@@ -130,7 +136,7 @@ const ImagineService = {
   },
   postOpponentSelection: async (userID, opponentAvatar, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/imagine${year}/opponentAvatarSelection`,
       {
         userID,

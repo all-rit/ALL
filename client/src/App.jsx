@@ -1,61 +1,60 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 
 /** Body Components **/
-import { default as About } from "./components/body/About";
-import { default as Reading } from "./components/body/Reading/Reading";
-import { default as Reinforcement } from "./components/body/Reinforcement";
-import { default as Quiz } from "./components/quiz/components/QuizHandler";
+import { default as About } from './components/body/About';
+import { default as Reading } from './components/body/Reading/Reading';
+import { default as Reinforcement } from './components/body/Reinforcement';
+import { default as Quiz } from './components/quiz/components/QuizHandler';
 
 /** Exercise Components **/
-import { default as ExerciseLab0 } from "./components/exercise/lab0/Main";
-import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
-import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
-import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
-import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
-import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
-import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
-import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
-import { default as ExerciseLab8 } from "./components/exercise/lab8/Main";
-import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
-import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
-import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
-import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
-import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
-import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
+import { default as ExerciseLab0 } from './components/exercise/lab0/Main';
+import { default as ExerciseLab1 } from './components/exercise/lab1/Main';
+import { default as ExerciseLab2 } from './components/exercise/lab2/Main';
+import { default as ExerciseLab3 } from './components/exercise/lab3/Main';
+import { default as ExerciseLab4 } from './components/exercise/lab4/Main';
+import { default as ExerciseLab5 } from './components/exercise/lab5/Main';
+import { default as ExerciseLab6 } from './components/exercise/lab6/Main';
+import { default as ExerciseLab7 } from './components/exercise/lab7/Main';
+import { default as ExerciseLab8 } from './components/exercise/lab8/Main';
+import { default as ExerciseLab9 } from './components/exercise/lab9/Main';
+import { default as ExerciseLab10 } from './components/exercise/lab10/Main';
+import { default as ExerciseLab11 } from './components/exercise/lab11/Main';
+import { default as ExerciseLab12 } from './components/exercise/lab12/Main';
+import { default as ExerciseLab13 } from './components/exercise/lab13/Main';
+import { default as ExerciseLab14 } from './components/exercise/lab14/Main';
 
-import { Sections } from "./constants/index";
+import { Sections } from './constants/index';
 
 /** Persistent Components **/
-import Header from "./components/header/header";
-import MainFooter from "./components/footer/mainFooter";
-import ALLSnackbar from "./components/all-components/ALLSnackbar";
+import Header from './components/header/header';
+import MainFooter from './components/footer/mainFooter';
+import ALLSnackbar from './components/all-components/ALLSnackbar';
 
 /** Individual Page Components **/
-import LandingPage from "./pages/landingpage/index";
-import LabsPage from "./pages/labspage/LabsPage";
-import AboutUsPage from "./pages/about-us/AboutUsPage";
-import EducatorResources from "./pages/EducatorResources/EducatorResources";
-import Profile from "./components/body/profilepage/Profile";
+import LandingPage from './pages/landingpage/index';
+import LabsPage from './pages/labspage/LabsPage';
+import AboutUsPage from './pages/about-us/AboutUsPage';
+import EducatorResources from './pages/EducatorResources/EducatorResources';
+import Profile from './components/body/profilepage/Profile';
 
 /** Miscellaneous Components and Redux **/
-import { default as Error } from "./pages/landingpage/error";
-import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Imagine2023 } from "./components/imagine23/Main";
-import { default as Imagine2025 } from "./components/imagine25/Main";
-import { Routes, Route, globalHistory } from "react-router-dom"
-import { connect } from "react-redux";
-import { actions as mainActions } from "./reducers/MainReducer";
-import { bindActionCreators } from "redux";
-import "./assets/stylesheets/main.scss";
-import { stateChange } from "./helpers/Redirect";
-import { actions as appActions } from "./reducers/lab1/AppReducer";
-import useMainStateContext from "./reducers/MainContext";
-import { Spinner } from "reactstrap";
+import { default as Error } from './pages/landingpage/error';
+import { default as SiteMap } from './pages/landingpage/sitemap';
+import { default as Imagine2023 } from './components/imagine23/Main';
+import { default as Imagine2025 } from './components/imagine25/Main';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actions as mainActions } from './reducers/MainReducer';
+import { bindActionCreators } from 'redux';
+import './assets/stylesheets/main.scss';
+import { stateChange } from './helpers/Redirect';
+import { actions as appActions } from './reducers/lab1/AppReducer';
+import useMainStateContext from './reducers/MainContext';
+import { Spinner } from 'reactstrap';
 
 const LabWindow = lazy(
-  () => import("./components/all-components/Lab/LabWindow"),
+  () => import('./components/all-components/Lab/LabWindow'),
 );
-const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
   return {
@@ -72,17 +71,20 @@ const mapDispatchToProps = (dispatch) => {
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
-  let [isLoaded, setLoaded] = useState(false);
+  const [isLoaded, setLoaded] = useState(false);
+
+  const location = useLocation();
 
   useEffect(() => {
-    actions.login();
-    const location = parse(window.location.href);
-    stateChange(actions, location.pathname);
-    globalHistory.listen((location) => {
-      stateChange(actions, location.location.pathname);
+    actions.login().then(() => {
+      setLoaded(true);
     });
-    setLoaded(true);
-  }, []);
+  }, [actions]);
+
+  useEffect(() => {
+    stateChange(actions, location.pathname);
+  }, [location.pathname, actions]);
+
   const lab = state.main.lab;
   const body = state.main.body;
   const isImagine = state.main.isImagine;
@@ -92,12 +94,12 @@ const App = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [questions, setQuestions] = useState([
     {
-      question: "Default",
+      question: 'Default',
       answers: [
         {
           val: 0,
-          type: "0",
-          content: "Default",
+          type: '0',
+          content: 'Default',
         },
       ],
       multiChoice: false,
@@ -107,30 +109,95 @@ const App = () => {
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full"}>
+      <div className={'tw-h-full tw-w-full'}>
         <Routes>
-          <Route path={`/Lab${lab}/`} element={<About user={state.main.user} labID={lab} />} />
-          <Route path={`/Lab${lab}/About`} element={<About user={state.main.user} labID={lab} />} />
+          <Route
+            path={`/Lab${lab}/`}
+            element={<About user={state.main.user} labID={lab} />}
+          />
+          <Route
+            path={`/Lab${lab}/About`}
+            element={<About user={state.main.user} labID={lab} />}
+          />
 
-          <Route path={`/Lab${lab}/Reading`} element={<Reading user={state.main.user} labID={lab} isImagine={isImagine} />} />
+          <Route
+            path={`/Lab${lab}/Reading`}
+            element={
+              <Reading
+                user={state.main.user}
+                labID={lab}
+                isImagine={isImagine}
+              />
+            }
+          />
 
-          <Route path="/Lab0/Exercise/*" element={<ExerciseLab0 user={state.main.user} />} />
-          <Route path="/Lab1/Exercise" element={<ExerciseLab1 user={state.main.user} />} />
-          <Route path="/Lab2/Exercise" element={<ExerciseLab2 user={state.main.user} isImagine={isImagine} />} />
-          <Route path="/Lab3/Exercise/*" element={<ExerciseLab3 user={state.main.user} />} />
-          <Route path="/Lab4/Exercise/*" element={<ExerciseLab4 user={state.main.user} />} />
-          <Route path="/Lab5/Exercise/*" element={<ExerciseLab5 user={state.main.user} />} />
-          <Route path="/Lab6/Exercise/*" element={<ExerciseLab6 user={state.main.user} />} />
-          <Route path="/Lab7/Exercise/*" element={<ExerciseLab7 user={state.main.user} />} />
-          <Route path="/Lab8/Exercise/*" element={<ExerciseLab8 user={state.main.user} />} />
-          <Route path="/Lab9/Exercise/*" element={<ExerciseLab9 user={state.main.user} />} />
-          <Route path="/Lab10/Exercise/*" element={<ExerciseLab10 user={state.main.user} />} />
-          <Route path="/Lab11/Exercise/*" element={<ExerciseLab11 user={state.main.user} />} />
-          <Route path="/Lab12/Exercise/*" element={<ExerciseLab12 user={state.main.user} />} />
-          <Route path="/Lab13/Exercise/*" element={<ExerciseLab13 user={state.main.user} />} />
-          <Route path="/Lab14/Exercise/*" element={<ExerciseLab14 user={state.main.user} />} />
+          <Route
+            path="/Lab0/Exercise/*"
+            element={<ExerciseLab0 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab1/Exercise"
+            element={<ExerciseLab1 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab2/Exercise"
+            element={
+              <ExerciseLab2 user={state.main.user} isImagine={isImagine} />
+            }
+          />
+          <Route
+            path="/Lab3/Exercise/*"
+            element={<ExerciseLab3 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab4/Exercise/*"
+            element={<ExerciseLab4 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab5/Exercise/*"
+            element={<ExerciseLab5 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab6/Exercise/*"
+            element={<ExerciseLab6 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab7/Exercise/*"
+            element={<ExerciseLab7 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab8/Exercise/*"
+            element={<ExerciseLab8 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab9/Exercise/*"
+            element={<ExerciseLab9 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab10/Exercise/*"
+            element={<ExerciseLab10 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab11/Exercise/*"
+            element={<ExerciseLab11 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab12/Exercise/*"
+            element={<ExerciseLab12 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab13/Exercise/*"
+            element={<ExerciseLab13 user={state.main.user} />}
+          />
+          <Route
+            path="/Lab14/Exercise/*"
+            element={<ExerciseLab14 user={state.main.user} />}
+          />
 
-          <Route path={`/Lab${lab}/Reinforcement`} element={<Reinforcement user={state.main.user} labID={lab} />} />
+          <Route
+            path={`/Lab${lab}/Reinforcement`}
+            element={<Reinforcement user={state.main.user} labID={lab} />}
+          />
           <Route
             path={`/Lab${lab}/Quiz`}
             element={
@@ -162,13 +229,25 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/SiteMap" element={<SiteMap />} />
         <Route path="/Profile" element={<Profile user={state.main.user} />} />
-        <Route path="/Labs" element={<LabsPage user={state.main.user} actions={actions} />} />
-        <Route path="/EducatorResources" element={<EducatorResources user={state.main.user} />} />
+        <Route
+          path="/Labs"
+          element={<LabsPage user={state.main.user} actions={actions} />}
+        />
+        <Route
+          path="/EducatorResources"
+          element={<EducatorResources user={state.main.user} />}
+        />
         <Route path="*" element={<Error actions={actions} />} />
 
         <Route
           path="/Imagine2023/*"
-          element={<Imagine2023 user={state.main.user} isImagine={isImagine} actions={actions} />}
+          element={
+            <Imagine2023
+              user={state.main.user}
+              isImagine={isImagine}
+              actions={actions}
+            />
+          }
         />
 
         <Route
@@ -185,7 +264,7 @@ const App = () => {
       {isLoaded ? (
         <div
           className={
-            labInProgress || isImagine ? "" : "overflow-x-hidden min-h-screen"
+            labInProgress || isImagine ? '' : 'overflow-x-hidden min-h-screen'
           }
         >
           <Suspense fallback={<Spinner />}>
@@ -205,7 +284,7 @@ const App = () => {
                     {renderLabs()}
                   </LabWindow>
                 ) : (
-                  <div className={"tw-flex tw-row-span-10 tw-text-center"}>
+                  <div className={'tw-flex tw-row-span-10 tw-text-center'}>
                     {renderPages()}
                   </div>
                 )}

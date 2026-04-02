@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import GoogleButton from "react-google-button";
-import "../title.css";
+import React, { Component } from 'react';
+import GoogleButton from 'react-google-button';
+import '../title.css';
 
 /*
 Class for handling the google signin button
@@ -11,9 +11,9 @@ export class Google extends Component {
   render() {
     // Handles the call back api controller
     const clickMethod = () => {
-      fetch(process.env.REACT_APP_SERVER_URL + "/auth/google", {
-        method: "GET",
-        credentials: "include",
+      fetch(import.meta.env.VITE_REACT_APP_SERVER_URL + '/auth/google', {
+        method: 'GET',
+        credentials: 'include',
       })
         .then((res) => res.json())
         .then((data) => {

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'node:path'
+import path from 'node:path';
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   resolve: {
@@ -10,7 +11,7 @@ export default defineConfig({
       '@all-components': path.resolve(__dirname, 'src/components/all-components'),
     },
   },
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   server: {
     port: 3000, // Optional: keeps it on the CRA default port
   },

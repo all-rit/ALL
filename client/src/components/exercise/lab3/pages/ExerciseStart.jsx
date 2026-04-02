@@ -21,42 +21,27 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const navigate = useNavigate();
+const ExerciseStart = (props) => {
+  const navigate = useNavigate(); // This is allowed here!
+  const { actions } = props;
 
-class ExerciseStart extends Component {
+  const handleSubmit = () => navigate('/Lab3/Exercise/BeginnerExercise');
+  const handleSubmitAdv = () => navigate('/Lab3/Exercise/AdvancedExercise');
 
-  handleSubmit() {
-    navigate('/Lab3/Exercise/BeginnerExercise');
-  }
-  handleSubmitAdv() {
-    navigate('/Lab3/Exercise/AdvancedExercise');
-  }
-  render() {
-    return (
-      <Fragment>
-        <div className="center-div">
-          <h2 className={'tw-title'}> Select Exercise Difficulty</h2>
-          <AppInstructions />
-          <button
-            onClick={this.handleSubmit}
-            className={
-              'btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow'
-            }
-          >
-            Beginner Exercise
-          </button>
-          <button
-            onClick={this.handleSubmitAdv}
-            className={
-              'btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow'
-            }
-          >
-            Advanced Exercise
-          </button>
-        </div>
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+      <div className="center-div">
+        <h2 className={'tw-title'}> Select Exercise Difficulty</h2>
+        <AppInstructions />
+        <button onClick={handleSubmit} className={'btn btn-xl tw-shadow-lg ...'}>
+          Beginner Exercise
+        </button>
+        <button onClick={handleSubmitAdv} className={'btn btn-xl tw-shadow-lg ...'}>
+          Advanced Exercise
+        </button>
+      </div>
+    </Fragment>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);

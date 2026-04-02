@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
-const { nanoid } = require('nanoid');
+import { nanoid } from 'nanoid';
 import { PropTypes } from 'prop-types';
 
 const UpdateID = (props) => {
+  const navigate = useNavigate();
   const { setUserID, user, actions } = props;
 
   const handleNext = () => {

@@ -1,13 +1,19 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useMemo,
+  useCallback,
+} from 'react';
 import {
   MainReducerForContext,
   initialState,
   types,
-} from "./MainReducerForContext";
-import { PropTypes } from "prop-types";
-import AuthService from "../services/AuthService";
-import UserService from "../services/UserService";
-import { MathJaxContext } from "better-react-mathjax";
+} from './MainReducerForContext';
+import { PropTypes } from 'prop-types';
+import AuthService from '../services/AuthService';
+import UserService from '../services/UserService';
+import { MathJaxContext } from 'better-react-mathjax';
 
 /**
  * MainStateContext is a context object created using createContext() function.
@@ -39,7 +45,7 @@ const useMainStateContext = () => {
 
   if (context === undefined) {
     throw new Error(
-      "useMainStateContext must be used within MainStateContextProvider",
+      'useMainStateContext must be used within MainStateContextProvider',
     );
   }
 
@@ -65,60 +71,63 @@ export const MainContextProvider = ({ children }) => {
    * @property {Function} updateUserState - Updates the user state value in the state.
    * @property {Function} setIsImagine - Set the value of imagine to true or false, allowing special actions.
    */
-  const actions = {
-    setBody: (newBody) =>
-      dispatch({ type: types.SET_BODY, payload: { body: newBody } }),
-    login: async () => {
-      try {
-        const user = await AuthService.getUser();
-        dispatch({ type: types.LOGIN });
-        // If the login was successful, perform another action
-        if (user) {
-          dispatch({ type: types.UPDATE_USER, payload: { user: user } });
+  const actions = useMemo(
+    () => ({
+      setBody: (newBody) =>
+        dispatch({ type: types.SET_BODY, payload: { body: newBody } }),
+      login: async () => {
+        try {
+          const user = await AuthService.getUser();
+          dispatch({ type: types.LOGIN });
+          // If the login was successful, perform another action
+          if (user) {
+            dispatch({ type: types.UPDATE_USER, payload: { user: user } });
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    developmentLogin: async (userId) => {
-      try {
-        const user = await UserService.developmentLogin(userId);
-        if (user) {
-          dispatch({ type: types.UPDATE_USER, payload: { user: user } });
+      },
+      developmentLogin: async (userId) => {
+        try {
+          const user = await UserService.developmentLogin(userId);
+          if (user) {
+            dispatch({ type: types.UPDATE_USER, payload: { user: user } });
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    setLab: (newLab) =>
-      dispatch({ type: types.SET_LAB, payload: { lab: newLab } }),
-    updateUser: (newUser) =>
-      dispatch({ type: types.UPDATE_USER, payload: { user: newUser } }),
-    updateUserState: (newUserState) =>
-      dispatch({
-        type: types.UPDATE_USER_STATE,
-        payload: { userState: newUserState },
-      }),
-    setIsImagine: (isImagine) =>
-      dispatch({
-        type: types.SET_IS_IMAGINE,
-        payload: { isImagine: isImagine },
-      }),
-    showSnackbar: (message, notificationType, xPosition, yPosition) =>
-      dispatch({
-        type: types.SHOW_SNACKBAR,
-        payload: {
-          message: message,
-          notificationType: notificationType,
-          xPosition: xPosition,
-          yPosition: yPosition,
-        },
-      }),
-    hideSnackbar: () =>
-      dispatch({
-        type: types.HIDE_SNACKBAR,
-      }),
-  };
+      },
+      setLab: (newLab) =>
+        dispatch({ type: types.SET_LAB, payload: { lab: newLab } }),
+      updateUser: (newUser) =>
+        dispatch({ type: types.UPDATE_USER, payload: { user: newUser } }),
+      updateUserState: (newUserState) =>
+        dispatch({
+          type: types.UPDATE_USER_STATE,
+          payload: { userState: newUserState },
+        }),
+      setIsImagine: (isImagine) =>
+        dispatch({
+          type: types.SET_IS_IMAGINE,
+          payload: { isImagine: isImagine },
+        }),
+      showSnackbar: (message, notificationType, xPosition, yPosition) =>
+        dispatch({
+          type: types.SHOW_SNACKBAR,
+          payload: {
+            message: message,
+            notificationType: notificationType,
+            xPosition: xPosition,
+            yPosition: yPosition,
+          },
+        }),
+      hideSnackbar: () =>
+        dispatch({
+          type: types.HIDE_SNACKBAR,
+        }),
+    }),
+    [],
+  );
 
   /**
    * Represents the value of the MainContext.
@@ -126,16 +135,17 @@ export const MainContextProvider = ({ children }) => {
    * @property {Object} state - The state object.
    * @property {Object} actions - The actions object.
    */
-  const value = {
-    state: { ...state },
-    actions: { ...actions },
-  };
+  const value = useMemo(
+    () => ({
+      state,
+      actions,
+    }),
+    [state, actions],
+  );
 
   return (
     <MainStateContext.Provider value={value}>
-      <MathJaxContext>
-        {children}
-      </MathJaxContext>
+      <MathJaxContext>{children}</MathJaxContext>
     </MainStateContext.Provider>
   );
 };

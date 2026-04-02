@@ -3,10 +3,10 @@ import { createRoot } from "react-dom/client";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
+import './assets/stylesheets/main.css'
 import App from "./App";
 import reducers from "./reducers";
-// import * as serviceWorker from "./serviceWorker";
-import MainContextProvider from "./reducers/MainContext";
+import { MainContextProvider } from "./reducers/MainContext";
 import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(reducers);

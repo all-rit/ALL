@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ExerciseStateContext from './Lab11Context';
-import { Router, navigate } from 'react-router-dom';
+import { Router, useNavigate } from 'react-router-dom';
 import LiteracyExerciseStart from './pages/LiteracyExerciseStart';
 import LiteracyExerciseEnd from './pages/LiteracyExerciseEnd';
 import InformationLetterEmail from '@all-components/InformationLetterEmail';
@@ -30,6 +30,7 @@ import {
 } from '@/constants/lab11/index';
 
 const Main = () => {
+  const navigate = useNavigate();
   const { actions } = useMainStateContext();
   const [exerciseState, setExerciseState] = useState('');
   const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_10);

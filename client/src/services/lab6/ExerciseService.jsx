@@ -1,18 +1,18 @@
-import API from "../API";
+import API from '../API';
 
 const endpoints = {
-  SUBMIT_AVATAR: "/lab6/exercise/avatar",
-  SUBMIT_QUAL_QUESTIONS: "/lab6/exercise/qualquestions",
-  SUBMIT_AI_ANALYSIS_QUESTION: "/lab6/exercise/aianalysisquestion",
-  SUBMIT_HIRED_CANIDATES: "/lab6/exercise/hiredcanidates",
-  SUBMIT_AI_REASONING_QUESTIONS: "/lab6/exercise/aireasoningquestion",
-  SUBMIT_FIXED_HIRED_CANIDATES: "/lab6/exercise/fixedhiredcanidates",
+  SUBMIT_AVATAR: '/lab6/exercise/avatar',
+  SUBMIT_QUAL_QUESTIONS: '/lab6/exercise/qualquestions',
+  SUBMIT_AI_ANALYSIS_QUESTION: '/lab6/exercise/aianalysisquestion',
+  SUBMIT_HIRED_CANIDATES: '/lab6/exercise/hiredcanidates',
+  SUBMIT_AI_REASONING_QUESTIONS: '/lab6/exercise/aireasoningquestion',
+  SUBMIT_FIXED_HIRED_CANIDATES: '/lab6/exercise/fixedhiredcanidates',
 };
 
 const ExerciseService = {
   submitAvatar: (avatar) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_AVATAR,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + endpoints.SUBMIT_AVATAR,
       {
         avatar,
       },
@@ -20,7 +20,8 @@ const ExerciseService = {
   },
   submitQualQuestions: (qualQuestions) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_QUAL_QUESTIONS,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        endpoints.SUBMIT_QUAL_QUESTIONS,
       {
         qualQuestions,
       },
@@ -28,7 +29,8 @@ const ExerciseService = {
   },
   submitAIAnalysisQuestion: (aiAnalysisQuestion) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_AI_ANALYSIS_QUESTION,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        endpoints.SUBMIT_AI_ANALYSIS_QUESTION,
       {
         aiAnalysisQuestion,
       },
@@ -36,7 +38,8 @@ const ExerciseService = {
   },
   submitHiredCanidates: (hiredCanidates) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_HIRED_CANIDATES,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        endpoints.SUBMIT_HIRED_CANIDATES,
       {
         hiredCanidates,
       },
@@ -44,7 +47,7 @@ const ExerciseService = {
   },
   submitAIReasoningQuestion: (aiReasoningQuestion) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         endpoints.SUBMIT_AI_REASONING_QUESTIONS,
       {
         aiReasoningQuestion,
@@ -53,7 +56,8 @@ const ExerciseService = {
   },
   submitFixedHiredCanidates: (fixedHiredCanidates) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_FIXED_HIRED_CANIDATES,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        endpoints.SUBMIT_FIXED_HIRED_CANIDATES,
       {
         fixedHiredCanidates,
       },

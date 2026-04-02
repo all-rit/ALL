@@ -1,17 +1,17 @@
-import API from "./API";
+import API from './API';
 
 const endpoints = {
-  COMPLETE_ABOUT: "/completeAbout",
-  COMPLETE_READING: "/completeReading",
-  COMPLETE_EXERCISE: "/completeExercise",
-  COMPLETE_REINFORCEMENT: "/completeReinforcement",
-  COMPLETE_QUIZ: "/completeQuiz",
+  COMPLETE_ABOUT: '/completeAbout',
+  COMPLETE_READING: '/completeReading',
+  COMPLETE_EXERCISE: '/completeExercise',
+  COMPLETE_REINFORCEMENT: '/completeReinforcement',
+  COMPLETE_QUIZ: '/completeQuiz',
 };
 
 const UserLabService = {
   complete_about: (labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_ABOUT,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + endpoints.COMPLETE_ABOUT,
       {
         labid,
       },
@@ -19,7 +19,7 @@ const UserLabService = {
   },
   complete_reading: (labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_READING,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + endpoints.COMPLETE_READING,
       {
         labid,
       },
@@ -27,7 +27,7 @@ const UserLabService = {
   },
   complete_exercise: (labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_EXERCISE,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + endpoints.COMPLETE_EXERCISE,
       {
         labid,
       },
@@ -35,7 +35,8 @@ const UserLabService = {
   },
   complete_reinforcement: (labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_REINFORCEMENT,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        endpoints.COMPLETE_REINFORCEMENT,
       {
         labid,
       },
@@ -43,7 +44,7 @@ const UserLabService = {
   },
   complete_quiz: (labid, quizscore, quizresult) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_QUIZ,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + endpoints.COMPLETE_QUIZ,
       {
         labid,
         quizscore,
@@ -54,7 +55,7 @@ const UserLabService = {
 
   user_complete_about: (userid, labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/${userid}` +
         endpoints.COMPLETE_ABOUT,
       {
@@ -65,7 +66,7 @@ const UserLabService = {
   },
   user_complete_reading: (userid, labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/${userid}` +
         endpoints.COMPLETE_READING,
       {
@@ -76,7 +77,7 @@ const UserLabService = {
   },
   user_complete_exercise: (userid, labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/${userid}` +
         endpoints.COMPLETE_EXERCISE,
       {
@@ -87,7 +88,7 @@ const UserLabService = {
   },
   user_complete_reinforcement: (userid, labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
         `/${userid}` +
         endpoints.COMPLETE_REINFORCEMENT,
       {
@@ -98,7 +99,9 @@ const UserLabService = {
   },
   user_complete_quiz: (userid, labid, quizscore) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/${userid}` + endpoints.COMPLETE_QUIZ,
+      import.meta.env.VITE_REACT_APP_SERVER_URL +
+        `/${userid}` +
+        endpoints.COMPLETE_QUIZ,
       {
         userid,
         labid,
@@ -108,14 +111,14 @@ const UserLabService = {
   },
   getUserLabCompletion: (userid, labid) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/user/${userid}/${labid}`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + `/user/${userid}/${labid}`,
     )
       .then((response) => response.json())
       .then((json) => json);
   },
   getUserLabRecords: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/user/${userID}/labrecords`,
+      import.meta.env.VITE_REACT_APP_SERVER_URL + `/user/${userID}/labrecords`,
     )
       .then((response) => response.json())
       .then((json) => json);
