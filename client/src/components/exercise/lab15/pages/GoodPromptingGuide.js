@@ -12,14 +12,12 @@ const GoodPromptingGuide = () => {
         <h1 className="tw-title tw-text-left">What is GCSE?</h1>
         {/* Context about what the GCSE guide is */}
         <p className="tw-body-text tw-my-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.
+          The GCSE framework (Goal, Context, Sources, Expectations) is a simple way to write better prompts, so you get clearer and more useful answers from AI. 
+          Instead of asking vague questions, this framework helps you break your request into four parts.
         </p>
       </div>
       {/* Columns for each term in GCSE */}
-      <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-flex-1 tw-min-h-[50vh]">
+      <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-flex-1 tw-min-h-[50vh] mb-4">
         {gcse_content.map((item, index) => (
           <div key={item.letter} className="tw-relative tw-h-full">
             {/* Black dividers between the columns. First one is mobile, second is larger screen. */}
