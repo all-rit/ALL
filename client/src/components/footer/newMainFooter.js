@@ -8,9 +8,11 @@ const NewMainFooter = () => {
     <Row className="tw-px-12 tw-pb-5 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-flex tw-flex-row tw-justify-end">
       {/*Column 1*/}
       <Col xs={3}>
-        <a href="#">
-          <img className="logo tw-flex tw-h-auto" src={logo} alt="ALL Logo" />
-        </a>
+        <Col xs={9}>
+          <a href="#">
+            <img className="logo tw-flex tw-h-auto" src={logo} alt="ALL Logo" />
+          </a>
+        </Col>
         <p className="tw-body-text tw-text-left">
           Accessible Learning Labs is an NSF funded initiative aimed at
           fostering STEM proficiency.
