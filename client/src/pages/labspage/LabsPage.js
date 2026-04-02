@@ -233,10 +233,10 @@ const LabsPage = (props) => {
         body={EXPLORE_LABS_BODY}
         img={Student}
       />
-      <div className="tw-relative tw-h-auto  tw-mb-20">
-        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16">
+      <div className="tw-relative tw-h-auto tw-mb-20">
+        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16 tw-bottom-6">
           <div
-            className="tw-flex tw-bg-primary-blue tw-w-full sm:-tw-left-8 tw-top-16
+            className="tw-flex tw-bg-primary-blue tw-w-full sm:-tw-left-8 tw-pb-8 tw-top-8 sm:tw-top-16   
                             tw-h-auto tw-relative sm:tw-rounded-tr-lg"
           >
             <div className="tw-bg-white tw-auto tw-w-full sm:-tw-left-4 -tw-left-0 tw-top-4 sm:tw-rounded-tr-lg tw-justify-left tw-relative">
