@@ -7,16 +7,6 @@ import { navigate } from "@reach/router";
 const Analysis = () => {
   const [content, setContent] = useState(null);
 
-  const handleNavigation = async () => {
-    const isUnderAge = sessionStorage.getItem("isUnderAge");
-    console.log(isUnderAge);
-    if (isUnderAge === "true") {
-      navigate("/Imagine2025/Done");
-    } else {
-      navigate("/Imagine2025/PostSurvey");
-    }
-  };
-
   //until the userID is grabbed, the page will techincally be blank until the useeffect activates
   useEffect(() => {
     const fetchContent = async () => {
@@ -61,13 +51,6 @@ const Analysis = () => {
     <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-h-[100%] tw-items-center">
       <h3 className="tw-title text-center">Analysis</h3>
       {content}
-      <Button
-        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
-        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
-        onClick={handleNavigation}
-      >
-        Next
-      </Button>
     </div>
   );
 };
@@ -93,7 +76,7 @@ const ScorePage = () => {
   );
   const opponentScore2 = totalOpponentScore - opponentScore1;
 
-  const [content, setContent] = useState(
+  return (
     <>
       <h3 className="tw-title text-center">Game Outcome</h3>
 
@@ -114,25 +97,23 @@ const ScorePage = () => {
           <div>Opponent 2 Score: {opponentScore2}</div>
         </div>
       </div>
-
-      <Button
-        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
-       tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
-        onClick={() => setContent(<Analysis />)}
-      >
-        Analyze Game
-      </Button>
-    </>,
+    </>
   );
-
-  return content;
 };
 
 const Results = () => {
-  const contentSizing =
-    "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
-
   const [teammateId, setTeammateId] = useState(null);
+  const [showScores, setShowScores] = useState(false);
+
+  const handleNavigation = async () => {
+    const isUnderAge = sessionStorage.getItem("isUnderAge");
+    console.log(isUnderAge);
+    if (isUnderAge === "true") {
+      navigate("/Imagine2025/Done");
+    } else {
+      navigate("/Imagine2025/PostSurvey");
+    }
+  };
 
   useEffect(() => {
     const fetchTeammateID = async () => {
@@ -148,11 +129,30 @@ const Results = () => {
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
-      <div className={contentSizing + " tw-pt-[7rem] tw-hidden"}>
-        <ScorePage className={contentSizing} />
+      <div className={showScores ? "" : "tw-hidden"}>
+        <ScorePage />
       </div>
-      <div className="tw-w-[60%] tw-aspect-video tw-mx-auto">
-        <TeammateVideo teammateId={teammateId} messageShown={true} />
+      <div className={showScores ? "tw-hidden" : ""}>
+        <div className="tw-w-[60%] tw-aspect-video tw-mx-auto">
+          <TeammateVideo teammateId={teammateId} messageShown={true} />
+        </div>
+      </div>
+      <Button
+        className="tw-absolute tw-left-10 tw-bottom-40 tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
+        tw-border-[0.4rem] tw-border-r-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
+        onClick={() => setShowScores((prev) => !prev)}
+      >
+        Show Scores
+      </Button>
+      <Button
+        className="tw-absolute tw-right-10 tw-bottom-40 tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
+        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
+        onClick={handleNavigation}
+      >
+        Next
+      </Button>
+      <div className="tw-hidden">
+        <Analysis />
       </div>
       <p>
         Teammate live from: <b>Buffalo, NY</b>
