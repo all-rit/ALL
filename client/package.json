@@ -29,7 +29,7 @@
     "hex-to-rgba": "^2.0.1",
     "highlight.js": "^11.9.0",
     "immutability-helper": "^3.1.1",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "mathjax-react": "^2.0.1",
     "mathjs": "^12.4.1",
     "prismjs": "^1.29.0",
