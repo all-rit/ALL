@@ -78,7 +78,7 @@ class MainFooter extends Component {
   render() {
     return (
       <>
-        {!this.props.isImagine && (
+        {
           <>
             {/* Gray Footer */}
             <div className="tw-px-12 tw-py-12 tw-bg-labGray tw-text-white tw-mt-[5rem]">
@@ -258,7 +258,7 @@ class MainFooter extends Component {
               </div>
             </div>
           </>
-        )}
+        }
       </>
     );
   }
