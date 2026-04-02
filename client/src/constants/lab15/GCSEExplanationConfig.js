@@ -16,7 +16,7 @@ export const gcse_content = [
     letter: "G",
     content:
       `The goal is what you want the AI to do. It explains the main task simply and directly. A good goal helps the AI understand exactly what 
-      kind of answer you are looking for. For example, instead of saying “tell me about history,” a better goal would be “explain the causes of 
+      kind of answer you are looking for. For example, instead of saying “Tell me about history,” a better goal would be “explain the causes of 
       World War I.” Clear goals lead to better and more useful responses.`,
   },
   {
