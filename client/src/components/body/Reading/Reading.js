@@ -379,6 +379,7 @@ const Reading = (props) => {
                       options={largeViewPortOptions}
                       height={!isImagine && PIE_SIZE}
                       aria-label={accessiblePieLabel}
+                      role="img"
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&
