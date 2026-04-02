@@ -17,6 +17,7 @@ const PromptViewer = ({
   activeKey,
   lockedKeys,
   justLockedKey,
+  className,
 }) => {
   // Animation class states
   const [goalAnimClass, setGoalAnimClass] = useState("");
@@ -78,7 +79,9 @@ const PromptViewer = ({
   }, [justLockedKey]);
 
   return (
-    <div className="tw-bg-white tw-rounded-xl tw-border-solid tw-border-darkGray tw-px-7 tw-py-6 tw-shadow-md tw-shadow-black/30">
+    <div
+      className={`tw-bg-white tw-rounded-xl tw-border-solid tw-border-darkGray tw-px-7 tw-py-8 tw-shadow-md tw-shadow-black/30 tw-flex tw-min-h-[350px] tw-flex-col ${className ?? ""}`}
+    >
       <style dangerouslySetInnerHTML={{ __html: KEYFRAME_CSS }} />
       <div className="tw-text-lg tw-text-left tw-font-bold tw-text-darkGray tw-uppercase tw-tracking-wider">
         Prompt
@@ -87,7 +90,7 @@ const PromptViewer = ({
       {/* Divider */}
       <hr className="tw-border-2 tw-border-black"></hr>
 
-      <p className="tw-text-sm tw-text-left tw-leading-[2.4] tw-italic">
+      <p className="tw-text-sm tw-text-left tw-italic tw-leading-[3.5] tw-flex-1 tw-pt-3">
         {sections.map((section, index) => {
           const currentValue = values[section.key];
           const isLocked = lockedKeys.includes(section.key);
@@ -106,12 +109,12 @@ const PromptViewer = ({
 
           return (
             <span key={section.key}>
-              <span className="tw-inline-flex tw-items-center tw-justify-center tw-w-5 tw-h-5 tw-rounded-full tw-border-solid tw-border-darkLine tw-text-[10px] tw-font-bold tw-mx-1.5 tw-align-middle tw-flex-shrink-0">
+              <span className="tw-inline-flex tw-items-center tw-justify-center tw-w-7 tw-h-7 tw-rounded-full tw-border-solid tw-border-darkLine tw-text-sm tw-font-bold tw-mx-2 tw-align-middle tw-flex-shrink-0">
                 {section.number}
               </span>
 
               <span
-                className={`tw-inline tw-text-left tw-rounded-md tw-px-2 tw-py-0.5 tw-mx-0.5 tw-leading-relaxed ${variantClass} ${animClasses[section.key]}`}
+                className={`tw-inline tw-text-lg tw-text-left tw-rounded-md tw-px-2 tw-py-0.5 tw-mx-0.5 tw-leading-relaxed ${variantClass} ${animClasses[section.key]}`}
               >
                 {displayText}
               </span>
@@ -145,6 +148,7 @@ PromptViewer.propTypes = {
     PropTypes.string,
     PropTypes.oneOf([null]),
   ]),
+  className: PropTypes.string,
 };
 
 PromptViewer.defaultProps = {
@@ -153,6 +157,7 @@ PromptViewer.defaultProps = {
   activeKey: DEFAULT_ACTIVE_KEY,
   lockedKeys: [],
   justLockedKey: null,
+  className: "",
 };
 
 export default PromptViewer;
