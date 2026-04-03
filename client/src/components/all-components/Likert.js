@@ -1,15 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Likert = (props) => {
-  const options = [
-    "Strongly Disagree",
-    "Disagree",
-    "Neutral",
-    "Agree",
-    "Strongly Agree",
-  ];
+const defaultOptions = [
+  "Strongly Disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly Agree",
+];
 
+const Likert = ({
+  options = defaultOptions,
+  onAnswerSelected,
+  name = "likert",
+}) => {
   return (
     <div className="tw-my-4">
       <div className="tw-flex tw-w-[80%] tw-mx-auto tw-justify-center tw-justify-between tw-pb-3">
@@ -19,12 +23,12 @@ const Likert = (props) => {
             <input
               type="radio"
               className="radioCustomButton"
-              id={value}
+              id={`${name}-${value}`}
               value={value}
-              name="likert"
-              onChange={props.onAnswerSelected}
+              name={name}
+              onChange={onAnswerSelected}
             />
-            <label className="radioCustomLabel" htmlFor={value} />
+            <label className="radioCustomLabel" htmlFor={`${name}-${value}`} />
           </div>
         ))}
       </div>
@@ -33,7 +37,9 @@ const Likert = (props) => {
 };
 
 Likert.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
   onAnswerSelected: PropTypes.func.isRequired,
+  name: PropTypes.string,
 };
 
 export default Likert;

@@ -14,6 +14,7 @@ import {
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
+import UserPfp from "../all-components/UserPfp";
 
 const Header = ({ isImagine }) => {
   const { state, actions } = useMainStateContext();
@@ -137,16 +138,16 @@ const Header = ({ isImagine }) => {
 
   return (
     <div
-      className={`tw-h-[5rem] tw-my-0 ${isImagine ? "tw-h-[8rem] tw-mb-[0.5rem]" : ""}`}
+      className={`tw-h-[7rem] tw-relative tw-my-0 ${isImagine ? "tw-mb-[4rem]" : ""}`}
     >
       {/* Shadow & Positioning*/}
       <div
-        className={`tw-flex tw-bg-white tw-z-30 tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-shadow-lg tw-pl-5 lg:tw-pl-12`}
+        className={`tw-h-full tw-flex tw-bg-white tw-z-30 tw-absolute tw-top-0 tw-left-0 tw-right-0 tw-shadow-lg tw-pl-5 lg:tw-pl-12`}
       >
         {/* Logo */}
         <a onClick={() => !isImagine && navigate("/")}>
           <img
-            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[5rem]`}
+            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[7rem]`}
             src={Logo}
             alt="Accessible Learning Labs"
           />
@@ -186,7 +187,7 @@ const Header = ({ isImagine }) => {
                 className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
                 onClick={toggleProfileCollapse}
               >
-                <img src={state.main.user?.userpfp} />
+                <UserPfp />
               </button>
 
               <Fade in={profileCollapseOpen}>
@@ -204,7 +205,11 @@ const Header = ({ isImagine }) => {
           isOpen={showSignIn}
           toggle={toggleSignInShown}
         >
-          <LoginBody />
+          <LoginBody
+            closeModal={() => {
+              setShowSignIn(false);
+            }}
+          />
         </BrandedALLModal>
       </div>
     </div>

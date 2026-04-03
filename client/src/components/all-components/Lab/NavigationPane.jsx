@@ -79,19 +79,19 @@ const NavigationPane = (props) => {
         "tw-flex tw-flex-col tw-gap-y-3 tw-text-left xs:tw-hidden md:tw-flex tw-max-w-[20rem] tw-h-full tw-justify-between tw-z-10"
       }
     >
-      <div className={"tw-flex tw-flex-col tw-h-3/4 tw-gap-y-4"}>
+      <div className={"tw-flex tw-flex-col tw-flex-1 tw-min-h-0 tw-gap-y-4"}>
         {/* Title Block */}
         <div
           className={
             "tw-py-4 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-max-h-[10rem] tw-shadow-md"
           }
         >
-          <h1 className={"tw-title tw-text-xl tw-py-2"}>{props.title} </h1>
+          <h1 className={"tw-title tw-text-xl tw-py-2"}>{props.title}</h1>
         </div>
         {/* Table of Contents Block */}
         <div
           className={
-            "tw-flex tw-flex-col tw-justify-between tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-full tw-shadow-md"
+            "tw-flex tw-flex-col tw-flex-1 tw-min-h-0 tw-py-3 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-8 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-shadow-md"
           }
         >
           <div className={"tw-flex tw-flex-col tw-gap-y-3 tw-h-full"}>
@@ -115,7 +115,7 @@ const NavigationPane = (props) => {
                   >
                     <p
                       className={twMerge(
-                        "tw-font-semibold tw-body-text tw-px-4 ",
+                        "tw-font-semibold tw-body-text tw-px-4",
                         currentSection === section
                           ? "tw-bg-primary-yellow"
                           : "",

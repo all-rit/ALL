@@ -53,7 +53,7 @@ const Decryption = ({
   };
 
   const formatNumber = (num) => {
-    if (Math.abs(num) >= 1e6) {
+    if (Math.abs(num) >= 1e12) {
       return num.toExponential(2);
     }
     return num.toLocaleString();
