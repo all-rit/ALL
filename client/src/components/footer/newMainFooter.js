@@ -1,13 +1,13 @@
-import { Col, Container, Row } from "reactstrap";
+import { Col, Container, Nav, NavItem, NavLink, Row } from "reactstrap";
 import logo from "../../assets/images/logos/ALL_White.svg";
 import nsf from "../../assets/images/logos/nsf.png";
 import rit from "../../assets/images/logos/RIT.png";
 
 const NewMainFooter = () => {
   return (
-    <Row className="tw-px-12 tw-pb-5 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-flex tw-flex-row tw-justify-end">
+    <Row className="tw-px-12 tw-pt-[1rem] tw-pb-5 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-flex tw-flex-row tw-justify-end">
       {/*Column 1*/}
-      <Col xs={3}>
+      <Col xs={2}>
         <Col xs={9}>
           <a href="#">
             <img className="logo tw-flex tw-h-auto" src={logo} alt="ALL Logo" />
@@ -20,7 +20,63 @@ const NewMainFooter = () => {
       </Col>
       {/*Column 2*/}
       <Col xs={4}>
-        <p>col 2</p>
+        <Row>
+          <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
+            <strong>Links</strong>
+          </h3>
+        </Row>
+        <Row>
+          <Col>
+            <Nav vertical>
+              <NavItem>
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-left tw-p-0"
+                  href="/#"
+                >
+                  <p className="tw-text-base tw-text-white">Home</p>
+                </NavLink>
+              </NavItem>
+              <NavItem className="tw-border-solid tw-border-white tw-border-t-2 tw-border-r-0 tw-border-b-0 tw-border-l-0">
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-left tw-p-0"
+                  href="/Labs"
+                >
+                  <p className="tw-text-base tw-text-white">Labs</p>
+                </NavLink>
+              </NavItem>
+              <NavItem className="tw-border-solid tw-border-white tw-border-l-0 tw-border-r-0 tw-border-b-0 tw-border-t-2">
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-left tw-p-0"
+                  href="/about-us"
+                >
+                  <p className="tw-text-base tw-text-white">About Us</p>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Col>
+          <Col>
+            <Nav vertical>
+              <NavItem className="tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-left tw-p-0"
+                  href="/EducatorResources"
+                >
+                  <p className="tw-text-base tw-text-white">
+                    Educator Resources
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem className="tw-border-solid tw-border-white tw-border-t-2 tw-border-r-0 tw-border-b-0 tw-border-l-0">
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-left tw-p-0"
+                  href="/SiteMap"
+                >
+                  <p className="tw-text-base tw-text-white">Site Map</p>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Col>
+        </Row>
       </Col>
       {/*Column 3*/}
       <Col xs={2}>

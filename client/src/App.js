@@ -28,7 +28,6 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -232,13 +231,7 @@ const App = () => {
                 )}
               </div>
             </div>
-            {!labInProgress && !isImagine ? (
-              <>
-                <MainFooter /> <NewMainFooter />
-              </>
-            ) : (
-              <></>
-            )}
+            {!labInProgress && !isImagine ? <NewMainFooter /> : <></>}
             <ALLSnackbar />
           </Suspense>
         </div>
