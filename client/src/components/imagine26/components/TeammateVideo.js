@@ -10,10 +10,9 @@ import DisplayDeepFake from "./DisplayDeepfake";
 
 const TeammateVideo = (props) => {
   const { teammateId, status } = props;
-
   const [group, setGroup] = useState(null);
   const [videoSrc, setVideoSrc] = useState("");
-
+  const buttonSize = "tw-w-16 tw-mx-auto";
   useEffect(() => {
     const fetchGroup = async () => {
       try {
@@ -47,7 +46,7 @@ const TeammateVideo = (props) => {
     } else if (status == "chatroom") {
       //replace with video of teammate typing or keep the same reaction video
      const teammateReactionVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
-    console.log(teammateReactionVideos[group]);
+      console.log(teammateReactionVideos[group]);
       setVideoSrc(teammateReactionVideos[group] || teammateReactionVideos.A);
     }
   }, [teammateId, status, group]);
@@ -76,21 +75,27 @@ const TeammateVideo = (props) => {
         </div>
   }
 
-  const buttonSize = "tw-w-16 tw-mx-auto";
+  const modeClasses = status == 'chatroom'
+    ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0" 
+    : "tw-absolute tw-top-[3.4%] tw-right-1 tw-w-96 tw-max-h-[600px]";
 
   return (
-    // <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[575px]"></div>
-    <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-2 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-w-96 tw-max-h-[600px]">
+    <div 
+      // className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-2 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[600px]"
+      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg`}
+    >
       <p className="tw-mb-3">
         Teammate live from: <b>Buffalo, NY</b>
       </p>
-      <video
+      <div className = "tw-flex-1 tw-overflow-y-auto">
+             <video
         key={`${videoSrc}-${status}`}
         src={videoSrc}
         autoPlay
         loop
         muted
-        className={`tw-w-full tw-h-[200px] tw-object-cover tw-shadow-lg tw-rounded-lg`}
+        // className={`tw-w-full tw-h-[250px] tw-object-cover tw-shadow-lg tw-rounded-lg`}
+        className={`tw-w-full tw-object-cover tw-rounded-lg ${status == 'chatroom' ? 'tw-aspect-video tw-h-[220px]' : 'tw-h-[200px]'}`}
       />
       
     {status === "chatroom" ?(
@@ -125,6 +130,8 @@ const TeammateVideo = (props) => {
 
     )}
     </div>
+   
+  </div>
   );
 };
 

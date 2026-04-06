@@ -3,12 +3,23 @@ const db = require("../database");
 const { GoogleGenAI } = require("@google/genai");
 const { Storage } = require("@google-cloud/storage");
 
-//Starting google cloud storage for storing deepfakes
-const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-});
-const bucket_name = "all_test_deepfake";
-const bucket = storage.bucket(bucket_name);
+//Starting Google Cloud storage using credentials. Chech that env variable is set to avoid server from crashing
+
+const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+let storage = null;
+const bucket_name = "imagine_26";
+if (credentials){
+  
+  storage = new Storage({
+  keyFilename: credentials,
+  });
+
+}else{
+  console.log("Env variable not set for Google Cloud Credentials")
+}
+
+
+
 
 const submitStudy = async (data) => {
   const { userID, study, year } = data;
@@ -456,12 +467,24 @@ const postImagepath = async (imagine,userID,imagepath) =>{
 };
 
 const deepFakeGenerator = async (imagine, userID, base64String, imagePath) => {
+  if(!storage){
+    console.log("env variable not set for google cloud")
+    return false
+  }
+  
+  const bucket = storage.bucket(bucket_name);
   const file = bucket.file(imagePath);
+  
+  if (!process.env.GEMINI_API_KEY){
+    console.log("env variable is not set")
+    return false
+  }
+  
   const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY,
   });
 
-  const textPrompt = "Generate an image of the person in this photo frowning,wearing a blue hat and holding a sign that says: I dont want cotton candy. The sign has to be visible in the image"
+  const textPrompt = "Generate an image of the person in this photo frowning,wearing a propeller hat and holding a sign that says: I dont want cotton popcorn. The sign has to be visible in the image"
   const prompt = [
     { text: textPrompt },
     {
