@@ -5,7 +5,7 @@ import rit from "../../assets/images/logos/RIT.png";
 
 const NewMainFooter = () => {
   return (
-    <Row className="tw-px-12 tw-pt-[1rem] tw-pb-5 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-flex tw-flex-row tw-justify-end">
+    <Row className="tw-px-4 tw-pt-[1rem] tw-pb-5 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-end">
       {/*Column 1*/}
       <Col xs={2}>
         <Col xs={9}>
@@ -19,14 +19,14 @@ const NewMainFooter = () => {
         </p>
       </Col>
       {/*Column 2*/}
-      <Col xs={4}>
-        <Row>
-          <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
-            <strong>Links</strong>
-          </h3>
-        </Row>
-        <Row>
-          <Col>
+      <Col xs={4} className="tw-pl-10">
+        <Row className="tw-items-start">
+          <Col xs={5}>
+            <Row>
+              <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
+                <strong>Links</strong>
+              </h3>
+            </Row>
             <Nav vertical>
               <NavItem>
                 <NavLink
@@ -54,8 +54,8 @@ const NewMainFooter = () => {
               </NavItem>
             </Nav>
           </Col>
-          <Col>
-            <Nav vertical>
+          <Col xs={5}>
+            <Nav vertical className="tw-pt-[70.594px]">
               <NavItem className="tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-left tw-p-0"
@@ -80,7 +80,46 @@ const NewMainFooter = () => {
       </Col>
       {/*Column 3*/}
       <Col xs={2}>
-        <p>col 3</p>
+        <Row>
+          <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
+            <strong>Contact</strong>
+          </h3>
+        </Row>
+        <p className="tw-text-left tw-text-white tw-font-bold">
+          1 Lomb Memorial Dr Rochester, NY 14623
+        </p>
+        <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
+          <svg
+            className="tw-fill-white tw-w-9"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            {/*Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
+            <a
+              className="tw-fill-white"
+              href="https://www.linkedin.com/company/accessible-learning-labs-rit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+            </a>
+          </svg>
+          <svg
+            className="tw-fill-white tw-w-11"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512"
+          >
+            {/*Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
+            <a
+              className="tw-fill-white"
+              href="https://www.youtube.com/@accessibilitylearninglabs5949"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+            </a>
+          </svg>
+        </div>
       </Col>
       {/*Column 4*/}
       <Col xs={3} className="tw-flex tw-flex-col tw-justify-end">
@@ -115,8 +154,8 @@ const NewMainFooter = () => {
           </div>
         </Container>
         <p className={"tw-pt-2 tw-body-text tw-text-left tw-font-medium"}>
-          Available under the Federal Government License. This work is National
-          Science Foundation Under Under #2111152, #2336941
+          Available under the Federal Government License. This work is supported
+          by the US National Science Foundation Under Under #2111152, #2336941
         </p>
       </Col>
     </Row>
