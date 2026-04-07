@@ -49,12 +49,12 @@ export const STAGE_OPTIONS = {
   ],
 };
 
-export const PROMPT_BUILDER_HEADING = "Exercise Start";
+export const PROMPT_BUILDER_HEADING = "Prompt Builder";
 export const PROMPT_BUILDER_DESCRIPTION =
-  "Build your prompt section by section using GCSE. Choose the strongest option in each category to improve your score.";
+  "Build your prompt part by part using GCSE. Choose the strongest option in each category to improve your prompt.";
 export const PROMPT_COMPLETE_PASSED_MESSAGE =
   "Prompt complete. You passed the quality threshold.";
 export const PROMPT_COMPLETE_FAILED_MESSAGE =
-  "Prompt complete, but score is below passing. Improve your choices.";
+  "Prompt complete, but score is below passing. Use the back button to redo your choices.";
 export const PROMPT_QUESTION_TEMPLATE =
   "Choose the best {label} statement for your prompt.";
