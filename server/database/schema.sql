@@ -4263,8 +4263,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       {
         "header":"What causes AI Hallucinations?",
         "type":"",
-        "content":["Broadly, hallucinations in LLMs can be divided into two primary sources: Prompting-induced hallucinations, where ill-structured, unspecified, or misleading prompts cause unreliable outputs, and M
-        model-internal hallucinations, which are caused by the model’s architecture, the data it was trained on, or inference behavior."]
+        "content":["Broadly, hallucinations in LLMs can be divided into two primary sources: Prompting-induced hallucinations, where ill-structured, unspecified, or misleading prompts cause unreliable outputs, and model-internal hallucinations, which are caused by the model’s architecture, the data it was trained on, or inference behavior."]
       },
       {
         "header":"How does prompting influence AI Hallucinations?",
