@@ -10,9 +10,9 @@ const OrderedList = ({ data }) => {
     <>
       <div className="ordered__list__div">
         <ol className={"ordered__list"}>
-          {data.map((text) => {
+          {data.map((text, id) => {
             return (
-              <li className={"tw-body-text"} key={text.id}>
+              <li className={"tw-body-text"} key={id}>
                 {text}
               </li>
             );
@@ -24,7 +24,7 @@ const OrderedList = ({ data }) => {
 };
 
 OrderedList.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
 };
 
 export default OrderedList;

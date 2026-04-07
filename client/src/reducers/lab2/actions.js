@@ -106,6 +106,10 @@ export const login = (user) => ({
 Used to declare changes have not been made to the system to cause the rerender
 */
 export const resetChange = () => ({
+  /*
+    This is where something goes wrong,
+    but I cannot find the setState anywhere
+  */
   type: CHANGED_RESET,
 });
 

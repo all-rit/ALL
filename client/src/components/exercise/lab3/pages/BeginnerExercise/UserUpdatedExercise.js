@@ -37,9 +37,7 @@ class UserUpdatedExercise extends Component {
   }
 
   handleKeyDown(event) {
-    console.log("detected key code is: " + event.keyCode);
     if (event.keyCode === 27) {
-      console.log("Enter key pressed!");
       navigate("/Lab3/Exercise/AccessibleInstructions");
     }
   }
@@ -65,9 +63,7 @@ class UserUpdatedExercise extends Component {
   }
   setupButtons() {
     const { data } = this.props;
-    console.log("calling setup");
     const catClick = () => {
-      console.log("Cat image clicked!");
       const name = data.repair3.changesApplied
         ? "UserUpdatedExercise"
         : "InaccessibleExercise";
