@@ -93,9 +93,11 @@ const PromptBuilder = () => {
             <h2 className="tw-text-xl tw-font-bold tw-text-darkGray tw-capitalize">
               {currentStage}
             </h2>
-            <div className="tw-text-sm tw-font-semibold tw-text-darkGray">
-              Score: {totalScore}/{passingScore}
-            </div>
+            {allStagesAnswered && (
+              <div className="tw-text-sm tw-font-semibold tw-text-darkGray">
+                Score: {totalScore}/{passingScore}
+              </div>
+            )}
           </div>
 
           <Quiz
@@ -154,10 +156,7 @@ const PromptBuilder = () => {
         <LabButton
           label="Next"
           disabled={!hasMetPassingScore}
-          onClick={() => {
-            if (!hasMetPassingScore) return;
-            navigate("/Lab15/Exercise/model-with-grades");
-          }}
+          onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
         />
       </div>
     </div>
