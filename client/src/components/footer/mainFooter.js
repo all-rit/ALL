@@ -64,10 +64,10 @@ const MainFooter = () => {
             <Nav vertical className="tw-pt-[70.594px]">
               <NavItem className="tw-pb-2 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink
-                  className="tw-flex tw-items-center tw-justify-left tw-p-0"
+                  className="tw-flex tw-items-center tw-justify-start tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-base tw-font-semibold tw-text-white">
+                  <p className="tw-text-base tw-text-left tw-font-semibold tw-text-white">
                     Educator Resources
                   </p>
                 </NavLink>
