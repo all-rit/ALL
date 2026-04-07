@@ -5,58 +5,6 @@ import TeammateVideo from "../components/TeammateVideo";
 import AnalysisMessage from "../components/AnalysisMessage";
 import { navigate } from "@reach/router";
 
-/*
-const Analysis = () => {
-  const [content, setContent] = useState(null);
-
-  //until the userID is grabbed, the page will techincally be blank until the useeffect activates
-  useEffect(() => {
-    const fetchContent = async () => {
-      //yoink that user data
-      const user = await ImagineService.getUserByID(
-        sessionStorage.getItem("userID"),
-        25,
-      );
-
-      //pastel yellow and blue annoyingly are stored in their key forms and need to be re-converted to a readable form
-      const colorMap = {
-        Gray02: "Gray",
-        Black: "Black",
-        Blue03: "Blue",
-      };
-
-      //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
-      const text = {
-        experiential:
-          "Parsing error #343: Cannot Process Player User's \"" +
-          colorMap[user.avatar.clotheColor].toLowerCase() +
-          '" shirt. Your points cannot be added due to error. Your team has been disqualified.',
-        expression:
-          "Parsing error #343: Cannot Process Teammate User's  \"" +
-          colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
-          "\" shirt. Your teammate's points cannot be added due to error. Your team has been disqualified.",
-        control:
-          "Congrats on winning! You may collect a prize after completing  the post survery for being so awesome sauce.",
-      };
-
-      setContent(
-        <p className="tw-body-text tw-my-24">
-          {text[user.section] || text["control"]}
-        </p>,
-      );
-    };
-    fetchContent();
-  }, []);
-
-  return (
-    //container aligns everything horizontally
-    <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-h-[100%] tw-items-center">
-      <h3 className="tw-title text-center">Analysis</h3>
-      {content}
-    </div>
-  );
-};*/
-
 const ScorePage = () => {
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
