@@ -16,7 +16,7 @@ import IDEIntroduction from "./pages/IDEIntroduction";
  */
 const Main = () => {
   return (
-    <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
+    <div className="bottomSpace tw-p-6">
       <ExerciseStateProvider>
         <Router className="app">
           <ExerciseIntroduction default path="/" />
