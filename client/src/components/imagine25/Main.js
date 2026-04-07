@@ -125,7 +125,7 @@ const Main = () => {
         >
           <Router
             className={
-              "tw-flex tw-h-full tw-w-full tw-overflow-y-auto tw-flex-col tw-justify-center"
+              "tw-flex tw-h-full tw-w-full tw-flex-col tw-justify-center tw-overflow-y-hidden"
             }
           >
             <UpdateId default path={"/"} canContinue={canContinue} />

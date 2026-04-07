@@ -37,6 +37,17 @@ module.exports = {
         "BlinkMacSystemFont",
         "Calibri",
       ],
+      mono: [
+        "JetBrains Mono",
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace",
+      ],
     },
     colors: {
       black: "#000000",
