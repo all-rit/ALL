@@ -5,21 +5,21 @@ import rit from "../../assets/images/logos/RIT.png";
 
 const MainFooter = () => {
   return (
-    <div className="tw-px-4 tw-pt-[1rem] tw-pb-5 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center">
+    <div className="tw-px-4 tw-pt-[1rem] tw-pb-6 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center">
       {/*Column 1*/}
-      <Col xs={2}>
+      <Col xs={2} className="tw-pr-8 tw-align-top">
         <Col xs={9}>
           <a href="#">
             <img className="logo tw-flex tw-h-auto" src={logo} alt="ALL Logo" />
           </a>
         </Col>
-        <p className="tw-body-text tw-text-left">
+        <p className="tw-text-lg tw-text-left">
           Accessible Learning Labs is an NSF funded initiative aimed at
           fostering STEM proficiency.
         </p>
       </Col>
       {/*Column 2*/}
-      <Col xs={4} className="tw-pl-10">
+      <Col xs={4} className="tw-pr-8 tw-pt-1">
         <Row className="tw-items-start">
           <Col xs={5}>
             <Row>
@@ -33,45 +33,53 @@ const MainFooter = () => {
                   className="tw-flex tw-items-center tw-justify-left tw-p-0"
                   href="/#"
                 >
-                  <p className="tw-text-base tw-text-white">Home</p>
+                  <p className="tw-text-base tw-text-white tw-pb-2 tw-font-semibold">
+                    Home
+                  </p>
                 </NavLink>
               </NavItem>
-              <NavItem className="tw-border-solid tw-border-white tw-border-t-2 tw-border-r-0 tw-border-b-0 tw-border-l-0">
+              <NavItem className="tw-border-solid tw-border-white tw-border-t-2 tw-border-r-0 tw-border-b-0 tw-border-l-0 tw-pt-2 tw-pb-2">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-left tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-base tw-text-white">Labs</p>
+                  <p className="tw-text-base tw-text-white tw-font-semibold">
+                    Labs
+                  </p>
                 </NavLink>
               </NavItem>
-              <NavItem className="tw-border-solid tw-border-white tw-border-l-0 tw-border-r-0 tw-border-b-0 tw-border-t-2">
+              <NavItem className="tw-border-solid tw-border-white tw-border-l-0 tw-border-r-0 tw-border-b-0 tw-pt-2 tw-border-t-2">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-left tw-p-0"
                   href="/about-us"
                 >
-                  <p className="tw-text-base tw-text-white">About Us</p>
+                  <p className="tw-text-base tw-text-white tw-font-semibold">
+                    About Us
+                  </p>
                 </NavLink>
               </NavItem>
             </Nav>
           </Col>
           <Col xs={5}>
             <Nav vertical className="tw-pt-[70.594px]">
-              <NavItem className="tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
+              <NavItem className="tw-pb-2 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-left tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-base tw-text-white">
+                  <p className="tw-text-base tw-font-semibold tw-text-white">
                     Educator Resources
                   </p>
                 </NavLink>
               </NavItem>
-              <NavItem className="tw-border-solid tw-border-white tw-border-t-2 tw-border-r-0 tw-border-b-0 tw-border-l-0">
+              <NavItem className="tw-pt-2 tw-border-solid tw-border-white tw-border-t-2 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-left tw-p-0"
                   href="/SiteMap"
                 >
-                  <p className="tw-text-base tw-text-white">Site Map</p>
+                  <p className="tw-text-base tw-font-semibold tw-text-white">
+                    Site Map
+                  </p>
                 </NavLink>
               </NavItem>
             </Nav>
@@ -79,7 +87,7 @@ const MainFooter = () => {
         </Row>
       </Col>
       {/*Column 3*/}
-      <Col xs={2}>
+      <Col xs={2} className="tw-pr-20 tw-pt-1">
         <Row>
           <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
             <strong>Contact</strong>
@@ -119,10 +127,23 @@ const MainFooter = () => {
               <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
             </a>
           </svg>
+          <svg
+            className="tw-fill-white tw-w-11"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            {/*Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.*/}
+            <a
+              className="tw-text-white tw-no-underline"
+              href="mailto:dxkvse@rit.edu"
+            >
+              <path d="M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z" />
+            </a>
+          </svg>
         </div>
       </Col>
       {/*Column 4*/}
-      <Col xs={3} className="tw-flex tw-flex-col tw-justify-end">
+      <Col xs={3} className="tw-flex tw-flex-col tw-pt-2">
         <Container>
           <div className="tw-flex tw-flex-row tw-items-center tw-gap-4">
             <Col xs={2} className="tw-mr-5">
@@ -153,7 +174,7 @@ const MainFooter = () => {
             </Col>
           </div>
         </Container>
-        <p className={"tw-pt-2 tw-body-text tw-text-left tw-font-medium"}>
+        <p className="tw-pt-2 tw-text-lg tw-text-left tw-font-medium">
           Available under the Federal Government License. This work is supported
           by the US National Science Foundation Under Under #2111152, #2336941
         </p>
