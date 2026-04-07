@@ -144,6 +144,7 @@ const PromptBuilder = () => {
             activeKey={activeKey}
             lockedKeys={sectionValues.lockedKeys}
             justLockedKey={sectionValues.justLockedKey}
+            className="tw-flex-1"
           />
         </div>
       </div>
