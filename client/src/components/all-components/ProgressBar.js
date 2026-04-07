@@ -63,7 +63,7 @@ const ProgressBar = ({
   return complete ? (
     <></>
   ) : (
-    <div className={twMerge("", className)}>
+    <div className={className}>
       {!disableTitle && (
         <p className={"tw-font-bold tw-text-xl"}>Time Remaining: {elapsed}</p>
       )}

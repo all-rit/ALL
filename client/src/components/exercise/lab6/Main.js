@@ -25,7 +25,7 @@ import ExerciseEnd from "./pages/Employer/ExerciseEnd";
 
 const Main = () => {
   return (
-    <div className="container bottomSpace tw-p-6 tw-overflow-y-scroll">
+    <div className="container bottomSpace tw-p-6">
       <Router>
         {/* Part 1: Applicant */}
         <ExerciseStart path="/" />

@@ -16,7 +16,7 @@ import GeneratedData from "./pages/GeneratedData";
 
 const Main = () => {
   return (
-    <div className="bottomSpace tw-p-6 tw-overflow-y-scroll">
+    <div className="bottomSpace tw-p-6">
       <Router className="app">
         {/* Exercise Start */}
         <ExerciseStart default path="/" />

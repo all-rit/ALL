@@ -89,7 +89,7 @@ const Main = (props) => {
   const [newLabTopics, setNewLabTopics] = useState([]);
 
   return (
-    <div className={"tw-overflow-y-scroll"}>
+    <div>
       <Lab0Context.Provider
         value={{
           handleNav,

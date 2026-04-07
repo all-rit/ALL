@@ -27,6 +27,13 @@ const RSADecryption = () => {
     navigate("/Lab14/Exercise/Conclusion");
   };
 
+  const formatNumber = (num) => {
+    if (Math.abs(num) >= 1e12) {
+      return num.toExponential(2);
+    }
+    return num.toLocaleString();
+  };
+
   const decrypt = () => {
     const classicAttempts = Math.pow(
       2,
@@ -38,10 +45,10 @@ const RSADecryption = () => {
     setQuantumAttempts(quantumAttempts);
 
     setClassicBoxElements([
-      { text: `Total Attempts: ${classicAttempts}`, binary: [] },
+      { text: `Total Attempts: ${formatNumber(classicAttempts)}`, binary: [] },
     ]);
     setQuantumBoxElements([
-      { text: `Total Attempts: ${quantumAttempts}`, binary: [] },
+      { text: `Total Attempts: ${formatNumber(quantumAttempts)}`, binary: [] },
     ]);
   };
 

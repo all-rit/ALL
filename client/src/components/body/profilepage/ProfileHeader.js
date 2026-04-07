@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import UserPfp from "src/components/all-components/UserPfp";
 
 const ProfileHeader = (props) => {
   const { user } = props;
@@ -26,18 +27,7 @@ const ProfileHeader = (props) => {
                       tw-rounded-full tw-border-solid xs:tw-mx-[2rem] md:tw-mx-[4rem]
                       tw-border-primary-yellow tw-z-[1rem] tw-flex tw-flex-row tw-overflow-hidden"
                 >
-                  {user?.userpfp ? (
-                    <img
-                      src={user?.userpfp}
-                      alt={`${user.firstname}'s profile`}
-                      className="tw-w-full tw-h-full tw-object-cover"
-                    />
-                  ) : (
-                    <div>
-                      {/* get user's first and last initials */}
-                      {user?.firstname[0] + user?.lastinitial}
-                    </div>
-                  )}
+                  <UserPfp />
                 </div>
               </div>
               <div className={"tw-w-full tw-h-full tw-flex tw-items-center "}>

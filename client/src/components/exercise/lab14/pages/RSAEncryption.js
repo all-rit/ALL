@@ -95,28 +95,53 @@ const RSAEncryption = () => {
   };
 
   const encrypt = async () => {
-    const { publicKey, n, e, d } = await generateRSA();
+    try {
+      const { publicKey, n, e, d } = await generateRSA();
 
-    //Message len
-    if (rsaBaseMessage.length >= n) {
-      alert("Message too large for this key size");
-      return;
+      //Message len
+      if (rsaBaseMessage.length >= n) {
+        alert("Message too large for this key size");
+        return;
+      }
+
+      let ciphertext = await crypto.subtle.encrypt(
+        {
+          name: "RSA-OAEP",
+          hash: "SHA-256",
+        },
+        publicKey,
+        new TextEncoder().encode(rsaBaseMessage),
+      );
+
+      setRsaEncryptedMessage(new Uint8Array(ciphertext).toHex());
+      setN(n);
+      setE(e);
+      setD(d);
+      setEncrypted(true);
+    } catch (err) {
+      // On some older systems, the 'crypto' library doesn't have full compatibility.
+      // Instead of *actually* doing RSA, we fake it and just shuffle some numbers.
+
+      let publicKey =
+        "69d8e47ce6873023aa78cfe7d7e0f93f5276fc3f704872b072a49e5c5c5a8480545bc614ff2ddcb8cf157b2500bb2695f2beaa1df4a55d25c985a7a6c6d48603c34cf67b717a31832d141ab485b78935fc6231d231cc987680ba8855a5d4505363323882c256abec86839466ef45194837f09e3c07f675b4b792524eba1b14cef21ffa2fad22d158851419167cc6ff4b166951c7645ff1bcf96f4c281f76a05fcb57c3eb9b8e93b13e87d04edebe6fed";
+      let n =
+        "2-me9TUNHV5Kkcf5BFADc63XpXGsz9_J2OWLRJM7VbQ8Ne5PiRxnRhLFqFwmzfCzHnemGqYYtvPKmDUQUx_pQh2UTMuSaYjUCI_vCTJc5H_O3ospagXa1VdV8WPxJxevzNJitWYUgTLqdiL1qBe1t2-AbhYTnxJYvFzGeoCNEWAucEXmf2V7e-NHFhaTY-nDdfhH-F6aTBzw7X2oQSojdSVSwxVZgHlXTpqHOwGazl8";
+      let e = "AQAB";
+      let d =
+        "FUrp_rD7y5epHbNgi4fZxbYT1quKgXgYGZ2kHegpixNP7yLbZZmv8Ct6IuKFSVRga3dHSHZDl1dEivc8VOgWlDW7-bGORBSg_xE8okXTk7ZCR-7ufBsEBI0jub5ydXcn1HLZ5zxS1LwG_C1RnI3NZtiHRCnZ5N6rsRsWRLaGiOJDj-FxTsOQUGsFJYAb8JRq-W1ruYBiI7UKGPCJ6_UlP0oFapQo0jJoKBUsUPrCuTk";
+
+      const shuffle = (chars) => {
+        return chars.sort(function () {
+          return Math.random() - 0.5;
+        });
+      };
+
+      setRsaEncryptedMessage(shuffle(publicKey));
+      setN(shuffle(n));
+      setE(shuffle(e));
+      setD(shuffle(d));
+      setEncrypted(true);
     }
-
-    let ciphertext = await crypto.subtle.encrypt(
-      {
-        name: "RSA-OAEP",
-        hash: "SHA-256",
-      },
-      publicKey,
-      new TextEncoder().encode(rsaBaseMessage),
-    );
-
-    setRsaEncryptedMessage(new Uint8Array(ciphertext).toHex());
-    setN(n);
-    setE(e);
-    setD(d);
-    setEncrypted(true);
   };
 
   const generateRSA = async () => {
