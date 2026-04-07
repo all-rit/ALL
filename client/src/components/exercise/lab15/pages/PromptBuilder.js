@@ -11,6 +11,7 @@ import {
   PROMPT_QUESTION_TEMPLATE,
   STAGE_OPTIONS,
 } from "src/constants/lab15/PromptBuilderConfig";
+import { ANIM_POP_DURATION_MS } from "src/constants/lab15/PromptViewer";
 import PromptViewer from "../components/PromptViewer";
 import usePromptBuilderStageManager from "../components/PromptStateManager";
 
@@ -39,14 +40,14 @@ const PromptBuilder = () => {
 
   const handleNext = () => {
     if (!canMoveToNextStage) return;
-    clearJustLockedKey();
-    requestAnimationFrame(() => {
-      lockCurrentStage();
-    });
+    lockCurrentStage();
 
-    if (!isFinalStage) {
-      nextStage();
-    }
+    setTimeout(() => {
+      if (!isFinalStage) {
+        nextStage();
+      }
+      clearJustLockedKey();
+    }, ANIM_POP_DURATION_MS);
   };
 
   const handleBack = () => {
@@ -108,10 +109,10 @@ const PromptBuilder = () => {
             lastQuestion={handleBack}
             onAnswerSelected={handleAnswerSelected}
             onComplete={() => {
-              clearJustLockedKey();
-              requestAnimationFrame(() => {
-                lockCurrentStage();
-              });
+              lockCurrentStage();
+              setTimeout(() => {
+                clearJustLockedKey();
+              }, ANIM_POP_DURATION_MS);
             }}
             questionId={currentStageIndex + 1}
             question={PROMPT_QUESTION_TEMPLATE.replace(
@@ -152,7 +153,11 @@ const PromptBuilder = () => {
       <div className="tw-mt-5">
         <LabButton
           label="Next"
-          onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
+          disabled={!hasMetPassingScore}
+          onClick={() => {
+            if (!hasMetPassingScore) return;
+            navigate("/Lab15/Exercise/model-with-grades");
+          }}
         />
       </div>
     </div>
