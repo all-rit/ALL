@@ -57,7 +57,7 @@ const ModelRepair = () => {
       <div className="tw-mt-5">
         <LabButton
           label="Next"
-          onClick={() => navigate("/Lab15/Exercise/model-repair")}
+          onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
         />
       </div>
     </div>

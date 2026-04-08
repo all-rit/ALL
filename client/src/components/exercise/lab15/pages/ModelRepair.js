@@ -34,7 +34,7 @@ const ModelRepair = () => {
         },
       ]}
       navigateNext={() => {
-        navigate(`${EXERCISE_PATH}/model-with-grades`);
+        navigate(`${EXERCISE_PATH}/ide-fix-test`);
       }}
       repairComplete
     />

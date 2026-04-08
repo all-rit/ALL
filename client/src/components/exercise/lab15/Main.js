@@ -10,6 +10,7 @@ import ModelHallucination from "./pages/ModelHallucination";
 import GoodPromptingGuide from "./pages/GoodPromptingGuide";
 import PromptBuilder from "./pages/PromptBuilder";
 import ModelRepair from "./pages/ModelRepair";
+import IDEFixTest from "./pages/IDEFixTest";
 import ModelWithGrades from "./pages/ModelWithGrades";
 import Conclusion from "./pages/Conclusion";
 /**
@@ -32,8 +33,9 @@ const Main = () => {
           <ExerciseIntro default path="/" />
           <ModelHallucination path="/model-hallucination" />
           <GoodPromptingGuide path="/good-prompting-guide" />
-          <PromptBuilder path="/prompt-builder" />
           <ModelRepair path="/model-repair" />
+          <IDEFixTest path="/ide-fix-test" />
+          <PromptBuilder path="/prompt-builder" />
           <ModelWithGrades path="/model-with-grades" />
           <Conclusion path="/conclusion" />
         </Router>
