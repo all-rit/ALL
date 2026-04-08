@@ -7,6 +7,10 @@ import AIChatBot from "src/components/all-components/AIChatBot";
 import LabButton from "src/components/all-components/LabButton";
 import { useLab15 } from "../Lab15Context";
 
+const PASSING_SCORE = 80;
+const BAD_PROMPT_SCORE = 45;
+const SCORE_REVEAL_DELAY_MS = 500;
+
 const IDEFixTest = () => {
   const { chatMessages, setChatMessages } = useLab15();
 
@@ -18,6 +22,8 @@ const IDEFixTest = () => {
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
   const [promptUsed, setPromptUsed] = useState(false);
+  const [aiResponseDone, setAiResponseDone] = useState(false);
+  const [showScore, setShowScore] = useState(false);
 
   useEffect(() => {
     if (chatMessages.length === 0) {
@@ -33,7 +39,49 @@ const IDEFixTest = () => {
     }
   }, [chatMessages.length, setChatMessages]);
 
+  // Display score message into chat after AI finishes typing
+  useEffect(() => {
+    if (aiResponseDone) {
+      const timer = setTimeout(() => {
+        setChatMessages((prev) => [
+          ...prev,
+          {
+            id: `score-${Date.now()}`,
+            sender: "bot",
+            text: "",
+            isScore: true,
+            score: BAD_PROMPT_SCORE,
+            isPassing: BAD_PROMPT_SCORE >= PASSING_SCORE,
+            timestamp: new Date(),
+            isNew: false,
+          },
+        ]);
+        setShowScore(true);
+      }, SCORE_REVEAL_DELAY_MS);
+      return () => clearTimeout(timer);
+    }
+  }, [aiResponseDone, setChatMessages]);
+
   const canSelectQuestion = !promptUsed && !isBotTyping && !isBotThinking;
+
+  // Called for every message and retruns score card for score messages
+  const renderScoreMessage = (msg) => {
+    if (!msg.isScore) return null;
+    return (
+      <div className="tw-flex tw-items-start tw-gap-3">
+        <div className="tw-w-10 tw-shrink-0" />
+        <div
+          className={`tw-rounded-lg tw-text-left tw-px-4 tw-py-3 tw-text-base tw-max-w-[50vw] ${
+            msg.isPassing
+              ? "tw-border-[1px] tw-border-black tw-border-solid tw-bg-success"
+              : "tw-border-[1px] tw-border-black tw-border-solid tw-bg-error/50"
+          }`}
+        >
+          Prompt Score: {msg.score}%
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="tw-relative tw-h-full">
@@ -58,7 +106,12 @@ const IDEFixTest = () => {
                 messages={chatMessages}
                 setMessages={setChatMessages}
                 onAnswerDataChange={() => setPromptUsed(true)}
-                onTypingChange={(typing) => setIsBotTyping(typing)}
+                onTypingChange={(typing) => {
+                  setIsBotTyping(typing);
+                  if (!typing && promptUsed) {
+                    setAiResponseDone(true);
+                  }
+                }}
                 onThinkingChange={setIsBotThinking}
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
@@ -69,6 +122,7 @@ const IDEFixTest = () => {
                 }}
                 showConfidenceScore={false}
                 disclaimerMessage=""
+                renderCustomMessage={renderScoreMessage}
               />
             </div>
 
@@ -80,10 +134,12 @@ const IDEFixTest = () => {
                 </div>
               )}
 
-              <LabButton
-                label="Build a better prompt"
-                onClick={() => navigate("/Lab15/Exercise/prompt-builder")}
-              />
+              {showScore && (
+                <LabButton
+                  label="Build a better prompt"
+                  onClick={() => navigate("/Lab15/Exercise/prompt-builder")}
+                />
+              )}
             </div>
           </div>
         </Tab>
