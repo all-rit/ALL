@@ -76,6 +76,8 @@ const SurveyHandler = (props) => {
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
   let [surveyComplete, setSurveyComplete] = useState(false);
+  //track the amount of time per question in seconds
+  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
 
   /**
    * HandleNext() is a function that is responsible for allowing the user to
@@ -88,6 +90,7 @@ const SurveyHandler = (props) => {
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
       setDisableNext(true);
+      setQuestionStartTime(Date.now());
     }
   }
   /**
@@ -98,6 +101,7 @@ const SurveyHandler = (props) => {
   async function onComplete(surveyType) {
     try {
       setSurveyComplete(true);
+      console.log("Sending:", selectedAnswers);
       if (surveyType === "pre") {
         // will need to be changed with next logic story
         const response = await activitySelector();
@@ -179,6 +183,8 @@ const SurveyHandler = (props) => {
       questions[currentQuestionCursor].type == "likert"
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
+
+        const timeSpent = (Date.now() - questionStartTime) / 1000; 
     setIsUnderAge(
       answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
     );
@@ -195,6 +201,7 @@ const SurveyHandler = (props) => {
         {
           question: questions[currentQuestionCursor].question,
           answer: answer,
+          timeSpent: timeSpent,
         },
       ];
     });
@@ -209,6 +216,7 @@ const SurveyHandler = (props) => {
    * @param {*} e event holding the index of the selected answer
    */
   function selectMulti(e) {
+    const timeSpent = (Date.now() - questionStartTime) / 1000;
     const answerValue =
       questions[currentQuestionCursor].answers[e.target.value].content;
     let tempAnswers = selectedAnswers;
@@ -225,6 +233,7 @@ const SurveyHandler = (props) => {
       setDisableNext(storageSet.size === 0 ? true : false);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
+      
     } else {
       // creates an empty set because does not exist in that spot
       setDisableNext(false);
@@ -237,6 +246,7 @@ const SurveyHandler = (props) => {
     tempAnswers[currentQuestionCursor] = {
       question: questions[currentQuestionCursor].question,
       answer: Array.from(storageSet),
+      timeSpent: timeSpent,
     };
     setSelectedAnswers(tempAnswers);
   }
@@ -244,9 +254,11 @@ const SurveyHandler = (props) => {
   function rankingUpdate(updatedRankingAnswers) {
     setSelectedAnswers((prevState) => {
       const updatedState = [...prevState];
+      const timeSpent = (Date.now() - questionStartTime) / 1000;
       updatedState[currentQuestionCursor] = {
         question: questions[currentQuestionCursor].question,
         answer: updatedRankingAnswers,
+        timeSpent: timeSpent,
       };
 
       //don't allow next if there is a unused ranking
