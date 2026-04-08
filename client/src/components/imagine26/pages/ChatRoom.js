@@ -12,7 +12,7 @@ const ChatRoom = () => {
     console.log(group)
     const contentSizing = "tw-flex tw-flex-col tw-items-center tw-justify-between tw-gap-5 tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[2rem] tw-pb-10 tw-mx-auto";    
     const handleNavigation = ()=>{
-        navigate("/Imagine2026/PostSurvey")
+        navigate("/Imagine2026/ReadingSection")
     }
     return (
         <>

@@ -33,7 +33,7 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
       <div className="d-flex justify-content-center tw-py-6">
         <div className="tw-h-auto">{content}</div>
       </div>
-      <div className="tw-flex tw-justify-between tw-w-1/2 tw-absolute tw-bottom-10">
+      <div className="tw-flex tw-justify-between tw-w-1/2 tw-pb-10 tw-pt-4">
         {prev}
         {next}
       </div>
