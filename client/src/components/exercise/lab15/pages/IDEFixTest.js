@@ -5,11 +5,13 @@ import { Tabs } from "src/components/all-components/Tab/Tabs";
 import { Tab } from "src/components/all-components/Tab/Tab";
 import AIChatBot from "src/components/all-components/AIChatBot";
 import LabButton from "src/components/all-components/LabButton";
+import StatusBanner from "src/components/all-components/StatusBanner";
 import { useLab15 } from "../Lab15Context";
-
-const PASSING_SCORE = 80;
-const BAD_PROMPT_SCORE = 45;
-const SCORE_REVEAL_DELAY_MS = 500;
+import {
+  PASSING_SCORE,
+  BAD_PROMPT_SCORE,
+  SCORE_REVEAL_DELAY_MS,
+} from "../../../../constants/lab15/IDEFixTest";
 
 const IDEFixTest = () => {
   const { chatMessages, setChatMessages } = useLab15();
@@ -68,17 +70,13 @@ const IDEFixTest = () => {
   const renderScoreMessage = (msg) => {
     if (!msg.isScore) return null;
     return (
-      <div className="tw-flex tw-items-start tw-gap-3">
+      <div className="tw-flex tw-items-start tw-gap-3 tw-mt-[-25px]">
         <div className="tw-w-10 tw-shrink-0" />
-        <div
-          className={`tw-rounded-lg tw-text-left tw-px-4 tw-py-3 tw-text-base tw-max-w-[50vw] ${
-            msg.isPassing
-              ? "tw-border-[1px] tw-border-black tw-border-solid tw-bg-success"
-              : "tw-border-[1px] tw-border-black tw-border-solid tw-bg-error/50"
-          }`}
+        <StatusBanner
+          style={`${msg.isPassing ? "tw-bg-success" : "tw-bg-error/80 tw-border-[1px] !tw-p-3 tw-border-black tw-border-solid"} !tw-w-fit !tw-ml-0 !tw-mr-auto`}
         >
-          Prompt Score: {msg.score}%
-        </div>
+          {`Prompt Score: ${msg.score}%`}
+        </StatusBanner>
       </div>
     );
   };
