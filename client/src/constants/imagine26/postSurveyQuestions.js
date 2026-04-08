@@ -2,36 +2,45 @@
 const postSurveyQuestions = [
   {
     question:
-      "I feel frustrated when I come across software that negatively affects certain groups, such as being inaccessible to Deaf users or showing bias toward one gender over another.",
+      "How much sympathy did you feel for the person affected by the deepfake?",
     type: "likert",
   },
   {
-    question: "Witnessing unfairness in a team setting affects me emotionally.",
-    type: "likert",
-  },
-  {
-    question:
-      "I find it challenging to relate to experiences of individuals who face difficulties due to unfair practices.",
+    question: "To what extent do you generally trust the information you see online?",
     type: "likert",
   },
   {
     question:
-      "I feel obligated to confront unfair treatment whenever I notice it happening within my group.",
-    type: "likert",
+      "Measure Empathy",
+      answers: [
+        {
+          index: "0",
+          content: "I felt concerned for the person affected by the deepfake.",
+        },
+        {
+          index: "1",
+          content: "I could imagine how upsetting this experience would be for them.",
+        },
+        {
+          index: "2",
+          content: "I felt emotionally affected by what happened to them.",
+        },
+        {
+          index: "3",
+          content: "I felt protective of the person who was deepfaked.",
+        },
+      ],
+      type: "multiChoice",
+    },
+  {
+    question:
+      "What are three words that describe your [teammate’s] feelings?",
+    type: "text",
   },
   {
     question:
-      "The activity increased my interest in issues related to fairness.",
-    type: "likert",
-  },
-  {
-    question: "The activity increased my curiosity related to fairness.",
-    type: "likert",
-  },
-  {
-    question:
-      "Rank the following items in order of how important you view them in a software application.",
-    answers: ["Security", "Software fairness", "Affordability", "Efficiency"],
+      "Please rank the following computing-related concerns based on how important or detrimental you believe they are",
+    answers: ["Deepfakes", "Data privacy breaches", "Cybersecurity Attacks", "AI bias and Discrimination"],
     type: "ranking",
   },
 ];
