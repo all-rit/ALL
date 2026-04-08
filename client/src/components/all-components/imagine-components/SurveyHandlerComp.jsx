@@ -101,7 +101,7 @@ const SurveyHandler = (props) => {
   async function onComplete(surveyType) {
     try {
       setSurveyComplete(true);
-      
+      console.log("Sending:", selectedAnswers);
       if (surveyType === "pre") {
         // will need to be changed with next logic story
         const response = await activitySelector();
