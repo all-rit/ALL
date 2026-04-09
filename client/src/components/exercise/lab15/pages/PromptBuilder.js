@@ -6,8 +6,7 @@ import { GCSE_SECTIONS } from "src/constants/lab15";
 import {
   PROMPT_BUILDER_DESCRIPTION,
   PROMPT_BUILDER_HEADING,
-  PROMPT_COMPLETE_FAILED_MESSAGE,
-  PROMPT_COMPLETE_PASSED_MESSAGE,
+  PROMPT_COMPLETE_MESSAGE,
   PROMPT_QUESTION_TEMPLATE,
   STAGE_OPTIONS,
 } from "src/constants/lab15/PromptBuilderConfig";
@@ -23,11 +22,8 @@ const PromptBuilder = () => {
     selections,
     lockedKeys,
     justLockedKey,
-    totalScore,
-    passingScore,
     canMoveToNextStage,
     allStagesAnswered,
-    hasMetPassingScore,
     selectStageOption,
     lockCurrentStage,
     clearJustLockedKey,
@@ -93,11 +89,6 @@ const PromptBuilder = () => {
             <h2 className="tw-text-xl tw-font-bold tw-text-darkGray tw-capitalize">
               {currentStage}
             </h2>
-            {allStagesAnswered && (
-              <div className="tw-text-sm tw-font-semibold tw-text-darkGray">
-                Score: {totalScore}/{passingScore}
-              </div>
-            )}
           </div>
 
           <Quiz
@@ -127,9 +118,7 @@ const PromptBuilder = () => {
           {allStagesAnswered && (
             <div className="tw-mt-6 tw-p-4 tw-rounded-lg tw-border tw-border-darkLine tw-bg-secondary-gray/60">
               <div className="tw-font-semibold tw-text-darkGray">
-                {hasMetPassingScore
-                  ? PROMPT_COMPLETE_PASSED_MESSAGE
-                  : PROMPT_COMPLETE_FAILED_MESSAGE}
+                {PROMPT_COMPLETE_MESSAGE}
               </div>
             </div>
           )}
@@ -155,7 +144,7 @@ const PromptBuilder = () => {
       <div className="tw-mt-5">
         <LabButton
           label="Next"
-          disabled={!hasMetPassingScore}
+          disabled={!allStagesAnswered}
           onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
         />
       </div>

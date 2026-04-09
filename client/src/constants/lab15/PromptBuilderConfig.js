@@ -52,9 +52,7 @@ export const STAGE_OPTIONS = {
 export const PROMPT_BUILDER_HEADING = "Prompt Builder";
 export const PROMPT_BUILDER_DESCRIPTION =
   "Build your prompt part by part using GCSE. Choose the strongest option in each category to improve your prompt.";
-export const PROMPT_COMPLETE_PASSED_MESSAGE =
-  "Prompt complete. You passed the quality threshold.";
-export const PROMPT_COMPLETE_FAILED_MESSAGE =
-  "Prompt complete, but score is below passing. Use the back button to redo your choices.";
+export const PROMPT_COMPLETE_MESSAGE =
+  "You wrote a complete prompt! Click next to see how ALL-IE will respond.";
 export const PROMPT_QUESTION_TEMPLATE =
   "Choose the best {label} statement for your prompt.";
