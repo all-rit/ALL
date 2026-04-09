@@ -219,15 +219,16 @@ const Game = () => {
 
           return prevSeconds - 1;
         });
-      }, 100);
+      }, 1000);
       return () => clearInterval(timer);
     }
   }, [iframeRef]);
 
   useEffect(() => {
-    //for testing purposes we can change the teammate id to 1 since we have 1 video, when we have all videos we need to uncomment the code below
-    // const id = Math.floor(Math.random() * 4);
-    setTeammateId(0);
+    //when new teammate video is added we need to change 3, for number 4
+    const id = Math.floor(Math.random() * 3);
+    console.log(id)
+    setTeammateId(id);
   }, []);
 
   return (

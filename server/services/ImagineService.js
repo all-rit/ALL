@@ -9,7 +9,6 @@ const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 let storage = null;
 const bucket_name = "imagine_26";
 if (credentials){
-  
   storage = new Storage({
   keyFilename: credentials,
   });
@@ -484,7 +483,7 @@ const deepFakeGenerator = async (imagine, userID, base64String, imagePath) => {
     apiKey: process.env.GEMINI_API_KEY,
   });
 
-  const textPrompt = "Generate an image of the person in this photo frowning,wearing a propeller hat and holding a sign that says: I dont want cotton popcorn. The sign has to be visible in the image"
+  const textPrompt = "Generate an image of the person in this photo frowning, wearing a propeller hat and holding a sign that says: I don't want popcorn. The sign has to be visible in the image"
   const prompt = [
     { text: textPrompt },
     {

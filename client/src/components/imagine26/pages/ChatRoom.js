@@ -28,15 +28,20 @@ const ChatRoom = () => {
     }
 
     // const contentSizing = "tw-flex tw-flex-col tw-items-center tw-justify-between tw-gap-5 tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[2rem] tw-pb-10 tw-mx-auto";    
-    const contentSizing = "tw-flex tw-flex-col tw-items-center tw-justify-between tw-gap-5 tw-border tw-rounded-xl";    
+    const contentSizing = "tw-flex tw-flex-col tw-items-center tw-justify-between tw-border tw-rounded-xl";    
     return (
         <>
             <div className="tw-w-full tw-p-2 tw-h-[90vh]">
                 <div className="tw-flex tw-flex-row tw-items-center tw-gap-6 tw-mt-8 tw-overflow-hidden">
                     <div className="tw-flex-1">
                         <div className={contentSizing}>
-                            <ImagineHeader title="Chat Room" />
-                            <ChatComponent group={group} onSubmit={onSubmit} teammateMessage={groupMap[group]} height={400} width={500}/>
+                            <div className="tw-top-3 tw-w-[96%] tw-mb-[-5%]">
+                            <h3 className={"tw-title tw-pb-3"}>Deepfake 101</h3>
+                            <div className={"tw-flex tw-justify-center"}>
+                                <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
+                                </div>
+                            </div>
+                            <ChatComponent group={group} onSubmit={onSubmit} teammateMessage={groupMap[group]} height={450} width={500}/>
                             {/* </div> */}
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import {
   videoPaths,
   groupVideoPaths,
   scorePagePaths,
+  // typingVideoPaths uncomment when we have all teammate videos
 } from "src/constants/imagine26/Videos";
 import PropTypes from "prop-types";
 import DisplayDeepFake from "./DisplayDeepfake";
@@ -44,8 +45,11 @@ const TeammateVideo = (props) => {
     } else if (status == "analysis") {
       setVideoSrc("");
     } else if (status == "chatroom") {
-      //replace with video of teammate typing or keep the same reaction video
-     const teammateReactionVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
+     
+    //once we have all videos of teammates typing uncomment this line
+    // setVideoSrc(typingVideoPaths[teammateId] || typingVideoPaths[0])
+
+      const teammateReactionVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
       console.log(teammateReactionVideos[group]);
       setVideoSrc(teammateReactionVideos[group] || teammateReactionVideos.A);
     }
