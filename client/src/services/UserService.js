@@ -26,6 +26,15 @@ const userService = {
       import.meta.env.VITE_SERVER_URL + `/user/${userID}/assigned`,
     ).then((response) => response.json());
   },
+  developmentLogin: (userID) => {
+    return API.get(
+      process.env.REACT_APP_SERVER_URL + `/user/${userID}/development`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        return data;
+      });
+  },
 };
 
 export default userService;

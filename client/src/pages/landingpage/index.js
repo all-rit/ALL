@@ -36,18 +36,18 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-    let lab12;
+    let lab13;
     let lab14;
 
     allLabs.map((lab) => {
-      if (lab.labShortName == "Identity") {
-        lab12 = lab;
+      if (lab.labShortName == "Cognitive Bias") {
+        lab13 = lab;
       } else if (lab.labShortName == "Quantum") {
         lab14 = lab;
       }
     });
 
-    setFeaturedLabs([lab14, lab12]);
+    setFeaturedLabs([lab14, lab13]);
   };
 
   const endImagine = () => actions.setIsImagine(false);

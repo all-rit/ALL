@@ -21,6 +21,7 @@ import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
+import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
 
 import { Sections } from "./constants/index";
@@ -115,7 +116,7 @@ const App = () => {
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+      <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
@@ -142,6 +143,7 @@ const App = () => {
           <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
           <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
           <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+          <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
           <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
 
           <Reinforcement
@@ -178,7 +180,7 @@ const App = () => {
         <Profile path="/Profile" user={state.main.user} />
         <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
         <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error actions={actions} default />
+        <Error default />
 
         <Imagine2023
           path={"/Imagine2023/*"}
@@ -202,16 +204,14 @@ const App = () => {
     <>
       {isLoaded ? (
         <div
-          className={`overflow-x-hidden ${
-            labInProgress || isImagine
-              ? "overflow-y-hidden tw-h-lvh"
-              : "overflow-y-auto min-h-screen"
-          }`}
+          className={
+            labInProgress || isImagine ? "" : "overflow-x-hidden min-h-screen"
+          }
         >
           <Suspense fallback={<Spinner />}>
             <Header isImagine={isImagine} />
-            <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-              <div className={`tw-relative tw-grid tw-h-full`}>
+            <div className={`tw-relative`}>
+              <div className={`tw-relative tw-grid`}>
                 {labInProgress ? (
                   <LabWindow
                     lab={lab}

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 env:
   # The date of the first run of the action. It has to be set to a date that is on the same weekday as the cron.
-  FIRST_RUN_DATE: 02-02-2026
+  FIRST_RUN_DATE: 2026-02-02
 jobs:
   weekindex:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
       - name: Calculate weekdiff
         id: calculate
         run: |
-          current_date=$(date +%m-%d-%Y)
+          current_date=$(date +%Y-%m-%d)
           start=$(date -d ${{ env.FIRST_RUN_DATE }} +%s)
           end=$(date -d $current_date +%s)
           weekdiff=$(((end-start) / 60 / 60 / 24 / 7))

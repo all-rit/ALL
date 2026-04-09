@@ -46,6 +46,7 @@ const ALLModal = (props) => {
     canDismiss,
     timeOutTime: startTime,
     timeOutMessage,
+    width,
   } = props;
 
   const [seconds, updateSeconds] = useState(startTime);
@@ -90,7 +91,10 @@ const ALLModal = (props) => {
         }}
       ></div>
       <div className="tw-flex tw-items-center tw-min-h-screen tw-px-4 tw-py-8">
-        <div className="tw-relative tw-w-full tw-max-w-lg tw-mx-auto tw-bg-white tw-rounded-md tw-shadow-lg">
+        <div
+          className={`tw-relative tw-w-full tw-mx-auto tw-bg-white tw-rounded-md tw-shadow-lg ${width ? "" : "tw-max-w-lg"}`}
+          style={width ? { maxWidth: width } : {}}
+        >
           {/*Header*/}
           {showHeader && (
             <>
@@ -249,6 +253,7 @@ ALLModal.propTypes = {
   secondaryAction: PropTypes.func,
   timeOutTime: PropTypes.number,
   timeOutMessage: PropTypes.string,
+  width: PropTypes.string,
 };
 
 export default ALLModal;
