@@ -101,7 +101,7 @@ const SurveyHandler = (props) => {
   async function onComplete(surveyType) {
     try {
       setSurveyComplete(true);
-      
+      console.log("Sending:", selectedAnswers);
       if (surveyType === "pre") {
         // will need to be changed with next logic story
         const response = await activitySelector();
@@ -184,7 +184,7 @@ const SurveyHandler = (props) => {
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
 
-        const timeSpent = (Date.now() - questionStartTime) / 1000; 
+        const timeSpent = (Date.now() - questionStartTime) / 1000; //Div by 1000 to make per second
     setIsUnderAge(
       answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
     );
