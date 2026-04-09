@@ -36,6 +36,20 @@ const QuestionsHandler = (props) => {
       onComplete();
     }
   }
+
+  /**
+   * handleBack() is a function that allows the user to
+   * return to the previous question
+   */
+  const handleBack = () => {
+    if (currentQuestionCursor < props.questions.length) {
+      let updateCursor = currentQuestionCursor - 1;
+      setCurrentQuestionCursor(updateCursor);
+      setAnswerOption(props.questions[updateCursor].answers);
+      setDisableNext(true);
+    }
+  };
+
   /**
    * selectAnswer() is a function responsible for recording the
    * behavior in which a user enters in their answer. This function once
@@ -99,6 +113,7 @@ const QuestionsHandler = (props) => {
       multiChoice={questions[currentQuestionCursor].multiChoice}
       multiSelectedEntry={selectMulti}
       nextQuestion={handleNext}
+      lastQuestion={handleBack}
       onAnswerSelected={selectAnswer}
       onComplete={onComplete}
       questionId={currentQuestionCursor + 1}

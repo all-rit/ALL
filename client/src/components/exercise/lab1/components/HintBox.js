@@ -33,7 +33,7 @@ class ThinkingHintBox extends Component {
 
     if (!visible) return null;
 
-    return <BeatLoader sizeUnit={"px"} size={10} />;
+    return <BeatLoader sizeunit={"px"} size={10} />;
   }
 }
 

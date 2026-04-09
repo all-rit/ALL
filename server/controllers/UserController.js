@@ -68,6 +68,19 @@ const authenticateCallback = async (req, res) => {
   }
 };
 
+const developmentLogin = async (req, res) => {
+  try {
+    await UserService.updateGuestUserId(req.params.userID, 1);
+    const user = await UserService.getUser(req.params.userID);
+    req.session.token = 1;
+    req.session.userID = user.userid;
+    req.session.save();
+    res.json(user);
+  } catch (e) {
+    console.error('Development Login failed! ', e);
+  }
+};
+
 const storeURL = (req, res) => {
   req.session.url = req.body.url.href;
   res.sendStatus(200);
@@ -75,10 +88,13 @@ const storeURL = (req, res) => {
 
 // Logging out will clear sessions
 const logout = (req, res, next) => {
+   
+  const redirect = process.env.ENVIRONMENT === 'dev' ? process.env.CLIENT_URL + '/' : req.session.url;
   req.logout({keepSessionInfo: true}, (error) => {
     if (error) next(error);
     req.session.token = null;
-    res.redirect(req.session.url);
+    req.session.userID = null;
+    res.redirect(redirect);
   });
 };
 
@@ -94,4 +110,5 @@ module.exports = {
   getUserInstructingGroups,
   getUserAssignedLabs,
   getUserToDoLabs,
+  developmentLogin,
 };

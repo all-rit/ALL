@@ -29,7 +29,7 @@ class ExerciseButtons extends Component {
       <button
         className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         onClick={() => navigate("/Lab3/Exercise/BeginnerExerciseConclusion")}
-        key="start"
+        key="end"
         disabled={this.props.disabled}
       >
         End Activity

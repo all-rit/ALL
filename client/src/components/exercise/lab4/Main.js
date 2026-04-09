@@ -18,7 +18,7 @@ import ExerciseStart from "./pages/ExerciseStart";
 
 const Main = () => {
   return (
-    <div className="container tw-h-full tw-overflow-y-scroll">
+    <div className="container tw-h-full">
       <Router>
         <ExerciseStart path="/" />
         <SmallTarget path="/SmallTarget" />
