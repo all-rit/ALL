@@ -20,24 +20,24 @@ export const ChatComponent =  (props) =>{
 
     useEffect(()=>{
         const timer = setInterval(() => {
-        setTime(new Date());
-        }, 1000);
-        return () => clearInterval(timer);
+        setTime(new Date())
+        }, 1000)
+        return () => clearInterval(timer)
     },[])
 
     const submit = async (e) =>{
-        e.preventDefault();
+        e.preventDefault()
         if (inputValue.trim().length > 0) {
             const reply = inputValue
             setReply(reply)
-            setShowReply(true);
+            setShowReply(true)
             setIsDisabled(true)
             setInputValue("")
             await onSubmit(reply)
         }
     }
 
-    const actualTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const actualTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
     
     return (
