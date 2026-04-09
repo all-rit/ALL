@@ -1,6 +1,6 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-const { nanoid } = require("nanoid");
+import { nanoid } from "nanoid";
 import { PropTypes } from "prop-types";
 
 const UpdateID = (props) => {

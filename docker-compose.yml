@@ -10,7 +10,7 @@ services:
       - ./server/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     command: -p 5433
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -p 5433 -U $$POSTGRES_USER -d postgres"]
+      test: ['CMD-SHELL', 'pg_isready -p 5433 -U $$POSTGRES_USER -d postgres']
       interval: 5s
       timeout: 5s
       retries: 5
@@ -19,7 +19,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "5005:5005"
+      - '5005:5005'
     depends_on:
       db:
         condition: service_healthy
@@ -28,6 +28,6 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - server

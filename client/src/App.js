@@ -51,11 +51,11 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
+import parse from "url-parse";
 
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
 );
-const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
   return {
