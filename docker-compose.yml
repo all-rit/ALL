@@ -18,8 +18,6 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    env_file:
-      - ./server/.env
     ports:
       - "5005:5005"
     depends_on:
@@ -28,7 +26,7 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: local.Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
