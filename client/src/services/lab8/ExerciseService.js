@@ -14,13 +14,13 @@ const ExerciseService = {
       numRepair: data.numRepair,
     };
     return API.postWithBody(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`,
+      `${import.meta.env.VITE_SERVER_URL}${endpoints.SUBMIT_REPAIR}`,
       body,
     );
   },
   getUserRepair: (userId) => {
     return API.get(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints.GET_REPAIR}${userId}`,
+      `${import.meta.env.VITE_SERVER_URL}${endpoints.GET_REPAIR}${userId}`,
     ).then((response) => response.json());
   },
 };

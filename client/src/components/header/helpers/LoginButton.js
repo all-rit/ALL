@@ -11,11 +11,11 @@ const LoginButton = (props) => {
       <a
         href="# "
         onClick={() =>
-          API.postWithBody(process.env.REACT_APP_SERVER_URL + "/url", {
+          API.postWithBody(import.meta.env.VITE_SERVER_URL + "/url", {
             url: window.location,
           }).then(() => {
             window.location.href =
-              process.env.REACT_APP_SERVER_URL + "/auth/google";
+              import.meta.env.VITE_SERVER_URL + "/auth/google";
           })
         }
       >

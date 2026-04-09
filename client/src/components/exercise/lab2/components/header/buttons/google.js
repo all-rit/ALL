@@ -12,7 +12,7 @@ export class Google extends Component {
   render() {
     // Handles the call back api controller
     const clickMethod = () => {
-      fetch(process.env.REACT_APP_SERVER_URL + "/auth/google", {
+      fetch(import.meta.env.VITE_SERVER_URL + "/auth/google", {
         method: "GET",
         credentials: "include",
       })

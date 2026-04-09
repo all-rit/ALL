@@ -19,7 +19,7 @@ const SUCCESS = "success";
 const ERROR = "error";
 const EXERCISE_COMPLETE = "Exercise complete!";
 
-module.exports = {
+export {
   ENROLL_SUCCESS,
   ENROLL_ERROR,
   UNENROLL_SUCCESS,

@@ -10,7 +10,7 @@ const endpoints = {
 const ExerciseService = {
   createExercise: (playthrough) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.CREATE_EXERCISE,
+      import.meta.env.VITE_SERVER_URL + endpoints.CREATE_EXERCISE,
       {
         playthrough,
       },
@@ -18,7 +18,7 @@ const ExerciseService = {
   },
   createRound: (soundOption) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.CREATE_ROUND,
+      import.meta.env.VITE_SERVER_URL + endpoints.CREATE_ROUND,
       {
         soundOption,
       },
@@ -26,7 +26,7 @@ const ExerciseService = {
   },
   createChoice: (score, hintUsed, boxNumber, correct) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.CREATE_CHOICE,
+      import.meta.env.VITE_SERVER_URL + endpoints.CREATE_CHOICE,
       {
         score,
         hintUsed,
@@ -37,7 +37,7 @@ const ExerciseService = {
   },
   updateEndExerciseScore: (score) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.END_EXERCISE,
+      import.meta.env.VITE_SERVER_URL + endpoints.END_EXERCISE,
       {
         score,
       },

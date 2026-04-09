@@ -7,7 +7,7 @@ const endpoints = {
 export const PageService = {
   createPage: (pagename, completiontime, labid) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.CREATE_PAGE,
+      import.meta.env.VITE_SERVER_URL + endpoints.CREATE_PAGE,
       {
         pagename,
         completiontime,

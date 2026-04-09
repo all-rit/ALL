@@ -14,7 +14,7 @@ const RepairService = {
     expectedpay,
   ) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_REPAIR,
       {
         userid,
         appearance,
@@ -26,7 +26,7 @@ const RepairService = {
   },
   getUserRepair: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + endpoints.GET_REPAIR + `${userID}`,
+      import.meta.env.VITE_SERVER_URL + endpoints.GET_REPAIR + `${userID}`,
     ).then((response) => response.json());
   },
 };
