@@ -114,12 +114,12 @@ const Analysis = () => {
       </div>
 
       {/* Content below video feed */}
-      <div className="tw-w-[50%] tw-mx-auto">
+      <div className="tw-w-[60%] tw-mx-auto">
         {teammateChatShown ? (
           <Chat
             onSubmit={onSubmitResponse}
-            width="600"
-            height="175"
+            width="100%"
+            height="100%"
             teammateMessage="Testing 123!"
           />
         ) : (
