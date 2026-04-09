@@ -6,6 +6,8 @@ const ExerciseStateContext = createContext({
   setExerciseState: () => {},
   chatMessages: [],
   setChatMessages: () => {},
+  promptScore: 0,
+  setPromptScore: () => {},
 });
 
 export const ExerciseStateProvider = ({
@@ -14,10 +16,18 @@ export const ExerciseStateProvider = ({
   setExerciseState,
 }) => {
   const [chatMessages, setChatMessages] = useState([]);
+  const [promptScore, setPromptScore] = useState(0);
 
   return (
     <ExerciseStateContext.Provider
-      value={{ exerciseState, setExerciseState, chatMessages, setChatMessages }}
+      value={{
+        exerciseState,
+        setExerciseState,
+        chatMessages,
+        setChatMessages,
+        promptScore,
+        setPromptScore,
+      }}
     >
       {children}
     </ExerciseStateContext.Provider>

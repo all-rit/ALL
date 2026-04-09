@@ -11,6 +11,7 @@ import {
   STAGE_OPTIONS,
 } from "src/constants/lab15/PromptBuilderConfig";
 import { ANIM_POP_DURATION_MS } from "src/constants/lab15/PromptViewer";
+import { useLab15 } from "../Lab15Context";
 import PromptViewer from "../components/PromptViewer";
 import usePromptBuilderStageManager from "../components/PromptStateManager";
 
@@ -22,6 +23,7 @@ const PromptBuilder = () => {
     selections,
     lockedKeys,
     justLockedKey,
+    totalScore,
     canMoveToNextStage,
     allStagesAnswered,
     selectStageOption,
@@ -30,6 +32,7 @@ const PromptBuilder = () => {
     nextStage,
     previousStage,
   } = usePromptBuilderStageManager();
+  const { setPromptScore } = useLab15();
 
   const activeOptions = STAGE_OPTIONS[currentStage] || [];
   const isFinalStage = currentStageIndex === stages.length - 1;
@@ -49,6 +52,11 @@ const PromptBuilder = () => {
   const handleBack = () => {
     if (currentStageIndex === 0) return;
     previousStage();
+  };
+
+  const handleViewModelResponse = () => {
+    setPromptScore(totalScore);
+    navigate("/Lab15/Exercise/model-with-grades");
   };
 
   const handleAnswerSelected = (event) => {
@@ -145,7 +153,7 @@ const PromptBuilder = () => {
         <LabButton
           label="Next"
           disabled={!allStagesAnswered}
-          onClick={() => navigate("/Lab15/Exercise/model-with-grades")}
+          onClick={handleViewModelResponse}
         />
       </div>
     </div>
