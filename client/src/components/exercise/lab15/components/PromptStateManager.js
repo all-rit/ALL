@@ -36,6 +36,18 @@ const handleSelectStageOption = (state, action) => {
     return state;
   }
 
+  const previousValue = state.selections[stage];
+  const previousScore = state.scores[stage];
+  const hasChanged = previousValue !== value || previousScore !== score;
+
+  const nextLockedStages =
+    hasChanged && state.lockedStages[stage]
+      ? {
+          ...state.lockedStages,
+          [stage]: false,
+        }
+      : state.lockedStages;
+
   return {
     ...state,
     selections: {
@@ -46,6 +58,8 @@ const handleSelectStageOption = (state, action) => {
       ...state.scores,
       [stage]: score,
     },
+    lockedStages: nextLockedStages,
+    justLockedKey: hasChanged ? null : state.justLockedKey,
   };
 };
 
@@ -117,8 +131,8 @@ export const usePromptBuilderStageManager = ({
   const currentStage = PROMPT_BUILDER_STAGES[state.currentStageIndex];
   const totalScore = useMemo(() => getTotalScore(state.scores), [state.scores]);
   const allStagesAnswered = useMemo(
-    () => Object.values(state.selections).every(hasSelection),
-    [state.selections],
+    () => Object.values(state.lockedStages).every(Boolean),
+    [state.lockedStages],
   );
 
   const canMoveToNextStage = hasSelection(state.selections[currentStage]);
