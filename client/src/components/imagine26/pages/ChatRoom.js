@@ -1,8 +1,6 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import { Button } from "reactstrap";
-import ImagineHeader from "../components/ImagineHeader";
-import { ChatComponent } from "../../all-components/imagine-components/Chat";
+import { Chat } from "../../all-components/imagine-components/Chat";
 import TeammateVideo from "../components/TeammateVideo";
 import ImagineService from "src/services/ImagineService";
 
@@ -41,7 +39,7 @@ const ChatRoom = () => {
                                 <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
                                 </div>
                             </div>
-                            <ChatComponent group={group} onSubmit={onSubmit} teammateMessage={groupMap[group]} height={450} width={500}/>
+                            <Chat group={group} onSubmit={onSubmit} teammateMessage={groupMap[group]} height={450} width={500}/>
                             {/* </div> */}
                         </div>
                     </div>

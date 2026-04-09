@@ -1,9 +1,9 @@
 
-import React, { useState , useEffect} from "react";
-import PropTypes from "prop-types";
-import "./chatStyle.css"
+import React, { useState , useEffect} from "react"
+import PropTypes from "prop-types"
+import "./chat.css"
 
-export const ChatComponent =  (props) =>{
+export const Chat =  (props) =>{
     const {onSubmit,height,width,teammateMessage} = props
     const [reply,setReply] = useState("")
     const [showReply,setShowReply] = useState(false)
@@ -20,13 +20,13 @@ export const ChatComponent =  (props) =>{
 
     useEffect(()=>{
         const timer = setInterval(() => {
-        setTime(new Date())
-        }, 1000)
+        setTime(new Date());
+        }, 1000);
         return () => clearInterval(timer)
     },[])
 
     const submit = async (e) =>{
-        e.preventDefault()
+        e.preventDefault();
         if (inputValue.trim().length > 0) {
             const reply = inputValue
             setReply(reply)
@@ -47,7 +47,7 @@ export const ChatComponent =  (props) =>{
                 <div className="messages">
                     <div className="teammateMessagesContainer">
                         <img className="user-image " 
-                            src="/img/imagine26/activityImages/user.png" 
+                            src="/img/imagine_images/user.png" 
                             alt="profile"
                         />
                         <div className="message-content">
@@ -63,7 +63,7 @@ export const ChatComponent =  (props) =>{
 
                     {showReply && (
                         <div className="userMessageContainer">
-                            <img className="user-image " src="/img/imagine26/activityImages/user-2.png" alt="profile" />
+                            <img className="user-image " src="/img/imagine_images/user-2.png" alt="profile" />
                             <div className="message-content">
                                 <div className="message-header">
                                     <span className="username">You</span>
@@ -85,7 +85,7 @@ export const ChatComponent =  (props) =>{
                             disabled={isDisabled}
                         />
                         <button disabled={isDisabled} type="submit" className="send-button">
-                            <img className="send-icon" src="/img/imagine26/activityImages/send.png" alt="send" />
+                            <img className="send-icon" src="/img/imagine_images/send.png" alt="send" />
                         </button>
                     </div>
                 </form>
@@ -95,7 +95,7 @@ export const ChatComponent =  (props) =>{
 )
 }
 
-ChatComponent.propTypes = {
+Chat.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   width: PropTypes.string.isRequired,
   height:PropTypes.string.isRequired,
