@@ -32,7 +32,7 @@ const PromptBuilder = () => {
     nextStage,
     previousStage,
   } = usePromptBuilderStageManager();
-  const { setPromptScore } = useLab15();
+  const { setPromptScore, setPromptText } = useLab15();
 
   const activeOptions = STAGE_OPTIONS[currentStage] || [];
   const isFinalStage = currentStageIndex === stages.length - 1;
@@ -54,8 +54,13 @@ const PromptBuilder = () => {
     previousStage();
   };
 
+  const fullPromptText = GCSE_SECTIONS.map(({ key }) => selections[key] || "")
+    .filter(Boolean)
+    .join(" ");
+
   const handleViewModelResponse = () => {
     setPromptScore(totalScore);
+    setPromptText(fullPromptText);
     navigate("/Lab15/Exercise/model-with-grades");
   };
 
