@@ -28,6 +28,7 @@ const AIChatBot = ({
   disclaimerMessage = "",
   onCitationClick = null,
   onQuestionAsked = null,
+  renderCustomMessage = null,
 }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
@@ -176,114 +177,130 @@ const AIChatBot = ({
       >
         {/* Container for indvidual messages */}
         {messages && messages.length > 0
-          ? messages.map((msg, index) => (
-              <div
-                key={msg.id || index}
-                className={`tw-flex tw-items-start tw-gap-3 ${
-                  msg.sender === AvatarType.User
-                    ? "tw-flex-row-reverse"
-                    : "tw-flex-row"
-                }`}
-                style={{
-                  animation: "fadeIn 0.5s ease-in",
-                }}
-              >
-                {/* Avatar circle */}
-                <Avatar
-                  type={
-                    msg.sender === AvatarType.User
-                      ? AvatarType.User
-                      : AvatarType.AI
-                  }
-                  size={40}
-                />
-                {/* Message box adjacent to user message */}
-                <div
-                  className={`tw-flex tw-flex-col ${msg.sender === AvatarType.User ? "tw-items-end" : "tw-items-start"}`}
-                >
+          ? messages.map((msg, index) => {
+              const customRender = renderCustomMessage?.(msg, index);
+              if (customRender) {
+                return (
                   <div
-                    className={`tw-text-black tw-text-left tw-p-3 tw-rounded-lg tw-break-words tw-body-text tw-bg-white tw-shadow ${
-                      msg.sender === "bot"
-                        ? "tw-max-w-[50vw]"
-                        : "tw-max-w-[45vw]"
-                    }`}
+                    key={msg.id || index}
+                    style={{ animation: "fadeIn 0.5s ease-in" }}
                   >
-                    {/* User messages - just display text */}
-                    {msg.sender === AvatarType.User ? (
-                      msg.text
-                    ) : (
-                      // Bot messages - use renderAIMessage for additional features
-                      <>
-                        {index === messages.length - 1 && isTyping ? (
-                          // Typing animation for latest message
-                          <TypingMessage
-                            text={msg.text}
-                            onUpdate={scrollToBottom}
-                            onComplete={() => {
-                              setMessages((prev) =>
-                                prev.map((m) =>
-                                  m.id === msg.id ? { ...m, isNew: false } : m,
-                                ),
-                              );
-                              setIsTyping(false);
-                            }}
-                          />
-                        ) : (
-                          // Display message text
-                          msg.text
-                        )}
-
-                        {/* Show confidence, disclaimer, citations AFTER typing completes */}
-                        {(!isTyping || index !== messages.length - 1) &&
-                          msg.confidence &&
-                          msg.isPhase4 && (
-                            <div className="tw-grid tw-space-y-2 tw-mt-2 tw-text-sm">
-                              {showConfidenceScore && (
-                                <div className="tw-text-gray-600">
-                                  <strong>Confidence Score: </strong>
-                                  {msg.confidence}
-                                </div>
-                              )}
-
-                              {disclaimerMessage && (
-                                <div className="tw-text-gray-500">
-                                  <strong>Disclaimer: </strong>
-                                  <em>{disclaimerMessage}</em>
-                                </div>
-                              )}
-
-                              {showCitations && (
-                                <div className="tw-flex tw-items-center tw-gap-1">
-                                  <strong>Source: </strong>
-                                  <div
-                                    className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
-                                    onClick={onCitationClick}
-                                  >
-                                    <p>ALLpedia</p>
-                                    <img
-                                      src={HyperLinkImage}
-                                      alt="Hyper Link Image"
-                                      className="tw-w-5 tw-h-5 mb-1"
-                                    />
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                      </>
-                    )}
+                    {customRender}
                   </div>
-                  {/* Show blob for most recent AI messages while its typing */}
-                  {msg.sender === "bot" &&
-                    index === messages.length - 1 &&
-                    isTyping && (
-                      <div className="tw-flex tw-items-start tw-border-none">
-                        <BlobLoader animationMode={getBlobMode()} />
-                      </div>
-                    )}
+                );
+              }
+
+              return (
+                <div
+                  key={msg.id || index}
+                  className={`tw-flex tw-items-start tw-gap-3 ${
+                    msg.sender === AvatarType.User
+                      ? "tw-flex-row-reverse"
+                      : "tw-flex-row"
+                  }`}
+                  style={{
+                    animation: "fadeIn 0.5s ease-in",
+                  }}
+                >
+                  {/* Avatar circle */}
+                  <Avatar
+                    type={
+                      msg.sender === AvatarType.User
+                        ? AvatarType.User
+                        : AvatarType.AI
+                    }
+                    size={40}
+                  />
+                  {/* Message box adjacent to user message */}
+                  <div
+                    className={`tw-flex tw-flex-col ${msg.sender === AvatarType.User ? "tw-items-end" : "tw-items-start"}`}
+                  >
+                    <div
+                      className={`tw-text-black tw-text-left tw-p-3 tw-rounded-lg tw-break-words tw-body-text tw-bg-white tw-shadow ${
+                        msg.sender === "bot"
+                          ? "tw-max-w-[50vw]"
+                          : "tw-max-w-[45vw]"
+                      }`}
+                    >
+                      {/* User messages - just display text */}
+                      {msg.sender === AvatarType.User ? (
+                        msg.text
+                      ) : (
+                        // Bot messages - use renderAIMessage for additional features
+                        <>
+                          {index === messages.length - 1 && isTyping ? (
+                            // Typing animation for latest message
+                            <TypingMessage
+                              text={msg.text}
+                              onUpdate={scrollToBottom}
+                              onComplete={() => {
+                                setMessages((prev) =>
+                                  prev.map((m) =>
+                                    m.id === msg.id
+                                      ? { ...m, isNew: false }
+                                      : m,
+                                  ),
+                                );
+                                setIsTyping(false);
+                              }}
+                            />
+                          ) : (
+                            // Display message text
+                            msg.text
+                          )}
+
+                          {/* Show confidence, disclaimer, citations AFTER typing completes */}
+                          {(!isTyping || index !== messages.length - 1) &&
+                            msg.confidence &&
+                            msg.isPhase4 && (
+                              <div className="tw-grid tw-space-y-2 tw-mt-2 tw-text-sm">
+                                {showConfidenceScore && (
+                                  <div className="tw-text-gray-600">
+                                    <strong>Confidence Score: </strong>
+                                    {msg.confidence}
+                                  </div>
+                                )}
+
+                                {disclaimerMessage && (
+                                  <div className="tw-text-gray-500">
+                                    <strong>Disclaimer: </strong>
+                                    <em>{disclaimerMessage}</em>
+                                  </div>
+                                )}
+
+                                {showCitations && (
+                                  <div className="tw-flex tw-items-center tw-gap-1">
+                                    <strong>Source: </strong>
+                                    <div
+                                      className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
+                                      onClick={onCitationClick}
+                                    >
+                                      <p>ALLpedia</p>
+                                      <img
+                                        src={HyperLinkImage}
+                                        alt="Hyper Link Image"
+                                        className="tw-w-5 tw-h-5 mb-1"
+                                      />
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                        </>
+                      )}
+                    </div>
+                    {/* Show blob for most recent AI messages while its typing */}
+                    {msg.sender === "bot" &&
+                      index === messages.length - 1 &&
+                      isTyping && (
+                        <div className="tw-flex tw-items-start tw-border-none">
+                          <BlobLoader animationMode={getBlobMode()} />
+                        </div>
+                      )}
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           : null}
 
         {/*  Question options after greeting */}
@@ -395,6 +412,7 @@ AIChatBot.propTypes = {
   disclaimerMessage: PropTypes.string,
   onCitationClick: PropTypes.func,
   onQuestionAsked: PropTypes.func,
+  renderCustomMessage: PropTypes.func,
 };
 
 export default AIChatBot;
