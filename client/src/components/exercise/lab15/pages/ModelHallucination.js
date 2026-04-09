@@ -63,16 +63,23 @@ const ModelHallucination = () => {
 
     setShowInstructionBanner(false);
 
-    setChatMessages((prev) => [
-      ...prev,
-      {
-        id: `transition-${newCount}`,
-        sender: "bot",
-        text: "Let's continue. Select another prompt.",
-        timestamp: new Date(),
-        isNew: true,
-      },
-    ]);
+    setChatMessages((prev) => {
+      // If final message, set text to "Select the final prompt."
+      let text =
+        newCount == 2
+          ? "Select the final prompt."
+          : "Let's continue. Select another prompt.";
+      return [
+        ...prev,
+        {
+          id: `transition-${newCount}`,
+          sender: "bot",
+          text: text,
+          timestamp: new Date(),
+          isNew: true,
+        },
+      ];
+    });
   };
 
   const canReview =
