@@ -35,7 +35,8 @@ const postSurveyQuestions = [
   {
     question:
       "What are three words that describe your [teammate’s] feelings?",
-    type: "text",
+      answers: ["Response"],
+    type: "TextInput",
   },
   {
     question:
