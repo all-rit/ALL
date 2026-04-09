@@ -236,12 +236,14 @@ const Reading = (props) => {
               data[0].reading.piechart.data.labels,
             );
           }
+
+          createAccessiblePieLabel(
+            data[0].reading.piechart.data.labels,
+            data[0].reading.piechart.data.datasets[0].data,
+            data[0].reading.piechart.header,
+          );
         }
-        createAccessiblePieLabel(
-          data[0].reading.piechart.data.labels,
-          data[0].reading.piechart.data.datasets[0].data,
-          data[0].reading.piechart.header,
-        );
+
         setReadingData(data[0].reading);
       });
 
