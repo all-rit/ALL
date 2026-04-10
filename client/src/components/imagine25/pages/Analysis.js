@@ -12,6 +12,7 @@ const Analysis = () => {
   const [showScores, setShowScores] = useState(false);
   const [acknowledged, setAcknowledged] = useState(false);
   const [teammateChatShown, setTeammateChatShown] = useState(false);
+  const [startTime, setStartTime] = useState(null);
   const [responded, setResponded] = useState(false);
 
   const [title, setTitle] = useState(null);
@@ -27,32 +28,33 @@ const Analysis = () => {
       navigate("/Imagine2025/PostSurvey");
     } else {
       setTeammateChatShown(true);
+      setStartTime(Date.now());
     }
   };
 
   const onSubmitResponse = async (response) => {
     await ImagineService.updateTeammateChat2025(
       sessionStorage.getItem("userID"),
-      response,
+      {
+        question: "Testing 123!",
+        answer: response,
+        timeSpentMs: Date.now() - startTime,
+      },
     );
     setResponded(true);
   };
 
   useEffect(() => {
+    const userID = sessionStorage.getItem("userID");
+
     const fetchTeammateID = async () => {
-      const id = await ImagineService.getTeammate(
-        sessionStorage.getItem("userID"),
-        25,
-      );
+      const id = await ImagineService.getTeammate(userID, 25);
       setTeammateId(id);
     };
 
     const fetchContent = async () => {
       // yoink that user data
-      const user = await ImagineService.getUserByID(
-        sessionStorage.getItem("userID"),
-        25,
-      );
+      const user = await ImagineService.getUserByID(userID, 25);
 
       // pastel yellow and blue annoyingly are stored in their key forms and need to be re-converted to a readable form
       const colorMap = {
