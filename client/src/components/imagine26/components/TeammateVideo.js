@@ -48,7 +48,6 @@ const TeammateVideo = (props) => {
      
     //once we have all videos of teammates typing uncomment this line
     // setVideoSrc(typingVideoPaths[teammateId] || typingVideoPaths[0])
-
       const teammateReactionVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
       console.log(teammateReactionVideos[group]);
       setVideoSrc(teammateReactionVideos[group] || teammateReactionVideos.A);
@@ -85,7 +84,6 @@ const TeammateVideo = (props) => {
 
   return (
     <div 
-      // className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-2 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[600px]"
       className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg`}
     >
       <p className="tw-mb-3">
@@ -98,7 +96,6 @@ const TeammateVideo = (props) => {
         autoPlay
         loop
         muted
-        // className={`tw-w-full tw-h-[250px] tw-object-cover tw-shadow-lg tw-rounded-lg`}
         className={`tw-w-full tw-object-cover tw-rounded-lg ${status == 'chatroom' ? 'tw-aspect-video tw-h-[220px]' : 'tw-h-[200px]'}`}
       />
       

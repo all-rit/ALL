@@ -25,7 +25,6 @@ const ChatRoom = () => {
             expression: "THAT IS A FAKE IMAGE. I NEVER SAID THAT !!"
     }
 
-    // const contentSizing = "tw-flex tw-flex-col tw-items-center tw-justify-between tw-gap-5 tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[2rem] tw-pb-10 tw-mx-auto";    
     const contentSizing = "tw-flex tw-flex-col tw-items-center tw-justify-between tw-border tw-rounded-xl";    
     return (
         <>
