@@ -1,0 +1,26 @@
+{
+  "name": "Full Stack Development",
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "client",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "root"
+    },
+    "ghcr.io/devcontainers/features/git:1": "latest"
+    // Other dev tools can be found here: https://containers.dev/features
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}
