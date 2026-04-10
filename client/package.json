@@ -32,7 +32,7 @@
     "immutability-helper": "^3.1.1",
     "lodash": "^4.18.1",
     "mathjax-react": "^2.0.1",
-    "mathjs": "^12.4.1",
+    "mathjs": "^15.2.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.3.1",
