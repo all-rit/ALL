@@ -3,18 +3,26 @@
 //use the imagin25 video instead
 
 const videoPaths = {
-  0: "/videos/imagine26/video0.mp4",
+  0: "/videos/imagine26/0playingGalaga.mp4",
   1: "../videos/imagine26/1playingGalaga.mp4",
-  2: "../videos/imagine26/video2.mp4",
-  3: "../videos/imagine26/video3.mp4",
+  2: "../videos/imagine26/2playingGalaga.mp4",
+  3: "../videos/imagine26/3playingGalaga.mp4",
+};
+
+
+const typingVideoPaths = {
+  0: "/videos/imagine26/0typing.mp4",
+  1: "../videos/imagine26/1typing.mp4",
+  2: "../videos/imagine26/2typing.mp4",
+  3: "../videos/imagine26/3typing.mp4",
 };
 
 //these are the videos shown when the user sees their score ( we need to add the videos for temmate 0,2,3)
 const scorePagePaths = {
-  0: "/videos/imagine26/video0.mp4",
+  0: "/videos/imagine26/0control.mp4",
   1: "../videos/imagine26/1control.mp4",
-  2: "../videos/imagine26/video2.mp4",
-  3: "../videos/imagine26/video3.mp4",
+  2: "../videos/imagine26/2control.mp4",
+  3: "../videos/imagine26/3control.mp4",
 };
 
 //these are the videos shown to the user during the exercise portion dependin on their group (we need to add the vidoes for 0,2,3)
@@ -41,4 +49,4 @@ const groupVideoPaths = {
   },
 };
 
-export { videoPaths, groupVideoPaths, scorePagePaths };
+export { videoPaths, groupVideoPaths, scorePagePaths,typingVideoPaths };
