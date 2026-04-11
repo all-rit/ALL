@@ -227,7 +227,6 @@ const Game = () => {
   useEffect(() => {
     //when new teammate video is added we need to change 3, for number 4
     const id = Math.floor(Math.random() * 3);
-    console.log(id)
     setTeammateId(id);
   }, []);
 
