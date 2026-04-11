@@ -175,27 +175,45 @@ const SurveyHandler = (props) => {
    * component.
    * @param {*} e event containing the index of the selected answer response.
    */
-
   function selectAnswer(e) {
-    const answerValue = e.target.value;
-    //If answer is likert, then the answer will be from 1-10, and we do not care about the questions content
+  
+    const answerValue = e?.target?.value;
+    const timeSpent = (Date.now() - questionStartTime) / 1000;
+    console.log(answerValue);
+    // text input case
+    if (
+      answerValue &&
+      typeof answerValue === "object" &&
+      !Array.isArray(answerValue)
+    ) {
+      setSelectedAnswers((prevAnswers) => {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[currentQuestionCursor] = {
+          question: questions[currentQuestionCursor].question,
+          answer: answerValue,
+          timeSpent: timeSpent,
+        };
+        return updatedAnswers;
+      });
+  
+      setDisableNext(false); //Put so it goes next
+      return;
+    }
+  
+    // normal single choice / likert case
     const answer =
       questions[currentQuestionCursor].type == "likert"
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
-
-        const timeSpent = (Date.now() - questionStartTime) / 1000; //Div by 1000 to make per second
-    setIsUnderAge(
-      answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
-    );
-
+          setIsUnderAge(
+          answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
+        );
+  
     setSelectedAnswers((prevAnswers) => {
-      // Removes the "Under 18 years old" option from the selected answers
-      // if another option is chosen after selecting it first.
-
-      let updatedAnswers = prevAnswers.filter(
+      const updatedAnswers = prevAnswers.filter(
         (a) => a.answer !== "Under 18 years old",
       );
+  
       return [
         ...updatedAnswers,
         {
@@ -205,8 +223,10 @@ const SurveyHandler = (props) => {
         },
       ];
     });
+  
     setDisableNext(false);
   }
+
 
   /**
    * selectMulti is a function that is responsible for handling

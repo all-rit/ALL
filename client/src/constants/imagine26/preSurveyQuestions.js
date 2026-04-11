@@ -25,6 +25,63 @@ const preSurveyQuestions = [
     ],
     type: "singleChoice",
   },
+  {
+    question: "What is your gender?",
+    answers: [
+      {
+        index: "0",
+        content: "Female",
+      },
+      {
+        index: "1",
+        content: "Non-Binary",
+      },
+      {
+        index: "2",
+        content: "Male",
+      },
+      {
+        index: "3",
+        content: "Prefer not to answer",
+      },
+    ],
+    type: "singleChoice",
+  },
+  {
+    question:
+      "What demographic do you most closely identify with? (Check all that apply).",
+    answers: [
+      {
+        index: "0",
+        content: "Hispanic / Latino /Latinx",
+      },
+      {
+        index: "1",
+        content: "White / European descent",
+      },
+      {
+        index: "2",
+        content: "Black / African descent",
+      },
+      {
+        index: "3",
+        content: "Asian",
+      },
+      {
+        index: "4",
+        content: "Middle Eastern / North African",
+      },
+      {
+        index: "5",
+        content: "Indigenous",
+      },
+      {
+        index: "6",
+        content: "Prefer not to answer",
+      },
+    ],
+    type: "multiChoice",
+  },
 ];
 
 export default preSurveyQuestions;
