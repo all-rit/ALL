@@ -66,7 +66,7 @@ return (
 
       ) : isChatRoom ? (
         
-        <div className="tw-w-96 tw-p-4 tw-gap-4">
+        <div className="tw-w-96 tw-p-2 tw-gap-2">
           <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-bg-error tw-bg-opacity-30 tw-rounded-md tw-py-2 tw-px-4">
             <p className="tw-text-md tw-font-bold tw-text-brightRed tw-m-0">
               Flagged: High Risk-Content: {" "}
