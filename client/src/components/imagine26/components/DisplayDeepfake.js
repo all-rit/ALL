@@ -46,11 +46,11 @@ return (
           <ModalBody className="tw-text-center tw-py-8">
             {isExperential ? (
               <h5 className="tw-font-semibold">
-                We have footage of you not wanting cotton candy{" "}
+                We have footage of you not wanting popcorn{" "}
               </h5>
             ) : (
               <h5 className="tw-font-semibold">
-                We have footage of your teammate not wanting cotton candy
+                We have footage of your teammate not wanting popcorn
               </h5>
             )}
             <p className="tw-text-gray-600">
