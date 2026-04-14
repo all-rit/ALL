@@ -56,7 +56,7 @@
     "workbox-background-sync": "^7.0.0"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --fix ."

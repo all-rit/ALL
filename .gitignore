@@ -1,6 +1,7 @@
 # IDE-specific directories
 .idea/
 .vscode/
+.cursor/
 
 # SSL Certificates
 *.crt
