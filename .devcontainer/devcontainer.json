@@ -1,5 +1,5 @@
 {
-  "name": "Full Stack Development",
+  "name": "ALL Development",
 
   "dockerComposeFile": "docker-compose.yml",
   "service": "container",

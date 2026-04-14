@@ -37,6 +37,7 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       src: path.resolve(__dirname, "src"),
+      avataaars: path.resolve(__dirname, "src/shims/AvataaarsCompat.jsx"),
     },
   },
   build: {

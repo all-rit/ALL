@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@babel/runtime-corejs2": "^7.24.1",
+    "@dicebear/avataaars": "^9.4.2",
+    "@dicebear/core": "^9.4.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -19,7 +21,6 @@
     "@redux-devtools/core": "^4.0.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@xyflow/react": "^12.5.1",
-    "avataaars": "^2.0.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.5.1",
     "classnames": "^2.5.1",
