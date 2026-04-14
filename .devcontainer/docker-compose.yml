@@ -1,4 +1,11 @@
 services:
+  container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
   db:
     image: postgres
     ports:

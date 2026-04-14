@@ -1,7 +1,9 @@
 {
   "name": "Full Stack Development",
-  "dockerComposeFile": "./docker-compose.yml",
-  "service": "client",
+
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "container",
+
   "workspaceFolder": "/workspace",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
@@ -17,7 +19,7 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
+        // "esbenp.prettier-vscode"
         "ms-azuretools.vscode-docker"
       ]
     }
