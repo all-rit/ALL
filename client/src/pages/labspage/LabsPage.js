@@ -418,7 +418,7 @@ const LabsPage = (props) => {
                           <div className="tw-flex tw-flex-wrap">
                             <div
                               className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
-                            tw-gap-4 tw-pb-16 tw-pr-3 tw-w-full"
+                            tw-gap-4 tw-pb-16 tw-w-full"
                             >
                               {labArray.map((labInfo) =>
                                 renderLabData(
