@@ -49,6 +49,17 @@ const preSurvey = async (req, _res) => {
   };
 };
 
+const updateTeammateChat2025 = async (req, res) => {
+  const { userID, teammateChat } = req.body;
+
+  const success = await ImagineService.updateTeammateChat2025({
+    userID,
+    teammateChat,
+  });
+
+  res.sendStatus(success ? 200 : 500);
+}
+
 const postSurvey = async (req, _res) => {
   const {userID, postSurvey, year} = req.body;
   try {
@@ -216,4 +227,5 @@ module.exports = {
   postOpponentAvatar,
   getGroup,
   getTeammate,
+  updateTeammateChat2025
 };

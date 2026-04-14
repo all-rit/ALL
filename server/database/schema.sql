@@ -1,18 +1,3 @@
-create type enum_imagine25 as enum ('experiential','expression','control');
-create table imagine25
-(
-    id                           serial,
-    userid                       text,
-    "preSurvey"                  json,
-    "postSurvey"                 json,
-    "section"                    enum_imagine25,
-    "avatar"                     json,
-    "teammateAvatar"             json,
-    "opponentAvatar"             json,
-    primary key (id)
-);
-
-
 create table imagine22
 (
     id              serial,

@@ -13,7 +13,7 @@ const AvatarCreationPage = (props) => {
 
   return (
     <>
-      <ImagineHeader title="Make an Avatar That Resembles You!" />
+      <ImagineHeader title="Make an Avatar That Resembles You" />
       {Frame(
         <AvatarCreation
           userAvatar={props.userAvatar}
