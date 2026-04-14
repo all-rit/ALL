@@ -58,7 +58,7 @@ const updateTeammateChat2025 = async (req, res) => {
   });
 
   res.sendStatus(success ? 200 : 500);
-}
+};
 
 const postSurvey = async (req, _res) => {
   const {userID, postSurvey, year} = req.body;
