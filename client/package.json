@@ -2,7 +2,6 @@
   "name": "ALL",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
   "dependencies": {
     "@babel/runtime-corejs2": "^7.24.1",
     "@emotion/react": "^11.11.4",

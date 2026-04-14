@@ -83,6 +83,7 @@ function initializeReactGA() {
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
+  const routerBasepath = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
   let [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -119,7 +120,7 @@ const App = () => {
   const renderLabs = () => {
     return (
       <div className={"tw-h-full tw-w-full"}>
-        <Router basepath={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+        <Router basepath={routerBasepath}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
           <Reading
@@ -175,7 +176,7 @@ const App = () => {
 
   const renderPages = () => {
     return (
-      <Router basepath={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+      <Router basepath={routerBasepath}>
         <AboutUsPage path={"/about-us"} />
         <LandingPage path="/" />
         <SiteMap path="/SiteMap" />
