@@ -46,5 +46,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 3000,
     host: true,
+    watch: {
+      usePolling: true,
+      interval: 100,
+    },
+    hmr: {
+      host: "localhost",
+      clientPort: 3000,
+    },
   },
 }));

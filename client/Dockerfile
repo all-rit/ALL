@@ -7,4 +7,6 @@ FROM node:20-alpine
 WORKDIR /app
 COPY --from=dependencies-env /app/node_modules /app/node_modules
 COPY . ./
-CMD ["npm", "run", "dev"]
+ENV CHOKIDAR_USEPOLLING=true
+ENV CHOKIDAR_INTERVAL=100
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "3000"]

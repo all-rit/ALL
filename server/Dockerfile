@@ -7,4 +7,4 @@ FROM node:20-alpine
 WORKDIR /app
 COPY --from=dependencies-env /app/node_modules ./node_modules
 COPY . ./
-CMD ["node", "app.js"]
+CMD ["npm", "run", "dev"]
