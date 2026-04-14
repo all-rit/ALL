@@ -69,11 +69,11 @@ const VigenereIntro = () => {
           <p className="tw-body-text tw-text-center">
             Where{" "}
             <strong>
-              L<sub>i</sub>
+              E<sub>i</sub>
             </strong>{" "}
             is the encrypted letter,{" "}
             <strong>
-              P<sub>i</sub>
+              L<sub>i</sub>
             </strong>{" "}
             is your message&apos;s letter, and{" "}
             <strong>

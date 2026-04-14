@@ -16,8 +16,8 @@ class NotificationRepair extends Component {
     super(props);
 
     this.state = {
-      fontsizevalue: null,
-      timeout: null,
+      fontsizevalue: props.fontsizevalue,
+      timeout: props.timeout,
       timeouterror: null,
       fontsizeerror: null,
       repairerror: true,
@@ -25,13 +25,6 @@ class NotificationRepair extends Component {
     };
   }
 
-  componentWillMount() {
-    const { data } = this.props;
-    this.setState({
-      fontsizevalue: data.fontsizevalue,
-      timeout: data.timeout,
-    });
-  }
   validateRepair(e) {
     let error = false;
     Object.keys(this.state).map((name) => {

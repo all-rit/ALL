@@ -3,9 +3,10 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
+import ColorPicker from "@rc-component/color-picker"; // Updated from deprecated 'rc-color-picker'
 import AccessibilityImage from "../../assets/images/accessibility_icon.png";
 import { Card, CardHeader, CardBody, Modal, Button } from "reactstrap";
+import "@rc-component/color-picker/assets/index.css";
 import {
   changeTSize,
   setTextColor,
@@ -61,13 +62,13 @@ const SiteAccessibilityButton = () => {
   }
 
   function onTextColorChange(obj) {
-    setTextColor(obj.color);
-    state = { ...state, color: obj.color };
+    setTextColor(obj.toHexString());
+    state = { ...state, color: obj.toHexString() };
   }
 
   function onBgColorChange(obj) {
-    setBackgroundColor(obj.color);
-    state = { ...state, backgroundColor: obj.color };
+    setBackgroundColor(obj.toHexString());
+    state = { ...state, backgroundColor: obj.toHexString() };
   }
 
   return (
@@ -113,7 +114,7 @@ const SiteAccessibilityButton = () => {
                 Text Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
+                <ColorPicker
                   enableAlpha={false}
                   defaultColor={"#345679"}
                   color={state.color}
@@ -124,7 +125,7 @@ const SiteAccessibilityButton = () => {
                 Background Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
+                <ColorPicker
                   enableAlpha={false}
                   defaultColor={"#345679"}
                   color={state.backgroundColor}
@@ -186,10 +187,8 @@ const SiteAccessibilityButton = () => {
                 Text Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.color}
+                <ColorPicker
+                  defaultValue={"#345679"}
                   onChange={onTextColorChange.bind(this)}
                 />
               </div>
@@ -197,7 +196,7 @@ const SiteAccessibilityButton = () => {
                 Background Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPickerPanel
+                <ColorPicker
                   enableAlpha={false}
                   defaultColor={"#345679"}
                   color={state.backgroundColor}

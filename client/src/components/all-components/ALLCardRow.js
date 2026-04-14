@@ -56,15 +56,15 @@ const ALLCardRow = (props) => {
     <div className="tw-flex tw-flex-col tw-w-full tw-my-3">
       <div className="tw-shadow-lg tw-w-full tw-flex tw-flex-row tw-rounded-lg tw-relative">
         {/* Left */}
-        <image
+        <img // image was an unrecognized tag in the browser
+          src={imageURL}
           className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
           style={{
-            backgroundImage: `url(${imageURL})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          alt={"Image of Wrench created by Google Gemini."}
+          alt="Image of Wrench created by Google Gemini"
         />
         <div className="tw-flex-row tw-space-y-5 tw-p-5 sm:tw-space-y-0">
           <div className="tw-flex tw-flex-row tw-items-baseline tw-justify-start">

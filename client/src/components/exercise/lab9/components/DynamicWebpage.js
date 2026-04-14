@@ -6,9 +6,10 @@ import WebpageNav from "./webpage-subcomponents/WebpageNav";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
 import { ExerciseService } from "../../../../services/lab9/ExerciseService";
-import Button from "src/components/all-components/Navigation/Button";
+// import Button from "src/components/all-components/Navigation/Button";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import ALLButton from "src/components/all-components/ALLButton";
 
 /**
  * Webpage is a reusable component used to display
@@ -138,7 +139,9 @@ const Webpage = () => {
           </div>
         </div>
       </div>
-      {isComplete && <Button onClick={handleComplete}>Continue</Button>}
+      {isComplete && (
+        <ALLButton onClick={handleComplete} label={"Continue"}></ALLButton>
+      )}
     </div>
   );
 };

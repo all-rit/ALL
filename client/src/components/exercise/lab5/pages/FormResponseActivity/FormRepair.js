@@ -15,9 +15,9 @@ class FormRepair extends Component {
 
     this.state = {
       errorNotification: null,
-      successNotification: null,
-      borderColor: null,
-      errorNotificationerror: null,
+      successNotification: props.successNotification,
+      borderColor: props.borderColor,
+      errorNotificationerror: props.errorNotification,
       successNotificationerror: null,
       borderColorerror: null,
       repairerror: true,
@@ -25,20 +25,11 @@ class FormRepair extends Component {
     };
   }
 
-  componentWillMount() {
-    const { data } = this.props;
-    this.setState({
-      errorNotification: data.errorNotification,
-      successNotification: data.successNotification,
-      borderColor: data.borderColor,
-    });
-  }
   validateRepair(e) {
     let error = false;
     Object.keys(this.state).map((name) => {
       switch (name) {
         case "errorNotification":
-          console.log(this.state[name]);
           if (
             this.state[name] !== '"Please enter in format: YYYY-MM-DD"' &&
             this.state[name] !== "'Please enter in format: YYYY-MM-DD'"

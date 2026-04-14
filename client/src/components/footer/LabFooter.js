@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
 import { connect } from "react-redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
@@ -47,11 +47,7 @@ const LabFooter = (props) => {
 
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
-
-  useEffect(() => {
-    console.log(display);
-  }, []);
-
+  // Removed useless useEffect hook, that printed true whenever the LabFooter rendered
   return (
     <div className={"tw-z-10 tw-w-full"}>
       {display && (

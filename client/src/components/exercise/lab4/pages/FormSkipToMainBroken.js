@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import AppInstructions from "../components/AppInstructions";
 import ExtraNav from "../components/ExtraNav";
 import FormComp from "../components/FormComp";
@@ -25,7 +25,7 @@ const FormSkipToMainBroken = () => {
   const name = "FormSkipToMainBroken";
 
   return (
-    <Fragment className="tw-z-50">
+    <div className="tw-z-50">
       <ExtraNav />
       <AppInstructions
         className={classState}
@@ -33,7 +33,7 @@ const FormSkipToMainBroken = () => {
         instructions={instructions}
       />
       <FormComp url={url} parentCallback={callbackFunction} name={name} />
-    </Fragment>
+    </div>
   );
 };
 
