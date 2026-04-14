@@ -71,10 +71,12 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 function initializeReactGA() {
-  if (process.env.NODE_ENV === "production") {
-    const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
-    ReactGA.initialize(TRACKING_ID);
-    ReactGA.pageview(window.location.pathname + window.location.search);
+  if (import.meta.env.PROD) {
+    const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
+    if (TRACKING_ID) {
+      ReactGA.initialize(TRACKING_ID);
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
   }
 }
 
@@ -117,7 +119,7 @@ const App = () => {
   const renderLabs = () => {
     return (
       <div className={"tw-h-full tw-w-full"}>
-        <Router basepath={process.env.PUBLIC_URL}>
+        <Router basepath={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
           <Reading
@@ -173,7 +175,7 @@ const App = () => {
 
   const renderPages = () => {
     return (
-      <Router basepath={process.env.PUBLIC_URL}>
+      <Router basepath={import.meta.env.BASE_URL.replace(/\/$/, "")}>
         <AboutUsPage path={"/about-us"} />
         <LandingPage path="/" />
         <SiteMap path="/SiteMap" />

@@ -24,7 +24,7 @@ class PreviousExercises extends Component {
   render() {
     // Fetches the previously completed exercises by the user
     const fetchExercises = () => {
-      fetch(process.env.API_URL + "/previousExercises", {
+      fetch(import.meta.env.VITE_SERVER_URL + "/previousExercises", {
         method: "GET",
         credentials: "include",
       })

@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => ({
       // must be set. Without PACKAGE_VERSION, mathjax-full falls through to
       // eval('require') in the browser pre-bundle.
       define: {
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV ?? mode),
+        "process.env.NODE_ENV": JSON.stringify(mode),
         PACKAGE_VERSION: JSON.stringify(mathjaxFullVersion),
       },
     },

@@ -21,7 +21,7 @@ class Leaderboard extends Component {
     };
 
     const fetchData = () => {
-      fetch(process.env.API_URL + "/leaderboard", {
+      fetch(import.meta.env.VITE_SERVER_URL + "/leaderboard", {
         method: "GET",
         credentials: "include",
       })

@@ -9,10 +9,12 @@ import * as serviceWorker from "./serviceWorker";
 import ReactGA from "react-ga";
 import { MainContextProvider } from "./reducers/MainContext";
 
-if (process.env.NODE_ENV === "production") {
-  const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
-  ReactGA.initialize(TRACKING_ID);
-  ReactGA.pageview(window.location.pathname + window.location.search);
+if (import.meta.env.PROD) {
+  const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
+  if (TRACKING_ID) {
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
 }
 
 // const sagaMiddleware = createSagaMiddleware();

@@ -11,7 +11,7 @@ const LoginButton = (props) => {
   const { enabled } = props;
   const { actions } = useMainStateContext();
 
-  const isDev = process.env.NODE_ENV === "development";
+  const isDev = import.meta.env.DEV;
 
   const developmentLogin = (userId) => {
     actions.developmentLogin(userId);
