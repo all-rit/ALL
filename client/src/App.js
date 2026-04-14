@@ -51,7 +51,7 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
-import MainFooter from "./components/footer/mainFooter";
+// import MainFooter from "./components/footer/mainFooter";
 import MobileFooter from "./components/footer/mobileFooter";
 
 const LabWindow = lazy(
@@ -234,7 +234,7 @@ const App = () => {
             </div>
             {!labInProgress && !isImagine ? (
               <>
-                <MainFooter /> <MobileFooter />
+                <MobileFooter />
               </>
             ) : (
               <></>

@@ -1,7 +1,7 @@
 import { Col, Row } from "reactstrap";
 import logo from "../../assets/images/logos/ALL_White.svg";
-import nsf from "../../assets/images/logos/nsf.png";
-import rit from "../../assets/images/logos/RIT.png";
+// import nsf from "../../assets/images/logos/nsf.png";
+// import rit from "../../assets/images/logos/RIT.png";
 
 const MobileFooter = () => {
   return (
@@ -10,7 +10,7 @@ const MobileFooter = () => {
         {/* Row 1 */}
         <Row className="tw-mb-0">
           {/* ALL Logo*/}
-          <Col xs="8" className="tw-justify-start">
+          <Col xs="6" className="tw-justify-start">
             <a href="#" className="tw-left-0 tw-top-0 tw-content-start">
               <img
                 className="logo tw-flex tw-h-auto"
@@ -19,44 +19,15 @@ const MobileFooter = () => {
               />
             </a>
           </Col>
-        </Row>
-        <Row className="tw-items-center">
-          {/* NSF Logo */}
-          <Col xs="4">
-            <a
-              href="https://www.nsf.gov"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="tw-object-cover tw-w-full tw-max-w-[10rem]"
-                src={nsf}
-                alt="National Science Foundation"
-              />
-            </a>
-          </Col>
-          {/* RIT Logo*/}
-          <Col xs="8">
-            <a
-              href="https://www.rit.edu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="tw-object-cover tw-w-full tw-max-w-[16rem]"
-                src={rit}
-                alt="Rochester Institute Of Technology"
-              />
-            </a>
+          <Col>
+            <p className="tw-text-left">
+              Accessible Learning Labs is an NSF funded initiative aimed at
+              fostering STEM proficiency.
+            </p>
           </Col>
         </Row>
         {/* Row 2 */}
-        <Row>
-          <p className="tw-text-lg tw-text-left">
-            Accessible Learning Labs is an NSF funded initiative aimed at
-            fostering STEM proficiency.
-          </p>
-        </Row>
+        <Row></Row>
         <Row>
           {/* Row 3 */}
           <div className="tw-flex tw-justify-left tw-pt-0 tw-space-x-4">
