@@ -1,4 +1,4 @@
-const db = require("../../database");
+const db = require('../../database');
 /**
  * getRepair(): is a service based function that allows for the
  * operability to retrieve a user's date based on their user id
@@ -6,13 +6,13 @@ const db = require("../../database");
  * when input is logged.
  * @param {Number} userid integer storing payload of the request to retrieve
  * information based on the request.
- * @param {String} section string section indicator to indicate the
+* @param {String} section string section indicator to indicate the
  * repair section
  */
 async function getRepair(userid, section) {
   try {
     return await db.RepairLab14.findOne({
-      order: [["repairId", "DESC"]],
+      order: [['repairId', 'DESC']],
       where: {
         userid: userid,
         section: section,
@@ -32,11 +32,11 @@ async function getRepair(userid, section) {
  * @return {Number} repair id to show it is created
  */
 async function submitRepair(data) {
-  const { userID, repair, isComplete, section } = data;
+  const {userID, repair, isComplete, section} = data;
   try {
     const currentTime = new Date().toISOString();
     const outputData = await getRepair(userID, section);
-    if (!outputData || outputData.isComplete === true) {
+    if ((!outputData) || outputData.isComplete === true) {
       const newRepair = {
         userid: userID,
         repair: repair,

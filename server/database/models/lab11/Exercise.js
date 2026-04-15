@@ -1,37 +1,38 @@
 module.exports = (sequelize, DataTypes) => {
-  const Exercise = sequelize.define(
-    "ExerciseLab11",
-    {
-      repairId: {
-        type: DataTypes.INTEGER,
-        unique: true,
-        primaryKey: true,
-        autoIncrement: true,
+  const Exercise = sequelize.define('ExerciseLab11',
+      {
+        repairId: {
+          type: DataTypes.INTEGER,
+          unique: true,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        userid: {
+          type: DataTypes.BIGINT,
+        },
+        isRepairWordCountComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        isRepairSentenceCountComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        isRepairComplexWordCountComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        attemptTime: {
+          type: DataTypes.DATE,
+        },
+        attemptCount: {
+          type: DataTypes.INTEGER,
+        },
       },
-      userid: {
-        type: DataTypes.BIGINT,
+      {
+        tableName: 'lab11_exercise',
       },
-      isRepairWordCountComplete: {
-        type: DataTypes.BOOLEAN,
-      },
-      isRepairSentenceCountComplete: {
-        type: DataTypes.BOOLEAN,
-      },
-      isRepairComplexWordCountComplete: {
-        type: DataTypes.BOOLEAN,
-      },
-      attemptTime: {
-        type: DataTypes.DATE,
-      },
-      attemptCount: {
-        type: DataTypes.INTEGER,
-      },
-    },
-    {
-      tableName: "lab11_exercise",
-    },
   );
 
   Exercise.sync();
   return Exercise;
 };
+
+

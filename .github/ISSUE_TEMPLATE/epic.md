@@ -7,7 +7,6 @@ assignees: ""
 ---
 
 # [Epic Title]
-
 [Short description of epic]
 
 ## User Stories

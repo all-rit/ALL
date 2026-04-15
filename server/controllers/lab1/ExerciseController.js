@@ -1,4 +1,4 @@
-const ExerciseService = require("../../services/lab1/ExerciseService");
+const ExerciseService = require('../../services/lab1/ExerciseService');
 
 exports.createExercise = (req, res) => {
   ExerciseService.createExercise({

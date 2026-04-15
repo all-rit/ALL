@@ -1,4 +1,4 @@
-const TeamMemberService = require("../services/TeamMemberService");
+const TeamMemberService = require('../services/TeamMemberService');
 
 exports.getAllTeamMembers = (req, res) => {
   TeamMemberService.getAllTeamMembers().then((records) => {

@@ -1,4 +1,4 @@
-const ExerciseService = require("../../services/lab12/ExerciseService");
+const ExerciseService = require('../../services/lab12/ExerciseService');
 /**
  * getExercise(): is a function responsible for retrieving the
  * user id from the query params from the route to the endpoint.
@@ -8,10 +8,10 @@ const ExerciseService = require("../../services/lab12/ExerciseService");
  */
 async function getExercise(req) {
   try {
-    const { userID } = req.params;
+    const {userID} = req.params;
     return await ExerciseService.getExercise(userID);
   } catch (error) {
-    console.error("Error: Could Not Find Exercise", error);
+    console.error('Error: Could Not Find Exercise', error);
   }
 }
 
@@ -25,13 +25,8 @@ async function getExercise(req) {
  */
 async function postExercise(req) {
   try {
-    const {
-      userID,
-      isDatabaseRepairComplete,
-      isFormRepairComplete,
-      isExerciseComplete,
-      hasViewed,
-    } = req.body;
+    const {userID, isDatabaseRepairComplete, isFormRepairComplete,
+      isExerciseComplete, hasViewed} = req.body;
     const response = await ExerciseService.postExercise({
       userId: userID,
       isFormRepairComplete: isFormRepairComplete,

@@ -1,4 +1,4 @@
-const db = require("../../database");
+const db = require('../../database');
 
 exports.submitChange = (data) => {
   return db.RepairLab5.create({
@@ -6,10 +6,10 @@ exports.submitChange = (data) => {
     activity: data.activity,
     repair: data.repair,
   })
-    .then(() => {
-      return true;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then(() => {
+        return true;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 };

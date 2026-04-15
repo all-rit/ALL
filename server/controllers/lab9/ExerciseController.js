@@ -1,4 +1,4 @@
-const ExerciseService = require("../../services/lab9/ExerciseService");
+const ExerciseService = require('../../services/lab9/ExerciseService');
 /**
  * getExercise(): is a function responsible for retrieving the
  * user id from the query params from the route to the endpoint.
@@ -7,7 +7,7 @@ const ExerciseService = require("../../services/lab9/ExerciseService");
  */
 async function getExercise(req) {
   try {
-    const { userID } = req.params;
+    const {userID} = req.params;
     return await ExerciseService.getExercise(userID);
   } catch (error) {
     console.error(error);
@@ -23,14 +23,8 @@ async function getExercise(req) {
  */
 async function postExercise(req) {
   try {
-    const {
-      userID,
-      isAddressComplete,
-      isDateComplete,
-      isNavComplete,
-      isExerciseComplete,
-      hasViewed,
-    } = req.body;
+    const {userID, isAddressComplete, isDateComplete, isNavComplete,
+      isExerciseComplete, hasViewed} = req.body;
     const responseId = await ExerciseService.postExercise({
       userId: userID,
       isAddressComplete: isAddressComplete,

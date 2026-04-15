@@ -1,5 +1,5 @@
-const passport = require("passport");
-const UserService = require("../services/UserService");
+const passport = require('passport');
+const UserService = require('../services/UserService');
 
 // Checks if it's a guest or user entering webpage
 const main = (req, res) => {
@@ -39,14 +39,14 @@ const getUserInstructingGroups = (req, res) => {
 };
 
 // Authenticates User through Google OAuth
-const authenticate = passport.authenticate("google", {
-  scope: ["email", "profile"],
+const authenticate = passport.authenticate('google', {
+  scope: ['email', 'profile'],
 });
 
 // Callback used for Google OAuth
-const authenticateRedirect = passport.authenticate("google", {
+const authenticateRedirect = passport.authenticate('google', {
   keepSessionInfo: true,
-  failureRedirect: "/",
+  failureRedirect: '/',
 });
 
 const authenticateCallback = async (req, res) => {
@@ -56,15 +56,28 @@ const authenticateCallback = async (req, res) => {
     if (data) {
       await UserService.updateGuestUserId(data.userid, req.session.token);
       req.session.token = data.usersessionid;
-      res.redirect(req.session.url || "/");
+      res.redirect(req.session.url || '/');
     } else {
       // Handle case where authentication failed
-      res.redirect("/login?error=auth_failed");
+      res.redirect('/login?error=auth_failed');
     }
   } catch (error) {
-    console.error("Error while executing authenticateCallback", error);
+    console.error('Error while executing authenticateCallback', error);
     // Send user to error page with more specific error message
     res.redirect(`/login?error=${encodeURIComponent(error.message)}`);
+  }
+};
+
+const developmentLogin = async (req, res) => {
+  try {
+    await UserService.updateGuestUserId(req.params.userID, 1);
+    const user = await UserService.getUser(req.params.userID);
+    req.session.token = 1;
+    req.session.userID = user.userid;
+    req.session.save();
+    res.json(user);
+  } catch (e) {
+    console.error('Development Login failed! ', e);
   }
 };
 
@@ -75,10 +88,13 @@ const storeURL = (req, res) => {
 
 // Logging out will clear sessions
 const logout = (req, res, next) => {
-  req.logout({ keepSessionInfo: true }, (error) => {
+   
+  const redirect = process.env.ENVIRONMENT === 'dev' ? process.env.CLIENT_URL + '/' : req.session.url;
+  req.logout({keepSessionInfo: true}, (error) => {
     if (error) next(error);
     req.session.token = null;
-    res.redirect(req.session.url);
+    req.session.userID = null;
+    res.redirect(redirect);
   });
 };
 
@@ -94,4 +110,5 @@ module.exports = {
   getUserInstructingGroups,
   getUserAssignedLabs,
   getUserToDoLabs,
+  developmentLogin,
 };

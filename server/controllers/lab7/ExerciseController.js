@@ -1,4 +1,4 @@
-const ExerciseService = require("../../services/lab7/ExerciseService");
+const ExerciseService = require('../../services/lab7/ExerciseService');
 
 exports.submitRepair = (req, res) => {
   ExerciseService.submitChoice({
@@ -9,3 +9,4 @@ exports.submitRepair = (req, res) => {
     return res.sendStatus(200);
   });
 };
+

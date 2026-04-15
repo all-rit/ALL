@@ -1,4 +1,4 @@
-const UserLabService = require("../services/UserLabService");
+const UserLabService = require('../services/UserLabService');
 
 const completeAbout = (req, res) => {
   UserLabService.completeAbout({
@@ -117,7 +117,7 @@ const getUserLabRecords = async (req, res) => {
     const labs = await UserLabService.getUserLabRecords(req.params.userID);
     res.status(200).json(labs);
   } catch (error) {
-    console.error("Error while executing getUserLabRecords", error);
+    console.error('Error while executing getUserLabRecords', error);
     res.status(500).json({ error: error.message });
   }
 };

@@ -1,4 +1,4 @@
-const LabService = require("../services/LabService");
+const LabService = require('../services/LabService');
 
 /**
  * getAllLabsController(): Gets all labs and their information.
@@ -11,7 +11,7 @@ async function getAllLabsController(req, res) {
     return await res.json(labs);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could Not Find Labs" });
+    res.status(500).json({error: 'Error: Could Not Find Labs'});
   }
 }
 /**
@@ -21,12 +21,12 @@ async function getAllLabsController(req, res) {
  */
 async function getLabShortNameController(req, res) {
   try {
-    const { labID } = req.params;
+    const {labID} = req.params;
     const shortName = await LabService.getLabShortName(labID);
     return res.json([shortName]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could Not Find Short Name" });
+    res.status(500).json({error: 'Error: Could Not Find Short Name'});
   }
 }
 /**
@@ -36,12 +36,12 @@ async function getLabShortNameController(req, res) {
  */
 async function getLabAboutController(req, res) {
   try {
-    const { labID } = req.params;
+    const {labID} = req.params;
     const about = await LabService.getLabAbout(labID);
     return res.json([about]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could Not Find About" });
+    res.status(500).json({error: 'Error: Could Not Find About'});
   }
 }
 /**
@@ -51,12 +51,12 @@ async function getLabAboutController(req, res) {
  */
 async function getLabReadingController(req, res) {
   try {
-    const { labID } = req.params;
+    const {labID} = req.params;
     const reading = await LabService.getLabReading(labID);
     return res.json([reading]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could Not Find Reading" });
+    res.status(500).json({error: 'Error: Could Not Find Reading'});
   }
 }
 /**
@@ -66,12 +66,12 @@ async function getLabReadingController(req, res) {
  */
 async function getLabReinforcementController(req, res) {
   try {
-    const { labID } = req.params;
+    const {labID} = req.params;
     const reinforcement = await LabService.getLabReinforcement(labID);
     return res.json([reinforcement]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could not retrieve reinforcement" });
+    res.status(500).json({error: 'Error: Could not retrieve reinforcement'});
   }
 }
 /**
@@ -81,12 +81,12 @@ async function getLabReinforcementController(req, res) {
  */
 async function getLabQuizController(req, res) {
   try {
-    const { labID } = req.params;
+    const {labID} = req.params;
     const quiz = await LabService.getLabQuiz(labID);
     return res.json([quiz]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could Not Find Quiz" });
+    res.status(500).json({error: 'Error: Could Not Find Quiz'});
   }
 }
 
@@ -98,3 +98,4 @@ module.exports = {
   getLabReinforcementController,
   getLabQuizController,
 };
+

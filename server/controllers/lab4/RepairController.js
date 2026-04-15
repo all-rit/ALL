@@ -1,4 +1,4 @@
-const RepairService = require("../../services/lab4/RepairService");
+const RepairService = require('../../services/lab4/RepairService');
 
 exports.submitChangeButton = (req, res) => {
   RepairService.submitChangeButton({
@@ -30,3 +30,5 @@ exports.submitChangeHint = (req, res) => {
     res.sendStatus(200);
   });
 };
+
+

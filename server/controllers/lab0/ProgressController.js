@@ -1,4 +1,4 @@
-const ProgressService = require("../../services/lab0/ProgressService");
+const ProgressService = require('../../services/lab0/ProgressService');
 
 /**
  * Parses the request's query parameters,
@@ -8,7 +8,7 @@ const ProgressService = require("../../services/lab0/ProgressService");
  */
 async function getProgress(req) {
   try {
-    const { userID } = req.params;
+    const {userID} = req.params;
     return await ProgressService.getProgress(userID);
   } catch (error) {
     console.error(error);
@@ -22,12 +22,12 @@ async function getProgress(req) {
  */
 async function submitProgress(req) {
   try {
-    const { userID, category, section, sectionStatus } = req.body;
+    const {userID, category, section, sectionStatus} = req.body;
     await ProgressService.submitProgress(
-      userID,
-      category,
-      section,
-      sectionStatus,
+        userID,
+        category,
+        section,
+        sectionStatus,
     );
   } catch (error) {
     console.error(error);

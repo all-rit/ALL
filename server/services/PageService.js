@@ -1,35 +1,35 @@
-const db = require("../database");
+const db = require('../database');
 exports.createPage = (data) => {
   if (data.usersessionid) {
     return db.page
-      .findOne({
-        where: {
-          usersessionid: data.usersessionid,
-          labid: data.labid,
-          pagename: data.pagename,
+        .findOne({
+          where:
+						{
+						  usersessionid: data.usersessionid,
+						  labid: data.labid,
+						  pagename: data.pagename,
+						},
         },
-      })
-      .then((page) => {
-        if (page !== null) {
-          page.completiontime = data.completiontime;
-          page.save();
-          return page.pageid;
-        } else {
-          db.page
-            .create({
+        ).then((page) => {
+          if (page !== null) {
+            page.completiontime = data.completiontime;
+            page.save();
+            return page.pageid;
+          } else {
+            db.page.create({
               usersessionid: data.usersessionid,
               labid: data.labid,
               pagename: data.pagename,
               completiontime: data.completiontime,
-            })
-            .then((page) => {
+            }).then((page) => {
               return page.pageid;
-            });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+            },
+            );
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   }
   return Promise.resolve();
 };

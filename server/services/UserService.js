@@ -1,18 +1,18 @@
-const db = require("../database");
+const db = require('../database');
 
 const updateGuestUserId = (userid, usersessionid) => {
   return db.Session.findByPk(usersessionid)
-    .then((session) => {
-      if (session) {
-        session.userid = userid;
-        return session.save();
-      }
-      return true;
-    })
-    .catch((error) => {
-      console.log("unable to update guest userid:", error);
-      return true;
-    });
+      .then((session) => {
+        if (session) {
+          session.userid = userid;
+          return session.save();
+        }
+        return true;
+      })
+      .catch((error) => {
+        console.log('unable to update guest userid:', error);
+        return true;
+      });
 };
 
 const authenticate = async (data) => {
@@ -23,7 +23,7 @@ const authenticate = async (data) => {
     const userpfp = data.photos[0].value;
 
     // First check if user exists with this email
-    const existingUser = await db.Users.findOne({ where: { email1: email } });
+    const existingUser = await db.Users.findOne({where: {email1: email}});
 
     if (existingUser) {
       if (!existingUser.userpfp) {
@@ -33,7 +33,7 @@ const authenticate = async (data) => {
         await existingUser.save();
       }
       // If user exists, create a new session
-      const session = await db.Session.create({ userid: existingUser.userid });
+      const session = await db.Session.create({userid: existingUser.userid});
       return session;
     }
 
@@ -46,7 +46,7 @@ const authenticate = async (data) => {
     };
     return await createNewAccountAndSession(newAccount);
   } catch (error) {
-    console.error("Error while authenticating: ", error);
+    console.error('Error while authenticating: ', error);
     throw error;
   }
 };
@@ -66,7 +66,7 @@ const createNewAccountAndSession = async (newAccount) => {
 
     return newSession;
   } catch (error) {
-    console.error("Error creating new account and session", error);
+    console.error('Error creating new account and session', error);
     throw error;
   }
 };
@@ -75,8 +75,8 @@ const getSession = async (token) => {
   const createUserAndSession = async () => {
     // Creates a brand new user and session
     const user = await db.Users.create({});
-    const session = await db.Session.create({ userid: user.userid });
-    return { user, token: session.usersessionid };
+    const session = await db.Session.create({userid: user.userid});
+    return {user, token: session.usersessionid};
   };
 
   try {
@@ -100,23 +100,24 @@ const getSession = async (token) => {
       return createUserAndSession();
     }
 
-    return { user, token };
+    return {user, token};
   } catch (error) {
-    console.error("Error getting session:", error);
+    console.error('Error getting session:', error);
     throw error;
   }
 };
+
 const getUserEnrolledGroups = (userid) => {
   return db.sequelize.query(
-    `SELECT * FROM "enrollment" 
+      `SELECT * FROM "enrollment" 
 			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
 			WHERE "enrollment"."userID"=(:userID) AND "enrollment"."isActive"=true
 		`,
-    {
-      replacements: { userID: userid },
-      type: db.sequelize.QueryTypes.SELECT,
-      raw: true,
-    },
+      {
+        replacements: {userID: userid},
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true,
+      },
   );
 };
 
@@ -134,7 +135,7 @@ const getUserInstructingGroups = (userid) => {
 // but hasn't made any progress in
 const getUserToDoLabs = (userid) => {
   return db.sequelize.query(
-    `
+      `
 		SELECT DISTINCT "labID", "labName" FROM "group_labs"
 		JOIN "enrollment" on "group_labs"."groupID" = "enrollment"."groupID"
 		JOIN "labs" on "labs"."id" = "group_labs" . "labID"
@@ -143,24 +144,24 @@ const getUserToDoLabs = (userid) => {
           		WHERE "userid"=(:userID))
         ORDER BY "labID" ASC
 		`,
-    {
-      replacements: { userID: userid },
-      type: db.sequelize.QueryTypes.SELECT,
-    },
+      {
+        replacements: {userID: userid},
+        type: db.sequelize.QueryTypes.SELECT,
+      },
   );
 };
 
 const getUserAssignedLabs = (userid) => {
   return db.sequelize.query(
-    `SELECT DISTINCT "labID" FROM "group_labs" 
+      `SELECT DISTINCT "labID" FROM "group_labs" 
 			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
 			WHERE "enrollment"."userID"=(:userID) 
 			ORDER BY "labID" ASC
 		`,
-    {
-      replacements: { userID: userid },
-      type: db.sequelize.QueryTypes.SELECT,
-    },
+      {
+        replacements: {userID: userid},
+        type: db.sequelize.QueryTypes.SELECT,
+      },
   );
 };
 
@@ -170,12 +171,12 @@ const getUser = (userid) => {
       userid: userid,
     },
   })
-    .then((user) => {
-      return user;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  .then((user) => {
+    return user;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 };
 
 module.exports = {

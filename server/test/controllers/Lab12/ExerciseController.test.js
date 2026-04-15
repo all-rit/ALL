@@ -1,8 +1,9 @@
-const ControllerTestUtil = require("../ControllerTestUtil");
-const ExerciseController = require("../../../controllers/lab12/ExerciseController");
+const ControllerTestUtil = require('../ControllerTestUtil');
+const ExerciseController = require(
+    '../../../controllers/lab12/ExerciseController');
 
-describe("Test successful payloads in Lab 12 ExerciseController functions", () => {
-  test("Test postExercise function", async () => {
+describe('Test successful payloads in Lab 12 ExerciseController functions', () => {
+  test('Test postExercise function', async () => {
     const req = ControllerTestUtil.formatRequest({
       body: {
         userID: 100,
@@ -16,22 +17,22 @@ describe("Test successful payloads in Lab 12 ExerciseController functions", () =
     const response = await ExerciseController.postExercise(req);
     expect(response);
   });
-  test("Test getExercise function", async () => {
-    const req = ControllerTestUtil.formatRequest({ params: { userID: 100 } });
+  test('Test getExercise function', async () => {
+    const req = ControllerTestUtil.formatRequest({params: {userID: 100}});
     const response = await ExerciseController.getExercise(req);
     expect(response).toBeDefined();
   });
 });
 
-describe("Test failed payloads in Lab 12 ExerciseController functions", () => {
-  test("Test getExercise function fails", async () => {
-    const req = ControllerTestUtil.formatRequest({ params: { userID: 101 } });
+describe('Test failed payloads in Lab 12 ExerciseController functions', () => {
+  test('Test getExercise function fails', async () => {
+    const req = ControllerTestUtil.formatRequest({params: {userID: 101}});
     const res = ControllerTestUtil.formatResponse();
     const response = await ExerciseController.getExercise(req, res);
     expect(JSON.parse(response)).toBeNull();
   });
 
-  test("Test postExercise function fails", async () => {
+  test('Test postExercise function fails', async () => {
     const req = ControllerTestUtil.formatRequest({
       body: {
         isDatabaseRepairComplete: true,

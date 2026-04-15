@@ -2,7 +2,9 @@
   --yellow-text: #fed136;
   --blue-text: #0144d5;
   --white-text: #fff;
-  --light-blue-text: #bed2fe; // this is the color that changes white text based on the color picker
+  --light-blue-text: #bed2fe
+    // this is the color that changes white text based on the color picker
+;
 }
 
 ul {
@@ -408,38 +410,6 @@ li {
   .citation__social_row {
     display: list-item;
   }
-}
-
-.errorpage h1 {
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 50px;
-  margin-bottom: 25px;
-  font-family:
-    Montserrat,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
-}
-
-.errorpage p {
-  font-style: italic;
-  font-size: 25px;
-  line-height: 50px;
-  margin-bottom: 25px;
-  padding: 75px;
-}
-
-.errorpage div {
-  padding: 40px;
 }
 
 header.masthead {
@@ -1680,6 +1650,10 @@ ul.social-buttons li a:hover {
   background-color: #fed136;
 }
 
+.responsive-button {
+  display: block;
+}
+
 @media (min-width: 768px) {
   section {
     padding: 150px 0;
@@ -1985,7 +1959,6 @@ header.masthead .intro-text .intro-heading {
 
 body {
   background-color: white;
-  overflow-x: hidden;
   font-family:
     "Roboto Slab",
     -apple-system,

@@ -35,8 +35,8 @@
 .code_editor .code_editor__code {
   background-color: #333;
   padding: 1rem;
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
   height: 100%;
 }
 
@@ -136,8 +136,8 @@
   background-color: #222;
   color: orange;
   padding: 0;
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
   border: 0;
   resize: none;
   font-size: 1rem;

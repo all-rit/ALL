@@ -2,11 +2,11 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config({
-  path: ".env",
+  path: '.env',
 });
-dotenv.config({ path: ".test.env" });
+dotenv.config({ path: '.test.env' });
 /** @type {import('jest').Config} */
 
 const config = {
@@ -29,7 +29,7 @@ const config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -37,7 +37,7 @@ const config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -180,7 +180,7 @@ const config = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.jsx?$": "babel-jest",
+    '^.+\\.jsx?$': 'babel-jest',
   },
 
   // An array of regexp pattern strings that are matched against all

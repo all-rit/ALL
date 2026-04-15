@@ -1,4 +1,4 @@
-const db = require("../../database");
+const db = require('../../database');
 
 exports.createExercise = (data) => {
   return db.ExerciseLab1.create({
@@ -14,12 +14,10 @@ exports.createExercise = (data) => {
 };
 
 exports.createRound = (data) => {
-  return db.ExerciseLab1.findByPk(data.id)
+  return db.ExerciseLab1
+    .findByPk(data.id)
     .then((exercise) => {
-      return db.Round.create({
-        exerciseid: exercise.exerciseid,
-        soundoption: data.soundOption,
-      });
+      return db.Round.create({ exerciseid: exercise.exerciseid, soundoption: data.soundOption });
     })
     .then((round) => {
       console.log(round.roundid);
@@ -31,21 +29,23 @@ exports.createRound = (data) => {
 };
 
 exports.createChoice = (data) => {
-  return db.Choice.create({
-    roundid: data.round,
-    boxnumber: data.boxNumber,
-    correct: data.correct,
-  }).then(() => {
-    if (data.correct) {
-      db.ExerciseLab1.findByPk(data.id).then((exercise) => {
-        exercise.update({ score: data.score });
-      });
-      db.Round.findByPk(data.round).then((round) => {
-        round.update({ hintused: data.hintUsed });
-      });
-    }
-    return true;
-  });
+  return db.Choice
+    .create({
+      roundid: data.round,
+      boxnumber: data.boxNumber,
+      correct: data.correct,
+    })
+    .then(() => {
+      if (data.correct) {
+        db.ExerciseLab1.findByPk(data.id).then((exercise) => {
+          exercise.update({ score: data.score });
+        });
+        db.Round.findByPk(data.round).then((round) => {
+          round.update({ hintused: data.hintUsed });
+        });
+      }
+      return true;
+    });
 };
 
 exports.updateEndExerciseScore = (data) => {

@@ -1,4 +1,4 @@
-const ExerciseService = require("../../services/lab6/ExerciseService");
+const ExerciseService = require('../../services/lab6/ExerciseService');
 
 exports.submitAvatar = (req, res) => {
   ExerciseService.submitAvatar({

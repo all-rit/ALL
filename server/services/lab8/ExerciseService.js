@@ -1,4 +1,4 @@
-const db = require("../../database");
+const db = require('../../database');
 
 /**
  * submitChange(): is a function responsible for retrieving data
@@ -7,7 +7,7 @@ const db = require("../../database");
  * @return id for the created entry
  */
 async function submitChange(data) {
-  const { userId, repair, isComplete, numRepair } = data;
+  const {userId, repair, isComplete, numRepair} = data;
   let localRepair = parseInt(numRepair);
   localRepair += 1;
   try {
@@ -20,12 +20,14 @@ async function submitChange(data) {
         isComplete: isComplete,
         numRepair: 1,
       };
-      return await db.ExerciseLab8.create(updatedChange).id;
+      return await db.ExerciseLab8.create(
+          updatedChange,
+      ).id;
     } else {
-      ((returnUser.repair = repair),
-        (returnUser.isComplete = isComplete),
-        (returnUser.numRepair = localRepair),
-        await returnUser.save());
+      returnUser.repair = repair,
+      returnUser.isComplete = isComplete,
+      returnUser.numRepair = localRepair,
+      await returnUser.save();
       return data.id;
     }
   } catch (error) {
@@ -40,10 +42,10 @@ async function submitChange(data) {
  * @param {boolean} raw indicate use of raw flag
  * @return represented information either in string or object form
  */
-async function getRepair(data, raw = false) {
+async function getRepair(data, raw=false) {
   try {
     return await db.ExerciseLab8.findOne({
-      where: { userid: data, isComplete: false },
+      where: {userid: data, isComplete: false},
       raw: raw,
     });
   } catch (error) {

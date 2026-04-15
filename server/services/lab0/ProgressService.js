@@ -1,4 +1,4 @@
-const db = require("../../database");
+const db = require('../../database');
 
 /**
  * Retrieves a user's progress from the database grouped by category.
@@ -11,11 +11,10 @@ async function getProgress(userID) {
       attributes: [
         [
           db.sequelize.fn(
-            "json_object_agg",
-            db.sequelize.col("section"),
-            db.sequelize.col("sectionStatus"),
-          ),
-          "progress",
+              'json_object_agg',
+              db.sequelize.col('section'),
+              db.sequelize.col('sectionStatus')),
+          'progress',
         ],
       ],
       where: {
@@ -52,7 +51,7 @@ async function submitProgress(userID, category, section, sectionStatus) {
       if (result[1]) {
         // A new record was just created, no update necessary
         return;
-      } else if (result[0].sectionStatus !== "COMPLETED") {
+      } else if (result[0].sectionStatus !== 'COMPLETED') {
         // Record found but not created and sectionStatus differs
         result[0].sectionStatus = sectionStatus;
         result[0].save();

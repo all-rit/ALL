@@ -1,4 +1,4 @@
-const PageService = require("../services/PageService");
+const PageService = require('../services/PageService');
 
 exports.createPage = (req, res) => {
   PageService.createPage({

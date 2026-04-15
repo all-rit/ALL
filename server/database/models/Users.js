@@ -1,32 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define(
-    "Users",
-    {
-      userid: {
-        type: DataTypes.INTEGER,
-        unique: true,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      firstname: { type: DataTypes.TEXT },
-      lastinitial: { type: DataTypes.CHAR(1) },
-      email1: {
-        type: DataTypes.TEXT,
-        unique: {
-          args: true,
-          msg: "Email is not unique!",
+      'Users',
+      {
+        userid: {
+          type: DataTypes.INTEGER,
+          unique: true,
+          primaryKey: true,
+          autoIncrement: true,
         },
-      },
-      email2: {
-        type: DataTypes.TEXT,
-        unique: {
-          args: true,
-          msg: "Email is not unique!",
+        firstname: {type: DataTypes.TEXT},
+        lastinitial: {type: DataTypes.CHAR(1)},
+        email1: {
+          type: DataTypes.TEXT,
+          unique: {
+            args: true,
+            msg: 'Email is not unique!',
+          },
         },
+        email2: {
+          type: DataTypes.TEXT,
+          unique: {
+            args: true,
+            msg: 'Email is not unique!',
+          },
+        },
+        userpfp: {type: DataTypes.TEXT},
       },
-      userpfp: { type: DataTypes.TEXT },
-    },
-    { tableName: "users" },
+      {tableName: 'users'},
   );
   Users.sync();
   // Users.sync({

@@ -1,4 +1,4 @@
-const RepairService = require("../../services/lab7/RepairService");
+const RepairService = require('../../services/lab7/RepairService');
 
 exports.submitChange = (req, res) => {
   RepairService.submitChange({
@@ -6,7 +6,7 @@ exports.submitChange = (req, res) => {
     activity: req.body.activity,
     repair: req.body.repair,
   }).then((repairId) => {
-    return res.status(200).json({ repairId });
+    return res.status(200).json({repairId});
   });
 };
 
