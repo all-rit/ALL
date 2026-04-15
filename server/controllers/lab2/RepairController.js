@@ -1,4 +1,4 @@
-const RepairService = require("../../services/lab2/RepairService");
+const RepairService = require('../../services/lab2/RepairService');
 
 exports.submitChange = (req, res) => {
   RepairService.submitChange({
