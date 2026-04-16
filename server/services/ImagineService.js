@@ -12,7 +12,7 @@ if (credentials){
     keyFilename: credentials,
   });
 } else {
-  console.log("Env variable not set for Google Cloud Credentials")
+  console.log("Env variable not set for Google Cloud Credentials");
 }
 
 const submitStudy = async (data) => {
