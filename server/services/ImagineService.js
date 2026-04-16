@@ -14,7 +14,7 @@ if (credentials){
   });
 
 }else{
-  console.log("Env variable not set for Google Cloud Credentials")
+  console.log("Env variable not set for Google Cloud Credentials");
 }
 
 
