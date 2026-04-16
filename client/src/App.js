@@ -52,6 +52,7 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
+import ScrollWrapper from "./use-hooks/scrollWrapper";
 
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
@@ -174,26 +175,31 @@ const App = () => {
   const renderPages = () => {
     return (
       <Router basepath={process.env.PUBLIC_URL}>
-        <AboutUsPage path={"/about-us"} />
-        <LandingPage path="/" />
-        <SiteMap path="/SiteMap" />
-        <Profile path="/Profile" user={state.main.user} />
-        <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
-        <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error default />
+        <ScrollWrapper path="/">
+          <AboutUsPage path={"/about-us"} />
+          <LandingPage path="/" />
+          <SiteMap path="/SiteMap" />
+          <Profile path="/Profile" user={state.main.user} />
+          <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
+          <EducatorResources
+            path={"/EducatorResources"}
+            user={state.main.user}
+          />
+          <Error default />
 
-        <Imagine2023
-          path={"/Imagine2023/*"}
-          user={state.main.user}
-          isImagine={isImagine}
-          actions={actions}
-        />
+          <Imagine2023
+            path={"/Imagine2023/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+            actions={actions}
+          />
 
-        <Imagine2025
-          path={"/Imagine2025/*"}
-          user={state.main.user}
-          isImagine={isImagine}
-        />
+          <Imagine2025
+            path={"/Imagine2025/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+          />
+        </ScrollWrapper>
       </Router>
     );
   };
