@@ -101,7 +101,6 @@ const SurveyHandler = (props) => {
   async function onComplete(surveyType) {
     try {
       setSurveyComplete(true);
-      console.log("Sending:", selectedAnswers);
       if (surveyType === "pre") {
         // will need to be changed with next logic story
         const response = await activitySelector();
@@ -179,7 +178,6 @@ const SurveyHandler = (props) => {
   
     const answerValue = e?.target?.value;
     const timeSpent = (Date.now() - questionStartTime) / 1000;
-    console.log(answerValue);
     // text input case
     if (
       answerValue &&

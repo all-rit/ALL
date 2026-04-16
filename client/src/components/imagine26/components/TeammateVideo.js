@@ -34,25 +34,20 @@ const TeammateVideo = (props) => {
 
     if (status == "game") {
       setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
-      console.log(videoPaths[teammateId]);
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
-      console.log(scorePagePaths[teammateId]);
     } else if (status == "groupVideo") {
       const teammateReactionVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
-      console.log(teammateReactionVideos[group]);
       setVideoSrc(teammateReactionVideos[group] || teammateReactionVideos.A);
     } else if (status == "analysis") {
       setVideoSrc("");
     } else if (status == "chatroom") {
     //once we have all videos of teammates typing uncomment this line
       setVideoSrc(typingVideoPaths[teammateId] || typingVideoPaths[0])
-      console.log(typingVideoPaths[teammateId])
     }
   }, [teammateId, status, group]);
 
     const fetchDeepfake = () => {
-      console.log(group);      
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const activity = {
         experiential: (

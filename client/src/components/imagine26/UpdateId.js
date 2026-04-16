@@ -45,7 +45,7 @@ const UpdateId = (props) => {
           warning
         }
       >
-        Please only complete this exercise once and go grab your cotton candy!
+        Please only complete this exercise once and go grab your popcorn!
       </p>
       <h2 className={"tw-title"}> Welcome! </h2>
       <h2 className={"tw-sub-title"}>

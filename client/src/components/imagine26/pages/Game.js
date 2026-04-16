@@ -101,8 +101,6 @@ const Analysis = (props) => {
     );
     
     if (isUnderAge === "true" || surveyConsent == false) {
-      console.log("is underage");
-      console.log(isUnderAge);
       navigate("/Imagine2026/Done");
     } else {
       if (group != "control"){

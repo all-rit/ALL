@@ -151,8 +151,6 @@ const getUserByID = async (data) => {
 const getGroup = async (data) => {
   const { userID, year } = data;
   const imagine = `Imagine${year}`;
-  console.log(userID);
-  console.log(year);
   try {
     const user = await db[imagine].findOne({
       where: {
@@ -175,7 +173,6 @@ const getTeammate = async (data) => {
       },
     });
     const avatar = user.teammateAvatar;
-    console.log("avatar======" + avatar);
     return avatar.id;
   } catch (error) {
     console.error("Could not get group by user ID: ", error);
@@ -419,7 +416,6 @@ const postOpponentAvatar = async (data) => {
 const determineSection2025 = async () => {
   const options = ["experiential", "expression", "control"];
   const randIndex = Math.floor(Math.random() * options.length);
-  console.log("Assigned group:", section); 
   
   return options[randIndex];
 };
@@ -512,7 +508,6 @@ const deepFakeGenerator = async (imagine, userID, base64String, imagePath) => {
           console.log("Saved deepfake successfuly in google cloud");
           return true;
         }
-        console.log(false);
       }
     }
   } catch (error) {
@@ -545,7 +540,6 @@ const getImagePath = async (data) => {
         userid: userID,
       },
     });
-    console.log(user);
 
     if (pictureType == "deepfake") {
       imagePath = user.deepfakeImagePath;
@@ -572,7 +566,6 @@ const getImagePath = async (data) => {
 
 const postChatReply = async (data) =>{
   const {userID,reply} = data
-  console.log(reply)
   const imagine = 'Imagine26'
   try {
     const user = await db[imagine].findOne({
@@ -582,8 +575,6 @@ const postChatReply = async (data) =>{
       });
       if (user !== null) {
         user.chatReply = reply
-        console.log("user reply storage")
-        console.log(user.chatReply)
         user.save();
       } else {
         await db[imagine].create({

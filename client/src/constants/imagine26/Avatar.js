@@ -1,1 +1,0 @@
-// Photo taken by user to be shown as their avatar in the exercise and used for deep fake

@@ -17,7 +17,6 @@ const ChatRoom = () => {
         setTimeout(() => {
             navigate("/Imagine2026/ReadingSection");
         }, 1000);
-        console.log(resp)
     }
 
     const groupMap = {

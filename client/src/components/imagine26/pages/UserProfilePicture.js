@@ -27,7 +27,6 @@ const UserProfilePicture = () => {
   const sendImageforGeneration = async () => {
     if (group == "experiential") {
       if (!blob) {
-        console.log("blob doesn't exist");
         return;
       }
       const form = new FormData();
@@ -36,7 +35,6 @@ const UserProfilePicture = () => {
       form.append("year", 26);
       console.log(form);
       const response = await ImagineService.handleImageUploads(form);
-      console.log(response);
     }
     navigate("/Imagine2026/GalagaInstructions");
   };
@@ -45,7 +43,7 @@ const UserProfilePicture = () => {
     <>
       <div className="tw-flex tw-flex-col tw-items-center tw-gap-4 tw-p-4">
         {!blob ? (
-          <PhotoCapture></PhotoCapture>
+          <PhotoCapture/>
         ) : (
           <div className="tw-flex tw-flex-col tw-items-center tw-gap-5">
             <UserPhoto />
