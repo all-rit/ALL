@@ -1,29 +1,42 @@
-// let GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const { google } = require('googleapis');
+const jwt = require('jsonwebtoken');
 
-module.exports = (passport) => {
-  passport.serializeUser((user, done) => {
-    done(null, user);
-  });
+const oauth2Client = new google.auth.OAuth2(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_SECRET,
+    process.env.GOOGLE_CALLBACK_URL,
+);
 
-  passport.deserializeUser((user, done) => {
-    done(null, user);
-  });
+const scopes = [
+    'profile',
+    'email'
+];
 
-  passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK_URL,
-    passReqToCallback: true,
-  },
-  async (request, accessToken, refreshToken, profile, done) => {
-    try {
-      return done(null, {
-        profile: profile,
-        token: accessToken,
-      });
-    } catch (error) {
-      return done(error, null);
+const authMiddleware = async (req, res, next) => {
+    const authHeader = req.get('Authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        res.status(400).json({ error: 'Token missing or malformed.' });
+        return;
     }
-  }));
+
+    const token = authHeader.substring(7);
+
+    try {
+        const verifiedToken = jwt.verify(token, process.env.KEY, {
+            algorithms: ['HS256'],
+            issuer: 'all.rit.edu'
+        });
+        req.userId = verifiedToken.sub;
+        next();
+    } catch {
+        res.status(401).json({ error: 'Unable to verify token.' });
+        return;
+    }
 };
+
+module.exports = {
+    oauth2Client,
+    scopes,
+    authMiddleware
+};
+

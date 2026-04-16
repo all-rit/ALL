@@ -2,57 +2,33 @@ module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define(
       'Users',
       {
-        userid: {
-          type: DataTypes.INTEGER,
+        id: {
+          type: DataTypes.BIGINT,
           unique: true,
           primaryKey: true,
           autoIncrement: true,
         },
-        firstname: {type: DataTypes.TEXT},
-        lastinitial: {type: DataTypes.CHAR(1)},
-        email1: {
+        googleAccountId: {
           type: DataTypes.TEXT,
-          unique: {
-            args: true,
-            msg: 'Email is not unique!',
-          },
+          unique: true,
         },
-        email2: {
+        email: {
+          type: DataTypes.TEXT
+        },
+        firstName: { 
           type: DataTypes.TEXT,
-          unique: {
-            args: true,
-            msg: 'Email is not unique!',
-          },
         },
-        userpfp: {type: DataTypes.TEXT},
+        lastInitial: {
+          type: DataTypes.CHAR(1)
+        },
+        pfp: {
+          type: DataTypes.TEXT
+        }
       },
-      {tableName: 'users'},
+      {
+        tableName: 'users'
+      },
   );
   Users.sync();
-  // Users.sync({
-  // 	force: false
-  // }).then(function() {
-  // 	Users.create({
-  // 		firstname: 'Samuel',
-  // 		lastinitial: 'M',
-  // 		email1: 'sam@test.com',
-  // 	});
-  // 	Users.create({
-  // 		firstname: 'Su Thit',
-  // 		lastinitial: 'T',
-  // 		email1: 'stthazi@mock.com',
-  // 		email2: 'stthazi2@test.com'
-  // 	})
-  // 	Users.create({
-  // 		firstname: 'John',
-  // 		lastinitial: 'D',
-  // 		email1: 'johndoe@test.com',
-  // 	});
-  // 	Users.create({
-  // 		firstname: 'Jane',
-  // 		lastinitial: 'D',
-  // 		email1: 'janedoe@test.com',
-  // 	});
-  // })
   return Users;
 };

@@ -2,10 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const passport = require('passport');
-const auth = require('./auth');
+const session = require('express-session')
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
@@ -21,19 +18,6 @@ app.use(express.urlencoded({
 
 app.use(express.json());
 
-app.use(passport.initialize());
-app.use(session({
-  name: 'session',
-  secret: process.env.KEY,
-  resave: false,
-  saveUninitialized: true,
-}));
-app.use(passport.authenticate('session'));
-auth(passport);
-
-
-app.use(cookieParser());
-
 app.use(cors({
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1) {
@@ -43,6 +27,20 @@ app.use(cors({
     return callback(null, false);
   },
   credentials: true,
+}));
+app.use(session({
+  secret: process.env.KEY,
+  resave: false,
+  saveUninitialized: true,
+  cookie: function(req) {
+    var match = req.url.match(/^\/([^/]+)/);
+    return {
+      path: match ? '/' + match[1] : '/',
+      httpOnly: true,
+      secure: req.secure || false,
+      maxAge: 60000
+    }
+  }
 }));
 
 app.use(require('./routes'));
@@ -66,6 +64,5 @@ if (fs.existsSync(private_key, fs.R_OK) && fs.existsSync(certificate, fs.R_OK)) 
 } else { // If no SSL certs, create an HTTP server.
   server = http.createServer(app);
 }
-
 
 server.listen(port, () => console.log(`Listening on port ${port}!`));

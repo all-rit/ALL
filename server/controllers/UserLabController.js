@@ -1,5 +1,21 @@
 const UserLabService = require('../services/UserLabService');
 
+const getUserLabRecords = async (req, res) => {
+  try {
+    const labs = await UserLabService.getUserLabRecords(req.userId);
+    res.status(200).json(labs);
+  } catch (error) {
+    console.error('Error while executing getUserLabRecords', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getUserLabCompletion = (req, res) => {
+  UserLabService.getUserLabCompletion(req.userId, req.params.labId).then((records) => {
+    res.json(records);
+  });
+};
+
 const completeAbout = (req, res) => {
   UserLabService.completeAbout({
     labid: req.body.labid,
@@ -103,26 +119,9 @@ const userCompleteQuiz = (req, res) => {
   });
 };
 
-const getUserLabCompletion = (req, res) => {
-  UserLabService.getUserLabCompletion({
-    userid: req.params.userID,
-    labid: req.params.labID,
-  }).then((records) => {
-    res.json(records);
-  });
-};
-
-const getUserLabRecords = async (req, res) => {
-  try {
-    const labs = await UserLabService.getUserLabRecords(req.params.userID);
-    res.status(200).json(labs);
-  } catch (error) {
-    console.error('Error while executing getUserLabRecords', error);
-    res.status(500).json({ error: error.message });
-  }
-};
-
 module.exports = {
+  getUserLabRecords,
+  getUserLabCompletion,
   completeAbout,
   completeReading,
   completeExercise,
@@ -133,6 +132,4 @@ module.exports = {
   userCompleteExercise,
   userCompleteReinforcement,
   userCompleteQuiz,
-  getUserLabCompletion,
-  getUserLabRecords,
 };
