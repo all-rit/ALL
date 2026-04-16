@@ -5,7 +5,6 @@ import classNames from "classnames/bind";
 import RepairService from "../../../../services/lab2/RepairService";
 import { PhotoshopPicker } from "react-color";
 import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
-// import "../../lab2/home/popup.css";
 
 class Repair extends Component {
   constructor(props) {
@@ -207,6 +206,18 @@ class Repair extends Component {
     this.verifyInput();
   };
 
+  // Run state setting inside a componentDidMount to run without warnings
+  componentDidMount() {
+    if (this.state.background === "") {
+      this.setState({
+        background: this.props.colors[0],
+        correctColor: this.props.colors[1],
+        incorrectColorOne: this.props.colors[2],
+        incorrectColorTwo: this.props.colors[3],
+      });
+    }
+  }
+
   // Renderer for the system
   render() {
     // Opens the background color change popup
@@ -273,14 +284,6 @@ class Repair extends Component {
       this.onControlIncorrectPopupTwo(false);
     };
 
-    if (this.state.background === "") {
-      this.setState({
-        background: this.props.colors[0],
-        correctColor: this.props.colors[1],
-        incorrectColorOne: this.props.colors[2],
-        incorrectColorTwo: this.props.colors[3],
-      });
-    }
     const cssFileClasses = classNames({
       code_editor__file: true,
       "code_editor__file--active": true,

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import UserLabService from "../../../../services/UserLabService";
 import "./secondaryInstructions.css";
 import { LAB_ID } from "../../../../constants/lab2";
@@ -26,9 +26,11 @@ const FourthInstructions = ({
     }
   };
 
-  if (background !== "white") {
-    toWhiteBackground();
-  }
+  useEffect(() => {
+    if (background !== "white") {
+      toWhiteBackground();
+    }
+  }, []);
 
   const closeInstructions = () => {
     closePage();

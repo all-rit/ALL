@@ -3980,7 +3980,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       "content":["What if computers could think beyond just 0s and 1s? That’s exactly what quantum computers do. Quantum computers use special rules of quantum physics—like superposition, entanglement, and interference—to process information in ways normal computers can’t. This lets them solve some problems much faster and introduces new ways to think about programming. Real-life applications of quantum computing are already being developed in several fields. In medicine, it’s being used to help solve problems related to genome assembly, which can improve how we understand and treat diseases. In artificial intelligence (AI), quantum computing can make machines learn and think faster. In finance, it’s being used to improve portfolio optimization, asset management, and risk analysis, helping businesses make smarter financial decisions."]
     },
     {
-      "header": "Bit vs. Quibit",
+      "header": "Bit vs. Qubit",
       "type": "",
       "content": ["The smallest unit of information in a classical computer is called a bit. A bit can only have one of two values — 0 or 1 — like a light switch that’s either off or on. A qubit, or quantum bit, is the basic unit of information in quantum computing. It’s kind of like a regular bit in a normal computer, which stores data as a 0 or 1. But a qubit is different—it can be both 0 and 1 at the same time, thanks to quantum physics. This special ability lets quantum computers process information much faster and in more complex ways than regular computers."]
     },
