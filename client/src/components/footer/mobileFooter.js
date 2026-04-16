@@ -5,7 +5,7 @@ import rit from "../../assets/images/logos/RIT.png";
 
 const MobileFooter = () => {
   return (
-    <div className="tw-px-4 tw-pt-[1rem] tw-w-screen tw-pb-6 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center">
+    <div className="tw-px-4 tw-pt-[1rem] tw-w-screen tw-pb-6 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center md:tw-hidden">
       <Col>
         {/* Row 1 */}
         <Row className="tw-mb-0">

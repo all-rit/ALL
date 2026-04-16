@@ -5,7 +5,7 @@ import rit from "../../assets/images/logos/RIT.png";
 
 const MainFooter = () => {
   return (
-    <div className="tw-px-4 tw-pt-[1rem] tw-pb-6 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center">
+    <div className="tw-px-4 tw-pt-[1rem] tw-pb-6 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center xs:tw-hidden md:tw-flex">
       {/*Column 1*/}
       <Col xs={2} className="tw-pr-8 tw-align-top">
         <Col xs={9}>
@@ -20,13 +20,13 @@ const MainFooter = () => {
       </Col>
       {/*Column 2*/}
       <Col xs={4} className="tw-pr-8 tw-pt-1">
-        <Row className="tw-items-start">
-          <Col xs={5}>
-            <Row>
-              <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
-                <strong>Links</strong>
-              </h3>
-            </Row>
+        <Row>
+          <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
+            <strong>Links</strong>
+          </h3>
+        </Row>
+        <Row>
+          <Col xs={6}>
             <Nav vertical>
               <NavItem>
                 <NavLink
@@ -60,8 +60,8 @@ const MainFooter = () => {
               </NavItem>
             </Nav>
           </Col>
-          <Col xs={5}>
-            <Nav vertical className="tw-pt-[70.594px]">
+          <Col xs={6}>
+            <Nav vertical>
               <NavItem className="tw-pb-2 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-start tw-p-0"
