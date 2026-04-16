@@ -42,6 +42,41 @@ const TOP_TYPE_MAP = {
   ShortHairTheCaesarSidePart: "theCaesarAndSidePart",
 };
 
+const CLOTHES_COLOR_MAP = {
+  Black: "262E33",
+  Blue01: "65C9FF",
+  Blue02: "5199E4",
+  Blue03: "25557C",
+  Gray01: "E6E6E6",
+  Gray02: "929598",
+  Heather: "3C4F5C",
+  PastelBlue: "B1E2FF",
+  PastelGreen: "A7FFC4",
+  PastelOrange: "FFDEB5",
+  PastelRed: "FFAFB9",
+  PastelYellow: "FFFFB1",
+  Pink: "FF488E",
+  White: "FFFFFF",
+};
+
+const HAIR_COLOR_MAP = {
+  Tanned: "FD9841",
+  Yellow: "F8D25C",
+  Pale: "FFDBB4",
+  Light: "EDB98A",
+  Brown: "D08B5B",
+  DarkBrown: "AE5D29",
+};
+
+const SKIN_COLOR_MAP = {
+  Tanned: "FD9841",
+  Yellow: "F8D25C",
+  Pale: "FFDBB4",
+  Light: "EDB98A",
+  Brown: "D08B5B",
+  DarkBrown: "AE5D29",
+};
+
 const toLowerCamel = (value) => {
   if (!value) return undefined;
   return value.charAt(0).toLowerCase() + value.slice(1);
@@ -64,9 +99,14 @@ const normalizeEye = (value) => {
   return toLowerCamel(value);
 };
 
-const normalizeColor = (value) => {
+const HEX_COLOR_REGEX = /^#?[a-fA-F0-9]{6}$/;
+
+const normalizeColor = (value, palette) => {
   if (!value || value === "Default" || value === "Blank") return undefined;
-  return toLowerCamel(value);
+  if (HEX_COLOR_REGEX.test(value)) {
+    return value.replace("#", "").toLowerCase();
+  }
+  return palette[value];
 };
 
 const CompatAvatar = ({ className, alt, avatarStyle, ...props }) => {
@@ -78,10 +118,14 @@ const CompatAvatar = ({ className, alt, avatarStyle, ...props }) => {
     const eyes = normalizeEye(props.eyeType);
     const eyebrows = normalizeOption(props.eyebrowType);
     const mouth = normalizeOption(props.mouthType);
-    const hairColor = normalizeColor(props.hairColor);
-    const clothesColor = normalizeColor(props.clotheColor);
-    const skinColor = normalizeColor(props.skinColor);
-    const facialHairColor = normalizeColor(props.facialHairColor);
+    const hairColor = normalizeColor(props.hairColor, HAIR_COLOR_MAP);
+    const clothesColor = normalizeColor(props.clotheColor, CLOTHES_COLOR_MAP);
+    const skinColor = normalizeColor(props.skinColor, SKIN_COLOR_MAP);
+    const hatColor = normalizeColor(props.hatColor, CLOTHES_COLOR_MAP);
+    const facialHairColor = normalizeColor(
+      props.facialHairColor,
+      HAIR_COLOR_MAP,
+    );
 
     const avatar = createAvatar(avataaars, {
       style: avatarStyle?.toLowerCase() === "circle" ? ["circle"] : ["default"],
@@ -98,6 +142,7 @@ const CompatAvatar = ({ className, alt, avatarStyle, ...props }) => {
       hairColor: hairColor ? [hairColor] : undefined,
       clothesColor: clothesColor ? [clothesColor] : undefined,
       skinColor: skinColor ? [skinColor] : undefined,
+      hatColor: hatColor ? [hatColor] : undefined,
       facialHairColor: facialHairColor ? [facialHairColor] : undefined,
     });
 
@@ -125,6 +170,7 @@ CompatAvatar.propTypes = {
   facialHairColor: PropTypes.string,
   clotheType: PropTypes.string,
   clotheColor: PropTypes.string,
+  hatColor: PropTypes.string,
   eyeType: PropTypes.string,
   eyebrowType: PropTypes.string,
   mouthType: PropTypes.string,
