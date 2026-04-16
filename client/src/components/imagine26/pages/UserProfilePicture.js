@@ -34,7 +34,7 @@ const UserProfilePicture = () => {
       form.append("userId", sessionStorage.getItem("userID"));
       form.append("year", 26);
       console.log(form);
-      const response = await ImagineService.handleImageUploads(form);
+      await ImagineService.handleImageUploads(form);
     }
     navigate("/Imagine2026/GalagaInstructions");
   };
