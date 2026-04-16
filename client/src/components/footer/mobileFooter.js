@@ -5,7 +5,7 @@ import rit from "../../assets/images/logos/RIT.png";
 
 const MobileFooter = () => {
   return (
-    <div className="tw-px-4 tw-pt-[1rem] tw-w-screen tw-pb-6 tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center md:tw-hidden">
+    <div className="tw-px-4 tw-w-screen tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center md:tw-hidden">
       <Col>
         {/* Row 1 */}
         <Row className="tw-mb-0">
@@ -20,7 +20,7 @@ const MobileFooter = () => {
             </a>
           </Col>
           <Col>
-            <p className="tw-text-left">
+            <p className="tw-text-left tw-pt-[1rem]">
               Accessible Learning Labs is an NSF funded initiative aimed at
               fostering STEM proficiency.
             </p>
@@ -187,7 +187,7 @@ const MobileFooter = () => {
         </Row>
         {/* Contract Paragraph */}
         <Row>
-          <p className="tw-text-lg tw-text-left tw-font-medium">
+          <p className="tw-text-lg tw-text-left">
             Available under the Federal Government License. This work is
             supported by the US National Science Foundation Under Under
             #2111152, #2336941

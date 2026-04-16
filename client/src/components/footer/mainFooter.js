@@ -174,7 +174,7 @@ const MainFooter = () => {
             </Col>
           </div>
         </Container>
-        <p className="tw-pt-2 tw-text-lg tw-text-left tw-font-medium">
+        <p className="tw-pt-2 tw-text-lg tw-text-left">
           Available under the Federal Government License. This work is supported
           by the US National Science Foundation Under Under #2111152, #2336941
         </p>
