@@ -9,7 +9,7 @@ const ChatRoom = () => {
     const group = sessionStorage.getItem("group");
 
     const  onSubmit = async (reply)=>{
-        const resp = await ImagineService.postChatReply(
+        await ImagineService.postChatReply(
                 sessionStorage.getItem("userID"),
                 reply,
                 26
