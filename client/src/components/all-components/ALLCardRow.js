@@ -28,14 +28,6 @@ const ALLCardRow = (props) => {
     onClick,
   } = props;
 
-  title;
-  circlesLabel;
-  circles;
-  circlesFilled;
-  buttonLabel;
-  buttonStyle;
-  onClick;
-
   const difSquares = [];
 
   let i = 0;
@@ -70,15 +62,6 @@ const ALLCardRow = (props) => {
           <div className="tw-flex tw-flex-row tw-items-baseline tw-justify-start">
             <p className="tw-body-text">{circlesLabel}: </p>
             {difSquares}
-            {/* {new Array({ length: circles }).map((_, i) => {
-              console.log(circles, i);
-              return (
-                <div
-                  key={i}
-                  className={`tw-m-0.5 ${i < circlesFilled ? "tw-bg-success tw-p-2 tw-mx-2" : "tw-bg-primary-yellow"}`}
-                />
-              );
-            })} */}
           </div>
           <p className={"tw-font-poppins tw-font-bold tw-text-md tw-text-left"}>
             {title}
@@ -89,29 +72,6 @@ const ALLCardRow = (props) => {
             {buttonLabel}
           </button>
         </div>
-        {/* Middle */}
-        {/* <div className="tw-p-5">
-          <div className="tw-flex tw-flex-row tw-items-baseline tw-justify-start">
-            <p className="tw-body-text">{circlesLabel}: </p>
-            {new Array({ length: circles }).map((_, i) => {
-              return (
-                <div
-                  key={i}
-                  className={`tw-m-0.5 ${i < circlesFilled ? "tw-bg-success tw-p-2 tw-mx-2" : "tw-bg-primary-yellow"}`}
-                />
-              );
-            })}
-          </div>
-          <p className={"tw-font-poppins tw-font-bold tw-text-md tw-text-left"}>
-            {title}
-          </p>
-        </div> */}
-        {/* Right */}
-        {/* <div className="tw-absolute tw-right-0 tw-top-10">
-          <button type="button" className={buttonStyle} onClick={onClick}>
-            {buttonLabel}
-          </button>
-        </div> */}
       </div>
       {/* Child Components */}
       <div className="tw-w-full tw-bg-white tw-shadow-lg tw-shadow-t-none tw-overflow-hidden">
