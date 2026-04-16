@@ -1,7 +1,6 @@
 import React from "react";
 import { Frame } from "../components/Frame";
 import { navigate } from "@reach/router";
-import ImagineHeader from "../components/ImagineHeader";
 
 const ReadingSection = () => {
   return (
