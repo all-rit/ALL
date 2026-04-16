@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
-const ScrollToTop = ({ location, children }) => {
+const ScrollWrapper = ({ location, children }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -9,9 +9,9 @@ const ScrollToTop = ({ location, children }) => {
   return children;
 };
 
-ScrollToTop.propTypes = {
+ScrollWrapper.propTypes = {
   location: PropTypes.object,
   children: PropTypes.node,
 };
 
-export default ScrollToTop;
+export default ScrollWrapper;

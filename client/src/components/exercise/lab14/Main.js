@@ -19,7 +19,7 @@ import RSAIntro from "./pages/RSAIntro";
 import RSAEncryption from "./pages/RSAEncryption";
 import RSADecryption from "./pages/RSADecryption";
 import Conclusion from "./pages/Conclusion";
-import ScrollToTop from "src/use-hooks/scrollToTop";
+import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -68,7 +68,7 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <ScrollToTop path="/">
+          <ScrollWrapper path="/">
             <ExerciseIntro default path="/" />
             <Superposition path="/Superposition" />
             <Entanglement path="/Entanglement" />
@@ -90,7 +90,7 @@ const Main = () => {
             <RSADecryption path="/RSADecryption" />
 
             <Conclusion path="/Conclusion" />
-          </ScrollToTop>
+          </ScrollWrapper>
         </Router>
       </ExerciseStateContext.Provider>
     </div>

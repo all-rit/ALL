@@ -9,7 +9,7 @@ import LocalizationExerciseStart from "./pages/LocalizationExerciseStart";
 import LocalizationDiscovery from "./pages/LocalizationDiscovery";
 import LocalizationExerciseEnd from "./pages/LocalizationExerciseEnd";
 import StaticWebpage from "./components/StaticWebpage";
-import ScrollToTop from "src/use-hooks/scrollToTop";
+import ScrollWrapper from "src/use-hooks/scrollWrapper";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -23,14 +23,14 @@ const Main = () => {
     <div className="bottomSpace tw-p-6">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <ScrollToTop path="/">
+          <ScrollWrapper path="/">
             <LocalizationExerciseStart path="/*" />
             <StaticWebpage path="/InitialPage" />
             <LocalizationDiscovery path="/Discovery" />
             <DynamicWebpage path={"/page"} />
             <LocalizationRepair path={`${REPAIR}/*`} />
             <LocalizationExerciseEnd path="/Conclusion" />
-          </ScrollToTop>
+          </ScrollWrapper>
         </Router>
       </GameStateContext.Provider>
     </div>

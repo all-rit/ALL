@@ -17,7 +17,7 @@ import PreCorrectDiploma from "./pages/Explanations/PreCorrectDiploma";
 import PostCorrectNewsletter from "./pages/Explanations/PostCorrectNewsletter";
 import KeyTakeaways from "./pages/Explanations/KeyTakeaways";
 import PreDbRepair from "./pages/Explanations/PreDbRepair";
-import ScrollToTop from "src/use-hooks/scrollToTop";
+import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -59,7 +59,7 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <ScrollToTop path="/">
+          <ScrollWrapper path="/">
             <FormRepair path="/FormRepair" />
             <DatabaseRepair path={"/DatabaseRepair"} />
             <ExerciseIntro default path="/" />
@@ -72,7 +72,7 @@ const Main = () => {
             <PreCorrectDiploma path="/PreCorrectDiploma" />
             <PostCorrectNewsletter path="/PostCorrectNewsletter" />
             <KeyTakeaways path="/KeyTakeaways" />
-          </ScrollToTop>
+          </ScrollWrapper>
         </Router>
       </ExerciseStateContext.Provider>
     </div>

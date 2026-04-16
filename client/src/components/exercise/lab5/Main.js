@@ -29,7 +29,7 @@ import FormGuidance from "./pages/FormResponseActivity/FormGuidance";
 import FormAccessible from "./pages/FormResponseActivity/FormAccessible";
 import FormRepair from "./pages/FormResponseActivity/FormRepair";
 import ExerciseEnd from "./pages/ExerciseEnd";
-import ScrollToTop from "src/use-hooks/scrollToTop";
+import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -50,7 +50,7 @@ class Main extends Component {
     return (
       <div className="bottomSpace tw-p-6">
         <Router className="app">
-          <ScrollToTop path="/">
+          <ScrollWrapper path="/">
             <ExerciseStart default path="/" actions={actions} />
             <DyslexiaAccessible
               path="/DyslexiaAccessible"
@@ -162,7 +162,7 @@ class Main extends Component {
               state={state}
               user={user}
             />
-          </ScrollToTop>
+          </ScrollWrapper>
         </Router>
       </div>
     );

@@ -22,13 +22,13 @@ import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
 import FixedHiringCandidate from "./pages/Employer/FixedHiringCandidate";
 import ExerciseEnd from "./pages/Employer/ExerciseEnd";
-import ScrollToTop from "src/use-hooks/scrollToTop";
+import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 const Main = () => {
   return (
     <div className="container bottomSpace tw-p-6">
       <Router>
-        <ScrollToTop path="/">
+        <ScrollWrapper path="/">
           {/* Part 1: Applicant */}
           <ExerciseStart path="/" />
           <AvatarSelection path="/AvatarSelection" />
@@ -45,7 +45,7 @@ const Main = () => {
           <AIRepair path="/AIRepair" />
           <FixedHiringCandidate path="/FixedHiringCandidate" />
           <ExerciseEnd path="/ExerciseEnd" />
-        </ScrollToTop>
+        </ScrollWrapper>
       </Router>
     </div>
   );
