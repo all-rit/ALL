@@ -438,7 +438,7 @@ const determineSection2026 = async ()=>{
 
   sectionCounts.sort((a, b) => a.count - b.count);
   return sectionCounts[0].name;
-}
+};
 
 
 const postImagepath = async (imagine,userID,imagepath) =>{
