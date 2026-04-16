@@ -1,256 +1,223 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import Logo from "../../assets/images/logos/ALL_Logo.svg";
-import { connect } from "react-redux";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../reducers/MainReducer";
-import { navigate as reachNav } from "@reach/router";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
+import Logo from "../../assets/images/logos/ALL_Logo.svg";
+import { navigate } from "@reach/router";
+import MenuIcon from "@mui/icons-material/Menu";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Fade from "@mui/material/Fade";
 import BrandedALLModal from "../all-components/BrandedALLModal";
 import LoginBody from "../body/login/LoginBody";
-import PropTypes from "prop-types";
-import handleRedirect from "../../helpers/Redirect";
-import getExerciseState from "../../helpers/GetReducer";
 import {
   ERROR,
-  EXERCISE_IN_PROGRESS,
   LOGOUT_ERROR,
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
+import UserPfp from "../all-components/UserPfp";
 
-const mapStateToProps = (state) => {
-  return {
-    state: state,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(mainActions, dispatch),
-  };
-};
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
-
-const Header = (props) => {
+const Header = ({ isImagine }) => {
   const { state, actions } = useMainStateContext();
-  const user = state.main.user;
-  const [isSmallWindow, setisSmallWindow] = useState(false);
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const [signInModalOpen, setSignInModalOpen] = useState(false);
 
-  const toggleSignIn = () => {
-    setSignInModalOpen(!signInModalOpen);
+  const [linksCollapseOpen, setLinksCollapseOpen] = useState(false);
+  const [profileCollapseOpen, setProfileCollapseOpen] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+
+  const toggleLinksCollapse = () => {
+    setLinksCollapseOpen(!linksCollapseOpen);
+    setProfileCollapseOpen(false);
   };
 
-  const signInModal = () => {
+  const toggleProfileCollapse = () => {
+    setLinksCollapseOpen(false);
+    setProfileCollapseOpen(!profileCollapseOpen);
+  };
+
+  const toggleSignInShown = () => {
+    setShowSignIn(!showSignIn);
+  };
+
+  const renderCommonLinks = () => {
     return (
-      <BrandedALLModal
-        direction={"row"}
-        isOpen={signInModalOpen}
-        toggle={toggleSignIn}
-      >
-        <LoginBody />
-      </BrandedALLModal>
+      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-start tw-justify-center lg:tw-flex-row lg:tw-items-center lg:tw-justify-end tw-px-4 lg:tw-px-0 *:tw-py-2 lg:*:tw-py-0 lg:*:tw-px-4 lg:*:tw-border-solid lg:*:tw-border-0 lg:[&>*:not(:last-child)]:tw-border-r-2 lg:*:tw-border-primary-blue">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/Labs"
+          >
+            Labs
+          </a>
+        </li>
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/about-us"
+          >
+            About Us
+          </a>
+        </li>
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/EducatorResources"
+          >
+            Educator Resources
+          </a>
+        </li>
+        {!state.main.user?.email1 && (
+          <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+            <button
+              type="button"
+              className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors tw-text-left lg:tw-text-center"
+              onClick={toggleSignInShown}
+            >
+              Sign In
+            </button>
+          </li>
+        )}
+      </ul>
     );
   };
 
-  const logout = async () => {
+  const renderProfileLinks = () => {
+    return (
+      <ul className="tw-h-full tw-py-2 tw-flex tw-flex-col tw-items-start tw-justify-center tw-px-4 *:tw-py-2">
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/Profile"
+          >
+            Profile
+          </a>
+        </li>
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/Profile#MyLabs"
+          >
+            My Labs
+          </a>
+        </li>
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <a
+            className="hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            href="/Profile#MyGroups"
+          >
+            My Groups
+          </a>
+        </li>
+        <li className="tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+          <button
+            type="button"
+            className="tw-bg-transparent tw-border-0 hover:tw-text-labYellow tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text tw-transition-colors"
+            onClick={logout}
+          >
+            Logout
+          </button>
+        </li>
+      </ul>
+    );
+  };
+
+  const logout = () => {
     try {
       actions.showSnackbar(LOGOUT_SUCCESS, SUCCESS);
       window.location.href = `${process.env.REACT_APP_SERVER_URL}/logout`;
-    } catch (e) {
+    } catch {
       actions.showSnackbar(LOGOUT_ERROR, ERROR);
-      console.error(e, "Could not log out.");
     }
   };
-
-  const alert_check = (state, reduxState) => {
-    if (
-      getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
-      state.main.body === 2
-    ) {
-      actions.showSnackbar(EXERCISE_IN_PROGRESS, ERROR);
-      return true;
-    }
-    return false;
-  };
-
-  const navigate = (state, reduxState, actions, body, lab = state.main.lab) => {
-    if (!alert_check(state, reduxState)) {
-      handleRedirect(actions, lab, body);
-    }
-  };
-
-  const toggleNavbar = () => setNavbarOpen(!navbarOpen);
-  const windowSize = useWindowSize();
-
-  if (isSmallWindow == false && windowSize[0] < 1000) {
-    setisSmallWindow(true);
-  } else if (isSmallWindow == true && windowSize[0] >= 1000) {
-    setisSmallWindow(false);
-  }
-
-  const loggedIn = state.main?.user?.email1 !== null;
 
   return (
-    <Navbar
-      id="navHeader"
-      expand="lg"
-      className={`tw-h-[8rem] tw-body-text tw-font-bold tw-my-0 ${props.isImagine && "tw-mb-[0.5rem]"}`}
+    <div
+      className={`tw-h-[7rem] tw-relative tw-my-0 ${isImagine ? "tw-mb-[4rem]" : ""}`}
     >
+      {/* Shadow & Positioning*/}
       <div
-        className={`tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0  tw-shadow-md tw-px-5 lg:tw-px-12`}
+        className={`tw-h-full tw-flex tw-bg-white tw-z-30 tw-absolute tw-top-0 tw-left-0 tw-right-0 tw-shadow-lg tw-pl-5 lg:tw-pl-12`}
       >
-        <div
-          className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
-        >
-          <a
-            className={""}
-            onClick={() => {
-              !props.isImagine && reachNav("/#");
-            }}
-          >
-            <img
-              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[4rem] tw-mt-[0.75rem]" : "xs:tw-max-h-[7rem] sm:tw-max-h-[7rem]"}`}
-              src={Logo}
-              alt="Computing Accessibility"
-            />
-          </a>
-
-          <NavbarToggler
-            className={`${isSmallWindow ? "tw-z-20 tw-h-1/2" : "tw-hidden"}`}
-            onClick={toggleNavbar}
+        {/* Logo */}
+        <a onClick={() => !isImagine && navigate("/")}>
+          <img
+            className={`${!isImagine && "tw-cursor-pointer"} tw-max-h-[7rem]`}
+            src={Logo}
+            alt="Accessible Learning Labs"
           />
-          <Collapse
-            className={`${isSmallWindow ? "tw-absolute tw-bg-white tw-right-0 tw-top-[100%] tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-[0.5rem] tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow" : "tw-flex tw-flex-grow tw-justify-end"}`}
-            isOpen={navbarOpen}
-          >
-            {!props.isImagine && (
-              <Nav
-                className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-4 tw-rounded-bl-sm tw-border-l-labYellow tw-border-b-labYellow tw-h-[4rem]"}`}
+        </a>
+
+        {/* Desktop Site Links */}
+        {!isImagine && (
+          <div className="tw-hidden lg:tw-block tw-mx-6 tw-my-3 tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
+            {renderCommonLinks()}
+          </div>
+        )}
+
+        {/* Mobile Site Links */}
+        {!isImagine && (
+          <ClickAwayListener onClickAway={() => setLinksCollapseOpen(false)}>
+            <div className="tw-relative lg:tw-hidden tw-grow tw-flex tw-justify-end tw-items-center">
+              <MenuIcon
+                onClick={toggleLinksCollapse}
+                fontSize="large"
+                className="tw-mr-6 tw-cursor-pointer"
+              />
+
+              <Fade in={linksCollapseOpen}>
+                <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
+                  {renderCommonLinks()}
+                </div>
+              </Fade>
+            </div>
+          </ClickAwayListener>
+        )}
+
+        {/* Profile Links */}
+        {state.main.user?.email1 && !isImagine && (
+          <ClickAwayListener onClickAway={() => setProfileCollapseOpen(false)}>
+            <div className="tw-flex tw-justify-center tw-items-center tw-mr-6">
+              <button
+                className="tw-h-[3rem] tw-aspect-square tw-rounded-full tw-border-solid tw-border-4 tw-border-primary-blue tw-overflow-hidden tw-cursor-pointer"
+                onClick={toggleProfileCollapse}
               >
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer"
-                    onClick={() => reachNav("/#")}
-                  >
-                    <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
-                      Home
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && " tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="/Labs"
-                  >
-                    <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
-                      Labs
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="/about-us"
-                  >
-                    <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
-                      About Us
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="/EducatorResources"
-                  >
-                    <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
-                      Educator Resources
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
-                  {loggedIn && user ? (
-                    // TO-DO: PROFILE LINK HERE
-                    <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
-                      <div
-                        onClick={() =>
-                          navigate(state, props.state, actions, 2, 99)
-                        }
-                        aria-label="Google Profile Photo"
-                        className="tw-h-12 tw-object-cover"
-                        style={{
-                          backgroundImage: `url(${user?.userpfp}`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundSize: "cover",
-                        }}
-                      ></div>
-                    </NavLink>
-                  ) : (
-                    <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
-                      <p
-                        className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-cursor-pointer tw-body-text"
-                        onClick={toggleSignIn}
-                      >
-                        Sign In
-                      </p>
-                      {signInModal()}
-                    </NavLink>
-                  )}
-                </NavItem>
-                <NavItem>
-                  {isSmallWindow && loggedIn ? (
-                    <NavLink>
-                      <button className={"log_out-google-btn"} onClick={logout}>
-                        {" "}
-                        Logout{" "}
-                      </button>
-                    </NavLink>
-                  ) : (
-                    <></>
-                  )}
-                </NavItem>
-              </Nav>
-            )}
-          </Collapse>
-        </div>
+                <UserPfp />
+              </button>
+
+              <Fade in={profileCollapseOpen}>
+                <div className="tw-absolute tw-top-[100%] tw-right-0 tw-bg-white tw-grow tw-border-solid tw-border-labYellow tw-rounded-bl-md tw-border-[0.25rem] tw-border-t-0 tw-border-r-0">
+                  {renderProfileLinks()}
+                </div>
+              </Fade>
+            </div>
+          </ClickAwayListener>
+        )}
+
+        {/* Sign In Modal */}
+        <BrandedALLModal
+          direction={"row"}
+          isOpen={showSignIn}
+          toggle={toggleSignInShown}
+        >
+          <LoginBody
+            closeModal={() => {
+              setShowSignIn(false);
+            }}
+          />
+        </BrandedALLModal>
       </div>
-    </Navbar>
+    </div>
   );
 };
 
 Header.propTypes = {
-  state: PropTypes.shape({}),
   isImagine: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

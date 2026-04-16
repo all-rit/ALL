@@ -130,7 +130,7 @@ const Repair = (props) => {
       setUserError(true);
       popUpHandler(ERROR_MESSAGE);
     }
-    headingRef.current.scrollIntoView();
+    headingRef.current?.scrollIntoView({ block: "center" });
   };
 
   /**

@@ -6,7 +6,7 @@ import Encryption from "../components/Encryption";
 import LabButton from "../../../all-components/LabButton";
 
 const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
-  const [validInput, setValidInput] = useState(false);
+  const [validInput, setValidInput] = useState(null);
 
   const handleShiftValueChange = (e) => {
     const value = Number(e.target.value);
@@ -34,7 +34,9 @@ const InputComponent = ({ shiftValue, setShiftValue, fillPercent }) => {
           background: `linear-gradient(to right, black ${fillPercent}%, #e5e7eb ${fillPercent}%)`,
         }}
       />
-      <p className={`tw-mt-4 ${validInput ? "tw-hidden" : "tw-visible"}`}>
+      <p
+        className={`tw-mt-4 ${validInput !== false ? "tw-hidden" : "tw-visible"}`}
+      >
         Error: Make sure the shift value is not 0 to continue.
       </p>
 

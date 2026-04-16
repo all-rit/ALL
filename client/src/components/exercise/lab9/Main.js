@@ -19,7 +19,7 @@ const Main = () => {
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
   return (
-    <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
+    <div className="bottomSpace tw-p-6">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <LocalizationExerciseStart path="/*" />

@@ -16,15 +16,6 @@ import Girl from "../../assets/images/stockImages/Girl1.png";
 import LandingSection from "../../components/all-components/LandingSection";
 import UserService from "../../services/UserService";
 import {
-  ACCESSIBILITY,
-  AI_MACHINE_LEARNING,
-  ALL_LABS,
-  DIFFICULTY_1,
-  DIFFICULTY_2,
-  DIFFICULTY_3,
-  TUTORIALS,
-} from "../../constants/labs";
-import {
   EXPLORE_LABS_BODY,
   EXPLORE_LABS_TITLE,
   VIEW_PROGRESS_BODY,
@@ -101,10 +92,12 @@ const LabsPage = (props) => {
     });
   }, []);
 
-  const labsByDifficulty = (labMap, difficulty) => {
+  const labsByDifficulty = (labMap, difficulties) => {
     const filteredMap = new Map();
     for (const [key, value] of labMap.entries()) {
-      const filteredArr = value.filter((x) => x.difficulty === difficulty);
+      const filteredArr = value.filter((x) =>
+        difficulties.includes(x.difficulty),
+      );
       if (filteredArr.length > 0) {
         filteredMap.set(key, filteredArr);
       }
@@ -132,8 +125,49 @@ const LabsPage = (props) => {
   };
 
   const [displayedLabs, setDisplayedLabs] = useState(new Map());
-  const [selectedSearch, setSelectedSearch] = useState("ALL_LABS");
   const [textSearch, setTextSearch] = useState("");
+
+  const [showFilter, setShowFilter] = useState(false);
+  const [selectedTopics, setSelectedTopics] = useState([]);
+  const [selectedDifficulties, setSelectedDifficulties] = useState([]);
+
+  useEffect(() => {
+    applyFilters(selectedTopics, selectedDifficulties, textSearch);
+  }, [selectedTopics, selectedDifficulties, textSearch]);
+
+  const changeTopic = (value) => {
+    setSelectedTopics((prev) =>
+      prev.includes(value)
+        ? prev.filter((topic) => topic !== value)
+        : [...prev, value],
+    );
+  };
+  const changeDifficulty = (value) => {
+    setSelectedDifficulties((prev) =>
+      prev.includes(value)
+        ? prev.filter((level) => level !== value)
+        : [...prev, value],
+    );
+  };
+  const applyFilters = (
+    topics = selectedTopics,
+    difficulties = selectedDifficulties,
+    text = textSearch,
+  ) => {
+    let filtered = new Map(labInformation);
+    if (topics.length > 0) {
+      filtered = new Map(
+        Array.from(filtered.entries()).filter(([key]) => topics.includes(key)),
+      );
+    }
+    if (difficulties.length > 0) {
+      filtered = labsByDifficulty(filtered, difficulties);
+    }
+    if (text.trim() !== "") {
+      filtered = labsBySearchPhrase(filtered, text);
+    }
+    setDisplayedLabs(filtered);
+  };
 
   const getMyLabs = async () => {
     if (loggedIn) {
@@ -156,55 +190,12 @@ const LabsPage = (props) => {
   };
 
   useEffect(() => {
-    const tempMap = new Map();
-
-    switch (selectedSearch) {
-      case ALL_LABS:
-        setDisplayedLabs(new Map(labInformation));
-        break;
-      case AI_MACHINE_LEARNING:
-        if (labInformation.has("AI")) {
-          tempMap.set("AI", labInformation.get("AI"));
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      case ACCESSIBILITY:
-        if (labInformation.has("Accessibility")) {
-          tempMap.set("Accessibility", labInformation.get("Accessibility"));
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      case DIFFICULTY_1:
-        setDisplayedLabs(labsByDifficulty(labInformation, 1));
-        break;
-      case DIFFICULTY_2:
-        setDisplayedLabs(labsByDifficulty(labInformation, 2));
-        break;
-      case DIFFICULTY_3:
-        setDisplayedLabs(labsByDifficulty(labInformation, 3));
-        break;
-      case TUTORIALS:
-        if (labInformation.has("Tutorials")) {
-          tempMap.set("Tutorials", labInformation.get("Tutorials"));
-          setDisplayedLabs(tempMap);
-        }
-        break;
-      default:
-        setDisplayedLabs(labInformation);
-    }
+    setDisplayedLabs(new Map(labInformation));
     getMyLabs();
-  }, [labInformation, selectedSearch]);
-
-  const handleSearchChange = (search) => {
-    setSelectedSearch(search);
-  };
+  }, [labInformation]);
 
   const handleSearchTextChange = (search) => {
     setTextSearch(search);
-  };
-
-  const handleSearch = () => {
-    setDisplayedLabs(labsBySearchPhrase(labInformation, textSearch));
   };
 
   const loggedIn =
@@ -278,127 +269,170 @@ const LabsPage = (props) => {
                 <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
-                <div className="tw-max-w-144 sm:tw-w-2/3 tw-flex tw-rounded-md">
-                  <input
-                    className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-l-md
-                                  tw-border-r-0 tw-border-darkGray tw-border-2 focus:tw-outline-0"
-                    placeholder="Search"
-                    type="text"
-                    id="searchLabs"
-                    onChange={(e) => {
-                      handleSearchTextChange(e.target.value);
-                    }}
-                  />
+                <div className="tw-flex tw-items-center tw-gap-3 tw-max-w-144 sm:tw-w-2/3 tw-w-full">
+                  <div className="tw-flex tw-flex-1 tw-rounded-md tw-min-w-0 tw-shadow-md">
+                    <input
+                      className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-md
+                                  tw-border-darkGray tw-border-2 tw-min-w-0"
+                      placeholder="Search"
+                      type="text"
+                      id="searchLabs"
+                      onChange={(e) => {
+                        handleSearchTextChange(e.target.value);
+                      }}
+                    />
+                  </div>
                   <button
-                    className="tw-pr-4 tw-bg-white tw-rounded-r-md tw-border-l-0 tw-border-darkGray tw-border-2"
-                    onClick={(e) => {
-                      handleSearch(e);
-                    }}
+                    type="button"
+                    onClick={() => setShowFilter((prev) => !prev)}
+                    className="
+                      tw-px-4 tw-py-2
+                      tw-rounded-md tw-shadow-md
+                      tw-bg-primary-yellow
+                      tw-flex tw-justify-center tw-gap-2
+                      tw-font-bold tw-border-solid tw-border-primary-yellow tw-font-poppins"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="tw-fill-darkGray tw-w-5 tw-h-5 tw-align-middle tw-justify-self-center"
-                      viewBox="0 0 512 512"
+                      className="tw-w-5"
+                      viewBox="0 0 640 640"
                     >
-                      <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+                      <path d="M96 128C78.3 128 64 142.3 64 160C64 177.7 78.3 192 96 192L182.7 192C195 220.3 223.2 240 256 240C288.8 240 317 220.3 329.3 192L544 192C561.7 192 576 177.7 576 160C576 142.3 561.7 128 544 128L329.3 128C317 99.7 288.8 80 256 80C223.2 80 195 99.7 182.7 128L96 128zM96 288C78.3 288 64 302.3 64 320C64 337.7 78.3 352 96 352L342.7 352C355 380.3 383.2 400 416 400C448.8 400 477 380.3 489.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L489.3 288C477 259.7 448.8 240 416 240C383.2 240 355 259.7 342.7 288L96 288zM96 448C78.3 448 64 462.3 64 480C64 497.7 78.3 512 96 512L150.7 512C163 540.3 191.2 560 224 560C256.8 560 285 540.3 297.3 512L544 512C561.7 512 576 497.7 576 480C576 462.3 561.7 448 544 448L297.3 448C285 419.7 256.8 400 224 400C191.2 400 163 419.7 150.7 448L96 448z" />
                     </svg>
+                    FILTER
                   </button>
                 </div>
-                <div className="xs:tw-hidden md:tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
-                  <button
-                    className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(ALL_LABS);
-                    }}
-                    autoFocus
-                  >
-                    All Labs
-                  </button>
-                  <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(AI_MACHINE_LEARNING);
-                    }}
-                  >
-                    AI/Machine Learning
-                  </button>
-                  <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(ACCESSIBILITY);
-                    }}
-                  >
-                    Accessibility
-                  </button>
-                  <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(DIFFICULTY_1);
-                    }}
-                  >
-                    Difficulty 1
-                  </button>
-                  <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(DIFFICULTY_2);
-                    }}
-                  >
-                    Difficulty 2
-                  </button>
-                  <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(DIFFICULTY_3);
-                    }}
-                  >
-                    Difficulty 3
-                  </button>
-                  <button
-                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
-                      tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
-                    onClick={() => {
-                      handleSearchChange(TUTORIALS);
-                    }}
-                  >
-                    Tutorials
-                  </button>
-                </div>
-
-                <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap">
-                  {Array.from(displayedLabs.entries())
-                    .sort(([a], [b]) => a.localeCompare(b))
-                    .map(([category, labArray]) => (
-                      <div
-                        key={category}
-                        className="tw-flex tw-flex-col tw-mb-4"
+                {showFilter && (
+                  <div className="tw-relative tw-flex tw-flex-col tw-gap-4 tw-p-6 tw-mt-5 tw-max-w-[35rem] sm:tw-w-[calc(66.666%-1rem)] tw-w-[calc(100%-1rem)] tw-text-left tw-rounded-md tw-font-poppins">
+                    <div className="tw-relative">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedTopics([]);
+                          setSelectedDifficulties([]);
+                        }}
+                        className="tw-absolute tw-font-bold tw-z-10 tw-top-0 tw-right-0 btn tw-text-black tw-bg-primary-yellow tw-shadow-md focus:tw-bg-secondary-gray hover:tw-bg-secondary-gray hover:tw-shadow-lg text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap tw-border-none"
                       >
-                        <p className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
-                          {category}
-                        </p>
-                        <div className="tw-flex tw-flex-wrap">
-                          <div
-                            className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
-                          tw-gap-4 tw-pb-16 tw-pr-3 tw-w-full"
+                        CLEAR
+                      </button>
+                      <h2 className="tw-text-lg tw-font-bold tw-py-4">Topic</h2>
+                      <div className="tw-grid tw-grid-cols-2 tw-gap-6">
+                        {Array.from(labInformation.keys()).map((key) => (
+                          <label
+                            key={key}
+                            htmlFor={key}
+                            className={`
+                                tw-flex tw-items-center tw-justify-center
+                                focus-within:tw-border-black
+                                btn tw-border-solid tw-shadow-md tw-border-1 
+                                tw-text-sm md:tw-text-[1rem]
+                                hover:tw-bg-primary-yellow
+                                tw-z-10
+                                ${
+                                  selectedTopics.includes(key)
+                                    ? "tw-bg-primary-yellow"
+                                    : "tw-bg-white"
+                                }
+                            `}
                           >
-                            {labArray.map((labInfo) =>
-                              renderLabData(
-                                actions,
-                                labInfo,
-                                "",
-                                labInfo.id - 1,
-                              ),
-                            )}
+                            <input
+                              type="checkbox"
+                              id={key}
+                              name="topic"
+                              value={key}
+                              checked={selectedTopics.includes(key)}
+                              onChange={() => changeTopic(key)}
+                              className="tw-w-0 tw-h-0"
+                            />
+                            {key}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="">
+                      <h2 className="tw-text-lg tw-font-bold tw-py-4">
+                        Difficulty
+                      </h2>
+                      <div className="tw-flex tw-gap-6">
+                        {[1, 2, 3].map((level) => (
+                          <label
+                            key={level}
+                            htmlFor={`difficulty-${level}`}
+                            className={`
+                                tw-flex-1 tw-items-center tw-justify-center
+                                focus-within:tw-border-black
+                                btn tw-border-solid tw-shadow-md tw-border-1 
+                                tw-text-sm md:tw-text-[1rem]
+                                hover:tw-bg-primary-yellow
+                                tw-z-10
+                                ${
+                                  selectedDifficulties.includes(level)
+                                    ? "tw-bg-primary-yellow"
+                                    : "tw-bg-white"
+                                }
+                            `}
+                          >
+                            <input
+                              type="checkbox"
+                              id={`difficulty-${level}`}
+                              name="difficulty"
+                              value={level}
+                              checked={selectedDifficulties.includes(level)}
+                              onChange={() => changeDifficulty(level)}
+                              className="tw-w-0 tw-h-0"
+                            />
+                            {level}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div
+                      className={`tw-absolute tw-border-solid tw-border-primary-blue
+                        tw-border-[0.4rem] tw-right-[-0.5rem] tw-top-[-0.5rem] tw-h-full tw-w-full tw-z-0
+                        tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg`}
+                    />
+                    <div
+                      className={`tw-absolute tw-border-solid tw-border-primary-yellow
+                        tw-border-[0.4rem] tw-left-[-0.5rem] tw-bottom-[-0.5rem]
+                        tw-w-full tw-h-full tw-z-0 tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg`}
+                    />
+                  </div>
+                )}
+
+                <div className="md:lg:tw-flex tw-flex-col md:lg:tw-justify-center sm:tw-grid-cols-2 tw-flex-wrap tw-w-full xl:tw-w-[80%] tw-max-w-[79rem]">
+                  {Array.from(displayedLabs.values()).length === 0 ? (
+                    <p className="tw-text-center tw-w-full tw-my-12 tw-font-poppins">
+                      No labs to display. Try different search options!
+                    </p>
+                  ) : (
+                    Array.from(displayedLabs.entries())
+                      .sort(([a], [b]) => a.localeCompare(b))
+                      .map(([category, labArray]) => (
+                        <div
+                          key={category}
+                          className="tw-flex tw-flex-col tw-mb-4"
+                        >
+                          <p className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
+                            {category}
+                          </p>
+                          <div className="tw-flex tw-flex-wrap">
+                            <div
+                              className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
+                            tw-gap-4 tw-pb-16 tw-pr-3 tw-w-full"
+                            >
+                              {labArray.map((labInfo) =>
+                                renderLabData(
+                                  actions,
+                                  labInfo,
+                                  "",
+                                  labInfo.id - 1,
+                                ),
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                  )}
                 </div>
               </div>
             </div>

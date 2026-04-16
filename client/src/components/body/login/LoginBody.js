@@ -68,7 +68,7 @@ const LoginBody = (props) => {
         </p>
       </div>
       <div className="tw-flex tw-flex-row tw-justify-center tw-align-middle xs:tw-w-full">
-        <LoginButton enabled={loginEnabled} />
+        <LoginButton enabled={loginEnabled} closeModal={props.closeModal} />
       </div>
     </div>
   );
@@ -80,6 +80,7 @@ LoginBody.propTypes = {
       body: PropTypes.number,
     }),
   }),
+  closeModal: PropTypes.function,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginBody);

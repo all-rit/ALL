@@ -63,8 +63,8 @@ const Entanglement = () => {
       </p>
       <p className="tw-body-text tw-text-left tw-py-2">
         Much like on the Superposition page, hover over one of the entangled
-        qubits below. After a few seconds, see how they both collapse at exactly
-        the same time, and that their state is exactly opposite? This is due to
+        qubits below. After a few seconds, you&apos;ll see how they both
+        collapse at exactly the same time with opposing states. This is due to
         entanglement.
       </p>
       <div className="tw-flex tw-items-center tw-justify-evenly tw-gap-8">

@@ -38,7 +38,10 @@ const EnrolledGroups = (props) => {
                           tw-border-t-0 tw-border-r-0 tw-border-b-[1rem] tw-border-l-[1rem]"
         >
           <div className="header_with_button">
-            <h4 className={"tw-title tw-font-poppins tw-text-2xl"}>
+            <h4
+              id="MyGroups"
+              className={"tw-title tw-font-poppins tw-text-2xl"}
+            >
               {" "}
               View Your Enrolled Groups{" "}
             </h4>

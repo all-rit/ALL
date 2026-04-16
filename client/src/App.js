@@ -21,6 +21,7 @@ import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
+import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
 
 import { Sections } from "./constants/index";
@@ -52,6 +53,7 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
+
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
 );
@@ -80,6 +82,7 @@ function initializeReactGA() {
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
+  let [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
     actions.login();
@@ -88,6 +91,7 @@ const App = () => {
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
+    setLoaded(true);
   }, []);
   const lab = state.main.lab;
   const body = state.main.body;
@@ -113,7 +117,7 @@ const App = () => {
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+      <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
@@ -140,6 +144,7 @@ const App = () => {
           <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
           <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
           <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+          <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
           <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
 
           <Reinforcement
@@ -176,7 +181,7 @@ const App = () => {
         <Profile path="/Profile" user={state.main.user} />
         <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
         <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error actions={actions} default />
+        <Error default />
 
         <Imagine2023
           path={"/Imagine2023/*"}
@@ -204,40 +209,42 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div
-        className={`overflow-x-hidden ${
-          labInProgress || isImagine
-            ? "overflow-y-hidden tw-h-lvh"
-            : "overflow-y-auto min-h-screen"
-        }`}
-      >
-        <Header isImagine={isImagine} />
-        <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-          <div className={`tw-relative tw-grid tw-h-full`}>
-            <Suspense fallback={<Spinner />}>
-              {labInProgress ? (
-                <LabWindow
-                  lab={lab}
-                  title={Sections[lab].fullname}
-                  context={context}
-                  quizCompleted={quizCompleted}
-                  setQuizCompleted={setQuizCompleted}
-                  isImagine={isImagine}
-                  body={body}
-                >
-                  {renderLabs()}
-                </LabWindow>
-              ) : (
-                <div className={"tw-flex tw-row-span-10 tw-text-center"}>
-                  {renderPages()}
-                </div>
-              )}
-            </Suspense>
-          </div>
+      {isLoaded ? (
+        <div
+          className={
+            labInProgress || isImagine ? "" : "overflow-x-hidden min-h-screen"
+          }
+        >
+          <Suspense fallback={<Spinner />}>
+            <Header isImagine={isImagine} />
+            <div className={`tw-relative`}>
+              <div className={`tw-relative tw-grid`}>
+                {labInProgress ? (
+                  <LabWindow
+                    lab={lab}
+                    title={Sections[lab].fullname}
+                    context={context}
+                    quizCompleted={quizCompleted}
+                    setQuizCompleted={setQuizCompleted}
+                    isImagine={isImagine}
+                    body={body}
+                  >
+                    {renderLabs()}
+                  </LabWindow>
+                ) : (
+                  <div className={"tw-flex tw-row-span-10 tw-text-center"}>
+                    {renderPages()}
+                  </div>
+                )}
+              </div>
+            </div>
+            {!labInProgress && !isImagine && <MainFooter />}
+            <ALLSnackbar />
+          </Suspense>
         </div>
-        {!labInProgress && !isImagine && <MainFooter />}
-        <ALLSnackbar />
-      </div>
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };

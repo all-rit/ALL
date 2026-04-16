@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import { Pie } from "react-chartjs-2";
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import "./userStats.css";
+import { Pie } from "react-chartjs-2";
+
+Chart.register(ArcElement, Tooltip, Legend);
 
 /*
 Component for displaying user statistics on the user statistics page

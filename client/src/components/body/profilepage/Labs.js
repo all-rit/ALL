@@ -84,7 +84,10 @@ const Labs = (props) => {
                   "tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
                 }
               >
-                <div className={"tw-font-poppins tw-title tw-my-[1rem]"}>
+                <div
+                  id="MyLabs"
+                  className={"tw-font-poppins tw-title tw-my-[1rem]"}
+                >
                   My Labs
                 </div>
                 <div
