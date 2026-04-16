@@ -6,20 +6,16 @@ const ReadingSection = () => {
   return (
     <>
       <div className="tw-flex tw-flex-col tw-h-full tw-w-full">
-        {/* <div className="tw-mb-6 tw-pt-2">
-          <ImagineHeader title="DeepFake 101" />
-        </div> */}
-
         {Frame(
           <div className="tw-flex tw-flex-col tw-h-full tw-w-full">
             <div className="tw-flex-1 tw-overflow-y-auto tw-px-6 tw-pb-6">
               <div className="tw-w-full tw-max-w-3xl tw-mx-auto tw-space-y-6">
-                  <div className="tw-top-3 tw-w-[96%] tw-mb-[-5%]">
-                      <h3 className={"tw-title tw-pb-3"}>Deepfake 101</h3>
+                <div className="tw-top-3 tw-w-[96%] tw-mb-[-5%]">
+                  <h3 className={"tw-title tw-pb-3"}>Deepfake 101</h3>
                   <div className={"tw-flex tw-justify-center"}>
                     <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
                   </div>
-              </div>
+                </div>
                 <section className="tw-bg-white tw-rounded-xl tw-p-6 tw-shadow-sm">
                   <p className="tw-body-text tw-leading-8">
                     <strong>What is a deepfake?</strong> A deepfake is
@@ -97,7 +93,7 @@ const ReadingSection = () => {
                 <section className="tw-bg-white tw-rounded-xl tw-p-6 tw-shadow-sm">
                   <p className="tw-body-text tw-leading-8">
                     A real-world example occurred in 2024 when a finance worker
-                    at Arup approved a $25.6 million transaction after a
+                    at Arup approved a $25.6 million transaction after joining a
                     deepfake video call that appeared to include the
                     company&apos;s CFO and other staff members. The employee had
                     already been suspicious after receiving an email from the

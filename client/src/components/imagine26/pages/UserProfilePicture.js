@@ -33,7 +33,6 @@ const UserProfilePicture = () => {
       form.append("image", blob, "image.png");
       form.append("userId", sessionStorage.getItem("userID"));
       form.append("year", 26);
-      console.log(form);
       await ImagineService.handleImageUploads(form);
     }
     navigate("/Imagine2026/GalagaInstructions");
@@ -43,7 +42,7 @@ const UserProfilePicture = () => {
     <>
       <div className="tw-flex tw-flex-col tw-items-center tw-gap-4 tw-p-4">
         {!blob ? (
-          <PhotoCapture/>
+          <PhotoCapture />
         ) : (
           <div className="tw-flex tw-flex-col tw-items-center tw-gap-5">
             <UserPhoto />
