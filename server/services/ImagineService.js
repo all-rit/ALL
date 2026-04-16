@@ -87,7 +87,7 @@ const updateTeammateChat2025 = async (data) => {
         }
     });
 
-    if(entry) {
+    if (entry) {
       entry.teammateChat = teammateChat;
       await entry.save();
     } else {

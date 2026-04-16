@@ -141,7 +141,7 @@ const Analysis = () => {
         tw-border-[0.4rem] tw-border-r-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
         onClick={() => setShowScores((prev) => !prev)}
       >
-        Show Scores
+        {showScores ? "Show Teammate" : "Show Scores"}
       </Button>
 
       {/* Next button */}
