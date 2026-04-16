@@ -9,7 +9,6 @@ const videoPaths = {
   3: "../videos/imagine26/3playingGalaga.mp4",
 };
 
-
 //fix for teammate 4 until we get typing video
 const typingVideoPaths = {
   0: "/videos/imagine26/0typing.mp4",
@@ -50,4 +49,4 @@ const groupVideoPaths = {
   },
 };
 
-export { videoPaths, groupVideoPaths, scorePagePaths,typingVideoPaths };
+export { videoPaths, groupVideoPaths, scorePagePaths, typingVideoPaths };

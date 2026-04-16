@@ -8,7 +8,6 @@ import Avatar from "avataaars";
 import ImagineService from "src/services/ImagineService";
 import RankingQuestion from "./Ranking";
 
-
 function Survey(props) {
   //any niche questions can be placed here, match the key with the question type in whatever data file you are using
   const questionTypes = {

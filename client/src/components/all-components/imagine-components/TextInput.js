@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Form, FormGroup, Label } from 'reactstrap';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Form, FormGroup, Label } from "reactstrap";
 
 // Represents one text entry
 const TextInputBox = ({ label, handleTextChange, currentValue }) => {
@@ -10,7 +10,7 @@ const TextInputBox = ({ label, handleTextChange, currentValue }) => {
       <textarea
         className="tw-border tw-rounded tw-p-2 tw-body-text tw-w-full"
         placeholder="Type your answer..."
-        value={currentValue || ''}
+        value={currentValue || ""}
         onChange={(e) => handleTextChange(label, e.target.value)}
       />
     </div>
@@ -30,7 +30,7 @@ const TextInput = ({ options = [], updatedSelectedAnswers, questionId }) => {
   useEffect(() => {
     const initialAnswers = {};
     options.forEach((option) => {
-      initialAnswers[option] = '';
+      initialAnswers[option] = "";
     });
     setSelectedAnswers(initialAnswers);
   }, [questionId]);

@@ -4,7 +4,7 @@ import {
   videoPaths,
   groupVideoPaths,
   scorePagePaths,
-  typingVideoPaths
+  typingVideoPaths,
 } from "src/constants/imagine26/Videos";
 import PropTypes from "prop-types";
 import DisplayDeepFake from "./DisplayDeepfake";
@@ -37,94 +37,91 @@ const TeammateVideo = (props) => {
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
     } else if (status == "groupVideo") {
-      const teammateReactionVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
+      const teammateReactionVideos =
+        groupVideoPaths[teammateId] || groupVideoPaths[0];
       setVideoSrc(teammateReactionVideos[group] || teammateReactionVideos.A);
     } else if (status == "analysis") {
       setVideoSrc("");
     } else if (status == "chatroom") {
-    //once we have all videos of teammates typing uncomment this line
-      setVideoSrc(typingVideoPaths[teammateId] || typingVideoPaths[0])
+      //once we have all videos of teammates typing uncomment this line
+      setVideoSrc(typingVideoPaths[teammateId] || typingVideoPaths[0]);
     }
   }, [teammateId, status, group]);
 
-    const fetchDeepfake = () => {
-      //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
-      const activity = {
-        experiential: (
-          <DisplayDeepFake
-            teammateId={teammateId}
-            isExperential={true}
-            isChatRoom = {true}
-          />
-        ),
-        expression: (
-          <DisplayDeepFake
-            teammateId={teammateId}
-            isExperential={false}
-            isChatRoom = {true}
-          />
-        ),
-      };
-      return <div>
-        {activity[group]}
-        </div>
-  }
+  const fetchDeepfake = () => {
+    //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
+    const activity = {
+      experiential: (
+        <DisplayDeepFake
+          teammateId={teammateId}
+          isExperential={true}
+          isChatRoom={true}
+        />
+      ),
+      expression: (
+        <DisplayDeepFake
+          teammateId={teammateId}
+          isExperential={false}
+          isChatRoom={true}
+        />
+      ),
+    };
+    return <div>{activity[group]}</div>;
+  };
 
-  const modeClasses = status == 'chatroom'
-    ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0" 
-    : "tw-absolute tw-top-[3.4%] tw-right-1 tw-w-96 tw-max-h-[600px]";
+  const modeClasses =
+    status == "chatroom"
+      ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0"
+      : "tw-absolute tw-top-[3.4%] tw-right-1 tw-w-96 tw-max-h-[600px]";
 
   return (
-    <div 
+    <div
       className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg`}
     >
       <p className="tw-mb-3">
         Teammate live from: <b>Buffalo, NY</b>
       </p>
-      <div className = "tw-flex-1 tw-overflow-y-auto">
-             <video
-        key={`${videoSrc}-${status}`}
-        src={videoSrc}
-        autoPlay
-        loop
-        muted
-        className={`tw-w-full tw-object-cover tw-rounded-lg ${status == 'chatroom' ? 'tw-aspect-video tw-h-[220px]' : 'tw-h-[200px]'}`}
-      />
-      
-    {status === "chatroom" ?(
-      fetchDeepfake()
-    )
-    :(
-     <>
-      <p className="tw-col-span-2 tw-text-center tw-font-bold">
-        <br />
-        (Keyboard)
-      </p>
-      <div className="tw-pt-1 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
-        <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
-        <img
-          className={
-            "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
-            buttonSize
-          }
-          src="/img/imagine_game_controls/ArrowKey.png"
+      <div className="tw-flex-1 tw-overflow-y-auto">
+        <video
+          key={`${videoSrc}-${status}`}
+          src={videoSrc}
+          autoPlay
+          loop
+          muted
+          className={`tw-w-full tw-object-cover tw-rounded-lg ${status == "chatroom" ? "tw-aspect-video tw-h-[220px]" : "tw-h-[200px]"}`}
         />
-        <img
-          className={buttonSize}
-          src="/img/imagine_game_controls/ArrowKey.png"
-        />
-        <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
-        <img
-          className="tw-col-span-2 tw-w-32 tw-mx-auto"
-          src="/img/imagine_game_controls/SpaceBar.png"
-        />
-      </div>
-     </>
 
-    )}
+        {status === "chatroom" ? (
+          fetchDeepfake()
+        ) : (
+          <>
+            <p className="tw-col-span-2 tw-text-center tw-font-bold">
+              <br />
+              (Keyboard)
+            </p>
+            <div className="tw-pt-1 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
+              <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
+              <img
+                className={
+                  "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
+                  buttonSize
+                }
+                src="/img/imagine_game_controls/ArrowKey.png"
+              />
+              <img
+                className={buttonSize}
+                src="/img/imagine_game_controls/ArrowKey.png"
+              />
+              <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
+              <img
+                className="tw-col-span-2 tw-w-32 tw-mx-auto"
+                src="/img/imagine_game_controls/SpaceBar.png"
+              />
+            </div>
+          </>
+        )}
+      </div>
     </div>
-   
-  </div>
   );
 };
 

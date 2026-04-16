@@ -56,7 +56,7 @@ const Analysis = (props) => {
           teammateId={teammateId}
           isExperential={true}
           toggleAction={showVideo}
-          isChatRoom = {false}
+          isChatRoom={false}
         />
       ),
       expression: (
@@ -64,7 +64,7 @@ const Analysis = (props) => {
           teammateId={teammateId}
           isExperential={false}
           toggleAction={showVideo}
-          isChatRoom = {false}
+          isChatRoom={false}
         />
       ),
       control: <ControlGroupOutcome />,
@@ -94,18 +94,18 @@ const Analysis = (props) => {
 
   const handleNavigation = async () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
-    sessionStorage.setItem("group",group);
-    sessionStorage.setItem("teammateId",teammateId);
+    sessionStorage.setItem("group", group);
+    sessionStorage.setItem("teammateId", teammateId);
     const surveyConsent = JSON.parse(
       sessionStorage.getItem("phdConsent") || "false",
     );
-    
+
     if (isUnderAge === "true" || surveyConsent == false) {
       navigate("/Imagine2026/Done");
     } else {
-      if (group != "control"){
+      if (group != "control") {
         navigate("/Imagine2026/ChatRoom");
-      }else{
+      } else {
         navigate("/Imagine2026/ReadingSection");
       }
     }
