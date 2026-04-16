@@ -62,9 +62,7 @@ const AddModal = (props) => {
             aria-label="add"
             label={"Start a New Group"}
             onClick={toggleModal}
-          >
-            Create Group
-          </ALLButton>
+          />
           <BrandedALLModal
             isOpen={modal}
             toggle={toggleModal}

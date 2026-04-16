@@ -233,16 +233,16 @@ const LabsPage = (props) => {
         body={EXPLORE_LABS_BODY}
         img={Student}
       />
-      <div className="tw-relative tw-h-auto  tw-mb-20">
-        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16">
+      <div className="tw-relative tw-h-auto tw-mb-20">
+        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16 tw-bottom-6">
           <div
-            className="tw-flex tw-bg-primary-blue tw-w-full -tw-left-8 tw-top-16
-                            tw-h-auto tw-relative tw-rounded-tr-lg"
+            className="tw-flex tw-bg-primary-blue tw-w-full sm:-tw-left-8 tw-pb-8 tw-top-8 sm:tw-top-16   
+                            tw-h-auto tw-relative sm:tw-rounded-tr-lg"
           >
-            <div className="tw-bg-white tw-auto tw-w-full -tw-left-4 tw-top-4 tw-rounded-tr-lg tw-justify-left tw-relative">
+            <div className="tw-bg-white tw-auto tw-w-full sm:-tw-left-4 -tw-left-0 tw-top-4 sm:tw-rounded-tr-lg tw-justify-left tw-relative">
               <div
-                className="tw-flex tw-flex-col tw-pt-16 tw-relative tw-left-12 tw-items-center
-                              tw-flex-wrap tw-px-12"
+                className="tw-flex tw-flex-col tw-pt-16 tw-relative sm:tw-left-12 tw-items-center
+                              tw-flex-wrap tw-px-8 sm:tw-px-12"
               >
                 {loggedIn && (
                   <div className={"tw-w-full"}>
@@ -418,7 +418,7 @@ const LabsPage = (props) => {
                           <div className="tw-flex tw-flex-wrap">
                             <div
                               className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
-                            tw-gap-4 tw-pb-16 tw-pr-3 tw-w-full"
+                            tw-gap-4 tw-pb-16 tw-w-full"
                             >
                               {labArray.map((labInfo) =>
                                 renderLabData(
