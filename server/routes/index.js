@@ -1,201 +1,242 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({});
 
 // Universal Controllers
-const UserController = require('../controllers/UserController');
-const UserLabController = require('../controllers/UserLabController');
-const PageController = require('../controllers/PageController');
-const GroupController = require('../controllers/GroupController');
+const UserController = require("../controllers/UserController");
+const UserLabController = require("../controllers/UserLabController");
+const PageController = require("../controllers/PageController");
+const GroupController = require("../controllers/GroupController");
 
 // LAB0 Controllers
-const ProgressControllerLab0 = require('../controllers/lab0/ProgressController');
+const ProgressControllerLab0 = require("../controllers/lab0/ProgressController");
 
 // LAB1 Controllers
-const ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
-const RepairControllerLab1 = require('../controllers/lab1/RepairController');
+const ExerciseControllerLab1 = require("../controllers/lab1/ExerciseController");
+const RepairControllerLab1 = require("../controllers/lab1/RepairController");
 
 // LAB2 Controller
-const RepairControllerLab2 = require('../controllers/lab2/RepairController');
+const RepairControllerLab2 = require("../controllers/lab2/RepairController");
 
 // LAB3 Controller
-const RepairControllerLab3 = require('../controllers/lab3/RepairController');
+const RepairControllerLab3 = require("../controllers/lab3/RepairController");
 
 // LAB4 Controller
-const RepairControllerLab4 = require('../controllers/lab4/RepairController');
+const RepairControllerLab4 = require("../controllers/lab4/RepairController");
 
 // LAB5 Controller
-const RepairControllerLab5 = require('../controllers/lab5/RepairController');
-const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
+const RepairControllerLab5 = require("../controllers/lab5/RepairController");
+const ExerciseControllerLab5 = require("../controllers/lab5/ExerciseController");
 
 // LAB6 Controller
-const RepairControllerLab6 = require('../controllers/lab6/RepairController');
-const ExerciseControllerLab6 = require('../controllers/lab6/ExerciseController');
+const RepairControllerLab6 = require("../controllers/lab6/RepairController");
+const ExerciseControllerLab6 = require("../controllers/lab6/ExerciseController");
 
 // LAB7 Controller
-const RepairControllerLab7 = require('../controllers/lab7/RepairController');
-const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
+const RepairControllerLab7 = require("../controllers/lab7/RepairController");
+const ExerciseControllerLab7 = require("../controllers/lab7/ExerciseController");
 
 // LAB 8 Controller
-const ExerciseControllerLab8 = require('../controllers/lab8/ExerciseController');
+const ExerciseControllerLab8 = require("../controllers/lab8/ExerciseController");
 
 // LAB 9 Controller
-const ExerciseControllerLab9 = require('../controllers/lab9/ExerciseController');
+const ExerciseControllerLab9 = require("../controllers/lab9/ExerciseController");
 // Lab 9 Controller
-const RepairControllerLab9 = require('../controllers/lab9/RepairController');
+const RepairControllerLab9 = require("../controllers/lab9/RepairController");
 
 // LAB 11 Controller
 const ExerciseControllerLab11 = require('../controllers/lab11/ExerciseController');
 const RepairControllerLab11 = require('../controllers/lab11/RepairController');
 
 // LAB 10 Controller
-const ExerciseControllerLab10 = require('../controllers/lab10/ExerciseController');
+const ExerciseControllerLab10 = require("../controllers/lab10/ExerciseController");
 
 // LAB 12 Controller
-const ExerciseControllerLab12 = require('../controllers/lab12/ExerciseController');
-const RepairControllerLab12 = require('../controllers/lab12/RepairController');
+const ExerciseControllerLab12 = require("../controllers/lab12/ExerciseController");
+const RepairControllerLab12 = require("../controllers/lab12/RepairController");
 
 // LAB 13 Controller
 const ExerciseControllerLab13 = require('../controllers/lab13/ExerciseController');
+
 // LAB 14 Controller
-const ExerciseControllerLab14 = require('../controllers/lab14/ExerciseController');
+const ExerciseControllerLab14 = require("../controllers/lab14/ExerciseController");
 
 // Lab Controller
-const LabController = require('../controllers/LabController');
+const LabController = require("../controllers/LabController");
 
 // Team Members Controller
-const TeamMemberController = require('../controllers/TeamMemberController');
+const TeamMemberController = require("../controllers/TeamMemberController");
 
 // Imagine Controller
-const ImagineController = require('../controllers/ImagineController');
+const ImagineController = require("../controllers/ImagineController");
 
 // User Routes
-router.post('/url', UserController.storeURL);
-router.get('/auth/google', UserController.authenticate);
+router.post("/url", UserController.storeURL);
+router.get("/auth/google", UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
-router.get('/logout', UserController.logout);
-router.get('/user', UserController.main);
-router.get('/user/:userID', UserController.getUser);
+router.get("/logout", UserController.logout);
+router.get("/user", UserController.main);
+router.get("/user/:userID", UserController.getUser);
 router.get('/user/:userID/development', UserController.developmentLogin);
-router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
-router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
-router.get('/user/:userID/assigned', UserController.getUserAssignedLabs);
-router.get('/user/:userID/todo', UserController.getUserToDoLabs);
-router.get('/user/:userID/labrecords', UserLabController.getUserLabRecords);
-router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
+router.get("/user/:userID/enrolled", UserController.getUserEnrolledGroups);
+router.get("/user/:userID/groups", UserController.getUserInstructingGroups);
+router.get("/user/:userID/assigned", UserController.getUserAssignedLabs);
+router.get("/user/:userID/todo", UserController.getUserToDoLabs);
+router.get("/user/:userID/labrecords", UserLabController.getUserLabRecords);
+router.get("/user/:userID/:labID", UserLabController.getUserLabCompletion);
 
 // Group Routes
-router.post('/group/enroll', GroupController.enrollUserInGroup);
-router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
-router.post('/group/create', GroupController.createGroup);
-router.post('/group/:groupID/add', GroupController.addGroupLab);
-router.put('/group/:groupID/update', GroupController.updateGroup);
-router.put('/group/:groupID/:labID/delete', GroupController.deleteGroupLab);
-router.put('/group/:groupID/delete', GroupController.deleteGroup);
-router.get('/group/:groupID/labs', GroupController.getGroupLabs);
-router.get('/group/:groupID/labs/:userID/completed', GroupController.getCompletedGroupLabs);
-router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
+router.post("/group/enroll", GroupController.enrollUserInGroup);
+router.post("/group/unenroll", GroupController.unenrollUserFromGroup);
+router.post("/group/create", GroupController.createGroup);
+router.post("/group/:groupID/add", GroupController.addGroupLab);
+router.put("/group/:groupID/update", GroupController.updateGroup);
+router.put("/group/:groupID/:labID/delete", GroupController.deleteGroupLab);
+router.put("/group/:groupID/delete", GroupController.deleteGroup);
+router.get("/group/:groupID/labs", GroupController.getGroupLabs);
+router.get(
+  "/group/:groupID/labs/:userID/completed",
+  GroupController.getCompletedGroupLabs,
+);
+router.get(
+  "/group/:groupID/enrolled",
+  GroupController.getGroupEnrolledStudents,
+);
 
 // user Lab Routes for lab progress and quiz
-router.post('/completeAbout', UserLabController.completeAbout);
-router.post('/completeReading', UserLabController.completeReading);
-router.post('/completeExercise', UserLabController.completeExercise);
-router.post('/completeReinforcement', UserLabController.completeReinforcement);
-router.post('/completeQuiz', UserLabController.completeQuiz);
+router.post("/completeAbout", UserLabController.completeAbout);
+router.post("/completeReading", UserLabController.completeReading);
+router.post("/completeExercise", UserLabController.completeExercise);
+router.post("/completeReinforcement", UserLabController.completeReinforcement);
+router.post("/completeQuiz", UserLabController.completeQuiz);
 
-router.post('/:userID/completeAbout', UserLabController.userCompleteAbout);
-router.post('/:userID/completeReading', UserLabController.userCompleteReading);
-router.post('/:userID/completeExercise', UserLabController.userCompleteExercise);
-router.post('/:userID/completeReinforcement', UserLabController.userCompleteReinforcement);
-router.post('/:userID/completeQuiz', UserLabController.userCompleteQuiz);
+router.post("/:userID/completeAbout", UserLabController.userCompleteAbout);
+router.post("/:userID/completeReading", UserLabController.userCompleteReading);
+router.post(
+  "/:userID/completeExercise",
+  UserLabController.userCompleteExercise,
+);
+router.post(
+  "/:userID/completeReinforcement",
+  UserLabController.userCompleteReinforcement,
+);
+router.post("/:userID/completeQuiz", UserLabController.userCompleteQuiz);
 
 // Progress Routes
-router.get('/lab0/progress/:userID', async function (req, res) {
+router.get("/lab0/progress/:userID", async function (req, res) {
   res.json(await ProgressControllerLab0.getProgress(req));
 });
-router.post('/lab0/progress/submit', async function (req, res) {
+router.post("/lab0/progress/submit", async function (req, res) {
   await ProgressControllerLab0.submitProgress(req);
   res.sendStatus(200);
 });
 
 // Exercise Routes
-router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
-router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
-router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
-router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
-router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
-router.post('/lab6/exercise/avatar', ExerciseControllerLab6.submitAvatar);
-router.post('/lab6/exercise/qualquestions', ExerciseControllerLab6.submitQualQuestions);
-router.post('/lab6/exercise/aianalysisquestion', ExerciseControllerLab6.submitAIanalysisQuestion);
-router.post('/lab6/exercise/hiredcanidates', ExerciseControllerLab6.submitHiredCanidates);
-router.post('/lab6/exercise/aireasoningquestion', ExerciseControllerLab6.submitAIReasoningQuestion);
-router.post('/lab6/exercise/fixedhiredcanidates', ExerciseControllerLab6.submitFixedHiredCanidates);
-router.post('/lab7/exercise/report', ExerciseControllerLab7.submitRepair);
-router.get('/lab10/exercise/weights/:userID', ExerciseControllerLab10.retrieveWeights);
-router.post('/lab10/exercise/weights', ExerciseControllerLab10.updateWeights);
+router.post("/lab1/exercise/start", ExerciseControllerLab1.createExercise);
+router.post("/lab1/exercise/round", ExerciseControllerLab1.createRound);
+router.post("/lab1/exercise/choice", ExerciseControllerLab1.createChoice);
+router.post(
+  "/lab1/exercise/end",
+  ExerciseControllerLab1.updateEndExerciseScore,
+);
+router.post("/lab5/exercise/choice", ExerciseControllerLab5.submitChoice);
+router.post("/lab6/exercise/avatar", ExerciseControllerLab6.submitAvatar);
+router.post(
+  "/lab6/exercise/qualquestions",
+  ExerciseControllerLab6.submitQualQuestions,
+);
+router.post(
+  "/lab6/exercise/aianalysisquestion",
+  ExerciseControllerLab6.submitAIanalysisQuestion,
+);
+router.post(
+  "/lab6/exercise/hiredcanidates",
+  ExerciseControllerLab6.submitHiredCanidates,
+);
+router.post(
+  "/lab6/exercise/aireasoningquestion",
+  ExerciseControllerLab6.submitAIReasoningQuestion,
+);
+router.post(
+  "/lab6/exercise/fixedhiredcanidates",
+  ExerciseControllerLab6.submitFixedHiredCanidates,
+);
+router.post("/lab7/exercise/report", ExerciseControllerLab7.submitRepair);
+router.get(
+  "/lab10/exercise/weights/:userID",
+  ExerciseControllerLab10.retrieveWeights,
+);
+router.post("/lab10/exercise/weights", ExerciseControllerLab10.updateWeights);
 
 // Code Editor Routes
-router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
-router.post('/lab2/repair/submit', RepairControllerLab2.submitChange);
-router.post('/lab3/repair/submit', RepairControllerLab3.submitChange);
-router.post('/lab4/repair/submit/button', RepairControllerLab4.submitChangeButton);
-router.post('/lab4/repair/submit/skip', RepairControllerLab4.submitChangeSkip);
-router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
-router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
-router.post('/lab6/repair/submit', RepairControllerLab6.submitChange);
-router.get('/lab6/repair/:userID', RepairControllerLab6.getUserChange);
-router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
-router.post('/lab7/repair/update', RepairControllerLab7.updateReport);
-router.get('/lab8/exercise/:userID', async function (req, res) {
+router.post("/lab1/repair/submit", RepairControllerLab1.submitChange);
+router.post("/lab2/repair/submit", RepairControllerLab2.submitChange);
+router.post("/lab3/repair/submit", RepairControllerLab3.submitChange);
+router.post(
+  "/lab4/repair/submit/button",
+  RepairControllerLab4.submitChangeButton,
+);
+router.post("/lab4/repair/submit/skip", RepairControllerLab4.submitChangeSkip);
+router.post("/lab4/repair/submit/hint", RepairControllerLab4.submitChangeHint);
+router.post("/lab5/repair/submit", RepairControllerLab5.submitChange);
+router.post("/lab6/repair/submit", RepairControllerLab6.submitChange);
+router.get("/lab6/repair/:userID", RepairControllerLab6.getUserChange);
+router.post("/lab7/repair/submit", RepairControllerLab7.submitChange);
+router.post("/lab7/repair/update", RepairControllerLab7.updateReport);
+router.get("/lab8/exercise/:userID", async function (req, res) {
   res.json(await ExerciseControllerLab8.getRepair(req, true));
 });
-router.post('/lab8/exercise/submit', async function (req, res) {
+router.post("/lab8/exercise/submit", async function (req, res) {
   const id = await ExerciseControllerLab8.submitChange(req);
   res.send(id);
 });
-router.get('/lab9/exercise/:userID', async function (req, res) {
+router.get("/lab9/exercise/:userID", async function (req, res) {
   res.json(await ExerciseControllerLab9.getExercise(req, true));
 });
-router.post('/lab9/exercise/submit', async function (req, res) {
+router.post("/lab9/exercise/submit", async function (req, res) {
   const id = await ExerciseControllerLab9.postExercise(req);
   res.send(id);
 });
 
-router.get('/lab9/repair/:userID/:section', async function (req, res) {
+router.get("/lab9/repair/:userID/:section", async function (req, res) {
   res.json(await RepairControllerLab9.getRepair(req));
 });
-router.post('/lab9/repair/submit', async function (req, res) {
+router.post("/lab9/repair/submit", async function (req, res) {
   const id = await RepairControllerLab9.submitChange(req);
   res.send(id);
 });
 
-router.get('/lab11/exercise/:userID', async function (req, res) {
+router.get("/lab11/exercise/:userID", async function (req, res) {
   res.json(await ExerciseControllerLab11.getExercise(req));
 });
-router.post('/lab11/exercise/submit', async function (req, res) {
+router.post("/lab11/exercise/submit", async function (req, res) {
   const id = await ExerciseControllerLab11.postExercise(req);
   res.send(id);
 });
 
-router.get('/lab11/repair/:userID/:section', async function (req, res) {
+router.get("/lab11/repair/:userID/:section", async function (req, res) {
   res.json(await RepairControllerLab11.getRepair(req));
 });
-router.post('/lab11/repair/submit', async function (req, res) {
+router.post("/lab11/repair/submit", async function (req, res) {
   const id = await RepairControllerLab11.submitChange(req);
   res.send(id);
 });
 
-{/* Lab 12 Exercise and Repair Controller Calls */ }
-router.get('/lab12/exercise/:userID', async function (req, res) {
+{
+  /* Lab 12 Exercise and Repair Controller Calls */
+}
+router.get("/lab12/exercise/:userID", async function (req, res) {
   res.json(await ExerciseControllerLab12.getExercise(req));
 });
-router.post('/lab12/exercise/submit', async function (req, res) {
+router.post("/lab12/exercise/submit", async function (req, res) {
   const id = await ExerciseControllerLab12.postExercise(req);
   res.send(id);
 });
-router.get('/lab12/repair/:userID/:section', async function (req, res) {
+router.get("/lab12/repair/:userID/:section", async function (req, res) {
   res.json(await RepairControllerLab12.getRepair(req));
 });
-router.post('/lab12/repair/submit', async function (req, res) {
+router.post("/lab12/repair/submit", async function (req, res) {
   const id = await RepairControllerLab12.submitChange(req);
   res.send(id);
 });
@@ -212,127 +253,190 @@ router.post('/lab13/exercise/submit', async function (req, res) {
 router.get('/lab14/exercise/:userID', async function (req, res) {
   res.json(await ExerciseControllerLab14.getExercise(req));
 });
-router.post('/lab14/exercise/submit', async function (req, res) {
+router.post("/lab14/exercise/submit", async function (req, res) {
   const id = await ExerciseControllerLab14.postExercise(req);
   res.send(id);
 });
 
 // Create a Page Entry
-router.post('/page/complete', PageController.createPage);
+router.post("/page/complete", PageController.createPage);
 
 // Labs
-router.get('/lab', async function (req, res) {
+router.get("/lab", async function (req, res) {
   await LabController.getAllLabsController(req, res);
 });
-router.get('/lab:labID/shortname', async function (req, res) {
+router.get("/lab:labID/shortname", async function (req, res) {
   await LabController.getLabShortNameController(req, res);
 });
-router.get('/lab:labID/about', async function (req, res) {
+router.get("/lab:labID/about", async function (req, res) {
   await LabController.getLabAboutController(req, res);
 });
-router.get('/lab:labID/reading', async function (req, res) {
+router.get("/lab:labID/reading", async function (req, res) {
   await LabController.getLabReadingController(req, res);
 });
-router.get('/lab:labID/reinforcement', async function (req, res) {
+router.get("/lab:labID/reinforcement", async function (req, res) {
   await LabController.getLabReinforcementController(req, res);
 });
-router.get('/lab:labID/quiz', async function (req, res) {
+router.get("/lab:labID/quiz", async function (req, res) {
   await LabController.getLabQuizController(req, res);
 });
 
 // Team
-router.get('/teammember', TeamMemberController.getAllTeamMembers);
-router.get('/professors', TeamMemberController.getAllProfessors);
-router.get('/alumni', TeamMemberController.getAllAlumni);
-router.get('/devPartners', TeamMemberController.getAllDevPartners);
-router.get('/schools', TeamMemberController.getAllSchools);
+router.get("/teammember", TeamMemberController.getAllTeamMembers);
+router.get("/professors", TeamMemberController.getAllProfessors);
+router.get("/alumni", TeamMemberController.getAllAlumni);
+router.get("/devPartners", TeamMemberController.getAllDevPartners);
+router.get("/schools", TeamMemberController.getAllSchools);
 
 // Imagine
-router.post('/imagine23/postStudy', async function (req, res) {
+router.post("/imagine23/postStudy", async function (req, res) {
   const resp = await ImagineController.submitStudy(req);
   res.send(resp);
 });
-router.post('/imagine23/preSurvey', async function (req, res) {
+router.post("/imagine23/preSurvey", async function (req, res) {
   const resp = await ImagineController.preSurvey(req, res);
   res.send(JSON.stringify(resp));
 });
-router.post('/imagine23/postSurvey', async function (req, res) {
+router.post("/imagine23/postSurvey", async function (req, res) {
   const resp = await ImagineController.postSurvey(req);
   res.send(resp);
 });
-router.get('/imagine23/users', async function (req, res) {
+router.get("/imagine23/users", async function (req, res) {
   const imagineUsers = await ImagineController.getUsers();
   res.json(imagineUsers);
 });
-router.get('/imagine23/user/:userID', async function (req, res) {
+router.get("/imagine23/user/:userID", async function (req, res) {
   const imagineUser = await ImagineController.getUserByID(req);
   res.json(imagineUser);
 });
-router.post('/imagine23/readMoreCount', async function (req, res) {
+router.post("/imagine23/readMoreCount", async function (req, res) {
   const resp = await ImagineController.readMoreCount(req);
   res.send(resp);
 });
-router.post('/imagine23/readMoreTimeElapsed', async function (req, res) {
+router.post("/imagine23/readMoreTimeElapsed", async function (req, res) {
   const resp = await ImagineController.readMoreTimeElapsed(req);
   res.send(resp);
 });
-router.post('/imagine23/readingSectionPagePosition', async function (req, res) {
+router.post("/imagine23/readingSectionPagePosition", async function (req, res) {
   const resp = await ImagineController.readingSectionPagePosition(req);
   res.send(resp);
 });
 
-router.post('/imagine25/teammateAvatarSelection', async function (req, res) {
+router.post("/imagine25/teammateAvatarSelection", async function (req, res) {
   const resp = await ImagineController.postTeammateAvatar(req);
   res.send(resp);
 });
-router.post('/imagine25/opponentAvatarSelection', async function (req, res) {
+router.post("/imagine25/opponentAvatarSelection", async function (req, res) {
   const resp = await ImagineController.postOpponentAvatar(req);
   res.send(resp);
 });
-router.post('/imagine25/userAvatarCreation', async function (req, res) {
+router.post("/imagine25/userAvatarCreation", async function (req, res) {
   const resp = await ImagineController.postUserAvatar(req);
   res.send(resp);
 });
-router.post('/imagine25/newID', async function (req, res) {
+router.post("/imagine25/newID", async function (req, res) {
   const resp = await ImagineController.newID(req);
   res.send(resp);
 });
 
-router.get('/imagine25/user/:userID', async function (req, res) {
+router.get("/imagine25/user/:userID", async function (req, res) {
   req.params.year = 25;
   const imagineUser = await ImagineController.getUserByID(req);
   res.json(imagineUser);
 });
 
-router.get('/imagine25/getGroup/:userID', async function (req, res) {
+router.get("/imagine25/getGroup/:userID", async function (req, res) {
   req.params.year = 25;
   const imagineUser = await ImagineController.getGroup(req);
   res.json(imagineUser);
 });
 
-router.get('/imagine25/getTeammate/:userID', async function (req, res) {
+router.get("/imagine25/getTeammate/:userID", async function (req, res) {
   req.params.year = 25;
   const imagineUser = await ImagineController.getTeammate(req);
   res.json(imagineUser);
 });
 
 // Imagine 2025
-router.post('/imagine25/preSurvey', async function (req, res) {
+router.post("/imagine25/preSurvey", async function (req, res) {
+  const resp = await ImagineController.preSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+
+router.post("/imagine25/postSurvey", async function (req, res) {
+  const resp = await ImagineController.postSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+
+// add quiz backend
+router.post("/imagine25/quizScore", async function (req, res) {
+  const resp = await ImagineController.quizScore(req);
+  res.send(resp);
+});
+
+router.post("/imagine26/newID", async function (req, res) {
+  const resp = await ImagineController.newID(req);
+  res.send(resp);
+});
+
+router.get("/imagine26/user/:userID", async function (req, res) {
+  req.params.year = 26;
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
+});
+
+router.get("/imagine26/getGroup/:userID", async function (req, res) {
+  req.params.year = 26;
+  const imagineUser = await ImagineController.getGroup(req);
+  res.json(imagineUser);
+});
+
+router.get("/imagine26/getTeammate/:userID", async function (req, res) {
+  req.params.year = 26;
+  const imagineUser = await ImagineController.getTeammate(req);
+  res.json(imagineUser);
+});
+
+// Imagine 2026
+router.post("/imagine26/preSurvey", async function (req, res) {
   const resp = await ImagineController.preSurvey(req, res);
   res.send(JSON.stringify(resp));
 });
 
 router.put('/imagine25/teammateChat', ImagineController.updateTeammateChat2025);
 
-router.post('/imagine25/postSurvey', async function (req, res) {
+router.post("/imagine26/postSurvey", async function (req, res) {
   const resp = await ImagineController.postSurvey(req, res);
   res.send(JSON.stringify(resp));
 });
 
 // add quiz backend
-router.post('/imagine25/quizScore', async function (req, res) {
+router.post("/imagine26/quizScore", async function (req, res) {
   const resp = await ImagineController.quizScore(req);
   res.send(resp);
 });
 
+//deepfake generator
+router.post(
+  "/imagine26/handleImageUploads",
+  upload.single("image"),
+  async function (req, res) {
+    const resp = await ImagineController.handleImageUploads(req);
+    res.send(resp);
+  },
+);
+
+router.get(
+  "/imagine26/getImagePath/:userID/:pictureType",
+  async function (req, res) {
+    req.params.year = 26;
+    const imagePath = await ImagineController.getImagePath(req);
+    res.json(imagePath);
+  },
+);
+
+router.post("/imagine26/postChatReply/:userID", async function (req, res) {
+  const resp = await ImagineController.postChatReply(req);
+  res.send(resp);
+});
 module.exports = router;
