@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         preSurvey: {
           type: DataTypes.JSON,
         },
+        teammateChat: {
+          type: DataTypes.JSON,
+        },
         postSurvey: {
           type: DataTypes.JSON,
         },

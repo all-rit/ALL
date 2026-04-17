@@ -28,6 +28,16 @@ const ImagineService = {
     );
   },
 
+  updateTeammateChat2025: async (userID, teammateChat) => {
+    return await API.putWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine25/teammateChat",
+      {
+        userID,
+        teammateChat,
+      },
+    );
+  },
+
   postSurvey: async (userID, postSurvey, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + `/imagine${year}/postSurvey`,

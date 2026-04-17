@@ -90,6 +90,33 @@ const preSurvey = async (data) => {
   }
 };
 
+const updateTeammateChat2025 = async (data) => {
+  const { userID, teammateChat } = data;
+  try {
+    if (!userID) return;
+
+    const entry = await db.Imagine25.findOne({
+        where: {
+          userid: userID,
+        }
+    });
+
+    if (entry) {
+      entry.teammateChat = teammateChat;
+      await entry.save();
+    } else {
+      await db.Imagine25.create({
+        userid: userID,
+        teammateChat: teammateChat,
+      });
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+  
 const postSurvey = async (data) => {
   const { userID, postSurvey, year } = data;
   const imagine = `Imagine${year}`;
@@ -590,6 +617,7 @@ module.exports = {
   submitStudy,
   newID,
   preSurvey,
+  updateTeammateChat2025,
   postSurvey,
   getUsers,
   getUserByID,
