@@ -8,9 +8,9 @@ const MobileFooter = () => {
     <div className="tw-px-4 tw-w-screen tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center md:tw-hidden">
       <Col>
         {/* Row 1 */}
-        <Row className="tw-mb-0">
+        <Row className="tw-mb-0 min-[432px]:tw-items-center min-[432px]:tw-justify-center">
           {/* ALL Logo*/}
-          <Col xs="6" className="tw-justify-start">
+          <Col xs="6" className="">
             <a href="#" className="tw-left-0 tw-top-0 tw-content-start">
               <img
                 className="logo tw-flex tw-h-auto"
@@ -19,8 +19,8 @@ const MobileFooter = () => {
               />
             </a>
           </Col>
-          <Col>
-            <p className="tw-text-left tw-pt-[1rem]">
+          <Col xs="6">
+            <p className="tw-text-left xs:tw-pt-3 tw-pt-4 min-[432px]:tw-pt-0 ">
               Accessible Learning Labs is an NSF funded initiative aimed at
               fostering STEM proficiency.
             </p>
