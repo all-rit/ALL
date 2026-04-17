@@ -18,6 +18,7 @@ const Analysis = () => {
   const [title, setTitle] = useState(null);
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(false);
+  const [teammateMessage, setTeammateMessage] = useState(null);
 
   const handleNext = async () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
@@ -36,7 +37,7 @@ const Analysis = () => {
     await ImagineService.updateTeammateChat2025(
       sessionStorage.getItem("userID"),
       {
-        question: "Testing 123!",
+        question: teammateMessage,
         answer: response,
         timeSpentMs: Date.now() - startTime,
       },
@@ -89,9 +90,20 @@ const Analysis = () => {
         control: false,
       };
 
+      const teammateMessages = {
+        control: "Wow, I'm so glad we won! Are you excited to get the prize?",
+        experiential:
+          "Wait, what? We got eliminated because of your shirt? That's not fair...",
+        expression:
+          "Wait, what? We got eliminated because of my shirt? That's not fair...",
+      };
+
       setTitle(titles[user.section] || titles["control"]);
       setMessage(messages[user.section] || messages["control"]);
       setError(error[user.section] || error["control"]);
+      setTeammateMessage(
+        teammateMessages[user.section] || teammateMessages["control"],
+      );
     };
 
     fetchTeammateID();
@@ -122,7 +134,7 @@ const Analysis = () => {
             onSubmit={onSubmitResponse}
             width="100%"
             height="100%"
-            teammateMessage="Testing 123!"
+            teammateMessage={teammateMessage}
           />
         ) : (
           <AnalysisMessage

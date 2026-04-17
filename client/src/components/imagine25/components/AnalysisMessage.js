@@ -36,11 +36,11 @@ const AnalysisMessage = ({
 };
 
 AnalysisMessage.propTypes = {
-  title: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  error: PropTypes.bool.isRequired,
-  acknowledged: PropTypes.bool.isRequired,
-  setAcknowledged: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  message: PropTypes.string,
+  error: PropTypes.bool,
+  acknowledged: PropTypes.bool,
+  setAcknowledged: PropTypes.func,
 };
 
 export default AnalysisMessage;
