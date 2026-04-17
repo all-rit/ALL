@@ -20,7 +20,7 @@ const MobileFooter = () => {
             </a>
           </Col>
           <Col xs="6">
-            <p className="tw-text-left xs:tw-pt-3 tw-pt-4 min-[432px]:tw-pt-0 ">
+            <p className="tw-text-left xs:tw-pt-3 min-[383px]:tw-pt-4 min-[432px]:tw-pt-0 ">
               Accessible Learning Labs is an NSF funded initiative aimed at
               fostering STEM proficiency.
             </p>

@@ -87,7 +87,7 @@ const MainFooter = () => {
         </Row>
       </Col>
       {/*Column 3*/}
-      <Col xs={2} className="tw-pr-20 tw-pt-1">
+      <Col md={3} lg={2} className="tw-pr-14 lg:tw-pr-20 tw-pt-1">
         <Row>
           <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
             <strong>Contact</strong>
@@ -143,7 +143,7 @@ const MainFooter = () => {
         </div>
       </Col>
       {/*Column 4*/}
-      <Col xs={3} className="tw-flex tw-flex-col tw-pt-2">
+      <Col md={3} className="tw-flex tw-flex-col tw-pt-2">
         <Container>
           <div className="tw-flex tw-flex-row tw-items-center tw-gap-4">
             <Col xs={2} className="tw-mr-5">
