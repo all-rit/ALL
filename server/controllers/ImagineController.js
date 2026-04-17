@@ -267,7 +267,7 @@ module.exports = {
   postOpponentAvatar,
   getGroup,
   getTeammate,
-  updateTeammateChat2025
+  updateTeammateChat2025,
   handleImageUploads,
   getImagePath,
   postChatReply
