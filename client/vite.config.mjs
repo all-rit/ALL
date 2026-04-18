@@ -47,9 +47,11 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 3000,
     host: true,
+    // Bind mounts (e.g. Docker Desktop on macOS) often miss native fs events;
+    // polling fixes HMR but is expensive. Prefer a looser interval in containers.
     watch: {
       usePolling: true,
-      interval: 100,
+      interval: Number(process.env.VITE_WATCH_POLL_INTERVAL) || 500,
     },
     hmr: {
       host: "localhost",

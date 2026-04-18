@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -L app.js",
+    "dev": "nodemon -L -P 500 app.js",
     "start": "node app.js",
     "lint": "eslint --fix ."
   },

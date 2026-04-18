@@ -37,6 +37,8 @@ services:
     build:
       context: ../client
       dockerfile: Dockerfile
+    environment:
+      VITE_WATCH_POLL_INTERVAL: '500'
     volumes:
       - ../client:/app
       - /app/node_modules
