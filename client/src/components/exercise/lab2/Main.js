@@ -90,6 +90,10 @@ const mapDispatchToProps = (dispatch) => {
     onResetOption: () => dispatch(resetOption()),
     onResetColors: () => dispatch(resetColors()),
     onResetChange: () => dispatch(resetChange()),
+    /*
+      To-DO I do not know how to fix this, but I know by following
+      this dispatch 
+    */
     onCloseInfoPopup: () => dispatch(closeInfoPopup()),
     onOpenAboutPage: () => dispatch(openAboutPage()),
     onCloseAboutPage: () => dispatch(closeAboutPage()),
@@ -260,6 +264,7 @@ class Main extends Component {
     // custom renderer for top of page popup
     // popup occurs after a successful change to the colors in the system
     const renderer = (props) => {
+      console.log(props);
       if (props.total > 0) {
         return (
           <div className="successPopup">

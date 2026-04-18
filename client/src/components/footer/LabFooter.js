@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
 import { connect } from "react-redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
@@ -47,11 +47,7 @@ const LabFooter = (props) => {
 
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
-
-  useEffect(() => {
-    console.log(display);
-  }, []);
-
+  // Removed useless useEffect hook, that printed true whenever the LabFooter rendered
   return (
     <div className={"tw-z-10 tw-w-full"}>
       {display && (
@@ -62,7 +58,7 @@ const LabFooter = (props) => {
           >
             {body > 0 && (
               <Button
-                className="tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full"
+                className="tw-flex tw-flex-1 tw-min-w-0 tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full"
                 onClick={() => handleOnClick(body - 1)}
                 style={{
                   opacity: display ? "1" : "0",
@@ -76,7 +72,7 @@ const LabFooter = (props) => {
             {body === 4 && quizCompleted ? (
               <Button
                 href="# "
-                className="tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full"
+                className="tw-flex tw-flex-1 tw-min-w-0 tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full"
                 onClick={navigateHome}
                 style={{
                   display: display ? "1" : "0",
@@ -86,7 +82,7 @@ const LabFooter = (props) => {
               </Button>
             ) : (
               <Button
-                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full`}
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-block"} tw-flex tw-flex-1 tw-min-w-0 tw-items-center tw-justify-center tw-cursor-pointer tw-font-medium tw-rounded-md tw-bg-white tw-text-black tw-text-[16px] tw-gap-x-1 tw-border-4 tw-border-primary-yellow tw-shadow hover:tw-bg-primary-yellow tw-w-full`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",

@@ -35,6 +35,7 @@ const Reading = (props) => {
   );
   const [originalPieLabels, setOriginalPieLabels] = useState([]);
   const [mobileLabelWrap, setMobileLabelWrap] = useState(false);
+  const [accessiblePieLabel, setAccessiblePieLabel] = useState("");
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
@@ -195,6 +196,18 @@ const Reading = (props) => {
     return labelsForReturn;
   }
 
+  const createAccessiblePieLabel = (pieLabels, pieDataSet, pieTitle) => {
+    let formattedLabel = "Pie chart titled '" + pieTitle + "' with data: ";
+    for (let index = 0; index < pieLabels.length; index++) {
+      if (index != pieLabels.length - 1) {
+        formattedLabel += pieLabels[index] + ": " + pieDataSet[index] + ", ";
+      } else {
+        formattedLabel += pieLabels[index] + ": " + pieDataSet[index] + ".";
+      }
+    }
+    setAccessiblePieLabel(formattedLabel);
+  };
+
   useEffect(() => {
     const windowResizeEvent = () => {
       if (window.innerWidth > PIE_WINDOW_RESIZE_WIDTH) {
@@ -223,7 +236,14 @@ const Reading = (props) => {
               data[0].reading.piechart.data.labels,
             );
           }
+
+          createAccessiblePieLabel(
+            data[0].reading.piechart.data.labels,
+            data[0].reading.piechart.data.datasets[0].data,
+            data[0].reading.piechart.header,
+          );
         }
+
         setReadingData(data[0].reading);
       });
 
@@ -292,17 +312,13 @@ const Reading = (props) => {
 
   return (
     <div
-      className={"tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center"}
+      className={
+        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-p-[3rem]"
+      }
     >
-      <h2
-        className={
-          "tw-title tw-text-left tw-bg-white tw-w-[100%] tw-px-10 tw-text-[2.5rem]"
-        }
-      >
-        Reading
-      </h2>
+      <h1 className={"tw-title tw-text-left"}>Reading</h1>
       <div className="tw-w-full">
-        <div className="study tw-bg-white p-5 tw-rounded-lg">
+        <div className="study tw-bg-white p-1 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
               <h3 className={"tw-title"}>{readingData?.description.header}</h3>
@@ -328,7 +344,7 @@ const Reading = (props) => {
                             ? mobileWrapOptions
                             : mobileNoWrapOptions
                         }
-                        height={!isImagine && pieHeight}
+                        height={!isImagine ? pieHeight : ""} // Converted to turnery so it never evaluates to boolean
                         plugins={mobileLabelWrap ? [mobileLegendWrap] : []}
                       />
                     )}
@@ -355,7 +371,9 @@ const Reading = (props) => {
                     <Pie
                       data={readingData?.piechart.data}
                       options={largeViewPortOptions}
-                      height={!isImagine && PIE_SIZE}
+                      height={!isImagine ? PIE_SIZE : ""} // Converted to turnery so it never evaluates to boolean
+                      aria-label={accessiblePieLabel}
+                      role="img"
                     />
                   </div>
                   {readingData?.piechart?.caption !== "" &&

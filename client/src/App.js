@@ -44,6 +44,7 @@ import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
+import { default as Imagine2026 } from "./components/imagine26/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -117,7 +118,7 @@ const App = () => {
 
   const renderLabs = () => {
     return (
-      <div className={"tw-h-full tw-w-full tw-overflow-y-auto"}>
+      <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
           <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
           <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
@@ -182,7 +183,7 @@ const App = () => {
         <Profile path="/Profile" user={state.main.user} />
         <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
         <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error actions={actions} default />
+        <Error default />
 
         <Imagine2023
           path={"/Imagine2023/*"}
@@ -196,6 +197,12 @@ const App = () => {
           user={state.main.user}
           isImagine={isImagine}
         />
+
+        <Imagine2026
+          path={"/Imagine2026/*"}
+          user={state.main.user}
+          isImagine={isImagine}
+        />
       </Router>
     );
   };
@@ -206,16 +213,14 @@ const App = () => {
     <>
       {isLoaded ? (
         <div
-          className={`overflow-x-hidden ${
-            labInProgress || isImagine
-              ? "overflow-y-hidden tw-h-lvh"
-              : "overflow-y-auto min-h-screen"
-          }`}
+          className={
+            labInProgress || isImagine ? "" : "overflow-x-hidden min-h-screen"
+          }
         >
           <Suspense fallback={<Spinner />}>
             <Header isImagine={isImagine} />
-            <div className={`tw-relative ${labInProgress && "tw-h-full"}`}>
-              <div className={`tw-relative tw-grid tw-h-full`}>
+            <div className={`tw-relative`}>
+              <div className={`tw-relative tw-grid`}>
                 {labInProgress ? (
                   <LabWindow
                     lab={lab}

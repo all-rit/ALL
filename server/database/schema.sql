@@ -1,18 +1,3 @@
-create type enum_imagine25 as enum ('experiential','expression','control');
-create table imagine25
-(
-    id                           serial,
-    userid                       text,
-    "preSurvey"                  json,
-    "postSurvey"                 json,
-    "section"                    enum_imagine25,
-    "avatar"                     json,
-    "teammateAvatar"             json,
-    "opponentAvatar"             json,
-    primary key (id)
-);
-
-
 create table imagine22
 (
     id              serial,
@@ -388,6 +373,8 @@ create table users
     UNIQUE (email1),
     UNIQUE (email2)
 );
+insert into users (userid, firstname, lastinitial, email1, email2, userpfp)
+VALUES (98, 'Ally', 'A', 'allyaccessibility@all.edu', null, null), (99, 'Lily', 'L', 'lilylabs@all.edu', null, null), (100, 'Edna', 'E', 'ednaeducation@all.edu', null, null);
 
 create table lab8_exercise
 (
@@ -700,10 +687,10 @@ VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessibl
 ]
 ', 3, 'coming soon', 'coming soon', true),
        (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
-            that is accessible to users with hearing impairments.
+            that is accessible to users with hearing loss.
             You will learn how organizations like the National Association of the Deaf (NAD)
-            fought for easier access for hearing impaired individuals,
-            increase your understanding through an interactive module about hearing impairments,
+            fought for easier access for deaf/hard of hearing individuals,
+            increase your understanding through an interactive module about hearing loss,
             view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
     "piechart":
        {"header":"Approximate Deaf and Hard of Hearing Population in the United States",
@@ -2994,7 +2981,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "LO1: Construct a basic neural network using provided components (Synthesis)",
     "LO2: Simulate neural network training (Comprehension).",
     "LO3: Demonstrate bias present in a neural network (Application)."
-]', 'Jonathan Cruz, Domenic Mangano, Emily Crilley', 'https://ball.rit.edu/Lab10/', null, 'In this lab, you will learn about where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+]', 'Jonathan Cruz, Domenic Mangano, Emily Crilley', 'https://all.rit.edu/Lab10/', null, 'In this lab, you will learn about where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
   "piechart":{
 		"header":"Company investments towards AI",
 		"caption":["Billions of dollars invested towards AI by major tech companies"],
@@ -3468,7 +3455,7 @@ e'[
    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
    "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
    "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
-]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of accessibility for users that identify as genders other than male or female. You will learn about the issues related to lack of accessible software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
+]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://all.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of accessibility for users that identify as genders other than male or female. You will learn about the issues related to lack of accessible software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
 “Next” to start!', e'{
  "piechart": {
        "header":"Unbiased Forms",
@@ -3700,7 +3687,7 @@ e'[
    "LO2: Create design strategies that promote critical thinking, such as certainty indicators and disclaimers about AI limitations (Synthesis)",
    "LO3: Identify common hallucination patterns in generative AI, including false citations and misleading self-references (Application)",
    "LO4: Experience how confident language, polished grammar, and proximity to credible sources can lead to overestimation of AI accuracy (Comprehension)"
-]', 'Emma Schmitt, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://ball.rit.edu/Lab13/', null, 
+]', 'Emma Schmitt, Jack DeFeo, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://all.rit.edu/Lab13/', null, 
 'In this lab, you will explore what cognitive bias is and 
 how it influences trust in AI systems. You will evaluate AI 
 responses, compare them with search results, and reflect on 
@@ -3961,13 +3948,13 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
  }
 ]', 1, 'coming soon', 'coming soon', true), 
 
-(14, 'Quantum Cryptography', 'Quantum', 'AI', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', '',
+(14, 'Quantum Cryptography', 'Quantum', 'Quantum Computing', '/quantumcryptography.jpg', 'Learn about quantum computing through the lens of cryptography.', 'This lab introduces the concepts of Quantum Computing through the lens of cryptography. Participants will learn about different ways to encrypt messages, and the algorithms used to decrypt them. Then, the lab explores the difference in time and efficiency between breaking these ciphers with both Classical and Quantum computers.',
   e'[
     "LO1: Understand role of qubits giving quantum computers greater computational power (Comprehension)",
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
     "LO3: Use the simulation to factor a small number and decrypt an encrypted message (Application)",
     "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
-  ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://ball.rit.edu/Lab14/', null,
+  ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null,
   -- About Section
   'In this lab, you will learn about the fundamentals of quantum computing and how it differs from classical computing. You will practice applying these concepts through interactive exercises, including encrypting and decrypting messages with the Caesar cipher to compare classical and quantum approaches. Click “Next” to start!', e'{
   "description":"",
@@ -3978,7 +3965,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       "content":["What if computers could think beyond just 0s and 1s? That’s exactly what quantum computers do. Quantum computers use special rules of quantum physics—like superposition, entanglement, and interference—to process information in ways normal computers can’t. This lets them solve some problems much faster and introduces new ways to think about programming. Real-life applications of quantum computing are already being developed in several fields. In medicine, it’s being used to help solve problems related to genome assembly, which can improve how we understand and treat diseases. In artificial intelligence (AI), quantum computing can make machines learn and think faster. In finance, it’s being used to improve portfolio optimization, asset management, and risk analysis, helping businesses make smarter financial decisions."]
     },
     {
-      "header": "Bit vs. Quibit",
+      "header": "Bit vs. Qubit",
       "type": "",
       "content": ["The smallest unit of information in a classical computer is called a bit. A bit can only have one of two values — 0 or 1 — like a light switch that’s either off or on. A qubit, or quantum bit, is the basic unit of information in quantum computing. It’s kind of like a regular bit in a normal computer, which stores data as a 0 or 1. But a qubit is different—it can be both 0 and 1 at the same time, thanks to quantum physics. This special ability lets quantum computers process information much faster and in more complex ways than regular computers."]
     },

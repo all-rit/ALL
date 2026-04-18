@@ -13,6 +13,7 @@ import {
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
+import Analysis from "./pages/Analysis";
 import "./main.css";
 import AvatarCreationPage from "./pages/AvatarCreationPage";
 
@@ -124,7 +125,7 @@ const Main = () => {
         >
           <Router
             className={
-              "tw-flex tw-h-full tw-w-full tw-overflow-y-scroll tw-flex-col tw-justify-center"
+              "tw-flex tw-h-full tw-w-full tw-flex-col tw-justify-center tw-overflow-y-hidden"
             }
           >
             <UpdateId default path={"/"} canContinue={canContinue} />
@@ -163,6 +164,7 @@ const Main = () => {
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
+            <Analysis path={"/Analysis"}></Analysis>
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}

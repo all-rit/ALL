@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import "./secondaryInstructions.css";
 import { navigate } from "@reach/router";
 import LabButton from "../../../all-components/LabButton";
@@ -17,13 +17,15 @@ const SecondInstructions = ({
   isImagineExpression,
 }) => {
   const alreadyCalled = false;
-  if (!alreadyCalled) {
-    selectOption("Protanopia");
-  }
 
-  if (background !== "white") {
-    toWhiteBackground();
-  }
+  useEffect(() => {
+    if (!alreadyCalled) {
+      selectOption("Protanopia");
+    }
+    if (background !== "white") {
+      toWhiteBackground();
+    }
+  }, []);
 
   const closeInstructions = () => {
     if (!isImagineExpression) {

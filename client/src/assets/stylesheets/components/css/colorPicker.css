@@ -1,39 +1,40 @@
 /*FOR COLOR PICKER*/
-.rc-color-picker-panel-inner {
+/* All names changed to `color-picker` for updated dependency */
+.color-picker-panel-inner {
   position: relative;
   border-radius: 4px;
   box-shadow: 0 1px 5px #ccc;
   border: 1px solid #ccc;
   padding-bottom: 8px;
 }
-.rc-color-picker-panel-wrap {
+.color-picker-panel-wrap {
   margin: 5px 0 0;
   height: 30px;
   width: 100%;
   position: relative;
 }
-.rc-color-picker-panel-wrap-preview {
+.color-picker-panel-wrap-preview {
   position: absolute;
   right: 8px;
 }
-.rc-color-picker-panel-wrap-ribbon {
+.color-picker-panel-wrap-ribbon {
   position: absolute;
   left: 8px;
   top: 0;
   right: 43px;
   height: 30px;
 }
-.rc-color-picker-panel-wrap-alpha {
+.color-picker-panel-wrap-alpha {
   position: absolute;
   left: 8px;
   right: 43px;
   bottom: 0;
   height: 12.5px;
 }
-.rc-color-picker-panel-wrap-has-alpha .rc-color-picker-panel-wrap-ribbon {
+.color-picker-panel-wrap-has-alpha .color-picker-panel-wrap-ribbon {
   height: 12.5px;
 }
-.rc-color-picker-trigger {
+.color-picker-trigger {
   border: 1px solid #999;
   display: inline-block;
   padding: 2px;
@@ -47,10 +48,10 @@
   cursor: pointer;
   box-shadow: 0 0 0 2px #fff inset;
 }
-.rc-color-picker-trigger-open {
+.color-picker-trigger-open {
   box-shadow: 0px 0px 3px #999;
 }
-.rc-color-picker-panel {
+.color-picker-panel {
   width: 218px;
   background-color: #fff;
   box-sizing: border-box;
@@ -63,37 +64,37 @@
   -ms-user-select: none;
   user-select: none;
 }
-.rc-color-picker-panel * {
+.color-picker-panel * {
   box-sizing: border-box;
 }
-.rc-color-picker-panel-open {
+.color-picker-panel-open {
   display: block;
 }
-.rc-color-picker-panel-close {
+.color-picker-panel-close {
   display: none;
 }
-.rc-color-picker-panel-preview {
+.color-picker-panel-preview {
   height: 30px;
   width: 30px;
   overflow: hidden;
   border-radius: 2px;
   background-image: url("data:image/png;base64,R0lGODdhCgAKAPAAAOXl5f///ywAAAAACgAKAEACEIQdqXt9GxyETrI279OIgwIAOw==");
 }
-.rc-color-picker-panel-preview span {
+.color-picker-panel-preview span {
   box-shadow: 0 0 2px #808080 inset;
 }
-.rc-color-picker-panel-preview span,
-.rc-color-picker-panel-preview input[type="color"] {
+.color-picker-panel-preview span,
+.color-picker-panel-preview input[type="color"] {
   position: absolute;
   display: block;
   height: 100%;
   width: 30px;
   border-radius: 2px;
 }
-.rc-color-picker-panel-preview input[type="color"] {
+.color-picker-panel-preview input[type="color"] {
   opacity: 0;
 }
-.rc-color-picker-panel-board {
+.color-picker-panel-board {
   position: relative;
   font-size: 0;
   -webkit-user-select: none;
@@ -102,7 +103,7 @@
   user-select: none;
   margin: 8px 8px 0px;
 }
-.rc-color-picker-panel-board span {
+.color-picker-panel-board span {
   position: absolute;
   border-radius: 10px;
   border: 1px solid #fff;
@@ -114,14 +115,14 @@
   box-shadow: 0 0 1px rgba(120, 120, 120, 0.7);
   z-index: 2;
 }
-.rc-color-picker-panel-board-hsv {
+.color-picker-panel-board-hsv {
   width: 200px;
   height: 150px;
   position: relative;
   z-index: 1;
   border-radius: 2px;
 }
-.rc-color-picker-panel-board-value {
+.color-picker-panel-board-value {
   border-radius: 2px;
   position: absolute;
   width: 100%;
@@ -135,7 +136,7 @@
   background-image: -o-linear-gradient(top, transparent 0%, #000000 100%);
   background-image: linear-gradient(to bottom, transparent 0%, #000000 100%);
 }
-.rc-color-picker-panel-board-saturation {
+.color-picker-panel-board-saturation {
   border-radius: 2px;
   position: absolute;
   width: 100%;
@@ -149,7 +150,7 @@
   background-image: -o-linear-gradient(left, #ffffff 0%, transparent 100%);
   background-image: linear-gradient(to right, #ffffff 0%, transparent 100%);
 }
-.rc-color-picker-panel-board-handler {
+.color-picker-panel-board-handler {
   box-shadow: 0 0 2px #808080 inset;
   border-radius: 2px;
   cursor: crosshair;
@@ -164,7 +165,7 @@
   height: 100%;
   z-index: 3;
 }
-.rc-color-picker-panel-ribbon {
+.color-picker-panel-ribbon {
   position: relative;
   height: 100%;
   border-radius: 2px;
@@ -227,7 +228,7 @@
     #ff0000 100%
   );
 }
-.rc-color-picker-panel-ribbon span {
+.color-picker-panel-ribbon span {
   position: absolute;
   top: 0;
   height: 100%;
@@ -238,14 +239,14 @@
   background-color: #fff;
   border-radius: 3px;
 }
-.rc-color-picker-panel-ribbon-handler {
+.color-picker-panel-ribbon-handler {
   position: absolute;
   width: 104%;
   height: 100%;
   left: -2%;
   cursor: pointer;
 }
-.rc-color-picker-panel-alpha {
+.color-picker-panel-alpha {
   position: relative;
   height: 100%;
   width: 100%;
@@ -257,14 +258,14 @@
   -ms-user-select: none;
   user-select: none;
 }
-.rc-color-picker-panel-alpha-bg {
+.color-picker-panel-alpha-bg {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 2px;
   box-shadow: 0 0 2px #808080 inset;
 }
-.rc-color-picker-panel-alpha span {
+.color-picker-panel-alpha span {
   position: absolute;
   top: 0;
   height: 100%;
@@ -275,21 +276,21 @@
   background-color: #fff;
   border-radius: 3px;
 }
-.rc-color-picker-panel-alpha-handler {
+.color-picker-panel-alpha-handler {
   position: absolute;
   width: 104%;
   height: 100%;
   left: -2%;
   cursor: pointer;
 }
-.rc-color-picker-panel-params {
+.color-picker-panel-params {
   font-size: 12px;
 }
-.rc-color-picker-panel-params-input {
+.color-picker-panel-params-input {
   overflow: hidden;
   padding: 2px 8px;
 }
-.rc-color-picker-panel-params input {
+.color-picker-panel-params input {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
@@ -302,17 +303,17 @@
   border: 1px solid #cacaca;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
-.rc-color-picker-panel-params-hex {
+.color-picker-panel-params-hex {
   width: 52px;
 }
-.rc-color-picker-panel-params input[type="number"] {
+.color-picker-panel-params input[type="number"] {
   margin-left: 5px;
   width: 44px;
 }
-.rc-color-picker-panel-params input[type="number"]::-webkit-inner-spin-button {
+.color-picker-panel-params input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.rc-color-picker-panel-params-lable {
+.color-picker-panel-params-lable {
   padding: 2px 8px;
   height: 22px;
   line-height: 18px;
@@ -321,41 +322,41 @@
   -ms-user-select: none;
   user-select: none;
 }
-.rc-color-picker-panel-params-lable label {
+.color-picker-panel-params-lable label {
   float: left;
   text-align: center;
 }
-.rc-color-picker-panel-params-lable-hex {
+.color-picker-panel-params-lable-hex {
   width: 52px;
 }
-.rc-color-picker-panel-params-lable-number,
-.rc-color-picker-panel-params-lable-alpha {
+.color-picker-panel-params-lable-number,
+.color-picker-panel-params-lable-alpha {
   margin-left: 5px;
   width: 44px;
   text-transform: uppercase;
 }
-.rc-color-picker-panel-params-lable-number:hover {
+.color-picker-panel-params-lable-number:hover {
   border-radius: 2px;
   background-color: #eee;
   box-shadow: 0 0 0 1px #ccc inset;
   cursor: pointer;
 }
-.rc-color-picker-panel-params-has-alpha input[type="number"] {
+.color-picker-panel-params-has-alpha input[type="number"] {
   width: 32px;
 }
-.rc-color-picker-panel-params-has-alpha
-  .rc-color-picker-panel-params-lable-number,
-.rc-color-picker-panel-params-has-alpha
-  .rc-color-picker-panel-params-lable-alpha {
+.color-picker-panel-params-has-alpha
+  .color-picker-panel-params-lable-number,
+.color-picker-panel-params-has-alpha
+  .color-picker-panel-params-lable-alpha {
   width: 32px;
 }
-.rc-color-picker {
+.color-picker {
   position: absolute;
   left: -9999px;
   top: -9999px;
   z-index: 1000;
 }
-.rc-color-picker-slide-up-enter {
+.color-picker-slide-up-enter {
   animation-duration: 0.3s;
   animation-fill-mode: both;
   transform-origin: 0 0;
@@ -364,7 +365,7 @@
   animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
   animation-play-state: paused;
 }
-.rc-color-picker-slide-up-appear {
+.color-picker-slide-up-appear {
   animation-duration: 0.3s;
   animation-fill-mode: both;
   transform-origin: 0 0;
@@ -373,7 +374,7 @@
   animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
   animation-play-state: paused;
 }
-.rc-color-picker-slide-up-leave {
+.color-picker-slide-up-leave {
   animation-duration: 0.3s;
   animation-fill-mode: both;
   transform-origin: 0 0;
@@ -382,27 +383,27 @@
   animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
   animation-play-state: paused;
 }
-.rc-color-picker-slide-up-enter.rc-color-picker-slide-up-enter-active.rc-color-picker-placement-bottomLeft,
-.rc-color-picker-slide-up-enter.rc-color-picker-slide-up-enter-active.rc-color-picker-placement-bottomRight,
-.rc-color-picker-slide-up-appear.rc-color-picker-slide-up-appear-active.rc-color-picker-placement-bottomLeft,
-.rc-color-picker-slide-up-appear.rc-color-picker-slide-up-appear-active.rc-color-picker-placement-bottomRight {
+.color-picker-slide-up-enter.color-picker-slide-up-enter-active.color-picker-placement-bottomLeft,
+.color-picker-slide-up-enter.color-picker-slide-up-enter-active.color-picker-placement-bottomRight,
+.color-picker-slide-up-appear.color-picker-slide-up-appear-active.color-picker-placement-bottomLeft,
+.color-picker-slide-up-appear.color-picker-slide-up-appear-active.color-picker-placement-bottomRight {
   animation-name: rcColorPickerSlideUpIn;
   animation-play-state: running;
 }
-.rc-color-picker-slide-up-enter.rc-color-picker-slide-up-enter-active.rc-color-picker-placement-topLeft,
-.rc-color-picker-slide-up-enter.rc-color-picker-slide-up-enter-active.rc-color-picker-placement-topRight,
-.rc-color-picker-slide-up-appear.rc-color-picker-slide-up-appear-active.rc-color-picker-placement-topLeft,
-.rc-color-picker-slide-up-appear.rc-color-picker-slide-up-appear-active.rc-color-picker-placement-topRight {
+.color-picker-slide-up-enter.color-picker-slide-up-enter-active.color-picker-placement-topLeft,
+.color-picker-slide-up-enter.color-picker-slide-up-enter-active.color-picker-placement-topRight,
+.color-picker-slide-up-appear.color-picker-slide-up-appear-active.color-picker-placement-topLeft,
+.color-picker-slide-up-appear.color-picker-slide-up-appear-active.color-picker-placement-topRight {
   animation-name: rcColorPickerSlideDownIn;
   animation-play-state: running;
 }
-.rc-color-picker-slide-up-leave.rc-color-picker-slide-up-leave-active.rc-color-picker-placement-bottomLeft,
-.rc-color-picker-slide-up-leave.rc-color-picker-slide-up-leave-active.rc-color-picker-placement-bottomRight {
+.color-picker-slide-up-leave.color-picker-slide-up-leave-active.color-picker-placement-bottomLeft,
+.color-picker-slide-up-leave.color-picker-slide-up-leave-active.color-picker-placement-bottomRight {
   animation-name: rcColorPickerSlideUpOut;
   animation-play-state: running;
 }
-.rc-color-picker-slide-up-leave.rc-color-picker-slide-up-leave-active.rc-color-picker-placement-topLeft,
-.rc-color-picker-slide-up-leave.rc-color-picker-slide-up-leave-active.rc-color-picker-placement-topRight {
+.color-picker-slide-up-leave.color-picker-slide-up-leave-active.color-picker-placement-topLeft,
+.color-picker-slide-up-leave.color-picker-slide-up-leave-active.color-picker-placement-topRight {
   animation-name: rcColorPickerSlideDownOut;
   animation-play-state: running;
 }

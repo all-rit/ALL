@@ -17,21 +17,19 @@ const LabWindow = (props) => {
   } = props;
 
   return (
-    <div className={"tw-absolute tw-top-[2rem] tw-h-3/4"}>
+    <div>
       <div
-        className={
-          "xs:tw-flex md:tw-hidden tw-col-span-12 tw-justify-center tw-w-full"
-        }
+        className={"xs:tw-flex md:tw-hidden tw-col-span-12 tw-justify-center"}
       >
         <div className={"tw-px-4 tw-z-10 "}>
           <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
         </div>
       </div>
-      <div className={"tw-h-full"}>
+      <div>
         {/* Blue and Yellow stripes*/}
         <div
           className={
-            "tw-absolute tw-grid tw-grid-cols-12 tw-w-lvw tw-gap-y-4 tw-inset-3 tw-grid-rows-6 tw-h-full"
+            "tw-fixed tw-grid tw-grid-cols-12 tw-w-lvw tw-gap-y-4 tw-inset-3 tw-grid-rows-6 tw-mt-32"
           }
         >
           <div
@@ -48,27 +46,29 @@ const LabWindow = (props) => {
         {/* Nav Pane and Lab Window */}
         <div
           className={
-            "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-w-full tw-gap-x-[1rem] tw-h-full"
+            "tw-grid tw-grid-cols-12 tw-row-span-6 tw-p-3 tw-gap-x-[1rem] tw-mb-2 tw-w-full"
           }
         >
           <div
             className={
-              "tw-flex tw-col-start-1 tw-mx-2 tw-col-span-2 tw-max-h-[77vh]"
+              "tw-col-start-1 md:tw-col-span-3 xl:tw-col-span-2 tw-mx-2 tw-pt-8"
             }
           >
-            <NavigationPane
-              labID={lab}
-              title={title}
-              context={context}
-              quizCompleted={quizCompleted}
-              setQuizCompleted={setQuizCompleted}
-              isImagine={isImagine}
-            />
+            <div className={"tw-sticky tw-top-[9.75rem]"}>
+              <NavigationPane
+                labID={lab}
+                title={title}
+                context={context}
+                quizCompleted={quizCompleted}
+                setQuizCompleted={setQuizCompleted}
+                isImagine={isImagine}
+              />
+            </div>
             {body !== 2 && <SiteAccessibilityButton />}
           </div>
           <div
             className={
-              "tw-flex tw-z-10 tw-relative xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 tw-p-3 md:tw-col-span-9 lg:tw-col-start-3 lg:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-overflow-y-hidden"
+              "tw-flex tw-mt-[2rem] tw-min-h-[calc(100vh-15rem)] tw-z-10 tw-relative xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 tw-p-3 md:tw-col-span-9 xl:tw-col-start-3 xl:tw-col-span-10 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center"
             }
           >
             {children}

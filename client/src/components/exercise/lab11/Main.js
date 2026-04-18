@@ -44,7 +44,7 @@ const Main = () => {
   useScroll();
 
   return (
-    <div className="bottomSpace tw-p-6 tw-overflow-y-scroll">
+    <div className="bottomSpace tw-p-6">
       <ExerciseStateContext.Provider
         value={{
           exerciseState,

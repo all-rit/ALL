@@ -23,6 +23,10 @@ const DataRepair = () => {
     setCurrentMessages,
     setPolaritiesCorrect,
   } = useContext(ExerciseStateContext);
+  /* 
+    To-Do this would require rewriting this context.
+    Polarity can never be NaN
+  */
 
   /*
     state variables to contain the user's inputted repair values
@@ -308,7 +312,11 @@ const DataRepair = () => {
                               parseInt(e.target.value),
                             );
                           }}
-                          title={message.ai_polarity}
+                          title={
+                            isNaN(message.ai_polarity)
+                              ? -1
+                              : message.ai_polarity
+                          }
                           className={
                             messageError[index] ? "form-error-input" : ""
                           }

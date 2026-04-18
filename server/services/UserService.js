@@ -106,6 +106,7 @@ const getSession = async (token) => {
     throw error;
   }
 };
+
 const getUserEnrolledGroups = (userid) => {
   return db.sequelize.query(
       `SELECT * FROM "enrollment" 
@@ -170,12 +171,12 @@ const getUser = (userid) => {
       userid: userid,
     },
   })
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  .then((user) => {
+    return user;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 };
 
 module.exports = {
