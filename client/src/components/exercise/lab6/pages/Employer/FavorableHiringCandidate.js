@@ -83,7 +83,7 @@ const FavorableHiringCandidate = () => {
               <Recomendation aiRecommendation />
             </li>
             <ul htmlFor="applicant" className="candidate__col">
-              <li className="candidate__image_container">
+              <div className="candidate__image_container">
                 <li
                   className="candidate__image"
                   alt="default_img"
@@ -92,7 +92,7 @@ const FavorableHiringCandidate = () => {
                       "url('https://login.vivaldi.net/profile/avatar/default-avatar.png",
                   }}
                 />
-              </li>
+              </div>
               <li className="tw-p-4">Unimportant</li>
               <LongHorizontalLine></LongHorizontalLine>
               <li className="tw-p-4">1-3 years</li>

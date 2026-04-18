@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import useScroll from "../../../../use-hooks/useScroll";
 import MainInstructions from "./mainInstructions";
 import LabButton from "../../../all-components/LabButton";
@@ -12,9 +12,11 @@ const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
     endFirstExercise();
   };
 
-  if (background !== "white") {
-    toWhiteBackground();
-  }
+  useEffect(() => {
+    if (background !== "white") {
+      toWhiteBackground();
+    }
+  }, []);
 
   return (
     <div>

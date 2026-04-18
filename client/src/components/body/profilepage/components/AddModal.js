@@ -62,9 +62,7 @@ const AddModal = (props) => {
             aria-label="add"
             label={"Start a New Group"}
             onClick={toggleModal}
-          >
-            Create Group
-          </ALLButton>
+          />
           <BrandedALLModal
             isOpen={modal}
             toggle={toggleModal}
@@ -168,7 +166,7 @@ const AddModal = (props) => {
 };
 
 AddModal.propTypes = {
-  addMode: PropTypes.bool,
+  addMode: PropTypes.string, // Everyone 'addMode' is used as a String
   user: PropTypes.shape({
     userid: PropTypes.number,
   }),

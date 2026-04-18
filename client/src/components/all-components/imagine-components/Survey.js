@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 import Likert from "../Likert";
+import TextInput from "./TextInput";
 import Avatar from "avataaars";
 import ImagineService from "src/services/ImagineService";
 import RankingQuestion from "./Ranking";
@@ -11,6 +12,13 @@ function Survey(props) {
   //any niche questions can be placed here, match the key with the question type in whatever data file you are using
   const questionTypes = {
     likert: <Likert onAnswerSelected={props.onAnswerSelected} />,
+    TextInput: (
+      <TextInput
+        options={props.answerOptions || []}
+        updatedSelectedAnswers={props.onAnswerSelected}
+        questionId={props.questionId}
+      />
+    ),
     ranking: (
       <RankingQuestion
         options={props.answerOptions || []}

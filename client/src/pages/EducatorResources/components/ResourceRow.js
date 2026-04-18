@@ -12,14 +12,20 @@ const ResourceRow = (props) => {
       <div className={"tw-flex xs:tw-flex-col md:tw-flex-row"}>
         <div
           className={
-            "tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/2 tw-gap-3 xs:tw-items-center md:tw-items-start"
+            "tw-flex tw-flex-col tw-space-y-2 xs:tw-w-full md:tw-w-1/2 tw-gap-3 xs:tw-items-center md:tw-items-start"
           }
         >
           <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
+          <hr // Moved out of p-tag and added styling to make it display similar to before
+            style={{
+              clear: "both",
+              display: "block",
+              width: "100%",
+            }}
+          />
           <p className="tw-body-text tw-text-justify tw-leading-normal">
-            <hr />
             {description}
           </p>
           {slides && !slides.includes(COMING_SOON) && (

@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 function Question(props) {
   return (
-    <p className="tw-body-text tw-py-6">
+    <div className="tw-body-text tw-py-6">
       {props.content} {props.multi && " Select all that apply."}
-    </p>
+    </div>
   );
 }
 
 Question.propTypes = {
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   multi: PropTypes.bool.isRequired,
 };
 

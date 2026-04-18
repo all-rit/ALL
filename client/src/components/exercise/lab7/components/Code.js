@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RepairService from "../../../../services/lab7/RepairService";
-import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
+import { POPUP_MESSAGES } from "../../../../constants/lab7";
 import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 import { evaluate } from "mathjs";
 import { FILE_FORMAT_VALIDATION } from "src/constants/lab7/index";
@@ -13,7 +13,6 @@ import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
  */
 const Code = (props) => {
   const { handleCloseRepair } = props;
-  const [timeout, setTimeout] = useState(null);
   const { actions, state } = useLab7StateContext();
   const { componentName } = useState("AICodeRepair");
 
@@ -93,26 +92,6 @@ const Code = (props) => {
   };
 
   /**
-   * Sets the popup message and clears the previous message.
-   * @param {string} message - The new popup message.
-   */
-  const setPopupMessage = (message) => {
-    actions.updatePopup(message);
-    clearPopupMessage();
-  };
-
-  /**
-   * Clears the popup message and resets the repair error.
-   */
-  const clearPopupMessage = () => {
-    clearTimeout(timeout);
-    setTimeout(() => {
-      actions.updatePopup("");
-      actions.updateRepairError(null);
-    }, POPUP_DELAY);
-  };
-
-  /**
    * Handles the change event for the reward value input.
    * @param {Event} e - The change event object.
    */
@@ -150,7 +129,6 @@ const Code = (props) => {
         actions.updateCostError(cost.error);
       }
       actions.undoRepairChanges();
-      setPopupMessage("Errors in Repair. Please fix.");
     } else {
       const [rewardValue, costValue] = [reward.value, cost.value];
       RepairService.submitRepair(
@@ -165,7 +143,6 @@ const Code = (props) => {
       actions.updateCostError(null);
       actions.updateRepairEquation(rewardValue, costValue);
       handleCloseRepair();
-      setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   };
 
