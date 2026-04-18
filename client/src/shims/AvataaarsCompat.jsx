@@ -97,7 +97,7 @@ const HAIR_COLOR_MAP = {
   Blue: "000FDB",
   Platinum: "ECDCBF",
   Red: "C93305",
-  SilverGray: "E8E1E1",
+  SilverGray: "C4CFD2",
 };
 
 const SKIN_COLOR_MAP = {
