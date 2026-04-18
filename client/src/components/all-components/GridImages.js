@@ -81,6 +81,8 @@ const GridImages = (props) => {
     "tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
   });
 
+  console.log(data);
+
   return (
     <>
       <div className="moduleContainer">

@@ -76,7 +76,7 @@ const CLOTHES_COLOR_MAP = {
   Heather: "3C4F5C",
   PastelBlue: "B1E2FF",
   PastelGreen: "A7FFC4",
-  PastelOrange: "FFDEB5",
+  PastelOrange: "FF964F",
   PastelRed: "FFAFB9",
   PastelYellow: "FFFFB1",
   Pink: "FF488E",

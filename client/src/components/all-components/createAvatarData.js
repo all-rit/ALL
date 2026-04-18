@@ -199,7 +199,6 @@ const createAvatarData = (avatarNumber, weightedValues) => {
     "PastelYellow",
     "Pink",
     "Red",
-    "White",
   ];
   const HairColors = [
     "Auburn",
@@ -228,9 +227,9 @@ const createAvatarData = (avatarNumber, weightedValues) => {
     "MoustacheMagnum",
   ];
   const Clothes = [
-    "BlazerShirt",
-    "BlazerSweater",
-    "CollarSweater",
+    "BlazerAndShirt",
+    "BlazerAndSweater",
+    "CollarAndSweater",
     "GraphicShirt",
     "Hoodie",
     "Overall",
@@ -239,7 +238,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
     "ShirtVNeck",
   ];
   const noBlazerClothes = [
-    "CollarSweater",
+    "CollarAndSweater",
     "GraphicShirt",
     "Hoodie",
     "Overall",
