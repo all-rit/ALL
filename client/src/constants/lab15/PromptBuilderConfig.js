@@ -95,4 +95,4 @@ export const PROMPT_BUILDER_DESCRIPTION =
 export const PROMPT_COMPLETE_MESSAGE =
   "You wrote a complete prompt! Click next to see how ALL-IE will respond.";
 export const PROMPT_QUESTION_TEMPLATE =
-  "Choose the best {label} statement for your prompt.";
+  "Choose a {label} statement for your prompt.";
