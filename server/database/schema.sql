@@ -4264,10 +4264,10 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
         "header":"Microsoft GCSE framework:",
         "type":"",
         "content":[
-          " 1. Goal: Define what you want the model to do.",
-          " 2. Context: Explain the required context surrounding the prompt.",
+          " 1. Goal: Define what you want the model to do",
+          " 2. Context: Explain the required context surrounding the prompt",
           " 3. Sources: Give the AI access to the sources you want it to reference",
-          " 4. Expectations: Describe how the final output should look / feel. Specify the desired format, length, style, or tone."
+          " 4. Expectations: Describe how the final output should look / feel. Specify the desired format, length, style, or tone"
         ]
       }
     ],
