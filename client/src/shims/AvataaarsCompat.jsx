@@ -14,6 +14,8 @@ export const AVATAAARS_COMPAT_DEFAULTS = {
   clotheColor: "Gray02",
   skinColor: "Pale",
   clotheType: "ShirtCrewNeck",
+  /** Hat / hijab / turban / winter hats — same token set as `clotheColor`. */
+  hatColor: "Red",
   eyeType: "Happy",
   mouthType: "Twinkle",
   noseType: "Default",
@@ -175,7 +177,12 @@ const CompatAvatar = ({ className, alt, avatarStyle, ...props }) => {
         : props.skinColor,
       SKIN_COLOR_MAP,
     );
-    const hatColor = normalizeColor(props.hatColor, CLOTHES_COLOR_MAP);
+    const hatColor = normalizeColor(
+      isUnsetLegacy(props.hatColor)
+        ? AVATAAARS_COMPAT_DEFAULTS.hatColor
+        : props.hatColor,
+      CLOTHES_COLOR_MAP,
+    );
     const facialHairColor = normalizeColor(
       props.facialHairColor,
       HAIR_COLOR_MAP,

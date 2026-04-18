@@ -132,7 +132,17 @@ const createAvatarData = (avatarNumber, weightedValues) => {
     "Wayfarers",
   ];
   const shirtColor = ["Blue01", "Blue02", "Blue03", "PastelBlue"];
-  const hairColor = ["SilverGray", "Red", "Blue", "PastelPink"];
+  const topAccessoryColor = [
+    "Black",
+    "Blue01",
+    "Blue02",
+    "Blue03",
+    "Gray01",
+    "Gray02",
+    "Heather",
+    "PastelBlue",
+    "PastelRed",
+  ];
 
   const bias = ["hats", "glasses", "shirtColor", "hairColor"];
 
@@ -200,6 +210,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
     "Pink",
     "Red",
   ];
+  /** Tokens mapped by `AvataaarsCompat` `HAIR_COLOR_MAP` — only for `avatarAttributes.hairColor`. */
   const HairColors = [
     "Auburn",
     "Black",
@@ -207,6 +218,8 @@ const createAvatarData = (avatarNumber, weightedValues) => {
     "BlondeGolden",
     "Brown",
     "BrownDark",
+    "SilverGray",
+    "PastelPink",
   ];
   const FacialHairs = [
     "Blank",
@@ -263,6 +276,10 @@ const createAvatarData = (avatarNumber, weightedValues) => {
   const age = "N/A";
 
   const Availability = ["Full-Time", "Part-Time"];
+
+  const pickRandom = (values) =>
+    values[Math.floor(Math.random() * values.length)];
+
   let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
     let currentWeight = 0;
@@ -284,8 +301,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
           avatarAttributes: {
             topType: hats[Math.floor(Math.random() * hats.length)],
             accessoriesType: "Blank",
-            hairColor:
-              HairColors[Math.floor(Math.random() * HairColors.length)],
+            hairColor: pickRandom(HairColors),
             facialHairType:
               FacialHairs[Math.floor(Math.random() * FacialHairs.length)],
             clotheType: Clothes[Math.floor(Math.random() * Clothes.length)],
@@ -295,6 +311,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
             eyebrowType: Eyebrow[Math.floor(Math.random() * Eyebrow.length)],
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
+            hatColor: pickRandom(topAccessoryColor),
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
@@ -315,8 +332,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
             topType: TopType[Math.floor(Math.random() * TopType.length)],
             accessoriesType:
               glasses[Math.floor(Math.random() * glasses.length)],
-            hairColor:
-              HairColors[Math.floor(Math.random() * HairColors.length)],
+            hairColor: pickRandom(HairColors),
             facialHairType:
               FacialHairs[Math.floor(Math.random() * FacialHairs.length)],
             clotheType: Clothes[Math.floor(Math.random() * Clothes.length)],
@@ -326,6 +342,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
             eyebrowType: Eyebrow[Math.floor(Math.random() * Eyebrow.length)],
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
+            hatColor: pickRandom(topAccessoryColor),
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
@@ -347,8 +364,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
           avatarAttributes: {
             topType: TopType[Math.floor(Math.random() * TopType.length)],
             accessoriesType: "Blank",
-            hairColor:
-              HairColors[Math.floor(Math.random() * HairColors.length)],
+            hairColor: pickRandom(HairColors),
             facialHairType:
               FacialHairs[Math.floor(Math.random() * FacialHairs.length)],
             clotheType:
@@ -360,6 +376,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
             eyebrowType: Eyebrow[Math.floor(Math.random() * Eyebrow.length)],
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
+            hatColor: pickRandom(topAccessoryColor),
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
@@ -375,7 +392,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
         break;
       case "hairColor":
         currentWeight += appearanceWeight;
-        let hcolor = hairColor[Math.floor(Math.random() * hairColor.length)];
+        let hcolor = pickRandom(HairColors);
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -393,6 +410,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
             eyebrowType: Eyebrow[Math.floor(Math.random() * Eyebrow.length)],
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
+            hatColor: pickRandom(topAccessoryColor),
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
