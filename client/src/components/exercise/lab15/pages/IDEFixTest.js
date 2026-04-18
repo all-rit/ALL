@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BAD_PROMPTS } from "src/constants/lab15/BadPrompts";
 import { Tabs } from "src/components/all-components/Tab/Tabs";
 import { Tab } from "src/components/all-components/Tab/Tab";
@@ -16,10 +16,7 @@ import {
 const IDEFixTest = () => {
   const { chatMessages, setChatMessages } = useLab15();
 
-  const selectedPrompt = useMemo(() => {
-    const randomIndex = Math.floor(Math.random() * BAD_PROMPTS.length);
-    return BAD_PROMPTS[randomIndex];
-  }, []);
+  const [selectedPrompt, setSelectedPrompt] = useState(null);
 
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
@@ -91,19 +88,23 @@ const IDEFixTest = () => {
                 userQuestions={
                   promptUsed
                     ? []
-                    : [{ id: selectedPrompt.id, text: selectedPrompt.text }]
+                    : BAD_PROMPTS.map((p) => ({ id: p.id, text: p.text }))
                 }
-                fixedAIResponse={[
-                  {
-                    id: selectedPrompt.id,
-                    text: selectedPrompt.aiResponse,
-                    fakeCitation: selectedPrompt.fakeCitation,
-                    confidence: selectedPrompt.fakeCitation ? 1 : null,
-                  },
-                ]}
+                fixedAIResponse={BAD_PROMPTS.map((p) => ({
+                  id: p.id,
+                  text: p.aiResponse,
+                  fakeCitation: p.fakeCitation,
+                  confidence: p.fakeCitation ? 1 : null,
+                }))}
                 messages={chatMessages}
                 setMessages={setChatMessages}
-                onAnswerDataChange={() => setPromptUsed(true)}
+                onAnswerDataChange={(data) => {
+                  const picked = BAD_PROMPTS.find(
+                    (p) => p.aiResponse === data.aiResponseText,
+                  );
+                  if (picked) setSelectedPrompt(picked);
+                  setPromptUsed(true);
+                }}
                 onTypingChange={(typing) => {
                   setIsBotTyping(typing);
                   if (!typing && promptUsed) {
