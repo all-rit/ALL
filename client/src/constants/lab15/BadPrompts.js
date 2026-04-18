@@ -15,7 +15,7 @@ export const BAD_PROMPTS = [
     id: "prompt-2",
     text: "How big was the Roman Empire?",
     aiResponse:
-      "In 9 AD, under Emperor Augustus, the Roman Empire covered approximately 5 million square kilometers, including all of modern-day Europe, North Africa, and parts of the Middle East.",
+      "In 9 AD, under Emperor Augustus, the Roman Empire covered approximately 5 million square kilometers, including most of modern-day Europe, North Africa, and parts of the Middle East.",
     hallucinationType: "Geographical Exaggeration",
     whatWentWrong:
       "The Roman Empire did control 5 million square kilometers at its height, but not in 9 AD. Augustus was still consolidating power and the empire had not yet reached its maximum territorial extent.",
