@@ -4242,14 +4242,14 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       "caption":["Percentage of hallucinations for complex questions: clear vs. vague prompts"],
       "data":{
           "labels": [
-            "Clear", "Vague"
+            "Hallucinations that happen regardless", "Hallucinations caused by vague prompts", "No Hallucinations"
           ],
           "datasets": [
             {
               "label": "Percentage of hallucinations for complex questions: clear vs. vague prompts",
               "borderColor": "black",
-              "backgroundColor": ["#0d6efd","#ffc107"],
-              "data": [18.1, 38.3],
+              "backgroundColor": ["#0d6efd","#ffc107", "#616161"],
+              "data": [18.1, 20.2, 61.7],
               "borderWidth": "1"
             }
           ]
