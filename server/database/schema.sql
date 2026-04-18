@@ -4284,6 +4284,11 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
           {
             "name":"Prompting’s effect on AI Hallucinations",
             "link":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12518350/#abstract1"
+          },
+          {
+            "name": "A Comprehensive Taxonomy of Hallucinations in Large Language Models",
+            "link": "https://www.aigl.blog/a-comprehensive-taxonomy-of-hallucinations-in-large-language-models-universitat-de-barcelona-august-2025/"
+          
           }
         ]
       }
