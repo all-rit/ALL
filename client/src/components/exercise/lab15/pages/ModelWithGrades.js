@@ -105,6 +105,7 @@ const ModelWithGrades = () => {
           <div className="tw-h-full tw-flex tw-flex-col">
             <div className="tw-flex-1 tw-overflow-auto">
               <AIChatBot
+                autoSend={!promptUsed}
                 userQuestions={
                   promptUsed
                     ? []
