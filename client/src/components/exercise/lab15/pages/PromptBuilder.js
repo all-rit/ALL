@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-
+import { useMemo } from "react";
 import LabButton from "src/components/all-components/LabButton";
 import Quiz from "src/components/quiz/components/Quiz";
 import { GCSE_SECTIONS } from "src/constants/lab15";
@@ -34,7 +34,12 @@ const PromptBuilder = () => {
   } = usePromptBuilderStageManager();
   const { setPromptScore, setPromptText } = useLab15();
 
-  const activeOptions = STAGE_OPTIONS[currentStage] || [];
+  const activeOptions = useMemo(
+    () =>
+      [...(STAGE_OPTIONS[currentStage] || [])].sort(() => Math.random() - 0.5),
+    [currentStage],
+  );
+
   const isFinalStage = currentStageIndex === stages.length - 1;
 
   const handleNext = () => {
