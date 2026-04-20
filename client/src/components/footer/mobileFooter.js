@@ -188,8 +188,9 @@ const MobileFooter = () => {
         {/* Contract Paragraph */}
         <Row>
           <p className="tw-text-lg tw-text-left">
-            This work is supported by the US National Science Foundation Under
-            Grants: #1825023, #2111152, #2336941
+            Available under the Federal Government License. This work is
+            supported by the US National Science Foundation Under Grants:
+            #1825023, #2111152, #2336941
           </p>
         </Row>
       </Col>
