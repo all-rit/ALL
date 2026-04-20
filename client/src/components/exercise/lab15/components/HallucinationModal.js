@@ -6,6 +6,7 @@ const HallucinationModal = ({
   isOpen,
   onClose,
   hallucinationType,
+  hallucinationDescription,
   aiResponse,
   whatWentWrong,
   whyPromptCausedThis,
@@ -76,10 +77,17 @@ const HallucinationModal = ({
             </div>
 
             {/* Hallucination type */}
-            <div className="tw-flex tw-items-center tw-justify-center tw-border-solid tw-px-3">
-              <span className="tw-body-text tw-underline tw-font-semibold">
+            <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-border-solid tw-px-3">
+              <span className="tw-body-text tw-underline tw-font-semibold tw-mt-1">
                 Issue type: {hallucinationType}
               </span>
+              <div>
+                {hallucinationDescription && (
+                  <p className="tw-body-text tw-mt-1">
+                    {hallucinationDescription}
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Fake citation which is only shown when fakeCitation is non-empty */}
@@ -126,6 +134,7 @@ HallucinationModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   hallucinationType: PropTypes.string.isRequired,
+  hallucinationDescription: PropTypes.string,
   aiResponse: PropTypes.string.isRequired,
   whatWentWrong: PropTypes.string.isRequired,
   whyPromptCausedThis: PropTypes.string.isRequired,
