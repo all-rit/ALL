@@ -41,19 +41,21 @@ const ModelWithGrades = () => {
   const modelResponseText = getModelResponse(gradePercentage);
 
   useEffect(() => {
-    setChatMessages([
-      {
-        id: "greeting-model-grade",
-        sender: "bot",
-        text: "Hi! I'm ALL-IE. Select a prompt below to get started.",
-        timestamp: new Date(),
-        isNew: true,
-      },
-    ]);
+    if (chatMessages.length === 0) {
+      setChatMessages([
+        {
+          id: "greeting-model-grade",
+          sender: "bot",
+          text: "Let's continue. Select another prompt.",
+          timestamp: new Date(),
+          isNew: true,
+        },
+      ]);
+    }
     setPromptUsed(false);
     setAiResponseDone(false);
     setShowScore(false);
-  }, [setChatMessages]);
+  }, []);
 
   useEffect(() => {
     if (!aiResponseDone) return undefined;
