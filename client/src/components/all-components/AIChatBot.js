@@ -29,11 +29,13 @@ const AIChatBot = ({
   onCitationClick = null,
   onQuestionAsked = null,
   renderCustomMessage = null,
+  autoSend = false,
 }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [showQuestionOptions, setShowQuestionOptions] = useState(false);
   const messagesContainerRef = useRef(null);
+  const autoSentRef = useRef(false);
 
   // Auto-trigger typing animation for any new bot message flagged as isNew
   useEffect(() => {
@@ -89,6 +91,13 @@ const AIChatBot = ({
   useEffect(() => {
     scrollToBottom();
   }, [messages, isThinking, showQuestionOptions]);
+
+  useEffect(() => {
+    if (autoSend && !autoSentRef.current && canSelectQuestion) {
+      autoSentRef.current = true;
+      handleQuestionClick(userQuestions[0]);
+    }
+  }, [autoSend, canSelectQuestion, userQuestions]);
 
   /**
    * Function handling when user clicks on a question in
@@ -413,6 +422,7 @@ AIChatBot.propTypes = {
   onCitationClick: PropTypes.func,
   onQuestionAsked: PropTypes.func,
   renderCustomMessage: PropTypes.func,
+  autoSend: PropTypes.bool,
 };
 
 export default AIChatBot;
