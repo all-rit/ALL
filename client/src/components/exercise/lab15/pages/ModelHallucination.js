@@ -171,6 +171,7 @@ const ModelHallucination = () => {
           whatWentWrong={selectedPrompt.whatWentWrong}
           whyPromptCausedThis={selectedPrompt.whyPromptCausedThis}
           fakeCitation={selectedPrompt.fakeCitation}
+          hallucinationDescription={selectedPrompt.hallucinationDescription}
         />
       )}
     </div>
