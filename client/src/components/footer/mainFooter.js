@@ -60,7 +60,7 @@ const MainFooter = () => {
               </NavItem>
             </Nav>
           </Col>
-          <Col xs={6}>
+          <Col xs={6} className="max-[1112px]:tw-mt-auto">
             <Nav vertical>
               <NavItem className="tw-pb-2 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink

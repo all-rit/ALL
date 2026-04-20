@@ -68,8 +68,8 @@ const MobileFooter = () => {
               </NavItem>
             </Nav>
           </Col>
-          <Col xs={6}>
-            <Nav vertical className="">
+          <Col xs={6} className="max-[360px]:tw-mt-auto">
+            <Nav vertical>
               <NavItem className="tw-pb-2 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-0">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-start tw-p-0"
