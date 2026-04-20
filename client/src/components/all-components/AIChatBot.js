@@ -93,7 +93,12 @@ const AIChatBot = ({
   }, [messages, isThinking, showQuestionOptions]);
 
   useEffect(() => {
-    if (autoSend && !autoSentRef.current && canSelectQuestion) {
+    if (
+      autoSend &&
+      !autoSentRef.current &&
+      userQuestions.length > 0 &&
+      canSelectQuestion
+    ) {
       autoSentRef.current = true;
       handleQuestionClick(userQuestions[0]);
     }
