@@ -93,7 +93,7 @@ const LabGeneration = (props) => {
     ) {
       return (
         <div
-          className={`tw-grid xs:tw-grid-cols-1 ${progressState === "MY_LABS" ? "md:tw-grid-cols-3" : "md:tw-grid-cols-2"} tw-w-full tw-gap-3`}
+          className={`tw-grid xs:tw-grid-cols-1 ${progressState === "MY_LABS" ? "md:tw-grid-cols-3" : "md:tw-grid-cols-2 lg:tw-gap-32"} tw-w-full tw-gap-3`}
         >
           {labids.map((lab, index) => {
             const idx = lab.id - 1;
