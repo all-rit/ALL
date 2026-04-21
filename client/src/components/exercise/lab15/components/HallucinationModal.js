@@ -35,7 +35,10 @@ const HallucinationModal = ({
       />
 
       <div className="tw-fixed tw-inset-0 tw-z-[101] tw-flex tw-items-center tw-justify-center tw-pointer-events-none">
-        <div className="tw-bg-white tw-mt-10 tw-p-3 tw-rounded-xl tw-shadow-xl tw-w-full tw-max-w-2xl tw-mx-4 tw-pointer-events-auto tw-max-h-[90vh] tw-overflow-y-auto">
+        <div
+          className="tw-bg-white tw-mt-10 tw-p-3 tw-rounded-xl tw-shadow-xl tw-w-full tw-mx-4 tw-pointer-events-auto tw-max-h-[90vh] tw-overflow-y-auto"
+          style={{ maxWidth: "56rem" }}
+        >
           {/* Header */}
           <div className="tw-flex tw-items-center tw-justify-between tw-p-4 tw-border-b tw-border-gray-200">
             <h2 className="tw-text-lg tw-font-bold">
