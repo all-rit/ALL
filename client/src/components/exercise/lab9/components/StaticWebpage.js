@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import uni from "../../../../assets/images/lab9/uni.jpeg";
+import uni from "../../../../assets/images/lab9/uni.jpg";
 import logo from "../../../../assets/images/lab9/logo.png";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
