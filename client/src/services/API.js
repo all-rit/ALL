@@ -21,6 +21,13 @@ const API = {
       body: JSON.stringify(body),
     });
   },
+  postWithBodyFormData: (path, body) => {
+    return fetch(path, {
+      credentials: "include",
+      method: "POST",
+      body: body,
+    });
+  },
   putWithBody: (path, body) => {
     return fetch(path, {
       credentials: "include",

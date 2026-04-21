@@ -8,6 +8,9 @@ import ImagineService from "../../../services/ImagineService";
 import Spinner from "../../../common/Spinner/Spinner";
 import PreSurveyQuestions25 from "../../../constants/imagine25/preSurveyQuestions";
 import PostSurveyQuestions25 from "../../../constants/imagine25/postSurveyQuestions";
+import PreSurveyQuestions26 from "../../../constants/imagine26/preSurveyQuestions";
+import PostSurveyQuestions26 from "../../../constants/imagine26/postSurveyQuestions";
+
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
@@ -21,6 +24,8 @@ function assignQuizQuestions(surveyType, year) {
         return PreSurveyQuestions23;
       } else if (year == 25) {
         return PreSurveyQuestions25;
+      } else if (year == 26) {
+        return PreSurveyQuestions26;
       } else {
         return;
       }
@@ -30,6 +35,8 @@ function assignQuizQuestions(surveyType, year) {
         return PostSurveyQuestions23;
       } else if (year == 25) {
         return PostSurveyQuestions25;
+      } else if (year == 26) {
+        return PostSurveyQuestions26;
       } else {
         return;
       }
@@ -69,6 +76,8 @@ const SurveyHandler = (props) => {
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
   let [surveyComplete, setSurveyComplete] = useState(false);
+  //track the amount of time per question in seconds
+  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
 
   /**
    * HandleNext() is a function that is responsible for allowing the user to
@@ -81,6 +90,7 @@ const SurveyHandler = (props) => {
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
       setDisableNext(true);
+      setQuestionStartTime(Date.now());
     }
   }
   /**
@@ -99,8 +109,11 @@ const SurveyHandler = (props) => {
         // This will handle navigation
       } else if (surveyType === "post") {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
-
-        navigate("/Imagine2025/Done");
+        if (year === 25) {
+          navigate("/Imagine2025/Done");
+        } else if (year === 26) {
+          navigate("/Imagine2026/Done");
+        }
       }
     } catch (error) {
       console.error(error);
@@ -142,6 +155,14 @@ const SurveyHandler = (props) => {
         //will be changed to point to avatarCreation when merged
         navigate("/Imagine2025/AvatarCreation");
       }
+    } else if (year == 26) {
+      sessionStorage.setItem("isUnderAge", isUnderAge);
+      if (isUnderAge) {
+        navigate("/Imagine2026/GalagaInstructions");
+      } else {
+        await ImagineService.preSurvey(props.userID, selectedAnswers, year);
+        navigate("/Imagine2026/UserProfilePicture");
+      }
     } else {
       console.error("invalid year");
     }
@@ -153,33 +174,57 @@ const SurveyHandler = (props) => {
    * component.
    * @param {*} e event containing the index of the selected answer response.
    */
-
   function selectAnswer(e) {
-    const answerValue = e.target.value;
-    //If answer is likert, then the answer will be from 1-10, and we do not care about the questions content
+  
+    const answerValue = e?.target?.value;
+    const timeSpent = (Date.now() - questionStartTime) / 1000;
+    // text input case
+    if (
+      answerValue &&
+      typeof answerValue === "object" &&
+      !Array.isArray(answerValue)
+    ) {
+      setSelectedAnswers((prevAnswers) => {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[currentQuestionCursor] = {
+          question: questions[currentQuestionCursor].question,
+          answer: answerValue,
+          timeSpent: timeSpent,
+        };
+        return updatedAnswers;
+      });
+  
+      setDisableNext(false); //Put so it goes next
+      return;
+    }
+  
+    // normal single choice / likert case
     const answer =
       questions[currentQuestionCursor].type == "likert"
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
-    setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
-
+          setIsUnderAge(
+          answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
+        );
+  
     setSelectedAnswers((prevAnswers) => {
-      // Removes the "Under 18 years old" option from the selected answers
-      // if another option is chosen after selecting it first.
-
-      let updatedAnswers = prevAnswers.filter(
+      const updatedAnswers = prevAnswers.filter(
         (a) => a.answer !== "Under 18 years old",
       );
+  
       return [
         ...updatedAnswers,
         {
           question: questions[currentQuestionCursor].question,
           answer: answer,
+          timeSpent: timeSpent,
         },
       ];
     });
+  
     setDisableNext(false);
   }
+
 
   /**
    * selectMulti is a function that is responsible for handling
@@ -189,6 +234,7 @@ const SurveyHandler = (props) => {
    * @param {*} e event holding the index of the selected answer
    */
   function selectMulti(e) {
+    const timeSpent = (Date.now() - questionStartTime) / 1000;
     const answerValue =
       questions[currentQuestionCursor].answers[e.target.value].content;
     let tempAnswers = selectedAnswers;
@@ -205,6 +251,7 @@ const SurveyHandler = (props) => {
       setDisableNext(storageSet.size === 0 ? true : false);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
+      
     } else {
       // creates an empty set because does not exist in that spot
       setDisableNext(false);
@@ -217,6 +264,7 @@ const SurveyHandler = (props) => {
     tempAnswers[currentQuestionCursor] = {
       question: questions[currentQuestionCursor].question,
       answer: Array.from(storageSet),
+      timeSpent: timeSpent,
     };
     setSelectedAnswers(tempAnswers);
   }
@@ -224,9 +272,11 @@ const SurveyHandler = (props) => {
   function rankingUpdate(updatedRankingAnswers) {
     setSelectedAnswers((prevState) => {
       const updatedState = [...prevState];
+      const timeSpent = (Date.now() - questionStartTime) / 1000;
       updatedState[currentQuestionCursor] = {
         question: questions[currentQuestionCursor].question,
         answer: updatedRankingAnswers,
+        timeSpent: timeSpent,
       };
 
       //don't allow next if there is a unused ranking

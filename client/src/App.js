@@ -43,6 +43,7 @@ import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
+import { default as Imagine2026 } from "./components/imagine26/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -202,6 +203,12 @@ const App = () => {
 
           <Imagine2025
             path={"/Imagine2025/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+          />
+          
+          <Imagine2026
+            path={"/Imagine2026/*"}
             user={state.main.user}
             isImagine={isImagine}
           />
