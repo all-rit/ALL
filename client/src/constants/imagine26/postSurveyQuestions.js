@@ -39,7 +39,7 @@ const postSurveyQuestions = [
   },
   {
     question:
-      "Please rank the following computing-related concerns based on how important or detrimental you believe they are",
+      "Please rank the following computing-related concerns based on how important or detrimental you believe they are. [1 = Top Importance, 5 = Bottom Importance]",
     answers: [
       "Deepfakes",
       "Data privacy breaches",
