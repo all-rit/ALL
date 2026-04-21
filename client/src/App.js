@@ -119,54 +119,60 @@ const App = () => {
     return (
       <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
-          <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-          <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
-          <Reading
-            path={`/Lab${lab}/Reading`}
-            user={state.main.user}
-            labID={lab}
-            isImagine={isImagine}
-          />
-          <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
-          <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-          <ExerciseLab2
-            path="/Lab2/Exercise"
-            user={state.main.user}
-            isImagine={isImagine}
-          />
-          <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-          <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-          <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-          <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
-          <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
-          <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
-          <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
-          <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
-          <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-          <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
-          <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
-          <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
+          <ScrollWrapper path="/">
+            <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
+            <About
+              path={`/Lab${lab}/About`}
+              user={state.main.user}
+              labID={lab}
+            />
+            <Reading
+              path={`/Lab${lab}/Reading`}
+              user={state.main.user}
+              labID={lab}
+              isImagine={isImagine}
+            />
+            <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
+            <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+            <ExerciseLab2
+              path="/Lab2/Exercise"
+              user={state.main.user}
+              isImagine={isImagine}
+            />
+            <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+            <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+            <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+            <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+            <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+            <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
+            <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
+            <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
+            <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
+            <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+            <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
+            <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
 
-          <Reinforcement
-            path={`/Lab${lab}/Reinforcement`}
-            user={state.main.user}
-            labID={lab}
-          />
-          <Quiz
-            path={`/Lab${lab}/Quiz`}
-            labId={lab}
-            user={state.main.user}
-            isFinalQuiz={true}
-            hideCertificate={false}
-            quizCompleted={quizCompleted}
-            setQuizCompleted={setQuizCompleted}
-            selectedAnswers={selectedAnswers}
-            setSelectedAnswers={setSelectedAnswers}
-            questions={questions}
-            setQuestions={setQuestions}
-            result={result}
-            setResult={setResult}
-          />
+            <Reinforcement
+              path={`/Lab${lab}/Reinforcement`}
+              user={state.main.user}
+              labID={lab}
+            />
+            <Quiz
+              path={`/Lab${lab}/Quiz`}
+              labId={lab}
+              user={state.main.user}
+              isFinalQuiz={true}
+              hideCertificate={false}
+              quizCompleted={quizCompleted}
+              setQuizCompleted={setQuizCompleted}
+              selectedAnswers={selectedAnswers}
+              setSelectedAnswers={setSelectedAnswers}
+              questions={questions}
+              setQuestions={setQuestions}
+              result={result}
+              setResult={setResult}
+            />
+          </ScrollWrapper>
         </Router>
       </div>
     );
