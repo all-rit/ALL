@@ -1,11 +1,8 @@
 import React from "react";
-import useScroll from "src/use-hooks/useScroll";
 import { navigate } from "@reach/router";
 import ALLButton from "src/components/all-components/ALLButton";
 
 const Error = () => {
-  useScroll();
-
   return (
     <section
       className={
