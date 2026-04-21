@@ -43,8 +43,8 @@ const ChatRoom = () => {
                 group={group}
                 onSubmit={onSubmit}
                 teammateMessage={groupMap[group]}
-                height={450}
-                width={500}
+                height="450px"
+                width="500px"
               />
               {/* </div> */}
             </div>

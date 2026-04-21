@@ -403,6 +403,8 @@ router.post("/imagine26/preSurvey", async function (req, res) {
   res.send(JSON.stringify(resp));
 });
 
+router.put('/imagine25/teammateChat', ImagineController.updateTeammateChat2025);
+
 router.post("/imagine26/postSurvey", async function (req, res) {
   const resp = await ImagineController.postSurvey(req, res);
   res.send(JSON.stringify(resp));
