@@ -22,30 +22,27 @@ import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
 import FixedHiringCandidate from "./pages/Employer/FixedHiringCandidate";
 import ExerciseEnd from "./pages/Employer/ExerciseEnd";
-import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 const Main = () => {
   return (
     <div className="container bottomSpace tw-p-6">
       <Router>
-        <ScrollWrapper path="/">
-          {/* Part 1: Applicant */}
-          <ExerciseStart path="/" />
-          <AvatarSelection path="/AvatarSelection" />
-          <QualificationQuestions path="/QualificationQuestions" />
-          <AnalyzeData path="/AnalyzeData" />
-          <NegativeReasoning path="/NegativeReasoning" />
-          <AIAnalysisQuestions path="/AIAnalysisQuestions" />
-          {/* Part 2: Employer */}
-          <EmployerStart path="/EmployerStart" />
-          <FavorableHiringCandidate path="/FavorableHiringCandidate" />
-          <HiringCandidate path="/HiringCandidate" />
-          <AIReasoningQuestions path="/AIReasoningQuestions" />
-          <AIReasoning path="/AIReasoning" />
-          <AIRepair path="/AIRepair" />
-          <FixedHiringCandidate path="/FixedHiringCandidate" />
-          <ExerciseEnd path="/ExerciseEnd" />
-        </ScrollWrapper>
+        {/* Part 1: Applicant */}
+        <ExerciseStart path="/" />
+        <AvatarSelection path="/AvatarSelection" />
+        <QualificationQuestions path="/QualificationQuestions" />
+        <AnalyzeData path="/AnalyzeData" />
+        <NegativeReasoning path="/NegativeReasoning" />
+        <AIAnalysisQuestions path="/AIAnalysisQuestions" />
+        {/* Part 2: Employer */}
+        <EmployerStart path="/EmployerStart" />
+        <FavorableHiringCandidate path="/FavorableHiringCandidate" />
+        <HiringCandidate path="/HiringCandidate" />
+        <AIReasoningQuestions path="/AIReasoningQuestions" />
+        <AIReasoning path="/AIReasoning" />
+        <AIRepair path="/AIRepair" />
+        <FixedHiringCandidate path="/FixedHiringCandidate" />
+        <ExerciseEnd path="/ExerciseEnd" />
       </Router>
     </div>
   );

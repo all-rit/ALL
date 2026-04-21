@@ -3,7 +3,6 @@ import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
-import useScroll from "src/use-hooks/useScroll";
 
 /**
  * Renders the ExerciseStart component.
@@ -12,7 +11,6 @@ import useScroll from "src/use-hooks/useScroll";
  * @returns {JSX.Element} The ExerciseStart component.
  */
 const ExerciseStart = () => {
-  useScroll();
   const { actions } = useMainStateContext();
 
   const handleStart = () => {

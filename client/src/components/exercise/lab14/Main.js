@@ -19,7 +19,6 @@ import RSAIntro from "./pages/RSAIntro";
 import RSAEncryption from "./pages/RSAEncryption";
 import RSADecryption from "./pages/RSADecryption";
 import Conclusion from "./pages/Conclusion";
-import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -68,29 +67,27 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <ScrollWrapper path="/">
-            <ExerciseIntro default path="/" />
-            <Superposition path="/Superposition" />
-            <Entanglement path="/Entanglement" />
-            <ExerciseTransition path="/Transition" />
+          <ExerciseIntro default path="/" />
+          <Superposition path="/Superposition" />
+          <Entanglement path="/Entanglement" />
+          <ExerciseTransition path="/Transition" />
 
-            {/* Caesar Cipher */}
-            <CaesarIntro path="/CaesarIntro" />
-            <CaesarEncryption path="/CaesarEncryption" />
-            <CaesarDecryption path="/CaesarDecryption" />
+          {/* Caesar Cipher */}
+          <CaesarIntro path="/CaesarIntro" />
+          <CaesarEncryption path="/CaesarEncryption" />
+          <CaesarDecryption path="/CaesarDecryption" />
 
-            {/* Vigenère Cipher */}
-            <VigenereIntro path="/VigenereIntro" />
-            <VigenereEncryption path="/VigenereEncryption" />
-            <VigenereDecryption path="/VigenereDecryption" />
+          {/* Vigenère Cipher */}
+          <VigenereIntro path="/VigenereIntro" />
+          <VigenereEncryption path="/VigenereEncryption" />
+          <VigenereDecryption path="/VigenereDecryption" />
 
-            {/* RSA Cipher */}
-            <RSAIntro path="/RSAIntro" />
-            <RSAEncryption path="/RSAEncryption" />
-            <RSADecryption path="/RSADecryption" />
+          {/* RSA Cipher */}
+          <RSAIntro path="/RSAIntro" />
+          <RSAEncryption path="/RSAEncryption" />
+          <RSADecryption path="/RSADecryption" />
 
-            <Conclusion path="/Conclusion" />
-          </ScrollWrapper>
+          <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
     </div>

@@ -17,7 +17,6 @@ import PreCorrectDiploma from "./pages/Explanations/PreCorrectDiploma";
 import PostCorrectNewsletter from "./pages/Explanations/PostCorrectNewsletter";
 import KeyTakeaways from "./pages/Explanations/KeyTakeaways";
 import PreDbRepair from "./pages/Explanations/PreDbRepair";
-import ScrollWrapper from "src/use-hooks/scrollWrapper";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -59,20 +58,18 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <ScrollWrapper path="/">
-            <FormRepair path="/FormRepair" />
-            <DatabaseRepair path={"/DatabaseRepair"} />
-            <ExerciseIntro default path="/" />
-            <GradApplication path="/GraduationApplication" />
-            <PreWrongDiploma path="/PreWrongDiploma" />
-            <Diploma path="/Diploma" />
-            <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
-            <PostWrongNewsletter path="/PostWrongNewsletter" />
-            <PreDbRepair path={"/PreDbRepair"} />
-            <PreCorrectDiploma path="/PreCorrectDiploma" />
-            <PostCorrectNewsletter path="/PostCorrectNewsletter" />
-            <KeyTakeaways path="/KeyTakeaways" />
-          </ScrollWrapper>
+          <FormRepair path="/FormRepair" />
+          <DatabaseRepair path={"/DatabaseRepair"} />
+          <ExerciseIntro default path="/" />
+          <GradApplication path="/GraduationApplication" />
+          <PreWrongDiploma path="/PreWrongDiploma" />
+          <Diploma path="/Diploma" />
+          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
+          <PostWrongNewsletter path="/PostWrongNewsletter" />
+          <PreDbRepair path={"/PreDbRepair"} />
+          <PreCorrectDiploma path="/PreCorrectDiploma" />
+          <PostCorrectNewsletter path="/PostCorrectNewsletter" />
+          <KeyTakeaways path="/KeyTakeaways" />
         </Router>
       </ExerciseStateContext.Provider>
     </div>

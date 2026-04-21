@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from "react";
-import useScroll from "../../../../use-hooks/useScroll";
 
 class First extends Component {
   render() {
@@ -55,9 +54,4 @@ class First extends Component {
   }
 }
 
-function FirstWrapper(props) {
-  useScroll();
-  return <First {...props} />;
-}
-
-export default FirstWrapper;
+export default First;
