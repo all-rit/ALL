@@ -51,7 +51,6 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
-// import MainFooter from "./components/footer/mainFooter";
 import MobileFooter from "./components/footer/mobileFooter";
 import MainFooter from "./components/footer/mainFooter";
 
@@ -233,13 +232,11 @@ const App = () => {
                 )}
               </div>
             </div>
-            {!labInProgress && !isImagine ? (
+            {!labInProgress && !isImagine && (
               <>
                 <MainFooter />
                 <MobileFooter />
               </>
-            ) : (
-              <></>
             )}
             <ALLSnackbar />
           </Suspense>
