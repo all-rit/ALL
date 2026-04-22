@@ -18,7 +18,7 @@ const PHDConsentForm = ({ setConsent }) => {
   };
   return (
     <div className="tw-relative tw-w-full tw-h-full">
-      <ImagineHeader title="PHD Consent Form" />
+      <ImagineHeader title="Activity Consent" />
       {Frame(
         <div className="tw-grid tw-w-[60vw] tw-max-w-prose tw-pt-2">
           <p className="tw-body-text">
