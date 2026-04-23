@@ -22,7 +22,8 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "pg": "^8.16.3",
-    "sequelize": "^6.37.1"
+    "sequelize": "^6.37.1",
+    "simple-git": "^3.36.0"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
