@@ -8,6 +8,13 @@ const OWNER = "all-rit";
 const REPO = "ALL";
 
 const TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=100`;
+const REQUEST_PARAMS = {
+      owner: OWNER,
+      repo: REPO,
+      headers: {
+        'X-GitHub-Api-Version': '2026-03-10',
+      }
+    }
 
 const octokit = new Octokit();
 
@@ -27,39 +34,40 @@ async function getVersion() {
 /* function for pulling latest non-beta tag */
 async function getProdVersion() {
 
-  return await octokit.request('Get ' + TAG_URL, 
-    {
-      owner: OWNER,
-      repo: REPO,
-      headers: {
-        'X-GitHub-Api-Version': '2026-03-10'
-      }
-    }).then(
+  let response;
+  let i = 1;
+  
+  while (true){
+    response = await octokit.request('Get ' + TAG_URL + `&page=${i}`, REQUEST_PARAMS).then(
       (res) => {
-      if (res.status == 200){
-        for (const tag of res.data){
-          if (tag.name.at(-1) != "A"){
-            return {
-              "local": false,
-              "version": tag.name
-            }
+        if (res.data.length === 0){
+          return {
+            "local": false,
+            "version": "no_found_version"
           }
         }
-
-      }
-    })
+        if (res.status == 200){
+          for (const tag of res.data){
+            if (tag.name.at(-1) != "A"){
+              return {
+                "local": false,
+                "version": tag.name
+              }
+            }
+          }
+          return false;
+        }
+    }) 
+    if (response != false){
+      return response;
+    }
+    i++;
+  }
 }
 
 /* function for pulling latest beta tag */
 async function getStagingVersion() {
-  return await octokit.request('Get ' + TAG_URL, 
-    {
-      owner: OWNER,
-      repo: REPO,
-      headers: {
-        'X-GitHub-Api-Version': '2026-03-10'
-      }
-    }).then(
+  return await octokit.request('Get ' + TAG_URL, REQUEST_PARAMS).then(
       (res) => {
       if (res.status == 200){
         for (const tag of res.data){
@@ -81,7 +89,7 @@ async function getLocalBranch() {
     .then((summary) => {
       return summary.all[0]
     })
-  return {"local": true, "version": `${branch} ${hash}`};
+  return {"local": true, "version": {"version": branch, "hash": hash}};
 }
 
 module.exports = { 
