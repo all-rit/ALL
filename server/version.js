@@ -25,7 +25,4 @@ else{
   type = "branch"
 }
 
-//TESTING RETURNING FOR STAGING
-type = "staging"
-
 module.exports = {type};

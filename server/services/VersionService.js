@@ -1,6 +1,8 @@
 const { Octokit } = require("@octokit/core");
 const { type } = require("../version");
-// const { git, CleanOptions } = require("simple-git");
+const { simpleGit, CleanOptions } = require("simple-git");
+
+simpleGit().clean(CleanOptions.FORCE)
 
 const OWNER = "all-rit";
 const REPO = "ALL";
@@ -8,13 +10,6 @@ const REPO = "ALL";
 const TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=100`;
 
 const octokit = new Octokit();
-
-// git.clean(CleanOptions.FORCE);
-
-// console.log(await git.revparse(["--short", "HEAD"]))
-
-// let test = git.revparse(["--short", "HEAD"])
-// console.log(test);
 
 async function getVersion() {
   if (type == "prod"){
@@ -24,9 +19,7 @@ async function getVersion() {
     return getStagingVersion();
   }
   else if (type == "branch"){
-    getLocalBranch();
-    return "sum"
-    // return getLocalBranch();
+    return getLocalBranch();
   }
   return "service fail"
 }
@@ -45,7 +38,10 @@ async function getProdVersion() {
       if (res.status == 200){
         for (const tag of res.data){
           if (tag.name.at(-1) != "A"){
-            return tag.name
+            return {
+              "local": false,
+              "version": tag.name
+            }
           }
         }
       }
@@ -66,7 +62,10 @@ async function getStagingVersion() {
       if (res.status == 200){
         for (const tag of res.data){
           if (tag.name.at(-1) == "A"){
-            return tag.name
+            return {
+              "local": false,
+              "version": tag.name
+            }
           }
         }
       }
@@ -75,7 +74,12 @@ async function getStagingVersion() {
 
 /* function for pulling latest local branch */
 async function getLocalBranch() {
-  // console.log(git.revparse("--short HEAD"));
+  const hash = await simpleGit().revparse(["--short", "HEAD"])
+  const branch = await simpleGit().branch((["--show-current"]))
+    .then((summary) => {
+      return summary.all[0]
+    })
+  return {"local": true, "version": `${branch}: ${hash}`};
 }
 
 module.exports = { 
