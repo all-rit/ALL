@@ -8,6 +8,7 @@ const UserController = require("../controllers/UserController");
 const UserLabController = require("../controllers/UserLabController");
 const PageController = require("../controllers/PageController");
 const GroupController = require("../controllers/GroupController");
+const VersionController = require("../controllers/VersionController")
 
 // LAB0 Controllers
 const ProgressControllerLab0 = require("../controllers/lab0/ProgressController");
@@ -70,6 +71,9 @@ const TeamMemberController = require("../controllers/TeamMemberController");
 
 // Imagine Controller
 const ImagineController = require("../controllers/ImagineController");
+
+// Version Routes
+router.get("/version", VersionController.getVersion);
 
 // User Routes
 router.post("/url", UserController.storeURL);

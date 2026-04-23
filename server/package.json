@@ -12,6 +12,7 @@
   "dependencies": {
     "@google-cloud/storage": "^7.19.0",
     "@google/genai": "^1.42.0",
+    "@octokit/core": "^7.0.6",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
