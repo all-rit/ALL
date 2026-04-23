@@ -29,7 +29,6 @@ async function getProdVersion() {
       if (res.status == 200){
         for (const tag of res.data){
           if (tag.name.at(-1) != "A"){
-            console.log(tag.name)
             return tag.name
           }
         }
