@@ -28,7 +28,6 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -54,6 +53,8 @@ import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
 import ScrollWrapper from "./use-hooks/scrollWrapper";
+import MobileFooter from "./components/footer/mobileFooter";
+import MainFooter from "./components/footer/mainFooter";
 
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
@@ -250,7 +251,12 @@ const App = () => {
                 )}
               </div>
             </div>
-            {!labInProgress && !isImagine && <MainFooter />}
+            {!labInProgress && !isImagine && (
+              <>
+                <MainFooter />
+                <MobileFooter />
+              </>
+            )}
             <ALLSnackbar />
           </Suspense>
         </div>

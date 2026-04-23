@@ -34,7 +34,7 @@ const ChatRoom = () => {
           <div className="tw-flex-1">
             <div className={contentSizing}>
               <div className="tw-top-3 tw-w-[96%] tw-mb-[-5%]">
-                <h3 className={"tw-title tw-pb-3"}>Deepfake 101</h3>
+                <h3 className={"tw-title tw-pb-3"}>Chat Room</h3>
                 <div className={"tw-flex tw-justify-center"}>
                   <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
                 </div>
