@@ -1,85 +1,79 @@
-const { Octokit } = require("@octokit/core");
+const { Octokit } = require("octokit");
 const { type } = require("../version");
-const { simpleGit, CleanOptions } = require("simple-git");
-
-simpleGit().clean(CleanOptions.FORCE)
+const { simpleGit } = require("simple-git");
 
 const OWNER = "all-rit";
 const REPO = "ALL";
+const VERSIONS = {};
 
-const TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=100`;
+const TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags`;
 const REQUEST_PARAMS = {
       owner: OWNER,
       repo: REPO,
+      per_page: 100,
       headers: {
         'X-GitHub-Api-Version': '2026-03-10',
+        Authorization: `Bearer ${process.env.TEMP_TOKEN}`
       }
     }
 
+// Offical family of Github-maintained client librariers used to 
+// interact with the GithHub API
 const octokit = new Octokit();
 
+/**
+ * Method that checks type and then returns
+ * the proper version/branch-hash
+ * @returns either version number for staging/production or 
+ * branch-hash on local
+ */
 async function getVersion() {
-  if (type == "prod"){
-    return getProdVersion();
+  if (Object.keys(VERSIONS).includes(type)){
+    return VERSIONS[type];
   }
-  else if (type == "staging"){
-    return getStagingVersion();
-  }
-  else if (type == "branch"){
-    return getLocalBranch();
-  }
-  return "service fail"
+  return {}
+}
+
+async function getAllVersions(){
+  VERSIONS.prod = await getProdVersion();
+  VERSIONS.staging = await getStagingVersion();
+  VERSIONS.branch = await getLocalBranch()
 }
 
 /* function for pulling latest non-beta tag */
 async function getProdVersion() {
-
-  let response;
-  let i = 1;
-  
-  while (true){
-    response = await octokit.request('Get ' + TAG_URL + `&page=${i}`, REQUEST_PARAMS).then(
-      (res) => {
-        if (res.data.length === 0){
-          return {
-            "local": false,
-            "version": "no_found_version"
-          }
+  /* Refers to what page we are on for searching */
+  return await octokit.paginate(
+    'GET ' + TAG_URL, 
+    REQUEST_PARAMS, 
+    (response, done) => {
+      const tagName = response.data.map((tag) => tag.name).find((tagName) => !tagName.includes("BETA"));
+      if(tagName) {
+        done();
+        return {
+          "local": false,
+          "version": tagName
         }
-        if (res.status == 200){
-          for (const tag of res.data){
-            if (tag.name.at(-1) != "A"){
-              return {
-                "local": false,
-                "version": tag.name
-              }
-            }
-          }
-          return false;
-        }
-    }) 
-    if (response != false){
-      return response;
-    }
-    i++;
+      }
+    });
   }
-}
+
 
 /* function for pulling latest beta tag */
 async function getStagingVersion() {
-  return await octokit.request('Get ' + TAG_URL, REQUEST_PARAMS).then(
-      (res) => {
-      if (res.status == 200){
-        for (const tag of res.data){
-          if (tag.name.at(-1) == "A"){
-            return {
-              "local": false,
-              "version": tag.name
-            }
-          }
+  return await octokit.paginate(
+    'GET ' + TAG_URL, 
+    REQUEST_PARAMS, 
+    (response, done) => {
+      const tagName = response.data.map((tag) => tag.name).find((tagName) => tagName.includes("BETA"));
+      if(tagName) {
+        done();
+        return {
+          "local": false,
+          "version": tagName
         }
       }
-    })
+    });
 }
 
 /* function for pulling latest local branch */
@@ -94,4 +88,5 @@ async function getLocalBranch() {
 
 module.exports = { 
   getVersion,
+  getAllVersions,
 };
