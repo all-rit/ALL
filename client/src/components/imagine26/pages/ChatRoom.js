@@ -15,7 +15,7 @@ const ChatRoom = () => {
       26,
     );
     setTimeout(() => {
-      navigate("/Imagine2026/ReadingSection");
+      // navigate("/Imagine2026/ReadingSection");
     }, 1000);
   };
 
@@ -26,26 +26,30 @@ const ChatRoom = () => {
   };
 
   const contentSizing =
-    "tw-flex tw-flex-col tw-items-center tw-justify-between tw-border tw-rounded-xl";
+    "tw-flex tw-flex-col tw-h-full tw-border tw-rounded-xl tw-overflow-hidden";
   return (
     <>
-      <div className="tw-w-full tw-p-2 tw-h-[90vh]">
-        <div className="tw-flex tw-flex-row tw-items-center tw-gap-6 tw-mt-8 tw-overflow-hidden">
-          <div className="tw-flex-1">
+      <div className="tw-w-full tw-p-2 tw-h-full">
+        <div className="tw-flex tw-flex-row tw-gap-6 tw-mt-8 tw-overflow-hidden">
+          <div className="tw-flex-1 tw-min-h-0 tw-min-w-0">
             <div className={contentSizing}>
-              <div className="tw-top-3 tw-w-[96%] tw-mb-[-5%]">
+              <div className="tw-w-full tw-pt-4 tw-pb-2">
                 <h3 className={"tw-title tw-pb-3"}>Chat Room</h3>
                 <div className={"tw-flex tw-justify-center"}>
                   <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
                 </div>
               </div>
-              <Chat
+
+              <div className="tw-flex-1 tw-w-[100%]">
+                <Chat
                 group={group}
                 onSubmit={onSubmit}
                 teammateMessage={groupMap[group]}
-                height="450px"
-                width="500px"
+                height="100%"
+                width="100%"
               />
+              </div>
+              
               {/* </div> */}
             </div>
           </div>
