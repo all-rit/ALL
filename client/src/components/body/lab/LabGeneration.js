@@ -93,12 +93,15 @@ const LabGeneration = (props) => {
     ) {
       return (
         <div
-          className={`tw-grid xs:tw-grid-cols-1 ${progressState === "MY_LABS" ? "md:tw-grid-cols-3" : "md:tw-grid-cols-2 lg:tw-gap-32"} tw-w-full tw-gap-3`}
+          className={`tw-grid xs:tw-grid-cols-1 ${progressState === "MY_LABS" ? "md:tw-grid-cols-3" : "md:tw-grid-cols-2"} tw-w-full tw-gap-3`}
         >
           {labids.map((lab, index) => {
             const idx = lab.id - 1;
             return (
-              <div key={idx} className="tw-m-1">
+              <div
+                key={idx}
+                className="tw-m-1 tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-items-center"
+              >
                 {renderLabData(
                   actions,
                   labInformation[idx],
