@@ -26,6 +26,7 @@ const AIChatBot = ({
   showConfidenceScore = false,
   showCitations = false,
   disclaimerMessage = "",
+  citationLabel = "ALLpedia",
   onCitationClick = null,
   onQuestionAsked = null,
   renderCustomMessage = null,
@@ -289,7 +290,7 @@ const AIChatBot = ({
                                       className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
                                       onClick={onCitationClick}
                                     >
-                                      <p>ALLpedia</p>
+                                      <p>{citationLabel}</p>
                                       <img
                                         src={HyperLinkImage}
                                         alt="Hyper Link Image"
@@ -424,6 +425,7 @@ AIChatBot.propTypes = {
   showConfidenceScore: PropTypes.bool,
   showCitations: PropTypes.bool,
   disclaimerMessage: PropTypes.string,
+  citationLabel: PropTypes.string,
   onCitationClick: PropTypes.func,
   onQuestionAsked: PropTypes.func,
   renderCustomMessage: PropTypes.func,

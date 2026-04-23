@@ -123,6 +123,7 @@ const ModelHallucination = () => {
                 onThinkingChange={setIsBotThinking}
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
+                citationLabel={selectedPrompt?.fakeCitation || "ALLpedia"}
                 onCitationClick={() => {
                   if (selectedPrompt?.fakeCitation) {
                     window.open("/source-not-found", "_blank");
