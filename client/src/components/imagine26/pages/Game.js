@@ -144,7 +144,7 @@ const ScorePage = (props) => {
   return (
     <>
       <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
-        <h3 className="tw-title text-center">Game Outcome</h3>
+        <h3 className="tw-title text-center">You Win!!!</h3>
         <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
           <div className="tw-my-20 tw-body-text tw-mx-auto">
             <div className="tw-font-bold">
