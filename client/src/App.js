@@ -28,7 +28,6 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -43,6 +42,7 @@ import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
+import { default as Imagine2026 } from "./components/imagine26/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -53,6 +53,8 @@ import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
 import ScrollWrapper from "./helpers/ScrollWrapper";
+import MobileFooter from "./components/footer/mobileFooter";
+import MainFooter from "./components/footer/mainFooter";
 
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
@@ -205,6 +207,12 @@ const App = () => {
             user={state.main.user}
             isImagine={isImagine}
           />
+
+          <Imagine2026
+            path={"/Imagine2026/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+          />
         </ScrollWrapper>
       </Router>
     );
@@ -243,7 +251,12 @@ const App = () => {
                 )}
               </div>
             </div>
-            {!labInProgress && !isImagine && <MainFooter />}
+            {!labInProgress && !isImagine && (
+              <>
+                <MainFooter />
+                <MobileFooter />
+              </>
+            )}
             <ALLSnackbar />
           </Suspense>
         </div>
