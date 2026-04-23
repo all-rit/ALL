@@ -155,6 +155,7 @@ const AIChatBot = ({
           confidence: botObj?.confidence,
           isPhase4: showConfidenceScore || showCitations || disclaimerMessage,
           isNew: true,
+          citationLabel: botObj?.fakeCitation || citationLabel,
         };
 
         // Add bot response to message history
@@ -290,7 +291,9 @@ const AIChatBot = ({
                                       className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
                                       onClick={onCitationClick}
                                     >
-                                      <p>{citationLabel}</p>
+                                      <p>
+                                        {msg.citationLabel || citationLabel}
+                                      </p>
                                       <img
                                         src={HyperLinkImage}
                                         alt="Hyper Link Image"
