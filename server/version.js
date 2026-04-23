@@ -25,7 +25,7 @@ else{
   type = "branch"
 }
 
-//TESTING RETURNING FOR PROD
-type = "prod"
+//TESTING RETURNING FOR STAGING
+type = "staging"
 
 module.exports = {type};

@@ -12,6 +12,9 @@ async function getVersion() {
   if (type == "prod"){
     return getProdVersion();
   }
+  else if (type == "staging"){
+    return getStagingVersion();
+  }
   return "service fail"
 }
 
@@ -29,6 +32,27 @@ async function getProdVersion() {
       if (res.status == 200){
         for (const tag of res.data){
           if (tag.name.at(-1) != "A"){
+            return tag.name
+          }
+        }
+      }
+    })
+}
+
+/* function for pulling latest beta tag */
+async function getStagingVersion() {
+  return await octokit.request('Get ' + url, 
+    {
+      owner: OWNER,
+      repo: REPO,
+      headers: {
+        'X-GitHub-Api-Version': '2026-03-10'
+      }
+    }).then(
+      (res) => {
+      if (res.status == 200){
+        for (const tag of res.data){
+          if (tag.name.at(-1) == "A"){
             return tag.name
           }
         }
