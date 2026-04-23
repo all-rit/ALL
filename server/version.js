@@ -3,13 +3,8 @@
   passes that to the Version Service to get the correct
   Version to be returned through the controller
 */
-
-/**
- * ENVIRONMENT => [what are the options]
- * [What is the difference between local and ball]
- */
-let host = process.env.HOST
-let env = process.env.ENVIRONMENT
+const host = process.env.HOST
+const env = process.env.ENVIRONMENT
 let type = "";
 
 if (env == "production" && host == "all.rit.edu"){

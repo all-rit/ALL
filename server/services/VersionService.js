@@ -34,6 +34,9 @@ async function getVersion() {
   return {}
 }
 
+/**
+ * Method called in app.js that loads all tags
+ */
 async function getAllVersions(){
   VERSIONS.prod = await getProdVersion();
   VERSIONS.staging = await getStagingVersion();
@@ -42,7 +45,10 @@ async function getAllVersions(){
 
 /* function for pulling latest non-beta tag */
 async function getProdVersion() {
-  /* Refers to what page we are on for searching */
+  /* checks every tag in a page of 100
+    if the first page doesn't contain a tag without BETA
+    go to the next page.
+  */
   return await octokit.paginate(
     'GET ' + TAG_URL, 
     REQUEST_PARAMS, 
@@ -61,6 +67,10 @@ async function getProdVersion() {
 
 /* function for pulling latest beta tag */
 async function getStagingVersion() {
+  /* checks every tag in a page of 100
+    if the first page doesn't contain a tag with BETA
+    go to the next page.
+  */
   return await octokit.paginate(
     'GET ' + TAG_URL, 
     REQUEST_PARAMS, 
@@ -78,7 +88,9 @@ async function getStagingVersion() {
 
 /* function for pulling latest local branch */
 async function getLocalBranch() {
+  /* Spawns child process to run "git rev-parse --short HEAD"  */
   const hash = await simpleGit().revparse(["--short", "HEAD"])
+  /* Spawns child process to run "git branch --show-current" then returns the branch name from the summary */
   const branch = await simpleGit().branch((["--show-current"]))
     .then((summary) => {
       return summary.all[0]
