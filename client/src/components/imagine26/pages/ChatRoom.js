@@ -15,7 +15,7 @@ const ChatRoom = () => {
       26,
     );
     setTimeout(() => {
-      // navigate("/Imagine2026/ReadingSection");
+      navigate("/Imagine2026/ReadingSection");
     }, 1000);
   };
 
