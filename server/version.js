@@ -24,5 +24,6 @@ else{
   //LOCAL
   type = "branch"
 }
+type = 'staging'
 
 module.exports = {type};

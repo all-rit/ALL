@@ -26,6 +26,7 @@ async function getVersion() {
 
 /* function for pulling latest non-beta tag */
 async function getProdVersion() {
+
   return await octokit.request('Get ' + TAG_URL, 
     {
       owner: OWNER,
@@ -44,6 +45,7 @@ async function getProdVersion() {
             }
           }
         }
+
       }
     })
 }
@@ -79,7 +81,7 @@ async function getLocalBranch() {
     .then((summary) => {
       return summary.all[0]
     })
-  return {"local": true, "version": `${branch}: ${hash}`};
+  return {"local": true, "version": `${branch} ${hash}`};
 }
 
 module.exports = { 

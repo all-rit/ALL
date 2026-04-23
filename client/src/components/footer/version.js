@@ -3,19 +3,17 @@ import versionService from "src/services/VersionService";
 
 const Version = () => {
   let [version, setVersion] = useState(null);
+  let [local, setLocal] = useState(null);
 
   useEffect(() => {
     async function getVersion() {
       return await versionService.getVersion();
     }
-    getVersion().then((version) => {
-      setVersion(version);
+    getVersion().then((response) => {
+      setLocal(response.local);
+      setVersion(response.version);
     });
   }, []);
-  return (
-    <>
-      <p>Version: {version}</p>
-    </>
-  );
+  return <div>{local ? <>Branch: {version}</> : <>Version: {version}</>}</div>;
 };
 export default Version;
