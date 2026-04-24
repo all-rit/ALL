@@ -90,6 +90,7 @@ export const Chat = (props) => {
                   onChange={onHandle}
                   placeholder="Respond to your teammate"
                   disabled={isDisabled}
+                  maxLength={100}
                 />
                 <button
                   disabled={isDisabled}
