@@ -38,8 +38,8 @@ async function getVersion() {
  * Method called in app.js that loads all tags
  */
 async function getAllVersions(){
-  VERSIONS.prod = await getProdVersion();
-  VERSIONS.staging = await getStagingVersion();
+  VERSIONS.prod = await getProdVersion().then((response) => response[0]);
+  VERSIONS.staging = await getStagingVersion().then((response) => response[0]);
   VERSIONS.branch = await getLocalBranch()
 }
 

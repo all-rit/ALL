@@ -2,12 +2,12 @@ import { Col, Nav, NavItem, NavLink, Row } from "reactstrap";
 import logo from "../../assets/images/logos/ALL_White.svg";
 import nsf from "../../assets/images/logos/nsf.png";
 import rit from "../../assets/images/logos/RIT.png";
-import Version from "./version";
+import Version from "./versionComponent";
 
 const MobileFooter = () => {
   return (
-    <div className="md:tw-hidden">
-      <div className="tw-px-4 tw-w-screen tw-bg-labGray tw-text-white tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center">
+    <div className="md:tw-hidden tw-bg-labGray tw-text-white tw-pb-4">
+      <div className="tw-w-screen tw-mt-[5rem] tw-mb-0 tw-flex tw-flex-row tw-justify-center tw-px-4">
         <Col>
           {/* Row 1 */}
           <Row className="tw-mb-0 min-[432px]:tw-items-center min-[432px]:tw-justify-center">
@@ -197,9 +197,8 @@ const MobileFooter = () => {
           </Row>
         </Col>
       </div>
-      <div>
-        <Version />
-      </div>
+      <div className="tw-w-full tw-bg-white tw-h-px" />
+      <Version classname="tw-px-4 tw-pt-2" />
     </div>
   );
 };
