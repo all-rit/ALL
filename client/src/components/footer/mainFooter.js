@@ -191,7 +191,7 @@ const MainFooter = () => {
         </Row>
         <div className="tw-w-full tw-bg-white tw-h-px" />
         <Row className="tw-mb-0">
-          <Version classname="tw-text-left tw-pt-2" />
+          <Version className="tw-text-left tw-pt-2" />
         </Row>
       </div>
     </div>

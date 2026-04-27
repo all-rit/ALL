@@ -198,7 +198,7 @@ const MobileFooter = () => {
         </Col>
       </div>
       <div className="tw-w-full tw-bg-white tw-h-px" />
-      <Version classname="tw-px-4 tw-pt-2" />
+      <Version className="tw-px-4 tw-pt-2" />
     </div>
   );
 };

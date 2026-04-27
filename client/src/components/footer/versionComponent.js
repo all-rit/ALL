@@ -13,17 +13,15 @@ const Version = (props) => {
       return await versionService.getVersion();
     }
     getVersion().then((response) => {
-      console.log(response);
       setLocal(response.local);
       if (response.local) {
-        console.log(response.version);
         setVersion(response.version.version);
         setHash(response.version.hash);
       } else {
         setVersion(response.version);
       }
     });
-    setClassName(props.classname);
+    setClassName(props.className);
   }, []);
   return (
     <div className={className}>
@@ -39,7 +37,7 @@ const Version = (props) => {
 };
 
 Version.propTypes = {
-  classname: PropTypes.String,
+  className: PropTypes.string,
 };
 
 export default Version;
