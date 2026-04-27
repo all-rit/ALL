@@ -15,7 +15,7 @@ const REQUEST_PARAMS = {
         'X-GitHub-Api-Version': '2026-03-10',
         Authorization: `Bearer ${process.env.TEMP_TOKEN}`
       }
-    }
+    };
 
 // Offical family of Github-maintained client librariers used to 
 // interact with the GithHub API

@@ -8,7 +8,7 @@ const UserController = require("../controllers/UserController");
 const UserLabController = require("../controllers/UserLabController");
 const PageController = require("../controllers/PageController");
 const GroupController = require("../controllers/GroupController");
-const VersionController = require("../controllers/VersionController")
+const VersionController = require("../controllers/VersionController");
 
 // LAB0 Controllers
 const ProgressControllerLab0 = require("../controllers/lab0/ProgressController");
