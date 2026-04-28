@@ -13,7 +13,6 @@ const REQUEST_PARAMS = {
       per_page: 100,
       headers: {
         'X-GitHub-Api-Version': '2026-03-10',
-        Authorization: `Bearer ${process.env.TEMP_TOKEN}`
       }
     };
 
