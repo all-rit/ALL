@@ -3,7 +3,6 @@ import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
-import useScroll from "../../../use-hooks/useScroll";
 import StudyList from "./studylist";
 import NonBulletList from "./NonBulletList";
 import Image from "./Image";
@@ -124,8 +123,6 @@ const Reading = (props) => {
       };
     },
   };
-
-  useScroll();
 
   const screenPositionPercentage = (scrollPosition) => {
     const totalHeight =

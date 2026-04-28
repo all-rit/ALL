@@ -5,15 +5,12 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import AIExplanationCodeBlock from "../components/code/AIExplanationCodeBlock";
-import useScroll from "../../../../use-hooks/useScroll";
 import ExerciseService from "../../../../services/lab10/ExerciseService";
 import { twMerge } from "tailwind-merge";
 import _ from "lodash";
 import { EXERCISE_PLAYING } from "../../../../constants/lab10";
 
 const AIExplanation = (props) => {
-  useScroll();
-
   /**
    * Update lab state onMount
    */

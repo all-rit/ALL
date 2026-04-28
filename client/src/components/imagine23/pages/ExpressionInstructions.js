@@ -1,12 +1,10 @@
 import { navigate } from "@reach/router";
 import React from "react";
-import useScroll from "../../../use-hooks/useScroll";
 
 const ExpressionInstructions = () => {
   const handleNext = () => {
     navigate("/Imagine2023/ExpressionInstructions");
   };
-  useScroll();
   return (
     <div className="container bottomSpace center-div">
       <h2 className="playthrough__title">Expression Empathy Building: Start</h2>

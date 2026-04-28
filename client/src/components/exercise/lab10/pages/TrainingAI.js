@@ -11,11 +11,9 @@ import {
   SIMULATION_IDLE,
   SIMULATION_STARTED,
 } from "../../../../constants/lab10";
-import useScroll from "../../../../use-hooks/useScroll";
 import { navigate } from "@reach/router";
 
 const TrainingAI = (props) => {
-  useScroll();
   const [limitReached, setLimitReach] = useState(false);
 
   /**

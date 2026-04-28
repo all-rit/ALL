@@ -175,7 +175,6 @@ const SurveyHandler = (props) => {
    * @param {*} e event containing the index of the selected answer response.
    */
   function selectAnswer(e) {
-  
     const answerValue = e?.target?.value;
     const timeSpent = (Date.now() - questionStartTime) / 1000;
     // text input case
@@ -193,25 +192,25 @@ const SurveyHandler = (props) => {
         };
         return updatedAnswers;
       });
-  
+
       setDisableNext(false); //Put so it goes next
       return;
     }
-  
+
     // normal single choice / likert case
     const answer =
       questions[currentQuestionCursor].type == "likert"
         ? answerValue
         : questions[currentQuestionCursor].answers[answerValue].content;
-          setIsUnderAge(
-          answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
-        );
-  
+    setIsUnderAge(
+      answer == "Under 18 years old" && (props.year == 25 || props.year == 26),
+    );
+
     setSelectedAnswers((prevAnswers) => {
       const updatedAnswers = prevAnswers.filter(
         (a) => a.answer !== "Under 18 years old",
       );
-  
+
       return [
         ...updatedAnswers,
         {
@@ -221,10 +220,9 @@ const SurveyHandler = (props) => {
         },
       ];
     });
-  
+
     setDisableNext(false);
   }
-
 
   /**
    * selectMulti is a function that is responsible for handling
@@ -251,7 +249,6 @@ const SurveyHandler = (props) => {
       setDisableNext(storageSet.size === 0 ? true : false);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
-      
     } else {
       // creates an empty set because does not exist in that spot
       setDisableNext(false);
