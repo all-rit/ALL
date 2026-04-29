@@ -129,8 +129,10 @@ const ModelWithGrades = () => {
                 onThinkingChange={setIsBotThinking}
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
-                onCitationClick={() => {
-                  window.open("/source-not-found", "_blank");
+                onCitationClick={(message) => {
+                  if (message?.citationLabel) {
+                    window.open("/source-not-found", "_blank");
+                  }
                 }}
                 showConfidenceScore={false}
                 disclaimerMessage=""

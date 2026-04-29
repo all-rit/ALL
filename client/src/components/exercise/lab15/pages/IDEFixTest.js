@@ -16,13 +16,12 @@ import {
 const IDEFixTest = () => {
   const { chatMessages, setChatMessages } = useLab15();
 
-  const [selectedPrompt, setSelectedPrompt] = useState(null);
-
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
   const [promptUsed, setPromptUsed] = useState(false);
   const [aiResponseDone, setAiResponseDone] = useState(false);
   const [showScore, setShowScore] = useState(false);
+  const [selectedPrompt, setSelectedPrompt] = useState(null);
 
   useEffect(() => {
     if (chatMessages.length === 0) {
@@ -114,8 +113,8 @@ const IDEFixTest = () => {
                 onThinkingChange={setIsBotThinking}
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
-                onCitationClick={() => {
-                  if (selectedPrompt?.fakeCitation) {
+                onCitationClick={(message) => {
+                  if (message?.citationLabel) {
                     window.open("/source-not-found", "_blank");
                   }
                 }}
