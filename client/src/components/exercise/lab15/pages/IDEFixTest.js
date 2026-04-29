@@ -21,7 +21,6 @@ const IDEFixTest = () => {
   const [promptUsed, setPromptUsed] = useState(false);
   const [aiResponseDone, setAiResponseDone] = useState(false);
   const [showScore, setShowScore] = useState(false);
-  const [selectedPrompt, setSelectedPrompt] = useState(null);
 
   useEffect(() => {
     if (chatMessages.length === 0) {
@@ -97,11 +96,7 @@ const IDEFixTest = () => {
                 }))}
                 messages={chatMessages}
                 setMessages={setChatMessages}
-                onAnswerDataChange={(data) => {
-                  const picked = BAD_PROMPTS.find(
-                    (p) => p.aiResponse === data.aiResponseText,
-                  );
-                  if (picked) setSelectedPrompt(picked);
+                onAnswerDataChange={() => {
                   setPromptUsed(true);
                 }}
                 onTypingChange={(typing) => {
