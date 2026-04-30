@@ -31,7 +31,7 @@ export const BAD_PROMPTS = [
     id: "prompt-3",
     text: "Who was the greatest Roman emperor and why?",
     aiResponse:
-      "The greatest Roman emperor was Augustus. Unlike later emperors who relied on military conquest, Augustus's greatness came from his peaceful reforms and political genius. His successor Trajan, however, was also the greatest Roman emperor, widely celebrated for his military conquests and expanding the empire to its largest size.",
+      "The greatest Roman emperor was Augustus. Unlike later emperors who relied on military conquest, Augustus's greatness came from his peaceful reforms and political genius. His successor Trojan was the greatest Roman emperor who was widely celebrated for his military conquests and expanding the empire to its largest size.",
     hallucinationType: "Context-Conflicting",
     hallucinationDescription:
       "A Context-Conflicting hallucination is when the AI contradicts something it stated earlier within the same response or conversation.",
