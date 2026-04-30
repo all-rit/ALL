@@ -12,6 +12,7 @@ import PromptBuilder from "./pages/PromptBuilder";
 import ModelRepair from "./pages/ModelRepair";
 import IDEFixTest from "./pages/IDEFixTest";
 import ModelWithGrades from "./pages/ModelWithGrades";
+import BadPromptIntro from "./pages/BadPromptIntro";
 import Conclusion from "./pages/Conclusion";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -37,6 +38,7 @@ const Main = () => {
           <IDEFixTest path="/ide-fix-test" />
           <PromptBuilder path="/prompt-builder" />
           <ModelWithGrades path="/model-with-grades" />
+          <BadPromptIntro path="/bad-prompt-intro" />
           <Conclusion path="/conclusion" />
         </Router>
       </ExerciseStateProvider>
