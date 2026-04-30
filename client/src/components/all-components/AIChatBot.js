@@ -195,16 +195,6 @@ const AIChatBot = ({
         {messages && messages.length > 0
           ? messages.map((msg, index) => {
               const customRender = renderCustomMessage?.(msg, index);
-              if (customRender) {
-                return (
-                  <div
-                    key={msg.id || index}
-                    style={{ animation: "fadeIn 0.5s ease-in" }}
-                  >
-                    {customRender}
-                  </div>
-                );
-              }
 
               return (
                 <div
@@ -285,7 +275,7 @@ const AIChatBot = ({
                                 )}
 
                                 {showCitations && (
-                                  <div className="tw-flex tw-items-center tw-gap-1">
+                                  <div className="tw-flex tw-items-center tw-gap-1 tw-text-base">
                                     <strong>Source: </strong>
                                     <div
                                       className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
@@ -304,6 +294,8 @@ const AIChatBot = ({
                                 )}
                               </div>
                             )}
+
+                          {customRender}
                         </>
                       )}
                     </div>
