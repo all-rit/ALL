@@ -28,7 +28,13 @@ const getModelResponse = (gradePercentage) => {
 };
 
 const ModelWithGrades = () => {
-  const { chatMessages, setChatMessages, promptScore, promptText } = useLab15();
+  const {
+    chatMessages,
+    setChatMessages,
+    promptScore,
+    promptText,
+    isWorstPromptLoop,
+  } = useLab15();
 
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
@@ -146,11 +152,41 @@ const ModelWithGrades = () => {
                 </div>
               )}
 
-              {showScore && gradePercentage >= PASSING_SCORE && (
+              {showScore &&
+                gradePercentage >= PASSING_SCORE &&
+                !isWorstPromptLoop && (
+                  <>
+                    <div className="tw-bg-white tw-text-sm tw-text-center tw-w-full">
+                      Great prompt! Notice how your response from ALL-IE is much
+                      more detailed and complete with a better prompt.
+                    </div>
+                    <LabButton
+                      label="Next"
+                      onClick={() => navigate("/Lab15/Exercise/conclusion")}
+                    />
+                  </>
+                )}
+
+              {showScore &&
+                gradePercentage < PASSING_SCORE &&
+                !isWorstPromptLoop && (
+                  <>
+                    <div className="tw-bg-white tw-text-sm tw-text-center tw-w-full">
+                      Try again! Build a better prompt by going back to the
+                      prompt builder and revising your prompt using GCSE.
+                    </div>
+                    <LabButton
+                      label="Back to Prompt Builder"
+                      onClick={() => navigate("/Lab15/Exercise/prompt-builder")}
+                    />
+                  </>
+                )}
+
+              {showScore && gradePercentage <= 50 && isWorstPromptLoop && (
                 <>
                   <div className="tw-bg-white tw-text-sm tw-text-center tw-w-full">
-                    Great prompt! Notice how your response from ALL-IE is much
-                    more detailed and complete with a better prompt.
+                    Great job knowing what NOT to do! You successfully built a
+                    bad prompt.
                   </div>
                   <LabButton
                     label="Next"
@@ -159,11 +195,11 @@ const ModelWithGrades = () => {
                 </>
               )}
 
-              {showScore && gradePercentage < PASSING_SCORE && (
+              {showScore && gradePercentage > 50 && isWorstPromptLoop && (
                 <>
                   <div className="tw-bg-white tw-text-sm tw-text-center tw-w-full">
-                    Try again! Build a better prompt by going back to the prompt
-                    builder and revising your prompt using GCSE.
+                    Your prompt was too good! Try again and choose weaker
+                    options this time.
                   </div>
                   <LabButton
                     label="Back to Prompt Builder"
