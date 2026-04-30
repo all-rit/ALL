@@ -289,7 +289,7 @@ const AIChatBot = ({
                                     <strong>Source: </strong>
                                     <div
                                       className="tw-flex tw-items-center tw-text-lightBlue hover:tw-text-mediumBlue hover:tw-underline tw-cursor-pointer"
-                                      onClick={onCitationClick}
+                                      onClick={() => onCitationClick?.(msg)}
                                     >
                                       <p>
                                         {msg.citationLabel || citationLabel}

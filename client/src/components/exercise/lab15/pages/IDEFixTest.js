@@ -16,8 +16,6 @@ import {
 const IDEFixTest = () => {
   const { chatMessages, setChatMessages } = useLab15();
 
-  const [selectedPrompt, setSelectedPrompt] = useState(null);
-
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isBotThinking, setIsBotThinking] = useState(false);
   const [promptUsed, setPromptUsed] = useState(false);
@@ -98,11 +96,7 @@ const IDEFixTest = () => {
                 }))}
                 messages={chatMessages}
                 setMessages={setChatMessages}
-                onAnswerDataChange={(data) => {
-                  const picked = BAD_PROMPTS.find(
-                    (p) => p.aiResponse === data.aiResponseText,
-                  );
-                  if (picked) setSelectedPrompt(picked);
+                onAnswerDataChange={() => {
                   setPromptUsed(true);
                 }}
                 onTypingChange={(typing) => {
@@ -114,8 +108,8 @@ const IDEFixTest = () => {
                 onThinkingChange={setIsBotThinking}
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
-                onCitationClick={() => {
-                  if (selectedPrompt?.fakeCitation) {
+                onCitationClick={(message) => {
+                  if (message?.citationLabel) {
                     window.open("/source-not-found", "_blank");
                   }
                 }}

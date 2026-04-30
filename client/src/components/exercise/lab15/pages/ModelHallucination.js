@@ -123,8 +123,8 @@ const ModelHallucination = () => {
                 onThinkingChange={setIsBotThinking}
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
-                onCitationClick={() => {
-                  if (selectedPrompt?.fakeCitation) {
+                onCitationClick={(message) => {
+                  if (message?.citationLabel) {
                     window.open("/source-not-found", "_blank");
                   }
                 }}
