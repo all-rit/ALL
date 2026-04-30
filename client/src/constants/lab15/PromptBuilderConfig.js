@@ -96,3 +96,8 @@ export const PROMPT_COMPLETE_MESSAGE =
   "You wrote a complete prompt! Click next to see how ALL-IE will respond.";
 export const PROMPT_QUESTION_TEMPLATE =
   "Choose a {label} statement for your prompt.";
+export const WORST_PROMPT_BUILDER_HEADING = "Worst Prompt Builder";
+export const WORST_PROMPT_BUILDER_DESCRIPTION =
+  "Now build the worst possible prompt using GCSE. Choose the weakest option in each category.";
+export const WORST_PROMPT_COMPLETE_MESSAGE =
+  "You wrote a complete prompt! Click next to see how ALL-IE responds to your worst prompt.";

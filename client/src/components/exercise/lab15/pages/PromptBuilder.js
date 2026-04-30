@@ -9,6 +9,9 @@ import {
   PROMPT_COMPLETE_MESSAGE,
   PROMPT_QUESTION_TEMPLATE,
   STAGE_OPTIONS,
+  WORST_PROMPT_BUILDER_DESCRIPTION,
+  WORST_PROMPT_BUILDER_HEADING,
+  WORST_PROMPT_COMPLETE_MESSAGE,
 } from "src/constants/lab15/PromptBuilderConfig";
 import { ANIM_POP_DURATION_MS } from "src/constants/lab15/PromptViewer";
 import { useLab15 } from "../Lab15Context";
@@ -32,7 +35,7 @@ const PromptBuilder = () => {
     nextStage,
     previousStage,
   } = usePromptBuilderStageManager();
-  const { setPromptScore, setPromptText } = useLab15();
+  const { setPromptScore, setPromptText, isWorstPromptLoop } = useLab15();
 
   const activeOptions = useMemo(
     () =>
@@ -95,9 +98,15 @@ const PromptBuilder = () => {
   return (
     <div className="tw-flex tw-flex-col tw-w-full tw-h-full tw-min-h-0 tw-overflow-hidden">
       <div className="tw-px-6 tw-pt-6 tw-pb-4 tw-shrink-0 md:tw-px-0 md:tw-pt-0 md:tw-pb-0">
-        <h1 className="tw-title tw-text-left">{PROMPT_BUILDER_HEADING}</h1>
+        <h1 className="tw-title tw-text-left">
+          {isWorstPromptLoop
+            ? WORST_PROMPT_BUILDER_HEADING
+            : PROMPT_BUILDER_HEADING}
+        </h1>
         <p className="tw-body-text tw-text-left tw-py-6">
-          {PROMPT_BUILDER_DESCRIPTION}
+          {isWorstPromptLoop
+            ? WORST_PROMPT_BUILDER_DESCRIPTION
+            : PROMPT_BUILDER_DESCRIPTION}
         </p>
       </div>
 
@@ -136,7 +145,9 @@ const PromptBuilder = () => {
           {allStagesAnswered && (
             <div className="tw-mt-6 tw-p-4 tw-rounded-lg tw-border tw-border-darkLine tw-bg-secondary-gray/60">
               <div className="tw-font-semibold tw-text-darkGray">
-                {PROMPT_COMPLETE_MESSAGE}
+                {isWorstPromptLoop
+                  ? WORST_PROMPT_COMPLETE_MESSAGE
+                  : PROMPT_COMPLETE_MESSAGE}
               </div>
             </div>
           )}
