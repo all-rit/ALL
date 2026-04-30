@@ -162,7 +162,9 @@ const ModelWithGrades = () => {
                     </div>
                     <LabButton
                       label="Next"
-                      onClick={() => navigate("/Lab15/Exercise/conclusion")}
+                      onClick={() =>
+                        navigate("/Lab15/Exercise/bad-prompt-intro")
+                      }
                     />
                   </>
                 )}
