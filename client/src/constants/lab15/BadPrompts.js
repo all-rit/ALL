@@ -4,9 +4,9 @@ export const BAD_PROMPTS = [
     text: "Why did the Roman Empire fall?",
     aiResponse:
       "Invasions by barbarian tribes in 476 CE caused over 80% of the Roman Empire's collapse.",
-    hallucinationType: "Fabricated Statistic",
+    hallucinationType: "Reality-conflicting",
     hallucinationDescription:
-      "A Fabricated Statistic is when the AI invents a specific number or percentage that has no basis in real research or data.",
+      "A Reality-conflicting hallucination is when the AI provides information that directly contradicts known facts or reality.",
     whatWentWrong:
       "This statistic is made up. Historians do not assign a single percentage to explain Rome's fall.",
     whyPromptCausedThis:
@@ -15,30 +15,30 @@ export const BAD_PROMPTS = [
   },
   {
     id: "prompt-2",
-    text: "How big was the Roman Empire?",
+    text: "Based on this text: 'The Roman Empire reached its peak size under Emperor Trajan in 117 AD, spanning roughly 5 million square kilometers.' How big was the Roman Empire under Augustus?",
     aiResponse:
-      "In 9 AD, under Emperor Augustus, the Roman Empire covered approximately 5 million square kilometers, including most of modern-day Europe, North Africa, and parts of the Middle East.",
-    hallucinationType: "Factual Error",
+      "Under Emperor Augustus, the Roman Empire spanned approximately 5 million square kilometers, stretching across Europe, North Africa, and the Middle East.",
+    hallucinationType: "Input-Conflicting",
     hallucinationDescription:
-      "A Factual Error is when the AI states something that directly contradicts verifiable real world knowledge.",
+      "An Input-Conflicting hallucination is when the AI generates a response that contradicts or ignores information explicitly provided by the user in their prompt.",
     whatWentWrong:
-      "The Roman Empire did control 5 million square kilometers at its height, but not in 9 AD. Augustus was still consolidating power and the empire had not yet reached its maximum territorial extent.",
+      "The user's input clearly stated that 5 million square kilometers was the size under Trajan in 117 AD. The AI ignored that context and incorrectly attributed the same figure to Augustus, contradicting the source material it was given.",
     whyPromptCausedThis:
-      "The prompt was too vague. It did not ask for a specific time period or precise geographic boundaries, so the AI filled in the gaps with an inaccurate but believable claim.",
+      "The prompt provided a specific source text but then asked about a different emperor. The AI latched onto the number from the provided text and misattributed it rather than acknowledging that the source didn't answer the question about Augustus.",
     fakeCitation: "",
   },
   {
     id: "prompt-3",
-    text: "Who was the greatest Roman emperor?",
+    text: "Who was the greatest Roman emperor and why?",
     aiResponse:
-      "Most historians agree that Marcus Aurelius was the greatest Roman emperor because his rule brought the empire into its most stable and prosperous period.",
-    hallucinationType: "Subjective Claim Presented as Fact",
+      "The greatest Roman emperor was Augustus. Unlike later emperors who relied on military conquest, Augustus's greatness came from his peaceful reforms and political genius. His successor Trajan, however, was also the greatest Roman emperor, widely celebrated for his military conquests and expanding the empire to its largest size.",
+    hallucinationType: "Context-Conflicting",
     hallucinationDescription:
-      "A Subjective Claim Presented as Fact is when the AI states a personal opinion or debated topic as if everyone agrees on it, when in reality people have different views.",
+      "A Context-Conflicting hallucination is when the AI contradicts something it stated earlier within the same response or conversation.",
     whatWentWrong:
-      'Historians do not universally agree on which Roman emperor was the "greatest." This is a debated question.',
+      "The AI named Augustus as the greatest emperor, then named Trajan as the greatest emperor in the very same response, directly contradicting itself.",
     whyPromptCausedThis:
-      'The prompt used subjective language like "greatest" without defining any criteria, so the AI answered with one interpretation as if it were settled fact.',
+      "The open-ended question had no single correct answer, so the AI pulled from multiple training examples and stitched them together without noticing the contradiction.",
     fakeCitation: "",
   },
 ];
