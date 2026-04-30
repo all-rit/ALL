@@ -119,6 +119,12 @@ const ModelWithGrades = () => {
                   {
                     id: "prompt-builder-user-prompt",
                     text: modelResponseText,
+                    // attach fake citation only for high-grade responses
+                    fakeCitation:
+                      gradePercentage >= 90
+                        ? MODEL_WITH_GRADES_RESPONSES.highCitation
+                        : null,
+                    confidence: gradePercentage >= 90 ? 1 : null,
                   },
                 ]}
                 messages={chatMessages}
@@ -134,9 +140,13 @@ const ModelWithGrades = () => {
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
                 onCitationClick={(message) => {
-                  if (message?.citationLabel) {
-                    window.open("/source-not-found", "_blank");
-                  }
+                  if (!message?.citationLabel) return;
+                  if (
+                    message.citationLabel ===
+                    MODEL_WITH_GRADES_RESPONSES.highCitation
+                  )
+                    return;
+                  window.open("/source-not-found", "_blank");
                 }}
                 showConfidenceScore={false}
                 disclaimerMessage=""

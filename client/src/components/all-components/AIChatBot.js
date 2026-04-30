@@ -252,7 +252,9 @@ const AIChatBot = ({
                             />
                           ) : (
                             // Display message text
-                            msg.text
+                            <div className="tw-whitespace-pre-line">
+                              {msg.text}
+                            </div>
                           )}
 
                           {/* Show confidence, disclaimer, citations AFTER typing completes */}

@@ -61,7 +61,7 @@ export const STAGE_OPTIONS = {
     },
     {
       id: "sources-4",
-      text: "Use our textbook chapter on Forces and cite one trustworthy educational source.",
+      text: "Use my previously shared link to my textbook on Forces.",
       score: 4,
     },
   ],
