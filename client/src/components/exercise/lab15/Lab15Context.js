@@ -10,6 +10,8 @@ const ExerciseStateContext = createContext({
   setPromptScore: () => {},
   promptText: "",
   setPromptText: () => {},
+  isWorstPromptLoop: false,
+  setIsWorstPromptLoop: () => {},
 });
 
 export const ExerciseStateProvider = ({
@@ -20,6 +22,7 @@ export const ExerciseStateProvider = ({
   const [chatMessages, setChatMessages] = useState([]);
   const [promptScore, setPromptScore] = useState(0);
   const [promptText, setPromptText] = useState("");
+  const [isWorstPromptLoop, setIsWorstPromptLoop] = useState(false);
 
   return (
     <ExerciseStateContext.Provider
@@ -32,6 +35,8 @@ export const ExerciseStateProvider = ({
         setPromptScore,
         promptText,
         setPromptText,
+        isWorstPromptLoop,
+        setIsWorstPromptLoop,
       }}
     >
       {children}
