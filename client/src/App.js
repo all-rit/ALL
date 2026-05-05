@@ -154,7 +154,7 @@ const App = () => {
             <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
             <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
             <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
-            <ExerciseLab15 path="/Lab15/Exercise/*" user={state.main.user} />
+            <ExerciseLab15 path="/Lab15/Exercise/*" user={state.main.user} />s
 
             <Reinforcement
               path={`/Lab${lab}/Reinforcement`}
