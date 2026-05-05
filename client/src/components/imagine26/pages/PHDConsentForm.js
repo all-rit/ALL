@@ -18,13 +18,13 @@ const PHDConsentForm = ({ setConsent }) => {
   };
   return (
     <div className="tw-relative tw-w-full tw-h-full">
-      <ImagineHeader title="PHD Consent Form" />
+      <ImagineHeader title="Activity Consent" />
       {Frame(
         <div className="tw-grid tw-w-[60vw] tw-max-w-prose tw-pt-2">
           <p className="tw-body-text">
-            The purpose of the study is to provide participants with a better
+            The purpose of this study is to provide participants with a better
             understanding of experiential vs expression-based interventions.
-            Your feedback and experiences will assist us in enhancing the
+            Your experiences and feedback will assist us in enhancing the
             educational abilities of instructors at RIT and other institutions.
             We will be asking several questions related to your activity
             experiences. The form should take you between 2-4 minutes to

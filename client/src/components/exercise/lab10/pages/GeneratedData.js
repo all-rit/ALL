@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { twMerge } from "tailwind-merge";
 import _ from "lodash";
 import AIExplanationCodeBlock from "../components/code/AIExplanationCodeBlock";
-import useScroll from "../../../../use-hooks/useScroll";
 import { EXERCISE_PLAYING } from "../../../../constants/lab10";
 import ExerciseService from "../../../../services/lab10/ExerciseService";
 import { navigate } from "@reach/router";
@@ -14,8 +13,6 @@ import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab10";
 
 const GeneratedData = (props) => {
-  useScroll();
-
   /**
    * Update lab state onMount
    */

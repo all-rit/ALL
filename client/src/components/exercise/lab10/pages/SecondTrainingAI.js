@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import useScroll from "../../../../use-hooks/useScroll";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
@@ -14,8 +13,6 @@ import Simulation from "../components/Simulation";
 import { navigate } from "@reach/router";
 
 const SecondTrainingAI = (props) => {
-  useScroll();
-
   /**
    * Update lab state onMount
    */

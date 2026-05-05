@@ -3,13 +3,10 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../../common/Spinner/Spinner";
 import LabService from "../../services/LabService";
 import UserLabService from "../../services/UserLabService";
-import useScroll from "../../use-hooks/useScroll";
 
 const About = (props) => {
   const { user, labID } = props;
   const [aboutText, setAboutText] = useState(null);
-
-  useScroll();
 
   useEffect(() => {
     if (user?.firstname !== null && user !== null) {

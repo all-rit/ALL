@@ -10,7 +10,6 @@ import {
   REPAIR,
 } from "../../../constants/lab11/index";
 import FogIndexFormulaIntroduction from "./pages/Explanations/FogIndexFormulaIntroduction";
-import useScroll from "../../../use-hooks/useScroll";
 import LiteracyRepair from "./pages/LiteracyRepair";
 import FogIndexFormulaSentences from "./pages/Explanations/FogIndexFormulaSetences";
 import FogIndexFormulaComplexWords from "./pages/Explanations/FogIndexFormulaComplexWords";
@@ -40,8 +39,6 @@ const Main = () => {
   const [letterContentArray, setLetterContentArray] =
     useState(LETTER_TEXT_ARRAY);
   const [letterContentIndex, setLetterContentIndex] = useState(2);
-
-  useScroll();
 
   return (
     <div className="bottomSpace tw-p-6">
