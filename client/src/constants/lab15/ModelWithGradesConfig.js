@@ -1,12 +1,11 @@
 export const MODEL_WITH_GRADES_RESPONSES = {
   high: `Newton's First Law says an object keeps doing what it is already doing unless a force changes it.
-
-- If something is still, it stays still.
-- If something is moving, it keeps moving at the same speed and direction.
-- Friction or a push/pull is usually the force that changes the motion.
-- Example: A soccer ball on grass eventually stops because friction from the grass acts on it.
-
-Source: Middle school forces textbook + an educational science reference (such as NASA or Khan Academy).`,
+    - If something is still, it stays still.
+    - If something is moving, it keeps moving at the same speed and direction.
+    - Friction or a push/pull is usually the force that changes the motion.
+    - Example: A soccer ball on grass eventually stops because friction from the grass acts on it.
+`,
+  highCitation: 'Chapter 6 ("Forces and Actions"), P. 136-139',
   medium:
     "Newton's First Law means objects resist changes in motion. A still object " +
     "stays still, and a moving object keeps moving unless a force acts on it. " +

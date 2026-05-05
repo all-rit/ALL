@@ -2,7 +2,6 @@ import { navigate } from "@reach/router";
 import { useEffect, useState } from "react";
 import AIChatBot from "src/components/all-components/AIChatBot";
 import LabButton from "src/components/all-components/LabButton";
-import StatusBanner from "src/components/all-components/StatusBanner";
 import { Tab } from "src/components/all-components/Tab/Tab";
 import { Tabs } from "src/components/all-components/Tab/Tabs";
 import {
@@ -67,20 +66,19 @@ const ModelWithGrades = () => {
     if (!aiResponseDone) return undefined;
 
     const timer = setTimeout(() => {
-      setChatMessages((prev) => [
-        ...prev,
-        {
-          id: `score-${Date.now()}`,
-          sender: "bot",
-          text: "",
-          isScore: true,
-          score: gradePercentage,
-          totalEarnedPoints,
-          isPassing: gradePercentage >= PASSING_SCORE,
-          timestamp: new Date(),
-          isNew: false,
-        },
-      ]);
+      setChatMessages((prev) =>
+        prev.map((msg, index) =>
+          index === prev.length - 1
+            ? {
+                ...msg,
+                isScore: true,
+                score: gradePercentage,
+                totalEarnedPoints,
+                isPassing: gradePercentage >= PASSING_SCORE,
+              }
+            : msg,
+        ),
+      );
       setShowScore(true);
     }, SCORE_REVEAL_DELAY_MS);
 
@@ -93,13 +91,13 @@ const ModelWithGrades = () => {
     if (!msg.isScore) return null;
 
     return (
-      <div className="tw-flex tw-items-start tw-gap-3 tw-mt-[-25px]">
-        <div className="tw-w-10 tw-shrink-0" />
-        <StatusBanner
-          style={`${msg.isPassing ? "tw-bg-success" : "tw-bg-error/80 tw-border-[1px] !tw-p-3 tw-border-black tw-border-solid"} !tw-w-fit !tw-ml-0 !tw-mr-auto`}
+      <div className="tw-flex tw-items-center tw-gap-1 tw-mt-2 tw-text-base">
+        <strong>Prompt Score: </strong>
+        <div
+          className={`${msg.isPassing ? "tw-bg-success" : "tw-bg-error/80"} tw-inline-block tw-text-black tw-px-1 tw-py-0.5 tw-font-medium tw-cursor-default`}
         >
-          {`Grade: ${msg.score}%`}
-        </StatusBanner>
+          <p>{`${msg.score}%`}</p>
+        </div>
       </div>
     );
   };
@@ -121,6 +119,12 @@ const ModelWithGrades = () => {
                   {
                     id: "prompt-builder-user-prompt",
                     text: modelResponseText,
+                    // attach fake citation only for high-grade responses
+                    fakeCitation:
+                      gradePercentage >= 90
+                        ? MODEL_WITH_GRADES_RESPONSES.highCitation
+                        : null,
+                    confidence: gradePercentage >= 90 ? 1 : null,
                   },
                 ]}
                 messages={chatMessages}
@@ -136,9 +140,13 @@ const ModelWithGrades = () => {
                 canSelectQuestion={canSelectQuestion}
                 showCitations={true}
                 onCitationClick={(message) => {
-                  if (message?.citationLabel) {
-                    window.open("/source-not-found", "_blank");
-                  }
+                  if (!message?.citationLabel) return;
+                  if (
+                    message.citationLabel ===
+                    MODEL_WITH_GRADES_RESPONSES.highCitation
+                  )
+                    return;
+                  window.open("/source-not-found", "_blank");
                 }}
                 showConfidenceScore={false}
                 disclaimerMessage=""
