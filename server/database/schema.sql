@@ -4036,7 +4036,8 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       ]
     }
   }',
-  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', '[
+  '[{"title":"Quantum Computers Explained – Limits of Human Technology","link": "https://www.youtube.com/embed/JhHMJCUmq28"},{"title":"Quantum Computing Expert Explains One Concept in 5 Levels of Difficulty","link": "https://www.youtube.com/embed/OWJCfOvochA"},{"title":"Quantum Computers: How They Work and What They Can Do?","link":"https://www.youtube.com/embed/6eJVVCO6GRM"}]', 
+'[
   {
     "question": "What causes a qubit to collapse?",
     "answers": [
@@ -4216,7 +4217,215 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     ],
     "multiChoice": false
   } 
- ]', 3, 'coming soon', 'coming soon', true);
+ ]', 3, 'coming soon', 'coming soon', true),
+ (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/AIHallucinations.png', 'Learn how prompting influences AI Hallucinations', 
+ 'Learn how prompting influences AI Hallucinations', e'[]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez', 'https://all.rit.edu/lab15', null, 
+
+ -- About Section
+  'In this lab, you will learn about the importance of AI hallucinations and how you can reduce them. You will learn what causes AI hallucinations and the GCSE framework, increase your understanding through an interactive module on AI hallucinations, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “Next” to start!', 
+  e'{
+    "piechart":{
+      "header":"Hallucination Rates for Clear vs. Vague Prompts",
+      "caption":["Percentage of hallucinations for complex questions: clear vs. vague prompts"],
+      "data":{
+          "labels": [
+            "Hallucinations that happen regardless", "Hallucinations caused by vague prompts", "No Hallucinations"
+          ],
+          "datasets": [
+            {
+              "label": "Percentage of hallucinations for complex questions: clear vs. vague prompts",
+              "borderColor": "black",
+              "backgroundColor": ["#0d6efd","#ffc107", "#616161"],
+              "data": [18.1, 20.2, 61.7],
+              "borderWidth": "1"
+            }
+          ]
+      }
+    },
+    "description":{
+      "header":"What are AI Hallucinations?",
+      "content":"Hallucination in Large Language Models (LLMs) refers to outputs that appear fluent and coherent but are factually incorrect, logically inconsistent, or entirely fabricated."
+    },
+    "body":[
+      {
+        "header":"What causes AI Hallucinations?",
+        "type":"",
+        "content":["Broadly, hallucinations in LLMs can be divided into two primary sources: Prompting-induced hallucinations, where ill-structured, unspecified, or misleading prompts cause unreliable outputs, and model-internal hallucinations, which are caused by the model’s architecture, the data it was trained on, or inference behavior."]
+      },
+      {
+        "header":"How does prompting influence AI Hallucinations?",
+        "type":"",
+        "content":[
+          "In a study of how prompting influences AI hallucination rates, researchers gave models difficult prompts to answer to maximize the hallucination rate. One set of these prompts was vague, and the others were clear and concise. The clear group had half the hallucination rates of the vague group.",
+          "More context and directions reduce the model’s uncertainty and freedom to generate an improper or irrelevant response. For instance, if you don’t tell a model to admit that it isn’t fully aware of something, it will often just answer with its best guess. By giving models more context and clear instructions, it forces them to stay within tight constraints of how to respond, thus generating more consistent and reliable answers."
+        ]
+      },
+      {
+        "header":"Microsoft GCSE framework:",
+        "type":"",
+        "content":[
+          " 1. Goal: Define what you want the model to do",
+          " 2. Context: Explain the required context surrounding the prompt",
+          " 3. Sources: Give the AI access to the sources you want it to reference",
+          " 4. Expectations: Describe how the final output should look / feel. Specify the desired format, length, style, or tone"
+        ]
+      }
+    ],
+    "footer":{
+        "links":[
+          {
+            "name":"IBM on AI Hallucinations",
+            "link":"https://www.ibm.com/think/topics/ai-hallucinations"
+          },
+          {
+            "name":"Importance of Prompt Engineering in Preventing AI Hallucinations",
+            "link":"https://alfapeople.com/importance-of-prompt-engineering-preventing-ai-hallucinations"
+          },
+          {
+            "name":"Prompting’s effect on AI Hallucinations",
+            "link":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12518350/#abstract1"
+          },
+          {
+            "name": "Is Artificial Intelligence Hallucinating? (Taxonification of Hallucination Types)",
+            "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11681264/"
+          }
+        ]
+      }
+  }',
+  '[
+    {"title":"What actually is an AI hallucination??? (in 10 min. or less)","link": "https://www.youtube.com/embed/d-pvxa042MM"},
+    {"title":"Ai Hallucinations Explained in Non Nerd English","link": "https://www.youtube.com/embed/RUSbumBu7Ks"},
+    {"title":"The Step-by-Step master class on writing better prompts than 99% of people","link": "https://www.youtube.com/embed/FxP1O6Q07Go"},
+    {"title":"The Secret to Perfect Prompts (Without Prompt Engineering)","link": "https://www.youtube.com/embed/WPGVKxVrhLI"}
+  ]', 
+'[
+  {
+    "question": "What happens when an AI model is not trained on enough data regarding a specific topic?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "The AI will try it’s best based on context and make a response that can be wrong.",
+        "explanation": "When an AI model is not trained on enough data regarding a specific topic, it will try to make the best response it can based on the context of the prompt. However, this can lead to hallucinations where the model generates incorrect or fabricated information."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "By default, it tells you it does not know about that topic and stops answering."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "It starts training itself on new data about that topic."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "It will reply with 100% correctness."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of these does the GCSE framework not include?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Expectations"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Specifics",
+        "explanation": "The GCSE framework includes goal, context, sources, and expectations, not specifics."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Context"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Goal"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "True or False: An AI model makes better responses and decisions when given clear instructions.",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "True",
+        "explanation": "When given clear instructions, such as using the GCSE framework, an AI model can generate more accurate and relevant responses."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "False"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "AI models hallucinate when they are not trained on enough data about the topic that was asked of them.",
+        "explanation": "When an AI model is not trained on enough data regarding a specific topic, it will try to make the best response it can based on the context of the prompt. However, this can lead to hallucinations where the model generates incorrect or fabricated information."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "AI models hallucinate because they are used too much and do not have enough resources to run."
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "The GCSE prompting method will create better and more accurate AI model responses.",
+        "explanation": "The GCSE framework includes goal, context, sources, and expectations, which can help guide the AI model to generate more accurate and relevant responses."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Most AI models do not do well with a prompt that is too long."
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "Other than poor prompting practices, what else can influence an AI model to have hallucinations?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "The model wanting to have vision and telling the user about their hallucinations."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "The model having too much power and getting confused with itself."
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "The model’s structure including architecture, the quality of data its given.",
+        "explanation": "Model-internal hallucinations can be caused by the model’s architecture, the data it was trained on, or inference behavior."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "The model is trying to protect it’s privacy and being vague."
+      }
+    ],
+    "multiChoice": false
+  }
+ ]', 1, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
