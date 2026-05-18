@@ -9,10 +9,8 @@ import {
   MIN_USER_ATTEMPTS,
 } from "../../../../constants/lab10";
 import { navigate } from "@reach/router";
-import useScroll from "../../../../use-hooks/useScroll";
 
 const BuildingAI = (props) => {
-  useScroll();
   const [limitReached, setLimitReach] = useState(false);
 
   /**

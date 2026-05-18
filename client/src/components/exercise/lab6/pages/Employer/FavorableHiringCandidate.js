@@ -3,7 +3,6 @@ import { navigate } from "@reach/router";
 import LongHorizontalLine from "../../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "../../components/Recomendation";
 import Decision from "../../components/Decision";
-import useScroll from "../../../../../use-hooks/useScroll";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 
@@ -14,7 +13,6 @@ const FavorableHiringCandidate = () => {
     setNumInput(numInput + 1);
   };
 
-  useScroll();
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
   }, []);

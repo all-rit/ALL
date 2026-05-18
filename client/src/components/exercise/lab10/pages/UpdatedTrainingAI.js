@@ -10,12 +10,9 @@ import {
   SIMULATION_IDLE,
   SIMULATION_STARTED,
 } from "../../../../constants/lab10";
-import useScroll from "../../../../use-hooks/useScroll";
 import { navigate } from "@reach/router";
 
 const UpdatedTrainingAI = (props) => {
-  useScroll();
-
   /**
    * Update lab state onMount
    */

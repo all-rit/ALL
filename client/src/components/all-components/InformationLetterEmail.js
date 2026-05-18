@@ -2,7 +2,6 @@ import React from "react";
 import Letter from "./Letter";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import useScroll from "../../use-hooks/useScroll";
 import { useContext } from "react";
 import ExerciseStateContext from "../exercise/lab11/Lab11Context";
 import { fogIndexCalculation } from "../exercise/lab11/helpers/FogIndexCalculation";
@@ -40,8 +39,6 @@ const InformationLetterEmail = (props) => {
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
   }, []);
-
-  useScroll();
 
   const {
     letterContent,

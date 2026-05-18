@@ -19,7 +19,6 @@ const sequelize = new Sequelize(URI, {
   logging: process.env.TESTING === 'test' ? false : console.log,
 });
 const db = {};
-
 sequelize
   .authenticate()
   .then(() => {
@@ -33,8 +32,9 @@ const sortDir = (maniDir) => {
   const folders = [];
   const CheckFile = (filePath) => fs.statSync(filePath).isFile();
   const sortPath = (dir) => {
-    fs.readdirSync(dir)
-      .filter((file) => file.indexOf('.') !== 0 && file !== 'index.js')
+    fs
+      .readdirSync(dir)
+      .filter((file) => (file.indexOf('.') !== 0) && (file !== 'index.js'))
       .forEach((res) => {
         const filePath = path.join(dir, res);
         if (CheckFile(filePath)) {

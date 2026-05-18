@@ -1,13 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
-import useScroll from "../../../../use-hooks/useScroll";
 import MainInstructions from "./mainInstructions";
 import LabButton from "../../../all-components/LabButton";
 
 const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
-  useScroll();
-
   const closePage = () => {
     endFirstExercise();
   };

@@ -98,7 +98,10 @@ const LabGeneration = (props) => {
           {labids.map((lab, index) => {
             const idx = lab.id - 1;
             return (
-              <div key={idx} className="tw-m-1">
+              <div
+                key={idx}
+                className="tw-m-1 tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-items-center"
+              >
                 {renderLabData(
                   actions,
                   labInformation[idx],

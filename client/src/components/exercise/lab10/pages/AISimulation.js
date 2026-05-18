@@ -11,11 +11,8 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
-import useScroll from "../../../../use-hooks/useScroll";
 
 const AISimulation = (props) => {
-  useScroll();
-
   /**
    * Update lab state onMount
    */
