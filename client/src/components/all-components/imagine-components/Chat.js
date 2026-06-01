@@ -43,10 +43,7 @@ export const Chat = (props) => {
 
   return (
     <>
-      <div
-        className="chat-container"
-        style={{ width: `${width}px`, height: `${height}px` }}
-      >
+      <div className={`chat-container tw-w-[${width}] tw-h-[${height}]`}>
         <div className="inner-chat-container">
           <div className="messages">
             <div className="teammateMessagesContainer">
@@ -83,29 +80,34 @@ export const Chat = (props) => {
               </div>
             )}
           </div>
-          <form onSubmit={submit} className="input-form">
-            <div className="input-container">
-              <input
-                type="text"
-                className="chat-input"
-                value={inputValue}
-                onChange={onHandle}
-                placeholder="Respond to your teammate"
-                disabled={isDisabled}
-              />
-              <button
-                disabled={isDisabled}
-                type="submit"
-                className="send-button"
-              >
-                <img
-                  className="send-icon"
-                  src="/img/imagine_images/send.png"
-                  alt="send"
+          {!isDisabled ? (
+            <form onSubmit={submit} className="input-form">
+              <div className="input-container">
+                <input
+                  type="text"
+                  className="chat-input"
+                  value={inputValue}
+                  onChange={onHandle}
+                  placeholder="Respond to your teammate"
+                  disabled={isDisabled}
+                  maxLength={100}
                 />
-              </button>
-            </div>
-          </form>
+                <button
+                  disabled={isDisabled}
+                  type="submit"
+                  className="send-button"
+                >
+                  <img
+                    className="send-icon"
+                    src="/img/imagine_images/send.png"
+                    alt="send"
+                  />
+                </button>
+              </div>
+            </form>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

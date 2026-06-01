@@ -23,12 +23,12 @@ import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
+import { default as ExerciseLab15 } from "./components/exercise/lab15/Main";
 
 import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import MainFooter from "./components/footer/mainFooter";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 /** Individual Page Components **/
@@ -43,6 +43,7 @@ import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
+import { default as Imagine2026 } from "./components/imagine26/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -52,6 +53,9 @@ import { stateChange } from "./helpers/Redirect";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 import { Spinner } from "reactstrap";
+import ScrollWrapper from "./helpers/ScrollWrapper";
+import MobileFooter from "./components/footer/mobileFooter";
+import MainFooter from "./components/footer/mainFooter";
 
 const LabWindow = lazy(
   () => import("./components/all-components/Lab/LabWindow"),
@@ -118,54 +122,60 @@ const App = () => {
     return (
       <div className={"tw-h-full tw-w-full"}>
         <Router basepath={process.env.PUBLIC_URL}>
-          <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-          <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
-          <Reading
-            path={`/Lab${lab}/Reading`}
-            user={state.main.user}
-            labID={lab}
-            isImagine={isImagine}
-          />
-          <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
-          <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-          <ExerciseLab2
-            path="/Lab2/Exercise"
-            user={state.main.user}
-            isImagine={isImagine}
-          />
-          <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-          <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-          <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-          <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
-          <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
-          <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
-          <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
-          <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
-          <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-          <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
-          <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
-          <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
-
-          <Reinforcement
-            path={`/Lab${lab}/Reinforcement`}
-            user={state.main.user}
-            labID={lab}
-          />
-          <Quiz
-            path={`/Lab${lab}/Quiz`}
-            labId={lab}
-            user={state.main.user}
-            isFinalQuiz={true}
-            hideCertificate={false}
-            quizCompleted={quizCompleted}
-            setQuizCompleted={setQuizCompleted}
-            selectedAnswers={selectedAnswers}
-            setSelectedAnswers={setSelectedAnswers}
-            questions={questions}
-            setQuestions={setQuestions}
-            result={result}
-            setResult={setResult}
-          />
+          <ScrollWrapper path="/">
+            <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
+            <About
+              path={`/Lab${lab}/About`}
+              user={state.main.user}
+              labID={lab}
+            />
+            <Reading
+              path={`/Lab${lab}/Reading`}
+              user={state.main.user}
+              labID={lab}
+              isImagine={isImagine}
+            />
+            <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
+            <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+            <ExerciseLab2
+              path="/Lab2/Exercise"
+              user={state.main.user}
+              isImagine={isImagine}
+            />
+            <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+            <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+            <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+            <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+            <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+            <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
+            <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
+            <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
+            <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
+            <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
+            <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
+            <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
+            <ExerciseLab15 path="/Lab15/Exercise/*" user={state.main.user} />
+            <Reinforcement
+              path={`/Lab${lab}/Reinforcement`}
+              user={state.main.user}
+              labID={lab}
+            />
+            <Quiz
+              path={`/Lab${lab}/Quiz`}
+              labId={lab}
+              user={state.main.user}
+              isFinalQuiz={true}
+              hideCertificate={false}
+              quizCompleted={quizCompleted}
+              setQuizCompleted={setQuizCompleted}
+              selectedAnswers={selectedAnswers}
+              setSelectedAnswers={setSelectedAnswers}
+              questions={questions}
+              setQuestions={setQuestions}
+              result={result}
+              setResult={setResult}
+            />
+          </ScrollWrapper>
         </Router>
       </div>
     );
@@ -174,26 +184,37 @@ const App = () => {
   const renderPages = () => {
     return (
       <Router basepath={process.env.PUBLIC_URL}>
-        <AboutUsPage path={"/about-us"} />
-        <LandingPage path="/" />
-        <SiteMap path="/SiteMap" />
-        <Profile path="/Profile" user={state.main.user} />
-        <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
-        <EducatorResources path={"/EducatorResources"} user={state.main.user} />
-        <Error default />
+        <ScrollWrapper path="/">
+          <AboutUsPage path={"/about-us"} />
+          <LandingPage path="/" />
+          <SiteMap path="/SiteMap" />
+          <Profile path="/Profile" user={state.main.user} />
+          <LabsPage path={"/Labs"} user={state.main.user} actions={actions} />
+          <EducatorResources
+            path={"/EducatorResources"}
+            user={state.main.user}
+          />
+          <Error default />
 
-        <Imagine2023
-          path={"/Imagine2023/*"}
-          user={state.main.user}
-          isImagine={isImagine}
-          actions={actions}
-        />
+          <Imagine2023
+            path={"/Imagine2023/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+            actions={actions}
+          />
 
-        <Imagine2025
-          path={"/Imagine2025/*"}
-          user={state.main.user}
-          isImagine={isImagine}
-        />
+          <Imagine2025
+            path={"/Imagine2025/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+          />
+
+          <Imagine2026
+            path={"/Imagine2026/*"}
+            user={state.main.user}
+            isImagine={isImagine}
+          />
+        </ScrollWrapper>
       </Router>
     );
   };
@@ -231,7 +252,12 @@ const App = () => {
                 )}
               </div>
             </div>
-            {!labInProgress && !isImagine && <MainFooter />}
+            {!labInProgress && !isImagine && (
+              <>
+                <MainFooter />
+                <MobileFooter />
+              </>
+            )}
             <ALLSnackbar />
           </Suspense>
         </div>

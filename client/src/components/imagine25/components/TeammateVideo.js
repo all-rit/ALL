@@ -39,7 +39,7 @@ const TeammateVideo = (props) => {
           25,
         );
         const groupVideos = groupVideoPaths[teammateId] || groupVideoPaths[0];
-        setVideoSrc(groupVideos[group] || groupVideos.A);
+        setVideoSrc(groupVideos[group] || groupVideos["control"]);
       } else {
         setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
       }
@@ -49,51 +49,34 @@ const TeammateVideo = (props) => {
     updateVideoSource();
   }, [teammateId, delayedMessageShown]);
 
-  const buttonSize = "tw-w-16 tw-mx-auto";
-
   return (
-    <div className="tw-absolute tw-top-[3.4%] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-h-[575px]">
+    <div className="tw-w-full tw-h-full">
       {!videoEnded ? (
         <video
           src={videoSrc}
           autoPlay
           muted
           onEnded={() => setVideoEnded(true)}
-          className={`tw-shadow-lg tw-rounded-lg ${
+          className={`tw-shadow-lg tw-rounded-lg tw-w-full tw-h-full ${
             delayedMessageShown
-              ? "tw-w-80 tw-h-44 tw-border-solid tw-border-[#FF0000] tw-border-[3px]"
-              : "tw-w-64 tw-h-36"
+              ? "tw-border-solid tw-border-[#FF0000] tw-border-[3px]"
+              : ""
           }`}
         />
       ) : (
-        <div className="tw-w-64 tw-h-36 tw-bg-black tw-rounded-lg tw-shadow-lg"></div>
+        <div className="tw-w-full tw-h-full tw-bg-black tw-rounded-lg tw-shadow-lg tw-flex tw-justify-center tw-items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="tw-fill-white tw-w-8 tw-h-8 tw-mr-3"
+            viewBox="0 0 576 512"
+          >
+            <path d="M41-24.9c-9.4-9.4-24.6-9.4-33.9 0S-2.3-.3 7 9.1l528 528c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-153-153 0-222.2c0-35.3-28.7-64-64-64L129.8 64 41-24.9zM32 128l0 256c0 35.3 28.7 64 64 64l256 0c7.8 0 15.3-1.4 22.2-4L36 105.8c-2.6 6.9-4 14.4-4 22.2zM464 336l73.5 58.8c4.2 3.4 9.4 5.2 14.8 5.2 13.1 0 23.7-10.6 23.7-23.7l0-240.6c0-13.1-10.6-23.7-23.7-23.7-5.4 0-10.6 1.8-14.8 5.2L464 176 464 336z" />
+          </svg>
+          <p className="tw-font-poppins tw-text-white tw-text-md">
+            Teammate has disconnected
+          </p>
+        </div>
       )}
-      <p>
-        Teammate live from: <b>Buffalo, NY</b>
-      </p>
-      <p className="tw-col-span-2 tw-text-center tw-font-bold">
-        <br />
-        (Keyboard)
-      </p>
-      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
-        <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
-        <img
-          className={
-            "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
-            buttonSize
-          }
-          src="/img/imagine_game_controls/ArrowKey.png"
-        />
-        <img
-          className={buttonSize}
-          src="/img/imagine_game_controls/ArrowKey.png"
-        />
-        <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
-        <img
-          className="tw-col-span-2 tw-w-32 tw-mx-auto"
-          src="/img/imagine_game_controls/SpaceBar.png"
-        />
-      </div>
     </div>
   );
 };
