@@ -3954,7 +3954,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "LO2: Interact with a simple quantum simulation to see how adding qubits improves factoring (Application)",
     "LO3: Use the simulation to factor a small number and decrypt an encrypted message (Application)",
     "LO4: Explain why increasing qubit count helps quantum algorithms break encryption faster (Analysis)"
-  ]', 'Owen Luts, Vivian Hernandez, William Herrick', 'https://all.rit.edu/Lab14/', null,
+  ]', 'Owen Luts, Vivian Hernandez, William Herrick, Christine Espeleta', 'https://all.rit.edu/Lab14/', null,
   -- About Section
   'In this lab, you will learn about the fundamentals of quantum computing and how it differs from classical computing. You will practice applying these concepts through interactive exercises, including encrypting and decrypting messages with the Caesar cipher to compare classical and quantum approaches. Click “Next” to start!', e'{
   "description":"",
@@ -4218,15 +4218,15 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   } 
  ]', 3, 'coming soon', 'coming soon', true),
- (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/AIHallucinations.png', 'Learn how prompting influences AI Hallucinations', 
- 'Learn how prompting influences AI Hallucinations', e'[]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez', 'https://all.rit.edu/lab15', null, 
+ (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/AIHallucinations.png', 'Learn how prompting influences AI Hallucinations.', 
+ 'This lab introduces the concepts of AI hallucinations, why AI models hallucinate, the effects of these hallucinations, and how better prompting can influence the frequency of these hallucinations.', e'["LO1: Define and Identify what AI Hallucinations are", "LO2: Understand how prompting impacts response quality and the possibility of hallucinations", "LO3: Apply effective prompting strategies", "LO4: Develop more critical thinking and evaluation skills in relation to Generative AI", "LO5: Demonstrate an improvement in AI literacy and understanding of generative AI"]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://all.rit.edu/lab15', null, 
 
  -- About Section
   'In this lab, you will learn about the importance of AI hallucinations and how you can reduce them. You will learn what causes AI hallucinations and the GCSE framework, increase your understanding through an interactive module on AI hallucinations, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “Next” to start!', 
   e'{
     "piechart":{
       "header":"Hallucination Rates for Clear vs. Vague Prompts",
-      "caption":["Percentage of hallucinations for complex questions: clear vs. vague prompts"],
+      "caption":["In a study of how prompting influences AI hallucination rates, researchers gave models difficult prompts to answer to maximize the hallucination rate. One set of these prompts were vague, and the others were clear and concise. The clear group had half the hallucination rates of the vague group."],
       "data":{
           "labels": [
             "Hallucinations that happen regardless", "Hallucinations caused by vague prompts", "No Hallucinations"
@@ -4242,11 +4242,13 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
           ]
       }
     },
-    "description":{
-      "header":"What are AI Hallucinations?",
-      "content":"Hallucination in Large Language Models (LLMs) refers to outputs that appear fluent and coherent but are factually incorrect, logically inconsistent, or entirely fabricated."
-    },
+    "description":"",
     "body":[
+      {
+        "header":"What are AI Hallucinations?",
+        "type":"",
+        "content":["Hallucination in Large Language Models (LLMs) refers to outputs that appear fluent and coherent but are factually incorrect, logically inconsistent, or entirely fabricated."]
+      },
       {
         "header":"What causes AI Hallucinations?",
         "type":"",
@@ -4425,7 +4427,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     ],
     "multiChoice": false
   }
- ]', 1, 'coming soon', 'coming soon', true);
+ ]', 2, 'coming soon', 'coming soon', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
