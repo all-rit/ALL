@@ -42,7 +42,7 @@
     "react-ga": "^3.3.1",
     "react-player": "^2.15.1",
     "react-redux": "^9.1.0",
-    "react-router": "^6.22.3",
+    "react-router": "^6.30.4",
     "react-scripts": "^5.0.1",
     "react-social-icons": "^6.15.0",
     "react-spinners": "^0.13.8",
