@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3/index";
 import UserLabService from "../../../../../services/UserLabService";
 class AdvancedExerciseConclusion extends Component {
+<<<<<<< HEAD
    constructor(props) {
     super(props);
 
@@ -19,6 +20,11 @@ class AdvancedExerciseConclusion extends Component {
     navigate("/Lab3/Reinforcement");
   }
 
+=======
+  handleSubmit() {
+    navigate("/Lab3/Exercise");
+  }
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
   componentDidMount() {
     const { actions, user } = this.props;
     actions.updateState(EXERCISE_IDLE);
@@ -39,6 +45,7 @@ class AdvancedExerciseConclusion extends Component {
         <br />
         <p className={"tw-body-text tw-font-medium tw-text-left"}>
           Click the <strong> Return to Exercise Start </strong> button below to
+<<<<<<< HEAD
           restart the exercise, or click the <strong> Next</strong> button on the right to continue to the Reinforcement section.
         </p>
         <br />
@@ -62,6 +69,21 @@ class AdvancedExerciseConclusion extends Component {
     );
     
     
+=======
+          restart the exercise, or click the <strong> Next</strong> button in
+          the bottom right.
+        </p>
+        <br />
+        <button
+          className="btn tw-shadow-md tw-bg-secondary-gray tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+          onClick={this.handleSubmit}
+          key="start"
+        >
+          Return to Exercise Start
+        </button>
+      </div>
+    );
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
   }
 }
 

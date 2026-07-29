@@ -21,8 +21,13 @@ class ViewFix extends Component {
   static navOnClick() {
     const name = "ViewFix";
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
+<<<<<<< HEAD
     navigate("/Lab3/Exercise/AdvancedExerciseConclusion");  
     }
+=======
+    navigate("/Lab3/Exercise/ProblemFix");
+  }
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
 
   componentDidMount() {
     const { actions } = this.props;
