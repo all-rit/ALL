@@ -5,6 +5,7 @@ import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3/index";
 import UserLabService from "../../../../../services/UserLabService";
 class AdvancedExerciseConclusion extends Component {
 <<<<<<< HEAD
+<<<<<<< HEAD
    constructor(props) {
     super(props);
 
@@ -20,6 +21,11 @@ class AdvancedExerciseConclusion extends Component {
     navigate("/Lab3/Reinforcement");
   }
 
+=======
+  handleSubmit() {
+    navigate("/Lab3/Exercise");
+  }
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
 =======
   handleSubmit() {
     navigate("/Lab3/Exercise");
@@ -46,6 +52,7 @@ class AdvancedExerciseConclusion extends Component {
         <p className={"tw-body-text tw-font-medium tw-text-left"}>
           Click the <strong> Return to Exercise Start </strong> button below to
 <<<<<<< HEAD
+<<<<<<< HEAD
           restart the exercise, or click the <strong> Next</strong> button on the right to continue to the Reinforcement section.
         </p>
         <br />
@@ -70,6 +77,8 @@ class AdvancedExerciseConclusion extends Component {
     
     
 =======
+=======
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
           restart the exercise, or click the <strong> Next</strong> button in
           the bottom right.
         </p>
@@ -83,6 +92,9 @@ class AdvancedExerciseConclusion extends Component {
         </button>
       </div>
     );
+<<<<<<< HEAD
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
+=======
 >>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
   }
 }

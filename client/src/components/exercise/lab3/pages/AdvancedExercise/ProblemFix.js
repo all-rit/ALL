@@ -264,7 +264,11 @@ class ProblemFix extends Component {
               <input
                 className={
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "tw-bg-black tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
+=======
+                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
 =======
                   "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
 >>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
@@ -288,7 +292,11 @@ class ProblemFix extends Component {
               <input
                 className={
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "tw-bg-secondary-black tw-rounded-md tw-text-primary-yellow"
+=======
+                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
 =======
                   "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
 >>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
