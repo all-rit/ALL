@@ -263,7 +263,7 @@ class ProblemFix extends Component {
               <HTMLTag>&#60;button aria-label="</HTMLTag>
               <input
                 className={
-                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
+                  "tw-bg-black tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
                 }
                 type={"text"}
                 value={this.state.textValue}

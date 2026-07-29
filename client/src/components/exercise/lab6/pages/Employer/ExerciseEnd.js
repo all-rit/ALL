@@ -16,8 +16,18 @@ const ExerciseEnd = () => {
   };
 
   const handleRepair = () => {
+<<<<<<< HEAD
+<<<<<<< HEAD
+  actions.updateUserState(EXERCISE_PLAYING);
+  navigate("/Lab6/Exercise/AIRepair");
+=======
     actions.updateState(EXERCISE_PLAYING);
     navigate("/Lab6/Exercise/AIRepair");
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
+=======
+    actions.updateState(EXERCISE_PLAYING);
+    navigate("/Lab6/Exercise/AIRepair");
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
   };
 
   return (

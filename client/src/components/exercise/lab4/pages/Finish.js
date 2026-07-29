@@ -12,6 +12,17 @@ const Finish = () => {
     navigate("/Lab4/Exercise");
   };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  const handleNext = () => {
+  navigate("/Lab4/Reinforcement");
+  };
+
+
+=======
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
+=======
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
   useEffect(() => {
     UserLabService.complete_exercise(LAB_ID);
     if (state.main.user?.firstname !== null && state.main.user !== null) {
@@ -33,6 +44,31 @@ const Finish = () => {
         the reinforcement section scroll down and click the{" "}
         <strong>Next</strong> button.
       </p>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      
+      
+      
+    <div className="tw-flex tw-justify-center tw-gap-x-3 tw-my-6">
+      <button
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        onClick={handleSubmit}
+        key="start"
+    >
+    Return to Exercise Start
+    </button>
+
+      <button
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        onClick={handleNext}
+        key="next"
+    >
+    Next
+    </button>
+    </div>
+=======
+=======
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
       <button
         className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase tw-my-6"
         onClick={handleSubmit}
@@ -40,6 +76,10 @@ const Finish = () => {
       >
         Return to Exercise Start
       </button>
+<<<<<<< HEAD
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
+=======
+>>>>>>> a1f93297d5b58032f71a700b729806cd88f14691
     </div>
   );
 };
