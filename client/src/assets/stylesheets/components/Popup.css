@@ -1,0 +1,19 @@
+.popup {
+  position: relative;
+  margin-bottom: 10px;
+  z-index: 0;
+}
+
+.popup__content {
+  margin: 0 auto;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: #99f580;
+}
+
+.popup__error {
+  background-color: #f58080;
+}
+/*# sourceMappingURL=Popup.css.map */

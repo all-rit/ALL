@@ -1,0 +1,48 @@
+@tailwind components;
+@tailwind utilities;
+
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+@import "vendors/reset";
+
+@import "base/base";
+@import "base/helpers";
+
+@import "components/App";
+@import "components/profilePage/profileHeader";
+@import "components/profilePage/profile";
+@import "components/profilePage/groupAssignedLabs";
+@import "components/profilePage/instructingGroups";
+
+@import "components/CodeEditor";
+@import "components/Instructions";
+@import "components/Playthrough";
+@import "components/Popup";
+@import "components/SoundOption";
+
+@import "components/Exercise";
+@import "components/Box";
+@import "components/HintBox";
+@import "components/Results";
+@import "components/Stats";
+@import "components/Form";
+@import "components/KnowledgeTest";
+
+@import "pages/Supplementary";
+@import "pages/CaseStudy";
+@import "pages/quiz";
+@import "pages/CognitiveInformation";
+@import "pages/Guidance";
+
+@font-face {
+  font-family: "Calibri";
+  src:
+    url("../fonts/calibri.ttf") format("woff2"),
+    url("../fonts/calibri.ttf") format("woff"),
+    url("../fonts/calibri.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,72 @@
+.results {
+  padding: 2rem 0;
+  padding-top: 0;
+
+  &__title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__sentence {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.result {
+  //margin: 0 auto;
+  display: grid;
+  //grid-template-columns: 2fr 1fr;
+  //margin-bottom: 0.75rem;
+  //max-width: 300px;
+  font-size: 1.25rem;
+  text-align: center;
+
+  &__category {
+    font-weight: bold;
+  }
+
+  .column-width {
+    width: 33%;
+  }
+
+  /* Result Table */
+  #title {
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+  }
+
+  #quizResults {
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #quizResults td,
+  #quizResults th {
+    font-size: 16px;
+    padding: 10px;
+    border-bottom: #ebebeb thin solid;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+  }
+
+  #quizResults th {
+    text-align: center;
+    color: #ffffff;
+    background-color: rgb(32, 45, 187);
+  }
+}
+
+.resultTopLeft {
+  border-top-left-radius: 24px;
+}
+
+.resultTopRight {
+  border-top-right-radius: 24px !important;
+  border-top: none;
+}

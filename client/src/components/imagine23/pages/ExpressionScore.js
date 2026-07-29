@@ -1,0 +1,34 @@
+import React from "react";
+import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
+
+const ExpressionScore = (props) => {
+  const handleNext = () => {
+    navigate("/Imagine2023/Reading");
+  };
+
+  return (
+    <div className="container bottomSpace center-div">
+      <h2 className="playthrough__title">Expression Empathy Building: Score</h2>
+      <div className="playthrough__sentence__imagine">
+        Good Job! You detected the subjects discomfort {props.count} times!
+      </div>
+      <div className="playthrough__sentence__imagine">
+        Remember, empathy is important and a keystone of proper development.
+      </div>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleNext}
+        key="start"
+      >
+        Continue to Reading
+      </button>
+    </div>
+  );
+};
+
+ExpressionScore.propTypes = {
+  count: PropTypes.number,
+};
+
+export default ExpressionScore;

@@ -1,0 +1,10 @@
+.sameLine {
+  display: flex;
+  justify-content: space-around;
+}
+
+.scoreTable {
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

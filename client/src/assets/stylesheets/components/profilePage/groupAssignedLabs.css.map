@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACZ,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,cAAc,EAAE,GAAG;CAcpB;;AAZE,AAAD,0BAAa,CAAA;EACX,aAAa,EAAE,MAAM;EACrB,KAAK,EAAE,UAAU;EACjB,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,MAAM;EAElB,MAAM,EAAE,iBAAiB;EACzB,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,SAAS;CAEnB",
+    "sources": [
+        "groupAssignedLabs.scss"
+    ],
+    "names": [],
+    "file": "groupAssignedLabs.css"
+}

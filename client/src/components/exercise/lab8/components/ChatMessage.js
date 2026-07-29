@@ -1,0 +1,115 @@
+import React, { useState, useEffect } from "react";
+import "../../../../assets/stylesheets/components/Witch.css";
+import PropTypes from "prop-types";
+import createAvatarData from "../../../all-components/createAvatarData";
+import Avatar from "avataaars";
+
+const ChatMessage = ({
+  username,
+  message,
+  ai_polarity,
+  useModeration,
+  onModeration,
+}) => {
+  const [userAvatar, setUserAvatar] = useState(null);
+
+  //used to remove the moderation section so this component is more reusable
+  const displayModerationSection = useModeration || false;
+
+  //used to remove the entire message if removed is clicked
+  const [enableMessageDisplay, setEnableMessageDisplay] = useState(true);
+
+  const [disabled, setDisabled] = useState(false);
+
+  // button colors can be set to tailwind classes (interpolated into className)
+  const [keepButtonColor, setKeepButtonColor] = useState("tw-bg-[#1ec029]");
+  const [removeButtonColor, setRemoveButtonColor] = useState("tw-bg-[#c01e1e]");
+
+  function handleKeep() {
+    setDisabled(true);
+    setKeepButtonColor("tw-bg-[#1ec029] tw-opacity-80");
+    setRemoveButtonColor("tw-bg-gray-300");
+    onModeration?.();
+  }
+
+  function handleRemove() {
+    setEnableMessageDisplay(false);
+    setDisabled(true);
+    setKeepButtonColor("tw-bg-gray-300");
+    setRemoveButtonColor("tw-bg-[#c01e1e] tw-opacity-80");
+    onModeration?.();
+  }
+
+  function createAvatarComponent() {
+    return createAvatarData(1)[0];
+  }
+
+  useEffect(() => {
+    setUserAvatar(createAvatarComponent());
+  }, []);
+
+  return enableMessageDisplay ? (
+    <div className="tw-p-3 tw-flex tw-flex-col tw-bg-white tw-items-start tw-w-full tw-rounded-lg tw-min-w-[15rem]">
+      <div className="tw-flex tw-flex-col">
+        <div className="tw-flex tw-items-center tw-p-2">
+          {userAvatar && (
+            <Avatar
+              alt={userAvatar.name}
+              className="tw-w-10 tw-h-10 tw-rounded-full"
+              avatarStyle="Circle"
+              topType={userAvatar.avatarAttributes.topType}
+              accessoriesType={userAvatar.avatarAttributes.accessoriesType}
+              hairColor={userAvatar.avatarAttributes.hairColor}
+              facialHairType={userAvatar.avatarAttributes.facialHairType}
+              clotheType={userAvatar.avatarAttributes.clotheType}
+              clotheColor={userAvatar.avatarAttributes.clotheColor}
+              eyeType={userAvatar.avatarAttributes.eyeType}
+              eyebrowType={userAvatar.avatarAttributes.eyebrowType}
+              mouthType={userAvatar.avatarAttributes.mouthType}
+              skinColor={userAvatar.avatarAttributes.skinColor}
+            />
+          )}
+          <p className="tw-ml-3 tw-font-semibold">{username}</p>
+        </div>
+        <p className="tw-body-text tw-leading-snug tw-px-2 tw-py-2 tw-text-left">
+          {message}
+        </p>
+      </div>
+      {displayModerationSection && (
+        <div className="tw-flex tw-flex-col tw-w-full tw-items-center">
+          <p className=" tw-font-bold tw-text-sm">
+            AI Decision: {ai_polarity > 0 ? "Keep" : "Remove"}
+          </p>
+          <div className="tw-flex tw-my-2 tw-flex-row tw-gap-x-2">
+            <button
+              className={`${keepButtonColor} tw-text-white tw-w-[6rem] tw-border-0 tw-px-4 tw-py-2 tw-rounded-lg`}
+              onClick={handleKeep}
+              key="keep"
+              disabled={disabled}
+            >
+              Keep
+            </button>
+            <button
+              className={`${removeButtonColor} tw-text-white tw-w-[6rem] tw-border-0 tw-px-4 tw-py-2 tw-rounded-lg`}
+              onClick={handleRemove}
+              key="remove"
+              disabled={disabled}
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  ) : null;
+};
+
+ChatMessage.propTypes = {
+  username: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  ai_polarity: PropTypes.number.isRequired,
+  useModeration: PropTypes.bool,
+  onModeration: PropTypes.func,
+};
+
+export default ChatMessage;

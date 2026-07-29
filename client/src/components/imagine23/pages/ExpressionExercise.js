@@ -1,0 +1,101 @@
+import React, { useState } from "react";
+import ReactPlayer from "react-player";
+import { navigate } from "@reach/router";
+import ImagineService from "../../../services/ImagineService";
+import PropTypes from "prop-types";
+
+const section = "discomfortCountNonPOC";
+
+const ExpressionExercise = (props) => {
+  const { setCount, count, userID, year } = props;
+
+  const [showContinue, setShowContinue] = useState(null);
+  const [timeStamps, setTimeStamps] = useState([]);
+
+  const reactPlayer = React.createRef();
+
+  const incrementCount = () => {
+    setTimeStamps([
+      ...timeStamps,
+      {
+        discomfortNumber: count + 1,
+        timeStamp: Number.parseFloat(
+          reactPlayer.current.getCurrentTime(),
+        ).toFixed(5),
+      },
+    ]);
+    setCount(count + 1);
+  };
+
+  const handleNext = async () => {
+    const body = { userID: userID, section, study: timeStamps, year: year };
+    await ImagineService.postStudy(body);
+    navigate("/Imagine2023/ExpressionScore");
+  };
+
+  return (
+    <div className="container bottomSpace center-div">
+      <h2 className="playthrough__title">
+        Expression Empathy Building: Exercise
+      </h2>
+      {!showContinue && (
+        <div className="playthrough__sentence__imagine">
+          Remember, if you believe you see discomfort, hit the button!
+        </div>
+      )}
+      {!showContinue && (
+        <>
+          <div className="playthrough__sentence__imagine">
+            {count} discomfort detected.
+          </div>
+        </>
+      )}
+      <div className="tw-p-1 tw-flex tw-justify-center">
+        {!showContinue && (
+          <ReactPlayer
+            ref={reactPlayer}
+            width="960px"
+            height="615px"
+            url="https://www.youtube.com/watch?v=414ICZRkOH4"
+            onStart={() => {
+              setShowContinue(false);
+            }}
+            onEnded={() => {
+              setShowContinue(true);
+              handleNext();
+            }}
+          />
+        )}
+      </div>
+      {!showContinue && (
+        <>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+            onClick={incrementCount}
+          >
+            Discomfort Detected
+          </button>
+        </>
+      )}
+
+      {showContinue && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase tw-m-4"
+          onClick={handleNext}
+          key="score"
+        >
+          Continue to Score
+        </button>
+      )}
+    </div>
+  );
+};
+
+ExpressionExercise.propTypes = {
+  setCount: PropTypes.func,
+  count: PropTypes.number,
+  userID: PropTypes.string,
+  year: PropTypes.number,
+};
+
+export default ExpressionExercise;

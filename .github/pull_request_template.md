@@ -1,0 +1,9 @@
+- [ ] No discrepancies across browsers (ex: chrome vs safari)
+- [ ] Accessibility functions
+- [ ] Pages can scale without distorting page
+- [ ] No dead links
+- [ ] Navbar is consistent across the site
+- [ ] Pages are screen-reader accessible
+- [ ] Contrast meets standards for accessibility
+- [ ] Pages are keyboard accessible
+- [ ] Code is cleaned up and bug-free (ex: debug statements removed)

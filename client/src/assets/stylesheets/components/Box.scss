@@ -1,0 +1,60 @@
+.box {
+  border: 1px solid black;
+  font-size: 3.5rem;
+  position: relative;
+  user-select: none;
+
+  &--red {
+    background-color: red;
+    cursor: default;
+  }
+
+  &--green {
+    background-color: green;
+    cursor: default;
+  }
+
+  &--locked {
+    background-color: #ee8383;
+    color: #ee8383;
+    cursor: not-allowed;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      content: "\274c";
+      font-size: 80px;
+      color: #0144d5;
+      line-height: 100px;
+      text-align: center;
+    }
+  }
+
+  &--glow {
+    box-shadow: 0px 0px 15px 1px rgb(0, 72, 255);
+
+    &:after {
+      animation: MoveUpDown 1s ease-in-out infinite;
+      position: absolute;
+      content: "\25B2";
+      font-size: 2rem;
+      bottom: -40px;
+      left: 0;
+      right: 0;
+      color: #0144d5;
+    }
+  }
+
+  &:not(.box--red):not(.box--green):not(.box--locked):hover {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+  }
+
+  &:not(.box--red):not(.box--green):not(.box--locked):active {
+    background-color: #333;
+  }
+}

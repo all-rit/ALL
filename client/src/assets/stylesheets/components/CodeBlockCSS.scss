@@ -1,0 +1,77 @@
+.keyword {
+  color: #af90ed;
+}
+
+.operator {
+  color: white;
+}
+
+.otherText {
+  color: #5eb6ff;
+}
+
+.react {
+  color: #69d0a5;
+}
+
+.function {
+  color: #57ff00;
+}
+
+.number {
+  color: #f6af5c;
+}
+
+.code_editor__code {
+  background-color: #333;
+  padding: 1px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  height: 100%;
+}
+
+.code_editor__dropdown {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.code_editor__dropdown:hover,
+.code_editor__dropdown:focus {
+  background-color: #7300ff;
+}
+
+.code_editor__input {
+  display: inline-block;
+  position: relative;
+  background: #333;
+  border-radius: 10px;
+  color: lightsalmon;
+}
+
+.json {
+  color: rgb(230, 197, 148);
+}
+
+.htmlTag {
+  color: #69d0a5;
+}
+
+.htmlAttribute {
+  color: #75e0ff;
+}
+
+.htmlText {
+  color: white;
+}
+
+.comment {
+  color: #218417;
+}
+
+.error {
+  color: red;
+}
+
+.import {
+  color: #f7c601;
+}

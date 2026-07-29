@@ -1,0 +1,152 @@
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import GradApplication from "../../../src/components/exercise/lab12/components/GradApplication";
+import ExerciseStateContext from "src/components/exercise/lab12/Lab12Context";
+import useMainStateContext from "../../../src/reducers/MainContext";
+import { ExerciseService } from "../../../src/services/lab12/ExerciseService";
+
+jest.mock("../../../src/reducers/MainContext", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+
+// Mock the ExerciseService
+jest.mock("../../../src/services/lab12/ExerciseService", () => ({
+  ExerciseService: {
+    fetchExercise: jest.fn(),
+  },
+}));
+
+/*
+ * Test that the component has 5 input fileds for
+ * LFN, LLN, Preferred Name, PRN, COL, MJR, GTM
+ * And one "Submit Application" button field
+ */
+describe("Test GradApplication Component Input Fields Before Repair", () => {
+  beforeEach(() => {
+    // Clear all mocks before each test
+    jest.clearAllMocks();
+
+    // Mock the MainContext hook return value
+    useMainStateContext.mockReturnValue({
+      state: {
+        main: {
+          user: {
+            userid: 1,
+          },
+        },
+      },
+    });
+
+    // Mock the ExerciseService.fetchExercise to resolve immediately
+    ExerciseService.fetchExercise.mockResolvedValue({
+      isFormRepairComplete: true,
+      isDatabaseRepairComplete: true,
+    });
+  });
+
+  test("has 5 input fields", async () => {
+    render(<GradApplication />);
+    // Verify header:
+    const textElement = await screen.findByText(
+      "Apply for Graduation at ALL University",
+    );
+    expect(textElement).toBeTruthy();
+  });
+
+  test("has correct placeholder text", async () => {
+    // Check placeholder text:
+    render(<GradApplication />);
+    const firstNameInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Jane").placeholder;
+    const lastNameInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Smith").placeholder;
+    const collegeInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: RIT").placeholder;
+    const majorInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: CS").placeholder;
+    const gradTermInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Spring 2024").placeholder;
+    expect(firstNameInputPlaceholder).toBe("Ex: Jane");
+    expect(lastNameInputPlaceholder).toBe("Ex: Smith");
+    expect(collegeInputPlaceholder).toBe("Ex: RIT");
+    expect(majorInputPlaceholder).toBe("Ex: CS");
+    expect(gradTermInputPlaceholder).toBe("Ex: Spring 2024");
+  });
+  test("invalid firstName info", async () => {
+    render(<GradApplication />);
+    const inputElement = await screen.getByLabelText("*Legal First Name:");
+    expect(inputElement).toBeTruthy();
+  });
+});
+describe("Test GradApplication Component", () => {
+  it("renders correctly", () => {
+    render(<GradApplication />);
+
+    //Test if the main heading is rendered
+    expect(
+      screen.getByText("Apply for Graduation at ALL University"),
+    ).toBeTruthy();
+
+    //Test if input fields are rendered
+    expect(screen.getByPlaceholderText("Ex: Jane")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Ex: Smith")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Ex: RIT")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Ex: CS")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Ex: Spring 2024")).toBeTruthy();
+  });
+
+  it("validates input (empty input) correctly", () => {
+    const firstName = ""; // Changed from " " to ""
+    const setFirstName = jest.fn();
+    const lastName = ""; // Changed from " " to ""
+    const setLastName = jest.fn();
+    const college = ""; // Changed from " " to ""
+    const setCollege = jest.fn();
+    const major = ""; // Changed from " " to ""
+    const setMajor = jest.fn();
+    const gradTerm = ""; // Changed from " " to ""
+    const setGradTerm = jest.fn();
+
+    render(
+      <ExerciseStateContext.Provider
+        value={{
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
+          college,
+          setCollege,
+          major,
+          setMajor,
+          gradTerm,
+          setGradTerm,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    );
+
+    fireEvent.click(screen.getByText("Submit Application"));
+
+    // Check if error messages are displayed
+    const errorMessages = screen.getAllByText("Error: Input required.");
+    expect(errorMessages).toHaveLength(4);
+  });
+});
+
+describe("Grad Application Tests", () => {
+  test("component has 5 input fields", () => {
+    const { container } = render(<GradApplication />);
+    // Get all input elements within the rendered GradApplication
+    const inputFields = container.querySelectorAll("input");
+    // Assert that there are 5 fields (LFN, LLN, COL, MJ, GT) before repair
+    expect(inputFields.length).toBe(5);
+  });
+
+  test("component has 1 button field", () => {
+    const { container } = render(<GradApplication />);
+    const buttonField = container.querySelectorAll("button");
+    expect(buttonField.length).toBe(1);
+  });
+});
