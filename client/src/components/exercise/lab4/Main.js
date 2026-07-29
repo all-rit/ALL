@@ -21,10 +21,10 @@ const Main = () => {
     <div className="container tw-h-full">
       <Router>
         <ExerciseStart path="/" />
-        <SmallTarget path="/SmallTarget" />
+        <SmallTarget path="/SmallTarget/Temp" />
         <TargetGuideline path="/TargetGuideline" />
         <CodeChangeTarget path={"/CodeChangeTarget"} />
-        <SubmitUpdated path="/SubmitUpdated" />
+        <SubmitUpdated path="/SubmitUpdated/fart" />
         <CodeChangeBlocks path={"/CodeChangeBlocks"} />
         <BypassBlocksGuideline path={"/BypassBlocksGuideline"} />
         <FormSkipToMainBroken path={"/FormSkipToMainBroken"} />
