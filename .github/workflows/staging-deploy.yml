@@ -57,7 +57,11 @@ jobs:
           export ${{ secrets.STAGING_ENV_URL }}
           export ${{ secrets.GA_TRACKING }}
           export ${{ secrets.LINT_DISABLE }}
-          npm i --legacy-peer-deps 
+          if [ -z "$VITE_SERVER_URL" ]; then
+            echo "::error::VITE_SERVER_URL is not set after exporting secrets.STAGING_ENV_URL. Vite only reads VITE_-prefixed vars (not REACT_APP_*) — update the STAGING_ENV_URL secret to define VITE_SERVER_URL=..." >&2
+            exit 1
+          fi
+          npm i --legacy-peer-deps
           npm run build --verbose
       - name: delete build and create new
         uses: appleboy/ssh-action@v1.0.0
