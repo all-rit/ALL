@@ -1,4 +1,3 @@
-import useScroll from "src/use-hooks/useScroll";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
@@ -14,8 +13,6 @@ import { navigate } from "@reach/router";
 import Simulation from "../components/Simulation";
 
 const SecondAISimulation = (props) => {
-  useScroll();
-
   /**
    * Update lab state onMount
    */

@@ -1,7 +1,5 @@
 {
-  "prettier.singleQuote": true,
-  "eslint.alwaysShowStatus": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   // turn it off for JS and JSX, we will do this via eslint
   "[javascript, javascriptreact]": {
     "editor.formatOnSave": false

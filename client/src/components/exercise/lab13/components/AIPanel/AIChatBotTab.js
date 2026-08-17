@@ -3,8 +3,8 @@ import {
   BIAS_POSITION_MAP,
   BIAS_TYPES,
 } from "src/constants/lab13/BiasQuestionsConfig";
-import AIChatBot from "../AIChatBot";
-import { Tab } from "../Tab/Tab";
+import AIChatBot from "../../../../all-components/AIChatBot";
+import { Tab } from "../../../../all-components/Tab/Tab";
 import { useContext, useMemo } from "react";
 import ExerciseStateContext from "../../Lab13Context";
 import PropTypes from "prop-types";
