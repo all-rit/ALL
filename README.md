@@ -17,80 +17,56 @@ Clone the repository and open the command line for the upcoming instructions.
 After cloning the repository in the top level directory, run `npm install`. This will install all of the tools needed to
 commit and correctly format all code within the project.
 
-### PM2 Instructions
-
-After installing the dependencies for the super directory, first run `pm2 -v` to ensure that pm2 is installed correctly.
-If it gives you any issues, install it to your global npm registry with this command: `npm i -g pm2`.
-
-Next add the `ecosystem.config.js` file to your top level directory and this will allow you to have
-the correct env for client and server. After that is complete, then you can follow the install steps below.
-
 ### Developing Locally
 
-To develop on the full architecture developers can now utilize the ability to run the full system without
-needing to ssh into another server. To do this users are required to install the **latest version** of [Docker](https://www.docker.com/) to perform this task.
+The full stack (client, server, and database) runs in Docker via `.devcontainer/docker-compose.yml`. This replaces
+the previous PM2-based workflow. Install the **latest version** of [Docker](https://www.docker.com/) to get started.
 
-To start the database container:
+#### Environment variables
+
+Create `server/.env` and `client/.env` (not committed — ask a teammate for values, or see below for the keys that
+must match the Docker network specifically):
+
+- `server/.env` must point `DB_HOST`/`DB_PORT` at the `db` **service**, not your host machine:
+  ```
+  DB_HOST=db
+  DB_PORT=5433
+  ```
+  (plus `DB_USER`, `DB_PASS`, `DB_SCHEMA`, and the matching `POSTGRES_*` variables the `db` service reads on init)
+- `client/.env` must use Vite's `VITE_` prefix, not the old Create React App `REACT_APP_` prefix — the client was
+  migrated from CRA to Vite, and Vite only exposes `import.meta.env` variables prefixed `VITE_`. An old
+  `REACT_APP_SERVER_URL` will silently resolve to `undefined` in the app (labs, auth, and other API calls will fail
+  with no visible error) instead of failing loudly:
+  ```
+  VITE_SERVER_URL=http://localhost:5005
+  ```
+
+#### Running
 
 ```bash
-docker compose up
+cd .devcontainer
+docker compose up -d --build
 ```
 
-To run in detached mode:
+- Client: <http://localhost:3000>
+- Server: <http://localhost:5005>
+- Database: `localhost:5433`
 
-```bash
-docker compose up -d
-```
+To view logs: `docker compose logs -f [client|server|db]`. To stop: `docker compose down`. The `db` service has no
+persistent volume, so its data does not survive a `down`/`up` cycle — it re-seeds from `server/database/schema.sql`
+every time the container starts fresh.
 
-To shut down database container:
+#### HMR / Fast Refresh notes
 
-```bash
-docker compose down
-```
-
-#### Full start up
-
-1. Navigate to top level folder.
-2. Run `npm install --legacy-peer-deps`.
-3. Connect to the port of your local db or production.
-   1. For local dev
-      1. `cd server/database`
-      2. `docker compose up -d`
-         1. If you want reuse this volume to **keep your changes use** `docker compose start`
-         2. In the event you want to stop it **without losing the volume** `docker compose stop`
-   2. For dev connecting to staging or production
-      1. Run the documented developer instructions to connect.
-4. Start the server & client
-   1. In the root directory, run `pm2 start`
-5. To check the logs and see if things built correctly
-   1. Run `pm2 log`
-      a. If there are any errors run:
-      b. `pm2 delete all`
-      c. `pm2 start`
-6. To stop the application
-   1. Run `pm2 stop all`, and if running local dev configuration, `docker compose down`
-
-### Server
-
-1. Navigate to the server folder.
-2. `npm install`
-3. `node app.js`
-4. The server should be accessible via `http://localhost:5000`
-
-### Client
-
-#### Development
-
-1. Navigate to the client folder.
-2. `npm install`
-3. `npm start`
-4. The client should be open by itself, accessible via `http://localhost:3000`
-
-#### Publishing
-
-1. If you have done #1-2 in `Development`, go ahead to the next step. If not, do that.
-2. `npm build`
-3. All the files you need are in the `build` folder.
+- Docker Desktop's bind mounts do not reliably forward native filesystem change events into the container (verified
+  on macOS with VirtioFS), so `client/vite.config.mjs` enables Chokidar polling
+  (`server.watch.usePolling`/`VITE_WATCH_POLL_INTERVAL`) for file-change detection. This is required, not a
+  workaround to remove.
+- This project's React components use `.js` extensions rather than `.jsx`. Under `@vitejs/plugin-react`'s default
+  (automatic) JSX runtime, only `.jsx`/`.tsx` files qualify as Fast Refresh boundaries, so `.js` component edits
+  would otherwise force a full page reload instead of an instant hot update. `vite.config.mjs` sets
+  `jsxRuntime: "classic"` on the plugin, which instead qualifies any file with a literal `import React` — true for
+  every component here — restoring instant Fast Refresh.
 
 ## Part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023
 

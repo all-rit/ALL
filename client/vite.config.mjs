@@ -9,7 +9,12 @@ const require = createRequire(import.meta.url);
 const mathjaxFullVersion = require("mathjax-full/package.json").version;
 
 export default defineConfig(({ mode }) => ({
-  plugins: [react()],
+  // Components in this project use .js (not .jsx) extensions, but
+  // @vitejs/plugin-react only enables Fast Refresh for .jsx/.tsx files
+  // under the default automatic JSX runtime. The classic runtime instead
+  // checks for a literal `import React`, which every component here has,
+  // so this restores Fast Refresh (instead of a full page reload) on edit.
+  plugins: [react({ jsxRuntime: "classic" })],
   // Used by Rollup during `vite build` (and app source).
   define: {
     PACKAGE_VERSION: JSON.stringify(mathjaxFullVersion),
