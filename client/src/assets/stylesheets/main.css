@@ -3032,9 +3032,7 @@ td {
 
 .hint_box__background:hover {
   cursor: pointer;
-  background-color: #ddd !important;
 }
-
 .hint_box__warning {
   display: block;
   font-size: 1.5rem;
