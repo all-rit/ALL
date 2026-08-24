@@ -1,40 +1,40 @@
+@use "abstracts/variables";
+@use "abstracts/functions";
+@use "abstracts/mixins";
+
+@use "vendors/reset";
+
+@use "base/base";
+@use "base/helpers";
+
+@use "components/App";
+@use "components/profilePage/profileHeader";
+@use "components/profilePage/profile";
+@use "components/profilePage/groupAssignedLabs";
+@use "components/profilePage/instructingGroups";
+
+@use "components/CodeEditor";
+@use "components/Instructions";
+@use "components/Playthrough";
+@use "components/Popup";
+@use "components/SoundOption";
+
+@use "components/Exercise";
+@use "components/Box";
+@use "components/HintBox";
+@use "components/Results";
+@use "components/Stats";
+@use "components/Form";
+@use "components/KnowledgeTest";
+
+@use "pages/Supplementary";
+@use "pages/CaseStudy";
+@use "pages/quiz";
+@use "pages/CognitiveInformation";
+@use "pages/Guidance";
+
 @tailwind components;
 @tailwind utilities;
-
-@import "abstracts/variables";
-@import "abstracts/functions";
-@import "abstracts/mixins";
-
-@import "vendors/reset";
-
-@import "base/base";
-@import "base/helpers";
-
-@import "components/App";
-@import "components/profilePage/profileHeader";
-@import "components/profilePage/profile";
-@import "components/profilePage/groupAssignedLabs";
-@import "components/profilePage/instructingGroups";
-
-@import "components/CodeEditor";
-@import "components/Instructions";
-@import "components/Playthrough";
-@import "components/Popup";
-@import "components/SoundOption";
-
-@import "components/Exercise";
-@import "components/Box";
-@import "components/HintBox";
-@import "components/Results";
-@import "components/Stats";
-@import "components/Form";
-@import "components/KnowledgeTest";
-
-@import "pages/Supplementary";
-@import "pages/CaseStudy";
-@import "pages/quiz";
-@import "pages/CognitiveInformation";
-@import "pages/Guidance";
 
 @font-face {
   font-family: "Calibri";

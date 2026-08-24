@@ -112,6 +112,7 @@ const GridImages = (props) => {
                     facialHairType={data.avatarAttributes.facialHairType}
                     clotheType={data.avatarAttributes.clotheType}
                     clotheColor={data.avatarAttributes.clotheColor}
+                    hatColor={data.avatarAttributes.hatColor}
                     eyeType={data.avatarAttributes.eyeType}
                     eyebrowType={data.avatarAttributes.eyebrowType}
                     mouthType={data.avatarAttributes.mouthType}

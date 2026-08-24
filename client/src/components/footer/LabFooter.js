@@ -1,5 +1,4 @@
 import React from "react";
-import "../../assets/stylesheets/components/css/colorPicker.css";
 import { connect } from "react-redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import { bindActionCreators } from "redux";

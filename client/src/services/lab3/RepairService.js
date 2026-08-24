@@ -7,7 +7,7 @@ const endpoints = {
 const RepairService = {
   submitRepair: (cowAltValue, carAltValue, burgerAltValue, catAltValue) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_REPAIR,
       {
         cowAltValue,
         carAltValue,

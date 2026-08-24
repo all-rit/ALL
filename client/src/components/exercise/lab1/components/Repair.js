@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import classNames from "classnames/bind";
-import ColorPicker from "@rc-component/color-picker";
+import { SketchPicker } from "react-color";
 import RepairService from "../../../../services/lab1/RepairService";
 import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
@@ -46,17 +46,14 @@ class Repair extends Component {
         this.setState({
           availableBackgroundColorPopup: false,
         });
-      } else if (e.target.parentNode.className) {
-        if (
-          !e.target.parentNode.className.includes(
-            "@rc-component/color-picker",
-          ) &&
-          e.target.id !== "changeAvailableColor"
-        ) {
-          this.setState({
-            availableBackgroundColorPopup: false,
-          });
-        }
+      } else if (
+        typeof e.target.closest === "function" &&
+        !e.target.closest(".code_editor__color_selector") &&
+        e.target.id !== "changeAvailableColor"
+      ) {
+        this.setState({
+          availableBackgroundColorPopup: false,
+        });
       }
     }
     if (this.state.unavailableBackgroundColorPopup) {
@@ -64,17 +61,14 @@ class Repair extends Component {
         this.setState({
           unavailableBackgroundColorPopup: false,
         });
-      } else if (e.target.parentNode.className) {
-        if (
-          !e.target.parentNode.className.includes(
-            "@rc-component/color-picker",
-          ) &&
-          e.target.id !== "changeUnavailableColor"
-        ) {
-          this.setState({
-            unavailableBackgroundColorPopup: false,
-          });
-        }
+      } else if (
+        typeof e.target.closest === "function" &&
+        !e.target.closest(".code_editor__color_selector") &&
+        e.target.id !== "changeUnavailableColor"
+      ) {
+        this.setState({
+          unavailableBackgroundColorPopup: false,
+        });
       }
     }
   }
@@ -122,15 +116,15 @@ class Repair extends Component {
     });
   }
 
-  changeAvailableBackgroundColorHandler(obj) {
+  changeAvailableBackgroundColorHandler(color) {
     this.setState({
-      availableBackgroundColor: obj.toHexString(),
+      availableBackgroundColor: color.hex,
     });
   }
 
-  changeUnavailableBackgroundColorHandler(obj) {
+  changeUnavailableBackgroundColorHandler(color) {
     this.setState({
-      unavailableBackgroundColor: obj.toHexString(),
+      unavailableBackgroundColor: color.hex,
     });
   }
 
@@ -439,9 +433,13 @@ class Repair extends Component {
                 />
                 {availableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
-                    <ColorPicker
-                      enableAlpha={false}
-                      color={this.state.availableBackgroundColor}
+                    <SketchPicker
+                      disableAlpha
+                      color={
+                        availableBackgroundColor != null
+                          ? availableBackgroundColor
+                          : "#ffffff"
+                      }
                       onChange={this.changeAvailableBackgroundColorHandler.bind(
                         this,
                       )}
@@ -482,9 +480,13 @@ class Repair extends Component {
                 />
                 {unavailableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
-                    <ColorPicker
-                      enableAlpha={false}
-                      color={this.state.unavailableBackgroundColor}
+                    <SketchPicker
+                      disableAlpha
+                      color={
+                        unavailableBackgroundColor != null
+                          ? unavailableBackgroundColor
+                          : "#ffffff"
+                      }
                       onChange={this.changeUnavailableBackgroundColorHandler.bind(
                         this,
                       )}

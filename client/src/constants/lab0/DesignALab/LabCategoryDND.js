@@ -53,7 +53,7 @@ const correctAssignmentsNewCategory = [
   { id: "column3", cards: [] },
 ];
 
-module.exports = {
+export {
   columns,
   initial_Bank,
   correctAssignments,

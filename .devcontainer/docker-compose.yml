@@ -1,0 +1,48 @@
+services:
+  container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+  db:
+    image: postgres
+    ports:
+      - '5433:5433'
+    restart: always
+    env_file:
+      - ../server/.env
+    volumes:
+      - ../server/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    command: -p 5433
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -p 5433 -U $$POSTGRES_USER -d postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  server:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    volumes:
+      - ../server:/app
+      - /app/node_modules
+    ports:
+      - '5005:5005'
+    depends_on:
+      db:
+        condition: service_healthy
+  client:
+    build:
+      context: ../client
+      dockerfile: Dockerfile
+    environment:
+      VITE_WATCH_POLL_INTERVAL: '500'
+    volumes:
+      - ../client:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server

@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const pathname = path.join(__dirname, 'models');
-const withPassword = process.env.DB_PASS ? `:${process.env.DB_PASS}` : '';
-const URI = `postgres://${process.env.DB_USER}${withPassword}@${process.env.DB_HOST}:${process.env.ENVIRONMENT === 'dev' ? 5433 : 5432}/${process.env.DB_SCHEMA}`;
+const withPassword = process.env.POSTGRES_PASSWORD
+  ? `:${process.env.POSTGRES_PASSWORD}`
+  : '';
+const URI = `postgres://${process.env.DB_USER}${withPassword}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_SCHEMA}`;
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(URI, {
   dialect: 'postgres',
@@ -28,7 +30,7 @@ sequelize
 const files = [];
 const sortDir = (maniDir) => {
   const folders = [];
-  const CheckFile = (filePath) => (fs.statSync(filePath).isFile());
+  const CheckFile = (filePath) => fs.statSync(filePath).isFile();
   const sortPath = (dir) => {
     fs
       .readdirSync(dir)
@@ -50,11 +52,10 @@ const sortDir = (maniDir) => {
   } while (i < folders.length);
 };
 sortDir(pathname);
-files
-  .forEach((file) => {
-    const model = require(file)(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+files.forEach((file) => {
+  const model = require(file)(sequelize, Sequelize.DataTypes);
+  db[model.name] = model;
+});
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {

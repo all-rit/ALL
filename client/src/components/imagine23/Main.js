@@ -16,8 +16,7 @@ import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import { resetSystem } from "../../reducers/lab2/actions";
-const { nanoid } = require("nanoid");
-
+import { nanoid } from "nanoid";
 import { PropTypes } from "prop-types";
 import useMainStateContext from "../../reducers/MainContext";
 

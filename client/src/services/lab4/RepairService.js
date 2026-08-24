@@ -9,7 +9,7 @@ const endpoints = {
 const RepairService = {
   submitRepairButton: (height, width) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR_BUTTON,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_REPAIR_BUTTON,
       {
         height,
         width,
@@ -18,7 +18,7 @@ const RepairService = {
   },
   submitRepairSkip: (skiptomain) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR_SKIP,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_REPAIR_SKIP,
       {
         skiptomain,
       },
@@ -26,7 +26,7 @@ const RepairService = {
   },
   submitRepairHint: (tabindex) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR_HINT,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_REPAIR_HINT,
       {
         tabindex,
       },
