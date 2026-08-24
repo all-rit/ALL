@@ -42,12 +42,23 @@ async function getVersion() {
 }
 
 /**
- * Method called in app.js that loads all tags
+ * Method called in app.js that loads all tags.
+ * Each lookup is independent (network calls to GitHub, a local git spawn
+ * that isn't available in every environment) so a failure in one must not
+ * stop the others from populating, or crash the server that called this.
  */
 async function getAllVersions(){
-  VERSIONS.prod = await getProdVersion().then((response) => response[0]);
-  VERSIONS.staging = await getStagingVersion().then((response) => response[0]);
-  VERSIONS.branch = await getLocalBranch()
+  await Promise.allSettled([
+    getProdVersion()
+      .then((response) => { VERSIONS.prod = response[0]; })
+      .catch((err) => console.error('Unable to fetch prod version:', err)),
+    getStagingVersion()
+      .then((response) => { VERSIONS.staging = response[0]; })
+      .catch((err) => console.error('Unable to fetch staging version:', err)),
+    getLocalBranch()
+      .then((response) => { VERSIONS.branch = response; })
+      .catch((err) => console.error('Unable to determine local branch:', err)),
+  ]);
 }
 
 /* function for pulling latest non-beta tag */
