@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('../server/services/VersionService').getAllVersions();
+require('./services/VersionService').getAllVersions();
 
 const express = require('express');
 const cors = require('cors');
