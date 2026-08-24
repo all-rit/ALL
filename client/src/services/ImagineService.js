@@ -30,7 +30,7 @@ const ImagineService = {
 
   updateTeammateChat2025: async (userID, teammateChat) => {
     return await API.putWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine25/teammateChat",
+      import.meta.env.VITE_SERVER_URL + "/imagine25/teammateChat",
       {
         userID,
         teammateChat,
@@ -152,7 +152,7 @@ const ImagineService = {
 
   handleImageUploads: async (data) => {
     return await API.postWithBodyFormData(
-      process.env.REACT_APP_SERVER_URL + `/imagine26/handleImageUploads`,
+      import.meta.env.VITE_SERVER_URL + `/imagine26/handleImageUploads`,
       data,
     );
   },
@@ -160,7 +160,7 @@ const ImagineService = {
   getImagePath: (userID, year, pictureType) => {
     return Promise.resolve(
       API.get(
-        process.env.REACT_APP_SERVER_URL +
+        import.meta.env.VITE_SERVER_URL +
           `/imagine${year}/getImagePath/${userID}/${pictureType}`,
         {},
       ).then((response) => response.json()),
@@ -168,7 +168,7 @@ const ImagineService = {
   },
   postChatReply: async (userID, reply, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL +
+      import.meta.env.VITE_SERVER_URL +
         `/imagine${year}/postChatReply/${userID}`,
       {
         userID,
