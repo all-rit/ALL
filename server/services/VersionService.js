@@ -1,4 +1,3 @@
-const { Octokit } = require("octokit");
 const { type } = require("../version");
 const { simpleGit } = require("simple-git");
 
@@ -16,9 +15,18 @@ const REQUEST_PARAMS = {
       }
     };
 
-// Offical family of Github-maintained client librariers used to 
+// Offical family of Github-maintained client librariers used to
 // interact with the GithHub API
-const octokit = new Octokit();
+// octokit is ESM-only, so it has to be loaded with a dynamic import()
+// rather than require() from this CommonJS module.
+let octokit;
+async function getOctokit() {
+  if (!octokit) {
+    const { Octokit } = await import("octokit");
+    octokit = new Octokit();
+  }
+  return octokit;
+}
 
 /**
  * Method that checks type and then returns
@@ -48,6 +56,7 @@ async function getProdVersion() {
     if the first page doesn't contain a tag without BETA
     go to the next page.
   */
+  const octokit = await getOctokit();
   return await octokit.paginate(
     'GET ' + TAG_URL, 
     REQUEST_PARAMS, 
@@ -70,6 +79,7 @@ async function getStagingVersion() {
     if the first page doesn't contain a tag with BETA
     go to the next page.
   */
+  const octokit = await getOctokit();
   return await octokit.paginate(
     'GET ' + TAG_URL, 
     REQUEST_PARAMS, 
