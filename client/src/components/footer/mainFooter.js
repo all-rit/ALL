@@ -1,14 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { actions as appActions } from "../../reducers/lab1/AppReducer";
-import { actions as mainActions } from "../../reducers/MainReducer";
-import { bindActionCreators } from "redux";
-import {
-  setTextColor,
-  setBackgroundColor,
-  onNextPageChangeTSize,
-} from "./edit/editPage";
+import React from "react";
 import { Col, Container, Nav, NavItem, NavLink, Row } from "reactstrap";
 import logo from "../../assets/images/logos/ALL_White.svg";
 import nsf from "../../assets/images/logos/nsf.png";
