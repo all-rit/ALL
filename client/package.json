@@ -61,6 +61,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "start": "vite --host --port 3000",
     "lint": "eslint --fix ."
   },
   "lint-staged": {
