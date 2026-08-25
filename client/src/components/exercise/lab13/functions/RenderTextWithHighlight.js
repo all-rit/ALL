@@ -1,3 +1,5 @@
+import React from "react";
+
 // Helper function to parse text and highlight specific patterns
 export const renderTextWithHighlight = (text, highlightPatterns = []) => {
   if (!text || !highlightPatterns.length) return text;
