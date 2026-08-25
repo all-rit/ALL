@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import { navigate } from "@reach/router";
 import { useState } from "react";
 import Qubit from "src/components/exercise/lab14/components/Qubit.js";

@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BAD_PROMPTS } from "src/constants/lab15/BadPrompts";
 import { Tabs } from "src/components/all-components/Tab/Tabs";
 import { Tab } from "src/components/all-components/Tab/Tab";

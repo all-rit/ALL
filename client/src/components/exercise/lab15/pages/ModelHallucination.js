@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { BAD_PROMPTS } from "src/constants/lab15/BadPrompts";
 

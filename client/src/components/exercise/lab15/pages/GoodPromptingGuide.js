@@ -1,3 +1,4 @@
+import React from "react";
 import { navigate } from "@reach/router";
 import LabButton from "src/components/all-components/LabButton";
 import {
@@ -12,8 +13,10 @@ const GoodPromptingGuide = () => {
         <h1 className="tw-title tw-text-left">What is GCSE?</h1>
         {/* Context about what the GCSE guide is */}
         <p className="tw-body-text tw-my-6">
-          The GCSE framework (Goal, Context, Sources, Expectations) is a simple way to write better prompts, so you get clearer and more useful answers from AI. 
-          Instead of asking vague questions, this framework helps you break your request into four parts.
+          The GCSE framework (Goal, Context, Sources, Expectations) is a simple
+          way to write better prompts, so you get clearer and more useful
+          answers from AI. Instead of asking vague questions, this framework
+          helps you break your request into four parts.
         </p>
       </div>
       {/* Columns for each term in GCSE */}

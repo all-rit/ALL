@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AIChatBot from "src/components/all-components/AIChatBot";
 import LabButton from "src/components/all-components/LabButton";
 import { Tab } from "src/components/all-components/Tab/Tab";

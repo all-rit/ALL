@@ -5,7 +5,7 @@ import {
 } from "src/constants/lab13/BiasQuestionsConfig";
 import AIChatBot from "../../../../all-components/AIChatBot";
 import { Tab } from "../../../../all-components/Tab/Tab";
-import { useContext, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import ExerciseStateContext from "../../Lab13Context";
 import PropTypes from "prop-types";
 

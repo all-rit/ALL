@@ -1,4 +1,4 @@
-import { React, useContext, useMemo, useState, useEffect, useRef } from "react";
+import React, { useContext, useMemo, useState, useEffect, useRef } from "react";
 import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
 import { Tabs } from "../../../all-components/Tab/Tabs";

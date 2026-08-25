@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import { startExercise } from "src/reducers/lab2/actions";
 import { navigate } from "@reach/router";
 

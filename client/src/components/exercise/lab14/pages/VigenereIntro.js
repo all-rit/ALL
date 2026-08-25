@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import { navigate } from "@reach/router";
 import LabButton from "../../../all-components/LabButton";
 import VigenereImage from "../../../../assets/images/lab14/vigenerecipher.jpg";
