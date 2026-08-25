@@ -25,6 +25,15 @@ export default defineConfig(({ mode }) => ({
     exclude: [],
   },
   optimizeDeps: {
+    // @emotion/react and @emotion/styled are only reachable through
+    // lazily-loaded routes (e.g. the DragIndicator icon pulled in by
+    // lab13's ConfidenceRanking/DraggableCard). Left out of this list,
+    // Vite only discovers them once that route is first visited and
+    // re-optimizes them separately from the copy already cached by the
+    // browser from the initial scan, producing two module instances
+    // ("You are loading @emotion/react when it is already loaded").
+    // Including them here forces both into the same initial pre-bundle.
+    include: ["@emotion/react", "@emotion/styled"],
     esbuildOptions: {
       loader: {
         ".js": "jsx",
