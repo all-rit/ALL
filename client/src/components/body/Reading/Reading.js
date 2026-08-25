@@ -226,22 +226,32 @@ const Reading = (props) => {
         await UserLabService.user_complete_reading(user.userid, labID);
       }
       LabService.getLabReading(labID).then((data) => {
-        if (data[0].reading.piechart) {
-          setOriginalPieLabels(data[0].reading.piechart.data.labels);
+        // The server returns an error sentinel string (e.g. "Error: Reading
+        // Not Found") instead of a reading object when the lab has no
+        // reading content or labID doesn't resolve to one - bail out rather
+        // than crash trying to read properties off of it.
+        const reading = data[0]?.reading;
+        if (!reading) {
+          console.error("Unable to load reading content:", data[0]);
+          return;
+        }
+
+        if (reading.piechart) {
+          setOriginalPieLabels(reading.piechart.data.labels);
           if (window.innerWidth < PIE_WINDOW_RESIZE_WIDTH) {
-            data[0].reading.piechart.data.labels = labelChecker(
-              data[0].reading.piechart.data.labels,
+            reading.piechart.data.labels = labelChecker(
+              reading.piechart.data.labels,
             );
           }
 
           createAccessiblePieLabel(
-            data[0].reading.piechart.data.labels,
-            data[0].reading.piechart.data.datasets[0].data,
-            data[0].reading.piechart.header,
+            reading.piechart.data.labels,
+            reading.piechart.data.datasets[0].data,
+            reading.piechart.header,
           );
         }
 
-        setReadingData(data[0].reading);
+        setReadingData(reading);
       });
 
       if (isImagine) {
