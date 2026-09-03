@@ -1,0 +1,228 @@
+diff --git a/node_modules/reactstrap/esm/CarouselItem.js b/node_modules/reactstrap/esm/CarouselItem.js
+index 195591a..9f067c1 100644
+--- a/node_modules/reactstrap/esm/CarouselItem.js
++++ b/node_modules/reactstrap/esm/CarouselItem.js
+@@ -37,11 +37,18 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+     _this.onExit = _this.onExit.bind(_assertThisInitialized(_this));
+     _this.onExiting = _this.onExiting.bind(_assertThisInitialized(_this));
+     _this.onExited = _this.onExited.bind(_assertThisInitialized(_this));
++    _this.nodeRef = /*#__PURE__*/React.createRef();
+     return _this;
+   }
+   _createClass(CarouselItem, [{
++    key: "getNode",
++    value: function getNode() {
++      return this.nodeRef.current;
++    }
++  }, {
+     key: "onEnter",
+-    value: function onEnter(node, isAppearing) {
++    value: function onEnter(_, isAppearing) {
++      var node = this.getNode();
+       this.setState({
+         startAnimation: false
+       });
+@@ -49,7 +56,8 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+     }
+   }, {
+     key: "onEntering",
+-    value: function onEntering(node, isAppearing) {
++    value: function onEntering(_, isAppearing) {
++      var node = this.getNode();
+       // getting this variable triggers a reflow
+       var offsetHeight = node.offsetHeight;
+       this.setState({
+@@ -60,7 +68,8 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+     }
+   }, {
+     key: "onExit",
+-    value: function onExit(node) {
++    value: function onExit() {
++      var node = this.getNode();
+       this.setState({
+         startAnimation: false
+       });
+@@ -68,7 +77,8 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+     }
+   }, {
+     key: "onExiting",
+-    value: function onExiting(node) {
++    value: function onExiting() {
++      var node = this.getNode();
+       this.setState({
+         startAnimation: true
+       });
+@@ -77,7 +87,8 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+     }
+   }, {
+     key: "onExited",
+-    value: function onExited(node) {
++    value: function onExited() {
++      var node = this.getNode();
+       node.dispatchEvent(new CustomEvent('slid.bs.carousel'));
+       this.props.onExited(node);
+     }
+@@ -96,6 +107,7 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+         className = _this$props.className,
+         transitionProps = _objectWithoutProperties(_this$props, _excluded);
+       return /*#__PURE__*/React.createElement(Transition, _extends({}, transitionProps, {
++        nodeRef: this.nodeRef,
+         enter: slide,
+         exit: slide,
+         "in": isIn,
+@@ -111,7 +123,8 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
+         var orderClassName = status === TransitionStatuses.ENTERING && (direction === 'end' ? 'carousel-item-next' : 'carousel-item-prev');
+         var itemClasses = mapToCssModules(classNames(className, 'carousel-item', isActive && 'active', directionClassName, orderClassName), cssModule);
+         return /*#__PURE__*/React.createElement(Tag, {
+-          className: itemClasses
++          className: itemClasses,
++          ref: _this2.nodeRef
+         }, children);
+       });
+     }
+diff --git a/node_modules/reactstrap/lib/CarouselItem.js b/node_modules/reactstrap/lib/CarouselItem.js
+index 9a70cee..32edc1d 100644
+--- a/node_modules/reactstrap/lib/CarouselItem.js
++++ b/node_modules/reactstrap/lib/CarouselItem.js
+@@ -29,14 +29,20 @@ class CarouselItem extends _react.default.Component {
+     this.onExit = this.onExit.bind(this);
+     this.onExiting = this.onExiting.bind(this);
+     this.onExited = this.onExited.bind(this);
++    this.nodeRef = /*#__PURE__*/_react.default.createRef();
+   }
+-  onEnter(node, isAppearing) {
++  getNode() {
++    return this.nodeRef.current;
++  }
++  onEnter(_, isAppearing) {
++    const node = this.getNode();
+     this.setState({
+       startAnimation: false
+     });
+     this.props.onEnter(node, isAppearing);
+   }
+-  onEntering(node, isAppearing) {
++  onEntering(_, isAppearing) {
++    const node = this.getNode();
+     // getting this variable triggers a reflow
+     const {
+       offsetHeight
+@@ -47,20 +53,23 @@ class CarouselItem extends _react.default.Component {
+     this.props.onEntering(node, isAppearing);
+     return offsetHeight;
+   }
+-  onExit(node) {
++  onExit() {
++    const node = this.getNode();
+     this.setState({
+       startAnimation: false
+     });
+     this.props.onExit(node);
+   }
+-  onExiting(node) {
++  onExiting() {
++    const node = this.getNode();
+     this.setState({
+       startAnimation: true
+     });
+     node.dispatchEvent(new CustomEvent('slide.bs.carousel'));
+     this.props.onExiting(node);
+   }
+-  onExited(node) {
++  onExited() {
++    const node = this.getNode();
+     node.dispatchEvent(new CustomEvent('slid.bs.carousel'));
+     this.props.onExited(node);
+   }
+@@ -76,6 +85,7 @@ class CarouselItem extends _react.default.Component {
+       } = _this$props,
+       transitionProps = _objectWithoutProperties(_this$props, _excluded);
+     return /*#__PURE__*/_react.default.createElement(_reactTransitionGroup.Transition, _extends({}, transitionProps, {
++      nodeRef: this.nodeRef,
+       enter: slide,
+       exit: slide,
+       in: isIn,
+@@ -93,7 +103,8 @@ class CarouselItem extends _react.default.Component {
+       const orderClassName = status === _utils.TransitionStatuses.ENTERING && (direction === 'end' ? 'carousel-item-next' : 'carousel-item-prev');
+       const itemClasses = (0, _utils.mapToCssModules)((0, _classnames.default)(className, 'carousel-item', isActive && 'active', directionClassName, orderClassName), cssModule);
+       return /*#__PURE__*/_react.default.createElement(Tag, {
+-        className: itemClasses
++        className: itemClasses,
++        ref: this.nodeRef
+       }, children);
+     });
+   }
+diff --git a/node_modules/reactstrap/src/CarouselItem.js b/node_modules/reactstrap/src/CarouselItem.js
+index cfd1bf6..f9a65e9 100644
+--- a/node_modules/reactstrap/src/CarouselItem.js
++++ b/node_modules/reactstrap/src/CarouselItem.js
+@@ -23,14 +23,21 @@ class CarouselItem extends React.Component {
+     this.onExit = this.onExit.bind(this);
+     this.onExiting = this.onExiting.bind(this);
+     this.onExited = this.onExited.bind(this);
++    this.nodeRef = React.createRef();
+   }
+ 
+-  onEnter(node, isAppearing) {
++  getNode() {
++    return this.nodeRef.current;
++  }
++
++  onEnter(_, isAppearing) {
++    const node = this.getNode();
+     this.setState({ startAnimation: false });
+     this.props.onEnter(node, isAppearing);
+   }
+ 
+-  onEntering(node, isAppearing) {
++  onEntering(_, isAppearing) {
++    const node = this.getNode();
+     // getting this variable triggers a reflow
+     const { offsetHeight } = node;
+     this.setState({ startAnimation: true });
+@@ -38,18 +45,21 @@ class CarouselItem extends React.Component {
+     return offsetHeight;
+   }
+ 
+-  onExit(node) {
++  onExit() {
++    const node = this.getNode();
+     this.setState({ startAnimation: false });
+     this.props.onExit(node);
+   }
+ 
+-  onExiting(node) {
++  onExiting() {
++    const node = this.getNode();
+     this.setState({ startAnimation: true });
+     node.dispatchEvent(new CustomEvent('slide.bs.carousel'));
+     this.props.onExiting(node);
+   }
+ 
+-  onExited(node) {
++  onExited() {
++    const node = this.getNode();
+     node.dispatchEvent(new CustomEvent('slid.bs.carousel'));
+     this.props.onExited(node);
+   }
+@@ -68,6 +78,7 @@ class CarouselItem extends React.Component {
+     return (
+       <Transition
+         {...transitionProps}
++        nodeRef={this.nodeRef}
+         enter={slide}
+         exit={slide}
+         in={isIn}
+@@ -101,7 +112,11 @@ class CarouselItem extends React.Component {
+             cssModule,
+           );
+ 
+-          return <Tag className={itemClasses}>{children}</Tag>;
++          return (
++            <Tag className={itemClasses} ref={this.nodeRef}>
++              {children}
++            </Tag>
++          );
+         }}
+       </Transition>
+     );

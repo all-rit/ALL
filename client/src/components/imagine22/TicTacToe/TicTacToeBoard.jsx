@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TicTacToeButton from "./TicTacToeButton";
 import Model from "../TicTacToe/Model";
 
