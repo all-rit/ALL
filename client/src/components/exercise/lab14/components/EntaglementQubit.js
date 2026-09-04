@@ -1,4 +1,4 @@
-import { React, useRef } from "react";
+import React, { useRef } from "react";
 import { PropTypes } from "prop-types";
 
 const EntanglementQubit = ({ colorChange, text, time, bgColor, fontColor }) => {

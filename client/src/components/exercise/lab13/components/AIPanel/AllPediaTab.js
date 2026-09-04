@@ -1,3 +1,4 @@
+import React from "react";
 import { Tab } from "../../../../all-components/Tab/Tab";
 import ProgressBar from "src/components/all-components/ProgressBar";
 import AllPediaImage from "../AIPanel/AllPediaImage";

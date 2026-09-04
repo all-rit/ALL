@@ -58,7 +58,7 @@ class UserStats extends Component {
 
     // Gets the data for the users in the system
     const getDataUsers = () => {
-      fetch(process.env.API_URL + "/data_totals", {
+      fetch(import.meta.env.VITE_SERVER_URL + "/data_totals", {
         method: "GET",
         credentials: "include",
       })
@@ -70,7 +70,7 @@ class UserStats extends Component {
 
     // Ges the data for the scores in the system
     const getDataScores = () => {
-      fetch(process.env.API_URL + "/data_scores", {
+      fetch(import.meta.env.VITE_SERVER_URL + "/data_scores", {
         method: "GET",
       })
         .then((res) => res.json())

@@ -114,7 +114,7 @@ const Repair = (props) => {
           path:
         </div>
         <ReactText>
-          &#96;$&#123;process.env.REACT_APP_SERVER_URL&#125;$&#123;endpoints.
+          &#96;$&#123;import.meta.env.VITE_SERVER_URL&#125;$&#123;endpoints.
         </ReactText>
         <CodeDropdown
           isOpen={endpointDropdownOpen}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { SketchPicker } from "react-color";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
-import ColorPicker from "@rc-component/color-picker"; // Updated from deprecated 'rc-color-picker'
 import AccessibilityImage from "../../assets/images/accessibility_icon.png";
 import { Card, CardHeader, CardBody, Modal, Button } from "reactstrap";
-import "@rc-component/color-picker/assets/index.css";
 import {
   changeTSize,
   setTextColor,
@@ -29,6 +28,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const SiteAccessibilityButton = () => {
   const [open, setOpen] = useState(false);
+  const [textPickerColor, setTextPickerColor] = useState("#345679");
+  const [bgPickerColor, setBgPickerColor] = useState("#345679");
   const [isSmallView, setIsSmallView] = useState();
 
   useEffect(() => {
@@ -61,14 +62,14 @@ const SiteAccessibilityButton = () => {
     state = { ...state, fontSize: state_size + size };
   }
 
-  function onTextColorChange(obj) {
-    setTextColor(obj.toHexString());
-    state = { ...state, color: obj.toHexString() };
+  function onTextColorChange(color) {
+    setTextColor(color.hex);
+    setTextPickerColor(color.hex);
   }
 
-  function onBgColorChange(obj) {
-    setBackgroundColor(obj.toHexString());
-    state = { ...state, backgroundColor: obj.toHexString() };
+  function onBgColorChange(color) {
+    setBackgroundColor(color.hex);
+    setBgPickerColor(color.hex);
   }
 
   return (
@@ -114,22 +115,20 @@ const SiteAccessibilityButton = () => {
                 Text Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPicker
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.color}
-                  onChange={onTextColorChange.bind(this)}
+                <SketchPicker
+                  disableAlpha
+                  color={textPickerColor}
+                  onChange={onTextColorChange}
                 />
               </div>
               <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
                 Background Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPicker
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.backgroundColor}
-                  onChange={onBgColorChange.bind(this)}
+                <SketchPicker
+                  disableAlpha
+                  color={bgPickerColor}
+                  onChange={onBgColorChange}
                 />
               </div>
               <div className="tw-pt-2 tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-bottom-0 tw-mb-6 tw-mr-6 tw-right-0 tw-z-50">
@@ -187,20 +186,20 @@ const SiteAccessibilityButton = () => {
                 Text Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPicker
-                  defaultValue={"#345679"}
-                  onChange={onTextColorChange.bind(this)}
+                <SketchPicker
+                  disableAlpha
+                  color={textPickerColor}
+                  onChange={onTextColorChange}
                 />
               </div>
               <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
                 Background Color Adjuster
               </p>
               <div className={"tw-w-full tw-flex tw-justify-center"}>
-                <ColorPicker
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={state.backgroundColor}
-                  onChange={onBgColorChange.bind(this)}
+                <SketchPicker
+                  disableAlpha
+                  color={bgPickerColor}
+                  onChange={onBgColorChange}
                 />
               </div>
             </CardBody>

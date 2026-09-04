@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @function asset($base, $type, $path) {
   @return url($base + $type + $path);
 }

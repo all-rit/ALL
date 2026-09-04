@@ -4,6 +4,7 @@ server/service_key.json
 # IDE-specific directories
 .idea/
 .vscode/
+.cursor/
 
 # SSL Certificates
 *.crt
@@ -149,3 +150,6 @@ typings/
 
 ### deploy scripts
 server/deploy
+
+### Agents
+/.claude/*

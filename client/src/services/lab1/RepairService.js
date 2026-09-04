@@ -12,7 +12,7 @@ const RepairService = {
     unavailableBackgroundColor,
   ) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_REPAIR,
       {
         availableMessage,
         unavailableMessage,

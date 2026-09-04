@@ -7,7 +7,7 @@ const endpoints = {
 const ExerciseService = {
   submitRepair: (report, userId) => {
     return API.postWithBody(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPORT}`,
+      `${import.meta.env.VITE_SERVER_URL}${endpoints.SUBMIT_REPORT}`,
       {
         report,
         userId,

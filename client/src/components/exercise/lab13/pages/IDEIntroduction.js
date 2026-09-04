@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import { navigate } from "@reach/router";
 import LabButton from "src/components/all-components/LabButton";
 

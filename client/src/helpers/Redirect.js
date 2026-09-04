@@ -10,9 +10,12 @@ const handleRedirect = (actions = {}, lab, body = 0) => {
   }
   const labname = Sections[lab].name;
   const bodyname = Sections[lab][body].name;
-  navigate(
-    process.env.PUBLIC_URL + "/" + (lab !== 99 ? labname + "/" : "") + bodyname,
-  );
+  const path =
+    `${import.meta.env.BASE_URL.replace(/\/$/, "")}/${(lab !== 99 ? labname + "/" : "") + bodyname}`.replace(
+      /\/{2,}/g,
+      "/",
+    );
+  navigate(path);
 };
 
 export const stateChange = (actions, pathname) => {

@@ -41,8 +41,4 @@ const correctAssignments = [
   { id: "column3", cards: ["card1"] },
 ];
 
-module.exports = {
-  initialColumns,
-  initialBank,
-  correctAssignments,
-};
+export { initialColumns, initialBank, correctAssignments };

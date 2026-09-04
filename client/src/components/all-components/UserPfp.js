@@ -1,3 +1,4 @@
+import React from "react";
 import useMainStateContext from "src/reducers/MainContext";
 import PropTypes from "prop-types";
 import DefaultUser from "../../assets/images/DefaultUser.png";

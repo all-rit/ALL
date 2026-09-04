@@ -79,10 +79,10 @@ const AvatarCreation = (props) => {
       <div>
         <Avatar
           clotheType="ShirtCrewNeck"
-          topType={props.userAvatar.hairStyle || "Default"}
-          hairColor={props.userAvatar.hairColor || "Default"}
-          clotheColor={props.userAvatar.clotheColor || "Default"}
-          skinColor={props.userAvatar.skinColor || "Default"}
+          topType={props.userAvatar.hairStyle}
+          hairColor={props.userAvatar.hairColor}
+          clotheColor={props.userAvatar.clotheColor}
+          skinColor={props.userAvatar.skinColor}
           className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
         />
         {/*Iterate over nested data structure. Note this needs to be a specific data structure, check out Contants/imagine25/Avatar.js for an example.

@@ -162,14 +162,3 @@ export {
   GameState,
   aIMove,
 };
-// remind to change to updated syntax
-/** module.exports = {
-    Board: Board,
-    check3InARow : check3InARow,
-    checkWinner : checkWinner,
-    createNewBoard : createNewBoard,
-    makeMove: makeMove,
-    Players : Players,
-    Board: Board
-}
-**/

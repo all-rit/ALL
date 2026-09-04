@@ -77,6 +77,4 @@ const labData = [
   },
 ];
 
-module.exports = {
-  labData,
-};
+export { labData };

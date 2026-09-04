@@ -1,0 +1,27 @@
+name: Docker Build Check
+
+# Validates that the devcontainer images still build. Does not boot the
+# stack or exercise runtime behavior (env vars, DB connectivity, etc.) —
+# see .devcontainer/docker-compose.yml and README.md for those concerns.
+on:
+  pull_request:
+    branches: ["prod", "dev"]
+    paths:
+      - "client/Dockerfile"
+      - "client/package.json"
+      - "client/package-lock.json"
+      - "server/Dockerfile"
+      - "server/package.json"
+      - "server/package-lock.json"
+      - ".devcontainer/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build devcontainer images
+        run: docker compose -f .devcontainer/docker-compose.yml build

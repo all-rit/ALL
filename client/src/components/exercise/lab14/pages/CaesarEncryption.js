@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import ExerciseStateContext from "../Lab14Context";

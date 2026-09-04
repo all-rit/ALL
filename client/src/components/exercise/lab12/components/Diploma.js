@@ -1,4 +1,4 @@
-import { React, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import SealImage from "../../../../assets/images/lab12/diploma_seal.png";

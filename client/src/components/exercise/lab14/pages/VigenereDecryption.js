@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab14Context";
 import Decryption from "../components/Decryption";

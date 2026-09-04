@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { navigate } from "@reach/router";
+import { nanoid } from "nanoid";
 import ALLButton from "../all-components/ALLButton";
 import useMainStateContext from "../../reducers/MainContext";
-const { nanoid } = require("nanoid");
-import { navigate } from "@reach/router";
 import ImagineService from "../../services/ImagineService";
 import PropTypes from "prop-types";
 

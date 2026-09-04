@@ -1,4 +1,4 @@
-import { React, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import InformationLetterEmail from "../../../all-components/InformationLetterEmail";
 import { ALUMNI_NEWSLETTER_CONTENT } from "src/constants/lab12/index";
 import ExerciseStateContext from "../Lab12Context";

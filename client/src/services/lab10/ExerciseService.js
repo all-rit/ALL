@@ -7,12 +7,12 @@ const endpoints = {
 const ExerciseService = {
   retrieveWeights: (userId) => {
     return API.get(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints.WEIGHTS}/${userId}`,
+      `${import.meta.env.VITE_SERVER_URL}${endpoints.WEIGHTS}/${userId}`,
     );
   },
   submitWeights: (weights, session, userId) => {
     return API.postWithBody(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints.WEIGHTS}`,
+      `${import.meta.env.VITE_SERVER_URL}${endpoints.WEIGHTS}`,
       {
         weights,
         session,

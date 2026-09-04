@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import LabButton from "src/components/all-components/LabButton";
 import Quiz from "src/components/quiz/components/Quiz";
 import { GCSE_SECTIONS } from "src/constants/lab15";

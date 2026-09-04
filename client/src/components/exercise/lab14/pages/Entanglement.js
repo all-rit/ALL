@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import EntanglementQubit from "src/components/exercise/lab14/components/EntaglementQubit.js";
 

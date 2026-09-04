@@ -130,7 +130,7 @@ const Header = ({ isImagine }) => {
   const logout = () => {
     try {
       actions.showSnackbar(LOGOUT_SUCCESS, SUCCESS);
-      window.location.href = `${process.env.REACT_APP_SERVER_URL}/logout`;
+      window.location.href = `${import.meta.env.VITE_SERVER_URL}/logout`;
     } catch {
       actions.showSnackbar(LOGOUT_ERROR, ERROR);
     }

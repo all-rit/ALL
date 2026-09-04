@@ -7,7 +7,7 @@ const endpoints = {
 const ExerciseService = {
   submitChoice: (correct, question, selectedoption, options) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_CHOICE,
+      import.meta.env.VITE_SERVER_URL + endpoints.SUBMIT_CHOICE,
       {
         correct,
         question,

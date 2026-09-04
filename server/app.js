@@ -1,5 +1,7 @@
 require('dotenv').config();
-require('../server/services/VersionService').getAllVersions();
+require('./services/VersionService')
+  .getAllVersions()
+  .catch((err) => console.error('Unable to load version info:', err));
 
 const express = require('express');
 const cors = require('cors');

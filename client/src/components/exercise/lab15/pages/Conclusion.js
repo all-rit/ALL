@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import useMainStateContext from "src/reducers/MainContext";
 import UserLabService from "../../../../services/UserLabService";
 import { EXERCISE_IDLE } from "src/constants/index";

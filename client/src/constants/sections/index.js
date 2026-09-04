@@ -17,7 +17,7 @@ const ARE_YOU_AN_EDUCATOR_TITLE = "Are You an Educator?";
 const ARE_YOU_AN_EDUCATOR_BODY =
   "Access the ability to create groups for your students, track their lab progress, date of completion, and quiz grade. Find more information and resources under our Educator Resources page.";
 
-module.exports = {
+export {
   VIEW_PROGRESS_BODY,
   VIEW_PROGRESS_TITLE,
   EXPLORE_LABS_BODY,
