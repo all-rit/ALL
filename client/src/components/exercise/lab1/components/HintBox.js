@@ -70,7 +70,6 @@ class HintBox extends Component {
     const backgroundColor = boxRevealed
       ? availableBackgroundColor
       : unavailableBackgroundColor;
-
     if (!visible) return null;
 
     return (
