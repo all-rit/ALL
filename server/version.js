@@ -11,7 +11,7 @@ if (env == "production" && host == "all.rit.edu"){
   //PRODUCTION
   type = "prod"
 }
-else if (env == "production" && host == "ball.rit.edu"){
+else if (env == "production" && host == "ball.gccis.rit.edu"){
   //STAGING
   type = "staging"
 }
