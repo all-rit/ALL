@@ -67,6 +67,10 @@ const ExerciseControllerLab14 = require("../controllers/lab14/ExerciseController
 const ExerciseControllerLab15 = require('../controllers/lab15/ExerciseController');
 const RepairControllerLab15 = require('../controllers/lab15/RepairController');
 
+// LAB 16 Controller
+const ExerciseControllerLab16 = require('../controllers/lab16/ExerciseController');
+
+
 // Lab Controller
 const LabController = require("../controllers/LabController");
 
@@ -281,6 +285,21 @@ router.post('/lab15/repair/submit', async function (req, res) {
   const id = await RepairControllerLab15.submitChange(req);
   res.send(id);
 });
+
+{/* Lab 16 Exercise and Repair Controller Calls */ }
+router.get('/lab16/exercise/:userID', async function (req, res) {
+  res.json(await ExerciseControllerLab16.getExercise(req));
+});
+router.post('/lab16/exercise/submit', async function (req, res) {
+  const id = await ExerciseControllerLab16.postExercise(req);
+  res.send(id);
+});
+
+//Store Chat Reply call needed (from Imagine 2026)
+
+//Store teammate information call needed (new function)
+
+
 
 // Create a Page Entry
 router.post("/page/complete", PageController.createPage);
