@@ -3,21 +3,18 @@
   passes that to the Version Service to get the correct
   Version to be returned through the controller
 */
-const host = process.env.HOST
-const env = process.env.ENVIRONMENT
+const env = process.env.ENVIRONMENT;
 let type = "";
 
-if (env == "production" && host == "all.rit.edu"){
+if (env == "production") {
   //PRODUCTION
-  type = "prod"
-}
-else if (env == "production" && host == "ball.gccis.rit.edu"){
+  type = "prod";
+} else if (env == "staging") {
   //STAGING
-  type = "staging"
-}
-else{
+  type = "staging";
+} else {
   //LOCAL
-  type = "branch"
+  type = "branch";
 }
 
-module.exports = {type};
+module.exports = { type };
