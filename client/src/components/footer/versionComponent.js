@@ -4,6 +4,7 @@ import versionService from "src/services/VersionService";
 
 const Version = (props) => {
   const [version, setVersion] = useState(null);
+  const [branch, setBranch] = useState(null);
   const [hash, setHash] = useState(null);
   const [local, setLocal] = useState(null);
   const [className, setClassName] = useState();
@@ -15,7 +16,7 @@ const Version = (props) => {
     getVersion().then((response) => {
       setLocal(response.local);
       if (response.local) {
-        setVersion(response.version.version);
+        setBranch(response.version.branch);
         setHash(response.version.hash);
       } else {
         setVersion(response.version);
@@ -27,7 +28,7 @@ const Version = (props) => {
     <div className={className}>
       {local ? (
         <p>
-          Branch: {version} <br /> Commit: {hash}
+          Branch: {branch} <br /> Commit: {hash}
         </p>
       ) : (
         <p>Version: {version}</p>
