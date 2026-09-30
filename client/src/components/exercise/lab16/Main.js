@@ -1,13 +1,11 @@
-import React,{useState} from "react"
+import React, { useState } from "react";
 import { Router } from "@reach/router";
 
 import { EXERCISE_STATES } from "../../../constants/lab16";
 import ExerciseStateContext from "./Lab16Context";
 
-
-
 // lab imported dependencies;
-import ExerciseIntro from "./pages/ExerciseIntro"
+import ExerciseIntro from "./pages/ExerciseIntro";
 import Conclusion from "./pages/Conclusion";
 
 /**
@@ -26,12 +24,10 @@ const Main = () => {
         exerciseState={exerciseState}
         setExerciseState={setExerciseState}
       >
-        
         <Router className="app">
-           <ExerciseIntro default path="/" />
-           <Conclusion path="/conclusion" />
+          <ExerciseIntro default path="/" />
+          <Conclusion path="/Conclusion" />
         </Router>
-
       </ExerciseStateContext.Provider>
     </div>
   );

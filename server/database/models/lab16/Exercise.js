@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.TEXT,
         },
         teammateAssignment: {
-          type: DataTypes.ENUM('poc-male', 'poc-female','non-poc-male','non-poc-male'),
+          type: DataTypes.TEXT,
         },
 
     },

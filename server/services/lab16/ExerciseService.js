@@ -62,5 +62,4 @@ async function postExercise(data) {
 module.exports = {
   getExercise,
   postExercise,
-  postChatReply
 };
