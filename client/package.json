@@ -61,7 +61,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "postinstall": "patch-package"
   },
   "lint-staged": {
     "**/*.{js,jsx}": "npx eslint --fix"
@@ -81,6 +82,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
     "lint-staged": "^16.2.7",
+    "patch-package": "^8.0.1",
     "postcss": "^8.4.38",
     "prettier": "^3.8.1",
     "react-google-button": "^0.7.2",

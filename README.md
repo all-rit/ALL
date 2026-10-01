@@ -48,6 +48,11 @@ cd .devcontainer
 docker compose up -d --build
 ```
 
+OR 
+```bash
+docker compose up -d
+```
+
 - Client: <http://localhost:3000>
 - Server: <http://localhost:5005>
 - Database: `localhost:5433`

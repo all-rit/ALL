@@ -150,3 +150,6 @@ typings/
 
 ### deploy scripts
 server/deploy
+
+### Agents
+/.claude/*
