@@ -19,6 +19,7 @@ import {
   WELCOME_TO_ALL_BODY,
   WELCOME_TO_ALL_TITLE,
 } from "../../constants/sections";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
 
 const Home = () => {
   const { actions } = useMainStateContext();
@@ -136,6 +137,8 @@ const Home = () => {
 
       {/* Getting Involved */}
       <GettingInvolved id="get-involved" />
+
+      <SiteAccessibilityButton />
     </div>
   );
 };
