@@ -35,6 +35,12 @@ async function getOctokit() {
  * branch-hash on local
  */
 async function getVersion() {
+  // determine version
+  // based on type, call and return corresponding version.
+
+
+
+
   if (Object.keys(VERSIONS).includes(type)) {
     return VERSIONS[type];
   } else {
@@ -75,7 +81,7 @@ async function getProdVersion() {
     go to the next page.
   */
   const octokit = await getOctokit();
-  return await octokit.paginate(
+  const h = await octokit.paginate(
     "GET " + TAG_URL,
     REQUEST_PARAMS,
     (response, done) => {
@@ -91,6 +97,7 @@ async function getProdVersion() {
       }
     },
   );
+  console.log(h)
 }
 
 /* function for pulling latest beta tag */

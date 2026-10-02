@@ -10,9 +10,20 @@ const Version = (props) => {
   const [className, setClassName] = useState();
 
   useEffect(() => {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     async function getVersion() {
-      return await versionService.getVersion();
+      const resp = await versionService.getVersion();
+      if (typeof resp === "object" && Object.keys(resp).length === 0) {
+        // failed
+        await sleep(1000);
+        return await getVersion();
+      }
+      console.log(resp);
+
+      return resp;
     }
+
     getVersion().then((response) => {
       setLocal(response.local);
       if (response.local) {
