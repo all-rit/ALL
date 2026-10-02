@@ -35,9 +35,6 @@ async function getOctokit() {
  * branch-hash on local
  */
 async function getVersion() {
-  //The issue is here somewhere - this triggers the "else" branch during local testing
-  //my bet is on the issue with "type" - some kind of naming/config issue
-
   if (Object.keys(VERSIONS).includes(type)) {
     return VERSIONS[type];
   } else {
