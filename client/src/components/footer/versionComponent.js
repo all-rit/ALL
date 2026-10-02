@@ -5,6 +5,7 @@ import versionService from "src/services/VersionService";
 const Version = (props) => {
   const [version, setVersion] = useState(null);
   const [branch, setBranch] = useState(null);
+  const [success, setSuccess] = useState(null);
   const [hash, setHash] = useState(null);
   const [local, setLocal] = useState(null);
   const [className, setClassName] = useState();
@@ -15,17 +16,21 @@ const Version = (props) => {
     async function getVersion() {
       const resp = await versionService.getVersion();
       if (typeof resp === "object" && Object.keys(resp).length === 0) {
-        // failed
-        await sleep(1000);
-        return await getVersion();
+        for (let i = 0; i < 2; i++) {
+          await sleep(3000);
+          return await getVersion();
+        }
       }
-      console.log(resp);
-
       return resp;
     }
 
     getVersion().then((response) => {
+      if (!response) {
+        setSuccess(false);
+        return;
+      }
       setLocal(response.local);
+      setSuccess(true);
       if (response.local) {
         setBranch(response.version.branch);
         setHash(response.version.hash);
@@ -35,6 +40,10 @@ const Version = (props) => {
     });
     setClassName(props.className);
   }, []);
+
+  if (!success) {
+    return <p> Version not found. </p>;
+  }
   return (
     <div className={className}>
       {local ? (
