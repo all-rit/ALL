@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { imagesPath } from "src/constants/imagine26/images";
+import { imagesPath } from "src/constants/lab16/DeepfakeImages";
 import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
 import PropTypes from "prop-types";
 
