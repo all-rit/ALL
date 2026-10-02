@@ -83,7 +83,7 @@ async function getProdVersion() {
     go to the next page.
   */
   const octokit = await getOctokit();
-  const h = await octokit.paginate(
+  return await octokit.paginate(
     "GET " + TAG_URL,
     REQUEST_PARAMS,
     (response, done) => {
@@ -99,7 +99,6 @@ async function getProdVersion() {
       }
     },
   );
-  console.log(h);
 }
 
 /* function for pulling latest beta tag */
@@ -129,6 +128,7 @@ async function getStagingVersion() {
 
 /* function for pulling latest local branch */
 async function getLocalBranch() {
+
   /* Spawns child process to run "git rev-parse --short HEAD"  */
   const hash = await simpleGit().revparse(["--short", "HEAD"]);
   /* Spawns child process to run "git branch --show-current" then returns the branch name from the summary */
