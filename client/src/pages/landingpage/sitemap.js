@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/stylesheets/components/App.scss";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import handleRedirect from "../../helpers/Redirect";
+import labService from "src/services/LabService";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -13,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Routes = (props) => {
-  const { actions } = props;
+  const { actions, labCount } = props;
   const routeItems = [];
   routeItems.push(
     <div className="col-md-4">
@@ -62,7 +63,9 @@ const Routes = (props) => {
       </ul>
     </div>,
   );
-  for (let i = 1; i < 13; i++) {
+  for (let i = 0; i < labCount; i++) {
+    //count state is derived through labService count method
+    //lab count is passed from state in SiteMap component
     routeItems.push(
       <div className="col-md-4">
         <h1 className="tw-title">
@@ -124,9 +127,13 @@ const Routes = (props) => {
 };
 
 const SiteMap = (props) => {
+  const [labCount, setLabCount] = useState(0);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    labService.getCurrentLabCount().then((res) => setLabCount(res.count));
   }, []);
+
   const { actions } = props;
   return (
     <div className="landingpage lg:tw-pt-20 tw-pt-10">
@@ -142,7 +149,7 @@ const SiteMap = (props) => {
               <div className="grid-container">
                 <div className="col-md-auto">
                   <div className="row">
-                    <Routes actions={actions} />
+                    <Routes actions={actions} labCount={labCount} />
                   </div>
                 </div>
               </div>
