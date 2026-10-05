@@ -7,6 +7,7 @@ import ExerciseStateContext from "./Lab16Context";
 // lab imported dependencies;
 import ExerciseIntro from "./pages/ExerciseIntro";
 import Conclusion from "./pages/Conclusion";
+import Game from "./pages/Game";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -21,11 +22,14 @@ const Main = () => {
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
-        exerciseState={exerciseState}
-        setExerciseState={setExerciseState}
+      value={{
+        exerciseState,
+        setExerciseState
+      }}
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
+          <Game path="/Game" />
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
