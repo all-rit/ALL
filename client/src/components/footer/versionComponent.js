@@ -11,16 +11,8 @@ const Version = (props) => {
   const [className, setClassName] = useState();
 
   useEffect(() => {
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
     async function getVersion() {
       const resp = await versionService.getVersion();
-      if (typeof resp === "object" && Object.keys(resp).length === 0) {
-        for (let i = 0; i < 2; i++) {
-          await sleep(3000);
-          return await getVersion();
-        }
-      }
       return resp;
     }
 
