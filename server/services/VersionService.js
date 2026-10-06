@@ -33,6 +33,8 @@ async function getOctokit() {
  * @returns either version number for staging/production or
  * branch-hash on local
  */
+//TODO: Change this to store version in memory instead of live fetching during every reload/refresh
+//TODO: Restore to original getAllVersions/getVersion pair since root cause was NOT race condition
 async function getVersion() {
   // determine version
   // based on type, call and return corresponding version.
