@@ -4218,6 +4218,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   } 
  ]', 3, 'coming soon', 'coming soon', true),
+
  (15, 'AI Hallucinations', 'AI Hallucinations', 'AI', '/AIHallucinations.png', 'Learn how prompting influences AI Hallucinations.', 
  'This lab introduces the concepts of AI hallucinations, why AI models hallucinate, the effects of these hallucinations, and how better prompting can influence the frequency of these hallucinations.', e'["LO1: Define and Identify what AI Hallucinations are", "LO2: Understand how prompting impacts response quality and the possibility of hallucinations", "LO3: Apply effective prompting strategies", "LO4: Develop more critical thinking and evaluation skills in relation to Generative AI", "LO5: Demonstrate an improvement in AI literacy and understanding of generative AI"]', 'Conner DeFeo, Kristen Fang, Darlyn Gomez, Christine Espeleta', 'https://all.rit.edu/lab15', null, 
 
@@ -4427,7 +4428,111 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     ],
     "multiChoice": false
   }
- ]', 2, 'coming soon', 'coming soon', true);
+ ]', 2, 'coming soon', 'coming soon', true),
+
+ (17, 'Intro to Quantum Computing', 'Quantum', 'Quantum Computing', 'nothing', 'An introduction to quantum computing',
+  e'[
+    "LO1: Learning Objective One",
+    "LO2: Learning Objective Two",
+    "LO3: Learning Objective Three",
+    "LO4: Learning Objective Four"
+  ]', 'Gabby Addotey, Akhil Devarapalli, Kirsten Fang', 'https://all.rit.edu/Lab14/', null,
+  -- About Section
+  'Description for about section quantum computing intro lab', e'{
+  "description":"",
+  "body":[
+    {
+      "header":"Header 1 ",
+      "type":"",
+      "content":["Content for header 1"]
+    },
+    {
+      "header": "Header 2",
+      "type": "",
+      "content": ["Header 2 content"]
+    },
+    {
+      "header": "",
+      "type": "image",
+        "content" : {
+            "image":"png of header two",
+            "alt":"Alternative text for image for header two",
+            "caption":"Credit for header 2 image",
+            "sub_caption":"Sub capation for header 2 image"
+           }
+    }
+  ],
+  "footer":{
+      "links":[
+        {
+          "name":"Article One used for Research",
+          "link":"Link to article two"
+        },
+        {
+          "name":"Article Two Used for research",
+          "link":"Link to article two"
+        }
+      ]
+    }
+  }',
+  '[{"title":"Title of Additional Resource 1","link": "link to addtional resource 1"}]', 
+'[
+  {
+    "question": "Question 2",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Choice 1"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Choice 2"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Choice 3 (This is correct)",
+        "explanation": "Why this is the correct choice"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "choice 4"
+      }
+    ],
+    "multiChoice": false
+  },
+    {
+    "question": "Question 1",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Choice 1"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Choice 2"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Choice 3 (This is correct)",
+        "explanation": "Why this is the correct choice"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "choice 4"
+      }
+    ],
+    "multiChoice": false
+  }
+ ]', 3, 'coming soon', 'coming soon', true);
+
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
