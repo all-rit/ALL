@@ -4436,7 +4436,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "LO2: Learning Objective Two",
     "LO3: Learning Objective Three",
     "LO4: Learning Objective Four"
-  ]', 'Gabby Addotey, Akhil Devarapalli, Kirsten Fang', 'https://all.rit.edu/Lab14/', null,
+  ]', 'Gabby Addotey, Akhil Devarapalli, Kirsten Fang', 'https://all.rit.edu/Lab17/', null,
   -- About Section
   'Description for about section quantum computing intro lab', e'{
   "description":"",
