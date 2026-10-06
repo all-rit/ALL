@@ -14,6 +14,7 @@ const endpoints = {
   POST_EXERCISE: `${resource.EXERCISE}/${prefix.POST_SUFFIX}`,
     //Save Chat Reply endpoints needed (from Imagine 2026)
     //Save teammate information endpoints needed (new function)
+  SAVE_TEAMMATE: `${resource.EXERCISE}/saveTeammate`
 };
 
 
@@ -45,6 +46,25 @@ const ExerciseService = {
     //Save Chat Reply endpoint (from Imagine 2026)
 
     //Save teammate information endpoint (new function)
+    saveTeammate: async (data) => {
+      try {
+        
+        const body = {
+        userID: data.userID,
+        teammateInfo: data.teammateInfo
+        }
+        
+        const teammateendpoint = `${endpoints.SAVE_TEAMMATE}/${data.userID}`;
+        const response = await API.postWithBody(teammateendpoint,body);
+        return response.status
+
+      } catch (error) {
+
+        console.log(error)
+
+      }
+    
+    }
 
 };
 

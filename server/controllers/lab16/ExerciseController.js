@@ -27,7 +27,20 @@ async function postExercise(req) {
 
 //Save teammate information needed (new function)
 
+async function saveTeammateInformation(req){
+  try {
+    const data = req.body
+    const response = await ExerciseService.saveTeammateInformation(data)
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+
+  
+}
+
 module.exports = {
   getExercise,
   postExercise,
+  saveTeammateInformation
 };

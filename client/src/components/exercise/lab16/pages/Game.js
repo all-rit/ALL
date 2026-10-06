@@ -2,10 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import TeammateVideo from "../components/TeammateVideo";
 import ScorePage from "../components/ScorePage";
 import Analysis from "../components/Analysis";
+import { TEAMMATE_INFO } from "src/constants/lab16";
+import { ExerciseService } from "../../../../services/lab16/ExerciseService";
+ import useMainStateContext from "src/reducers/MainContext";
+
 
 const Game = () => {
   const [status, setStatus] = useState("game");
-
+  const { state } = useMainStateContext();
   const contentSizing =
     "tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
 
@@ -45,11 +49,25 @@ const Game = () => {
       }, 1000);
       return () => clearInterval(timer);
     }
-  }, [iframeRef]);
+  }, []);
 
   useEffect(() => {
     const id = Math.floor(Math.random() * 4);
     setTeammateId(id);
+
+    const teammateInfo = TEAMMATE_INFO[id]
+    console.log(teammateInfo)
+
+    async function saveTeammateInfo() {
+      const resp = await ExerciseService.saveTeammate(
+        {
+        userID: state.main.user.userid,
+        teammateInfo:teammateInfo}
+        )
+      console.log(resp)
+    }
+    saveTeammateInfo()
+
   }, []);
 
   return (
