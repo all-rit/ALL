@@ -318,6 +318,25 @@ export const Sections = {
       name: "Quiz",
     },
   },
+  16: {
+    fullname: "Lab 16: Deepfake",
+    name: "Lab16",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
     17: {
     fullname: "Lab 17: Intro to Quantum Computing",
     name: "Lab17",

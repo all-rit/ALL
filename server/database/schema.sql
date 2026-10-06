@@ -4429,6 +4429,219 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
  ]', 2, 'coming soon', 'coming soon', true),
+ --Deepfake Lab
+ (16, 'Deepfake', 'Deepfake', 'AI', 'thumbnailImageURL', 'Learn how about deepfake ethics', 
+ 'fullDescription', e'["LO1:","LO2:", "LO3:", "LO4: ", "LO5: "]', 'Luther, Niamh, Grace, Carla', 'https://all.rit.edu/lab16', null, 
+ -- About Section
+  'In this lab, you will learn about the importance of Deepfakes... ', 
+  --piechart (optional)
+  e'{
+    "piechart":{
+      "header":"",
+      "caption":[""],
+      "data":{
+          "labels": [
+            "", "", ""
+          ],
+          "datasets": [
+            {
+              "label": "",
+              "borderColor": "black",
+              "backgroundColor": ["#0d6efd","#ffc107", "#616161"],
+              "data": [18.1, 20.2, 61.7],
+              "borderWidth": "1"
+            }
+          ]
+      }
+    },
+    "description":"",
+    "body":[
+      {
+        "header":"",
+        "type":"",
+        "content":[""]
+      },
+      {
+        "header":"",
+        "type":"",
+        "content":[""]
+      },
+      {
+        "header":"",
+        "type":"",
+        "content":[
+          "",
+          ""
+        ]
+      },
+      {
+        "header":"",
+        "type":"",
+        "content":[
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ],
+    "footer":{
+        "links":[
+          {
+            "name":"",
+            "link":""
+          },
+          {
+            "name":"",
+            "link":""
+          },
+          {
+            "name":"",
+            "link":""
+          },
+          {
+            "name": "",
+            "link": ""
+          }
+        ]
+      }
+  }',
+  --Reinforcement
+  '[
+    {"title":"","link": ""},
+    {"title":"","link": ""},
+    {"title":"","link": ""},
+    {"title":"","link": ""}
+  ]', 
+  --Quiz
+'[
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "",
+        "explanation": ""
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": ""
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": ""
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": ""
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": ""
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "",
+        "explanation": ""
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": ""
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": ""
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "True",
+        "explanation": ""
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "False"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "",
+        "explanation": ""
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": ""
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "",
+        "explanation": ""
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": ""
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": ""
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": ""
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "",
+        "explanation": ""
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": ""
+      }
+    ],
+    "multiChoice": false
+  }
+ ]', 1, 'coming soon', 'coming soon', true),
 
  (17, 'Intro to Quantum Computing', 'Quantum', 'Quantum Computing', 'nothing', 'An introduction to quantum computing',
   e'[
