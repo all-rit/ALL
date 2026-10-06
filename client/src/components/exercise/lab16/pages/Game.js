@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import TeammateVideo from "../components/TeammateVideo";
 import ScorePage from "../components/ScorePage";
 import Analysis from "../components/Analysis";
+import TicTacToeGame from "../components/TicTacToeGame";
 
 const Game = () => {
   const [status, setStatus] = useState("game");
@@ -42,7 +43,7 @@ const Game = () => {
 
           return prevSeconds - 1;
         });
-      }, 1000);
+      }, 100);
       return () => clearInterval(timer);
     }
   }, [iframeRef]);
@@ -64,11 +65,13 @@ const Game = () => {
         }
       >
         {status == "game" && (
-          <iframe
-            ref={iframeRef}
-            src="https://microstudio.io/Imagine2025/galaga/6GZNBHTD/"
-            className={contentSizing}
-          />
+          <div> 
+            <iframe 
+              ref={iframeRef}
+            />
+            <TicTacToeGame />
+          </div>
+          
         )}
 
         {status == "scorePage" && (
