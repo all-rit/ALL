@@ -300,8 +300,8 @@ router.get("/lab", async function (req, res) {
   await LabController.getAllLabsController(req, res);
 });
 
-router.get("/labCount", async function (req, res) {
-  await LabController.getCurrentLabCountController(req, res);
+router.get("/activeLabNumbers", async function (req, res) {
+  await LabController.getActiveLabNumbersController(req, res);
 });
 
 router.get("/lab:labID/shortname", async function (req, res) {

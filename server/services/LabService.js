@@ -25,8 +25,20 @@ async function getAllLabs() {
  * getLabCount(): Get the total number of Labs in the database.
  * @return {Integer} count of labs in the database
  */
-async function getLabCount() {
-  return await db.Labs.count();
+async function getActiveLabNumbers() {
+  const activeLabNumbers = await db.Labs.findAll({
+    where: {
+      isActive: true,
+    },
+
+    attributes: ["id"],
+
+    order: [["id", "ASC"]],
+
+    raw: true,
+  });
+
+  return activeLabNumbers;
 }
 /**
  * getLabShortName(): Get the short name of the lab.
@@ -136,7 +148,7 @@ async function getLabQuiz(labID) {
 
 module.exports = {
   getAllLabs,
-  getLabCount,
+  getActiveLabNumbers,
   getLabShortName,
   getLabAbout,
   getLabReading,

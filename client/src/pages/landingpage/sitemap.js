@@ -14,10 +14,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Routes = (props) => {
-  const { actions, labCount } = props;
+  const { actions, activeLabNumbers } = props;
   const routeItems = [];
   routeItems.push(
-    <div className="col-md-4">
+    <div key="#" className="col-md-4">
       <h1 className="tw-title">
         <a href=" " id="# " onClick={() => handleRedirect(actions, 0)}>
           Home
@@ -63,14 +63,13 @@ const Routes = (props) => {
       </ul>
     </div>,
   );
-  for (let i = 0; i < labCount; i++) {
-    //count state is derived through labService count method
-    //lab count is passed from state in SiteMap component
+  for (let i = 0; i < activeLabNumbers.length; i++) {
+    let labNo = activeLabNumbers[i];
     routeItems.push(
-      <div className="col-md-4">
+      <div key={labNo} className="col-md-4">
         <h1 className="tw-title">
-          <a href=" " onClick={() => handleRedirect(actions, i, 0)}>
-            Lab {i}
+          <a href=" " onClick={() => handleRedirect(actions, labNo, 0)}>
+            Lab {labNo}
           </a>
         </h1>
         <ul>
@@ -78,7 +77,7 @@ const Routes = (props) => {
             <a
               className="tw-body-text"
               href="# "
-              onClick={() => handleRedirect(actions, i, 0)}
+              onClick={() => handleRedirect(actions, labNo, 0)}
             >
               About
             </a>
@@ -87,7 +86,7 @@ const Routes = (props) => {
             <a
               className="tw-body-text"
               href="# "
-              onClick={() => handleRedirect(actions, i, 1)}
+              onClick={() => handleRedirect(actions, labNo, 1)}
             >
               Reading
             </a>
@@ -96,7 +95,7 @@ const Routes = (props) => {
             <a
               className="tw-body-text"
               href="# "
-              onClick={() => handleRedirect(actions, i, 2)}
+              onClick={() => handleRedirect(actions, labNo, 2)}
             >
               Exercise
             </a>
@@ -105,7 +104,7 @@ const Routes = (props) => {
             <a
               className="tw-body-text"
               href="# "
-              onClick={() => handleRedirect(actions, i, 3)}
+              onClick={() => handleRedirect(actions, labNo, 3)}
             >
               Reinforcement
             </a>
@@ -114,7 +113,7 @@ const Routes = (props) => {
             <a
               className="tw-body-text"
               href="# "
-              onClick={() => handleRedirect(actions, i, 4)}
+              onClick={() => handleRedirect(actions, labNo, 4)}
             >
               Quiz
             </a>
@@ -127,11 +126,14 @@ const Routes = (props) => {
 };
 
 const SiteMap = (props) => {
-  const [labCount, setLabCount] = useState(0);
+  const [activeLabNumbers, setActiveLabNumbers] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    labService.getCurrentLabCount().then((res) => setLabCount(res.count));
+    labService
+      .getActiveLabNumbers()
+      .then((res) => res.activeLabNumbers.map((obj) => obj.id)) //flattens to 1D array of lab numbers
+      .then((labNumbers) => setActiveLabNumbers(labNumbers));
   }, []);
 
   const { actions } = props;
@@ -149,7 +151,10 @@ const SiteMap = (props) => {
               <div className="grid-container">
                 <div className="col-md-auto">
                   <div className="row">
-                    <Routes actions={actions} labCount={labCount} />
+                    <Routes
+                      actions={actions}
+                      activeLabNumbers={activeLabNumbers}
+                    />
                   </div>
                 </div>
               </div>

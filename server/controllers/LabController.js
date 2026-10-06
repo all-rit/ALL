@@ -16,17 +16,19 @@ async function getAllLabsController(_req, res) {
 }
 
 /**
- * getCurrentLabCountController(): Gets the total number of Labs within the database.
+ * getActiveLabNumbersController(): Gets the total number of Labs within the database.
  * @param {Object} req request object containing payload.
  * @param {Object} res response object containing information to client
  */
-async function getCurrentLabCountController(_req, res) {
+async function getActiveLabNumbersController(_req, res) {
   try {
-    const labCount = await LabService.getLabCount();
-    return await res.json({ count: labCount });
+    const activeLabNumbers = await LabService.getActiveLabNumbers();
+    return await res.json({ activeLabNumbers });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error: Could not retrieve lab count" });
+    res
+      .status(500)
+      .json({ error: "Error: Could not retrieve active lab numbers" });
   }
 }
 /**
@@ -107,7 +109,7 @@ async function getLabQuizController(req, res) {
 
 module.exports = {
   getAllLabsController,
-  getCurrentLabCountController,
+  getActiveLabNumbersController,
   getLabShortNameController,
   getLabAboutController,
   getLabReadingController,
