@@ -38,5 +38,10 @@
   },
   "lint-staged": {
     "**/*.{js,jsx}": "npx eslint --fix"
+  },
+  "overrides": {
+    "simple-git": {
+      "@simple-git/argv-parser": "2.0.1"
+    }
   }
 }
