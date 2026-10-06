@@ -21,7 +21,13 @@ const TeammateVideo = (props) => {
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
     } else if (status == "groupVideo") {
-      setVideoSrc(groupVideoPaths[teammateId] || groupVideoPaths[0]);
+      
+      //only get expression videos(teammate deepfake)
+      const teammateReactionVideos =
+        groupVideoPaths[teammateId] || groupVideoPaths[0];
+      setVideoSrc(teammateReactionVideos["expression"] || teammateReactionVideos.A);
+
+
     } else if (status == "analysis") {
       setVideoSrc("");
     } else if (status == "chatroom") {
