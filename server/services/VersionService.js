@@ -14,6 +14,8 @@ const REQUEST_PARAMS = {
   },
 };
 
+const VERSIONS = {};
+
 // Offical family of Github-maintained client librariers used to
 // interact with the GithHub API
 // octokit is ESM-only, so it has to be loaded with a dynamic import()
@@ -38,17 +40,31 @@ async function getOctokit() {
 async function getVersion() {
   // determine version
   // based on type, call and return corresponding version.
-  let res;
-
-  if (type === "prod") {
-    res = await getProdVersion();
-  } else if (type === "staging") {
-    res = await getStagingVersion();
-  } else {
-    res = await getLocalBranch();
+  if (Object.keys(VERSIONS).includes(type)) {
+    console.log("+1 HP");
+    return VERSIONS[type];
   }
+  return {};
+}
 
-  return res;
+async function getAllVersions() {
+  await Promise.allSettled([
+    getProdVersion()
+      .then((response) => {
+        VERSIONS.prod = response[0];
+      })
+      .catch((err) => console.error("Unable to fetch prod version:", err)),
+    getStagingVersion()
+      .then((response) => {
+        VERSIONS.staging = response[0];
+      })
+      .catch((err) => console.error("Unable to fetch staging version:", err)),
+    getLocalBranch()
+      .then((response) => {
+        VERSIONS.branch = response;
+      })
+      .catch((err) => console.error("Unable to determine local branch:", err)),
+  ]);
 }
 
 /* function for pulling latest non-beta tag */
@@ -58,6 +74,7 @@ async function getProdVersion() {
     go to the next page.
   */
   const octokit = await getOctokit();
+  console.log("-1 HP");
   return await octokit.paginate(
     "GET " + TAG_URL,
     REQUEST_PARAMS,
@@ -83,6 +100,7 @@ async function getStagingVersion() {
     go to the next page.
   */
   const octokit = await getOctokit();
+  console.log("-1 HP");
   return await octokit.paginate(
     "GET " + TAG_URL,
     REQUEST_PARAMS,
@@ -106,6 +124,7 @@ async function getLocalBranch() {
   /* Spawns child process to run "git rev-parse --short HEAD"  */
   const hash = await simpleGit().revparse(["--short", "HEAD"]);
   /* Spawns child process to run "git branch --show-current" then returns the branch name from the summary */
+  console.log("-1 HP");
   const branch = await simpleGit()
     .branch(["--show-current"])
     .then((summary) => {
@@ -116,4 +135,5 @@ async function getLocalBranch() {
 
 module.exports = {
   getVersion,
+  getAllVersions,
 };

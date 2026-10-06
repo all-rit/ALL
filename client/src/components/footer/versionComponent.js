@@ -11,12 +11,7 @@ const Version = (props) => {
   const [className, setClassName] = useState();
 
   useEffect(() => {
-    async function getVersion() {
-      const resp = await versionService.getVersion();
-      return resp;
-    }
-
-    getVersion().then((response) => {
+    versionService.getVersion().then((response) => {
       if (!response) {
         setSuccess(false);
         return;

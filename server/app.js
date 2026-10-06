@@ -1,4 +1,7 @@
 require("dotenv").config();
+require("./services/VersionService")
+  .getAllVersions()
+  .catch((err) => console.error("Unable to load version info:", err));
 
 const express = require("express");
 const cors = require("cors");
@@ -84,4 +87,3 @@ if (
 }
 
 server.listen(port, () => console.log(`Listening on port ${port}!`));
-
