@@ -18,8 +18,8 @@ const DisplayDeepFake = (props) => {
 
   const handleNavigation = async () => {
     sessionStorage.setItem("teammateId", teammateId);
-      //insert Chatroom nav when finished implementing
-      navigate("/Lab16/Exercise/Conclusion");
+      // uncomment this line when ChatRoom page is implemented
+      // navigate("/Lab16/Exercise/ChatRoom");
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@ const Game = () => {
 
   const iframeRef = useRef(null);
 
-  const [seconds, setSeconds] = useState(6);
+  const [seconds, setSeconds] = useState(60);
 
   const [teammateId, setTeammateId] = useState(1);
 
