@@ -43,7 +43,7 @@ const Home = () => {
     allLabs.map((lab) => {
       if (lab.labShortName == "Quantum") {
         lab14 = lab;
-      } else if (lab.labShortName == "Intro to Quantum Computing") {
+      } else if (lab.labShortName == "Quantum Intro") {
         lab17 = lab;
       }
     });

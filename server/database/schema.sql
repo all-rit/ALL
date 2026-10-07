@@ -4643,8 +4643,8 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
   }
  ]', 1, 'coming soon', 'coming soon', true),
 
- (17, 'Intro to Quantum Computing', 'Quantum', 'Quantum Computing', 'nothing', 'An introduction to quantum computing',
-  e'[
+ (17, 'Intro to Quantum Computing', 'Quantum Intro', 'Quantum Computing', 'nothing', 'An introduction to quantum computing',
+  'fullDescription', e'[
     "LO1: Learning Objective One",
     "LO2: Learning Objective Two",
     "LO3: Learning Objective Three",
