@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import TeammateVideo from "../components/TeammateVideo";
+import DisplayDeepFake from "../components/DisplayDeepfake";
 import ScorePage from "../components/ScorePage";
-import Analysis from "../components/Analysis";
 import { TEAMMATE_INFO } from "src/constants/lab16";
 import { ExerciseService } from "../../../../services/lab16/ExerciseService";
  import useMainStateContext from "src/reducers/MainContext";
@@ -91,16 +91,21 @@ const Game = () => {
 
         {status == "scorePage" && (
           <ScorePage
-            onClick={() => setStatus("analysis")}
+            onClick={() => setStatus("deepfakePage")}
             className={contentSizing}
           />
         )}
 
-        {(status === "analysis" || status === "groupVideo") && (
-          <Analysis
-            teammateId={teammateId}
-            showVideo={() => setStatus("groupVideo")}
-          />
+        {(status === "deepfakePage" || status === "deepfakeVideo") && (
+          <div className="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+            {
+              <DisplayDeepFake
+                teammateId={teammateId}
+                toggleAction={() => setStatus("deepfakeVideo")}
+                isChatRoom={false}
+              />
+            }
+          </div>
         )}
 
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
@@ -108,8 +113,9 @@ const Game = () => {
           <div>{seconds}</div>
         </div>
       </div>
-
-      <TeammateVideo teammateId={teammateId} status={status} />
+        {(status !== "deepfakePage") && (
+          <TeammateVideo teammateId={teammateId} status={status} />
+        )}
     </div>
   );
 };

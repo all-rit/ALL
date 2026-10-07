@@ -20,9 +20,15 @@ const TeammateVideo = (props) => {
       setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
-    } else if (status == "groupVideo") {
-      setVideoSrc(groupVideoPaths[teammateId] || groupVideoPaths[0]);
-    } else if (status == "analysis") {
+    } else if (status == "deepfakeVideo") {
+      
+      //only get expression videos(teammate deepfake)
+      const teammateReactionVideos =
+        groupVideoPaths[teammateId] || groupVideoPaths[0];
+      setVideoSrc(teammateReactionVideos["expression"] || teammateReactionVideos.A);
+
+
+    } else if (status == "deepfakePage") {
       setVideoSrc("");
     } else if (status == "chatroom") {
       //once we have all videos of teammates typing uncomment this line
