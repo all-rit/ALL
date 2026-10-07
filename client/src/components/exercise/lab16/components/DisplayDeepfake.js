@@ -30,11 +30,11 @@ const DisplayDeepFake = (props) => {
     <>
       <div className="tw-flex tw-flex-col tw-items-center tw-w-full tw-px-6">
         {modal && isChatRoom === false ? (
-          <Modal isOpen={modal} toggle={toggle} centered>
-            <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold ">
+          <Modal isOpen={modal} toggle={toggle} centered className="tw-px-8">
+            <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold">
               System Alert
             </ModalHeader>
-            <ModalBody className="tw-text-center tw-py-8">
+            <ModalBody className="tw-text-center tw-py-6 tw-px-2">
               <h5 className="tw-font-semibold">
                 We have footage of your teammate not wanting popcorn
               </h5>

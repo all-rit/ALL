@@ -20,9 +20,9 @@ const TeammateVideo = (props) => {
       setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
-    } else if (status == "groupVideo") {
+    } else if (status == "deepfakeVideo") {
       setVideoSrc(groupVideoPaths[teammateId] || groupVideoPaths[0]);
-    } else if (status == "analysis") {
+    } else if (status == "deepfakePage") {
       setVideoSrc("");
     } else if (status == "chatroom") {
       //once we have all videos of teammates typing uncomment this line
