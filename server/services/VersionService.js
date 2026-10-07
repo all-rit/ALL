@@ -35,13 +35,8 @@ async function getOctokit() {
  * @returns either version number for staging/production or
  * branch-hash on local
  */
-//TODO: Change this to store version in memory instead of live fetching during every reload/refresh
-//TODO: Restore to original getAllVersions/getVersion pair since root cause was NOT race condition
 async function getVersion() {
-  // determine version
-  // based on type, call and return corresponding version.
   if (Object.keys(VERSIONS).includes(type)) {
-    console.log("+1 HP");
     return VERSIONS[type];
   }
   return {};
@@ -74,7 +69,6 @@ async function getProdVersion() {
     go to the next page.
   */
   const octokit = await getOctokit();
-  console.log("-1 HP");
   return await octokit.paginate(
     "GET " + TAG_URL,
     REQUEST_PARAMS,
@@ -100,7 +94,6 @@ async function getStagingVersion() {
     go to the next page.
   */
   const octokit = await getOctokit();
-  console.log("-1 HP");
   return await octokit.paginate(
     "GET " + TAG_URL,
     REQUEST_PARAMS,
@@ -124,7 +117,6 @@ async function getLocalBranch() {
   /* Spawns child process to run "git rev-parse --short HEAD"  */
   const hash = await simpleGit().revparse(["--short", "HEAD"]);
   /* Spawns child process to run "git branch --show-current" then returns the branch name from the summary */
-  console.log("-1 HP");
   const branch = await simpleGit()
     .branch(["--show-current"])
     .then((summary) => {
