@@ -11,7 +11,7 @@ const Game = () => {
 
   const iframeRef = useRef(null);
 
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(6);
 
   const [teammateId, setTeammateId] = useState(1);
 
@@ -90,8 +90,9 @@ const Game = () => {
           <div>{seconds}</div>
         </div>
       </div>
-
-      <TeammateVideo teammateId={teammateId} status={status} />
+        {(status !== "analysis") && (
+          <TeammateVideo teammateId={teammateId} status={status} />
+        )}
     </div>
   );
 };
