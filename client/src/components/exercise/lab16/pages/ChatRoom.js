@@ -1,6 +1,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import { Chat } from "../../all-components/imagine-components/Chat";
+// uncomment this line when Chat component is implemented
+// import { Chat } from "../../all-components/imagine-components/Chat";
 import TeammateVideo from "../components/TeammateVideo";
 import ImagineService from "src/services/ImagineService";
 

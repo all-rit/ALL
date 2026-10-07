@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { imagesPath } from "src/constants/lab16/DeepfakeImages";
 import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
 import PropTypes from "prop-types";
+import { navigate } from "@reach/router";
 
 const DisplayDeepFake = (props) => {
   const { teammateId, toggleAction, isChatRoom } = props;
@@ -15,6 +16,12 @@ const DisplayDeepFake = (props) => {
     }
   };
 
+  const handleNavigation = async () => {
+    sessionStorage.setItem("teammateId", teammateId);
+      // uncomment this line when ChatRoom page is implemented
+      // navigate("/Lab16/Exercise/ChatRoom");
+  };
+
   useEffect(() => {
     setImagePath(imagesPath[teammateId] || imagesPath[0]);
   }, [teammateId]);
@@ -23,11 +30,11 @@ const DisplayDeepFake = (props) => {
     <>
       <div className="tw-flex tw-flex-col tw-items-center tw-w-full tw-px-6">
         {modal && isChatRoom === false ? (
-          <Modal isOpen={modal} toggle={toggle} centered>
-            <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold ">
+          <Modal isOpen={modal} toggle={toggle} centered className="tw-px-8">
+            <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold">
               System Alert
             </ModalHeader>
-            <ModalBody className="tw-text-center tw-py-8">
+            <ModalBody className="tw-text-center tw-py-6 tw-px-2">
               <h5 className="tw-font-semibold">
                 We have footage of your teammate not wanting popcorn
               </h5>
@@ -95,6 +102,14 @@ const DisplayDeepFake = (props) => {
                 className="tw-rounded-lg tw-shadow-2xl tw-w-full tw-h-auto tw-object-contain tw-border tw-border-gray-100"
               />
             </div>
+            <Button
+              className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
+        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black tw-mt-8"
+              //alert model should pop up and deepfake should be shown
+              onClick={handleNavigation}
+            >
+              Next
+            </Button>
           </>
         )}
       </div>
