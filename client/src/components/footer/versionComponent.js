@@ -4,18 +4,22 @@ import versionService from "src/services/VersionService";
 
 const Version = (props) => {
   const [version, setVersion] = useState(null);
+  const [branch, setBranch] = useState(null);
+  const [success, setSuccess] = useState(null);
   const [hash, setHash] = useState(null);
   const [local, setLocal] = useState(null);
   const [className, setClassName] = useState();
 
   useEffect(() => {
-    async function getVersion() {
-      return await versionService.getVersion();
-    }
-    getVersion().then((response) => {
+    versionService.getVersion().then((response) => {
+      if (!response) {
+        setSuccess(false);
+        return;
+      }
       setLocal(response.local);
+      setSuccess(true);
       if (response.local) {
-        setVersion(response.version.version);
+        setBranch(response.version.branch);
         setHash(response.version.hash);
       } else {
         setVersion(response.version);
@@ -23,11 +27,15 @@ const Version = (props) => {
     });
     setClassName(props.className);
   }, []);
+
+  if (!success) {
+    return <p> Version not found. </p>;
+  }
   return (
     <div className={className}>
       {local ? (
         <p>
-          Branch: {version} <br /> Commit: {hash}
+          Branch: {branch} <br /> Commit: {hash}
         </p>
       ) : (
         <p>Version: {version}</p>
