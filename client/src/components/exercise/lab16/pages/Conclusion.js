@@ -25,7 +25,7 @@ const Conclusion = () => {
       <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-3">
-          You have completed the exercise for Deepfake Lab. Some of your
+          You have completed the exercise for the Deepfake Lab. Some of your
           key takeaways from this lab should include:
         </p>
         <ul>
