@@ -4,8 +4,7 @@ import DisplayDeepFake from "../components/DisplayDeepfake";
 import ScorePage from "../components/ScorePage";
 import { TEAMMATE_INFO } from "src/constants/lab16";
 import { ExerciseService } from "../../../../services/lab16/ExerciseService";
- import useMainStateContext from "src/reducers/MainContext";
-
+import useMainStateContext from "src/reducers/MainContext";
 import TicTacToeGame from "../components/TicTacToeGame";
 
 const Game = () => {
@@ -32,7 +31,6 @@ const Game = () => {
         });
       }, 1000);
       return () => clearInterval(timer);
-    }
   }, []);
 
 
