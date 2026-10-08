@@ -21,21 +21,29 @@ const Conclusion = () => {
   };
 
   return (
-    <div>
-      <h1 className="tw-title tw-text-left">Deepfake Conclusion!</h1>
-      <div className="tw-body-text tw-text-center tw-pb-6">
-        Click the <strong>Continue</strong> button to move on the the
-        Reinforcement Section!
+   <div className="center-div">
+      <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
+      <div className="guidance margin-bottom-2">
+        <p className="tw-body-text tw-text-left tw-py-3">
+          You have completed the exercise for Deepfake Lab. Some of your
+          key takeaways from this lab should include:
+        </p>
+        <ul>
+          <li className={"tw-body-text"}>
+            Understand what deepfakes are and their ethical implications
+          </li>
+          <li className={"tw-body-text"}>
+            Reflect on how deepfakes affect people emotionally and ethically when someone is targeted
+          </li>
+        </ul>
       </div>
-      <div className="center-div">
-        <button
-          className="center-div btn btn-primary text-black btn-xl text-uppercase"
-          onClick={handleFinish}
-          key="start"
-        >
-          Continue
-        </button>
-      </div>
+      <button
+        className="center-div btn btn-primary text-black btn-xl text-uppercase"
+        onClick={handleFinish}
+        key="start"
+      >
+        Continue
+      </button>
     </div>
   );
 };
