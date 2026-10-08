@@ -298,7 +298,7 @@ router.post('/lab16/exercise/submit', async function (req, res) {
 //Store Chat Reply call needed (from Imagine 2026)
 
 //Store teammate information call needed (new function)
-router.post('/lab16/exercise/saveTeammate/:userID', async function (req,res) {
+router.post('/lab16/exercise/saveTeammate', async function (req,res) {
   const result = await ExerciseControllerLab16.saveTeammateInformation(req)
   res.send(result)
 })
