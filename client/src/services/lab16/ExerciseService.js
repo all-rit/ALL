@@ -54,8 +54,7 @@ const ExerciseService = {
         teammateInfo: data.teammateInfo
         }
         
-        const teammateendpoint = `${endpoints.SAVE_TEAMMATE}/${data.userID}`;
-        const response = await API.postWithBody(teammateendpoint,body);
+        const response = await API.postWithBody(endpoints.SAVE_TEAMMATE,body);
         return response.status
 
       } catch (error) {
