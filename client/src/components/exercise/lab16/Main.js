@@ -31,7 +31,7 @@ const Main = () => {
         <Router className="app">
           <ExerciseIntro default path="/" />
           <Game path="/Game" />
-          <ChatRoom path={"/ChatRoom"} />
+          <ChatRoom path="/ChatRoom" />
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>

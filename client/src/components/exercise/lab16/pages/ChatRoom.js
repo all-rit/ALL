@@ -1,22 +1,24 @@
 import React from "react";
 import { navigate } from "@reach/router";
-// uncomment this line when Chat component is implemented
-// import { Chat } from "../../all-components/imagine-components/Chat";
+import { Chat } from "../../../all-components/imagine-components/Chat";
 import TeammateVideo from "../components/TeammateVideo";
-import ImagineService from "src/services/ImagineService";
+import { ExerciseService } from "../../../../services/lab16/ExerciseService";
+import useMainStateContext from "src/reducers/MainContext";
 
 const ChatRoom = () => {
+  const {state} = useMainStateContext();
   const teammateId = Number(sessionStorage.getItem("teammateId"));
-  const group = sessionStorage.getItem("group");
+  const group = "expression";
 
   const onSubmit = async (reply) => {
-    await ImagineService.postChatReply(
-      sessionStorage.getItem("userID"),
-      reply,
-      26,
+    await ExerciseService.postChatReply(
+      {
+        userid: state.main.user.userid, 
+        reply: reply
+      }
     );
-    setTimeout(() => {
-      navigate("/Imagine2026/ReadingSection");
+      setTimeout(() => {
+      navigate("/Lab16/Exercise/Conclusion");
     }, 1000);
   };
 
