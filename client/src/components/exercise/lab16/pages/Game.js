@@ -74,7 +74,7 @@ const Game = () => {
     
     saveTeammateInfo()
 
-  }, [state?.main?.user?.userid]);
+  }, []);
 
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
