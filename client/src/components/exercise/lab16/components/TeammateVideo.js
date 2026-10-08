@@ -63,13 +63,14 @@ const TeammateVideo = (props) => {
           </div>
         ) : (
           <>
-            <p className="tw-col-span-2 tw-text-center tw-font-bold">
+            <p className="tw-text-center tw-font-bold tw-text-2xl">
               <br />
-              (Keyboard)
+              Instructions:
             </p>
-            <div className="tw-pt-1 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-2">
-              <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
-              <img
+            <div className="tw-pt-1 tw-pb-[200px]">
+              <h4 className="tw-text-center">Click the tile you want to place your icon in.</h4>
+              <h4 className="tw-text-center tw-font-bold">Your Icon: X</h4>
+              {/* <img
                 className={
                   "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
                   buttonSize
@@ -79,12 +80,12 @@ const TeammateVideo = (props) => {
               <img
                 className={buttonSize}
                 src="/img/imagine_game_controls/ArrowKey.png"
-              />
-              <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
-              <img
+              /> */}
+              <h4 className="tw-text-center tw-font-bold">Computer's Icon: O</h4>
+              {/* <img
                 className="tw-col-span-2 tw-w-32 tw-mx-auto"
                 src="/img/imagine_game_controls/SpaceBar.png"
-              />
+              /> */}
             </div>
           </>
         )}
