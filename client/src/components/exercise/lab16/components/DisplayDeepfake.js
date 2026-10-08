@@ -19,7 +19,7 @@ const DisplayDeepFake = (props) => {
   const handleNavigation = async () => {
     sessionStorage.setItem("teammateId", teammateId);
       // uncomment this line when ChatRoom page is implemented
-      // navigate("/Lab16/Exercise/ChatRoom");
+      navigate("/Lab16/Exercise/ChatRoom");
   };
 
   useEffect(() => {

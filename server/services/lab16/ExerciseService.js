@@ -54,12 +54,32 @@ async function postExercise(data) {
 }
 
 //Save Chat Reply needed (from Imagine 2026)
-
+const postChatReply = async (data) => {
+  const { userID, reply } = data;
+  try {
+    const user = await db.ExerciseLab16.findOne({
+      where: {
+        userid: userID,
+      },
+    });
+    if (user !== null) {
+      user.chatReply = reply;
+      user.save();
+    } else {
+      await db.ExerciseLab16.create({
+        userid: userID,
+        chatReply: reply,
+      });
+    }
+    return true;
+  } catch (error) {
+    console.log(error);
+  }
+};
 //Save teammate information needed (new function)
-
-
 
 module.exports = {
   getExercise,
   postExercise,
+  postChatReply
 };
