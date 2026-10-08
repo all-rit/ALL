@@ -51,6 +51,7 @@ const Game = () => {
     }
   }, []);
 
+
   useEffect(() => {
     const id = Math.floor(Math.random() * 4);
     setTeammateId(id);
@@ -59,16 +60,21 @@ const Game = () => {
     console.log(teammateInfo)
 
     async function saveTeammateInfo() {
-      const resp = await ExerciseService.saveTeammate(
-        {
-        userID: state.main.user.userid,
-        teammateInfo:teammateInfo}
-        )
-      console.log(resp)
+      try {
+        const resp = await ExerciseService.saveTeammate(
+          {
+          userID: state.main.user.userid,
+          teammateInfo:teammateInfo}
+          )
+        console.log(resp)
+      } catch (err){
+        console.log(err)
+      }
     }
+    
     saveTeammateInfo()
 
-  }, []);
+  }, [state?.main?.user?.userid]);
 
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
