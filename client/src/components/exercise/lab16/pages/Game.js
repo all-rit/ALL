@@ -6,6 +6,7 @@ import { TEAMMATE_INFO } from "src/constants/lab16";
 import { ExerciseService } from "../../../../services/lab16/ExerciseService";
  import useMainStateContext from "src/reducers/MainContext";
 
+import TicTacToeGame from "../components/TicTacToeGame";
 
 const Game = () => {
   const [status, setStatus] = useState("game");
@@ -13,29 +14,12 @@ const Game = () => {
   const contentSizing =
     "tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
 
-  const iframeRef = useRef(null);
-
   const [seconds, setSeconds] = useState(60);
 
   const [teammateId, setTeammateId] = useState(1);
 
-  //Checks the iframe ref to see if anything exists, when the iframe fully loads, immediately focus it
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (iframe) {
-      const focusIframe = () => {
-        iframe.focus();
-      };
-
-      iframe.addEventListener("load", focusIframe);
-
-      return () => iframe.removeEventListener("load", focusIframe);
-    }
-  }, []);
-
   //When page loads timer starts that counts down from 60->0
   useEffect(() => {
-    if (iframeRef.current) {
       const timer = setInterval(() => {
         setSeconds((prevSeconds) => {
           if (prevSeconds <= 1) {
@@ -83,16 +67,15 @@ const Game = () => {
         className={
           contentSizing +
           (status == "game"
-            ? "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]"
+            ? "tw-flex tw-justify-center tw-items-center tw-relative tw-bg-[blue]"
             : "tw-pt-[7rem]")
         }
       >
-        {status == "game" && (
-          <iframe
-            ref={iframeRef}
-            src="https://microstudio.io/Imagine2025/galaga/6GZNBHTD/"
-            className={contentSizing}
-          />
+        {(status == "game") && (
+            <TicTacToeGame
+              className={contentSizing}
+            />
+          
         )}
 
         {status == "scorePage" && (

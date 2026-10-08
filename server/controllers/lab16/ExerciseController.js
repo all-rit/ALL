@@ -24,7 +24,18 @@ async function postExercise(req) {
 }
 
 //Save Chat Reply needed (from Imagine 2026)
-
+const postChatReply = async(req,_res) =>{
+  try {
+     const resp = await ExerciseService.postChatReply(req.body);
+    if(!resp){
+      throw new Error("Error while posting chat reply");
+    }
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+ 
+};
 //Save teammate information needed (new function)
 
 async function saveTeammateInformation(req){
@@ -42,5 +53,6 @@ async function saveTeammateInformation(req){
 module.exports = {
   getExercise,
   postExercise,
-  saveTeammateInformation
+  saveTeammateInformation,
+  postChatReply
 };
