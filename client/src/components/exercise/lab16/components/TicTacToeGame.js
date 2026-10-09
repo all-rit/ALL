@@ -158,10 +158,11 @@ export default function TicTacToeBoard(){
     return(
         <div className="tw-flex tw-justify-center tw-items-center tw-pt-20">
             <div className="game-UI">
-                <div className="game-title-container">
+                <div className="tw-flex tw-flex-col tw-gap-3">
                     <h1 className="tw-text-white tw-font-bold tw-text-2xl">ALL's Tic Tac Toe Tournament</h1>
+                    <div className="tw-text-[yellow] tw-mb-[15px] tw-text-lg tw-font-bold">{getGameStatus()}</div>
                 </div>
-                <div className="tw-text-[yellow] tw-mb-[15px] tw-text-lg tw-font-bold">{getGameStatus()}</div>
+                
                 <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
                     <div className="tw-flex">
                         <Square value={squares[0]} onSquareClick={() => handleClick(0)} disabled={isLocked(0)} />

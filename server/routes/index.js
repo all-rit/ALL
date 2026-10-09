@@ -301,7 +301,10 @@ router.post('/lab16/exercise/postChatReply', async function (req, res) {
   res.send(resp);
 });
 //Store teammate information call needed (new function)
-
+router.post('/lab16/exercise/saveTeammate', async function (req,res) {
+  const result = await ExerciseControllerLab16.saveTeammateInformation(req)
+  res.send(result)
+})
 
 
 // Create a Page Entry
