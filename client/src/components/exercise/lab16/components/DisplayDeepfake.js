@@ -49,19 +49,18 @@ const DisplayDeepFake = (props) => {
             </ModalFooter>
           </Modal>
         ) : isChatRoom ? (
-          <div className="tw-w-96 tw-p-2 tw-gap-2">
+          <div className="tw-w-96 tw-p-2 tw-mt-2 tw-gap-2">
             <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-bg-error tw-bg-opacity-30 tw-rounded-md tw-py-2 tw-px-4">
               <p className="tw-text-md tw-font-bold tw-text-brightRed tw-m-0">
-                Flagged: High Risk-Content:{" "}
+                Flagged: High Risk-Content{" "}
               </p>
               <img
                 className="tw-w-5 tw-h-5 tw-object-contain"
-                //change image source to lab16
-                src="/img/imagine26/activityImages/alert.png"
+                src="/src/assets/images/lab16/alert.svg"
                 alt="alert icon"
               />
             </div>
-            <div className="tw-relative tw-mt-4">
+            <div className="tw-relative tw-mt-2">
               <img
                 src={imagePath}
                 alt="Deepfake footage"
@@ -80,7 +79,6 @@ const DisplayDeepFake = (props) => {
                   </h3>
                   <img
                     className="tw-w-12 tw-h-12 tw-object-contain"
-                    //change img source to lab16
                     src="/src/assets/images/lab16/alert.svg"
                     alt="alert icon"
                   />
