@@ -33,8 +33,8 @@ const ExerciseIntro = () => {
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
           Welcome to ALL's Tic-Tac-Toe tournament! You will be competing against an AI with a remote teammate. 
-          The team with the highest score wins! The AI will be 'X' and your team will be 'O'. 
-          Use your mouse or touchpad to click the box that you want to place the 'O' in. 
+          The team with the highest score wins! The AI will be 'O' and your team will be 'X'. 
+          Use your mouse or touchpad to click the box that you want to place the 'X' in. 
         </p>
         <p className="tw-body-text tw-text-left">
           Your teammate will be playing their own round against the AI. Take turns to fill the board! 
