@@ -71,26 +71,22 @@ const DisplayDeepFake = (props) => {
           </div>
         ) : (
           <>
-            <div className="tw-flex tw-flex-col tw-items-center tw-text-center tw-w-full tw-gap-4">
-              <div className="tw-absolute tw-top-5 tw-w-[96%]">
-                <div className="tw-flex  tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-text-brightRed">
+            <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center tw-w-full tw-h-full tw-gap-4">
+              <div className="tw-top-5 tw-w-[96%]">
+                <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-text-brightRed">
                   <h3 className="tw-title tw-font-bold tw-text-brightRed ">
                     {" "}
                     Flagged: High Risk-Content
                   </h3>
                   <img
-                    className="tw-w-16 tw-h-16 tw-object-contain"
+                    className="tw-w-12 tw-h-12 tw-object-contain"
                     //change img source to lab16
-                    src="/img/imagine26/activityImages/alert.png"
+                    src="/src/assets/images/lab16/alert.svg"
                     alt="alert icon"
                   />
                 </div>
-                <div className={"tw-flex tw-justify-center tw-mb-6"}>
-                  <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
-                </div>
               </div>
-
-              <p className="tw-font-bold tw-text-brightRed tw-leading-relaxed tw-max-w-md tw-mt-10">
+              <p className="tw-font-bold tw-text-brightRed tw-leading-relaxed tw-max-w-md">
                 Unfortunately, due to this information, your teammate lost their prize.
               </p>
             </div>
