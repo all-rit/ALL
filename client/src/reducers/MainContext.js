@@ -7,6 +7,7 @@ import {
 import { PropTypes } from "prop-types";
 import AuthService from "src/services/AuthService";
 import UserService from "../services/UserService";
+import LabService from "../services/LabService";
 
 /**
  * MainStateContext is a context object created using createContext() function.
@@ -25,6 +26,7 @@ const MainStateContext = createContext({
     setIsImagine: () => {},
     showSnackbar: () => {},
     hideSnackbar: () => {},
+    fetchActiveLabNumbers: () => {},
   },
 });
 
@@ -117,6 +119,20 @@ export const MainContextProvider = ({ children }) => {
       dispatch({
         type: types.HIDE_SNACKBAR,
       }),
+    fetchActiveLabNumbers: async () => {
+      try {
+        const res = await LabService.getActiveLabNumbers();
+        dispatch({
+          type: types.SET_ACTIVE_LAB_NUMBERS,
+          payload: {
+            activeLabNumbers: res.activeLabNumbers.map((obj) => obj.id),
+          },
+        });
+      } catch (error) {
+        // fail open: keep whatever list we last had rather than blocking every lab
+        console.error("Failed to fetch active lab numbers", error);
+      }
+    },
   };
 
   /**
