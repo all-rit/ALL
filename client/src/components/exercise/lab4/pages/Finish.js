@@ -12,6 +12,11 @@ const Finish = () => {
     navigate("/Lab4/Exercise");
   };
 
+  const handleNext = () => {
+  navigate("/Lab4/Reinforcement");
+  };
+
+
   useEffect(() => {
     UserLabService.complete_exercise(LAB_ID);
     if (state.main.user?.firstname !== null && state.main.user !== null) {
@@ -33,13 +38,28 @@ const Finish = () => {
         the reinforcement section scroll down and click the{" "}
         <strong>Next</strong> button.
       </p>
+
+      
+      
+    <div className="tw-flex tw-justify-center tw-gap-x-3 tw-my-6">
       <button
-        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase tw-my-6"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         onClick={handleSubmit}
         key="start"
-      >
-        Return to Exercise Start
-      </button>
+    >
+    Return to Exercise Start
+    </button>
+
+      <button
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        onClick={handleNext}
+        key="next"
+    >
+    Next
+    </button>
+    </div>
+
+
     </div>
   );
 };
