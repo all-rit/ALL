@@ -4507,10 +4507,10 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
   }',
   --Reinforcement
   '[
-    {"title":"How to protect your identity from AI deepfakes | Melissa Hutchins | TEDxUofW","link": "https://youtu.be/Rbg0xiwTez0?si=ea6uAYDoFf-VOUmo"},
-    {"title":" It’s Getting Harder To Know What’s Real | StarTalk ","link": "https://youtu.be/EA0Bx2OeDj8?si=GwF7wVZ6ne-HzPMn"},
-    {"title":"How to Detect Deepfakes | NOVA PBS","link": "https://youtu.be/GMoOCKkcd_w?si=aoSwULxHH-9zTAaD"},
-    {"title":"Can You Spot the AI Fakes? | BTN High","link": "https://youtu.be/8a5y8Hm0yYk?si=e4O7QSDnIdQh0Lm0"}
+    {"title":"How to protect your identity from AI deepfakes | Melissa Hutchins | TEDxUofW","link": "https://www.youtube.com/embed/Rbg0xiwTez0?si=dKRb4EY66b8ZnVCv"},
+    {"title":" It’s Getting Harder To Know What’s Real | StarTalk ","link": "https://www.youtube.com/embed/EA0Bx2OeDj8?si=xGryuiaPWWPVMn64"},
+    {"title":"How to Detect Deepfakes | NOVA PBS","link": "https://www.youtube.com/embed/GMoOCKkcd_w?si=xnqntedH2EcaJnUT"},
+    {"title":"Can You Spot the AI Fakes? | BTN High","link": "https://www.youtube.com/embed/8a5y8Hm0yYk?si=rBHqWRrRKbquDfgs"}
   ]', 
   --Quiz
 '[
