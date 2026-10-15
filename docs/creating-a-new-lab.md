@@ -185,35 +185,34 @@ In `client/src/App.js`:
 The generic `<About>`, `<Reading>`, `<Reinforcement>`, and `<Quiz>` routes already handle any
 `labID` via the `/Lab${lab}/...` pattern — nothing to add there as long as Step 1 is done.
 
-## Step 12 — Make the lab assignable
+## Step 12 — Add to "Featured Labs" Section
 
-Add the lab to a group (`GroupController.addGroupLab` / the instructor group-management UI) so
-it actually gets assigned to users and appears in their to-do list.
+In `client/src/pages/landingpage/index.js`, check the `getFeaturedLabs` function.
 
-## Step 13 — Verify
+- Remove the older lab, and replace data with the new lab's details.
+
+## Step 13 — Add to Redirect
+
+In `client/src/helpers/Redirect.js`, check the large 'switch' statement in `stateChange` function.
+
+- Add the new lab as a new case claude to the end of the switch statement.
+
+```js
+case "Lab<N>":
+  actions.setLab(<N>);
+  break;
+```
+
+## Step 14 — Add New Lab as Constant
+
+In `client/src/constants/index.js`, check the `Sections` constant.
+
+Add the new lab as an entry in this dictionary.
+
+## Step 15 — Verify
 
 - Confirm the new tables appear in Postgres after boot (Sequelize `.sync()` runs on server start).
 - Walk through About → Reading → Exercise → Reinforcement → Quiz as a test user and confirm
   completion is recorded (`user_lab_completion` rows) at each step.
 - Check `server` console logs for Sequelize errors on first run — `.sync()` will not fix
   pre-existing tables with conflicting columns.
-
-## Quick file checklist
-
-```
-server/database/models/lab<N>/Exercise.js (+ Round.js, Choice.js, Repair.js as needed)
-server/services/lab<N>/ExerciseService.js (+ RepairService.js)
-server/controllers/lab<N>/ExerciseController.js (+ RepairController.js)
-server/routes/index.js                          (edit: imports + route registrations)
-client/src/constants/lab<N>/index.js
-client/src/reducers/lab<N>/ExerciseReducer.js (+ AppReducer.js, RepairReducer.js)
-client/src/services/lab<N>/ExerciseService.js (+ RepairService.js)
-client/src/components/exercise/lab<N>/Main.js (+ supporting components)
-client/src/assets/images/lab<N>/...
-client/src/App.js                               (edit: import + route)
-labs table                                       (one new row, via seed/admin insert)
-```
-
-That's roughly 10 new files plus edits to 2 shared files (`routes/index.js`, `App.js`) per lab —
-which is the exact pain point worth revisiting if lab creation needs to get cheaper (see the
-"condense into a single `/lab` route + config registry" idea discussed separately).
