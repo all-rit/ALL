@@ -8,8 +8,8 @@ export const types = {
 export const initialState = {
   availableMessage: "",
   unavailableMessage: "",
-  availableBackgroundColor: "#FFFFFF",
-  unavailableBackgroundColor: "#FFFFFF",
+  availableBackgroundColor: "#ddd",
+  unavailableBackgroundColor: "#ddd",
   currentTab: 1,
   repairVisible: false,
   changesApplied: false,
