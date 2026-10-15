@@ -11,7 +11,6 @@ import DisplayDeepFake from "./DisplayDeepfake";
 const TeammateVideo = (props) => {
   const { teammateId, status } = props;
   const [videoSrc, setVideoSrc] = useState("");
-  const buttonSize = "tw-w-16 tw-mx-auto";
 
   useEffect(() => {
     if (teammateId === null) return;
@@ -21,13 +20,12 @@ const TeammateVideo = (props) => {
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
     } else if (status == "deepfakeVideo") {
-      
       //only get expression videos(teammate deepfake)
       const teammateReactionVideos =
         groupVideoPaths[teammateId] || groupVideoPaths[0];
-      setVideoSrc(teammateReactionVideos["expression"] || teammateReactionVideos.A);
-
-
+      setVideoSrc(
+        teammateReactionVideos["expression"] || teammateReactionVideos.A,
+      );
     } else if (status == "deepfakePage") {
       setVideoSrc("");
     } else if (status == "chatroom") {
@@ -60,12 +58,7 @@ const TeammateVideo = (props) => {
 
         {status === "chatroom" ? (
           <div>
-            {
-              <DisplayDeepFake
-                teammateId={teammateId}
-                isChatRoom={true}
-              />
-            }
+            {<DisplayDeepFake teammateId={teammateId} isChatRoom={true} />}
           </div>
         ) : (
           <>
@@ -74,7 +67,9 @@ const TeammateVideo = (props) => {
               Instructions:
             </p>
             <div className="tw-pt-1 tw-pb-[200px]">
-              <h4 className="tw-text-center">Click the tile you want to place your icon in.</h4>
+              <h4 className="tw-text-center">
+                Click the tile you want to place your icon in.
+              </h4>
               <h4 className="tw-text-center tw-font-bold">Your Icon: X</h4>
               {/* <img
                 className={
@@ -87,7 +82,9 @@ const TeammateVideo = (props) => {
                 className={buttonSize}
                 src="/img/imagine_game_controls/ArrowKey.png"
               /> */}
-              <h4 className="tw-text-center tw-font-bold">Computer's Icon: O</h4>
+              <h4 className="tw-text-center tw-font-bold">
+                Computer&apos;s Icon: O
+              </h4>
               {/* <img
                 className="tw-col-span-2 tw-w-32 tw-mx-auto"
                 src="/img/imagine_game_controls/SpaceBar.png"

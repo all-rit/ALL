@@ -78,31 +78,25 @@ const postChatReply = async (data) => {
 };
 //Save teammate information needed (new function)
 async function saveTeammateInformation(data) {
+  const { userID, teammateInfo } = data;
   try {
-    const {userID,teammateInfo} = data
-
-    try {
-        const user = await db.ExerciseLab16.findOne({
-          where: {
-            userid: userID,
-          },
-        });
-        if (user !== null) {
-          user.teammateAssignment = teammateInfo;
-          user.save();
-        } else {
-          await db.ExerciseLab16.create({
-            userid: userID,
-            teammateAssignment: teammateInfo,
-          });
-        }
-        return true;
-      } catch (error) {
-        console.log(error);
+    const user = await db.ExerciseLab16.findOne({
+      where: {
+        userid: userID,
+      },
+    });
+    if (user !== null) {
+      user.teammateAssignment = teammateInfo;
+      user.save();
+    } else {
+      await db.ExerciseLab16.create({
+        userid: userID,
+        teammateAssignment: teammateInfo,
+      });
     }
-
+    return true;
   } catch (error) {
-    
+    console.log(error);
   }
 }
 
