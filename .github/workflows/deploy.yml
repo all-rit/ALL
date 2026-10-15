@@ -46,7 +46,9 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            git pull prod
+            set -e
+            cd research
+            git pull origin prod
             cd ${{ secrets.CD_SERVER }}
             chmod +x server_deploy.sh
             ./server_deploy.sh
