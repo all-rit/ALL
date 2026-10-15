@@ -22,6 +22,7 @@ import {
   VIEW_PROGRESS_TITLE,
 } from "../../constants/sections";
 import LabGeneration from "../../components/body/lab/LabGeneration";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
 
 const mapStateToProps = (state) => {
   return {
@@ -450,6 +451,7 @@ const LabsPage = (props) => {
       />
       {signInModalOpen && signInModal()}
       <GettingInvolved />
+      <SiteAccessibilityButton />
     </div>
   );
 };
