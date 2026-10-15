@@ -11,11 +11,15 @@ const quizNotFound = "Error: Quiz Not Found";
 const quizNotRetrieved = "Error: Quiz Not Retrieved";
 
 /**
- * getAllLabs(): Get all Labs and information.
+ * getAllLabs(): Get all Labs and information. Inactive labs are excluded by
+ * default so they are never served to the public catalog/frontend.
+ * @param {Object} [options]
+ * @param {boolean} [options.includeInactive] - when true, also returns inactive labs.
  * @return {Array<Object>} list of Objects for each of the Labs
  */
-async function getAllLabs() {
+async function getAllLabs({ includeInactive = false } = {}) {
   return await db.Labs.findAll({
+    where: includeInactive ? {} : { isActive: true },
     raw: true,
     order: [["id", "ASC"]],
   });

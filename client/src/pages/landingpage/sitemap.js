@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../assets/stylesheets/components/App.scss";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import handleRedirect from "../../helpers/Redirect";
-import labService from "src/services/LabService";
+import useMainStateContext from "../../reducers/MainContext";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -15,11 +15,12 @@ const mapDispatchToProps = (dispatch) => {
 
 const Routes = (props) => {
   const { actions, activeLabNumbers } = props;
+  const labNumbers = activeLabNumbers ?? [];
   const routeItems = [];
   routeItems.push(
     <div key="#" className="col-md-4">
       <h1 className="tw-title">
-        <a href=" " id="# " onClick={() => handleRedirect(actions, 0)}>
+        <a href="/" id="# " onClick={() => handleRedirect(actions, 0)}>
           Home
         </a>
       </h1>
@@ -63,8 +64,8 @@ const Routes = (props) => {
       </ul>
     </div>,
   );
-  for (let i = 0; i < activeLabNumbers.length; i++) {
-    let labNo = activeLabNumbers[i];
+  for (let i = 0; i < labNumbers.length; i++) {
+    let labNo = labNumbers[i];
     routeItems.push(
       <div key={labNo} className="col-md-4">
         <h1 className="tw-title">
@@ -126,14 +127,11 @@ const Routes = (props) => {
 };
 
 const SiteMap = (props) => {
-  const [activeLabNumbers, setActiveLabNumbers] = useState([]);
+  const { state } = useMainStateContext();
+  const activeLabNumbers = state.main.activeLabNumbers;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    labService
-      .getActiveLabNumbers()
-      .then((res) => res.activeLabNumbers.map((obj) => obj.id)) //flattens to 1D array of lab numbers
-      .then((labNumbers) => setActiveLabNumbers(labNumbers));
   }, []);
 
   const { actions } = props;
