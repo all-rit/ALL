@@ -43,7 +43,12 @@ const ScorePage = (props) => {
         <div className="tw-my-4">
           <div className="tw-body-text tw-text-labGray tw-mx-auto">
             <p>
-              You <span className="tw-font-bold tw-text-black">{userScore}</span> &middot; Teammate <span className="tw-font-bold tw-text-black">{teammateScore}</span>
+              You{" "}
+              <span className="tw-font-bold tw-text-black">{userScore}</span>{" "}
+              &middot; Teammate{" "}
+              <span className="tw-font-bold tw-text-black">
+                {teammateScore}
+              </span>
             </p>
           </div>
         </div>

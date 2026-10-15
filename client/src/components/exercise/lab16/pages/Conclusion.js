@@ -21,19 +21,20 @@ const Conclusion = () => {
   };
 
   return (
-   <div className="center-div">
+    <div className="center-div">
       <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-3">
-          You have completed the exercise for the Deepfake Lab. Some of your
-          key takeaways from this lab should include:
+          You have completed the exercise for the Deepfake Lab. Some of your key
+          takeaways from this lab should include:
         </p>
         <ul>
           <li className={"tw-body-text"}>
             Understand what deepfakes are and their ethical implications
           </li>
           <li className={"tw-body-text"}>
-            Reflect on how deepfakes affect people emotionally and ethically when someone is targeted
+            Reflect on how deepfakes affect people emotionally and ethically
+            when someone is targeted
           </li>
         </ul>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TeammateVideo from "../components/TeammateVideo";
 import DisplayDeepFake from "../components/DisplayDeepfake";
 import ScorePage from "../components/ScorePage";
@@ -19,43 +19,40 @@ const Game = () => {
 
   //When page loads timer starts that counts down from 60->0
   useEffect(() => {
-      const timer = setInterval(() => {
-        setSeconds((prevSeconds) => {
-          if (prevSeconds <= 1) {
-            clearInterval(timer);
-            setStatus("scorePage");
-            return 0;
-          }
+    const timer = setInterval(() => {
+      setSeconds((prevSeconds) => {
+        if (prevSeconds <= 1) {
+          clearInterval(timer);
+          setStatus("scorePage");
+          return 0;
+        }
 
-          return prevSeconds - 1;
-        });
-      }, 1000);
-      return () => clearInterval(timer);
+        return prevSeconds - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
-
 
   useEffect(() => {
     const id = Math.floor(Math.random() * 4);
     setTeammateId(id);
 
-    const teammateInfo = TEAMMATE_INFO[id]
-    console.log(teammateInfo)
+    const teammateInfo = TEAMMATE_INFO[id];
+    console.log(teammateInfo);
 
     async function saveTeammateInfo() {
       try {
-        const resp = await ExerciseService.saveTeammate(
-          {
+        const resp = await ExerciseService.saveTeammate({
           userID: state.main.user.userid,
-          teammateInfo:teammateInfo}
-          )
-        console.log(resp)
-      } catch (err){
-        console.log(err)
+          teammateInfo: teammateInfo,
+        });
+        console.log(resp);
+      } catch (err) {
+        console.log(err);
       }
     }
-    
-    saveTeammateInfo()
 
+    saveTeammateInfo();
   }, []);
 
   return (
@@ -69,12 +66,7 @@ const Game = () => {
             : "tw-pt-[7rem]")
         }
       >
-        {(status == "game") && (
-            <TicTacToeGame
-              className={contentSizing}
-            />
-          
-        )}
+        {status == "game" && <TicTacToeGame className={contentSizing} />}
 
         {status == "scorePage" && (
           <ScorePage
@@ -100,9 +92,9 @@ const Game = () => {
           <div>{seconds}</div>
         </div>
       </div>
-        {(status !== "deepfakePage") && (
-          <TeammateVideo teammateId={teammateId} status={status} />
-        )}
+      {status !== "deepfakePage" && (
+        <TeammateVideo teammateId={teammateId} status={status} />
+      )}
     </div>
   );
 };

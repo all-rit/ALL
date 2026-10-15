@@ -6,18 +6,16 @@ import { ExerciseService } from "../../../../services/lab16/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 
 const ChatRoom = () => {
-  const {state} = useMainStateContext();
+  const { state } = useMainStateContext();
   const teammateId = Number(sessionStorage.getItem("teammateId"));
   const group = "expression";
 
   const onSubmit = async (reply) => {
-    await ExerciseService.postChatReply(
-      {
-        userid: state.main.user.userid, 
-        reply: reply
-      }
-    );
-      setTimeout(() => {
+    await ExerciseService.postChatReply({
+      userid: state.main.user.userid,
+      reply: reply,
+    });
+    setTimeout(() => {
       navigate("/Lab16/Exercise/Conclusion");
     }, 1000);
   };
@@ -45,14 +43,14 @@ const ChatRoom = () => {
 
               <div className="tw-flex-1 tw-w-[100%]">
                 <Chat
-                group={group}
-                onSubmit={onSubmit}
-                teammateMessage={groupMap[group]}
-                height="100%"
-                width="100%"
-              />
+                  group={group}
+                  onSubmit={onSubmit}
+                  teammateMessage={groupMap[group]}
+                  height="100%"
+                  width="100%"
+                />
               </div>
-              
+
               {/* </div> */}
             </div>
           </div>
