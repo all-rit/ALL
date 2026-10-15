@@ -1,4 +1,4 @@
-import API from '../API';
+import API from "../API";
 
 const prefix = {
   POST_SUFFIX: "submit",
@@ -12,15 +12,14 @@ const resource = {
 const endpoints = {
   GET_EXERCISE: resource.EXERCISE,
   POST_EXERCISE: `${resource.EXERCISE}/${prefix.POST_SUFFIX}`,
-    //Save Chat Reply endpoints needed (from Imagine 2026)
+  //Save Chat Reply endpoints needed (from Imagine 2026)
   SAVE_CHAT: `${resource.EXERCISE}/postChatReply`,
-    //Save teammate information endpoints needed (new function)
-  SAVE_TEAMMATE: `${resource.EXERCISE}/saveTeammate`
+  //Save teammate information endpoints needed (new function)
+  SAVE_TEAMMATE: `${resource.EXERCISE}/saveTeammate`,
 };
 
-
 const ExerciseService = {
-    fetchExercise: async (data = {}) => {
+  fetchExercise: async (data = {}) => {
     try {
       const getRoute = `${endpoints.GET_EXERCISE}/${data.userid}`;
       return API.get(getRoute).then((response) => {
@@ -29,8 +28,8 @@ const ExerciseService = {
     } catch (error) {
       console.error(error);
     }
-    },
-    submitExercise: async (data) => {
+  },
+  submitExercise: async (data) => {
     try {
       const body = {
         userID: data.userid,
@@ -42,43 +41,38 @@ const ExerciseService = {
     } catch (error) {
       console.error(error);
     }
-    },
+  },
 
-    //Save Chat Reply endpoint (from Imagine 2026)
+  //Save Chat Reply endpoint (from Imagine 2026)
 
-    //Save teammate information endpoint (new function)
-    saveTeammate: async (data) => {
-      try {
-        
-        const body = {
+  //Save teammate information endpoint (new function)
+  saveTeammate: async (data) => {
+    try {
+      const body = {
         userID: data.userID,
-        teammateInfo: data.teammateInfo
-        }
-        
-        const response = await API.postWithBody(endpoints.SAVE_TEAMMATE,body);
-        return response.status
+        teammateInfo: data.teammateInfo,
+      };
 
-      } catch (error) {
+      const response = await API.postWithBody(endpoints.SAVE_TEAMMATE, body);
+      return response.status;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
-        console.log(error)
-
-      }
-    
-    },
-
-    postChatReply: async (data) => {
-          try{
-            const body = {
-            userID: data.userid,
-            reply: data.reply 
-          };
-          const response = await API.postWithBody(endpoints.SAVE_CHAT, body);
-          return response.status;
-          } catch (error) {
-            console.error(error);
-          }
-      },
-    //Save teammate information endpoint (new function)   
+  postChatReply: async (data) => {
+    try {
+      const body = {
+        userID: data.userid,
+        reply: data.reply,
+      };
+      const response = await API.postWithBody(endpoints.SAVE_CHAT, body);
+      return response.status;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  //Save teammate information endpoint (new function)
 };
 
 export { ExerciseService };

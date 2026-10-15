@@ -23,10 +23,10 @@ const Main = () => {
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
-      value={{
-        exerciseState,
-        setExerciseState
-      }}
+        value={{
+          exerciseState,
+          setExerciseState,
+        }}
       >
         <Router className="app">
           <ExerciseIntro default path="/" />

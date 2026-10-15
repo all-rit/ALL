@@ -1,9 +1,8 @@
-import { createContext,  } from "react";
+import { createContext } from "react";
 
 const ExerciseStateContext = createContext({
-    exerciseState: "",
-    setExerciseState: () => {}
-})
+  exerciseState: "",
+  setExerciseState: () => {},
+});
 
-
-export default ExerciseStateContext
+export default ExerciseStateContext;
