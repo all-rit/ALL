@@ -197,7 +197,7 @@ function Result(props) {
           />
         </div>
         <div
-          className={`tw-w-full tw-flex tw-flex-col tw-items-center  tw-bg-white tw-rounded-xl tw-py-5 tw-my-5 tw-overflow-y-scroll `}
+          className={`tw-w-full tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-py-5 tw-my-5 tw-overflow-y-scroll `}
         >
           {renderTableData()}
         </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import Exercise from "./exercise.js";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton.js";
 
 /*
 Class for connecting the exercise component to the main system
@@ -29,25 +30,28 @@ class ExerciseCenter extends Component {
     } = this.props;
 
     return (
-      <Exercise
-        exerciseEnded={exerciseEnded}
-        correctColor={correctColor}
-        incorrectColorOne={incorrectColorOne}
-        incorrectColorTwo={incorrectColorTwo}
-        background={background}
-        exerciseOption={exerciseOption}
-        selectOption={selectOption}
-        resetOption={resetOption}
-        onChangeExerciseColors={onChangeExerciseColors}
-        colors={colors}
-        resetColors={resetColors}
-        enterInfoState={enterInfoState}
-        enterSecondInfoState={enterSecondInfoState}
-        exercisesPlayed={exercisesPlayed}
-        enterThirdInfoState={enterThirdInfoState}
-        isImagine={isImagine}
-        userID={userID}
-      />
+      <>
+        <Exercise
+          exerciseEnded={exerciseEnded}
+          correctColor={correctColor}
+          incorrectColorOne={incorrectColorOne}
+          incorrectColorTwo={incorrectColorTwo}
+          background={background}
+          exerciseOption={exerciseOption}
+          selectOption={selectOption}
+          resetOption={resetOption}
+          onChangeExerciseColors={onChangeExerciseColors}
+          colors={colors}
+          resetColors={resetColors}
+          enterInfoState={enterInfoState}
+          enterSecondInfoState={enterSecondInfoState}
+          exercisesPlayed={exercisesPlayed}
+          enterThirdInfoState={enterThirdInfoState}
+          isImagine={isImagine}
+          userID={userID}
+        />
+        <SiteAccessibilityButton />
+      </>
     );
   }
 }

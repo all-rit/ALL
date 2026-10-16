@@ -7,6 +7,7 @@ import Instructions from "../Instructions/instructions";
 import Circle from "./circle";
 import Title from "./header/title";
 import "./exerciseStyle.css";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
 
 /*
 Class for controlling the main exercise page
@@ -141,6 +142,7 @@ class exercise extends Component {
             incorrectColorOne={incorrectColorOne}
             incorrectColorTwo={incorrectColorTwo}
           />
+          <SiteAccessibilityButton />
         </div>
       );
     };
