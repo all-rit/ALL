@@ -37,18 +37,14 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-    let lab15;
-    let lab16;
 
-    allLabs.map((lab) => {
-      if (lab.labShortName == "Deepfake") {
-        lab16 = lab;
-      } else if (lab.labShortName == "AI Hallucinations") {
-        lab15 = lab;
-      }
-    });
+    const mostRecentLabs = [...allLabs].sort((a, b) => b.id - a.id).slice(0, 2);
 
-    setFeaturedLabs([lab16, lab15]);
+    if (mostRecentLabs === null) {
+      setFeaturedLabs(null);
+    }
+
+    setFeaturedLabs(mostRecentLabs);
   };
 
   const endImagine = () => actions.setIsImagine(false);
