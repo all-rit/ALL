@@ -51,8 +51,8 @@ function Quiz(props) {
           <div className="align-right">
             {props.questionId !== 1 && (
               <button
-                className="tw-body-text tw-border-[.5rem] tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
-                          tw-border-solid bg-white tw-border-primary-yellow"
+                className="tw-body-text tw-border-[.5rem] tw-bg-white tw-text-black tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
+                          tw-border-solid tw-border-primary-yellow"
                 onClick={props.lastQuestion}
               >
                 Previous Question
@@ -65,7 +65,7 @@ function Quiz(props) {
           <div className="align-right">
             {props.questionId !== props.questionTotal ? (
               <button
-                className="tw-body-text tw-border-solid tw-border-primary-blue bg-white
+                className="tw-body-text tw-border-solid tw-border-primary-blue tw-bg-white tw-text-black
                                         tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
                 onClick={props.nextQuestion}
                 disabled={props.disable}

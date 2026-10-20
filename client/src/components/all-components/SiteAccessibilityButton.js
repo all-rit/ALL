@@ -38,6 +38,8 @@ const SiteAccessibilityButton = () => {
     } else {
       setIsSmallView(true);
     }
+
+    //OTHER FIX: ON WINDOW/PAGE CHANGE, CALL STATE CHANGING METHOD AGAIN
   }, []);
 
   const toggleCollapse = (e) => {

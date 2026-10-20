@@ -325,7 +325,7 @@ const Reading = (props) => {
     >
       <h1 className={"tw-title tw-text-left"}>Reading</h1>
       <div className="tw-w-full">
-        <div className="study tw-bg-white p-1 tw-rounded-lg">
+        <div className="study p-1 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
               <h3 className={"tw-title"}>{readingData?.description.header}</h3>

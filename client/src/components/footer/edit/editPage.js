@@ -52,7 +52,9 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-  const elems = document.querySelectorAll("body *, a, button, p");
+  const elems = document.querySelectorAll(
+    "body *, a, button, p, tw-flex, tw-shadow",
+  );
   for (let i = 0; i < elems.length; i++) {
     elems[i].style.color = picker.toString();
   }
@@ -70,7 +72,7 @@ export function setTextColor(picker) {
 
 export function setBackgroundColor(picker) {
   const elems = document.querySelectorAll(
-    "body, .quiz, .result, .tw-bg-white, .tw-bg-primary-blue",
+    "body, button, .quiz, .result, .radioCustomButton, .nextButton, .answerOption, .tw-bg-white, .tw-bg-primary-blue, .align-right, tw-flex",
   );
   for (let i = 0; i < elems.length; i++) {
     elems[i].style.backgroundColor = picker.toString();

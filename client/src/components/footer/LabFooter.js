@@ -46,7 +46,7 @@ const LabFooter = (props) => {
 
   const display =
     getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
-  // Removed useless useEffect hook, that printed true whenever the LabFooter rendered
+
   return (
     <div className={"tw-z-10 tw-w-full"}>
       {display && (
@@ -63,8 +63,10 @@ const LabFooter = (props) => {
                   opacity: display ? "1" : "0",
                 }}
               >
-                <ArrowBack />
-                BACK
+                <div>
+                  <ArrowBack />
+                  BACK
+                </div>
               </Button>
             )}
 
@@ -88,8 +90,10 @@ const LabFooter = (props) => {
                 }}
                 disabled={body === 4}
               >
-                NEXT
-                <ArrowForward />
+                <div>
+                  NEXT
+                  <ArrowForward />
+                </div>
               </Button>
             )}
           </div>
