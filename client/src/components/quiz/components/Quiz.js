@@ -41,7 +41,7 @@ function Quiz(props) {
           />
         )}
       </div>
-      <div className="quiz bg-white tw-mt-6" key={props.questionId}>
+      <div className="quiz tw-mt-6" key={props.questionId}>
         <ol className="tw-grid tw-grid-cols-2">
           {props.answerOptions.map(renderAnswerOptions)}
         </ol>
@@ -51,8 +51,8 @@ function Quiz(props) {
           <div className="align-right">
             {props.questionId !== 1 && (
               <button
-                className="tw-body-text tw-border-[.5rem] tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
-                          tw-border-solid tw-border-primary-yellow tw-bg-white"
+                className="tw-body-text tw-border-[.5rem] tw-bg-white tw-text-black tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
+                          tw-border-solid tw-border-primary-yellow"
                 onClick={props.lastQuestion}
               >
                 Previous Question
@@ -65,8 +65,8 @@ function Quiz(props) {
           <div className="align-right">
             {props.questionId !== props.questionTotal ? (
               <button
-                className="tw-body-text tw-border-solid tw-border-primary-blue
-                                        tw-bg-white tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
+                className="tw-body-text tw-border-solid tw-border-primary-blue tw-bg-white tw-text-black
+                                        tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
                 onClick={props.nextQuestion}
                 disabled={props.disable}
               >
@@ -75,7 +75,7 @@ function Quiz(props) {
             ) : (
               <button
                 className="tw-body-text tw-border-solid tw-border-primary-blue
-                                        tw-bg-white tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
+                                        tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
                 onClick={props.onComplete}
                 disabled={props.disable}
               >

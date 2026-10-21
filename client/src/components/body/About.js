@@ -27,7 +27,7 @@ const About = (props) => {
   }
 
   return (
-    <div className={"xs:tw-w-full tw-flex tw-flex-row tw-bg-white"}>
+    <div className={"xs:tw-w-full tw-flex tw-flex-row"}>
       <div className="tw-p-[3rem] xs:tw-w-full ">
         <div className="tw-text-left">
           <h1 className={"tw-title tw-pb-6"}> About This Lab</h1>
