@@ -52,33 +52,26 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-  const elems = document.querySelectorAll(
-    "body *, a, button, p, tw-flex, tw-shadow",
-  );
-  for (let i = 0; i < elems.length; i++) {
-    elems[i].style.color = picker.toString();
-  }
-  document.documentElement.style.setProperty(
-    "--yellow-text",
-    picker.toString(),
-  );
-  document.documentElement.style.setProperty("--blue-text", picker.toString());
-  document.documentElement.style.setProperty("--white-text", picker.toString());
-  document.documentElement.style.setProperty(
-    "--light-blue-text",
-    picker.toString(),
+  const color = picker.toString();
+
+  document.querySelectorAll("body *").forEach((el) => {
+    el.style.setProperty("color", color, "important");
+  });
+
+  const root = document.documentElement.style;
+  ["--yellow-text", "--blue-text", "--white-text", "--light-blue-text"].forEach(
+    (v) => root.setProperty(v, color),
   );
 }
 
 export function setBackgroundColor(picker) {
-  const elems = document.querySelectorAll(
-    "body, button, .quiz, .result, .radioCustomButton, .nextButton, .answerOption, .tw-bg-white, .tw-bg-primary-blue, .align-right, tw-flex",
-  );
-  for (let i = 0; i < elems.length; i++) {
-    elems[i].style.backgroundColor = picker.toString();
-    elems[i].setAttribute(
-      "style",
-      `background-color:${picker.toString()} !important`,
-    );
-  }
+  const color = picker.toString();
+
+  document
+    .querySelectorAll(
+      "body, button, .quiz, .result, .radioCustomButton, .nextButton, .answerOption, .tw-bg-white, .tw-bg-primary-blue, .align-right, .tw-flex",
+    )
+    .forEach((el) => {
+      el.style.setProperty("background-color", color, "important");
+    });
 }
