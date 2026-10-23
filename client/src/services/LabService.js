@@ -6,6 +6,11 @@ const labService = {
       .then((response) => response.json())
       .then((json) => json);
   },
+  getActiveLabNumbers: () => {
+    return API.get(import.meta.env.VITE_SERVER_URL + `/activeLabNumbers`)
+      .then((response) => response.json())
+      .then((json) => json);
+  },
   getLabShortName: (labID) => {
     return API.get(import.meta.env.VITE_SERVER_URL + `/lab${labID}/shortname`)
       .then((response) => response.json())

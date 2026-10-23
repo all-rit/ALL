@@ -27,6 +27,7 @@ export const types = {
   SHOW_SNACKBAR: "@accessibility-lab/context/show_snackbar",
   HIDE_SNACKBAR: "@accessibility-lab/context/hide_snackbar",
   DEV_LOGIN: "@accessibility-lab/context/dev_login",
+  SET_ACTIVE_LAB_NUMBERS: "@accessibility-lab/context/set_active_lab_numbers",
 };
 
 /**
@@ -51,6 +52,7 @@ export const initialState = {
     lab: 99,
     body: 0,
     isImagine: false,
+    activeLabNumbers: null,
     snackbar: {
       open: false,
       message: "",
@@ -103,6 +105,14 @@ export const MainReducerForContext = (state = initialState, action) => {
         main: {
           ...state.main,
           isImagine: payload.isImagine,
+        },
+      };
+    case types.SET_ACTIVE_LAB_NUMBERS:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          activeLabNumbers: payload.activeLabNumbers,
         },
       };
     case types.SHOW_SNACKBAR:

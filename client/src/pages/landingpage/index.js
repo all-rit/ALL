@@ -19,6 +19,7 @@ import {
   WELCOME_TO_ALL_BODY,
   WELCOME_TO_ALL_TITLE,
 } from "../../constants/sections";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
 
 const Home = () => {
   const { actions } = useMainStateContext();
@@ -36,18 +37,14 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-    let lab14;
-    let lab15;
 
-    allLabs.map((lab) => {
-      if (lab.labShortName == "Quantum") {
-        lab14 = lab;
-      } else if (lab.labShortName == "AI Hallucinations") {
-        lab15 = lab;
-      }
-    });
+    const mostRecentLabs = [...allLabs].sort((a, b) => b.id - a.id).slice(0, 2);
 
-    setFeaturedLabs([lab15, lab14]);
+    if (mostRecentLabs === null) {
+      setFeaturedLabs(null);
+    }
+
+    setFeaturedLabs(mostRecentLabs);
   };
 
   const endImagine = () => actions.setIsImagine(false);
@@ -136,6 +133,8 @@ const Home = () => {
 
       {/* Getting Involved */}
       <GettingInvolved id="get-involved" />
+
+      <SiteAccessibilityButton />
     </div>
   );
 };

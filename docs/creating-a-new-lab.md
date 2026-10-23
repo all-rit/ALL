@@ -29,14 +29,28 @@ Labs are identified by an integer `<N>` used consistently as a folder/route suff
 
 ## Step 1 — Register lab metadata (`labs` table)
 
-Create a row in the `labs` table (model: `server/database/models/Labs.js`) with the static
-content for the lab:
+Add a row for the lab to **`server/database/seeds/labs.sql`** — this file is the source of truth
+for the `labs` table's content (see #1613). It's no longer something you insert directly into a
+running database by hand, and it's no longer part of `schema.sql` (which holds DDL only now).
+
+Add a new `(id, ...)` tuple to the `INSERT INTO _seed_labs (...)` statement near the top of the
+file, using the next unused id and the full column list already declared there:
 
 ```
 labName, labShortName, category, thumbnailImageURL, shortDescription, fullDescription,
 learningObjectives (JSON), authors, labURL, copyrightAttributes, about, reading (JSON),
 reinforcement (JSON), quiz (JSON), difficulty, slideshow, walkthroughVideo, isActive
 ```
+
+Apply it with `npm run db:seed` — or just restart the `server` container locally, since
+`npm run dev` seeds automatically before starting the app. The same file is what staging/prod
+deploy from via `server_deploy.sh`, so there's no manual SQL against a live database for this
+step anymore.
+
+One caveat specific to `labs.sql`: a re-seed never overwrites an existing row's `isActive` value
+(it's owned by the Admin Page's on/off toggle at runtime, see #1647) — doesn't matter for a new
+row, since there's nothing yet to conflict with; just set the value you want the lab to launch
+with.
 
 This single row is what powers the generic About/Reading/Reinforcement/Quiz pages and makes the
 lab show up on the labs listing page — no route/controller changes needed for those.
@@ -68,8 +82,9 @@ module.exports = (sequelize, DataTypes) => {
 
 Model files are auto-loaded — `server/database/index.js` recursively scans
 `server/database/models/`, requires every file, and calls `.sync()` on each model, so simply
-adding the file is enough to create the table (no separate migration step; `schema.sql` is a
-reference dump, not something you hand-edit).
+adding the file is enough to create the table — no DDL or migration edits needed. (`schema.sql`
+holds DDL only and isn't hand-maintained per-lab the way `server/database/seeds/labs.sql` is for
+Step 1 — see #1613.)
 
 ## Step 3 — Backend services
 
@@ -185,35 +200,36 @@ In `client/src/App.js`:
 The generic `<About>`, `<Reading>`, `<Reinforcement>`, and `<Quiz>` routes already handle any
 `labID` via the `/Lab${lab}/...` pattern — nothing to add there as long as Step 1 is done.
 
-## Step 12 — Make the lab assignable
+## Step 12 — Add to "Featured Labs" Section
 
-Add the lab to a group (`GroupController.addGroupLab` / the instructor group-management UI) so
-it actually gets assigned to users and appears in their to-do list.
+In `client/src/pages/landingpage/index.js`, check the `getFeaturedLabs` function.
 
-## Step 13 — Verify
+- Remove the older lab, and replace data with the new lab's details.
 
+## Step 13 — Add to Redirect
+
+In `client/src/helpers/Redirect.js`, check the large 'switch' statement in `stateChange` function.
+
+- Add the new lab as a new case claude to the end of the switch statement.
+
+```js
+case "Lab<N>":
+  actions.setLab(<N>);
+  break;
+```
+
+## Step 14 — Add New Lab as Constant
+
+In `client/src/constants/index.js`, check the `Sections` constant.
+
+Add the new lab as an entry in this dictionary.
+
+## Step 15 — Verify
+
+- Confirm the new row in `labs.sql` actually landed — `npm run db:seed` logs
+  `Applying seed: labs.sql`; a local Docker boot does this automatically via `npm run dev`.
 - Confirm the new tables appear in Postgres after boot (Sequelize `.sync()` runs on server start).
 - Walk through About → Reading → Exercise → Reinforcement → Quiz as a test user and confirm
   completion is recorded (`user_lab_completion` rows) at each step.
 - Check `server` console logs for Sequelize errors on first run — `.sync()` will not fix
   pre-existing tables with conflicting columns.
-
-## Quick file checklist
-
-```
-server/database/models/lab<N>/Exercise.js (+ Round.js, Choice.js, Repair.js as needed)
-server/services/lab<N>/ExerciseService.js (+ RepairService.js)
-server/controllers/lab<N>/ExerciseController.js (+ RepairController.js)
-server/routes/index.js                          (edit: imports + route registrations)
-client/src/constants/lab<N>/index.js
-client/src/reducers/lab<N>/ExerciseReducer.js (+ AppReducer.js, RepairReducer.js)
-client/src/services/lab<N>/ExerciseService.js (+ RepairService.js)
-client/src/components/exercise/lab<N>/Main.js (+ supporting components)
-client/src/assets/images/lab<N>/...
-client/src/App.js                               (edit: import + route)
-labs table                                       (one new row, via seed/admin insert)
-```
-
-That's roughly 10 new files plus edits to 2 shared files (`routes/index.js`, `App.js`) per lab —
-which is the exact pain point worth revisiting if lab creation needs to get cheaper (see the
-"condense into a single `/lab` route + config registry" idea discussed separately).
