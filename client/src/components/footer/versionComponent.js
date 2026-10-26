@@ -26,11 +26,11 @@ const Version = (props) => {
   return (
     <div className={className}>
       {local ? (
-        <p>
+        <p className="tw-text-white">
           Branch: {version} <br /> Commit: {hash}
         </p>
       ) : (
-        <p>Version: {version}</p>
+        <p className="tw-text-white">Version: {version}</p>
       )}
     </div>
   );

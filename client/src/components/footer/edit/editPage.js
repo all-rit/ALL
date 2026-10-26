@@ -52,20 +52,13 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-  const elems = document.querySelectorAll("body *, a, button, p");
-  for (let i = 0; i < elems.length; i++) {
-    elems[i].style.color = picker.toString();
-  }
-  document.documentElement.style.setProperty(
-    "--yellow-text",
-    picker.toString(),
-  );
-  document.documentElement.style.setProperty("--blue-text", picker.toString());
-  document.documentElement.style.setProperty("--white-text", picker.toString());
-  document.documentElement.style.setProperty(
-    "--light-blue-text",
-    picker.toString(),
-  );
+  const elems = document.querySelectorAll("body *, a, button, p, text");
+  elems.forEach((el) => {
+    el.style.setProperty("color", picker.toString());
+    el.style.setProperty("--yellow-text", picker.toString());
+    el.style.setProperty("--blue-text", picker.toString());
+    el.style.setProperty("--light-blue-text", picker.toString());
+  });
 }
 
 export function setBackgroundColor(picker) {
