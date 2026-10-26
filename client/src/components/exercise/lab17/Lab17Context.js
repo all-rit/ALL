@@ -6,6 +6,8 @@ const ExerciseStateContext = createContext({
   setTasks: () => {},
   activeTask: null,
   setActiveTask: () => {},
+  openTaskId: null,
+  setOpenTaskId: () => {},
 });
 
 export default ExerciseStateContext;
