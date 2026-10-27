@@ -341,7 +341,7 @@ VALUES (0, 'How to Build an Accessible Learning Lab', 'How to Build an Accessibl
 			"content":[
 				{
 					"name":"ACM Code of Ethics",
-					"link":"https://achecker.achecks.ca/checker/index.php"
+					"link":"https://www.acm.org/code-of-ethics"
 				},
 				{
 					"name":"CRPD",
