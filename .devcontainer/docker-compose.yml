@@ -22,12 +22,11 @@ services:
       timeout: 5s
       retries: 5
   server:
-    build:
-      context: ../server
-      dockerfile: Dockerfile
+    build: ../server
     volumes:
       - ../server:/app
       - /app/node_modules
+      - ../.git:/app/.git
     ports:
       - '5005:5005'
     depends_on:
