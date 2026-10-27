@@ -72,7 +72,7 @@ const LabFooter = (props) => {
             </button>
             <div className={`${buttonStyles.notCompleted.infoModal}`}>
               <button
-                className="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                className="tw-cursor-pointer tw-text-white tw-bg-darkGray poppins tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
                 onClick={toggleOpen}
               >
                 More Info
@@ -101,7 +101,7 @@ const LabFooter = (props) => {
             </button>
             <div className={`${buttonStyles.completed.infoModal}`}>
               <button
-                className="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                className="tw-cursor-pointer tw-text0-white tw-bg-darkGray poppins tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
                 onClick={toggleOpen}
               >
                 More Info
@@ -130,7 +130,7 @@ const LabFooter = (props) => {
             </button>
             <div className={`${buttonStyles.default.infoModal}`}>
               <button
-                className="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                className="tw-cursor-pointer tw-text-white tw-bg-darkGray poppins tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
                 onClick={toggleOpen}
               >
                 More Info

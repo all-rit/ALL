@@ -312,7 +312,7 @@ const LabsPage = (props) => {
                           setSelectedTopics([]);
                           setSelectedDifficulties([]);
                         }}
-                        className="tw-absolute tw-font-bold tw-z-10 tw-top-0 tw-right-0 btn tw-text-black tw-bg-primary-yellow tw-shadow-md focus:tw-bg-secondary-gray hover:tw-bg-secondary-gray hover:tw-shadow-lg text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap tw-border-none"
+                        className="tw-absolute tw-font-bold tw-z-10 tw-top-0 tw-right-0 btn tw-bg-primary-yellow tw-shadow-md focus:tw-bg-secondary-gray hover:tw-bg-secondary-gray hover:tw-shadow-lg text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap tw-border-none"
                       >
                         CLEAR
                       </button>
