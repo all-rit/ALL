@@ -77,7 +77,8 @@ const LabFooter = (props) => {
                   display: display ? "1" : "0",
                 }}
               >
-                <Home style={{ color: "black" }} /> Home
+                <Home style={{ color: "black" }} />
+                <p style={{ color: "black" }}>Home</p>
               </Button>
             ) : (
               <Button
