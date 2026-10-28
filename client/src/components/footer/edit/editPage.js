@@ -52,9 +52,14 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
+<<<<<<< Updated upstream
   const color = picker.toString();
   const elems = document.querySelectorAll(
     "body *, a, button, p, .tw-title, .btn, .modal-content__header, .btn-primary, .btn-secondary, .tw-body-text",
+=======
+  const elems = document.querySelectorAll(
+    "body *, a, button, p, text, div > label > input",
+>>>>>>> Stashed changes
   );
   elems.forEach((el) => {
     el.style.setProperty("color", color);
