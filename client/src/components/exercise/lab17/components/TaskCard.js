@@ -12,7 +12,7 @@ const TaskCard = ({
   correctChoice = "",
   icon,
   buttonText = "Repair",
-  onBegin,
+  onRepair,
   placement = "auto",
   className = "",
 }) => {
@@ -68,10 +68,11 @@ const TaskCard = ({
   // toggle this popover (automatically closes any other open card)
   const handleTogglePopover = () => {
     setOpenTaskId?.(isPopoverOpen ? null : id);
+    
   };
 
   // set this task as active in context and run the begin callback
-  const handleBeginClick = () => {
+  const handleRepairClick = () => {
     const taskPayload = {
       id,
       title,
@@ -82,7 +83,7 @@ const TaskCard = ({
 
     setOpenTaskId?.(null);
     setActiveTask?.(taskPayload);
-    onBegin?.(taskPayload);
+    onRepair?.(taskPayload);
   };
 
   // recalculate placement whenever the popover opens
@@ -116,7 +117,7 @@ const TaskCard = ({
           )}
           <button
             type="button"
-            onClick={handleBeginClick}
+            onClick={handleRepairClick}
             className="btn tw-bg-primary-yellow hover:tw-bg-labYellow tw-text-black tw-px-6 tw-py-1.5 tw-border-0 tw-cursor-pointer"
           >
             {buttonText}
@@ -158,7 +159,7 @@ TaskCard.propTypes = {
   correctChoice: PropTypes.string,
   icon: PropTypes.node,
   buttonText: PropTypes.string,
-  onBegin: PropTypes.func,
+  onRepair: PropTypes.func,
   placement: PropTypes.oneOf(["auto", "top", "bottom"]),
   className: PropTypes.string,
 };
