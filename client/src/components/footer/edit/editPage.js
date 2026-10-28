@@ -52,20 +52,19 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-  const elems = document.querySelectorAll("body *, a, button, p");
-  for (let i = 0; i < elems.length; i++) {
-    elems[i].style.color = picker.toString();
-  }
-  document.documentElement.style.setProperty(
-    "--yellow-text",
-    picker.toString(),
+  const color = picker.toString();
+  const elems = document.querySelectorAll(
+    "body *, a, button, p, .tw-title, .btn, .modal-content__header, .btn-primary, .btn-secondary, .tw-body-text",
   );
-  document.documentElement.style.setProperty("--blue-text", picker.toString());
-  document.documentElement.style.setProperty("--white-text", picker.toString());
-  document.documentElement.style.setProperty(
-    "--light-blue-text",
-    picker.toString(),
-  );
+  elems.forEach((el) => {
+    el.style.setProperty("color", color);
+    el.style.setProperty("--yellow-text", color);
+    el.style.setProperty("--blue-text", color);
+    el.style.setProperty("--light-blue-text", color);
+    el.style.setProperty("--bs-body-color", color);
+    el.style.setProperty("--bs-modal-color", color);
+    el.style.setProperty("--bs--color", color);
+  });
 }
 
 export function setBackgroundColor(picker) {

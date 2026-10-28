@@ -23,7 +23,7 @@ const MainFooter = () => {
                 />
               </a>
             </Col>
-            <p className="tw-text-lg tw-text-left">
+            <p className="tw-text-white tw-text-lg tw-text-left">
               Accessible Learning Labs is an NSF funded initiative aimed at
               fostering STEM proficiency.
             </p>
@@ -31,8 +31,8 @@ const MainFooter = () => {
           {/*Column 2*/}
           <Col xs={4} className="tw-pr-8 tw-pt-1">
             <Row>
-              <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
-                <strong>Links</strong>
+              <h3 className="tw-title tw-text-left tw-pt-[0.75rem]">
+                <strong className="tw-text-white">Links</strong>
               </h3>
             </Row>
             <Row>
@@ -99,8 +99,8 @@ const MainFooter = () => {
           {/*Column 3*/}
           <Col xs={3} lg={2} className="tw-pt-1">
             <Row>
-              <h3 className="tw-tittle tw-text-left tw-pt-[0.75rem]">
-                <strong>Contact</strong>
+              <h3 className="tw-title tw-text-left tw-pt-[0.75rem]">
+                <strong className="tw-text-white">Contact</strong>
               </h3>
             </Row>
             <p className="tw-text-left tw-text-white tw-font-bold">
@@ -184,7 +184,7 @@ const MainFooter = () => {
                 </Col>
               </div>
             </Container>
-            <p className="tw-pt-2 tw-text-lg tw-text-left">
+            <p className=" tw-text-white tw-pt-2 tw-text-lg tw-text-left">
               Available under the Federal Government License. This work is
               supported by the US National Science Foundation Under Grants:
               #1825023, #2111152, #2336941
