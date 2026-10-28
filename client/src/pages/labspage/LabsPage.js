@@ -364,7 +364,6 @@ const LabsPage = (props) => {
                                 focus-within:tw-border-black
                                 btn tw-border-solid tw-shadow-md tw-border-1 
                                 tw-text-sm md:tw-text-[1rem]
-                                hover:tw-bg-primary-yellow
                                 tw-z-10
                                 ${
                                   selectedDifficulties.includes(level)

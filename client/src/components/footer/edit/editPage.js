@@ -63,6 +63,7 @@ export function setTextColor(picker) {
     el.style.setProperty("--light-blue-text", color);
     el.style.setProperty("--bs-body-color", color);
     el.style.setProperty("--bs-modal-color", color);
+    el.style.setProperty("--bs--color", color);
   });
 }
 

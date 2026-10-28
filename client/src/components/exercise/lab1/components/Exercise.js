@@ -32,6 +32,7 @@ import {
   OPEN_HINT_BOX_DELAY,
   LAB_ID,
 } from "../../../../constants/lab1";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
 
 class Exercise extends Component {
   constructor(props) {
@@ -313,6 +314,7 @@ class Exercise extends Component {
           roundNumber={data.roundNumber}
           clickHandler={this.resetExercise.bind(this)}
         />
+        <SiteAccessibilityButton />
       </div>
     );
   }
