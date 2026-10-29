@@ -22,6 +22,7 @@ const ExerciseStateContext = createContext({
   setRsaShiftValue: () => {},
   tasks: {},
   setTasks: () => {},
+  score: 0,
   activeTask: null,
   setActiveTask: () => {},
   openTaskId: null,
