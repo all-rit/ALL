@@ -19,9 +19,6 @@ const TaskRepairContent = ({ task, onClose, onComplete }) => {
   // create the single-input repair state using this task's correctChoice
   const defaultInputs = getTaskRepairInputData(task.correctChoice, task.id);
 
-  // Other labs pass `functions` from the repair hook directly into <Repair />.
-  // `onComplete` is passed into the hook so `postRepair` records the task result
-  // as soon as a valid submission is made, and `navigateNext` simply closes the modal.
   const { data, functions } = useTaskRepairService(
     user,
     EXERCISE_STATES.MODEL_REPAIR,
@@ -73,7 +70,6 @@ TaskRepairContent.propTypes = {
   onComplete: PropTypes.func.isRequired,
 };
 
-// pop-up modal overlay displayed when a task's Repair button is clicked
 const TaskRepairModal = () => {
   const { activeTask, setActiveTask, setTasks } =
     useContext(ExerciseStateContext) || {};
