@@ -4,6 +4,7 @@ const ExerciseStateContext = createContext({
   setExerciseState: () => {},
   tasks: {},
   setTasks: () => {},
+  score: 0,
   activeTask: null,
   setActiveTask: () => {},
   openTaskId: null,
