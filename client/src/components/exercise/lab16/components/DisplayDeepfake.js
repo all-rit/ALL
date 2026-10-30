@@ -5,15 +5,12 @@ import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
 
 const DisplayDeepFake = (props) => {
-  const { teammateId, toggleAction, isChatRoom } = props;
+  const { teammateId, isChatRoom } = props;
   const [imagePath, setImagePath] = useState("");
   const [modal, setModal] = useState(true);
 
   const toggle = () => {
     setModal(!modal);
-    if (toggleAction) {
-      toggleAction();
-    }
   };
 
   const handleNavigation = async () => {
@@ -115,6 +112,6 @@ export default DisplayDeepFake;
 
 DisplayDeepFake.propTypes = {
   teammateId: PropTypes.number.isRequired,
-  toggleAction: PropTypes.func,
+  // toggleAction: PropTypes.func,
   isChatRoom: PropTypes.bool,
 };
