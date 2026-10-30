@@ -4,10 +4,12 @@ import { Chat } from "../../../all-components/imagine-components/Chat";
 import TeammateVideo from "../components/TeammateVideo";
 import { ExerciseService } from "../../../../services/lab16/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
+import ExerciseStateContext from "../Lab16Context";
+import { useContext } from "react";
 
 const ChatRoom = () => {
   const {state} = useMainStateContext();
-  const teammateId = Number(sessionStorage.getItem("teammateId"));
+  const {teammateId} = useContext(ExerciseStateContext);
   const group = "expression";
 
   const onSubmit = async (reply) => {
@@ -18,7 +20,7 @@ const ChatRoom = () => {
       }
     );
       setTimeout(() => {
-      navigate("/Lab16/Exercise/Conclusion");
+      navigate("/Lab16/Exercise/DeepfakeGenerator");
     }, 1000);
   };
 

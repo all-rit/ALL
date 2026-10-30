@@ -24,7 +24,7 @@ const ExerciseIntro = () => {
 
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab16/Exercise/Game");
+    navigate("/Lab16/Exercise/GameRegistration");
   };
 
   return (

@@ -2,7 +2,9 @@ import { createContext,  } from "react";
 
 const ExerciseStateContext = createContext({
     exerciseState: "",
-    setExerciseState: () => {}
+    setExerciseState: () => {},
+    teammateId : 0,
+    setTeammateID: () => {}
 })
 
 
