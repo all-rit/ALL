@@ -142,10 +142,10 @@ const TaskCard = ({
         aria-expanded={isPopoverOpen}
         aria-label={title}
         data-completed={taskState.completed}
-        className="tw-w-20 tw-h-28 tw-p-2 tw-bg-primary-blue tw-border-4 tw-border-solid tw-border-lightBlue tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-shadow-md focus:tw-outline-none"
+        className="tw-w-12 tw-h-16 tw-p-2 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-lightBlue tw-rounded-2xl tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-shadow-md focus:tw-outline-none"
       >
         {icon || (
-          <TableChartIcon className="tw-text-primary-yellow tw-text-5xl" />
+          <TableChartIcon className="tw-text-primary-yellow tw-text-2xl" />
         )}
       </button>
     </div>
