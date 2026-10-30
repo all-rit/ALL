@@ -20,6 +20,12 @@ const ExerciseStateContext = createContext({
   setRsaEncryptedMessage: () => {},
   rsaShiftValue: 1024,
   setRsaShiftValue: () => {},
+  tasks: {},
+  setTasks: () => {},
+  activeTask: null,
+  setActiveTask: () => {},
+  openTaskId: null,
+  setOpenTaskId: () => {},
 });
 
 export default ExerciseStateContext;
