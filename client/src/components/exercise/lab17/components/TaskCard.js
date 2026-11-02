@@ -131,7 +131,7 @@ const TaskCard = ({
         show={isModalOpen}
         setShow={(show) => !show && handleCloseModal()}
         showHeader
-        header="Task Repair"
+        header={title}
         canClose
         canDismiss
         width="72rem"
@@ -141,7 +141,6 @@ const TaskCard = ({
               <Repair
                 data={data}
                 functions={functions}
-                headingText={title}
                 repairText={[
                   description ||
                     "Update the configuration below to assign the best computer type for this task.",
