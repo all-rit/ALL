@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import TableChartIcon from "@mui/icons-material/TableChart";
+import ALLModal from "../../../all-components/ALLModal";
 import ExerciseStateContext from "../Lab17Context";
 import ToggleTip from "./ToggleTip";
 
@@ -14,11 +15,14 @@ const TaskCard = ({
   icon,
   buttonText = "Repair",
   onRepair,
+  modalBody,
   placement = "auto",
   className = "",
 }) => {
   const {
     tasks = {},
+    setTasks,
+    activeTask,
     setActiveTask,
     openTaskId,
     setOpenTaskId,
@@ -27,6 +31,7 @@ const TaskCard = ({
   const triggerRef = useRef(null);
 
   const isPopoverOpen = openTaskId === id;
+  const isModalOpen = activeTask?.id === id;
   const taskState = tasks[id] || DEFAULT_TASK_STATE;
 
   // toggle this popover (automatically closes any other open card)
@@ -47,6 +52,15 @@ const TaskCard = ({
     setOpenTaskId?.(null);
     setActiveTask?.(taskPayload);
     onRepair?.(taskPayload);
+  };
+
+  // mark this task as completed and close the modal
+  const handleCompleteTask = () => {
+    setTasks?.((prev) => ({
+      ...prev,
+      [id]: { ...taskState, completed: true },
+    }));
+    setActiveTask?.(null);
   };
 
   return (
@@ -75,8 +89,28 @@ const TaskCard = ({
         placement={placement}
         title={title}
         description={description}
-        buttonText={buttonText}
-        onButtonClick={handleRepairClick}
+      >
+        <button
+          type="button"
+          onClick={handleRepairClick}
+          className="btn tw-font-poppins tw-font-medium tw-bg-primary-yellow hover:tw-bg-labYellow tw-text-black tw-px-6 tw-py-1.5 tw-rounded-md tw-shadow-md tw-border-0 tw-cursor-pointer"
+        >
+          {buttonText}
+        </button>
+      </ToggleTip>
+
+      <ALLModal
+        show={isModalOpen}
+        setShow={(show) => !show && setActiveTask?.(null)}
+        showHeader
+        canClose
+        canDismiss
+        header={title}
+        description={description}
+        customBody={modalBody}
+        showFooter
+        primaryAction={handleCompleteTask}
+        secondaryAction={() => setActiveTask?.(null)}
       />
     </div>
   );
@@ -90,6 +124,7 @@ TaskCard.propTypes = {
   icon: PropTypes.node,
   buttonText: PropTypes.string,
   onRepair: PropTypes.func,
+  modalBody: PropTypes.element,
   placement: PropTypes.oneOf(["auto", "top", "bottom"]),
   className: PropTypes.string,
 };

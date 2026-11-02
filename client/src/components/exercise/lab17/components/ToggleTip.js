@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 /**
  * A keyboard-accessible toggletip component that displays a speech-bubble popover
- * with a title, description, and optional action button.
+ * with a title, description, and optional child elements at the bottom.
  * @param {Object} props - The props for the ToggleTip component.
  * @param {boolean} props.isOpen - Whether the toggletip is currently open.
  * @param {Function} props.onClose - Callback fired when the toggletip closes (e.g. Escape key).
@@ -11,8 +11,7 @@ import PropTypes from "prop-types";
  * @param {string} props.placement - Placement relative to the trigger ("auto", "top", "bottom").
  * @param {string} props.title - Heading text inside the toggletip.
  * @param {string} props.description - Body description text inside the toggletip.
- * @param {string} props.buttonText - Optional text for the action button.
- * @param {Function} props.onButtonClick - Optional click handler for the action button.
+ * @param {React.ReactNode} props.children - Optional UI elements appended to the bottom of the toggletip.
  * @param {string} props.className - Optional additional CSS classes.
  * @returns {React.ReactNode} The rendered ToggleTip component.
  */
@@ -23,8 +22,7 @@ const ToggleTip = ({
   placement = "auto",
   title = "",
   description = "",
-  buttonText = "",
-  onButtonClick,
+  children,
   className = "",
 }) => {
   // default popover placement is top unless specified
@@ -102,24 +100,16 @@ const ToggleTip = ({
       aria-label={title || "Toggle tip"}
     >
       {title && (
-        <h3 className="tw-font-poppins tw-font-bold tw-text-2xl tw-text-black tw-mt-0 tw-mb-1">
+        <h3 className="tw-title tw-text-2xl tw-text-black tw-mt-0 tw-mb-1">
           {title}
         </h3>
       )}
       {description && (
-        <p className="tw-body-text tw-text-center tw-text-black tw-text-sm md:tw-text-base tw-mt-0 tw-mb-2.5">
+        <p className="tw-body-text tw-text-center tw-text-black tw-mt-0 tw-mb-2.5">
           {description}
         </p>
       )}
-      {buttonText && (
-        <button
-          type="button"
-          onClick={onButtonClick || onClose}
-          className="btn tw-bg-primary-yellow hover:tw-bg-labYellow tw-text-black tw-px-6 tw-py-1.5 tw-rounded-md tw-border-0 tw-cursor-pointer"
-        >
-          {buttonText}
-        </button>
-      )}
+      {children}
 
       {/* speech bubble pointer */}
       <div
@@ -136,8 +126,7 @@ ToggleTip.propTypes = {
   placement: PropTypes.oneOf(["auto", "top", "bottom"]),
   title: PropTypes.string,
   description: PropTypes.string,
-  buttonText: PropTypes.string,
-  onButtonClick: PropTypes.func,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
