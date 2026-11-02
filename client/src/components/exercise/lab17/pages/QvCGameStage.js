@@ -3,7 +3,6 @@ import { navigate } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
 import { ExerciseService } from "src/services/lab17/ExerciseService";
 import TaskCard from "../components/TaskCard";
-import TaskRepairModal from "../components/TaskRepairModal";
 
 const QvCGameStage = () => {
   const { state } = useMainStateContext();
@@ -31,7 +30,7 @@ const QvCGameStage = () => {
       <h1 className="tw-title tw-text-left">QvCGameStage</h1>
       <div
         data-stage-container
-        className="tw-relative tw-bg-primary-blue tw-rounded-2xl tw-min-h-[32rem] tw-p-8 tw-my-6 tw-flex tw-flex-col tw-justify-between"
+        className="tw-relative tw-bg-primary-blue tw-rounded-lg tw-min-h-[32rem] tw-p-8 tw-my-6 tw-flex tw-flex-col tw-justify-between"
       >
         <div className="tw-flex tw-justify-center">
           <TaskCard
@@ -66,8 +65,6 @@ const QvCGameStage = () => {
           />
         </div>
       </div>
-      
-      <TaskRepairModal />
       <div className="tw-flex tw-justify-evenly">
         <button
           className="btn btn-primary text-black btn-xl text-uppercase"
