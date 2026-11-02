@@ -5,18 +5,12 @@ import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
 
 const DisplayDeepFake = (props) => {
-  const { teammateId, isChatRoom } = props;
+  const { teammateId, isChatRoom ,handleNavigation} = props;
   const [imagePath, setImagePath] = useState("");
   const [modal, setModal] = useState(true);
 
   const toggle = () => {
     setModal(!modal);
-  };
-
-  const handleNavigation = async () => {
-    sessionStorage.setItem("teammateId", teammateId);
-      // uncomment this line when ChatRoom page is implemented
-      navigate("/Lab16/Exercise/ChatRoom");
   };
 
   useEffect(() => {
