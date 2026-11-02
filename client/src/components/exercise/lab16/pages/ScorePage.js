@@ -1,9 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { Button } from "reactstrap";
+import TeammateVideo from "../components/TeammateVideo";
+import { navigate } from "@reach/router";
+import ExerciseStateContext from "../Lab16Context";
 
-const ScorePage = (props) => {
-  const { onClick } = props;
+
+const ScorePage = () => {
+
+  const contentSizing ="tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[7rem]";
+
+  const {teammateId} = useContext(ExerciseStateContext);
+
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
@@ -20,7 +27,8 @@ const ScorePage = (props) => {
 
   return (
     <>
-      <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
+    <div className={contentSizing}>
+        <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
         <h3 className="tw-title text-center">You Win!!!</h3>
         <div className="tw-flex tw-items-center tw-justify-center tw-border-solid tw-border-0 tw-border-b tw-border-secondary-gray">
           <div className="tw-my-12 tw-body-text tw-mx-14">
@@ -52,17 +60,19 @@ const ScorePage = (props) => {
           className="tw-body-text tw-font-bold tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black tw-mt-20"
           //alert model should pop up and deepfake should be shown
-          onClick={onClick}
+          onClick={() => navigate('/Lab16/Exercise/TeammateDeepfake')}
         >
           End Game
         </Button>
       </div>
+
+      
+      <TeammateVideo teammateId={teammateId} status={'scorePage'}/>
+    </div>  
     </>
   );
 };
 
 export default ScorePage;
 
-ScorePage.propTypes = {
-  onClick: PropTypes.func,
-};
+
