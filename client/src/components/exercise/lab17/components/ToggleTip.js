@@ -97,7 +97,7 @@ const ToggleTip = ({
   return (
     <div
       ref={popoverRef}
-      className={`tw-absolute ${bubblePosition} tw-z-10 tw-w-60 md:tw-w-64 tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-3 tw-flex tw-flex-col tw-items-center tw-text-center ${className}`}
+      className={`tw-absolute ${bubblePosition} tw-z-10 tw-w-60 md:tw-w-64 tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-3 tw-flex tw-flex-col tw-items-center tw-text-center ${className}`}
       role="dialog"
       aria-label={title || "Toggle tip"}
     >
@@ -115,7 +115,7 @@ const ToggleTip = ({
         <button
           type="button"
           onClick={onButtonClick || onClose}
-          className="btn tw-bg-primary-yellow hover:tw-bg-labYellow tw-text-black tw-px-6 tw-py-1.5 tw-border-0 tw-cursor-pointer"
+          className="btn tw-bg-primary-yellow hover:tw-bg-labYellow tw-text-black tw-px-6 tw-py-1.5 tw-rounded-md tw-border-0 tw-cursor-pointer"
         >
           {buttonText}
         </button>
