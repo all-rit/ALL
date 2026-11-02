@@ -1,7 +1,11 @@
 import { createContext } from "react";
 const ExerciseStateContext = createContext({
   exerciseState: "",
-  setExerciseState: () => {}
+  setExerciseState: () => {},
+  tasks: {},
+  setTasks: () => {},
+  activeTask: null,
+  setActiveTask: () => {},
 });
 
 export default ExerciseStateContext;
