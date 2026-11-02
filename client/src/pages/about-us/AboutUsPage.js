@@ -11,6 +11,8 @@ import {
   OUR_MISSION_TITLE,
 } from "../../constants/sections";
 
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
+
 const AboutUsPage = () => {
   return (
     <div>
@@ -19,6 +21,7 @@ const AboutUsPage = () => {
       <InvestigatorsSection />
       <StudentTeamSection />
       <GettingInvolved />
+      <SiteAccessibilityButton />
     </div>
   );
 };

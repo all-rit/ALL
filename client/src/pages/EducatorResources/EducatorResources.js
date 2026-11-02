@@ -7,6 +7,7 @@ import DevPartners from "../landingpage/DevPartners";
 import Carousel from "../../components/all-components/ParticipatingSchools";
 import LandingSection from "../../components/all-components/LandingSection";
 import { ABOUT_US_BODY, ABOUT_US_TITLE } from "../../constants/sections";
+import SiteAccessibilityButton from "src/components/all-components/SiteAccessibilityButton";
 
 const EducatorResources = () => {
   return (
@@ -24,6 +25,7 @@ const EducatorResources = () => {
       <DevPartners />
       <Carousel />
       <GettingInvolved />
+      <SiteAccessibilityButton />
     </div>
   );
 };

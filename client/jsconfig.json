@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "esnext",
     "allowSyntheticDefaultImports": false,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules"]
 }
