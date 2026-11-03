@@ -100,9 +100,7 @@ const ToggleTip = ({
       aria-label={title || "Toggle tip"}
     >
       {title && (
-        <h3 className="tw-title tw-text-2xl tw-text-black tw-mt-0 tw-mb-1">
-          {title}
-        </h3>
+        <h2 className="tw-sub-title tw-text-black tw-mt-0 tw-mb-1">{title}</h2>
       )}
       {description && (
         <p className="tw-body-text tw-text-center tw-text-black tw-mt-0 tw-mb-2.5">
