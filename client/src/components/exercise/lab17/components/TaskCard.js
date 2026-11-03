@@ -135,8 +135,9 @@ const TaskCard = ({
         canClose
         canDismiss
         width="72rem"
+        // too much padding when you combine ALLModal and Repair, so its adjusted here
         customBody={
-          <div className="tw-max-h-[50vh] tw-overflow-y-auto">
+          <div className="tw-max-h-[50vh] tw-overflow-y-auto -tw-mx-4 tw-px-4 [&_p]:tw-pt-0">
             {modalBody || (
               <Repair
                 data={data}
