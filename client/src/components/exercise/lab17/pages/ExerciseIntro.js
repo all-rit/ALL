@@ -24,7 +24,7 @@ const ExerciseIntro = () => {
 
   const handleContinue = () => {
     startExercise();
-    navigate("/Lab17/Exercise/Conclusion");
+    navigate("/Lab17/Exercise/QvCGameStage");
   };
 
   return (
