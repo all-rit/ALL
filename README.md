@@ -58,8 +58,11 @@ docker compose up -d
 - Database: `localhost:5433`
 
 To view logs: `docker compose logs -f [client|server|db]`. To stop: `docker compose down`. The `db` service has no
-persistent volume, so its data does not survive a `down`/`up` cycle — it re-seeds from `server/database/schema.sql`
-every time the container starts fresh.
+persistent volume, so its data does not survive a `down`/`up` cycle — `server/database/schema.sql` (DDL only) runs
+automatically on a fresh container, and the `server` container's `npm run dev` then applies every file in
+`server/database/seeds/` (content-table data — team members, labs, etc., see #1613) before starting the app. Run
+`npm run db:seed` inside the `server` container yourself (`docker compose exec server npm run db:seed`) to re-apply
+seed data without a full restart, e.g. after pulling someone else's edit to a seed file.
 
 #### HMR / Fast Refresh notes
 

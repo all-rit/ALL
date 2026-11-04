@@ -24,6 +24,7 @@ import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
 import { default as ExerciseLab15 } from "./components/exercise/lab15/Main";
+import { default as ExerciseLab16 } from "./components/exercise/lab16/Main";
 import { default as ExerciseLab17 } from "./components/exercise/lab17/Main";
 
 import { Sections } from "./constants/index";
@@ -41,6 +42,7 @@ import Profile from "./components/body/profilepage/Profile";
 
 /** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
+import { default as LabUnderMaintenance } from "./pages/landingpage/labUnderMaintenance";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
@@ -98,11 +100,21 @@ const App = () => {
       stateChange(actions, location.location.pathname);
     });
     setLoaded(true);
+
+    actions.fetchActiveLabNumbers();
+    const intervalId = setInterval(actions.fetchActiveLabNumbers, 10000); // 10 seconds
+    return () => clearInterval(intervalId);
   }, []);
   const lab = state.main.lab;
   const body = state.main.body;
   const isImagine = state.main.isImagine;
   const labInProgress = lab !== 99;
+  const activeLabNumbers = state.main.activeLabNumbers;
+
+  const isLabBlocked =
+    labInProgress &&
+    activeLabNumbers !== null &&
+    !activeLabNumbers.includes(lab);
 
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -153,6 +165,7 @@ const App = () => {
           <ExerciseLab13 path="/Lab13/Exercise/*" user={state.main.user} />
           <ExerciseLab14 path="/Lab14/Exercise/*" user={state.main.user} />
           <ExerciseLab15 path="/Lab15/Exercise/*" user={state.main.user} />
+          <ExerciseLab16 path="/Lab16/Exercise/*" user={state.main.user} />
           <ExerciseLab17 path="/Lab17/Exercise/*" user={state.main.user} />
           <Reinforcement
             path={`/Lab${lab}/Reinforcement`}
@@ -247,17 +260,21 @@ const App = () => {
             <div className={`tw-relative`}>
               <div className={`tw-relative tw-grid`}>
                 {labInProgress ? (
-                  <LabWindow
-                    lab={lab}
-                    title={Sections[lab].fullname}
-                    context={context}
-                    quizCompleted={quizCompleted}
-                    setQuizCompleted={setQuizCompleted}
-                    isImagine={isImagine}
-                    body={body}
-                  >
-                    {renderLabs()}
-                  </LabWindow>
+                  isLabBlocked ? (
+                    <LabUnderMaintenance />
+                  ) : (
+                    <LabWindow
+                      lab={lab}
+                      title={Sections[lab].fullname}
+                      context={context}
+                      quizCompleted={quizCompleted}
+                      setQuizCompleted={setQuizCompleted}
+                      isImagine={isImagine}
+                      body={body}
+                    >
+                      {renderLabs()}
+                    </LabWindow>
+                  )
                 ) : (
                   <div className={"tw-flex tw-row-span-10 tw-text-center"}>
                     {renderPages()}
