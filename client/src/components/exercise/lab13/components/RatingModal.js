@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import ALLModal from "src/components/all-components/ALLModal";
 import Likert from "src/components/all-components/Likert";
@@ -21,17 +21,6 @@ const RatingModal = ({
   onCloseTextModal,
 }) => {
   const firstModalRef = useRef(null);
-  // Control overlay when modals are shown
-  useEffect(() => {
-    if (show || showTextModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [show, showTextModal]);
 
   const handleSubmit = () => {
     if (!toneRating || !confidenceRating) {
