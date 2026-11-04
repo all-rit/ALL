@@ -37,7 +37,9 @@ jobs:
           key: ${{ secrets.SSH_STAGING_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            git pull dev
+            set -e
+            cd research
+            git pull origin dev
             cd ${{ secrets.CD_SERVER }}
             chmod +x server_deploy.sh
             ./server_deploy.sh
