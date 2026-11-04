@@ -16,6 +16,8 @@ const Main = () => {
   const [activeTask, setActiveTask] = useState(null);
   const [openTaskId, setOpenTaskId] = useState(null);
 
+  const score = Object.values(tasks).filter((task) => task.isCorrect).length;
+
   return (
     <div className="bottomSpace tw-p-6">
       <ExerciseStateContext.Provider
@@ -24,6 +26,7 @@ const Main = () => {
           setExerciseState,
           tasks,
           setTasks,
+          score,
           activeTask,
           setActiveTask,
           openTaskId,

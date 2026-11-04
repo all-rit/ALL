@@ -1,8 +1,17 @@
 import React, { useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import TableChartIcon from "@mui/icons-material/TableChart";
+import Repair from "src/components/body/Repair/Repair";
+import { EXERCISE_STATES } from "src/constants/lab17";
+import {
+  TASK_REPAIR_FILE_NAME,
+  getTaskRepairInputData,
+} from "src/constants/lab17/TaskRepair";
+import useMainStateContext from "src/reducers/MainContext";
 import ALLModal from "../../../all-components/ALLModal";
 import ExerciseStateContext from "../Lab17Context";
+import useTaskRepairService from "../hooks/useTaskRepairService";
+import TaskRepairImplementation from "../pages/repairs/TaskRepairImplementation";
 import ToggleTip from "./ToggleTip";
 
 const DEFAULT_TASK_STATE = { completed: false };
@@ -27,6 +36,8 @@ const TaskCard = ({
     openTaskId,
     setOpenTaskId,
   } = useContext(ExerciseStateContext) || {};
+  const { state } = useMainStateContext();
+  const user = state?.main?.user;
 
   const triggerRef = useRef(null);
 
@@ -54,14 +65,31 @@ const TaskCard = ({
     onRepair?.(taskPayload);
   };
 
-  // mark this task as completed and close the modal
-  const handleCompleteTask = () => {
-    setTasks?.((prev) => ({
-      ...prev,
-      [id]: { ...taskState, completed: true },
-    }));
+  // close the repair modal for this task
+  const handleCloseModal = () => {
     setActiveTask?.(null);
   };
+
+  // save the user's submitted choice and correctness for this task in context
+  const handleCompleteTask = ({ userChoice, isCorrect } = {}) => {
+    setTasks?.((prev) => ({
+      ...prev,
+      [id]: {
+        ...(prev?.[id] || taskState),
+        completed: true,
+        userChoice,
+        isCorrect,
+      },
+    }));
+  };
+
+  const defaultInputs = getTaskRepairInputData(correctChoice, id);
+  const { data, functions } = useTaskRepairService(
+    user,
+    EXERCISE_STATES.MODEL_REPAIR,
+    defaultInputs,
+    handleCompleteTask,
+  );
 
   return (
     <div
@@ -101,16 +129,36 @@ const TaskCard = ({
 
       <ALLModal
         show={isModalOpen}
-        setShow={(show) => !show && setActiveTask?.(null)}
+        setShow={(show) => !show && handleCloseModal()}
         showHeader
+        header={title}
         canClose
         canDismiss
-        header={title}
-        description={description}
-        customBody={modalBody}
-        showFooter
-        primaryAction={handleCompleteTask}
-        secondaryAction={() => setActiveTask?.(null)}
+        width="72rem"
+        // too much padding when you combine ALLModal and Repair, so its adjusted here
+        customBody={
+          <div className="tw-max-h-[50vh] tw-overflow-y-auto -tw-mx-4 tw-px-4 [&_p.tw-body-text]:tw-pt-0">
+            {modalBody || (
+              <Repair
+                data={data}
+                functions={functions}
+                repairText={[
+                  description ||
+                    "Update the configuration below to assign the best computer type for this task.",
+                ]}
+                files={[
+                  {
+                    fileId: 0,
+                    fileName: TASK_REPAIR_FILE_NAME,
+                    implementation: TaskRepairImplementation,
+                  },
+                ]}
+                navigateNext={handleCloseModal}
+              />
+            )}
+          </div>
+        }
+        showFooter={false}
       />
     </div>
   );
