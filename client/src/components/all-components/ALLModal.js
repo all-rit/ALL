@@ -85,7 +85,7 @@ const ALLModal = (props) => {
   return show ? (
     <div className="tw-fixed tw-inset-0 tw-z-10 tw-overflow-y-auto">
       <div
-        className="tw-fixed tw-inset-0 tw-w-full tw-h-full tw-bg-dark tw-opacity-60"
+        className="tw-fixed tw-inset-0 tw-w-full tw-h-full tw-bg-black tw-opacity-60"
         onClick={() => {
           canDismiss ? setShow(false) : () => {};
         }}
