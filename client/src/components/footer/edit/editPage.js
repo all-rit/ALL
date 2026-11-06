@@ -56,15 +56,15 @@ export function setTextColor(picker) {
   const elems = document.querySelectorAll(
     "body *, a, button, p, .tw-title, .btn, .modal-content__header, .btn-primary, .btn-secondary, .tw-body-text",
   );
-  elems.forEach((el) => {
-    el.style.setProperty("color", color);
-    el.style.setProperty("--yellow-text", color);
-    el.style.setProperty("--blue-text", color);
-    el.style.setProperty("--light-blue-text", color);
-    el.style.setProperty("--bs-body-color", color);
-    el.style.setProperty("--bs-modal-color", color);
-    el.style.setProperty("--bs--color", color);
-  });
+  elems.forEach((el) => el.style.setProperty("color", color));
+  document.documentElement.style.setProperty("--yellow-text", color);
+  document.documentElement.style.setProperty("--blue-text", color);
+  document.documentElement.style.setProperty("--light-blue-text", color);
+  document.documentElement.style.setProperty("--bs-body-color", color);
+  document.documentElement.style.setProperty("--bs-modal-color", color);
+  document.documentElement.style.setProperty("--bs-color", color);
+  document.documentElement.style.setProperty("--bs-link-color-rgb", color);
+  document.documentElement.style.setProperty("--bs-btn-color", color);
 }
 
 export function setBackgroundColor(picker) {
