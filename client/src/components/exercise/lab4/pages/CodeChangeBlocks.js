@@ -127,7 +127,7 @@ const CodeChangeBlocks = () => {
         role: textValue,
       };
       RepairService.submitRepairSkip(textValue);
-      navigate("/Lab4/Exercise/ActivityBridgeTwo");
+      navigate("/Lab4/Exercise/");
     }
     Prism.highlightAll();
   };

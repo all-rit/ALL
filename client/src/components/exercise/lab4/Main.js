@@ -4,8 +4,7 @@ import "../../../assets/stylesheets/main.scss";
 import SmallTarget from "./pages/SmallTarget";
 import TargetGuideline from "./pages/TargetGuideline";
 import SubmitUpdated from "./pages/SubmitUpdated";
-import ActivityBridgeOne from "./pages/ActivityBridgeOne";
-import ActivityBridgeTwo from "./pages/ActivityBridgeTwo";
+import ActivityBridge from "./pages/ActivityBridge";
 import CodeChangeTarget from "./pages/CodeChangeTarget";
 import CodeChangeBlocks from "./pages/CodeChangeBlocks";
 import BypassBlocksGuideline from "./pages/BypassBlocksGuideline";
@@ -27,8 +26,8 @@ const Main = () => {
         <TargetGuideline path="/TargetGuideline" />
         <CodeChangeTarget path={"/CodeChangeTarget"} />
         <SubmitUpdated path="/SubmitUpdated" />
-        <ActivityBridgeOne path="/ActivityBridgeOne" />
-        <ActivityBridgeTwo path="/ActivityBridgeTwo" />
+        <ActivityBridge target="/ExerciseTwo" path="/ActivityBridgeOne"/>
+        <ActivityBridge target="/ExerciseThree" path="/ActivityBridgeTwo"/>
         <CodeChangeBlocks path={"/CodeChangeBlocks"} />
         <BypassBlocksGuideline path={"/BypassBlocksGuideline"} />
         <FormSkipToMainBroken path={"/FormSkipToMainBroken"} />
