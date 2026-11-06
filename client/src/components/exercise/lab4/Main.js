@@ -26,7 +26,7 @@ const Main = () => {
         <TargetGuideline path="/TargetGuideline" />
         <CodeChangeTarget path={"/CodeChangeTarget"} />
         <SubmitUpdated path="/SubmitUpdated" />
-        <ActivityBridge target="/ExerciseTwo" path="/ActivityBridgeOne"/>
+         <ActivityBridge target="/ExerciseTwo" path="/ActivityBridgeOne"/>
         <ActivityBridge target="/ExerciseThree" path="/ActivityBridgeTwo"/>
         <CodeChangeBlocks path={"/CodeChangeBlocks"} />
         <BypassBlocksGuideline path={"/BypassBlocksGuideline"} />

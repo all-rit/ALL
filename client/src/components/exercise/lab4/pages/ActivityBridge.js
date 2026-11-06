@@ -1,9 +1,9 @@
 import React from "react";
 import { navigate } from "@reach/router";
 //base url, changing P text based on the exercise, Activity 1 Start(title changes), any other general information
-const ActivityBridgeOne = (target) => {
+const ActivityBridge = (target, path) => {
   const handleSubmit = () => {
-    navigate(target);
+    navigate(path);
   }
 
   return (
@@ -18,4 +18,4 @@ const ActivityBridgeOne = (target) => {
 };
 //navigate will be changed, pass in the url via prop, make duplicate reuse components.
 
-export default ActivityBridgeOne;
+export default ActivityBridge;
