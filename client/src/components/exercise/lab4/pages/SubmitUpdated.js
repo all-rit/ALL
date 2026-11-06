@@ -53,7 +53,7 @@ const SubmitUpdated = () => {
   const handleSubmit = () => {
     const name = "SubmitUpdated";
     PageService.createPage(name, state.secondsElapsed, LAB_ID);
-    navigate("/Lab4/Exercise/ActivityBridgeOne");
+    navigate("/Lab4/Exercise/");
   };
 
   useEffect(() => {
