@@ -11,8 +11,7 @@
       "configureZshOhMyZsh": true,
       "upgradePackages": true,
       "username": "root"
-    },
-    "ghcr.io/devcontainers/features/git:1": "latest"
+    }
     // Other dev tools can be found here: https://containers.dev/features
   },
   "customizations": {
