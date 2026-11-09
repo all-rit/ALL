@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
+import { creaturePaths } from "src/constants/lab16/Creatures";
 
 
 const DeepfakeGenerator = ()=>{
+    const [selectedCreature, setSelectedCreature] = useState("");
+    const dataNums = [...Array(20).keys()];
 
-    const [selectedCreature, setSelectedCreature] = useState("")
+    const creatures = useMemo(() => {
+        return [...dataNums].sort(() => Math.random() - 0.5).slice(0, 4);
+    }, []);
 
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
     };
+
     const contentSizing = "tw-border tw-rounded-xl tw-h-auto xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[1rem]";
     const imageTransformSizing = "tw-w-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-p-1 tw-transition-all tw-duration-200 hover:tw-w-28 peer-checked:tw-w-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue";
-    const creatures = ["creature1", "creature2", "creature3", "creature4"];
-
     return (
     <>
     <div>
         <div className={contentSizing + " tw-shadow-lg"}>
             <div className="tw-flex tw-flex-row tw-justify-center tw-items-center tw-w-full tw-h-full tw-p-4">
                 <div className="tw-flex tw-flex-col tw-justify-center tw-items-top">
-                    <h1>ALL Deepfake Generator</h1>
+                    <h1 className="tw-text-2xl">ALL Deepfake Generator</h1>
                     <hr/>
                     <div className="tw-flex tw-flex-col tw-justify-left tw-text-left">
                         <p>Step 1:</p>
@@ -36,13 +40,13 @@ const DeepfakeGenerator = ()=>{
                                         onChange={()=>setSelectedCreature(creature)}
                                         className="tw-peer tw-sr-only"
                                     />
-                                    <img src="../../../src/assets/images/Placeholder.png" alt={creature} className={imageTransformSizing}/>
+                                    <img src={creaturePaths[creature]} alt={creature} className={imageTransformSizing}/>
                                 </label>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className="tw-w-100">
+                <div className="tw-w-100 tw-m-20">
                     Generated Image
                 </div>
             </div>
@@ -60,7 +64,7 @@ const DeepfakeGenerator = ()=>{
 
 
     </>
-    )
-}
+    );
+};
 
-export default DeepfakeGenerator
+export default DeepfakeGenerator;
