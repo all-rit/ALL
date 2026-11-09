@@ -4,6 +4,9 @@ import { navigate } from "@reach/router";
 
 
 const DeepfakeGenerator = ()=>{
+
+    const [selectedCharacter, setSelectedCharacter] = useState("")
+
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
     };
@@ -22,11 +25,13 @@ const DeepfakeGenerator = ()=>{
                         <p>Step 1:</p>
                         <p>Choose a Character</p>
                         <div className="tw-flex tw-flex-row tw-gap-1 tw-pt-2">
-                            <label className="tw-cursor-pointer tw-relative tw-inline-block">
+                            <label className="tw-cursor-pointer tw-relative tw-group">
                                 <input
                                     type="radio"
                                     name="character-select"
                                     value="char1"
+                                    checked={selectedCharacter === char1}
+                                    onChange={()=>setSelectedCharacter("char1")}
                                     className="tw-peer tw-sr-only"
                                 />
                                 <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
@@ -36,6 +41,8 @@ const DeepfakeGenerator = ()=>{
                                     type="radio"
                                     name="character-select"
                                     value="char2"
+                                    checked={selectedCharacter === char2}
+                                    onChange={()=>setSelectedCharacter("char2")}
                                     className="tw-peer tw-sr-only"
                                 />
                                 <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
@@ -45,6 +52,8 @@ const DeepfakeGenerator = ()=>{
                                     type="radio"
                                     name="character-select"
                                     value="char3"
+                                    checked={selectedCharacter === char3}
+                                    onChange={()=>setSelectedCharacter("char3")}
                                     className="tw-peer tw-sr-only"
                                 />
                                 <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
@@ -54,6 +63,8 @@ const DeepfakeGenerator = ()=>{
                                     type="radio"
                                     name="character-select"
                                     value="char4"
+                                    checked={selectedCharacter === char4}
+                                    onChange={()=>setSelectedCharacter("char4")}
                                     className="tw-peer tw-sr-only"
                                 />
                                 <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
