@@ -5,14 +5,14 @@ import { navigate } from "@reach/router";
 
 const DeepfakeGenerator = ()=>{
 
-    const [selectedCharacter, setSelectedCharacter] = useState("")
+    const [selectedCreature, setSelectedCreature] = useState("")
 
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
     };
     const contentSizing = "tw-border tw-rounded-xl tw-h-auto xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[1rem]";
     const imageTransformSizing = "tw-w-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-p-1 tw-transition-all tw-duration-200 hover:tw-w-28 peer-checked:tw-w-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue";
-    const characters = ["character1", "character2", "character3", "character4"];
+    const creatures = ["creature1", "creature2", "creature3", "creature4"];
 
     return (
     <>
@@ -24,19 +24,19 @@ const DeepfakeGenerator = ()=>{
                     <hr/>
                     <div className="tw-flex tw-flex-col tw-justify-left tw-text-left">
                         <p>Step 1:</p>
-                        <p>Choose a Character</p>
+                        <p>Choose a Creature</p>
                         <div className="tw-flex tw-flex-row tw-gap-1 tw-pt-2">
-                            {characters.map((character) => (
+                            {creatures.map((creature) => (
                                 <label className="tw-cursor-pointer tw-relative tw-group">
                                     <input
                                         type="radio"
-                                        name="character-select"
-                                        value={character}
-                                        checked={selectedCharacter === character}
-                                        onChange={()=>setSelectedCharacter(character)}
+                                        name="creature-select"
+                                        value={creature}
+                                        checked={selectedCreature === creature}
+                                        onChange={()=>setSelectedCreature(creature)}
                                         className="tw-peer tw-sr-only"
                                     />
-                                    <img src="../../../src/assets/images/Placeholder.png" alt={character} className={imageTransformSizing}/>
+                                    <img src="../../../src/assets/images/Placeholder.png" alt={creature} className={imageTransformSizing}/>
                                 </label>
                             ))}
                         </div>
