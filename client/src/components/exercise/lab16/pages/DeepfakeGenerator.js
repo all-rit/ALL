@@ -42,8 +42,8 @@ const DeepfakeGenerator = ()=>{
                         </div>
                     </div>
                 </div>
-                <div>
-                    hello
+                <div className="tw-w-100">
+                    Generated Image
                 </div>
             </div>
         </div>
