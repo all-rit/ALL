@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
 
@@ -12,6 +12,7 @@ const DeepfakeGenerator = ()=>{
     };
     const contentSizing = "tw-border tw-rounded-xl tw-h-auto xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[1rem]";
     const imageTransformSizing = "tw-w-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-p-1 tw-transition-all tw-duration-200 hover:tw-w-28 peer-checked:tw-w-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue";
+    const characters = ["character1", "character2", "character3", "character4"];
 
     return (
     <>
@@ -25,50 +26,19 @@ const DeepfakeGenerator = ()=>{
                         <p>Step 1:</p>
                         <p>Choose a Character</p>
                         <div className="tw-flex tw-flex-row tw-gap-1 tw-pt-2">
-                            <label className="tw-cursor-pointer tw-relative tw-group">
-                                <input
-                                    type="radio"
-                                    name="character-select"
-                                    value="char1"
-                                    checked={selectedCharacter === char1}
-                                    onChange={()=>setSelectedCharacter("char1")}
-                                    className="tw-peer tw-sr-only"
-                                />
-                                <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
-                            </label>
-                            <label className="tw-cursor-pointer tw-relative tw-group">
-                                <input
-                                    type="radio"
-                                    name="character-select"
-                                    value="char2"
-                                    checked={selectedCharacter === char2}
-                                    onChange={()=>setSelectedCharacter("char2")}
-                                    className="tw-peer tw-sr-only"
-                                />
-                                <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
-                            </label>
-                            <label className="tw-cursor-pointer tw-relative tw-group">
-                                <input
-                                    type="radio"
-                                    name="character-select"
-                                    value="char3"
-                                    checked={selectedCharacter === char3}
-                                    onChange={()=>setSelectedCharacter("char3")}
-                                    className="tw-peer tw-sr-only"
-                                />
-                                <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
-                            </label>
-                            <label className="tw-cursor-pointer tw-relative tw-group">
-                                <input
-                                    type="radio"
-                                    name="character-select"
-                                    value="char4"
-                                    checked={selectedCharacter === char4}
-                                    onChange={()=>setSelectedCharacter("char4")}
-                                    className="tw-peer tw-sr-only"
-                                />
-                                <img src="../../../src/assets/images/Placeholder.png" alt="image1" className={imageTransformSizing}/>
-                            </label>
+                            {characters.map((character) => (
+                                <label className="tw-cursor-pointer tw-relative tw-group">
+                                    <input
+                                        type="radio"
+                                        name="character-select"
+                                        value={character}
+                                        checked={selectedCharacter === character}
+                                        onChange={()=>setSelectedCharacter(character)}
+                                        className="tw-peer tw-sr-only"
+                                    />
+                                    <img src="../../../src/assets/images/Placeholder.png" alt={character} className={imageTransformSizing}/>
+                                </label>
+                            ))}
                         </div>
                     </div>
                 </div>
