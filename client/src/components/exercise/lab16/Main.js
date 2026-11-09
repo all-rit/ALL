@@ -20,6 +20,7 @@ const Main = () => {
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
 
+<<<<<<< Updated upstream
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
@@ -27,6 +28,24 @@ const Main = () => {
           exerciseState,
           setExerciseState,
         }}
+=======
+  const [teammateId, setTeammateID] = useState(0);
+
+  //store user-chosen team name
+  const [teamName, setTeamName] = useState("");
+
+  return (
+    <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
+      <ExerciseStateContext.Provider
+      value={{
+        exerciseState,
+        setExerciseState,
+        teammateId,
+        setTeammateID,
+        teamName,
+        setTeamName
+      }}
+>>>>>>> Stashed changes
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
