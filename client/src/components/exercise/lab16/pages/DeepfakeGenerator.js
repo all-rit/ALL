@@ -6,18 +6,39 @@ import { creaturePaths } from "src/constants/lab16/Creatures";
 
 const DeepfakeGenerator = ()=>{
     const [selectedCreature, setSelectedCreature] = useState("");
-    const dataNums = [...Array(20).keys()];
+    const creatureList = [
+        "cat",
+        "chicken",
+        "cow",
+        "dog",
+        "donkey",
+        "elephant",
+        "flamingo",
+        "fox",
+        "guineapig",
+        "horse",
+        "koala",
+        "mouse",
+        "owl",
+        "panda",
+        "rabbit",
+        "sheep",
+        "swan",
+        "tiger",
+        "treefrog",
+        "turtle",
+    ];
 
     const creatures = useMemo(() => {
-        return [...dataNums].sort(() => Math.random() - 0.5).slice(0, 4);
+        return [...creatureList].sort(() => Math.random() - 0.5).slice(0, 4);
     }, []);
 
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
     };
 
-    const contentSizing = "tw-border tw-rounded-xl tw-h-auto xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[1rem]";
-    const imageTransformSizing = "tw-w-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-p-1 tw-transition-all tw-duration-200 hover:tw-w-28 peer-checked:tw-w-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue";
+    const contentSizing = "tw-border tw-rounded-xl tw-h-auto tw-pt-[1rem]";
+    const imageTransformSizing = "tw-w-24 tw-h-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-p-1 tw-transition-all tw-duration-200 hover:tw-w-28 hover:tw-h-28 peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue";
     return (
     <>
     <div>
