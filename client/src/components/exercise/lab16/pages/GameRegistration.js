@@ -14,9 +14,9 @@ const GameRegistration = () => {
   const {setTeamName} = useContext(ExerciseStateContext);
   
     const handleContinue = () => {
-        navigate("/Lab16/Exercise/MeetTeammate");
         const teamName = adjective + noun
         setTeamName(teamName)
+        navigate("/Lab16/Exercise/MeetTeammate");
      };
   
       
