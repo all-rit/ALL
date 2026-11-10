@@ -1,4 +1,6 @@
 FROM node:20-alpine AS dependencies-env
+# installs git on local machine to allow safe runs of git rev-parse
+RUN apk add --no-cache git
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
