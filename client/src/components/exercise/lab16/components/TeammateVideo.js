@@ -13,6 +13,8 @@ const TeammateVideo = (props) => {
   const [videoSrc, setVideoSrc] = useState("");
   const buttonSize = "tw-w-16 tw-mx-auto";
 
+  console.log(status)
+
   useEffect(() => {
     if (teammateId === null) return;
 
@@ -28,7 +30,7 @@ const TeammateVideo = (props) => {
       setVideoSrc(teammateReactionVideos["expression"] || teammateReactionVideos.A);
 
 
-    } else if (status == "deepfakePage") {
+    } else if (status == "warningmodal") {
       setVideoSrc("");
     } else if (status == "chatroom") {
       //once we have all videos of teammates typing uncomment this line
@@ -43,7 +45,7 @@ const TeammateVideo = (props) => {
 
   return (
     <div
-      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg`}
+      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[2px] tw-rounded-lg`}
     >
       <p className="tw-mb-3">
         Teammate live from: <b>Buffalo, NY</b>
@@ -69,30 +71,15 @@ const TeammateVideo = (props) => {
           </div>
         ) : (
           <>
-            <p className="tw-text-center tw-font-bold tw-text-2xl">
+            {/* <p className="tw-text-center tw-font-bold tw-text-2xl">
               <br />
               Instructions:
             </p>
             <div className="tw-pt-1 tw-pb-[200px]">
               <h4 className="tw-text-center">Click the tile you want to place your icon in.</h4>
               <h4 className="tw-text-center tw-font-bold">Your Icon: X</h4>
-              {/* <img
-                className={
-                  "tw-rotate-180 tw-translate-x-0 tw-translate-y-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 " +
-                  buttonSize
-                }
-                src="/img/imagine_game_controls/ArrowKey.png"
-              />
-              <img
-                className={buttonSize}
-                src="/img/imagine_game_controls/ArrowKey.png"
-              /> */}
               <h4 className="tw-text-center tw-font-bold">Computer's Icon: O</h4>
-              {/* <img
-                className="tw-col-span-2 tw-w-32 tw-mx-auto"
-                src="/img/imagine_game_controls/SpaceBar.png"
-              /> */}
-            </div>
+            </div> */}
           </>
         )}
       </div>
