@@ -7,6 +7,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import ExerciseStateContext from "../Lab16Context";
+import { ADJECTIVES, NOUNS } from "src/constants/lab16";
 
 const GameRegistration = () => {
 
@@ -17,37 +18,10 @@ const GameRegistration = () => {
         const teamName = adjective + noun
         setTeamName(teamName)
      };
-    
-
-      {/* items arrays */}
-      let adjectives = [
-        {id: "adj-1", name: 'Brave'},
-        {id: "adj-2", name: 'Clever'},
-        {id: "adj-3", name: 'Superior'},
-        {id: "adj-4", name: 'Goated'},
-        {id: "adj-5", name: 'Maximum'},
-        {id: "adj-6", name: 'Epic'},
-        {id: "adj-7", name: 'Legendary'},
-        {id: "adj-8", name: 'Cute'},
-        {id: "adj-9", name: 'Awesome'},
-        {id: "adj-10", name: 'Lucky'}
-        ];
+  
       
-      let nouns = [
-        {id: "noun-1", name: 'Sigmas'},
-        {id: "noun-2", name: 'Narwhals'},
-        {id: "noun-3", name: 'Slop'},
-        {id: "noun-4", name: 'Aura'},
-        {id: "noun-5", name: 'Rizz'},
-        {id: "noun-6", name: 'Ragebait'},
-        {id: "noun-7", name: 'Detectives'},
-        {id: "noun-8", name: 'Tigers'},
-        {id: "noun-9", name: 'Eagles'},
-        {id: "noun-10", name: 'Leemurs'}
-        ];
-      
-      let [noun, setNoun] = useState(nouns[0].name);
-      let [adjective, setAdjective] = useState(adjectives[0].name);
+      let [noun, setNoun] = useState(NOUNS[0].name);
+      let [adjective, setAdjective] = useState(ADJECTIVES[0].name);
 
       let handleNounChange = (e) => {setNoun(e.target.value);};
 
@@ -91,7 +65,7 @@ const GameRegistration = () => {
                 {adjective}
               </DropdownToggle>
               <DropdownMenu style={{maxHeight: "100px", overflowY: "auto"}}>
-                {adjectives.map((item) => (
+                {ADJECTIVES.map((item) => (
                   <DropdownItem key={item.id} value={item.name} onClick={handleAdjectiveChange}>
                     {item.name}
                   </DropdownItem>
@@ -105,7 +79,7 @@ const GameRegistration = () => {
                 {noun}
               </DropdownToggle>
               <DropdownMenu style={{maxHeight: "100px", overflowY: "auto"}}>
-                {nouns.map((item) => (
+                {NOUNS.map((item) => (
                 <DropdownItem key={item.id} value={item.name} onClick={handleNounChange}>
                   {item.name}
                 </DropdownItem>
