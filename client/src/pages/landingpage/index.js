@@ -37,7 +37,6 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-
     const mostRecentLabs = [...allLabs].sort((a, b) => b.id - a.id).slice(0, 2);
 
     if (mostRecentLabs === null) {

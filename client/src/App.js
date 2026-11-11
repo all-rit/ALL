@@ -24,7 +24,6 @@ import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { default as ExerciseLab13 } from "./components/exercise/lab13/Main";
 import { default as ExerciseLab14 } from "./components/exercise/lab14/Main";
 import { default as ExerciseLab15 } from "./components/exercise/lab15/Main";
-import { default as ExerciseLab16 } from "./components/exercise/lab16/Main";
 import { default as ExerciseLab17 } from "./components/exercise/lab17/Main";
 
 import { Sections } from "./constants/index";

@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
-import useMainStateContext from "src/reducers/MainContext";
-import { ExerciseService } from "src/services/lab17/ExerciseService";
 import TaskCard from "../components/TaskCard";
 import { STAGE_1_TASKS } from "src/constants/lab17";
 
