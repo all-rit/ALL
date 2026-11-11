@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import {
   videoPaths,
   groupVideoPaths,
@@ -7,11 +7,13 @@ import {
 } from "src/constants/lab16/Videos";
 import PropTypes from "prop-types";
 import DisplayDeepFake from "./DisplayDeepfake";
+import ExerciseStateContext from "../Lab16Context";
 
 const TeammateVideo = (props) => {
   const { teammateId, status } = props;
   const [videoSrc, setVideoSrc] = useState("");
   const buttonSize = "tw-w-16 tw-mx-auto";
+  const {location} = useContext(ExerciseStateContext);
 
   useEffect(() => {
     if (teammateId === null) return;
@@ -46,7 +48,7 @@ const TeammateVideo = (props) => {
       className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg`}
     >
       <p className="tw-mb-3">
-        Teammate live from: <b>Buffalo, NY</b>
+        Teammate live from: <b>{location}</b>
       </p>
       <div className="tw-flex-1 tw-overflow-y-auto">
         <video

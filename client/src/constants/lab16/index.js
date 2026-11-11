@@ -41,4 +41,18 @@ const NOUNS = [
   {id: "noun-10", name: 'Leemurs'}
   ];
 
-export { LAB_ID, EXERCISE_PATH, EXERCISE_STATES , TEAMMATE_INFO, ADJECTIVES, NOUNS};
+const LOCATIONS = [
+  "Boston, MA",
+  "New Yor City, NY",
+  "San Francisco,CA",
+  "Buffalo, NY"
+]
+
+const MEET_TEAMMATATE_PATHS = {
+  0: "/img/imagine26/deepfakeGenerations/image0.png",
+  1: "/img/imagine26/deepfakeGenerations/image1.png",
+  2: "/img/imagine26/deepfakeGenerations/image2.png",
+  3: "/img/imagine26/deepfakeGenerations/image3.png",
+};
+
+export { LAB_ID, EXERCISE_PATH, EXERCISE_STATES , TEAMMATE_INFO, ADJECTIVES, NOUNS,LOCATIONS,MEET_TEAMMATATE_PATHS};
