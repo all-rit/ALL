@@ -2,12 +2,14 @@ import React, { useState, useMemo } from "react";
 import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import { creaturePaths } from "src/constants/lab16/Creatures";
+import { deepfakePaths } from "src/constants/lab16/DeepfakeCreatures";
 
 
 const DeepfakeGenerator = ()=>{
     const [selectedCreature, setSelectedCreature] = useState("");
     const [selectedAction, setSelectedAction] = useState("");
-    const [generatedImage, setGeneratedImage] = useState("");
+    const [generatedDeepfake, setGeneratedDeepfake] = useState("");
+    const [deepfakeCount, setDeepfakeCount] = useState(0);
     const creatureList = [
         "cat",
         "chicken",
@@ -34,7 +36,15 @@ const DeepfakeGenerator = ()=>{
 
     const creatures = useMemo(() => {
         return [...creatureList].sort(() => Math.random() - 0.5).slice(0, 4);
-    }, []);
+    }, [deepfakeCount]);
+
+    const resetGenerator = async () => {
+        setGeneratedDeepfake("");
+        setSelectedCreature("");
+        setSelectedAction("");
+        setDeepfakeCount((count) => count + 1 );
+    }
+    console.log(deepfakeCount)
 
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
@@ -93,8 +103,19 @@ const DeepfakeGenerator = ()=>{
                     </div>
                 </div>
                 <div className="tw-m-10">
-                    {generatedImage ? (
+                    {generatedDeepfake ? (
                         <div>
+                            <img
+                                src={deepfakePaths[selectedCreature][actionList.indexOf(selectedAction)]}
+                                alt={generatedDeepfake}
+                                className="tw-rounded-xl"
+                            />
+                            <Button
+                                className=""
+                                onClick={resetGenerator}
+                            >
+                                Try Again
+                            </Button>
                         </div>
                     ) : (
                         <>
@@ -104,7 +125,12 @@ const DeepfakeGenerator = ()=>{
                             </div>
                         ) : (
                             <div>
-                                <p>Generate Deepfake</p>
+                                <Button
+                                    className=""
+                                    onClick={()=>setGeneratedDeepfake(selectedCreature + " " + selectedAction)}
+                                >
+                                    Generate Deepfake
+                                </Button>
                             </div>
                         )}
                         </>
