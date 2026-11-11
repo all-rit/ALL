@@ -44,22 +44,30 @@ const DeepfakeGenerator = ()=>{
         setSelectedAction("");
         setDeepfakeCount((count) => count + 1 );
     }
-    console.log(deepfakeCount)
 
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
     };
 
-    const imageTransformSizing = "tw-w-24 tw-h-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-m-1 tw-border-solid tw-border-secondary-gray tw-transition-all tw-duration-200" +
-                                " hover:tw-w-28 hover:tw-h-28 peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue peer-checked:tw-border-transparent";
-    const actionSelectionSizing = "tw-flex tw-items-center tw-justify-center tw-text-center tw-w-full tw-min-h-16 tw-px-4 tw-outline tw-outline-transparent tw-rounded-xl tw-text-md tw-transition-all tw-duration-200" + 
-                                " hover:tw-text-lg peer-checked:tw-text-lg peer-checked:tw-outline-primary-blue peer-checked:tw-shadow-lg";
+    const imageTransformSizing = "tw-w-24 tw-h-24 tw-m-1 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-border-solid tw-border-secondary-gray " + 
+                                "tw-transition-all tw-duration-200 " + 
+                                "peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue peer-checked:tw-border-transparent ";
+
+    const actionSelectionSizing = "tw-flex tw-items-center tw-justify-center tw-text-center tw-w-full tw-min-h-16 tw-px-4 tw-outline tw-outline-transparent tw-rounded-xl tw-text-md " + 
+                                "tw-transition-all tw-duration-200 " +
+                                "peer-checked:tw-text-lg peer-checked:tw-outline-primary-blue peer-checked:tw-shadow-lg ";
+
+    const creatureStateStyling = generatedDeepfake ? "tw-cursor-not-allowed pointer-events-none" : "hover:tw-w-28 hover:tw-h-28 ";
+    const ActionStateStyling = generatedDeepfake ? "tw-cursor-not-allowed pointer-events-none" : "hover:tw-text-lg ";
+
+    const buttonStyle = "tw-rounded-xl tw-p-2 tw-px-4 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-primary-yellow " + 
+                        "hover:tw-shadow-lg ";
 
     return (
     <>
     <div>
         <div className="tw-border tw-rounded-xl tw-h-auto tw-p-[1rem] tw-shadow-xl">
-            <div className="tw-flex tw-flex-row tw-justify-around tw-items-center tw-w-full tw-h-full tw-p-4">
+            <div className="tw-flex tw-flex-row tw-justify-around tw-items-center tw-w-full tw-h-full tw-p-2">
                 <div className="tw-flex tw-flex-col tw-justify-center tw-items-top">
                     <h1 className="tw-text-xl">ALL Deepfake Generator</h1>
                     <hr/>
@@ -75,9 +83,10 @@ const DeepfakeGenerator = ()=>{
                                         value={creature}
                                         checked={selectedCreature === creature}
                                         onChange={()=>setSelectedCreature(creature)}
-                                        className="tw-peer tw-sr-only"
+                                        disabled={generatedDeepfake}
+                                        className="tw-peer tw-sr-only peer-disabled:tw-cursor-not-allowed"
                                     />
-                                    <img src={creaturePaths[creature]} alt={creature} className={imageTransformSizing}/>
+                                    <img src={creaturePaths[creature]} alt={creature} className={imageTransformSizing + creatureStateStyling}/>
                                 </label>
                             ))}
                         </div>
@@ -94,27 +103,28 @@ const DeepfakeGenerator = ()=>{
                                         value={action}
                                         checked={selectedAction === action}
                                         onChange={()=>setSelectedAction(action)}
+                                        disabled={generatedDeepfake}
                                         className="tw-peer tw-sr-only"
                                     />
-                                    <p className={actionSelectionSizing}>{action}</p>
+                                    <p className={actionSelectionSizing + ActionStateStyling}>{action}</p>
                                 </label>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className="tw-m-10">
+                <div className="tw-m-4">
                     {generatedDeepfake ? (
-                        <div>
+                        <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-2">
                             <img
                                 src={deepfakePaths[selectedCreature][actionList.indexOf(selectedAction)]}
                                 alt={generatedDeepfake}
-                                className="tw-rounded-xl"
+                                className="tw-rounded-xl tw-w-[clamp(200px,50vw,400px)] tw-h-auto"
                             />
                             <Button
-                                className=""
+                                className={buttonStyle}
                                 onClick={resetGenerator}
                             >
-                                Try Again
+                                Try Again!
                             </Button>
                         </div>
                     ) : (
@@ -126,7 +136,7 @@ const DeepfakeGenerator = ()=>{
                         ) : (
                             <div>
                                 <Button
-                                    className=""
+                                    className={buttonStyle}
                                     onClick={()=>setGeneratedDeepfake(selectedCreature + " " + selectedAction)}
                                 >
                                     Generate Deepfake
