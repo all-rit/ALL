@@ -37,18 +37,13 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-    let lab14;
-    let lab17;
+    const mostRecentLabs = [...allLabs].sort((a, b) => b.id - a.id).slice(0, 2);
 
-    allLabs.map((lab) => {
-      if (lab.labShortName == "Quantum") {
-        lab14 = lab;
-      } else if (lab.labShortName == "Quantum Intro") {
-        lab17 = lab;
-      }
-    });
+    if (mostRecentLabs === null) {
+      setFeaturedLabs(null);
+    }
 
-    setFeaturedLabs([lab17, lab14]);
+    setFeaturedLabs(mostRecentLabs);
   };
 
   const endImagine = () => actions.setIsImagine(false);

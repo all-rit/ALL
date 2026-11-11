@@ -155,6 +155,7 @@ const FormComp = (props) => {
           </FormGroup>
           {state.show ? <Alert color="danger">{state.alert}</Alert> : null}
           <Input
+            value="Submit"
             type="submit"
             onClick={(e) => form_sub(e)}
             className="formButtonSubmit"

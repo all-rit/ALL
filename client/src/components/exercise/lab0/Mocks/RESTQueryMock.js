@@ -15,7 +15,7 @@ const RESTQueryMock = (props) => {
       <div>
         <p className={"tw-text-left tw-body-text"}>
           Below we will now have the opportunity to test an newly minted API
-          endpoint. In API request testers such as this, you can select you
+          endpoint. In API request testers such as this, you can select your
           request type, enter a requestURL, as well as query params.
           Additionally, once the request is submitted, you will see the
           resulting response in the window beneath it that allow you to ensure
