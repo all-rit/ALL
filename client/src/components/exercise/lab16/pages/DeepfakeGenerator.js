@@ -111,6 +111,17 @@ const DeepfakeGenerator = ()=>{
                             ))}
                         </div>
                     </div>
+                    {!generatedDeepfake && (
+                        <div className="tw-pt-4">
+                        <Button
+                            className={buttonStyle}
+                            onClick={()=>setGeneratedDeepfake(selectedCreature + " " + selectedAction)}
+                            disabled={!(selectedCreature && selectedAction) || generatedDeepfake}
+                        >
+                            Generate Deepfake
+                        </Button>
+                        </div>
+                    )}
                 </div>
                 <div className="tw-m-4">
                     {generatedDeepfake ? (
@@ -128,22 +139,9 @@ const DeepfakeGenerator = ()=>{
                             </Button>
                         </div>
                     ) : (
-                        <>
-                        {!(selectedCreature && selectedAction) ? (
-                            <div className="tw-p-4 tw-bg-primary-blue tw-text-white tw-border-2 tw-border-solid tw-border-primary-yellow tw-rounded-xl">
-                                <p>Please Select a Creature & an Action!</p>
-                            </div>
-                        ) : (
-                            <div>
-                                <Button
-                                    className={buttonStyle}
-                                    onClick={()=>setGeneratedDeepfake(selectedCreature + " " + selectedAction)}
-                                >
-                                    Generate Deepfake
-                                </Button>
-                            </div>
-                        )}
-                        </>
+                        <div className="tw-p-4 tw-bg-primary-blue tw-text-white tw-border-2 tw-border-solid tw-border-primary-yellow tw-rounded-xl">
+                            <p>Please select a creature & an action!</p>
+                        </div>
                     )}
 
                 </div>
