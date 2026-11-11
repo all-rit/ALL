@@ -337,7 +337,7 @@ export const Sections = {
       name: "Quiz",
     },
   },
-  17: {
+    17: {
     fullname: "Lab 17: Intro to Quantum Computing",
     name: "Lab17",
     0: {

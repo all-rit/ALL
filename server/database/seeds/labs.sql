@@ -4180,7 +4180,8 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
  ]', 1, 'coming soon', 'coming soon', true),
- -- Intro to quantum lab
+
+  -- Intro to quantum lab
  (17, 'Intro to Quantum Computing', 'Quantum Intro', 'Quantum Computing', 'nothing', 'An introduction to quantum computing',
   'fullDescription', e'[
     "LO1: Learning Objective One",
@@ -4283,6 +4284,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
  ]', 3, 'coming soon', 'coming soon', true);
+
 
 INSERT INTO labs
 SELECT * FROM _seed_labs

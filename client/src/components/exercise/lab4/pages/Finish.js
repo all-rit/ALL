@@ -13,9 +13,8 @@ const Finish = () => {
   };
 
   const handleNext = () => {
-  navigate("/Lab4/Reinforcement");
+    navigate("/Lab4/Reinforcement");
   };
-
 
   useEffect(() => {
     UserLabService.complete_exercise(LAB_ID);
@@ -39,27 +38,23 @@ const Finish = () => {
         <strong>Next</strong> button.
       </p>
 
-      
-      
-    <div className="tw-flex tw-justify-center tw-gap-x-3 tw-my-6">
-      <button
-        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        onClick={handleSubmit}
-        key="start"
-    >
-    Return to Exercise Start
-    </button>
+      <div className="tw-flex tw-justify-center tw-gap-x-3 tw-my-6">
+        <button
+          className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+          onClick={handleSubmit}
+          key="start"
+        >
+          Return to Exercise Start
+        </button>
 
-      <button
-        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        onClick={handleNext}
-        key="next"
-    >
-    Next
-    </button>
-    </div>
-
-
+        <button
+          className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+          onClick={handleNext}
+          key="next"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
