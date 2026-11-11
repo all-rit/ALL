@@ -6,8 +6,6 @@ import ExerciseStateContext from "./Lab17Context";
 
 import ExerciseIntro from "./pages/ExerciseIntro";
 import Conclusion from "./pages/Conclusion";
-import Game from "./pages/Game";
-import ChatRoom from "./pages/ChatRoom";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -24,8 +22,6 @@ const Main = () => {
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
-          <Game path="/Game" />
-          <ChatRoom path="/ChatRoom" />
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
