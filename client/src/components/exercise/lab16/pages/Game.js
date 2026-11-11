@@ -18,8 +18,6 @@ const Game = () => {
         setSeconds((prevSeconds) => {
           if (prevSeconds <= 1) {
             clearInterval(timer);
-            //go to score page
-            // setStatus("scorePage");
             return 0;
           }
 

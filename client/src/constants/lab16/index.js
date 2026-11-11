@@ -43,16 +43,17 @@ const NOUNS = [
 
 const LOCATIONS = [
   "Boston, MA",
-  "New Yor City, NY",
+  "New York City, NY",
   "San Francisco,CA",
   "Buffalo, NY"
 ]
 
+//placedholder images for now
 const MEET_TEAMMATATE_PATHS = {
-  0: "/img/imagine26/deepfakeGenerations/image0.png",
-  1: "/img/imagine26/deepfakeGenerations/image1.png",
-  2: "/img/imagine26/deepfakeGenerations/image2.png",
-  3: "/img/imagine26/deepfakeGenerations/image3.png",
+  0: "/src/assets/images/lab16/teammateImages/teammate0.png",
+  1: "/src/assets/images/lab16/teammateImages/teammate1.png",
+  2: "/src/assets/images/lab16/teammateImages/teammate2.png",
+  3: "/src/assets/images/lab16/teammateImages/teammate3.png",
 };
 
 export { LAB_ID, EXERCISE_PATH, EXERCISE_STATES , TEAMMATE_INFO, ADJECTIVES, NOUNS,LOCATIONS,MEET_TEAMMATATE_PATHS};

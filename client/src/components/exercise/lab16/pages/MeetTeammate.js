@@ -4,7 +4,6 @@ import ExerciseStateContext from "../Lab16Context";
 import { TEAMMATE_INFO,LOCATIONS,MEET_TEAMMATATE_PATHS } from "src/constants/lab16";
 import { ExerciseService } from "../../../../services/lab16/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
-import {Card} from 'reactstrap';
 
 
 const MeetTeammate = ()=>{
@@ -46,20 +45,19 @@ const MeetTeammate = ()=>{
   }, []);
    
   return (<>
-        
-        <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-5 tw-p-5">
+  <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-5 tw-p-5 tw-border-labYellow tw-border-dashed  tw-rounded-xl tw-w-fit tw-mx-auto">
             <p className="tw-inline-block tw-text-xl tw-font-bold tw-text-[#0144D5]">
               Team: <b>{teamName}</b>
             </p>
 
-            <h1 className="tw-text-[30px] tw-pb-2 tw-font-bold tw-text-black">
-                Meet your Teammate !
-            </h1>
+            <h2 className="tw-text-[20px] tw-pb-2 tw-font-bold tw-text-black">
+                Meet your Teammate for the Guess The Flag Tournament !
+            </h2>
           
             <img src={imagePath} alt="image1" className={imageTransformSizing}/>
 
             <p >Live from: <b>{location}</b></p>
-            <div className="tw-bg-labYellow tw-rounded-2xl tw-rounded-bl-sm tw-px-4 tw-py-3">
+            <div className="tw-bg-[#dbe4ff] tw-rounded-2xl tw-rounded-bl-sm tw-px-4 tw-py-3">
               <p className="tw-text-sm sm:tw-text-base tw-font-bold">
                 “I am excited to play this game with you!”
               </p>
@@ -75,7 +73,6 @@ const MeetTeammate = ()=>{
                 fontFamily: 'Poppins, sans-serif',
                 fontSize: 16,
                 fontWeight: 'bold',
-                // marginTop: 70
               }}
               onClick={handleContinue}
               key="start"
