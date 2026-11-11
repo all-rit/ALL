@@ -7,6 +7,7 @@ import { creaturePaths } from "src/constants/lab16/Creatures";
 const DeepfakeGenerator = ()=>{
     const [selectedCreature, setSelectedCreature] = useState("");
     const [selectedAction, setSelectedAction] = useState("");
+    const [generatedImage, setGeneratedImage] = useState("");
     const creatureList = [
         "cat",
         "chicken",
@@ -39,14 +40,15 @@ const DeepfakeGenerator = ()=>{
       navigate("/Lab16/Exercise/Conclusion");
     };
 
-    const imageTransformSizing = "tw-w-24 tw-h-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-p-1 tw-transition-all tw-duration-200" +
-                                " hover:tw-w-28 hover:tw-h-28 peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue";
-    const actionSelectionSizing = "tw-flex tw-items-center tw-justify-center tw-text-center tw-w-full tw-min-h-20 tw-px-4 tw-outline tw-outline-transparent tw-rounded-xl tw-text-md tw-transition-all tw-duration-200" + 
+    const imageTransformSizing = "tw-w-24 tw-h-24 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-m-1 tw-border-solid tw-border-secondary-gray tw-transition-all tw-duration-200" +
+                                " hover:tw-w-28 hover:tw-h-28 peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue peer-checked:tw-border-transparent";
+    const actionSelectionSizing = "tw-flex tw-items-center tw-justify-center tw-text-center tw-w-full tw-min-h-16 tw-px-4 tw-outline tw-outline-transparent tw-rounded-xl tw-text-md tw-transition-all tw-duration-200" + 
                                 " hover:tw-text-lg peer-checked:tw-text-lg peer-checked:tw-outline-primary-blue peer-checked:tw-shadow-lg";
+
     return (
     <>
     <div>
-        <div className="tw-border tw-rounded-xl tw-h-auto tw-p-[1rem] tw-shadow-2xl">
+        <div className="tw-border tw-rounded-xl tw-h-auto tw-p-[1rem] tw-shadow-xl">
             <div className="tw-flex tw-flex-row tw-justify-around tw-items-center tw-w-full tw-h-full tw-p-4">
                 <div className="tw-flex tw-flex-col tw-justify-center tw-items-top">
                     <h1 className="tw-text-xl">ALL Deepfake Generator</h1>
@@ -73,7 +75,7 @@ const DeepfakeGenerator = ()=>{
                     <div className="tw-flex tw-flex-col tw-justify-left tw-text-left">
                         <p>Step 2:</p>
                         <p>Choose an Action</p>
-                        <div className="tw-grid tw-grid-cols-2 tw-place-items-center tw-p-2 tw-mt-2 tw-bg-labLightGray tw-border tw-rounded-xl">
+                        <div className="tw-grid tw-grid-cols-2 tw-place-items-center tw-p-2 tw-mt-2 tw-bg-labLightGray tw-border-solid tw-border-secondary-gray tw-rounded-xl tw-shadow-sm">
                             {actionList.map((action) => (
                                 <label className="tw-cursor-pointer tw-relative tw-group">
                                     <input
@@ -90,8 +92,24 @@ const DeepfakeGenerator = ()=>{
                         </div>
                     </div>
                 </div>
-                <div className="tw-m-20">
-                    Generated Image
+                <div className="tw-m-10">
+                    {generatedImage ? (
+                        <div>
+                        </div>
+                    ) : (
+                        <>
+                        {!(selectedCreature && selectedAction) ? (
+                            <div className="tw-p-4 tw-bg-primary-blue tw-text-white tw-border-2 tw-border-solid tw-border-primary-yellow tw-rounded-xl">
+                                <p>Please Select a Creature & an Action!</p>
+                            </div>
+                        ) : (
+                            <div>
+                                <p>Generate Deepfake</p>
+                            </div>
+                        )}
+                        </>
+                    )}
+
                 </div>
             </div>
         </div>
