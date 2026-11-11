@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import { creaturePaths } from "src/constants/lab16/Creatures";
 import { deepfakePaths } from "src/constants/lab16/DeepfakeCreatures";
+import { ProgressBar } from "src/components/all-components";
 
 
 const DeepfakeGenerator = ()=>{
@@ -10,6 +11,7 @@ const DeepfakeGenerator = ()=>{
     const [selectedAction, setSelectedAction] = useState("");
     const [generatedDeepfake, setGeneratedDeepfake] = useState("");
     const [deepfakeCount, setDeepfakeCount] = useState(0);
+    const [loading, setLoading] = useState(false);
     const creatureList = [
         "cat",
         "chicken",
@@ -115,7 +117,10 @@ const DeepfakeGenerator = ()=>{
                         <div className="tw-pt-4">
                         <Button
                             className={buttonStyle}
-                            onClick={()=>setGeneratedDeepfake(selectedCreature + " " + selectedAction)}
+                            onClick={()=>{
+                                setGeneratedDeepfake(selectedCreature + " " + selectedAction);
+                                setLoading(true);
+                            }}
                             disabled={!(selectedCreature && selectedAction) || generatedDeepfake}
                         >
                             Generate Deepfake
@@ -124,7 +129,11 @@ const DeepfakeGenerator = ()=>{
                     )}
                 </div>
                 <div className="tw-m-4">
-                    {generatedDeepfake ? (
+                    {!generatedDeepfake && !loading ? (
+                        <div className="tw-p-4 tw-bg-primary-blue tw-text-white tw-border-2 tw-border-solid tw-border-primary-yellow tw-rounded-xl">
+                            <p>Please select a creature & an action!</p>
+                        </div>
+                    ) : generatedDeepfake && !loading ? (
                         <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-2">
                             <img
                                 src={deepfakePaths[selectedCreature][actionList.indexOf(selectedAction)]}
@@ -139,8 +148,12 @@ const DeepfakeGenerator = ()=>{
                             </Button>
                         </div>
                     ) : (
-                        <div className="tw-p-4 tw-bg-primary-blue tw-text-white tw-border-2 tw-border-solid tw-border-primary-yellow tw-rounded-xl">
-                            <p>Please select a creature & an action!</p>
+                        <div>
+                            <ProgressBar
+                                duration={2}
+                                onComplete={()=>setLoading(false)}
+                                disableTitle={false}
+                            />
                         </div>
                     )}
 
