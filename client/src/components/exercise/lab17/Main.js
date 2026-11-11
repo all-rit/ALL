@@ -35,7 +35,10 @@ const Main = () => {
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
+<<<<<<< HEAD
           <QvCGameStage path="/QvCGameStage" />
+=======
+>>>>>>> 0dc2302e (removed button 2)
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
