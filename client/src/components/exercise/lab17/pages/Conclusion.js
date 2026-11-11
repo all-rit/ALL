@@ -37,6 +37,13 @@ const Conclusion = () => {
           Continue
         </button>
       </div>
+      <button
+        className="center-div btn btn-primary text-black btn-xl text-uppercase"
+        onClick={handleFinish}
+        key="start"
+      >
+        Continue
+      </button>
     </div>
   );
 };

@@ -42,14 +42,14 @@ const ChatRoom = () => {
 
               <div className="tw-flex-1 tw-w-[100%]">
                 <Chat
-                group={group}
-                onSubmit={onSubmit}
-                teammateMessage={groupMap[group]}
-                height="100%"
-                width="100%"
-              />
+                  group={group}
+                  onSubmit={onSubmit}
+                  teammateMessage={groupMap[group]}
+                  height="100%"
+                  width="100%"
+                />
               </div>
-              
+
               {/* </div> */}
             </div>
           </div>

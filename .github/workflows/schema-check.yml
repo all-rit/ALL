@@ -1,0 +1,80 @@
+name: Schema Check
+
+# Validates server/database/schema.sql (DDL) and every file in
+# server/database/seeds/ (content-table data applied by server/database/
+# seed.js — see #1613) against a disposable Postgres instance on PRs that
+# touch either. Neither is exercised by node.js.yml or docker-build-check.yml,
+# so a broken INSERT, bad enum value, or non-idempotent seed file previously
+# only surfaced when someone actually booted the devcontainer (or worse, when
+# it reached staging/prod). Closes #1657.
+#
+# Runs schema.sql once via psql (DDL only, no app code involved), then
+# seed.js itself twice in a row via the real npm script — not a parallel
+# re-implementation — so this also catches a seed file that isn't actually
+# safe to re-run, not just one with a syntax error.
+on:
+  pull_request:
+    branches: ["dev", "prod"]
+    paths:
+      - "server/database/schema.sql"
+      - "server/database/seeds/**"
+      - "server/database/seed.js"
+      - "server/database/connectionUri.js"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: schema_check
+          POSTGRES_PASSWORD: schema_check
+          POSTGRES_DB: schema_check
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: schema_check
+      PGPASSWORD: schema_check
+      PGDATABASE: schema_check
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_USER: schema_check
+      DB_PASS: schema_check
+      DB_SCHEMA: schema_check
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: "npm"
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install server deps
+        run: cd server && npm i --legacy-peer-deps
+
+      - name: Load schema.sql (DDL)
+        # -1 wraps the whole file in one transaction, so a mistake partway
+        # through rolls back cleanly instead of leaving a half-applied schema.
+        run: psql -v ON_ERROR_STOP=1 -1 -f server/database/schema.sql
+
+      - name: Apply seed files
+        run: cd server && npm run db:seed
+
+      - name: Re-apply seed files (idempotency check)
+        # Every seed file is supposed to be safe to re-run with zero drift —
+        # a second run erroring, or silently changing rows, means the file
+        # isn't actually idempotent.
+        run: cd server && npm run db:seed
