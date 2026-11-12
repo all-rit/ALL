@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 /** Body Components **/
 import { default as About } from "./components/body/About";
@@ -80,7 +80,11 @@ function initializeReactGA() {
     const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
     if (TRACKING_ID) {
       ReactGA.initialize(TRACKING_ID);
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      ReactGA.send({
+        hitType: "pageview",
+        page: window.location.pathname + window.location.search,
+        title: document.title,
+      });
     }
   }
 }

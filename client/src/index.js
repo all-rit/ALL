@@ -6,14 +6,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reducers from "./reducers";
 import * as serviceWorker from "./serviceWorker";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { MainContextProvider } from "./reducers/MainContext";
 
 if (import.meta.env.PROD) {
   const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
   if (TRACKING_ID) {
     ReactGA.initialize(TRACKING_ID);
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+      title: document.title,
+    });
   }
 }
 
