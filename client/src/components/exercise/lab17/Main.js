@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
 
-import { EXERCISE_STATES } from "../../../constants/lab17";
+import { EXERCISE_STATES, STAGE_1_TASKS } from "../../../constants/lab17";
 import ExerciseStateContext from "./Lab17Context";
 
 import ExerciseIntro from "./pages/ExerciseIntro";
@@ -35,7 +35,7 @@ const Main = () => {
       >
         <Router className="app">
           <ExerciseIntro default path="/" />
-          <QvCGameStage path="/QvCGameStage" />
+          <QvCGameStage path="/QvCGameStage" stageTasks={STAGE_1_TASKS} />
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>
