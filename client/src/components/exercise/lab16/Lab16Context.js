@@ -8,6 +8,8 @@ const ExerciseStateContext = createContext({
   //store user-chosen team name
   teamName: "",
   setTeamName: () => {},
+  location: "",
+  setLocation: () => {}
 });
 
 export default ExerciseStateContext
