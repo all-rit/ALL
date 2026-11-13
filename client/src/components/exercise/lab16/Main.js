@@ -27,6 +27,10 @@ const Main = () => {
 
   const [teammateId, setTeammateID] = useState(0);
 
+  //store user-chosen team name
+  const [teamName, setTeamName] = useState("");
+  const [location, setLocation] = useState("");
+
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
       <ExerciseStateContext.Provider
@@ -34,7 +38,11 @@ const Main = () => {
         exerciseState,
         setExerciseState,
         teammateId,
-        setTeammateID
+        setTeammateID,
+        teamName,
+        setTeamName,
+        location,
+        setLocation
       }}
       >
         <Router className="app">
