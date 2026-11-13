@@ -13,32 +13,32 @@ const STAGE_1_TASKS = [
   {
     id: "task1",
     title: "Task 1",
-    description: "Description for Task 1",
+    description: "Predict if a patient's symptoms make them likely to have cancer",
     correctChoice: "quantum",
   },
   {
     id: "task2",
     title: "Task 2",
-    description: "Description for Task 2",
-    correctChoice: "classical",
+    description: "Forecast the path of an upcoming hurricane",
+    correctChoice: "quantum",
   },
   {
     id: "task3",
     title: "Task 3",
-    description: "Description for Task 3",
-    correctChoice: "quantum",
+    description: "Analyzing millions of satellite images to determine if a field of crops has a rare root disease",
+    correctChoice: "classical",
   },
   {
     id: "task4",
     title: "Task 4",
-    description: "Description for Task 4",
+    description: "Analyze a traffic camera’s footage to find the red getaway car from a crime scene",
     correctChoice: "classical",
   },
   {
     id: "task5",
     title: "Task 5",
-    description: "Description for Task 5",
-    correctChoice: "quantum",
+    description: "Determining if an image is of a cat or a dog",
+    correctChoice: ["quantum","classical"],
   },
 ];
 

@@ -99,7 +99,7 @@ QvCGameStage.propTypes = {
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       title: PropTypes.string,
       description: PropTypes.string,
-      correctChoice: PropTypes.string,
+      correctChoice: PropTypes.string || PropTypes.arrayOf(PropTypes.string),
       icon: PropTypes.node,
     }),
   ),
