@@ -12,7 +12,6 @@ import ExerciseStateContext from "../Lab16Context";
 const TeammateVideo = (props) => {
   const { teammateId, status } = props;
   const [videoSrc, setVideoSrc] = useState("");
-  const buttonSize = "tw-w-16 tw-mx-auto";
   const {location} = useContext(ExerciseStateContext);
 
   console.log(status)
