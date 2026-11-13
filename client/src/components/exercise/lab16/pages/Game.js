@@ -35,7 +35,7 @@ const Game = () => {
 
           return prevSeconds - 1;
         });
-      }, 100);
+      }, 1000);
       return () => clearInterval(timer);
   }, []);
 
@@ -76,14 +76,12 @@ const Game = () => {
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
       <div
-        className={contentSizing + "tw-flex tw-justify-center tw-items-center tw-relative tw-bg-[blue]"}
+        className={contentSizing + "tw-flex tw-justify-center tw-items-center tw-relative"}
       >
-
           <GuessTheFlag/>
-
         
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
-        <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
+        <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-black timerFont">
           <div>{seconds}</div>
         </div>
       </div>
