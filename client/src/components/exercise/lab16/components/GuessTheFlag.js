@@ -60,6 +60,9 @@ const GuessTheFlag = () =>{
         boxSizing: "border-box",
         border: "2px solid #1b1c22",
         borderRadius: "8px",
+        width: "50%",
+        marginLeft: "auto",
+        marginRight: "auto",
         padding: "12px 60px",  
         fontWeight: "bold",
         cursor: "pointer"
@@ -86,7 +89,7 @@ const GuessTheFlag = () =>{
             />
 
              {/* grid for the options */}
-            <div style = {{ display: "grid", gap: "12px" }}>
+            <div style = {{ display: "grid", gap: "12px", width: "100%" }}>
                 {currentQuestion.options.map((option) => (
                 <button
                     key = {option}
