@@ -26,8 +26,11 @@ const Main = () => {
         <CodeChangeTarget path={"/CodeChangeTarget"} />
         <SubmitUpdated path="/SubmitUpdated" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <ActivityBridge target="/ExerciseTwo" path="/ActivityBridgeOne" />
         <ActivityBridge target="/ExerciseThree" path="/ActivityBridgeTwo" />
+=======
+>>>>>>> parent of 30149792 (initial skeleton)
 =======
 >>>>>>> parent of 30149792 (initial skeleton)
         <CodeChangeBlocks path={"/CodeChangeBlocks"} />

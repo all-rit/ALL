@@ -54,7 +54,11 @@ const SubmitUpdated = () => {
     const name = "SubmitUpdated";
     PageService.createPage(name, state.secondsElapsed, LAB_ID);
 <<<<<<< HEAD
+<<<<<<< HEAD
     navigate("/Lab4/Exercise/");
+=======
+    navigate("/Lab4/Exercise/FormSkipToMainBroken");
+>>>>>>> parent of 30149792 (initial skeleton)
 =======
     navigate("/Lab4/Exercise/FormSkipToMainBroken");
 >>>>>>> parent of 30149792 (initial skeleton)
