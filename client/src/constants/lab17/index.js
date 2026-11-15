@@ -12,6 +12,7 @@ const EXERCISE_STATES = {
 const STAGE_1_TASKS = [
   {
     id: "task1",
+    points: 0,
     title: "Cancer Symptom Prediction",
     category: "medical",
     description: "Predict if a patient's symptoms make them likely to have cancer",
@@ -19,6 +20,7 @@ const STAGE_1_TASKS = [
   },
   {
     id: "task2",
+    points: 0,
     title: "Hurricane Path Prediction",
     category: "weather",
     description: "Forecast the path of an upcoming hurricane",
@@ -26,6 +28,7 @@ const STAGE_1_TASKS = [
   },
   {
     id: "task3",
+    points: 0,
     title: "Satellite Image Processing",
     category: "agriculture",
     description: "Analyzing millions of satellite images to determine if a field of crops has a rare root disease",
@@ -33,6 +36,7 @@ const STAGE_1_TASKS = [
   },
   {
     id: "task4",
+    points: 0,
     title: "Analyze Traffic Footage",
     category: "security",
     description: "Analyze a traffic camera's footage to find the red getaway car from a crime scene",
@@ -40,6 +44,7 @@ const STAGE_1_TASKS = [
   },
   {
     id: "task5",
+    points: 0,
     title: "Basic Image Processing",
     category: "",
     description: "Determining if an image is of a cat or a dog",
@@ -50,6 +55,7 @@ const STAGE_1_TASKS = [
 const STAGE_2_TASKS = [
   {
     id: "task6",
+    points: 0,
     title: "Infrared Image Processing",
     category: "agriculture",
     description: "Analyzing infrared and standard satellite images of a single field to determine if it has a rare root disease",
@@ -57,6 +63,7 @@ const STAGE_2_TASKS = [
   },
   {
     id: "task7",
+    points: 0,
     title: "Find the Getaway Car",
     category: "security",
     description: "Combining traffic footage, rental car data, and phone call logs to find the getaway car from a crime scene",
@@ -64,6 +71,7 @@ const STAGE_2_TASKS = [
   },
   {
     id: "task8",
+    points: 0,
     title: "24/7 Forecasts",
     category: "weather",
     description: "Creating forecasts for a 24/7 weather channel",
@@ -71,6 +79,7 @@ const STAGE_2_TASKS = [
   },
   {
     id: "task9",
+    points: 0,
     title: "Sort Test Scores",
     category: "",
     description: "Sorting the test scores for a high school’s PSATs",
@@ -78,6 +87,7 @@ const STAGE_2_TASKS = [
   },
   {
     id: "task10",
+    points: 0,
     title: "Quickest Delivery Route",
     category: "deliveries",
     description: "Finding one delivery driver the quickest route home",
@@ -88,6 +98,7 @@ const STAGE_2_TASKS = [
 const STAGE_3_TASKS = [
   {
     id: "task6",
+    points: 0,
     title: "High-Res Image Processing",
     category: "agriculture",
     description: "Analyzing high-resolution satellite images of wheat fields to determine an issue with the camera",
@@ -95,6 +106,7 @@ const STAGE_3_TASKS = [
   },
   {
     id: "task7",
+    points: 0,
     title: "Optimal Delivery Routes",
     category: "deliveries",
     description: "Finding the optimal route for a fleet of delivery drivers considering traffic, weather, location, etc.",
@@ -102,6 +114,7 @@ const STAGE_3_TASKS = [
   },
   {
     id: "task8",
+    points: 0,
     title: "Real-time Security",
     category: "weather",
     description: "Determining if a dog appears on a security camera in real time",
@@ -109,6 +122,7 @@ const STAGE_3_TASKS = [
   },
   {
     id: "task9",
+    points: 0,
     title: "Predict Similar Symptoms",
     category: "medical",
     description: "Predict if the national database of cancer patients have similar symptoms",
@@ -116,6 +130,7 @@ const STAGE_3_TASKS = [
   },
   {
     id: "task10",
+    points: 0,
     title: "Credic Card Fraud",
     category: "security",
     description: "Analyzing credit card transactions for fraud in a tourist city",
