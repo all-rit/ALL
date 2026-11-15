@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "reactstrap";
 import TeammateVideo from "../components/TeammateVideo";
 import { navigate } from "@reach/router";
 import ExerciseStateContext from "../Lab16Context";
+import WarningModal from "../components/WarningModal";
 
 
 const ScorePage = () => {
+
+  const [isModalOpen,setIsModalOpen] = useState(false)
 
   const contentSizing ="tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[7rem]";
 
@@ -27,8 +30,12 @@ const ScorePage = () => {
 
   return (
     <>
-    <div className={contentSizing}>
-        <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
+  <div className={contentSizing}>
+
+ 
+    {!isModalOpen ? (
+    <div>
+      <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
         <h3 className="tw-title text-center">You Win!!!</h3>
         <div className="tw-flex tw-items-center tw-justify-center tw-border-solid tw-border-0 tw-border-b tw-border-secondary-gray">
           <div className="tw-my-12 tw-body-text tw-mx-14">
@@ -56,19 +63,22 @@ const ScorePage = () => {
           </div>
         </div>
 
-        <Button
-          className="tw-body-text tw-font-bold tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
-       tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black tw-mt-20"
-          //alert model should pop up and deepfake should be shown
-          onClick={() => navigate('/Lab16/Exercise/TeammateDeepfake')}
-        >
-          End Game
-        </Button>
+        <button
+            className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
+              //alert model should pop up and deepfake should be shown
+              onClick={() => setIsModalOpen(true)}
+            >
+              Continue
+        </button>
       </div>
-
-      
       <TeammateVideo teammateId={teammateId} status={'scorePage'}/>
     </div>  
+    
+    ) : (
+      <WarningModal/>
+     
+    )}
+   </div>
     </>
   );
 };

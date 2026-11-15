@@ -12,8 +12,9 @@ import ExerciseStateContext from "../Lab16Context";
 const TeammateVideo = (props) => {
   const { teammateId, status } = props;
   const [videoSrc, setVideoSrc] = useState("");
-  const buttonSize = "tw-w-16 tw-mx-auto";
   const {location} = useContext(ExerciseStateContext);
+
+  console.log(status)
 
   useEffect(() => {
     if (teammateId === null) return;
@@ -23,14 +24,11 @@ const TeammateVideo = (props) => {
     } else if (status == "scorePage") {
       setVideoSrc(scorePagePaths[teammateId] || scorePagePaths[0]);
     } else if (status == "deepfakeVideo") {
-      
       //only get expression videos(teammate deepfake)
       const teammateReactionVideos =
         groupVideoPaths[teammateId] || groupVideoPaths[0];
       setVideoSrc(teammateReactionVideos["expression"] || teammateReactionVideos.A);
-
-
-    } else if (status == "deepfakePage") {
+    } else if (status == "warningmodal") {
       setVideoSrc("");
     } else if (status == "chatroom") {
       //once we have all videos of teammates typing uncomment this line
@@ -41,11 +39,11 @@ const TeammateVideo = (props) => {
   const modeClasses =
     status == "chatroom"
       ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0"
-      : "tw-absolute tw-top-[3.4%] tw-right-1 tw-w-96 tw-max-h-[600px]";
+      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-96 tw-max-h-[600px]";
 
   return (
     <div
-      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg`}
+      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[2px] tw-rounded-lg`}
     >
       <p className="tw-mb-3">
         Teammate live from: <b>{location}</b>
@@ -60,7 +58,7 @@ const TeammateVideo = (props) => {
           className={`tw-w-full tw-object-cover tw-rounded-lg ${status == "chatroom" ? "tw-aspect-video tw-h-[220px]" : "tw-h-[200px]"}`}
         />
 
-        {status === "chatroom" ? (
+        {status === "chatroom" && (
           <div>
             {
               <DisplayDeepFake
@@ -69,10 +67,6 @@ const TeammateVideo = (props) => {
               />
             }
           </div>
-        ) : (
-          <>
-            
-          </>
         )}
       </div>
     </div>

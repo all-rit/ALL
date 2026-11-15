@@ -7,7 +7,8 @@ import { navigate } from "@reach/router";
 
 
 const TeammateDeepfake = () =>{
-    const contentSizing ="tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[7rem]";
+    const contentSizing ="tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[3rem]";
+    // const contentSizing2 = "t"
     const {teammateId} = useContext(ExerciseStateContext);
 
     const handleNavigation = async () => {
@@ -17,14 +18,11 @@ const TeammateDeepfake = () =>{
     return (<>
     
         <div className={contentSizing}>
-            
-            <div className={"tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center"}>
              <DisplayDeepFake
                 teammateId={teammateId}
                 isChatRoom={false}
                 handleNavigation={handleNavigation}
               />
-            </div>
             <TeammateVideo teammateId={teammateId} status={'deepfakeVideo'} />
         </div>
     
