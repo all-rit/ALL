@@ -20,6 +20,7 @@ const TaskCard = ({
   id,
   title = "Task",
   description = "",
+  category = "",
   correctChoice = "",
   icon,
   buttonText = "Repair",
@@ -56,6 +57,7 @@ const TaskCard = ({
       id,
       title,
       description,
+      category,
       correctChoice,
       ...taskState,
     };
