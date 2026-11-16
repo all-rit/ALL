@@ -13,6 +13,7 @@ import ExerciseStateContext from "../Lab17Context";
 import useTaskRepairService from "../hooks/useTaskRepairService";
 import TaskRepairImplementation from "../pages/repairs/TaskRepairImplementation";
 import ToggleTip from "./ToggleTip";
+import ScoreHandler from "./ScoreHandler";
 
 const DEFAULT_TASK_STATE = { completed: false };
 
@@ -39,6 +40,7 @@ const TaskCard = ({
   } = useContext(ExerciseStateContext) || {};
   const { state } = useMainStateContext();
   const user = state?.main?.user;
+  const scoreHandler = ScoreHandler;
 
   const triggerRef = useRef(null);
 
@@ -83,6 +85,9 @@ const TaskCard = ({
         isCorrect,
       },
     }));
+    // console.log("PRINTING TASKS");
+    // console.log(tasks);
+    // scoreHandler.storeSubmittedAnswer(tasks[tasks.length]) **Store last submitted task
   };
 
   const defaultInputs = getTaskRepairInputData(correctChoice, id);

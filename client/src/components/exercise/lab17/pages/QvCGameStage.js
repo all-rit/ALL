@@ -1,17 +1,20 @@
-import React from "react";
+import React, { use, useContext } from "react";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
 import TaskCard from "../components/TaskCard";
 import useMainStateContext from "src/reducers/MainContext";
+import ExerciseStateContext from "../Lab17Context";
 import { ExerciseService } from "src/services/lab17/ExerciseService";
 import { STAGE_1_TASKS } from "src/constants/lab17";
 
 // 5 tasks will be passed into the stage for each round
 const QvCGameStage = ({ stageTasks = STAGE_1_TASKS }) => {
   const { state } = useMainStateContext();
+  const { exercisestate } = useContext(ExerciseStateContext);
+  //Set current exercise stage in context
   const userid = state?.main?.user?.userid;
   const [task1, task2, task3, task4, task5] = stageTasks;
-
+  
   // TODO: update this in future when making real stages so the exercise is only marked complete when all tasks are finished
   const handleContinue = async () => {
     try {
@@ -94,6 +97,7 @@ const QvCGameStage = ({ stageTasks = STAGE_1_TASKS }) => {
 };
 
 QvCGameStage.propTypes = {
+  stageNum: PropTypes.number,
   stageTasks: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
