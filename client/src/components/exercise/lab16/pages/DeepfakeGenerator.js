@@ -1,9 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import { creaturePaths } from "src/constants/lab16/Creatures";
 import { deepfakePaths } from "src/constants/lab16/DeepfakeCreatures";
-import { ProgressBar } from "src/components/all-components";
 
 
 const DeepfakeGenerator = ()=>{
@@ -45,7 +44,18 @@ const DeepfakeGenerator = ()=>{
         setSelectedCreature("");
         setSelectedAction("");
         setDeepfakeCount((count) => count + 1 );
-    }
+    };
+
+    useEffect(() => {
+        if (!loading) {
+            return;
+        };
+
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [loading]);
 
     const handleNavigation = async () => {
       navigate("/Lab16/Exercise/Conclusion");
@@ -64,6 +74,8 @@ const DeepfakeGenerator = ()=>{
 
     const buttonStyle = "tw-rounded-xl tw-p-2 tw-px-4 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-primary-yellow " + 
                         "hover:tw-shadow-lg ";
+    
+    const loadingDot = "tw-w-2 tw-h-2 tw-bg-labGray tw-rounded-full tw-animate-bounce";
 
     return (
     <>
@@ -130,15 +142,15 @@ const DeepfakeGenerator = ()=>{
                 </div>
                 <div className="tw-m-4">
                     {!generatedDeepfake && !loading ? (
-                        <div className="tw-p-4 tw-bg-primary-blue tw-text-white tw-border-2 tw-border-solid tw-border-primary-yellow tw-rounded-xl">
-                            <p>Please select a creature & an action!</p>
+                        <div className="tw-px-4 tw-py-2 tw-bg-secondary-gray tw-text-black tw-border-solid tw-border-0 tw-border-l-2 tw-border-l-primary-yellow">
+                            <p><b>Hint: </b>Please select a creature & an action!</p>
                         </div>
                     ) : generatedDeepfake && !loading ? (
                         <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-2">
                             <img
                                 src={deepfakePaths[selectedCreature][actionList.indexOf(selectedAction)]}
                                 alt={generatedDeepfake}
-                                className="tw-rounded-xl tw-w-[clamp(200px,50vw,400px)] tw-h-auto"
+                                className="tw-rounded-xl tw-w-[clamp(200px,50vw,400px)] tw-h-auto tw-shadow-md"
                             />
                             <Button
                                 className={buttonStyle}
@@ -148,15 +160,13 @@ const DeepfakeGenerator = ()=>{
                             </Button>
                         </div>
                     ) : (
-                        <div>
-                            <ProgressBar
-                                duration={2}
-                                onComplete={()=>setLoading(false)}
-                                disableTitle={false}
-                            />
+                        <div className="tw-flex tw-gap-1 tw-justify-center tw-items-center">
+                            <div className={loadingDot + " [animation-delay:-0.4s]"}></div>
+                            <div className={loadingDot + " [animation-delay:-0.2s]"}></div>
+                            <div className={loadingDot}></div>
+                            <p className="tw-text-lg tw-pl-2 tw-pb-2">Creating your deepfake...</p>
                         </div>
                     )}
-
                 </div>
             </div>
         </div>
