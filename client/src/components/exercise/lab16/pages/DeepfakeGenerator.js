@@ -67,10 +67,10 @@ const DeepfakeGenerator = ()=>{
 
     const actionSelectionSizing = "tw-flex tw-items-center tw-justify-center tw-text-center tw-w-full tw-min-h-16 tw-px-4 tw-outline tw-outline-transparent tw-rounded-xl tw-text-md " + 
                                 "tw-transition-all tw-duration-200 " +
-                                "peer-checked:tw-text-lg peer-checked:tw-outline-primary-blue peer-checked:tw-shadow-lg ";
+                                "peer-checked:tw-text-lg peer-checked:tw-outline-primary-blue peer-checked:tw-shadow-lg peer-checked:tw-bg-secondary-gray ";
 
     const creatureStateStyling = generatedDeepfake ? "tw-cursor-not-allowed pointer-events-none" : "hover:tw-w-28 hover:tw-h-28 ";
-    const ActionStateStyling = generatedDeepfake ? "tw-cursor-not-allowed pointer-events-none" : "hover:tw-text-lg ";
+    const actionStateStyling = generatedDeepfake ? "tw-cursor-not-allowed pointer-events-none" : "hover:tw-text-lg hover:tw-bg-secondary-gray";
 
     const buttonStyle = "tw-rounded-xl tw-p-2 tw-px-4 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-primary-yellow " + 
                         "hover:tw-shadow-lg ";
@@ -108,9 +108,9 @@ const DeepfakeGenerator = ()=>{
                     <div className="tw-flex tw-flex-col tw-justify-left tw-text-left">
                         <p>Step 2:</p>
                         <p>Choose an Action</p>
-                        <div className="tw-grid tw-grid-cols-2 tw-place-items-center tw-p-2 tw-mt-2 tw-bg-labLightGray tw-border-solid tw-border-secondary-gray tw-rounded-xl tw-shadow-sm">
+                        <div className="tw-grid tw-grid-cols-2 tw-place-items-center tw-p-2 tw-gap-2">
                             {actionList.map((action) => (
-                                <label className="tw-cursor-pointer tw-relative tw-group">
+                                <label className="tw-cursor-pointer tw-relative tw-group tw-w-full tw-flex tw-bg-labLightGray tw-border-solid tw-border-secondary-gray tw-rounded-xl tw-shadow-sm">
                                     <input
                                         type="radio"
                                         name="action-select"
@@ -120,7 +120,7 @@ const DeepfakeGenerator = ()=>{
                                         disabled={generatedDeepfake}
                                         className="tw-peer tw-sr-only"
                                     />
-                                    <p className={actionSelectionSizing + ActionStateStyling}>{action}</p>
+                                    <p className={actionSelectionSizing + actionStateStyling}>{action}</p>
                                 </label>
                             ))}
                         </div>
