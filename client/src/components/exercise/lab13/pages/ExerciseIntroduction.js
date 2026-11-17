@@ -32,10 +32,11 @@ const ExerciseIntroduction = () => {
         <p className="tw-body-text tw-text-left tw-py-6">
           You are a student at ALL university who is doing their psychology
           homework. You are given 3 questions to answer and are allowed to use
-          ALL&apos;s new Generative AI tool, AL, to help you answer them. You
-          want to tackle each question from your least to most knowledgeable.
+          ALL&apos;s new Generative AI tool, ALL-IE, to help you answer them.
+          You want to tackle each question by starting with the topic you know
+          the least about and working your way up to the topic you know best.
           Let&apos;s start with ranking your knowledge about each topic before
-          you use AL to help you answer.
+          you use ALL-IE to help you answer.
         </p>
         <div className="tw-body-text tw-text-center tw-pb-6">
           Click the <strong>Start</strong> button to begin the exercise!
