@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const ActivityBridge = (props) => {
   const { target } = props;
   const handleSubmit = () => {
-    navigate(target);
+    navigate(`/Lab4/Exercise${target}`);
   };
   return (
     <div className="tw-p-4">
