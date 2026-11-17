@@ -104,7 +104,6 @@ const CodeChangeBlocks = () => {
 
   const handleChange = (event) => {
     setTextValue(event.target.value);
-    console.log("handled change value: " + textValue);
     Prism.highlightAll();
   };
 
@@ -114,7 +113,6 @@ const CodeChangeBlocks = () => {
     }
 
     setSnackBarOpen(false);
-    console.log("SnackBar Closed");
   };
 
   const handleSubmit = (event) => {
@@ -127,7 +125,7 @@ const CodeChangeBlocks = () => {
         role: textValue,
       };
       RepairService.submitRepairSkip(textValue);
-      navigate("/Lab4/Exercise/FormSkipToMainFixed");
+      navigate("/Lab4/Exercise/");
     }
     Prism.highlightAll();
   };
