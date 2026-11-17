@@ -15,6 +15,7 @@ import CodeChangeAccessible from "./pages/CodeChangeAccessible";
 import FormHintAccessible from "./pages/FormHintAccessible";
 import Finish from "./pages/Finish";
 import ExerciseStart from "./pages/ExerciseStart";
+import ActivityBridge from "./pages/ActivityBridge";
 
 const Main = () => {
   return (
@@ -25,14 +26,11 @@ const Main = () => {
         <TargetGuideline path="/TargetGuideline" />
         <CodeChangeTarget path={"/CodeChangeTarget"} />
         <SubmitUpdated path="/SubmitUpdated" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <ActivityBridge target="/ExerciseTwo" path="/ActivityBridgeOne" />
-        <ActivityBridge target="/ExerciseThree" path="/ActivityBridgeTwo" />
-=======
->>>>>>> parent of 30149792 (initial skeleton)
-=======
->>>>>>> parent of 30149792 (initial skeleton)
+        <ActivityBridge
+          target="/FormSkipToMainBroken"
+          path="/ActivityBridgeOne"
+        />
+        {/* <ActivityBridge target="/" path="/ActivityBridgeTwo" /> */}
         <CodeChangeBlocks path={"/CodeChangeBlocks"} />
         <BypassBlocksGuideline path={"/BypassBlocksGuideline"} />
         <FormSkipToMainBroken path={"/FormSkipToMainBroken"} />

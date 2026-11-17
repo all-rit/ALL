@@ -104,7 +104,6 @@ const CodeChangeBlocks = () => {
 
   const handleChange = (event) => {
     setTextValue(event.target.value);
-    console.log("handled change value: " + textValue);
     Prism.highlightAll();
   };
 
@@ -114,7 +113,6 @@ const CodeChangeBlocks = () => {
     }
 
     setSnackBarOpen(false);
-    console.log("SnackBar Closed");
   };
 
   const handleSubmit = (event) => {
