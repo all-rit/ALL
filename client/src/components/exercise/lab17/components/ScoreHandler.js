@@ -1,42 +1,55 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
+import PropTypes, { func } from "prop-types";
 import ExerciseStateContext from "../Lab17Context";
-import { func } from "prop-types";
 
-const ScoreHandler = (currentStage) => {
-    const { state } = ExerciseStateContext();
-    // const [currentStage, setCurrentStage] = useState(props.currentStage);
-    const submittedAnswers = [];
-
-    useEffect(() => {
-        setCurrentStage(props.currentStage);
-        getScore();
-    }, []);
-
-    function storeSubmittedAnswer(x) {
-        const storeObj = {
-            taskid:"id",
-            category: "cat", 
-            answer: "ans",
-            points: 1,
-            isCorrect: true,
-        };
-
-        submittedAnswers.push(storeObj);
-        console.log(submittedAnswers);
+function ScoreHandler (currentStage) {
+    const {tasks = {},} = useContext(ExerciseStateContext) || {};
+    
+    const [submittedAnswers, setSubmittedAnswers] = useState([]);
+    //Update submittedAnswers when a task is submitted (Move into function??)
+    if(tasks && tasks !== submittedAnswers){
+        setSubmittedAnswers(tasks);
     }
 
-    // async function getScore() {
-    //     try {
-    //     const response = await labService.getLabQuiz(props.labId);
-    //     const { quiz } = response[0];
-    //     const quizAnswers = quiz[currentQuestionCursor].answers;
-    //     props.setQuestions(quiz);
-    //     setAnswerOption(quizAnswers);
-    //     } catch (error) {
-    //     console.error(error);
-    //     }
-    // }
+    const finalAnswers = [];
+    const stageScore = 0;
+    const scoreBonus = 0;
+
+    function getFinalAnswers(){
+        for (let i = submittedAnswers.length - 1; i >= 0; i--) {
+            const currentTask = submittedAnswers[i];
+            const exists = finalAnswers.some(item => task.id === currentTask.id);
+            
+            if (!exists) {
+                finalAnswers.push(currentTask);
+            }
+        }
+    }
+
+    function calculateBonus(streak) {
+        scoreBonus = 10*streak;
+        //Add randomizing
+    }
+
+    function findStreaks() {
+        // for(i = 0; i < length(currentStage.stageTasks); i++){
+        //     // Object.values(tasks).at(-1);
+        //     //This checks the last occurance of a task (works for a list of ALL task entries)
+        //     finalAnswers.push(submittedAnswers.findLast(task => task.taskid == i.taskid));
+        // }
+        streak = 0;
+        finalAnswers.forEach((task) => {
+            if(task.isCorrect){
+                stageScore += task.points;
+                streak++;
+            } else {
+                streak = 0 ;
+            }
+        });
+        if(streak > 1){
+            calculateBonus(streak);
+        }
+    }
 }
 
 // ScoreHandler.propTypes ={

@@ -21,6 +21,7 @@ const TaskCard = ({
   id,
   title = "Task",
   description = "",
+  points = 0,
   category = "",
   correctChoice = "",
   icon,
@@ -61,6 +62,7 @@ const TaskCard = ({
       description,
       category,
       correctChoice,
+      points,
       ...taskState,
     };
 
@@ -80,14 +82,15 @@ const TaskCard = ({
       ...prev,
       [id]: {
         ...(prev?.[id] || taskState),
+        id,
+        points,
         completed: true,
         userChoice,
-        isCorrect,
+        isCorrect: userChoice == correctChoice,
+        //ansChanged: prev?.[id].userchoice == userChoice,
       },
     }));
-    // console.log("PRINTING TASKS");
-    // console.log(tasks);
-    // scoreHandler.storeSubmittedAnswer(tasks[tasks.length]) **Store last submitted task
+    console.log(tasks);
   };
 
   const defaultInputs = getTaskRepairInputData(correctChoice, id);

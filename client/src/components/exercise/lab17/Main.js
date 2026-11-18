@@ -36,8 +36,8 @@ const Main = () => {
         <Router className="app">
           <ExerciseIntro default path="/" />
           <QvCGameStage path="/QvCGameStage" stageNum = {1} stageTasks={STAGE_1_TASKS} />
-          <QvCGameStage path="/QvCGameStage/stage2" stageNum = {1} stageTasks={STAGE_2_TASKS} />
-          <QvCGameStage path="/QvCGameStage/stage3" stageNum = {1} stageTasks={STAGE_3_TASKS} />
+          <QvCGameStage path="/QvCGameStage/stage2" stageNum = {2} stageTasks={STAGE_2_TASKS} />
+          <QvCGameStage path="/QvCGameStage/stage3" stageNum = {3} stageTasks={STAGE_3_TASKS} />
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>

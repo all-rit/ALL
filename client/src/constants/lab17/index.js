@@ -131,7 +131,7 @@ const STAGE_3_TASKS = [
   {
     id: "task10",
     points: 1,
-    title: "Credic Card Fraud",
+    title: "Credit Card Fraud",
     category: "security",
     description: "Analyzing credit card transactions for fraud in a tourist city",
     correctChoice: "quantum" || "classical",

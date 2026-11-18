@@ -5,15 +5,21 @@ import TaskCard from "../components/TaskCard";
 import useMainStateContext from "src/reducers/MainContext";
 import ExerciseStateContext from "../Lab17Context";
 import { ExerciseService } from "src/services/lab17/ExerciseService";
-import { STAGE_1_TASKS } from "src/constants/lab17";
+import ScoreHandler from "../components/ScoreHandler";
 
 // 5 tasks will be passed into the stage for each round
-const QvCGameStage = ({ stageTasks = STAGE_1_TASKS }) => {
+const QvCGameStage = ({ stageTasks, stageNum }) => {
   const { state } = useMainStateContext();
-  const { exercisestate } = useContext(ExerciseStateContext);
+  // const exercisestate = useContext(ExerciseStateContext) || {};
+  // const tasks = useContext(ExerciseStateContext) 
+  const {
+    tasks = {},
+  } = useContext(ExerciseStateContext) || {};
+
   //Set current exercise stage in context
   const userid = state?.main?.user?.userid;
   const [task1, task2, task3, task4, task5] = stageTasks;
+  const scoreHandler = ScoreHandler(stageNum);
   
   // TODO: update this in future when making real stages so the exercise is only marked complete when all tasks are finished
   const handleContinue = async () => {
@@ -34,7 +40,7 @@ const QvCGameStage = ({ stageTasks = STAGE_1_TASKS }) => {
 
   return (
     <div className="center-div">
-      <h1 className="tw-title tw-text-left">QvCGameStage</h1>
+      <h1 className="tw-title tw-text-left">QvCGameStage #{stageNum}</h1>
       <div className="tw-relative tw-bg-primary-blue tw-rounded-lg tw-min-h-[36rem] tw-p-6 md:tw-p-8 tw-my-6 tw-flex tw-flex-col lg:tw-flex-row tw-gap-6">
         {/* FLEXBOX --> left column on large screens, top row on smaller screens: tasks list box + quantum/classical icons box */}
         <div className="tw-flex tw-flex-col sm:tw-flex-row lg:tw-flex-col tw-gap-6 lg:tw-w-1/3">
@@ -47,6 +53,8 @@ const QvCGameStage = ({ stageTasks = STAGE_1_TASKS }) => {
 
           {/* STUB : quantum/classical icons box */}
           <div className="tw-flex-1 tw-border-4 tw-border-solid tw-border-lightBlue tw-p-6 tw-rounded-lg tw-flex tw-flex-col tw-justify-center tw-gap-4">
+            {/* <div>{ScoreHandler}</div> */}
+            {/* <div>{tasks}</div> */}
             <div>
               Classical Icon
             </div>
