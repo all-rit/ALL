@@ -21,25 +21,33 @@ const NumberLine = ({
 
       {/* colored number line with circles at the ends */}
       <div className="tw-relative tw-my-12 tw-h-2 tw-bg-result_number_line tw-flex tw-items-center tw-justify-between">
-        {/* left circle (centered on 0% with -tw-ml-3, which is half of tw-w-6) */}
+        {/* left circle */}
         <div className="tw-relative tw-w-6 tw-h-6 -tw-ml-3 tw-rounded-full tw-bg-brightRed tw-flex tw-justify-center">
-          <span className="tw-absolute tw-top-10 tw-whitespace-nowrap">
+          <span className="tw-absolute -tw-top-8 tw-body-text tw-font-bold">
+            {min}
+          </span>
+          <span className="tw-absolute tw-top-10 tw-whitespace-nowrap tw-body-text">
             Least Efficient
           </span>
         </div>
 
-        {/* value circle (centered on percentage with -tw-ml-10, which is half of tw-w-20) */}
+        {/* value circle */}
         <div
-          className="tw-absolute -tw-ml-10 tw-w-20 tw-h-20 tw-rounded-full tw-bg-lightGreen tw-flex tw-items-center
-          tw-justify-center tw-text-black tw-font-bold"
-          style={{ left: `${percentage}%` }}
+          className="tw-absolute -tw-ml-10 tw-w-20 tw-h-20 tw-rounded-full tw-bg-result_number_line tw-bg-[length:1200%_100%] tw-flex tw-items-center tw-justify-center tw-text-black tw-font-bold"
+          style={{
+            left: `${percentage}%`,
+            backgroundPosition: `${percentage}% 0%`,
+          }}
         >
           {value}
         </div>
 
-        {/* right circle (centered on 100% with -tw-mr-3, which is half of tw-w-6) */}
+        {/* right circle */}
         <div className="tw-relative tw-w-6 tw-h-6 -tw-mr-3 tw-rounded-full tw-bg-lightGreen tw-flex tw-justify-center">
-          <span className="tw-absolute tw-top-10 tw-whitespace-nowrap">
+          <span className="tw-absolute -tw-top-8 tw-body-text tw-font-bold">
+            {max}
+          </span>
+          <span className="tw-absolute tw-top-10 tw-whitespace-nowrap tw-body-text">
             Most Efficient
           </span>
         </div>

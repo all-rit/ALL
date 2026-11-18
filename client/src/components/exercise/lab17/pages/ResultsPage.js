@@ -26,7 +26,7 @@ const ResultsPage = () => {
         value={50}
         min={0}
         max={100}
-        label="NumberLine showing 50 out of 100"
+        label=""
       >
       </NumberLine>
 
