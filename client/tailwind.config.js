@@ -178,6 +178,13 @@ export default {
           lineHeight: "1.6rem",
           textAlign: "left",
         },
+        ".highlight": {
+          backgroundColor: theme("colors.primary.yellow"),
+          paddingLeft: theme("spacing.1"),
+          paddingRight: theme("spacing.1"),
+          borderRadius: theme("borderRadius.sm"),
+          fontWeight: theme("fontWeight.semibold"),
+        },
         ".perspective-distant": {
           perspective: "1200px",
         },
