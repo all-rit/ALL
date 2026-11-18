@@ -103,10 +103,10 @@ const TaskCard = ({
         aria-expanded={isPopoverOpen}
         aria-label={title}
         data-completed={taskState.completed}
-        className="tw-w-12 tw-h-16 tw-p-2 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-lightBlue tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-shadow-md focus:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-primary-yellow"
+        className="tw-w-20 tw-h-24 tw-p-2 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-lightBlue tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-shadow-md focus:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-primary-yellow"
       >
         {icon || (
-          <TableChartIcon className="tw-text-primary-yellow tw-text-2xl" />
+          <TableChartIcon className="tw-text-primary-yellow tw-text-4xl" />
         )}
       </button>
 
