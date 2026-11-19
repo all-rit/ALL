@@ -24,7 +24,7 @@ return <>
             New Message
         </h5>
         <p className="tw-text-gray-600">
-            You have 1 new message.
+            Your teammate sent you a message.
         </p>
         </ModalBody>
         <ModalFooter className="tw-justify-center">
