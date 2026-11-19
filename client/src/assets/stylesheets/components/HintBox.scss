@@ -9,26 +9,22 @@
   &--open {
     height: 5rem;
   }
+&__background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
 
-  &__background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    background-color: #ddd !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #d0d0d0 !important;
-    }
+  &:hover {
+    cursor: pointer;
   }
-
+}
   &__warning {
     display: block;
     font-size: 1.5rem;
