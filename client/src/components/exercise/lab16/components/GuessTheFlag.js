@@ -1,7 +1,11 @@
-import React, {useState, useRef, useEffect} from "react"
+import React, {useState, useRef, useEffect,useContext} from "react"
 import { FLAG_QUESTIONS } from "src/constants/lab16";
+import ExerciseStateContext from "../Lab16Context";
+
 
 const GuessTheFlag = () =>{
+    const {setGameScore} = useContext(ExerciseStateContext);
+
     //shuffle the FLAG_QUESTIONS array -> The Durstenfeld Shuffle
     const durstenfeldShuffle = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -47,6 +51,11 @@ const GuessTheFlag = () =>{
 
         if (option === currentQuestion.answer) {
         setCorrectPicked(true);
+        
+        if (wrongOptions.length === 0) {
+            setGameScore((previousScore) => previousScore + 1);
+        }
+        
         timeoutRef.current = setTimeout(goToNextQuestion, 1000);
         } else {
         setWrongOptions((previous) => [...previous, option]);

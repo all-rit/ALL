@@ -30,6 +30,7 @@ const Main = () => {
   //store user-chosen team name
   const [teamName, setTeamName] = useState("");
   const [location, setLocation] = useState("");
+  const [gameScore,setGameScore] = useState(0)
 
   return (
     <div className="bottomSpace tw-overflow-y-scroll tw-p-6">
@@ -42,7 +43,9 @@ const Main = () => {
         teamName,
         setTeamName,
         location,
-        setLocation
+        setLocation,
+        gameScore,
+        setGameScore
       }}
       >
         <Router className="app">

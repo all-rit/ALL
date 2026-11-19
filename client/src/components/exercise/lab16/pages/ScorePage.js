@@ -12,14 +12,15 @@ const ScorePage = () => {
 
   const contentSizing ="tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[7rem]";
 
-  const {teammateId} = useContext(ExerciseStateContext);
+  const {teammateId,gameScore} = useContext(ExerciseStateContext);
 
   //Random score that will be generated for both teams
-  const totalUserScore = Math.floor(Math.random() * 1000 + 500);
+  const totalUserScore = Math.floor(Math.random() * 41);
 
-  const userScore = Math.floor(
-    Math.random() * (totalUserScore * 0.6) + totalUserScore * 0.2,
-  );
+  const userScore = gameScore
+  // Math.floor(
+  //   Math.random() * (totalUserScore * 0.6) + totalUserScore * 0.2,
+  // );
   const teammateScore = totalUserScore - userScore;
 
   /*opponent score will always be less than user score, but never less than 475
