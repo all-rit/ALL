@@ -39,7 +39,7 @@ const TeammateVideo = (props) => {
   const modeClasses =
     status == "chatroom"
       ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0"
-      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-[500px] tw-max-h-[300px]";
+      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-[500px] tw-max-h-[400px]";
 
   return (
     <div

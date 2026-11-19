@@ -19,7 +19,7 @@ const DisplayDeepFake = (props) => {
           <div className="tw-w-96 tw-p-2 tw-mt-2 tw-gap-2">
             <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-bg-error tw-bg-opacity-30 tw-rounded-md tw-py-2 tw-px-4">
               <p className="tw-text-md tw-font-bold tw-text-brightRed tw-m-0">
-                Your are disqualified!{" "}
+                Image of Teammate Cheating!{" "}
               </p>
               <img
                 className="tw-w-5 tw-h-5 tw-object-contain"
@@ -42,7 +42,7 @@ const DisplayDeepFake = (props) => {
                 <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-text-brightRed">
                   <h3 className="tw-title tw-font-bold tw-text-brightRed ">
                     {" "}
-                    Your are disqualified!
+                    You are disqualified!
                   </h3>
                   <img
                     className="tw-w-12 tw-h-12 tw-object-contain"
