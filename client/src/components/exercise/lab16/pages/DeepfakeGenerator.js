@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import { creaturePaths } from "src/constants/lab16/Creatures";
 import { deepfakePaths } from "src/constants/lab16/DeepfakeCreatures";
+import ChatMessageModal from "../components/ChatMessageModal";
 
 
 const DeepfakeGenerator = ()=>{
@@ -57,10 +58,6 @@ const DeepfakeGenerator = ()=>{
         return () => clearTimeout(timer);
     }, [loading]);
 
-    const handleNavigation = async () => {
-      navigate("/Lab16/Exercise/Conclusion");
-    };
-
     const imageTransformSizing = "tw-w-24 tw-h-24 tw-m-1 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-border-solid tw-border-secondary-gray " + 
                                 "tw-transition-all tw-duration-200 " + 
                                 "peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue peer-checked:tw-border-transparent ";
@@ -79,7 +76,7 @@ const DeepfakeGenerator = ()=>{
 
     return (
     <>
-    <div>
+    {deepfakeCount < 4 ? (
         <div className="tw-border tw-rounded-xl tw-h-auto tw-p-[1rem] tw-shadow-xl">
             <div className="tw-flex tw-flex-row tw-justify-around tw-items-center tw-w-full tw-h-full tw-p-2">
                 <div className="tw-flex tw-flex-col tw-justify-center tw-items-top">
@@ -170,18 +167,9 @@ const DeepfakeGenerator = ()=>{
                 </div>
             </div>
         </div>
-    </div>
-
-     {/* <Button
-        className="tw-body-text tw-font-bold tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[10rem] tw-h-[3rem]
-        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black tw-mt-20"
-        //change this to last chatpage when that's done
-        onClick={handleNavigation}
-    >
-        End Game
-    </Button> */}
-
-
+    ) : (
+        <ChatMessageModal/>
+    )}
     </>
     );
 };
