@@ -1,3 +1,5 @@
+import React from "react";
+
 const LAB_ID = 17;
 const EXERCISE_PATH = "/Lab17/Exercise";
 
@@ -9,11 +11,23 @@ const EXERCISE_STATES = {
   MODEL_REPAIR,
 };
 
+/** For descrptions to include bold and underlined words, make the description this format instead:
+ * description: (
+ *  <>
+ *    Description here, <span className="tw-highlight">highlight</span> and <span className="tw-font-bold">bolded</span> text here.
+ *  </>
+ * )
+ */
+
 const STAGE_1_TASKS = [
   {
     id: "task1",
     title: "Task 1",
-    description: "Description for Task 1",
+    description: (
+      <>
+        Description for <span className="tw-highlight">Task</span> 1
+      </>
+    ),
     correctChoice: "quantum",
   },
   {

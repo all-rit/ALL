@@ -9,6 +9,7 @@ import {
 } from "src/constants/lab17/TaskRepair";
 import useMainStateContext from "src/reducers/MainContext";
 import ALLModal from "../../../all-components/ALLModal";
+import LabButton from "src/components/all-components/LabButton";
 import ExerciseStateContext from "../Lab17Context";
 import useTaskRepairService from "../hooks/useTaskRepairService";
 import TaskRepairImplementation from "../pages/repairs/TaskRepairImplementation";
@@ -103,10 +104,10 @@ const TaskCard = ({
         aria-expanded={isPopoverOpen}
         aria-label={title}
         data-completed={taskState.completed}
-        className="tw-w-12 tw-h-16 tw-p-2 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-lightBlue tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-shadow-md focus:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-primary-yellow"
+        className="tw-w-20 tw-h-24 tw-p-2 tw-bg-primary-blue tw-border-2 tw-border-solid tw-border-lightBlue tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-shadow-md focus:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-primary-yellow"
       >
         {icon || (
-          <TableChartIcon className="tw-text-primary-yellow tw-text-2xl" />
+          <TableChartIcon className="tw-text-primary-yellow tw-text-4xl" />
         )}
       </button>
 
@@ -118,13 +119,14 @@ const TaskCard = ({
         title={title}
         description={description}
       >
-        <button
-          type="button"
-          onClick={handleRepairClick}
-          className="btn tw-font-poppins tw-font-medium tw-bg-primary-yellow hover:tw-bg-labYellow tw-text-black tw-px-6 tw-py-1.5 tw-rounded-md tw-shadow-md tw-border-0 tw-cursor-pointer"
-        >
-          {buttonText}
-        </button>
+        <div className="[&>button]:tw-py-2">
+          <LabButton
+            type="button"
+            label={buttonText}
+            onClick={handleRepairClick}
+          />
+        </div>
+
       </ToggleTip>
 
       <ALLModal
