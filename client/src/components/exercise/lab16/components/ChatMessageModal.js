@@ -7,7 +7,7 @@ const ChatMessageModal = ()=>{
     const [modal,setModal] = useState(true)
     const navigateMessage = () => {
         setModal(!modal);
-        navigate('/Lab16/Exercise/Conclusion')
+        navigate('/Lab16/Exercise/ChatRoom2')
     };
 
 return <>
