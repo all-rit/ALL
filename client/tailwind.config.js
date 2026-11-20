@@ -101,6 +101,8 @@ export default {
       backgroundImage: {
         qubit:
           "linear-gradient(280.39deg, rgba(13, 40, 188, 1) 0%, rgba(255, 195, 52, 1) 100%)",
+        result_number_line:
+          "linear-gradient(to right, #dc2626 0%, #ffc334 50%, #47ff72 100%)",
       },
       height: {
         128: "31rem",

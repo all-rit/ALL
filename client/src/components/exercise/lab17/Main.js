@@ -7,6 +7,7 @@ import ExerciseStateContext from "./Lab17Context";
 import ExerciseIntro from "./pages/ExerciseIntro";
 import QvCGameStage from "./pages/QvCGameStage";
 import Conclusion from "./pages/Conclusion";
+import ResultsPage from "./pages/ResultsPage";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -37,6 +38,7 @@ const Main = () => {
           <ExerciseIntro default path="/" />
           <QvCGameStage path="/QvCGameStage" stageTasks={STAGE_1_TASKS} />
           <Conclusion path="/Conclusion" />
+          <ResultsPage path="/ResultsPage" />
         </Router>
       </ExerciseStateContext.Provider>
     </div>

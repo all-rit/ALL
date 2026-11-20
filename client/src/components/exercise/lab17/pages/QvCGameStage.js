@@ -26,7 +26,7 @@ const QvCGameStage = ({ stageTasks = STAGE_1_TASKS }) => {
     } catch (error) {
       console.error(error);
     }
-    navigate("/Lab17/Exercise/Conclusion");
+    navigate("/Lab17/Exercise/ResultsPage");
   };
 
   return (
