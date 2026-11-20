@@ -9,6 +9,7 @@ import ExerciseIntro from "./pages/ExerciseIntro";
 import Conclusion from "./pages/Conclusion";
 import Game from "./pages/Game";
 import ChatRoom from "./pages/ChatRoom";
+import ChatRoom2 from "./pages/ChatRoom2";
 import ScorePage from "./pages/ScorePage";
 import TeammateDeepfake from "./pages/TeammateDeepfake";
 import DeepfakeGenerator from "./pages/DeepfakeGenerator";
@@ -54,6 +55,7 @@ const Main = () => {
           <TeammateDeepfake path="/TeammateDeepfake"/>
           <ChatRoom path="/ChatRoom" />
           <DeepfakeGenerator path="/DeepfakeGenerator"/>
+          <ChatRoom2 path="/ChatRoom2"/>
           <Conclusion path="/Conclusion" />
         </Router>
       </ExerciseStateContext.Provider>

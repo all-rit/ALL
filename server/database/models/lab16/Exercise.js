@@ -30,7 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         teammateAssignment: {
           type: DataTypes.TEXT,
         },
-
+        chatReply2: {
+          type: DataTypes.TEXT,
+        },
     },
     { tableName: "lab16_Exercise" },
   );
