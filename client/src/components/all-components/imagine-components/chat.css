@@ -30,8 +30,9 @@
 .teammateMessagesContainer, 
 .userMessageContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
+    gap: 15px;
     padding: 0.75rem 1.5rem;
     transition: background-color 0.2s;
 }
