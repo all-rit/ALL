@@ -18,9 +18,6 @@ const ScorePage = () => {
   const totalUserScore = Math.floor(Math.random() * 41);
 
   const userScore = gameScore
-  // Math.floor(
-  //   Math.random() * (totalUserScore * 0.6) + totalUserScore * 0.2,
-  // );
   const teammateScore = totalUserScore - userScore;
 
   /*opponent score will always be less than user score, but never less than 475
