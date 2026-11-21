@@ -23,7 +23,7 @@ const Game = () => {
 
           return prevSeconds - 1;
         });
-      }, 100);
+      }, 1000);
       return () => clearInterval(timer);
   }, []);
 
