@@ -15,15 +15,17 @@ const ScorePage = () => {
   const {teammateId,gameScore} = useContext(ExerciseStateContext);
 
   //Random score that will be generated for both teams
-  const totalUserScore = Math.floor(Math.random() * 41);
+  const randomNumber = Math.random() * (41 - gameScore) + gameScore;
+  const totalUserScore = Math.floor(randomNumber);
+
 
   const userScore = gameScore
   const teammateScore = totalUserScore - userScore;
 
-  /*opponent score will always be less than user score, but never less than 475
+  /*opponent score will always be less than user score
       This is done so that the game seems realistically close*/
   const totalOpponentScore = Math.floor(
-    Math.random() * (totalUserScore * 0.8) + totalUserScore * 0.2,
+    Math.random() * (totalUserScore * 0.75) + totalUserScore * 0.2,
   );
 
   return (
