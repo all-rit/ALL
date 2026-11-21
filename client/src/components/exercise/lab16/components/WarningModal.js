@@ -15,14 +15,19 @@ const WarningModal = ()=>{
 return <>
     <Modal isOpen={modal} centered className="tw-px-8">
         <ModalHeader className="tw-text-center tw-justify-center tw-text-red-600 tw-font-bold">
-               Tournament Alert
+               {/* Tournament Alert */}
+               <img
+                    className="tw-w-12 tw-h-12 tw-object-contain"
+                    src="/src/assets/images/lab16/alert.svg"
+                    alt="alert icon"
+                  />
     </ModalHeader>
         <ModalBody className="tw-text-center tw-py-6 tw-px-2">
         <h5 className="tw-font-semibold">
-            Your teammate cheated! You are disqualified.
+            You are disqualified!
         </h5>
         <p className="tw-text-gray-600">
-            We received an image of your teammate looking up an answer during the game.
+            We received an image of your teammate cheating during the game.
         </p>
         </ModalBody>
         <ModalFooter className="tw-justify-center">

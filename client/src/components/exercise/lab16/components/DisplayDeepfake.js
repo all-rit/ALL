@@ -19,7 +19,7 @@ const DisplayDeepFake = (props) => {
           <div className="tw-w-96 tw-p-2 tw-mt-2 tw-gap-2">
             <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-bg-error tw-bg-opacity-30 tw-rounded-md tw-py-2 tw-px-4">
               <p className="tw-text-md tw-font-bold tw-text-brightRed tw-m-0">
-                Your are disqualified!{" "}
+                Image of teammate cheating{" "}
               </p>
               <img
                 className="tw-w-5 tw-h-5 tw-object-contain"
@@ -37,12 +37,13 @@ const DisplayDeepFake = (props) => {
           </div>
         ) : (
           <>
+            <div className="tw-bg-error tw-bg-opacity-30  tw-rounded-xl tw-p-5 tw-mb-2">
             <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center tw-w-full tw-h-full tw-gap-4">
               <div className="tw-top-5 tw-w-[96%]">
                 <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-2 tw-text-brightRed">
                   <h3 className="tw-title tw-font-bold tw-text-brightRed ">
                     {" "}
-                    Your are disqualified!
+                    Team disqualified!
                   </h3>
                   <img
                     className="tw-w-12 tw-h-12 tw-object-contain"
@@ -52,7 +53,7 @@ const DisplayDeepFake = (props) => {
                 </div>
               </div>
               <p className="tw-font-bold tw-leading-relaxed tw-max-w-md">
-                Your teammate was found cheating while playing the Guess the Flag Tournament
+                Your teammate was found looking up an answer while playing the game
               </p>
             </div>
 
@@ -62,6 +63,7 @@ const DisplayDeepFake = (props) => {
                 alt="Deepfake footage"
                 className="tw-rounded-lg tw-shadow-2xl tw-w-full tw-h-auto tw-object-contain tw-border tw-border-gray-100"
               />
+            </div>
             </div>
             <button
             className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"

@@ -39,11 +39,11 @@ const TeammateVideo = (props) => {
   const modeClasses =
     status == "chatroom"
       ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0"
-      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-[500px] tw-max-h-[300px]";
+      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-[500px] tw-max-h-[500px]";
 
   return (
     <div
-      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[2px] tw-rounded-lg`}
+      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[2px] tw-border-[#9ca3af] tw-rounded-lg tw-shadow-sm`}
     >
       <p className="tw-mb-3">
         Teammate live from: <b>{location}</b>

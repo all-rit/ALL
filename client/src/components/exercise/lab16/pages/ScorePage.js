@@ -37,7 +37,7 @@ const ScorePage = () => {
     {!isModalOpen ? (
     <div>
       <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
-        <h3 className="tw-title text-center">You Win!!!</h3>
+        <h3 className="tw-title text-center tw-text-[#006400] tw-bg-[#d6f2e1] tw-rounded-xl tw-p-5">You Win!!!</h3>
         <div className="tw-flex tw-items-center tw-justify-center tw-border-solid tw-border-0 tw-border-b tw-border-secondary-gray">
           <div className="tw-my-12 tw-body-text tw-mx-14">
             <div className="tw-my-4 tw-font-bold tw-text-labGray tw-text-center">
@@ -63,7 +63,6 @@ const ScorePage = () => {
             </p>
           </div>
         </div>
-
         <button
             className="tw-w-fit tw-bg-primary-blue hover:tw-bg-labBlue tw-text-white tw-font-bold tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
               //alert model should pop up and deepfake should be shown
