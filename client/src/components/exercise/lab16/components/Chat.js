@@ -15,7 +15,6 @@ export const Chat = (props) => {
   useEffect(()=>{
     //read first message then slice it off
     let startMessage = teammateMessage[0]
-    console.log(startMessage)
     setMessages([{ sender: 'teammate', text: startMessage }]);
     setTeammateMessage(teammateMessages.slice(1)) 
   },[])

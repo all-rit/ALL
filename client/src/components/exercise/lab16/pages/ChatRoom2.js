@@ -14,9 +14,6 @@ const ChatRoom = () => {
   const teammateMessages = ["How was your experience with deepfakes"];
 
   const onSubmit = async (reply) => {
-    console.log(reply)
-    console.log("save user reply")
-    console.log(state, state.main, state.main.user)
       await ExerciseService.postChatReply(
         {
           userid: state.main.user.userid, 

@@ -23,8 +23,6 @@ const ChatRoom = () => {
   ]
 
   const onSubmit = async (reply) => {
-    console.log(reply)
-    console.log("save user reply")
       await ExerciseService.postChatReply(
         {
           userid: state.main.user.userid, 
