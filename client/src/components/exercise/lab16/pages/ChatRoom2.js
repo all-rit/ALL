@@ -11,7 +11,7 @@ const ChatRoom = () => {
   const {state} = useMainStateContext();
   const {teammateId} = useContext(ExerciseStateContext);
 
-  const teammateMessages = ["How was your experience with deepfakes"];
+  const teammateMessages = ["How was your experience with the ALL Deepfake Generator?"];
 
   const onSubmit = async (reply) => {
       await ExerciseService.postChatReply(

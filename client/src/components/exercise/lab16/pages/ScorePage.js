@@ -12,7 +12,7 @@ const ScorePage = () => {
 
   const contentSizing ="tw-border tw-rounded-xl tw-w-[46vw] tw-h-[39vw] tw-h-[40vw] xxl:tw-h-[600px] xxl:tw-w-[800px] tw-pt-[7rem]";
 
-  const {teammateId,gameScore} = useContext(ExerciseStateContext);
+  const {teammateId,gameScore,teamName} = useContext(ExerciseStateContext);
 
   //Random score that will be generated for both teams
   const randomNumber = Math.random() * (41 - gameScore) + gameScore;
@@ -36,7 +36,7 @@ const ScorePage = () => {
     {!isModalOpen ? (
     <div>
       <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-p-4">
-        <h3 className="tw-title text-center tw-text-[#006400] tw-bg-[#d6f2e1] tw-rounded-xl tw-p-5">You Win!!!</h3>
+        <h3 className="tw-title text-center tw-text-[#006400] tw-bg-[#d6f2e1] tw-rounded-xl tw-p-5">{teamName} Win!!!</h3>
         <div className="tw-flex tw-items-center tw-justify-center tw-border-solid tw-border-0 tw-border-b tw-border-secondary-gray">
           <div className="tw-my-12 tw-body-text tw-mx-14">
             <div className="tw-my-4 tw-font-bold tw-text-labGray tw-text-center">
