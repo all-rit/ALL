@@ -1,13 +1,15 @@
 import React, {useState } from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
-import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 
-const ChatMessageModal = ()=>{
+const ChatMessageModal = (props) =>{
+    const {handleNavigation} = props;
     const [modal,setModal] = useState(true)
-    const navigateMessage = () => {
+
+    const navigateMessage = async () => {
         setModal(!modal);
-        navigate('/Lab16/Exercise/Conclusion')
+        await handleNavigation();
     };
 
 return <>
@@ -39,3 +41,7 @@ return <>
 }
 
 export default ChatMessageModal;
+
+ChatMessageModal.propTypes = {
+  handleNavigation: PropTypes.func,
+};

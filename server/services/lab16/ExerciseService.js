@@ -55,7 +55,7 @@ async function postExercise(data) {
 
 //Save Chat Reply needed (from Imagine 2026)
 const postChatReply = async (data) => {
-  const { userID, reply } = data;
+  const { userID, reply, page } = data;
   try {
     const user = await db.ExerciseLab16.findOne({
       where: {
@@ -63,13 +63,25 @@ const postChatReply = async (data) => {
       },
     });
     if (user !== null) {
-      user.chatReply = reply;
+      if(page === 1){
+        user.chatReply = reply;
+      } else{
+        user.chatReply2 = reply;
+      }
       user.save();
     } else {
-      await db.ExerciseLab16.create({
+      if(page === 1){
+        await db.ExerciseLab16.create({
         userid: userID,
         chatReply: reply,
       });
+      }else{
+        await db.ExerciseLab16.create({
+        userid: userID,
+        chatReply2: reply,
+      });
+      }
+
     }
     return true;
   } catch (error) {

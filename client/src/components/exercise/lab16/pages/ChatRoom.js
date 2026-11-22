@@ -1,33 +1,35 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import { Chat } from "../../../all-components/imagine-components/Chat";
+import { Chat } from "../components/Chat";
 import TeammateVideo from "../components/TeammateVideo";
 import { ExerciseService } from "../../../../services/lab16/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 import ExerciseStateContext from "../Lab16Context";
 import { useContext } from "react";
+import { Link } from "@reach/router";
 
 const ChatRoom = () => {
   const {state} = useMainStateContext();
   const {teammateId} = useContext(ExerciseStateContext);
-  const group = "expression";
+
+  const teammateMessages = [ "THAT IS A FAKE IMAGE. I NEVER DID THAT !!",
+    (
+      <>
+      <p>I found how they managed to make the deepfake so easily... try it out. I'll send a link.</p>
+      <strong><u><Link to="/Lab16/Exercise/DeepfakeGenerator"> ALL DeepfakeGenerator</Link></u></strong>
+      </>
+    )
+
+  ]
 
   const onSubmit = async (reply) => {
-    await ExerciseService.postChatReply(
-      {
-        userid: state.main.user.userid, 
-        reply: reply
-      }
-    );
-      setTimeout(() => {
-      navigate("/Lab16/Exercise/DeepfakeGenerator");
-    }, 1000);
-  };
-
-  const groupMap = {
-    experiential:
-      "That image is so crazy, did you really say that? How do you feel?",
-    expression: "THAT IS A FAKE IMAGE. I NEVER SAID THAT !!",
+      await ExerciseService.postChatReply(
+        {
+          userid: state.main.user.userid, 
+          reply: reply,
+          page: 1,
+        }
+      );          
   };
 
   const contentSizing =
@@ -47,11 +49,10 @@ const ChatRoom = () => {
 
               <div className="tw-flex-1 tw-w-[100%]">
                 <Chat
-                group={group}
-                onSubmit={onSubmit}
-                teammateMessage={groupMap[group]}
+                endConversation={onSubmit}
                 height="100%"
                 width="100%"
+                teammateMessages={teammateMessages}
               />
               </div>
               

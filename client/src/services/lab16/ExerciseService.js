@@ -70,7 +70,8 @@ const ExerciseService = {
           try{
             const body = {
             userID: data.userid,
-            reply: data.reply 
+            reply: data.reply,
+            page: data.page, 
           };
           const response = await API.postWithBody(endpoints.SAVE_CHAT, body);
           return response.status;
