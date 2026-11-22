@@ -9,7 +9,9 @@ const ExerciseStateContext = createContext({
   teamName: "",
   setTeamName: () => {},
   location: "",
-  setLocation: () => {}
+  setLocation: () => {},
+  gameScore:0,
+  setGameScore: () => {}
 });
 
 export default ExerciseStateContext

@@ -32,14 +32,13 @@ const ExerciseIntro = () => {
       <h1 className="tw-title tw-text-left">Exercise Start</h1>
       <div className="guidance margin-bottom-2">
         <p className="tw-body-text tw-text-left tw-py-6">
-          Welcome to ALL's Tic-Tac-Toe tournament! You will be competing against an AI with a remote teammate. 
-          The team with the highest score wins! Winners will receive a virtual POPCORN prize after the game
-          The AI will be '0' and your team will be 'X'. 
-          Use your mouse or touchpad to click the box that you want to place the 'X' in. 
+          Welcome to ALL's Guess The Flag tournament!  
+          You and your teammate will work together to identify as many flags as possible. 
+          Each player gets 1 minute to guess the flags.
         </p>
         <p className="tw-body-text tw-text-left">
-          Your teammate will be playing their own round against the AI. Take turns to fill the board! 
-          First to match 3 of their letter in any direction: horizontal, vertical and diagonal, scores a point. 
+          Your scores will be combined to create your team's total score. 
+          The team with the highest combined score at the end of the tournament wins! 
           Good luck!
         </p>
       </div>

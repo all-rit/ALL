@@ -39,11 +39,11 @@ const TeammateVideo = (props) => {
   const modeClasses =
     status == "chatroom"
       ? "tw-flex-1 tw-h-full tw-flex tw-flex-col tw-h-min-0"
-      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-96 tw-max-h-[600px]";
+      : "tw-absolute tw-top-[3.4%] tw-right-5 tw-w-[500px] tw-max-h-[500px]";
 
   return (
     <div
-      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[2px] tw-rounded-lg`}
+      className={`${modeClasses}  tw-p-2 tw-bg-white tw-border-solid tw-border-[2px] tw-border-[#9ca3af] tw-rounded-lg tw-shadow-sm`}
     >
       <p className="tw-mb-3">
         Teammate live from: <b>{location}</b>
@@ -55,7 +55,7 @@ const TeammateVideo = (props) => {
           autoPlay
           loop
           muted
-          className={`tw-w-full tw-object-cover tw-rounded-lg ${status == "chatroom" ? "tw-aspect-video tw-h-[220px]" : "tw-h-[200px]"}`}
+          className={`tw-w-full tw-object-cover tw-rounded-lg ${status == "chatroom" ? "tw-aspect-video tw-h-[220px]" : "tw-h-[300px]"}`}
         />
 
         {status === "chatroom" && (
