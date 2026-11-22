@@ -58,6 +58,10 @@ const DeepfakeGenerator = ()=>{
         return () => clearTimeout(timer);
     }, [loading]);
 
+    const handleNavigation = async () => {
+      navigate("/Lab16/Exercise/ChatRoom2");
+    };
+
     const imageTransformSizing = "tw-w-24 tw-h-24 tw-m-1 tw-object-cover tw-rounded-xl tw-outline tw-outline-transparent tw-border-solid tw-border-secondary-gray " + 
                                 "tw-transition-all tw-duration-200 " + 
                                 "peer-checked:tw-w-28 peer-checked:tw-h-28 peer-checked:tw-outline-solid peer-checked:tw-outline-primary-blue peer-checked:tw-border-transparent ";
@@ -168,7 +172,9 @@ const DeepfakeGenerator = ()=>{
             </div>
         </div>
     ) : (
-        <ChatMessageModal/>
+        <ChatMessageModal
+        handleNavigation={handleNavigation}
+        />
     )}
     </>
     );

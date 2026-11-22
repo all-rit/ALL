@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { imagesPath } from "src/constants/lab16/DeepfakeImages";
-import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
 import PropTypes from "prop-types";
 // import { navigate } from "@reach/router";
 
 const DisplayDeepFake = (props) => {
-  const { teammateId, isChatRoom ,handleNavigation} = props;
+  const { teammateId, isChatRoom, handleNavigation} = props;
   const [imagePath, setImagePath] = useState("");
 
   useEffect(() => {
@@ -82,4 +81,5 @@ export default DisplayDeepFake;
 DisplayDeepFake.propTypes = {
   teammateId: PropTypes.number.isRequired,
   isChatRoom: PropTypes.bool,
+  handleNavigation: PropTypes.func,
 };
