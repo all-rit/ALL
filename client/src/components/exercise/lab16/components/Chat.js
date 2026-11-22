@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import "../../../all-components/imagine-components/chat.css";
+import "../components/chat.css";
 
 export const Chat = (props) => {
   const { endConversation, height, width, teammateMessages } = props;
@@ -20,8 +20,8 @@ export const Chat = (props) => {
     setTeammateMessage(teammateMessages.slice(1)) 
   },[])
 
-  const onHandle = async () => {
-
+  const onHandle = async (e) => {
+    e.preventDefault();
     //add user reply to messages array
     if (inputValue.trim() === '') return;
     
@@ -82,15 +82,15 @@ export const Chat = (props) => {
           <div className="messages">
             <div className="userMessageContainer">
               {messages.map((msg, index) => (
-                <div key={index}>
+                <div key={index} className={msg.sender + "-container"}>
                   <img
                     className="user-image "
                     src="/img/imagine_images/user.png"
                     alt="profile"
                   />
-                   <div className="message-header">
-                  <span className={msg.sender}>{msg.sender}</span>
-                  <span className="time">{actualTime}</span>
+                  <div className="message-header">
+                    <span className={msg.sender}>{msg.sender}</span>
+                    <span className="time">{actualTime}</span>
                   </div>
                   <p className="message-text">{msg.text}</p>
                 </div>
@@ -98,14 +98,13 @@ export const Chat = (props) => {
             </div>
           </div>
           {!isDisabled ? (
-            // <form onSubmit={onHandle} className="input-form">
+            <form onSubmit={onHandle} className="input-form">
               <div className="input-container">
                 <input
                   type="text"
                   className="chat-input"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && onHandle()}
                   placeholder="Respond to your teammate"
                   disabled={isDisabled}
                   maxLength={100}
@@ -114,7 +113,6 @@ export const Chat = (props) => {
                   disabled={isDisabled}
                   type="submit"
                   className="send-button"
-                  onClick={onHandle}
                 >
                   <img
                     className="send-icon"
@@ -123,7 +121,7 @@ export const Chat = (props) => {
                   />
                 </button>
               </div>
-            // </form>
+            </form>
           ) : (
             ""
           )}

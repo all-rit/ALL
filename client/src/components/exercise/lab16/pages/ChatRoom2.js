@@ -6,17 +6,17 @@ import { ExerciseService } from "../../../../services/lab16/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 import ExerciseStateContext from "../Lab16Context";
 import { useContext } from "react";
-import { Link } from "@reach/router";
 
 const ChatRoom = () => {
   const {state} = useMainStateContext();
   const {teammateId} = useContext(ExerciseStateContext);
 
-  const teammateMessages = ["How was your experience with deepfakes"]
+  const teammateMessages = ["How was your experience with deepfakes"];
 
   const onSubmit = async (reply) => {
     console.log(reply)
     console.log("save user reply")
+    console.log(state, state.main, state.main.user)
       await ExerciseService.postChatReply(
         {
           userid: state.main.user.userid, 
