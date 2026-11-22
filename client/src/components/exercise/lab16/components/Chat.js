@@ -91,7 +91,7 @@ export const Chat = (props) => {
                     <span className={msg.sender}>{msg.sender}</span>
                     <span className="time">{actualTime}</span>
                   </div>
-                  <p className="message-text">{msg.text}</p>
+                  <div className="message-text">{msg.text}</div>
                 </div>
               ))}
             </div>

@@ -12,7 +12,7 @@ const ChatRoom = () => {
   const {state} = useMainStateContext();
   const {teammateId} = useContext(ExerciseStateContext);
 
-  const teammateMessages = [ "I never did that!",
+  const teammateMessages = [ "THAT IS A FAKE IMAGE. I NEVER DID THAT !!",
     (
       <>
       <p>I found how they managed to make the deepfake so easily... try it out. I'll send a link.</p>
