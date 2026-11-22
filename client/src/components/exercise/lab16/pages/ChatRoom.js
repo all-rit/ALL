@@ -12,11 +12,11 @@ const ChatRoom = () => {
   const {state} = useMainStateContext();
   const {teammateId} = useContext(ExerciseStateContext);
 
-  const teammateMessages = [ "I never said that",
+  const teammateMessages = [ "I never did that!",
     (
       <>
-      <Link to="/Lab16/Exercise/DeepfakeGenerator">ALL DeepfakeGeneator
-      </Link> 
+      <p>I found how they managed to make the deepfake so easily... try it out. I'll send a link.</p>
+      <strong><u><Link to="/Lab16/Exercise/DeepfakeGenerator"> ALL DeepfakeGenerator</Link></u></strong>
       </>
     )
 
