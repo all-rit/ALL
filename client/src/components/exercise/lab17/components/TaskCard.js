@@ -126,7 +126,6 @@ const TaskCard = ({
             onClick={handleRepairClick}
           />
         </div>
-
       </ToggleTip>
 
       <ALLModal
