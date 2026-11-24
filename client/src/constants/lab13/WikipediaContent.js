@@ -5,7 +5,7 @@ export const content = {
 
 This may include using local currency or changing date formats, but it does not involve physical changes, such as changing clothing materials for climate. However, modifying language or tone to fit different social settings can be considered a form of cultural localization.`,
     sources: [
-      "https://resources.gala-global.org/accessibility-localization/",
+      "https://lokalise.com/blog/software-localization/",
       "https://www.vistatec.com/localization-for-all-advancing-accessibility-and-inclusion-in-a-globalized-world/",
     ],
     imageUrl:

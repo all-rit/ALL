@@ -59,7 +59,11 @@ const AIPanelRatingModal = ({
             </div>
             <div className="tw-bg-blue-50 tw-p-1 tw-rounded tw-mb-2">
               <h5 className="tw-font-bold tw-mb-2">
-                What is {biasDefinition.name}?
+                What is{" "}
+                {biasDefinition.name === "Truth Bias"
+                  ? biasDefinition.name
+                  : "the " + biasDefinition.name}
+                ?
               </h5>
               <p className="tw-body-text">{biasDefinition.definition}</p>
             </div>

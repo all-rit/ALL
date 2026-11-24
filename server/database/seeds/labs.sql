@@ -3220,7 +3220,7 @@ e'[
  }
 ]', 2, 'coming soon', 'coming soon', true),
 
-(13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artifical Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
+(13, 'Human Cognitive Bias and Generative AI', 'Cognitive Bias', 'AI', '/cognitivebiasai.jpg', 'Learn about Human Cognitive Bias and how it impacts day to day interactions with Generative Artificial Intelligence (AI).', 'This lab will introduce the idea of Human Cognitive Bias and how it impacts day to day interactions with Generative AI. Human Bias plays a large part into why do individuals trust AI generated responses without questions if the responses they are recieving are accurate. Participants will learn how to their own unconsicous bias play into typical interactions with AI, impacting a users trust in AI generated responses. In the exercise portion of the lab they will encounter an interface.',
 e'[
    "LO1: Recognize how cognitive biases such as the Halo Effect, Authority Bias, and Truth Bias influence trust in AI-generated content (Knowledge)",
    "LO2: Create design strategies that promote critical thinking, such as certainty indicators and disclaimers about AI limitations (Synthesis)",
@@ -3301,7 +3301,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
       "content": ["In the case of Mata V. Avianca (2023), experienced lawyers fell victim to cognitive bias when relying on generative AI output. Attorneys Steven A. Schwartz and Peter LoDuca used ChatGPT to help prepare a legal filing for a passenger, Roberto Mata, who claimed injury on an Avianca flight. The AI confidently produced realistic legal citations and reasoning, but every case it cited wasn\'t real. When questioned by Avianca\'s lawyers and the court on the location of the cited legal cases, Mata\'s lawyers continued to defend the fake citations because ChatGPT assured them the cases \'indeed exist\' and \'can be found in reputable legal databases such as LexisNexis and Westlaw.\' The court later sanctioned them making this one of the first high profile examples of cognitive bias in human-AI interactions! This case shows how polished tone, confident phrasing, and the perceived expertise of the AI can create a halo of trust, even making skilled professionals overrely on it and overlook errors."]
     },
     {
-      "header": "What Can We Do About It: AI Literacy",
+      "header": "What We Can Do About It: AI Literacy",
       "type": "",
       "content": ["So why does AI seem so convincing, even when it\'s wrong? The reason lies in how AI systems are built: they’re designed to sound smart. Developers craft their tone, structure, and human-like phrasing to make interactions natural and engaging, which can unconsciously influence our  perception."]
     },
@@ -3357,7 +3357,7 @@ a quiz to test your knowledge. Click "Next" to start!', e'{
     ]
   }
 }',
-'[{"title":"Artifical Intelligence and Dunning Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
+'[{"title":"Artificial Intelligence and the Dunning-Kruger Effect","link": "https://www.youtube.com/embed/dPbGoeW3uVw?si=29cnMsdK_okYF9Ge"},{"title":"Introduction to the Halo Effect","link": "https://www.youtube.com/embed/kpjeMaOirvg?si=j383aHRvYakZyNi1"},{"title":"Truth is an Illusion (Truth Bias)","link":"https://www.youtube.com/embed/cebFWOlx848?si=rHm0WHB4a-BMsQtF"}]', '[
  {
    "question": "Which cognitive bias best describes this scenario? Bob is a student who used ChatGPT to do his math homework. He argues with his teacher about his homework that he got a 0 on. He believes that his math skills are strong enough to not check the answers of ChatGPT because they \"look right\". His teacher continued to give him a 0.",
    "answers": [
