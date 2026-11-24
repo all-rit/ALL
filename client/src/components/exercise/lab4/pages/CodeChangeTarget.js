@@ -160,8 +160,6 @@ const CodeChangeTarget = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Width updated as: " + state.textValue);
-    console.log("Height updated as: " + state.textValue1);
     if (state.textValue === "" || state.textValue1 === "") {
       setState({
         ...state,
