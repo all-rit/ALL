@@ -75,20 +75,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-function initializeReactGA() {
-  if (import.meta.env.PROD) {
-    const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
-    if (TRACKING_ID) {
-      ReactGA.initialize(TRACKING_ID);
-      ReactGA.send({
-        hitType: "pageview",
-        page: window.location.pathname + window.location.search,
-        title: document.title,
-      });
-    }
-  }
-}
-
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
@@ -106,6 +92,11 @@ const App = () => {
 
     actions.fetchActiveLabNumbers();
     const intervalId = setInterval(actions.fetchActiveLabNumbers, 10000); // 10 seconds
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+      title: document.title,
+    });
     return () => clearInterval(intervalId);
   }, []);
   const lab = state.main.lab;
@@ -248,7 +239,6 @@ const App = () => {
   };
 
   // look into index.js in constants
-  initializeReactGA();
   return (
     <>
       {isLoaded ? (
