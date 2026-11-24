@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 /** Body Components **/
 import { default as About } from "./components/body/About";
@@ -75,16 +75,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-function initializeReactGA() {
-  if (import.meta.env.PROD) {
-    const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
-    if (TRACKING_ID) {
-      ReactGA.initialize(TRACKING_ID);
-      ReactGA.pageview(window.location.pathname + window.location.search);
-    }
-  }
-}
-
 const App = () => {
   const context = useMainStateContext();
   const { state, actions } = context;
@@ -102,6 +92,11 @@ const App = () => {
 
     actions.fetchActiveLabNumbers();
     const intervalId = setInterval(actions.fetchActiveLabNumbers, 10000); // 10 seconds
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+      title: document.title,
+    });
     return () => clearInterval(intervalId);
   }, []);
   const lab = state.main.lab;
@@ -244,7 +239,6 @@ const App = () => {
   };
 
   // look into index.js in constants
-  initializeReactGA();
   return (
     <>
       {isLoaded ? (
