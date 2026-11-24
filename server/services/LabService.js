@@ -41,7 +41,6 @@ async function getActiveLabNumbers() {
 
     raw: true,
   });
-
   return activeLabNumbers;
 }
 /**
