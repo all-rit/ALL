@@ -328,11 +328,6 @@ const AIPanel = () => {
 
   return (
     <div className="tw-relative tw-h-full">
-      {/* Full-screen overlay when modal is shown */}
-      {(showRatingModal || showBiasExplanation) && (
-        <div className="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-z-40 tw-pointer-events-none" />
-      )}
-
       {activeTopic && topicData && (
         <>
           <div

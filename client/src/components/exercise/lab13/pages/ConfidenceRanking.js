@@ -71,8 +71,8 @@ const ConfidenceRanking = () => {
     <div className="tw-bg-center">
       <h1 className={"tw-title tw-text-left"}>Confidence Ranking Page</h1>
       <p className="tw-body-text tw-text-left tw-py-6">
-        Drag and Drop each of the three topics, Dyslexia, Color Blindness, and
-        Localization from your most familiar to least familiar.
+        <strong>Drag and Drop</strong> each of the three topics, Dyslexia, Color
+        Blindness, and Localization from your most familiar to least familiar.
       </p>
       <DragDropGame
         gameStyle="tw-grid tw-grid-cols-[1fr_2fr] tw-max-w-4xl tw-mx-auto tw-gap-8 tw-direction-rtl tw-items-center"

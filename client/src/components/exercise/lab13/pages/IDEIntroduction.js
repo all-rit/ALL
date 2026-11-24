@@ -19,15 +19,14 @@ const IDEIntroduction = () => {
       <p className="tw-text-left">
         Some of these additions include making the AI chatbot provide a
         <strong> confidence score</strong>. Confidence scores are the way the
-        chatbot let&apos;s the user know how sure it is that it completed
-        it&apos;s request. Be careful though, this is not the same as an
-        accuracy score.
+        chatbot lets the user know how sure it is that it completed it&apos;s
+        request. Be careful though, this is not the same as an accuracy score.
       </p>
       <p className="tw-text-left">
         Another additions would be the <strong>disclaimer</strong> text that
         many AI chatbots include somewhere in their interface. Disclaimers are a
         great way to have a constant reminder to their user that AI can be wrong
-        and should be double-checked.
+        and its responses should be double-checked.
       </p>
       <p className="tw-text-left">
         Finally, another common addition is having the AI chatbot provide
